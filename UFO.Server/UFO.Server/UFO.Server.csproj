@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,11 +41,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\IArtistDao.cs" />
-    <Compile Include="DAO\IPerformanceDao.cs" />
-    <Compile Include="DAO\IUserDao.cs" />
-    <Compile Include="DAO\IVenueDao.cs" />
+    <Compile Include="Dao\IAgendaDao.cs" />
+    <Compile Include="Dao\IArtistDao.cs" />
+    <Compile Include="Dao\Impl\DummyAgendaDao.cs" />
+    <Compile Include="Dao\Impl\DummyArtistDao.cs" />
+    <Compile Include="Dao\Impl\DummyPerformanceDao.cs" />
+    <Compile Include="Dao\Impl\DummyUserDeo.cs" />
+    <Compile Include="Dao\Impl\DummyVenueDao.cs" />
+    <Compile Include="Dao\IPerformanceDao.cs" />
+    <Compile Include="Dao\IUserDao.cs" />
+    <Compile Include="Dao\IVenueDao.cs" />
+    <Compile Include="Model\Commands\DaoResponse.cs" />
+    <Compile Include="Model\Commands\Filter.cs" />
+    <Compile Include="Model\Entities\Agenda.cs" />
+    <Compile Include="Model\Entities\Artist.cs" />
+    <Compile Include="Model\Entities\BinDataStream.cs" />
+    <Compile Include="Model\Entities\Category.cs" />
+    <Compile Include="Model\Entities\Country.cs" />
+    <Compile Include="Model\Entities\GeoLocation.cs" />
+    <Compile Include="Model\Entities\Performance.cs" />
+    <Compile Include="Model\Entities\User.cs" />
+    <Compile Include="Model\Entities\Venue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Provider\DaoProviderFactories.cs" />
+    <Compile Include="Provider\Impl\DummyDaoProviderFactory.cs" />
+    <Compile Include="Provider\IDaoProviderFactory.cs" />
+    <Compile Include="Provider\ProviderUtility.cs" />
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
