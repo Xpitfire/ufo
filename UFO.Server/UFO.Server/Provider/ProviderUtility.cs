@@ -20,7 +20,7 @@ namespace FH.SEv.UFO.Server.Provider
                 if (obj is T)
                     return (T) obj;
             }
-            throw new SettingsPropertyNotFoundException("Unsupported class load! Expected type: " + typeof(T).Name);
+            throw new SettingsPropertyNotFoundException($"Unsupported class load! Expected type: {typeof(T).Name}");
         }
     }
 }

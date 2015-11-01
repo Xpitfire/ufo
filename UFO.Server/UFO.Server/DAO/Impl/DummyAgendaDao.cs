@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FH.SEv.UFO.Server.Model.Commands;
 using FH.SEv.UFO.Server.Model.Entities;
+using FH.SEv.UFO.Server.Model.Helper;
 
 namespace FH.SEv.UFO.Server.Dao.Impl
 {
     class DummyAgendaDao : IAgendaDao
     {
+        
+
         public DaoResponse<Agenda> InsertAgenda(Agenda agenda)
         {
             throw new NotImplementedException();
@@ -20,7 +22,7 @@ namespace FH.SEv.UFO.Server.Dao.Impl
             throw new NotImplementedException();
         }
 
-        public IList<Agenda> GetAgendas(Filter<Agenda, string> filter)
+        public IList<Agenda> GetAgendas<T>(T criteria, Filter<Agenda, T> filter)
         {
             throw new NotImplementedException();
         }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using FH.SEv.UFO.Server.Model.Commands;
 using FH.SEv.UFO.Server.Model.Entities;
+using FH.SEv.UFO.Server.Model.Helper;
 
 namespace FH.SEv.UFO.Server.Dao
 {
@@ -14,6 +14,6 @@ namespace FH.SEv.UFO.Server.Dao
 
         IList<Artist> GetAllArtists();
 
-        IList<Artist> GetArtists(Filter<User, string> filter);
+        IList<Artist> GetArtists<T>(T criteria, Filter<Artist, T> filter);
     }
 }

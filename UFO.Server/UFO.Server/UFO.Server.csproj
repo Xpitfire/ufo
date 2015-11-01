@@ -30,7 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture, Version=3.36.9.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.3.36.9\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,16 +52,18 @@
   <ItemGroup>
     <Compile Include="Dao\IAgendaDao.cs" />
     <Compile Include="Dao\IArtistDao.cs" />
+    <Compile Include="Dao\Impl\DbUserDao.cs" />
     <Compile Include="Dao\Impl\DummyAgendaDao.cs" />
     <Compile Include="Dao\Impl\DummyArtistDao.cs" />
+    <Compile Include="Dao\Impl\DummyDataCollection.cs" />
     <Compile Include="Dao\Impl\DummyPerformanceDao.cs" />
     <Compile Include="Dao\Impl\DummyUserDeo.cs" />
     <Compile Include="Dao\Impl\DummyVenueDao.cs" />
     <Compile Include="Dao\IPerformanceDao.cs" />
     <Compile Include="Dao\IUserDao.cs" />
     <Compile Include="Dao\IVenueDao.cs" />
-    <Compile Include="Model\Commands\DaoResponse.cs" />
-    <Compile Include="Model\Commands\Filter.cs" />
+    <Compile Include="Model\Helper\DaoResponse.cs" />
+    <Compile Include="Model\Helper\Constants.cs" />
     <Compile Include="Model\Entities\Agenda.cs" />
     <Compile Include="Model\Entities\Artist.cs" />
     <Compile Include="Model\Entities\BinDataStream.cs" />
@@ -69,6 +80,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Provider\DaoProviderFactories.cs" />
+    <Compile Include="Provider\DbCommProviderFactory.cs" />
+    <Compile Include="Provider\Impl\DbDaoProviderFactory.cs" />
     <Compile Include="Provider\Impl\DummyDaoProviderFactory.cs" />
     <Compile Include="Provider\IDaoProviderFactory.cs" />
     <Compile Include="Provider\ProviderUtility.cs" />
@@ -79,6 +92,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

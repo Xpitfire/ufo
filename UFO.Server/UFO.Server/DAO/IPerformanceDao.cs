@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using FH.SEv.UFO.Server.Model.Commands;
 using FH.SEv.UFO.Server.Model.Entities;
+using FH.SEv.UFO.Server.Model.Helper;
 
 namespace FH.SEv.UFO.Server.Dao
 {
@@ -10,6 +10,6 @@ namespace FH.SEv.UFO.Server.Dao
 
         IList<Performance> GetAllPerformances();
 
-        IList<Performance> GetPerformances(Filter<User, string> filter);
+        IList<Performance> GetPerformances<T>(T criteria, Filter<Performance, T> filter);
     }
 }

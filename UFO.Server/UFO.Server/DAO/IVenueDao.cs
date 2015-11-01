@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using FH.SEv.UFO.Server.Model.Commands;
 using FH.SEv.UFO.Server.Model.Entities;
+using FH.SEv.UFO.Server.Model.Helper;
 
 namespace FH.SEv.UFO.Server.Dao
 {
@@ -12,6 +12,6 @@ namespace FH.SEv.UFO.Server.Dao
 
         IList<Venue> GetAllVenues();
 
-        IList<Venue> GetVenues<T>(Filter<User, string> filter);
+        IList<Venue> GetVenues<T>(T criteria, Filter<Venue, T> filter);
     }
 }

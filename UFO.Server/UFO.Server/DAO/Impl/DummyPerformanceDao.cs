@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using FH.SEv.UFO.Server.Dao;
-using FH.SEv.UFO.Server.Model.Commands;
 using FH.SEv.UFO.Server.Model.Entities;
+using FH.SEv.UFO.Server.Model.Helper;
 
 namespace FH.SEv.UFO.Server.DAO.Impl
 {
@@ -17,7 +17,7 @@ namespace FH.SEv.UFO.Server.DAO.Impl
             throw new System.NotImplementedException();
         }
 
-        public IList<Performance> GetPerformances(Filter<User, string> filter)
+        public IList<Performance> GetPerformances<T>(T criteria, Filter<Performance, T> filter)
         {
             throw new System.NotImplementedException();
         }

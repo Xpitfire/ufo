@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using FH.SEv.UFO.Server.Model.Commands;
 using FH.SEv.UFO.Server.Model.Entities;
+using FH.SEv.UFO.Server.Model.Helper;
 
 namespace FH.SEv.UFO.Server.Dao
 {
@@ -13,6 +13,6 @@ namespace FH.SEv.UFO.Server.Dao
 
         IList<Agenda> GetAllAgendas();
 
-        IList<Agenda> GetAgendas(Filter<Agenda, string> filter);
+        IList<Agenda> GetAgendas<T>(T criteria, Filter<Agenda, T> filter);
     }
 }

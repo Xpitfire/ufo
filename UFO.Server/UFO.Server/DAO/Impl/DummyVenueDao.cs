@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using FH.SEv.UFO.Server.Dao;
-using FH.SEv.UFO.Server.Model.Commands;
 using FH.SEv.UFO.Server.Model.Entities;
+using FH.SEv.UFO.Server.Model.Helper;
 
 namespace FH.SEv.UFO.Server.DAO.Impl
 {
@@ -22,7 +22,7 @@ namespace FH.SEv.UFO.Server.DAO.Impl
             throw new System.NotImplementedException();
         }
 
-        public IList<Venue> GetVenues<T>(Filter<User, string> filter)
+        public IList<Venue> GetVenues<T>(T criteria, Filter<Venue, T> filter)
         {
             throw new System.NotImplementedException();
         }

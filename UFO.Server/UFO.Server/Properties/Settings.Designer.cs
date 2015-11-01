@@ -31,5 +31,29 @@ namespace FH.SEv.UFO.Server.Properties {
                 return ((string)(this["DaoProviderName"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=localhost;Database=ufo;Uid=root;Pwd=;")]
+        public string DbConnectionString {
+            get {
+                return ((string)(this["DbConnectionString"]));
+            }
+            set {
+                this["DbConnectionString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MySQL Data Provider")]
+        public string DbProviderName {
+            get {
+                return ((string)(this["DbProviderName"]));
+            }
+            set {
+                this["DbProviderName"] = value;
+            }
+        }
     }
 }

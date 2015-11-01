@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using FH.SEv.UFO.Server.Dao;
-using FH.SEv.UFO.Server.Model.Commands;
+using FH.SEv.UFO.Server.Dao.Impl;
 using FH.SEv.UFO.Server.Model.Entities;
+using FH.SEv.UFO.Server.Model.Helper;
 
 namespace FH.SEv.UFO.Server.DAO.Impl
 {
@@ -15,35 +16,12 @@ namespace FH.SEv.UFO.Server.DAO.Impl
 
         public IList<User> GetAllUsers()
         {
-            throw new System.NotImplementedException();
+            return DummyDataCollection.Users.ToList();
         }
         
-        public IList<User> GetUsers(Filter<User, string> filter)
+        public IList<User> GetUsers<T>(T criteria, Filter<User, T> filter)
         {
-            var queryResult = new List<User>
-            {
-                new User
-                {
-                    ArtistId = 1,
-                    EMail = "hallo@mail.com",
-                    FistName = "Marius",
-                    LastName = "Dinu",
-                    PasswordHash = "012345",
-                    IsAdmin = false,
-                    IsArtist = true
-                },
-                new User
-                {
-                    ArtistId = 2,
-                    EMail = "test@gmx.com",
-                    FistName = "Max",
-                    LastName = "Huber",
-                    PasswordHash = "67890",
-                    IsAdmin = true,
-                    IsArtist = false
-                }
-            };
-            return filter(queryResult, "Huber").ToList();
+            return filter(DummyDataCollection.Users, criteria).ToList();
         }
     }
 }

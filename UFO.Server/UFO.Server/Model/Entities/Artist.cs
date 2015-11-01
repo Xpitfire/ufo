@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using FH.SEv.UFO.Server.Model.Helper;
 
 namespace FH.SEv.UFO.Server.Model.Entities
 {
@@ -12,6 +14,7 @@ namespace FH.SEv.UFO.Server.Model.Entities
 
         public string Name { get; set; }
 
+        [RegularExpression(Constants.EMailRegex)]
         public string EMail { get; set; }
 
         public int CategoryId { get; set; } = Category.InvalidCategoryId;

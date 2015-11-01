@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using FH.SEv.UFO.Server.Model.Commands;
 using FH.SEv.UFO.Server.Model.Entities;
+using FH.SEv.UFO.Server.Model.Helper;
 
 namespace FH.SEv.UFO.Server.Dao
 {
@@ -10,6 +10,6 @@ namespace FH.SEv.UFO.Server.Dao
 
         IList<User> GetAllUsers();
 
-        IList<User> GetUsers(Filter<User, string> filter);
+        IList<User> GetUsers<T>(T criteria, Filter<User, T> filter);
     }
 }
