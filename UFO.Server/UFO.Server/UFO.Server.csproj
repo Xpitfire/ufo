@@ -30,14 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Ploeh.AutoFixture, Version=3.36.9.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoFixture.3.36.9\lib\net40\Ploeh.AutoFixture.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -50,41 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dao\IAgendaDao.cs" />
-    <Compile Include="Dao\IArtistDao.cs" />
-    <Compile Include="Dao\Impl\DbUserDao.cs" />
-    <Compile Include="Dao\Impl\DummyAgendaDao.cs" />
-    <Compile Include="Dao\Impl\DummyArtistDao.cs" />
-    <Compile Include="Dao\Impl\DummyDataCollection.cs" />
-    <Compile Include="Dao\Impl\DummyPerformanceDao.cs" />
-    <Compile Include="Dao\Impl\DummyUserDeo.cs" />
-    <Compile Include="Dao\Impl\DummyVenueDao.cs" />
-    <Compile Include="Dao\IPerformanceDao.cs" />
-    <Compile Include="Dao\IUserDao.cs" />
-    <Compile Include="Dao\IVenueDao.cs" />
-    <Compile Include="Model\Helper\DaoResponse.cs" />
-    <Compile Include="Model\Helper\Constants.cs" />
-    <Compile Include="Model\Entities\Agenda.cs" />
-    <Compile Include="Model\Entities\Artist.cs" />
-    <Compile Include="Model\Entities\BinDataStream.cs" />
-    <Compile Include="Model\Entities\Category.cs" />
-    <Compile Include="Model\Entities\Country.cs" />
-    <Compile Include="Model\Entities\GeoLocation.cs" />
-    <Compile Include="Model\Entities\Performance.cs" />
-    <Compile Include="Model\Entities\User.cs" />
-    <Compile Include="Model\Entities\Venue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Provider\DaoProviderFactories.cs" />
-    <Compile Include="Provider\DbCommProviderFactory.cs" />
-    <Compile Include="Provider\Impl\DbDaoProviderFactory.cs" />
-    <Compile Include="Provider\Impl\DummyDaoProviderFactory.cs" />
-    <Compile Include="Provider\IDaoProviderFactory.cs" />
-    <Compile Include="Provider\ProviderUtility.cs" />
+    <Compile Include="DaoProviderFactories.cs" />
+    <Compile Include="ProviderUtility.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +62,16 @@
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UFO.Server.Dal.Common\UFO.Server.Dal.Common.csproj">
+      <Project>{90aa318d-269a-4c83-9ee9-85718a0fdd67}</Project>
+      <Name>UFO.Server.Dal.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UFO.Server.Domain\UFO.Server.Domain.csproj">
+      <Project>{d1adb3d6-b6dc-42ca-9468-71dc9693f89c}</Project>
+      <Name>UFO.Server.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

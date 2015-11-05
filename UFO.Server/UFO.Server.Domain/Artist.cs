@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using FH.SEv.UFO.Server.Model.Helper;
+using UFO.Server.Domain;
 
 namespace FH.SEv.UFO.Server.Model.Entities
 {
