@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using FH.SEv.UFO.Server.Dao;
-using FH.SEv.UFO.Server.Model.Entities;
-using FH.SEv.UFO.Server.Model.Helper;
+using UFO.Server.Dal.Common;
+using UFO.Server.Domain;
 
-namespace FH.SEv.UFO.Server.DAO.Impl
+namespace UFO.Server.Dal.Dummy
 {
     class DummyPerformanceDao : IPerformanceDao
     {

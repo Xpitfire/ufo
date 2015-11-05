@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FH.SEv.UFO.Server.Model.Helper
+namespace UFO.Server.Dal.Common
 {
     /// <summary>
     /// Delegate to create filters for APIs, such as DAO.

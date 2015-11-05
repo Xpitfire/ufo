@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using UFO.Server.Domain;
 
-namespace FH.SEv.UFO.Server.Model.Entities
+namespace UFO.Server.Domain
 {
     [Serializable]
     public class Artist

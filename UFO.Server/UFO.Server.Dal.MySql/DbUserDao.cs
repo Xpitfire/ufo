@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FH.SEv.UFO.Server.Model.Entities;
-using FH.SEv.UFO.Server.Model.Helper;
-using FH.SEv.UFO.Server.Provider;
+using UFO.Server.Dal.Common;
+using UFO.Server.Domain;
 
-namespace FH.SEv.UFO.Server.Dao.Impl
+namespace UFO.Server.Dal.MySql
 {
     class DbUserDao : IUserDao
     {

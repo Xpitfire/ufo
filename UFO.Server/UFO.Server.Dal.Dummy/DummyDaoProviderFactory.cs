@@ -1,8 +1,6 @@
-﻿using FH.SEv.UFO.Server.Dao;
-using FH.SEv.UFO.Server.Dao.Impl;
-using FH.SEv.UFO.Server.DAO.Impl;
+﻿using UFO.Server.Dal.Common;
 
-namespace FH.SEv.UFO.Server.Provider.Impl
+namespace UFO.Server.Dal.Dummy
 {
     class DummyDaoProviderFactory : IDaoProviderFactory
     {

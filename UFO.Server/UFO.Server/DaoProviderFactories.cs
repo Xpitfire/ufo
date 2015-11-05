@@ -1,12 +1,16 @@
-﻿using FH.SEv.UFO.Server.Properties;
+﻿using UFO.Server.Dal.Common;
+using UFO.Server.Properties;
 
-namespace FH.SEv.UFO.Server.Provider
+namespace UFO.Server
 {
     public sealed class DaoProviderFactories
     {
-        public static IDaoProviderFactory GetFactory(string providerName = null)
+        public static IDaoProviderFactory GetFactory(string assemblyName = null, string nameSpace = null, string providerName = null)
         {
-            return ProviderUtility.LoadClass<IDaoProviderFactory>(providerName ?? Settings.Default.DaoProviderName);
+            return ProviderUtility.LoadClass<IDaoProviderFactory>(
+                assemblyName ?? Settings.Default.DaoProviderAssemblyName,
+                nameSpace ?? Settings.Default.DaoProviderNameSpace,
+                providerName ?? Settings.Default.DaoProviderClassName);
         }
     }
 }

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FH.SEv.UFO.Server.Model.Entities;
-using FH.SEv.UFO.Server.Model.Helper;
+using UFO.Server.Dal.Common;
+using UFO.Server.Domain;
 
-namespace FH.SEv.UFO.Server.Dao.Impl
+namespace UFO.Server.Dal.Dummy
 {
     class DummyAgendaDao : IAgendaDao
     {

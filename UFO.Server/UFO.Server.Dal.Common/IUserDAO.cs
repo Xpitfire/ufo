@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using FH.SEv.UFO.Server.Model.Entities;
-using FH.SEv.UFO.Server.Model.Helper;
+using UFO.Server.Domain;
 
-namespace FH.SEv.UFO.Server.Dao
+namespace UFO.Server.Dal.Common
 {
     public interface IUserDao
     {

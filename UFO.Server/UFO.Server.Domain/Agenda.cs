@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FH.SEv.UFO.Server.Model.Entities
+namespace UFO.Server.Domain
 {
     [Serializable]
     public class Agenda

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using FH.SEv.UFO.Server.Model.Entities;
-using FH.SEv.UFO.Server.Model.Helper;
+﻿using System.Collections.Generic;
+using UFO.Server.Domain;
 
-namespace FH.SEv.UFO.Server.Dao
+namespace UFO.Server.Dal.Common
 {
     public interface IAgendaDao
     {

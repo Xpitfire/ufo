@@ -1,4 +1,4 @@
-﻿namespace FH.SEv.UFO.Server.Model.Helper
+﻿namespace UFO.Server.Dal.Common
 {
     public enum DaoStatus
     {

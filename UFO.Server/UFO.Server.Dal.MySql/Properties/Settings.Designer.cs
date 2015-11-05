@@ -8,12 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UFO.Server.Properties {
+namespace UFO.Server.Dal.MySql.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
-    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -23,36 +23,27 @@ namespace UFO.Server.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DummyDaoProviderFactory")]
-        public string DaoProviderClassName {
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=localhost;Database=ufo;Uid=root;Pwd=;")]
+        public string DbConnectionString {
             get {
-                return ((string)(this["DaoProviderClassName"]));
+                return ((string)(this["DbConnectionString"]));
+            }
+            set {
+                this["DbConnectionString"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Dal.Dummy")]
-        public string DaoProviderNameSpace {
+        [global::System.Configuration.DefaultSettingValueAttribute("MySQL Data Provider")]
+        public string DbProviderName {
             get {
-                return ((string)(this["DaoProviderNameSpace"]));
+                return ((string)(this["DbProviderName"]));
             }
             set {
-                this["DaoProviderNameSpace"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Dal.Dummy")]
-        public string DaoProviderAssemblyName {
-            get {
-                return ((string)(this["DaoProviderAssemblyName"]));
-            }
-            set {
-                this["DaoProviderAssemblyName"] = value;
+                this["DbProviderName"] = value;
             }
         }
     }

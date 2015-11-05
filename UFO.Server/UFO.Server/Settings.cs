@@ -1,4 +1,4 @@
-﻿namespace FH.SEv.UFO.Server.Properties {
+﻿namespace UFO.Server.Properties {
     
     
     // This class allows you to handle specific events on the settings class:

@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FH.SEv.UFO.Server.Provider
+namespace UFO.Server
 {
     sealed class ProviderUtility
     {
-        public static T LoadClass<T>(string className)
+        public static T LoadClass<T>(string assemblyName, string nameSpace, string className)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            var type = assembly.GetType(className);
+            var assembly = Assembly.Load(assemblyName);
+            var type = assembly.GetType($"{nameSpace}.{className}");
             if (type != null)
             {
                 var obj = Activator.CreateInstance(type);

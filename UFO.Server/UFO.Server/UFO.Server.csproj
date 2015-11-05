@@ -7,7 +7,7 @@
     <ProjectGuid>{75DF68F2-A526-469F-9CAB-35EBBAA3F9E6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FH.SEv.UFO.Server</RootNamespace>
+    <RootNamespace>UFO.Server</RootNamespace>
     <AssemblyName>UFO.Server</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

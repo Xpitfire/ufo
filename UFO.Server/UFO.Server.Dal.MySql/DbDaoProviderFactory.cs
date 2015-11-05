@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FH.SEv.UFO.Server.Dao;
-using FH.SEv.UFO.Server.Dao.Impl;
+using UFO.Server.Dal.Common;
 
-namespace FH.SEv.UFO.Server.Provider.Impl
+namespace UFO.Server.Dal.MySql
 {
     class DbDaoProviderFactory : IDaoProviderFactory
     {
