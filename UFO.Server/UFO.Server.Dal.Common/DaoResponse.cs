@@ -8,6 +8,10 @@
         Unknown
     }
 
+    /// <summary>
+    /// DAO Interface response wrapper object holding status information, possible occurred 
+    /// error messages and/or the resulting typed object.
+    /// </summary>
     public class DaoResponse
     {
         public DaoStatus ResponseStatus { get; set; } = DaoStatus.Unknown;
@@ -17,8 +21,12 @@
         public object ResultObject { get; set; }
     }
 
-    public class DaoResponse<T> : DaoResponse
+    /// <summary>
+    /// Typed DAO Interface response wrapper object.
+    /// </summary>
+    /// <typeparam name="TDaoType"></typeparam>
+    public class DaoResponse<TDaoType> : DaoResponse
     {
-        public new T ResultObject { get; set; }
+        public new TDaoType ResultObject { get; set; }
     }
 }

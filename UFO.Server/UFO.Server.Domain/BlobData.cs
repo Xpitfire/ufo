@@ -3,7 +3,7 @@
 namespace UFO.Server.Domain
 {
     [Serializable]
-    public class BinDataStream
+    public class BlobData
     {
         public byte[] DataStream { get; set; }
     }

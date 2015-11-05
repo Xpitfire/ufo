@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,9 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database.cs" />
+    <Compile Include="DbAgendaDao.cs" />
+    <Compile Include="DbArtistDao.cs" />
     <Compile Include="DbCommProviderFactory.cs" />
     <Compile Include="DbDaoProviderFactory.cs" />
+    <Compile Include="DbPerformanceDao.cs" />
     <Compile Include="DbUserDao.cs" />
+    <Compile Include="DbVenueDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

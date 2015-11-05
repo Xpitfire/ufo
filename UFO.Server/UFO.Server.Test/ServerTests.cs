@@ -33,12 +33,9 @@ namespace UFO.Server.Test
         #region DAO Tests
 
         [TestMethod]
-        public void TestDaoDummyProvider()
+        public void TestDaoDefaultProvider()
         {
-            IDaoProviderFactory daoProviderFactory = DaoProviderFactories.GetFactory(
-                TestDummyDaoAssembly,
-                TestDummyDaoNameSpace,
-                TestDummyDaoClassName);
+            IDaoProviderFactory daoProviderFactory = DaoProviderFactories.GetFactory();
             Assert.IsNotNull(daoProviderFactory);
         }
         

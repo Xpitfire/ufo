@@ -11,14 +11,18 @@ namespace UFO.Server.Dal.MySql
     {
         public DaoResponse<User> UpdateUserCredentials(User user)
         {
-            throw new NotImplementedException();
+            using (var connection = DbCommProviderFactory.CreateDbConnection())
+            using (var command = DbCommProviderFactory.CreateDbCommand(connection, @"UPDATE user SET FirstName=@FirstName WHERE ID=@ID"))
+            {
+                
+            }
         }
 
         public IList<User> GetAllUsers()
         {
             var users = new List<User>();
-            using (DbConnection connection = DbCommProviderFactory.CreateDbConnection())
-            using (IDbCommand command = DbCommProviderFactory.CreateDbCommand(connection, "SELECT * FROM user"))
+            using (var connection = DbCommProviderFactory.CreateDbConnection())
+            using (var command = DbCommProviderFactory.CreateDbCommand(connection, @"SELECT * FROM user"))
             using (IDataReader dataReader = command.ExecuteReader())
             {
                 while (dataReader.Read())

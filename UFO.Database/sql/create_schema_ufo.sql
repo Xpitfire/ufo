@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 30, 2015 at 12:13 AM
+-- Generation Time: Nov 05, 2015 at 07:42 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ufo`
 --
-CREATE DATABASE IF NOT EXISTS `ufo` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `ufo`;
 
 -- --------------------------------------------------------
 
@@ -28,7 +26,6 @@ USE `ufo`;
 -- Table structure for table `artist`
 --
 
-DROP TABLE IF EXISTS `artist`;
 CREATE TABLE IF NOT EXISTS `artist` (
   `ID` int(11) NOT NULL,
   `Name` varchar(30) NOT NULL,
@@ -36,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `artist` (
   `CategoryID` int(11) NOT NULL,
   `CountryCode` char(2) NOT NULL,
   `Picture` blob,
-  `PromoVideo` longblob
+  `PromoVideo` mediumtext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -45,7 +42,6 @@ CREATE TABLE IF NOT EXISTS `artist` (
 -- Table structure for table `category`
 --
 
-DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
   `ID` int(11) NOT NULL,
   `Name` varchar(20) DEFAULT NULL
@@ -57,7 +53,6 @@ CREATE TABLE IF NOT EXISTS `category` (
 -- Table structure for table `country`
 --
 
-DROP TABLE IF EXISTS `country`;
 CREATE TABLE IF NOT EXISTS `country` (
   `Code` char(2) NOT NULL,
   `Name` varchar(20) DEFAULT NULL
@@ -69,14 +64,13 @@ CREATE TABLE IF NOT EXISTS `country` (
 -- Table structure for table `performance`
 --
 
-DROP TABLE IF EXISTS `performance`;
 CREATE TABLE IF NOT EXISTS `performance` (
   `Date` date NOT NULL,
   `ArtistID` int(11) NOT NULL,
-  `Lon` decimal(8,5) NOT NULL,
-  `Lat` decimal(8,5) NOT NULL,
-  `SpotID` char(2) NOT NULL,
-  `Name` varchar(30) NOT NULL
+  `Name` varchar(30) NOT NULL,
+  `Lon` decimal(8,5) DEFAULT NULL,
+  `Lat` decimal(8,5) DEFAULT NULL,
+  `SpotID` char(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -85,7 +79,6 @@ CREATE TABLE IF NOT EXISTS `performance` (
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `ID` int(11) NOT NULL,
   `FirstName` varchar(30) NOT NULL,
@@ -103,7 +96,6 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Table structure for table `venue`
 --
 
-DROP TABLE IF EXISTS `venue`;
 CREATE TABLE IF NOT EXISTS `venue` (
   `Lon` decimal(8,5) NOT NULL,
   `Lat` decimal(8,5) NOT NULL,
@@ -139,7 +131,7 @@ ALTER TABLE `country`
 -- Indexes for table `performance`
 --
 ALTER TABLE `performance`
-  ADD PRIMARY KEY (`ArtistID`,`Lon`,`Lat`,`Date`,`SpotID`), ADD KEY `R_13` (`Lon`,`Lat`,`SpotID`);
+  ADD PRIMARY KEY (`ArtistID`,`Date`), ADD KEY `R_14` (`Lon`,`Lat`,`SpotID`);
 
 --
 -- Indexes for table `user`
@@ -169,7 +161,7 @@ ADD CONSTRAINT `R_8` FOREIGN KEY (`CategoryID`) REFERENCES `category` (`ID`);
 --
 ALTER TABLE `performance`
 ADD CONSTRAINT `R_12` FOREIGN KEY (`ArtistID`) REFERENCES `artist` (`ID`),
-ADD CONSTRAINT `R_13` FOREIGN KEY (`Lon`, `Lat`, `SpotID`) REFERENCES `venue` (`Lon`, `Lat`, `SpotID`);
+ADD CONSTRAINT `R_14` FOREIGN KEY (`Lon`, `Lat`, `SpotID`) REFERENCES `venue` (`Lon`, `Lat`, `SpotID`);
 
 --
 -- Constraints for table `user`

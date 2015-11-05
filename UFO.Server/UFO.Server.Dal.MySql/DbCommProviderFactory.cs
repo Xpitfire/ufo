@@ -14,12 +14,14 @@ namespace UFO.Server.Dal.MySql
             return connection;
         }
 
-        public static IDbCommand CreateDbCommand(DbConnection connection, string queryText)
+        public static DbCommand CreateDbCommand(DbConnection connection, string queryText, DbParameter parameter = null)
         {
-            IDbCommand command = connection.CreateCommand();
+            DbCommand command = connection.CreateCommand();
             command.CommandText = queryText;
             command.Connection = connection;
             command.CommandType = CommandType.Text;
+            if (parameter != null)
+                command.Parameters.Add(parameter);
             return command;
         }
     }

@@ -20,9 +20,9 @@ namespace UFO.Server.Domain
 
         public Country Country { get; set; }
 
-        public BinDataStream Picture { get; set; }
+        public BlobData Picture { get; set; }
 
-        public BinDataStream PromoVideo { get; set; }
+        public string PromoVideo { get; set; }
 
         public ISet<User> ArtistList => new HashSet<User>();
     }

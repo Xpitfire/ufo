@@ -5,19 +5,21 @@ namespace UFO.Server.Dal.MySql
 {
     class DbDaoProviderFactory : IDaoProviderFactory
     {
+        
+
         public IAgendaDao CreateAgendaDao()
         {
-            throw new NotImplementedException();
+            return new DbAgendaDao();
         }
 
         public IArtistDao CreateArtistDao()
         {
-            throw new NotImplementedException();
+            return new DbArtistDao();
         }
 
         public IPerformanceDao CreatePerformanceDao()
         {
-            throw new NotImplementedException();
+            return new DbPerformanceDao();
         }
 
         public IUserDao CreateUserDao()
@@ -27,7 +29,7 @@ namespace UFO.Server.Dal.MySql
 
         public IVenueDao CreateVenueDao()
         {
-            throw new NotImplementedException();
+            return new DbVenueDao();
         }
     }
 }
