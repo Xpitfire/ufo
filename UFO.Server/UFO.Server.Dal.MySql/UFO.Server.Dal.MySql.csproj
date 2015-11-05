@@ -63,10 +63,6 @@
       <Project>{d1adb3d6-b6dc-42ca-9468-71dc9693f89c}</Project>
       <Name>UFO.Server.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UFO.Server\UFO.Server.csproj">
-      <Project>{75DF68F2-A526-469F-9CAB-35EBBAA3F9E6}</Project>
-      <Name>UFO.Server</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

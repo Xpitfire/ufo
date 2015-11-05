@@ -1,13 +1,12 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using UFO.Server;
 using UFO.Server.Dal.Common;
-using UFO.Server.Dal.Dummy;
 using UFO.Server.Domain;
 using UFO.Server.Properties;
 
-namespace FH.SEv.UFO.Server.Test
+namespace UFO.Server.Test
 {
     [TestClass]
     public class ServerTests
@@ -25,7 +24,6 @@ namespace FH.SEv.UFO.Server.Test
         [TestMethod]
         public void TestAppConfigRead()
         {
-            // TODO: add config file
             var daoProviderName = Settings.Default.DaoProviderClassName;
             Assert.AreEqual(daoProviderName, TestDummyDaoClassName);
         }
@@ -45,11 +43,17 @@ namespace FH.SEv.UFO.Server.Test
         }
         
         [TestMethod]
-        [ExpectedException(typeof(SettingsPropertyNotFoundException))]
         public void TestDaoInvalidProvider()
         {
-            // TODO: Check if correct exception
-            DaoProviderFactories.GetFactory("Some.Random.InvalidProvider");
+            try
+            {
+                DaoProviderFactories.GetFactory("Some.Random.InvalidProvider");
+                Assert.Fail("Expected exceptions did not occur!");
+            }
+            catch (Exception exception)
+            {
+                Assert.IsTrue(exception is SettingsPropertyNotFoundException || exception is SettingsPropertyWrongTypeException);
+            }
         }
 
         [TestMethod]
@@ -71,22 +75,14 @@ namespace FH.SEv.UFO.Server.Test
         #endregion
 
         #region Dummy Data Tests
-
-        [TestMethod]
-        public void TestUserGenerator()
-        {
-            var user = DummyDataGenerator.GenerateUser();
-            Assert.IsTrue(user.ArtistId != Artist.InvalidArtistId);
-            Assert.IsTrue(user.EMail.Contains("@"));
-            Assert.IsNotNull(user.FistName);
-            Assert.IsNotNull(user.LastName);
-            Assert.IsNotNull(user.PasswordHash);
-        }
-
+        
         [TestMethod]
         public void TestAllGeneratedUsers()
         {
-            var userDao = DaoProviderFactories.GetFactory(Settings.Default.DaoProviderClassName).CreateUserDao();
+            var userDao = DaoProviderFactories.GetFactory(
+                TestDummyDaoAssembly,
+                TestDummyDaoNameSpace,
+                TestDummyDaoClassName).CreateUserDao();
             var users = userDao.GetAllUsers();
             Assert.IsTrue(users.Count > 100);
         }

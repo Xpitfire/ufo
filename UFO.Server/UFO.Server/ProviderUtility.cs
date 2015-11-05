@@ -8,15 +8,22 @@ namespace UFO.Server
     {
         public static T LoadClass<T>(string assemblyName, string nameSpace, string className)
         {
-            var assembly = Assembly.Load(assemblyName);
-            var type = assembly.GetType($"{nameSpace}.{className}");
-            if (type != null)
+            try
             {
-                var obj = Activator.CreateInstance(type);
-                if (obj is T)
-                    return (T) obj;
+                var assembly = Assembly.Load(assemblyName);
+                var type = assembly.GetType($"{nameSpace}.{className}");
+                if (type != null)
+                {
+                    var obj = Activator.CreateInstance(type);
+                    if (obj is T)
+                        return (T)obj;
+                }
             }
-            throw new SettingsPropertyNotFoundException($"Unsupported class load! Expected type: {typeof(T).Name}");
+            catch
+            {
+                throw new SettingsPropertyNotFoundException($"Failed to load assembly or type: {assemblyName}");
+            }
+            throw new SettingsPropertyWrongTypeException($"Unsupported class load! Expected type: {typeof(T).Name}");
         }
     }
 }
