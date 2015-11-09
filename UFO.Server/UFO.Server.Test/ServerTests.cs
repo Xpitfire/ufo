@@ -125,7 +125,7 @@ namespace UFO.Server.Test
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
-            var getRsp = userDao.GetUsers(1, (users, cirteria) => users.Where(x => x.ArtistId == cirteria));
+            var getRsp = userDao.GetUsers(1, (users, cirteria) => users.Where(x => x.Id == cirteria));
             var user = getRsp.ResultObject.First();
             user.FistName = "Marius";
             user.LastName = "Dinu";
