@@ -24,29 +24,31 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {
-    public class DbArtistDao : IArtistDao
+    class DbVenueDao : IVenueDao
     {
-        public DaoResponse<Artist> DeleteArtist(Artist artist)
+        private readonly ADbCommProvider _dbCommProvider;
+
+        public DbVenueDao(ADbCommProvider dbCommProvider)
+        {
+            _dbCommProvider = dbCommProvider;
+        }
+
+        public DaoResponse<Venue> InsertVenue(Venue venue)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Artist> GetAllArtists()
+        public DaoResponse<Venue> UpdateVenue(Venue venue)
         {
             throw new NotImplementedException();
         }
 
-        public IList<Artist> GetArtists<T>(T criteria, Filter<Artist, T> filter)
+        public DaoResponse<IList<Venue>> GetAllVenues()
         {
             throw new NotImplementedException();
         }
 
-        public DaoResponse<Artist> InsertArtist(Artist artist)
-        {
-            throw new NotImplementedException();
-        }
-
-        public DaoResponse<Artist> UpdateArtist(Artist artist)
+        public DaoResponse<IList<Venue>> GetVenues<T>(T criteria, Filter<Venue, T> filter)
         {
             throw new NotImplementedException();
         }

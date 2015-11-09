@@ -18,37 +18,35 @@
 //     Wurm Florian
 #endregion
 using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UFO.Server.Dal.Common;
+using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {
-    class DbDaoProviderFactory : IDaoProviderFactory
+    class DbAgendaDao : IAgendaDao
     {
-        
+        private readonly ADbCommProvider _dbCommProvider;
 
-        public IAgendaDao CreateAgendaDao()
+        public DbAgendaDao(ADbCommProvider dbCommProvider)
         {
-            return new DbAgendaDao();
+            _dbCommProvider = dbCommProvider;
         }
 
-        public IArtistDao CreateArtistDao()
+        public DaoResponse<Agenda> InsertAgenda(Agenda agenda)
         {
-            return new DbArtistDao();
+            throw new NotImplementedException();
         }
 
-        public IPerformanceDao CreatePerformanceDao()
+        public DaoResponse<IList<Agenda>> GetAllAgendas()
         {
-            return new DbPerformanceDao();
+            throw new NotImplementedException();
         }
 
-        public IUserDao CreateUserDao()
+        public DaoResponse<IList<Agenda>> GetAgendas<T>(T criteria, Filter<Agenda, T> filter)
         {
-            return new DbUserDao();
-        }
-
-        public IVenueDao CreateVenueDao()
-        {
-            return new DbVenueDao();
+            throw new NotImplementedException();
         }
     }
 }

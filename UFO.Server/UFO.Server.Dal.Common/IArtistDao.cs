@@ -30,8 +30,8 @@ namespace UFO.Server.Dal.Common
 
         DaoResponse<Artist> DeleteArtist(Artist artist);
 
-        IList<Artist> GetAllArtists();
+        DaoResponse<IList<Artist>> GetAllArtists();
 
-        IList<Artist> GetArtists<T>(T criteria, Filter<Artist, T> filter);
+        DaoResponse<IList<Artist>> GetArtists<T>(T criteria, Filter<Artist, T> filter);
     }
 }

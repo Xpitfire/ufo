@@ -48,7 +48,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="DaoProviderFactories.cs" />
+    <Compile Include="DalProviderFactories.cs" />
     <Compile Include="ProviderUtility.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>

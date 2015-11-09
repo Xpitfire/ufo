@@ -21,7 +21,7 @@ using UFO.Server.Dal.Common;
 
 namespace UFO.Server.Dal.Dummy
 {
-    class DummyDaoProviderFactory : IDaoProviderFactory
+    class DaoProviderFactory : IDaoProviderFactory
     {
         public IAgendaDao CreateAgendaDao()
         {

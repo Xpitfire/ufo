@@ -17,35 +17,34 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
-using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {
-    [Serializable]
-    public class DbVenueDao : IVenueDao
+    class DbPerformanceDao : IPerformanceDao
     {
-        public DaoResponse<Venue> InsertVenue(Venue venue)
+        private readonly ADbCommProvider _dbCommProvider;
+
+        public DbPerformanceDao(ADbCommProvider dbCommProvider)
         {
-            throw new NotImplementedException();
+            _dbCommProvider = dbCommProvider;
         }
 
-        public DaoResponse<Venue> UpdateVenue(Venue venue)
+        public DaoResponse<Performance> UpdatePerformance(Performance performance)
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
-        public IList<Venue> GetAllVenues()
+        public DaoResponse<IList<Performance>> GetAllPerformances()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
-        public IList<Venue> GetVenues<T>(T criteria, Filter<Venue, T> filter)
+        public DaoResponse<IList<Performance>> GetPerformances<T>(T criteria, Filter<Performance, T> filter)
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="DummyAgendaDao.cs" />
     <Compile Include="DummyArtistDao.cs" />
-    <Compile Include="DummyDaoProviderFactory.cs" />
+    <Compile Include="DaoProviderFactory.cs" />
     <Compile Include="DummyDataCollection.cs" />
     <Compile Include="DummyPerformanceDao.cs" />
     <Compile Include="DummyUserDeo.cs" />

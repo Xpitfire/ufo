@@ -45,11 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database.cs" />
     <Compile Include="DbAgendaDao.cs" />
     <Compile Include="DbArtistDao.cs" />
-    <Compile Include="DbCommProviderFactory.cs" />
-    <Compile Include="DbDaoProviderFactory.cs" />
+    <Compile Include="MySqlDbCommProvider.cs" />
+    <Compile Include="DaoProviderFactory.cs" />
     <Compile Include="DbPerformanceDao.cs" />
     <Compile Include="DbUserDao.cs" />
     <Compile Include="DbVenueDao.cs" />
@@ -68,6 +67,10 @@
     <ProjectReference Include="..\UFO.Server.Domain\UFO.Server.Domain.csproj">
       <Project>{d1adb3d6-b6dc-42ca-9468-71dc9693f89c}</Project>
       <Name>UFO.Server.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UFO.Server\UFO.Server.csproj">
+      <Project>{75DF68F2-A526-469F-9CAB-35EBBAA3F9E6}</Project>
+      <Name>UFO.Server</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

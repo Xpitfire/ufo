@@ -26,8 +26,8 @@ namespace UFO.Server.Dal.Common
     {
         DaoResponse<Performance> UpdatePerformance(Performance performance);
 
-        IList<Performance> GetAllPerformances();
+        DaoResponse<IList<Performance>> GetAllPerformances();
 
-        IList<Performance> GetPerformances<T>(T criteria, Filter<Performance, T> filter);
+        DaoResponse<IList<Performance>> GetPerformances<T>(T criteria, Filter<Performance, T> filter);
     }
 }

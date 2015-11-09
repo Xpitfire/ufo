@@ -33,12 +33,12 @@ namespace UFO.Server.Dal.Dummy
             throw new NotImplementedException();
         }
 
-        public IList<Agenda> GetAllAgendas()
+        public DaoResponse<IList<Agenda>> GetAllAgendas()
         {
             throw new NotImplementedException();
         }
 
-        public IList<Agenda> GetAgendas<T>(T criteria, Filter<Agenda, T> filter)
+        public DaoResponse<IList<Agenda>> GetAgendas<T>(T criteria, Filter<Agenda, T> filter)
         {
             throw new NotImplementedException();
         }

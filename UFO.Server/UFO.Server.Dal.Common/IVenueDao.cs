@@ -28,8 +28,8 @@ namespace UFO.Server.Dal.Common
 
         DaoResponse<Venue> UpdateVenue(Venue venue);
 
-        IList<Venue> GetAllVenues();
+        DaoResponse<IList<Venue>> GetAllVenues();
 
-        IList<Venue> GetVenues<T>(T criteria, Filter<Venue, T> filter);
+        DaoResponse<IList<Venue>> GetVenues<T>(T criteria, Filter<Venue, T> filter);
     }
 }

@@ -42,10 +42,10 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="DaoResponse.cs" />
+    <Compile Include="ADbCommProvider.cs" />
     <Compile Include="IAgendaDao.cs" />
     <Compile Include="IArtistDao.cs" />
     <Compile Include="IDaoProviderFactory.cs" />
-    <Compile Include="IDatabase.cs" />
     <Compile Include="IPerformanceDao.cs" />
     <Compile Include="IUserDAO.cs" />
     <Compile Include="IVenueDao.cs" />

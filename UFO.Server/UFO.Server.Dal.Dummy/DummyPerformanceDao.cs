@@ -30,12 +30,12 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
 
-        public IList<Performance> GetAllPerformances()
+        public DaoResponse<IList<Performance>> GetAllPerformances()
         {
             throw new System.NotImplementedException();
         }
 
-        public IList<Performance> GetPerformances<T>(T criteria, Filter<Performance, T> filter)
+        public DaoResponse<IList<Performance>> GetPerformances<T>(T criteria, Filter<Performance, T> filter)
         {
             throw new System.NotImplementedException();
         }

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="DaoProviderClassName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">DummyDaoProviderFactory</Value>
+      <Value Profile="(Default)">DaoProviderFactory</Value>
     </Setting>
     <Setting Name="DaoProviderNameSpace" Type="System.String" Scope="User">
       <Value Profile="(Default)">UFO.Server.Dal.Dummy</Value>

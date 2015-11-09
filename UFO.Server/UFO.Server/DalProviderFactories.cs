@@ -22,9 +22,9 @@ using UFO.Server.Properties;
 
 namespace UFO.Server
 {
-    public sealed class DaoProviderFactories
+    public sealed class DalProviderFactories
     {
-        public static IDaoProviderFactory GetFactory(string assemblyName = null, string nameSpace = null, string providerName = null)
+        public static IDaoProviderFactory GetDaoFactory(string assemblyName = null, string nameSpace = null, string providerName = null)
         {
             return ProviderUtility.LoadClass<IDaoProviderFactory>(
                 assemblyName ?? Settings.Default.DaoProviderAssemblyName,

@@ -17,27 +17,42 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
-using System.Collections.Generic;
 using UFO.Server.Dal.Common;
-using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {
-    public class DbPerformanceDao : IPerformanceDao
+    class DaoProviderFactory : IDaoProviderFactory
     {
-        public DaoResponse<Performance> UpdatePerformance(Performance performance)
+        private readonly ADbCommProvider _dbCommProvider;
+
+        public DaoProviderFactory()
         {
-            throw new System.NotImplementedException();
+            _dbCommProvider = new MySqlDbCommProvider();
         }
 
-        public IList<Performance> GetAllPerformances()
+        public IAgendaDao CreateAgendaDao()
         {
-            throw new System.NotImplementedException();
+            return new DbAgendaDao(_dbCommProvider);
         }
 
-        public IList<Performance> GetPerformances<T>(T criteria, Filter<Performance, T> filter)
+        public IArtistDao CreateArtistDao()
         {
-            throw new System.NotImplementedException();
+            return new DbArtistDao(_dbCommProvider);
+        }
+
+        public IPerformanceDao CreatePerformanceDao()
+        {
+            return new DbPerformanceDao(_dbCommProvider);
+        }
+
+        public IUserDao CreateUserDao()
+        {
+            return new DbUserDao(_dbCommProvider);
+        }
+
+        public IVenueDao CreateVenueDao()
+        {
+            return new DbVenueDao(_dbCommProvider);
         }
     }
 }

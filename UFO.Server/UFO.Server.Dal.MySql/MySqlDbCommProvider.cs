@@ -17,19 +17,20 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
-using System.Data;
 using System.Data.Common;
+using MySql.Data.MySqlClient;
+using UFO.Server.Dal.Common;
+using UFO.Server.Dal.MySql.Properties;
 
-namespace UFO.Server.Dal.Common
+namespace UFO.Server.Dal.MySql
 {
-    public interface IDatabase
+    public class MySqlDbCommProvider : ADbCommProvider
     {
-        DbCommand CreateCommand(string commandText);
-        int DeclareParameter(DbCommand command, string name, DbType type);
-        void SetParameter(DbCommand command, string name, object value);
-        void DefineParameter(DbCommand command, string name, DbType type, object value);
-
-        IDataReader ExecuteReader(DbCommand command);
-        int ExecuteNonQuery(DbCommand command);
+        public override DbConnection CreateDbConnection(string dbProviderName = null, string connectionString = null)
+        {
+            var connection = new MySqlConnection(connectionString ?? Settings.Default.DbConnectionString);
+            connection.Open();
+            return connection;
+        }
     }
 }

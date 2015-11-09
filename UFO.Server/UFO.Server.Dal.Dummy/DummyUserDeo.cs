@@ -31,14 +31,14 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
 
-        public IList<User> GetAllUsers()
+        public DaoResponse<IList<User>> GetAllUsers()
         {
-            return DummyDataCollection.Users.ToList();
+            return DaoResponse.QuerySuccessfull<IList<User>>(DummyDataCollection.Users.ToList());
         }
         
-        public IList<User> GetUsers<T>(T criteria, Filter<User, T> filter)
+        public DaoResponse<IList<User>> GetUsers<T>(T criteria, Filter<User, T> filter)
         {
-            return filter(DummyDataCollection.Users, criteria).ToList();
+            return DaoResponse.QuerySuccessfull<IList<User>>(filter(DummyDataCollection.Users, criteria).ToList());
         }
     }
 }

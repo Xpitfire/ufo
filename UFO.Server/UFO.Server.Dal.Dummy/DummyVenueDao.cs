@@ -35,12 +35,12 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
 
-        public IList<Venue> GetAllVenues()
+        public DaoResponse<IList<Venue>> GetAllVenues()
         {
             throw new System.NotImplementedException();
         }
 
-        public IList<Venue> GetVenues<T>(T criteria, Filter<Venue, T> filter)
+        public DaoResponse<IList<Venue>> GetVenues<T>(T criteria, Filter<Venue, T> filter)
         {
             throw new System.NotImplementedException();
         }

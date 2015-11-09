@@ -26,8 +26,8 @@ namespace UFO.Server.Dal.Common
     {
         DaoResponse<User> UpdateUserCredentials(User user);
 
-        IList<User> GetAllUsers();
+        DaoResponse<IList<User>> GetAllUsers();
 
-        IList<User> GetUsers<T>(T criteria, Filter<User, T> filter);
+        DaoResponse<IList<User>> GetUsers<T>(T criteria, Filter<User, T> filter);
     }
 }

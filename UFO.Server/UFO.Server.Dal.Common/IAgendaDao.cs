@@ -26,8 +26,8 @@ namespace UFO.Server.Dal.Common
     {
         DaoResponse<Agenda> InsertAgenda(Agenda agenda);
 
-        IList<Agenda> GetAllAgendas();
+        DaoResponse<IList<Agenda>> GetAllAgendas();
 
-        IList<Agenda> GetAgendas<T>(T criteria, Filter<Agenda, T> filter);
+        DaoResponse<IList<Agenda>> GetAgendas<T>(T criteria, Filter<Agenda, T> filter);
     }
 }

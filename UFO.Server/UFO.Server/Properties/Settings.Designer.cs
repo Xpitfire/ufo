@@ -25,7 +25,7 @@ namespace UFO.Server.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DummyDaoProviderFactory")]
+        [global::System.Configuration.DefaultSettingValueAttribute("DaoProviderFactory")]
         public string DaoProviderClassName {
             get {
                 return ((string)(this["DaoProviderClassName"]));

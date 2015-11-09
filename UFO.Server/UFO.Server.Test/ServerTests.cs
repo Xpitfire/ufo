@@ -32,11 +32,11 @@ namespace UFO.Server.Test
     {
         private const string TestDummyDaoAssembly = "UFO.Server.Dal.Dummy";
         private const string TestDummyDaoNameSpace = "UFO.Server.Dal.Dummy";
-        private const string TestDummyDaoClassName = "DummyDaoProviderFactory";
+        private const string TestDummyDaoClassName = "DaoProviderFactory";
 
         private const string TestDbDaoAssemblyName = "UFO.Server.Dal.MySql";
         private const string TestDbDaoNameSpace = "UFO.Server.Dal.MySql";
-        private const string TestDbDaoClassName = "DbDaoProviderFactory";
+        private const string TestDbDaoClassName = "DaoProviderFactory";
 
         #region App Config Tests
 
@@ -54,7 +54,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestDaoDefaultProvider()
         {
-            IDaoProviderFactory daoProviderFactory = DaoProviderFactories.GetFactory();
+            IDaoProviderFactory daoProviderFactory = DalProviderFactories.GetDaoFactory();
             Assert.IsNotNull(daoProviderFactory);
         }
         
@@ -63,7 +63,7 @@ namespace UFO.Server.Test
         {
             try
             {
-                DaoProviderFactories.GetFactory("Some.Random.InvalidProvider");
+                DalProviderFactories.GetDaoFactory("Some.Random.InvalidProvider");
                 Assert.Fail("Expected exceptions did not occur!");
             }
             catch (Exception exception)
@@ -75,17 +75,17 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestDummyUserDaoFilter()
         {
-            var daoProviderFactory = DaoProviderFactories.GetFactory(
+            var daoProviderFactory = DalProviderFactories.GetDaoFactory(
                 TestDummyDaoAssembly,
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName);
             var userDao = daoProviderFactory.CreateUserDao();
             Filter<User, string> filter = (collection, criteria) => collection.Where(x => x.EMail == criteria);
             var result = userDao.GetUsers("marius.dinu@mail.com", filter);
-            var user = result.First();
+            var user = result.ResultObject?.First();
 
-            Assert.IsTrue(result.Count == 1);
-            Assert.IsTrue("Marius" == user.FistName && "Dinu" == user.LastName);
+            Assert.IsTrue(result.ResultObject?.Count == 1);
+            Assert.IsTrue("Marius" == user?.FistName && "Dinu" == user.LastName);
         }
 
         #endregion
@@ -95,12 +95,12 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllGeneratedUsers()
         {
-            var userDao = DaoProviderFactories.GetFactory(
+            var userDao = DalProviderFactories.GetDaoFactory(
                 TestDummyDaoAssembly,
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName).CreateUserDao();
             var users = userDao.GetAllUsers();
-            Assert.IsTrue(users.Count > 100);
+            Assert.IsTrue(users.ResultObject?.Count > 100);
         }
 
         #endregion
@@ -110,12 +110,12 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllUserDbAccess()
         {
-            var userDao = DaoProviderFactories.GetFactory(
+            var userDao = DalProviderFactories.GetDaoFactory(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
             var users = userDao.GetAllUsers();
-            Assert.IsTrue(users.Count > 10);
+            Assert.IsTrue(users.ResultObject?.Count > 10);
         }
 
         #endregion
