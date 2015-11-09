@@ -25,11 +25,11 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {
-    class DbAgendaDao : IAgendaDao
+    class MySqlAgendaDao : IAgendaDao
     {
         private readonly ADbCommProvider _dbCommProvider;
 
-        public DbAgendaDao(ADbCommProvider dbCommProvider)
+        public MySqlAgendaDao(ADbCommProvider dbCommProvider)
         {
             _dbCommProvider = dbCommProvider;
         }

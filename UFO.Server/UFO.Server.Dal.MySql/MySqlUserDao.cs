@@ -25,11 +25,11 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {
-    class DbUserDao : IUserDao
+    class MySqlUserDao : IUserDao
     {
         private readonly ADbCommProvider _dbCommProvider;
 
-        public DbUserDao(ADbCommProvider dbDbCommProvider)
+        public MySqlUserDao(ADbCommProvider dbDbCommProvider)
         {
             _dbCommProvider = dbDbCommProvider;
         }
@@ -37,11 +37,22 @@ namespace UFO.Server.Dal.MySql
         public DaoResponse<User> UpdateUserCredentials(User user)
         {
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, @"UPDATE user SET FirstName=@FirstName WHERE ID=@ID"))
+            using (var command = _dbCommProvider.CreateDbCommand(
+                connection,
+                @"UPDATE user SET FirstName=@FirstName, LastName=@LastName, Password=@Password, EMail=@EMail, IsAdmin=@IsAdmin, IsArtist=@IsArtist, ArtistID=@ArtistID WHERE ID=@ID", 
+                new Dictionary<string, Tuple<DbType, object>>
+                {
+                    { "ID", new Tuple<DbType, object>(DbType.Int32, user.Id) },
+                    { "FirstName", new Tuple<DbType, object>(DbType.String, user.FistName) },
+                    { "LastName", new Tuple<DbType, object>(DbType.String, user.LastName) },
+                    { "Password", new Tuple<DbType, object>(DbType.String, user.PasswordHash) },
+                    { "EMail", new Tuple<DbType, object>(DbType.String, user.EMail) },
+                    { "IsAdmin", new Tuple<DbType, object>(DbType.Boolean, user.IsAdmin) },
+                    { "IsArtist", new Tuple<DbType, object>(DbType.Boolean, user.IsArtist) },
+                    { "ArtistID", new Tuple<DbType, object>(DbType.Int32, user.ArtistId) }
+                }))
             {
-                command.Parameters["ID"].Value = user.ArtistId;
-                command.Parameters["FirstName"].Value = user.FistName;
-                command.ExecuteNonQuery();
+                _dbCommProvider.ExecuteNonQuery(command);
                 return DaoResponse.QuerySuccessfull(user);
             }
         }
@@ -51,13 +62,13 @@ namespace UFO.Server.Dal.MySql
             var users = new List<User>();
             using (var connection = _dbCommProvider.CreateDbConnection())
             using (var command = _dbCommProvider.CreateDbCommand(connection, @"SELECT * FROM user"))
-            using (IDataReader dataReader = command.ExecuteReader())
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
             {
                 while (dataReader.Read())
                 {
                     var user = new User
                     {
-                        ArtistId = (int) dataReader["ID"],
+                        Id = (int) dataReader["ID"],
                         FistName = (string) dataReader["FirstName"]
                     };
                     users.Add(user);
@@ -68,7 +79,8 @@ namespace UFO.Server.Dal.MySql
 
         public DaoResponse<IList<User>> GetUsers<T>(T criteria, Filter<User, T> filter)
         {
-            throw new NotImplementedException();
+            return DaoResponse.QuerySuccessfull<IList<User>>(
+                new List<User>(filter.Invoke(GetAllUsers().ResultObject, criteria)));
         }
     }
 }

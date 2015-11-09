@@ -17,6 +17,9 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
+
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 
@@ -24,18 +27,25 @@ namespace UFO.Server.Dal.Common
 {
     public abstract class ADbCommProvider
     {
+        /// <summary>
+        /// Create Database specific connection types.
+        /// </summary>
+        /// <param name="dbProviderName">Name of the database provider.</param>
+        /// <param name="connectionString">Coonection string for the database.</param>
+        /// <returns></returns>
         public abstract DbConnection CreateDbConnection(string dbProviderName = null, string connectionString = null);
 
-        public virtual DbCommand CreateDbCommand(DbConnection connection, string queryText,
-            DbParameter parameter = null)
-        {
-            var command = connection.CreateCommand();
-            command.CommandText = queryText;
-            command.Connection = connection;
-            command.CommandType = CommandType.Text;
-            if (parameter != null)
-                command.Parameters.Add(parameter);
-            return command;
-        }
+        /// <summary>
+        /// Database independent command creation method. Can be overridden with database specific behavior.
+        /// </summary>
+        /// <param name="connection">Database connection.</param>
+        /// <param name="queryText">Database query.</param>
+        /// <param name="parameters">Query parameters pairs.</param>
+        /// <returns></returns>
+        public abstract DbCommand CreateDbCommand(DbConnection connection, string queryText, Dictionary<string, Tuple<DbType, object>>parameters = null);
+
+        public abstract IDataReader ExecuteReader(DbCommand command);
+
+        public abstract int ExecuteNonQuery(DbCommand command);
     }
 }

@@ -25,6 +25,8 @@ namespace UFO.Server.Domain
     [Serializable]
     public class User
     {
+        public int Id { get; set; } = Artist.InvalidArtistId;
+
         public int ArtistId { get; set; } = Artist.InvalidArtistId;
 
         public string FistName { get; set; }

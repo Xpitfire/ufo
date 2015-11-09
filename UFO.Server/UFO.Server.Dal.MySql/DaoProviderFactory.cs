@@ -32,27 +32,27 @@ namespace UFO.Server.Dal.MySql
 
         public IAgendaDao CreateAgendaDao()
         {
-            return new DbAgendaDao(_dbCommProvider);
+            return new MySqlAgendaDao(_dbCommProvider);
         }
 
         public IArtistDao CreateArtistDao()
         {
-            return new DbArtistDao(_dbCommProvider);
+            return new MySqlArtistDao(_dbCommProvider);
         }
 
         public IPerformanceDao CreatePerformanceDao()
         {
-            return new DbPerformanceDao(_dbCommProvider);
+            return new MySqlPerformanceDao(_dbCommProvider);
         }
 
         public IUserDao CreateUserDao()
         {
-            return new DbUserDao(_dbCommProvider);
+            return new MySqlUserDao(_dbCommProvider);
         }
 
         public IVenueDao CreateVenueDao()
         {
-            return new DbVenueDao(_dbCommProvider);
+            return new MySqlVenueDao(_dbCommProvider);
         }
     }
 }

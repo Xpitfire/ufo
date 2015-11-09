@@ -24,11 +24,11 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {
-    class DbArtistDao : IArtistDao
+    class MySqlArtistDao : IArtistDao
     {
         private readonly ADbCommProvider _dbCommProvider;
 
-        public DbArtistDao(ADbCommProvider dbCommProvider)
+        public MySqlArtistDao(ADbCommProvider dbCommProvider)
         {
             _dbCommProvider = dbCommProvider;
         }

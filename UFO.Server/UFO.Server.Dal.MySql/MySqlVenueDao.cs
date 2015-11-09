@@ -24,11 +24,11 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {
-    class DbVenueDao : IVenueDao
+    class MySqlVenueDao : IVenueDao
     {
         private readonly ADbCommProvider _dbCommProvider;
 
-        public DbVenueDao(ADbCommProvider dbCommProvider)
+        public MySqlVenueDao(ADbCommProvider dbCommProvider)
         {
             _dbCommProvider = dbCommProvider;
         }

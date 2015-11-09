@@ -23,11 +23,11 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {
-    class DbPerformanceDao : IPerformanceDao
+    class MySqlPerformanceDao : IPerformanceDao
     {
         private readonly ADbCommProvider _dbCommProvider;
 
-        public DbPerformanceDao(ADbCommProvider dbCommProvider)
+        public MySqlPerformanceDao(ADbCommProvider dbCommProvider)
         {
             _dbCommProvider = dbCommProvider;
         }

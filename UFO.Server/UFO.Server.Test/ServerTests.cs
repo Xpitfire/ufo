@@ -80,7 +80,7 @@ namespace UFO.Server.Test
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName);
             var userDao = daoProviderFactory.CreateUserDao();
-            Filter<User, string> filter = (collection, criteria) => collection.Where(x => x.EMail == criteria);
+            Filter<User, string> filter = (users, criteria) => users.Where(x => x.EMail == criteria);
             var result = userDao.GetUsers("marius.dinu@mail.com", filter);
             var user = result.ResultObject?.First();
 
@@ -116,6 +116,25 @@ namespace UFO.Server.Test
                 TestDbDaoClassName).CreateUserDao();
             var users = userDao.GetAllUsers();
             Assert.IsTrue(users.ResultObject?.Count > 10);
+        }
+
+        [TestMethod]
+        public void TestUpdateUserDbAccess()
+        {
+            var userDao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateUserDao();
+            var getRsp = userDao.GetUsers(1, (users, cirteria) => users.Where(x => x.ArtistId == cirteria));
+            var user = getRsp.ResultObject.First();
+            user.FistName = "Marius";
+            user.LastName = "Dinu";
+            user.EMail = "marius@dinu.at";
+            user.IsAdmin = true;
+            user.IsArtist = false;
+
+            var updateRsp = userDao.UpdateUserCredentials(user);
+            Assert.IsTrue(updateRsp.ResponseStatus == DaoStatus.Successful);
         }
 
         #endregion
