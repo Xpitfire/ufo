@@ -76,6 +76,9 @@
       <Name>UFO.Server</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="UFO.Server.Test.licenseheader" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
