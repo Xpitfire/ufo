@@ -17,28 +17,21 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
-using System.Collections.Generic;
-using System.Linq;
-using UFO.Server.Dal.Common;
-using UFO.Server.Domain;
+using System;
 
-namespace UFO.Server.Dal.Dummy
+namespace UFO.Server.Domain
 {
-    class DummyUserDeo : IUserDao
+    [Serializable]
+    public class Location
     {
-        public DaoResponse<User> UpdateUserCredentials(User user)
-        {
-            throw new System.NotImplementedException();
-        }
+        public const double InvalidGeoLocation = double.MinValue;
 
-        public DaoResponse<IList<User>> GetAllUsers()
-        {
-            return DaoResponse.QuerySuccessfull<IList<User>>(DummyDataCollection.Users.ToList());
-        }
-        
-        public DaoResponse<IList<User>> GetUsers<T>(T criteria, Filter<User, T> filter)
-        {
-            return DaoResponse.QuerySuccessfull<IList<User>>(filter(DummyDataCollection.Users, criteria).ToList());
-        }
+        public int LocationId { get; set; } = Constants.InvalidIdValue;
+
+        public double Longitude { get; set; } = InvalidGeoLocation;
+
+        public double Latitude { get; set; } = InvalidGeoLocation;
+
+        public string Name { get; set; }
     }
 }

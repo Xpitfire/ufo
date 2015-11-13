@@ -17,36 +17,27 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
-using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
-namespace UFO.Server.Dal.MySql
+namespace UFO.Server.Dal.Dummy
 {
-    class MySqlAgendaDao : IAgendaDao
+    class PerformanceDao : IPerformanceDao
     {
-        private readonly ADbCommProvider _dbCommProvider;
-
-        public MySqlAgendaDao(ADbCommProvider dbCommProvider)
+        public DaoResponse<Performance> Update(Performance performance)
         {
-            _dbCommProvider = dbCommProvider;
+            throw new System.NotImplementedException();
         }
 
-        public DaoResponse<Agenda> InsertAgenda(Agenda agenda)
+        public DaoResponse<IList<Performance>> GetAll()
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<Agenda>> GetAllAgendas()
+        public DaoResponse<IList<Performance>> Get<T>(T criteria, Filter<Performance, T> filter)
         {
-            throw new NotImplementedException();
-        }
-
-        public DaoResponse<IList<Agenda>> GetAgendas<T>(T criteria, Filter<Agenda, T> filter)
-        {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
         }
     }
 }

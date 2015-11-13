@@ -24,10 +24,10 @@ namespace UFO.Server.Dal.Common
 {
     public interface IAgendaDao
     {
-        DaoResponse<Agenda> InsertAgenda(Agenda agenda);
+        DaoResponse<Agenda> Insert(Agenda agenda);
 
-        DaoResponse<IList<Agenda>> GetAllAgendas();
+        DaoResponse<IList<Agenda>> GetAll();
 
-        DaoResponse<IList<Agenda>> GetAgendas<T>(T criteria, Filter<Agenda, T> filter);
+        DaoResponse<IList<Agenda>> Get<T>(T criteria, Filter<Agenda, T> filter);
     }
 }

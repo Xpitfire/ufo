@@ -25,27 +25,27 @@ namespace UFO.Server.Dal.Dummy
     {
         public IAgendaDao CreateAgendaDao()
         {
-            return new DummyAgendaDao();
+            return new AgendaDao();
         }
 
         public IArtistDao CreateArtistDao()
         {
-            return new DummyArtistDao();
+            return new ArtistDao();
         }
 
         public IPerformanceDao CreatePerformanceDao()
         {
-            return new DummyPerformanceDao();
+            return new PerformanceDao();
         }
 
         public IUserDao CreateUserDao()
         {
-            return new DummyUserDeo();
+            return new UserDeo();
         }
 
         public IVenueDao CreateVenueDao()
         {
-            return new DummyVenueDao();
+            return new VenueDao();
         }
     }
 }

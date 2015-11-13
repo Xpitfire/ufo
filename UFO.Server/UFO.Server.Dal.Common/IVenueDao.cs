@@ -24,12 +24,12 @@ namespace UFO.Server.Dal.Common
 {
     public interface IVenueDao
     {
-        DaoResponse<Venue> InsertVenue(Venue venue);
+        DaoResponse<Venue> Insert(Venue venue);
 
-        DaoResponse<Venue> UpdateVenue(Venue venue);
+        DaoResponse<Venue> Update(Venue venue);
 
-        DaoResponse<IList<Venue>> GetAllVenues();
+        DaoResponse<IList<Venue>> GetAll();
 
-        DaoResponse<IList<Venue>> GetVenues<T>(T criteria, Filter<Venue, T> filter);
+        DaoResponse<IList<Venue>> Get<T>(T criteria, Filter<Venue, T> filter);
     }
 }

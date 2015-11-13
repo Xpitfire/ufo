@@ -44,13 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DummyAgendaDao.cs" />
-    <Compile Include="DummyArtistDao.cs" />
+    <Compile Include="AgendaDao.cs" />
+    <Compile Include="ArtistDao.cs" />
     <Compile Include="DaoProviderFactory.cs" />
-    <Compile Include="DummyDataCollection.cs" />
-    <Compile Include="DummyPerformanceDao.cs" />
-    <Compile Include="DummyUserDeo.cs" />
-    <Compile Include="DummyVenueDao.cs" />
+    <Compile Include="DataCollection.cs" />
+    <Compile Include="PerformanceDao.cs" />
+    <Compile Include="UserDeo.cs" />
+    <Compile Include="VenueDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

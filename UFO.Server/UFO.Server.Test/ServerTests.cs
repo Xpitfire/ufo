@@ -80,11 +80,10 @@ namespace UFO.Server.Test
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName);
             var userDao = daoProviderFactory.CreateUserDao();
-            Filter<User, string> filter = (users, criteria) => users.Where(x => x.EMail == criteria);
-            var result = userDao.GetUsers("marius.dinu@mail.com", filter);
-            var user = result.ResultObject?.First();
+            var result = userDao.GetByEmail("marius.dinu@mail.com");
+            var user = result.ResultObject;
 
-            Assert.IsTrue(result.ResultObject?.Count == 1);
+            Assert.IsNotNull(result.ResultObject);
             Assert.IsTrue("Marius" == user?.FistName && "Dinu" == user.LastName);
         }
 
@@ -99,7 +98,7 @@ namespace UFO.Server.Test
                 TestDummyDaoAssembly,
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName).CreateUserDao();
-            var users = userDao.GetAllUsers();
+            var users = userDao.GetAll();
             Assert.IsTrue(users.ResultObject?.Count > 100);
         }
 
@@ -114,7 +113,7 @@ namespace UFO.Server.Test
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
-            var users = userDao.GetAllUsers();
+            var users = userDao.GetAll();
             Assert.IsTrue(users.ResultObject?.Count > 10);
         }
 
@@ -125,15 +124,11 @@ namespace UFO.Server.Test
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
-            var getRsp = userDao.GetUsers(1, (users, cirteria) => users.Where(x => x.Id == cirteria));
-            var user = getRsp.ResultObject.First();
-            user.FistName = "Marius";
-            user.LastName = "Dinu";
-            user.EMail = "marius@dinu.at";
-            user.IsAdmin = true;
-            user.IsArtist = false;
+            var getRsp = userDao.GetByEmail("marius.dinu@mymail.com");
+            var user = getRsp.ResultObject;
+            user.FistName = "Marius-Constantin";
 
-            var updateRsp = userDao.UpdateUserCredentials(user);
+            var updateRsp = userDao.Update(user);
             Assert.IsTrue(updateRsp.ResponseStatus == DaoStatus.Successful);
         }
 

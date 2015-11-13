@@ -18,26 +18,27 @@
 //     Wurm Florian
 #endregion
 using System.Collections.Generic;
+using System.Linq;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.Dummy
 {
-    class DummyPerformanceDao : IPerformanceDao
+    class UserDeo : IUserDao
     {
-        public DaoResponse<Performance> UpdatePerformance(Performance performance)
+        public DaoResponse<User> Update(User user)
         {
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<Performance>> GetAllPerformances()
+        public DaoResponse<IList<User>> GetAll()
         {
-            throw new System.NotImplementedException();
+            return DaoResponse.QuerySuccessfull<IList<User>>(DataCollection.Users.ToList());
         }
-
-        public DaoResponse<IList<Performance>> GetPerformances<T>(T criteria, Filter<Performance, T> filter)
+        
+        public DaoResponse<IList<User>> Get<T>(T criteria, Filter<User, T> filter)
         {
-            throw new System.NotImplementedException();
+            return DaoResponse.QuerySuccessfull<IList<User>>(filter(DataCollection.Users, criteria).ToList());
         }
     }
 }

@@ -25,9 +25,7 @@ namespace UFO.Server.Domain
     [Serializable]
     public class User
     {
-        public int Id { get; set; } = Artist.InvalidArtistId;
-
-        public int ArtistId { get; set; } = Artist.InvalidArtistId;
+        public int UserId { get; set; } = Constants.InvalidIdValue;
 
         public string FistName { get; set; }
 
@@ -36,19 +34,18 @@ namespace UFO.Server.Domain
         [RegularExpression(Constants.EMailRegex)]
         public string EMail { get; set; }
         
-        public string PasswordHash { get; set; }
+        public string Password { get; set; }
 
         public bool IsAdmin { get; set; }
 
         public bool IsArtist { get; set; }
 
+        public Artist ArtistId { get; set; }
+
         public override int GetHashCode()
         {
-            var hashCode = ArtistId;
-            hashCode += FistName?.GetHashCode() ?? 0;
-            hashCode += LastName?.GetHashCode() ?? 0;
+            var hashCode = 33;
             hashCode += EMail?.GetHashCode() ?? 0;
-            hashCode += PasswordHash?.GetHashCode() ?? 0;
             return hashCode;
         }
 

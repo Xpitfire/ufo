@@ -24,6 +24,8 @@ namespace UFO.Server.Domain
     [Serializable]
     public class BlobData
     {
+        public string Name { get; set; }
+
         public byte[] DataStream { get; set; }
     }
 }

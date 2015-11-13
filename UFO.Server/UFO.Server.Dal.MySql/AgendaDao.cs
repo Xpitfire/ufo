@@ -19,41 +19,32 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {
-    class MySqlArtistDao : IArtistDao
+    class AgendaDao : IAgendaDao
     {
         private readonly ADbCommProvider _dbCommProvider;
 
-        public MySqlArtistDao(ADbCommProvider dbCommProvider)
+        public AgendaDao(ADbCommProvider dbCommProvider)
         {
             _dbCommProvider = dbCommProvider;
         }
 
-        public DaoResponse<Artist> DeleteArtist(Artist artist)
+        public DaoResponse<Agenda> Insert(Agenda agenda)
         {
             throw new NotImplementedException();
         }
 
-        public DaoResponse<IList<Artist>> GetAllArtists()
+        public DaoResponse<IList<Agenda>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public DaoResponse<IList<Artist>> GetArtists<T>(T criteria, Filter<Artist, T> filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public DaoResponse<Artist> InsertArtist(Artist artist)
-        {
-            throw new NotImplementedException();
-        }
-
-        public DaoResponse<Artist> UpdateArtist(Artist artist)
+        public DaoResponse<IList<Agenda>> Get<T>(T criteria, Filter<Agenda, T> filter)
         {
             throw new NotImplementedException();
         }

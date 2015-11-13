@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2015 at 07:42 PM
+-- Generation Time: Nov 13, 2015 at 09:35 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -27,12 +27,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `artist` (
-  `ID` int(11) NOT NULL,
+  `ArtistId` int(11) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `EMail` varchar(40) NOT NULL,
-  `CategoryID` int(11) NOT NULL,
+  `CategoryId` varchar(2) DEFAULT NULL,
   `CountryCode` char(2) NOT NULL,
-  `Picture` blob,
+  `Picture` mediumtext,
   `PromoVideo` mediumtext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS `artist` (
 --
 
 CREATE TABLE IF NOT EXISTS `category` (
-  `ID` int(11) NOT NULL,
-  `Name` varchar(20) DEFAULT NULL
+  `CategoryId` varchar(2) NOT NULL,
+  `Name` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -55,7 +55,20 @@ CREATE TABLE IF NOT EXISTS `category` (
 
 CREATE TABLE IF NOT EXISTS `country` (
   `Code` char(2) NOT NULL,
-  `Name` varchar(20) DEFAULT NULL
+  `Name` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `location`
+--
+
+CREATE TABLE IF NOT EXISTS `location` (
+  `LocationId` int(11) NOT NULL,
+  `Longitude` decimal(8,5) DEFAULT NULL,
+  `Latitude` decimal(8,5) DEFAULT NULL,
+  `Name` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -65,12 +78,9 @@ CREATE TABLE IF NOT EXISTS `country` (
 --
 
 CREATE TABLE IF NOT EXISTS `performance` (
-  `Date` date NOT NULL,
-  `ArtistID` int(11) NOT NULL,
-  `Name` varchar(30) NOT NULL,
-  `Lon` decimal(8,5) DEFAULT NULL,
-  `Lat` decimal(8,5) DEFAULT NULL,
-  `SpotID` char(2) DEFAULT NULL
+  `Date` datetime NOT NULL,
+  `ArtistId` int(11) NOT NULL,
+  `VenueId` char(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -80,13 +90,13 @@ CREATE TABLE IF NOT EXISTS `performance` (
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `ID` int(11) NOT NULL,
-  `FirstName` varchar(30) NOT NULL,
-  `LastName` varchar(30) NOT NULL,
-  `Password` varchar(30) DEFAULT NULL,
+  `UserId` int(11) NOT NULL,
+  `FirstName` varchar(30) DEFAULT NULL,
+  `LastName` varchar(30) DEFAULT NULL,
+  `Password` varchar(30) NOT NULL,
   `IsAdmin` tinyint(1) NOT NULL,
   `IsArtist` tinyint(1) NOT NULL,
-  `ArtistID` int(11) DEFAULT NULL,
+  `ArtistId` int(11) DEFAULT NULL,
   `EMail` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -97,12 +107,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 CREATE TABLE IF NOT EXISTS `venue` (
-  `Lon` decimal(8,5) NOT NULL,
-  `Lat` decimal(8,5) NOT NULL,
-  `Street` varchar(40) NOT NULL,
-  `Description` text,
-  `SpotID` char(2) NOT NULL,
-  `Name` varchar(30) NOT NULL
+  `Name` varchar(40) NOT NULL,
+  `VenueId` char(2) NOT NULL,
+  `LocationId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -113,13 +120,13 @@ CREATE TABLE IF NOT EXISTS `venue` (
 -- Indexes for table `artist`
 --
 ALTER TABLE `artist`
-  ADD PRIMARY KEY (`ID`), ADD KEY `R_8` (`CategoryID`), ADD KEY `R_11` (`CountryCode`);
+  ADD PRIMARY KEY (`ArtistId`), ADD KEY `R_8` (`CategoryId`), ADD KEY `R_11` (`CountryCode`);
 
 --
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`CategoryId`);
 
 --
 -- Indexes for table `country`
@@ -128,22 +135,28 @@ ALTER TABLE `country`
   ADD PRIMARY KEY (`Code`);
 
 --
+-- Indexes for table `location`
+--
+ALTER TABLE `location`
+  ADD PRIMARY KEY (`LocationId`);
+
+--
 -- Indexes for table `performance`
 --
 ALTER TABLE `performance`
-  ADD PRIMARY KEY (`ArtistID`,`Date`), ADD KEY `R_14` (`Lon`,`Lat`,`SpotID`);
+  ADD PRIMARY KEY (`ArtistId`,`Date`), ADD KEY `R_14` (`VenueId`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`ID`), ADD KEY `R_5` (`ArtistID`);
+  ADD PRIMARY KEY (`UserId`), ADD KEY `R_5` (`ArtistId`);
 
 --
 -- Indexes for table `venue`
 --
 ALTER TABLE `venue`
-  ADD PRIMARY KEY (`Lon`,`Lat`,`SpotID`);
+  ADD PRIMARY KEY (`VenueId`), ADD KEY `R_19` (`LocationId`);
 
 --
 -- Constraints for dumped tables
@@ -154,20 +167,26 @@ ALTER TABLE `venue`
 --
 ALTER TABLE `artist`
 ADD CONSTRAINT `R_11` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`),
-ADD CONSTRAINT `R_8` FOREIGN KEY (`CategoryID`) REFERENCES `category` (`ID`);
+ADD CONSTRAINT `R_8` FOREIGN KEY (`CategoryId`) REFERENCES `category` (`CategoryId`);
 
 --
 -- Constraints for table `performance`
 --
 ALTER TABLE `performance`
-ADD CONSTRAINT `R_12` FOREIGN KEY (`ArtistID`) REFERENCES `artist` (`ID`),
-ADD CONSTRAINT `R_14` FOREIGN KEY (`Lon`, `Lat`, `SpotID`) REFERENCES `venue` (`Lon`, `Lat`, `SpotID`);
+ADD CONSTRAINT `R_12` FOREIGN KEY (`ArtistId`) REFERENCES `artist` (`ArtistId`),
+ADD CONSTRAINT `R_14` FOREIGN KEY (`VenueId`) REFERENCES `venue` (`VenueId`);
 
 --
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-ADD CONSTRAINT `R_5` FOREIGN KEY (`ArtistID`) REFERENCES `artist` (`ID`);
+ADD CONSTRAINT `R_5` FOREIGN KEY (`ArtistId`) REFERENCES `artist` (`ArtistId`);
+
+--
+-- Constraints for table `venue`
+--
+ALTER TABLE `venue`
+ADD CONSTRAINT `R_19` FOREIGN KEY (`LocationId`) REFERENCES `location` (`LocationId`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -23,24 +23,24 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.Dummy
 {
-    class DummyVenueDao : IVenueDao
+    class VenueDao : IVenueDao
     {
-        public DaoResponse<Venue> InsertVenue(Venue venue)
+        public DaoResponse<Venue> Insert(Venue venue)
         {
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<Venue> UpdateVenue(Venue venue)
+        public DaoResponse<Venue> Update(Venue venue)
         {
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<Venue>> GetAllVenues()
+        public DaoResponse<IList<Venue>> GetAll()
         {
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<Venue>> GetVenues<T>(T criteria, Filter<Venue, T> filter)
+        public DaoResponse<IList<Venue>> Get<T>(T criteria, Filter<Venue, T> filter)
         {
             throw new System.NotImplementedException();
         }

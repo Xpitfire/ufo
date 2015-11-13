@@ -25,9 +25,9 @@ namespace UFO.Server.Domain
     public class Performance
     {
         public DateTime DateTime { get; set; }
-
-        public Venue Venue { get; set; }
-
+        
         public Artist Artist { get; set; }
+
+        public Venue VenueId { get; set; }
     }
 }

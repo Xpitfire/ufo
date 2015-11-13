@@ -29,7 +29,7 @@ using UFO.Server.Dal.MySql.Properties;
 
 namespace UFO.Server.Dal.MySql
 {
-    public class MySqlDbCommProvider : ADbCommProvider
+    public class DbCommProvider : ADbCommProvider
     {
         private string DbProviderName { get; set; }
         private string ConnectionString { get; set; }

@@ -21,28 +21,31 @@ using System.Collections.Generic;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
-namespace UFO.Server.Dal.MySql
+namespace UFO.Server.Dal.Dummy
 {
-    class MySqlPerformanceDao : IPerformanceDao
+    class ArtistDao : IArtistDao
     {
-        private readonly ADbCommProvider _dbCommProvider;
-
-        public MySqlPerformanceDao(ADbCommProvider dbCommProvider)
-        {
-            _dbCommProvider = dbCommProvider;
-        }
-
-        public DaoResponse<Performance> UpdatePerformance(Performance performance)
+        public DaoResponse<Artist> Insert(Artist artist)
         {
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<Performance>> GetAllPerformances()
+        public DaoResponse<Artist> Update(Artist artist)
         {
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<Performance>> GetPerformances<T>(T criteria, Filter<Performance, T> filter)
+        public DaoResponse<Artist> Delete(Artist artist)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public DaoResponse<IList<Artist>> GetAll()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public DaoResponse<IList<Artist>> Get<T>(T criteria, Filter<Artist, T> filter)
         {
             throw new System.NotImplementedException();
         }

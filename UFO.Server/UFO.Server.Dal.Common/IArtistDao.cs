@@ -24,14 +24,14 @@ namespace UFO.Server.Dal.Common
 {
     public interface IArtistDao
     {
-        DaoResponse<Artist> InsertArtist(Artist artist);
+        DaoResponse<Artist> Insert(Artist artist);
 
-        DaoResponse<Artist> UpdateArtist(Artist artist);
+        DaoResponse<Artist> Update(Artist artist);
 
-        DaoResponse<Artist> DeleteArtist(Artist artist);
+        DaoResponse<Artist> Delete(Artist artist);
 
-        DaoResponse<IList<Artist>> GetAllArtists();
+        DaoResponse<IList<Artist>> GetAll();
 
-        DaoResponse<IList<Artist>> GetArtists<T>(T criteria, Filter<Artist, T> filter);
+        DaoResponse<IList<Artist>> Get<T>(T criteria, Filter<Artist, T> filter);
     }
 }

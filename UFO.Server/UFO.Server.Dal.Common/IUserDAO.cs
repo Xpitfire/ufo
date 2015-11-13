@@ -24,10 +24,10 @@ namespace UFO.Server.Dal.Common
 {
     public interface IUserDao
     {
-        DaoResponse<User> UpdateUserCredentials(User user);
+        DaoResponse<User> Update(User user);
 
-        DaoResponse<IList<User>> GetAllUsers();
+        DaoResponse<IList<User>> GetAll();
 
-        DaoResponse<IList<User>> GetUsers<T>(T criteria, Filter<User, T> filter);
+        DaoResponse<IList<User>> Get<T>(T criteria, Filter<User, T> filter);
     }
 }

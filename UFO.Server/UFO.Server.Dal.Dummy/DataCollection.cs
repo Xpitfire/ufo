@@ -25,7 +25,7 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.Dummy
 {
-    sealed class DummyDataCollection
+    sealed class DataCollection
     {
         public static readonly BlockingCollection<Agenda> Agendas = new BlockingCollection<Agenda>();
 
@@ -37,7 +37,7 @@ namespace UFO.Server.Dal.Dummy
         
         public static readonly BlockingCollection<Performance> Performances = new BlockingCollection<Performance>();
         
-        static DummyDataCollection()
+        static DataCollection()
         {
             // User demo data
             // Password examples use MD5 hashing --> http://www.danstools.com/md5-hash-generator/
@@ -45,41 +45,37 @@ namespace UFO.Server.Dal.Dummy
             {
                 new User
                 {
-                    ArtistId = 1,
                     EMail = "marius.dinu@mail.com",
                     FistName = "Marius",
                     LastName = "Dinu",
-                    PasswordHash = "cfefe3e7c1ce34edfd95f0386ab03724", // PW: theTools48297!
+                    Password = "cfefe3e7c1ce34edfd95f0386ab03724", // PW: theTools48297!
                     IsAdmin = true,
                     IsArtist = true
                 },
                 new User
                 {
-                    ArtistId = 2,
                     EMail = "chesterbenn@live.com",
                     FistName = "Chester",
                     LastName = "Bennington",
-                    PasswordHash = "098f6bcd4621d373cade4e832627b4f6", // PW: test
+                    Password = "098f6bcd4621d373cade4e832627b4f6", // PW: test
                     IsAdmin = false,
                     IsArtist = true
                 },
                 new User
                 {
-                    ArtistId = 3,
                     EMail = "shinoda@hotmail.com",
                     FistName = "Mike",
                     LastName = "Shinoda",
-                    PasswordHash = "a4f5dfd41d26f7fb0972ba8a77eead30", // PW: se8ndkKhHnd3821!D$
+                    Password = "a4f5dfd41d26f7fb0972ba8a77eead30", // PW: se8ndkKhHnd3821!D$
                     IsAdmin = false,
                     IsArtist = true
                 },
                 new User
                 {
-                    ArtistId = 4,
                     EMail = "hallo@mail.com",
                     FistName = "Peter",
                     LastName = "Fox",
-                    PasswordHash = "5f4dcc3b5aa765d61d8327deb882cf99", // PW: password
+                    Password = "5f4dcc3b5aa765d61d8327deb882cf99", // PW: password
                     IsAdmin = false,
                     IsArtist = true
                 }
@@ -101,7 +97,6 @@ namespace UFO.Server.Dal.Dummy
             var user = fixture.Build<User>();
 
             fixture.Customize<User>(c => c
-            .With(u => u.ArtistId, _userIdCnt++)
             .With(u => u.EMail, $"{fixture.Create<string>()}@{fixture.Create<string>()}.com")
             .With(u => u.FistName, fixture.Create<string>())
             );

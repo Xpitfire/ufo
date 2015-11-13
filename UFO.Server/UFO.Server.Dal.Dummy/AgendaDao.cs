@@ -22,33 +22,23 @@ using System.Collections.Generic;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
-namespace UFO.Server.Dal.MySql
+namespace UFO.Server.Dal.Dummy
 {
-    class MySqlVenueDao : IVenueDao
+    class AgendaDao : IAgendaDao
     {
-        private readonly ADbCommProvider _dbCommProvider;
+        
 
-        public MySqlVenueDao(ADbCommProvider dbCommProvider)
-        {
-            _dbCommProvider = dbCommProvider;
-        }
-
-        public DaoResponse<Venue> InsertVenue(Venue venue)
+        public DaoResponse<Agenda> Insert(Agenda agenda)
         {
             throw new NotImplementedException();
         }
 
-        public DaoResponse<Venue> UpdateVenue(Venue venue)
+        public DaoResponse<IList<Agenda>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public DaoResponse<IList<Venue>> GetAllVenues()
-        {
-            throw new NotImplementedException();
-        }
-
-        public DaoResponse<IList<Venue>> GetVenues<T>(T criteria, Filter<Venue, T> filter)
+        public DaoResponse<IList<Agenda>> Get<T>(T criteria, Filter<Agenda, T> filter)
         {
             throw new NotImplementedException();
         }
