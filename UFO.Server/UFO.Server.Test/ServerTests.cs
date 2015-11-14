@@ -137,7 +137,7 @@ namespace UFO.Server.Test
         }
 
         [TestMethod]
-        public void TestCategoryDbAccess()
+        public void TestAllCategoryDbAccess()
         {
             var categoryDao = DalProviderFactories.GetDaoFactory().CreateCategoryDao();
             var categories = categoryDao.GetAll().ResultObject;
@@ -146,7 +146,7 @@ namespace UFO.Server.Test
         }
 
         [TestMethod]
-        public void TestCountryDbAccess()
+        public void TestAllCountryDbAccess()
         {
             var countryDao = DalProviderFactories.GetDaoFactory().CreateCountryDao();
             var countries = countryDao.GetAll().ResultObject;
@@ -155,12 +155,30 @@ namespace UFO.Server.Test
         }
 
         [TestMethod]
-        public void TestArtistsDbAccess()
+        public void TestAllArtistDbAccess()
         {
             var artistDao = DalProviderFactories.GetDaoFactory().CreateArtistDao();
             var artists = artistDao.GetAll().ResultObject;
             Assert.IsNotNull(artists);
             Assert.IsTrue(artists.Any());
+        }
+
+        [TestMethod]
+        public void TestAllVenueDbAccess()
+        {
+            var venueDao = DalProviderFactories.GetDaoFactory().CreateVenueDao();
+            var venues = venueDao.GetAll().ResultObject;
+            Assert.IsNotNull(venues);
+            Assert.IsTrue(venues.Any());
+        }
+
+        [TestMethod]
+        public void TestAllPerformancesDbAccess()
+        {
+            var performanceDao = DalProviderFactories.GetDaoFactory().CreatePerformanceDao();
+            var performances = performanceDao.GetAll().ResultObject;
+            Assert.IsNotNull(performances);
+            Assert.IsTrue(performances.Any());
         }
 
         #endregion

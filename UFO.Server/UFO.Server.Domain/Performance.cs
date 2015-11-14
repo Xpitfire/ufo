@@ -28,6 +28,6 @@ namespace UFO.Server.Domain
         
         public Artist Artist { get; set; }
 
-        public Venue VenueId { get; set; }
+        public Venue Venue { get; set; }
     }
 }

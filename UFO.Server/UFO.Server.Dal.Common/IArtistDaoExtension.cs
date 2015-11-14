@@ -12,7 +12,7 @@ namespace UFO.Server.Dal.Common
         public static DaoResponse<Artist> GetAllAndFilterById(this IArtistDao userDao, int id)
         {
             Filter<Artist, int> filter = (users, criteria) => users.Where(x => x.ArtistId == criteria);
-            return DaoResponse.QuerySuccessfull(userDao.GetAllAndFilterBy(id, filter).ResultObject.First());
+            return DaoResponse.QuerySuccessfull(userDao.GetAllAndFilterBy(id, filter).ResultObject?.First());
         }
     }
 }

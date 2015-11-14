@@ -28,9 +28,9 @@ namespace UFO.Server.Domain
 
         public int LocationId { get; set; } = Constants.InvalidIdValue;
 
-        public double Longitude { get; set; } = InvalidGeoLocation;
+        public decimal Longitude { get; set; }
 
-        public double Latitude { get; set; } = InvalidGeoLocation;
+        public decimal Latitude { get; set; }
 
         public string Name { get; set; }
     }

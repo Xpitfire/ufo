@@ -1,15 +1,15 @@
-SET FOREIGN_KEY_CHECKS = 0;
 -- phpMyAdmin SQL Dump
 -- version 4.3.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2015 at 07:47 PM
+-- Generation Time: Nov 14, 2015 at 09:16 PM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+SET FOREIGN_KEY_CHECKS = 0;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -817,9 +817,9 @@ INSERT INTO `country` (`Code`, `Name`) VALUES
 
 CREATE TABLE IF NOT EXISTS `location` (
   `LocationId` int(11) NOT NULL,
-  `Longitude` decimal(8,5) DEFAULT NULL,
-  `Latitude` decimal(8,5) DEFAULT NULL,
-  `Name` varchar(30) DEFAULT NULL
+  `Longitude` decimal(8,5) NOT NULL,
+  `Latitude` decimal(8,5) NOT NULL,
+  `Name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -959,6 +959,30 @@ INSERT INTO `performance` (`Date`, `ArtistId`, `VenueId`) VALUES
 ('2015-11-15 20:00:00', 363, 'P5'),
 ('2014-11-07 18:00:00', 401, 'P5'),
 ('2012-11-18 21:00:00', 407, 'P5');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `performanceview`
+--
+CREATE TABLE IF NOT EXISTS `performanceview` (
+`ArtistId` int(11)
+,`Date` datetime
+,`VenueId` char(2)
+,`ArtistName` varchar(30)
+,`EMail` varchar(40)
+,`CategoryId` varchar(2)
+,`CategoryName` varchar(40)
+,`CountryCode` char(2)
+,`CountryName` varchar(30)
+,`Picture` mediumtext
+,`PromoVideo` mediumtext
+,`VenueName` varchar(40)
+,`LocationId` int(11)
+,`Longitude` decimal(8,5)
+,`Latitude` decimal(8,5)
+,`LocationName` varchar(30)
+);
 
 -- --------------------------------------------------------
 
@@ -11084,6 +11108,20 @@ INSERT INTO `venue` (`Name`, `VenueId`, `LocationId`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `venueview`
+--
+CREATE TABLE IF NOT EXISTS `venueview` (
+`VenueId` char(2)
+,`VenueName` varchar(40)
+,`LocationId` int(11)
+,`Longitude` decimal(8,5)
+,`Latitude` decimal(8,5)
+,`LocationName` varchar(30)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `artistview`
 --
 DROP TABLE IF EXISTS `artistview`;
@@ -11093,11 +11131,29 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `performanceview`
+--
+DROP TABLE IF EXISTS `performanceview`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `performanceview` AS select `a`.`ArtistId` AS `ArtistId`,`p`.`Date` AS `Date`,`v`.`VenueId` AS `VenueId`,`a`.`ArtistName` AS `ArtistName`,`a`.`EMail` AS `EMail`,`a`.`CategoryId` AS `CategoryId`,`a`.`CategoryName` AS `CategoryName`,`a`.`CountryCode` AS `CountryCode`,`a`.`CountryName` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo`,`v`.`VenueName` AS `VenueName`,`v`.`LocationId` AS `LocationId`,`v`.`Longitude` AS `Longitude`,`v`.`Latitude` AS `Latitude`,`v`.`LocationName` AS `LocationName` from (`artistview` `a` join (`performance` `p` left join `venueview` `v` on((`p`.`VenueId` = `v`.`VenueId`)))) where (`a`.`ArtistId` = `p`.`ArtistId`);
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `userview`
 --
 DROP TABLE IF EXISTS `userview`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `userview` AS select `u`.`UserId` AS `UserId`,`u`.`FirstName` AS `FirstName`,`u`.`LastName` AS `LastName`,`u`.`EMail` AS `UserMail`,`u`.`Password` AS `Password`,`u`.`IsAdmin` AS `IsAdmin`,`u`.`IsArtist` AS `IsArtist`,`a`.`ArtistId` AS `ArtistId`,`a`.`ArtistName` AS `ArtistName`,`a`.`EMail` AS `ArtistMail`,`a`.`CategoryId` AS `CategoryId`,`a`.`CategoryName` AS `CategoryName`,`a`.`CountryCode` AS `CountryCode`,`a`.`CountryName` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo` from (`user` `u` left join `artistview` `a` on((`a`.`ArtistId` = `u`.`ArtistId`)));
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `venueview`
+--
+DROP TABLE IF EXISTS `venueview`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `venueview` AS select `v`.`VenueId` AS `VenueId`,`v`.`Name` AS `VenueName`,`v`.`LocationId` AS `LocationId`,`l`.`Longitude` AS `Longitude`,`l`.`Latitude` AS `Latitude`,`l`.`Name` AS `LocationName` from (`venue` `v` join `location` `l`) where (`v`.`LocationId` = `l`.`LocationId`);
 
 --
 -- Indexes for dumped tables
@@ -11175,8 +11231,8 @@ ADD CONSTRAINT `R_5` FOREIGN KEY (`ArtistId`) REFERENCES `artist` (`ArtistId`);
 ALTER TABLE `venue`
 ADD CONSTRAINT `R_19` FOREIGN KEY (`LocationId`) REFERENCES `location` (`LocationId`);
 
+SET FOREIGN_KEY_CHECKS = 1;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-SET FOREIGN_KEY_CHECKS = 1;

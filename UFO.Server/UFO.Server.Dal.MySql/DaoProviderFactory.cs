@@ -18,7 +18,6 @@
 //     Wurm Florian
 #endregion
 using UFO.Server.Dal.Common;
-using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {

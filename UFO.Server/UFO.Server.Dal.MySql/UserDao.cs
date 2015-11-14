@@ -101,7 +101,7 @@ namespace UFO.Server.Dal.MySql
         {
             var users = new List<User>();
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAllUser))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAllUsers))
             using (var dataReader = _dbCommProvider.ExecuteReader(command))
             {
                 while (dataReader.Read())

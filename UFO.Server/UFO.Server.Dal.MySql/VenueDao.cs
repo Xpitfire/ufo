@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Data;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
@@ -45,12 +46,41 @@ namespace UFO.Server.Dal.MySql
 
         public DaoResponse<IList<Venue>> GetAll()
         {
-            throw new NotImplementedException();
+            var venues = new List<Venue>();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAllVenues))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    venues.Add(CreateVenueObject(dataReader));
+                }
+            }
+
+            return DaoResponse.QuerySuccessfull<IList<Venue>>(venues);
+        }
+
+        private Venue CreateVenueObject(IDataReader dataReader)
+        {
+            var venue = new Venue
+            {
+                VenueId = (string)dataReader["VenueId"],
+                Name = (string)dataReader["VenueName"],
+                Location = new Location
+                {
+                    LocationId = (int)dataReader["LocationId"],
+                    Name = (string)dataReader["LocationName"],
+                    Latitude = (decimal)dataReader["Latitude"],
+                    Longitude = (decimal)dataReader["Longitude"]
+                }
+            };
+            return venue;
         }
 
         public DaoResponse<IList<Venue>> GetAllAndFilterBy<T>(T criteria, Filter<Venue, T> filter)
         {
-            throw new NotImplementedException();
+            return DaoResponse.QuerySuccessfull<IList<Venue>>(
+                new List<Venue>(filter.Invoke(GetAll().ResultObject, criteria)));
         }
     }
 }

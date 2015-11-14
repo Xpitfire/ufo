@@ -9,7 +9,7 @@ namespace UFO.Server.Dal.Common
         public static DaoResponse<User> GetAllAndFilterByEmail(this IUserDao userDao, string email)
         {
             Filter<User, string> filter = (users, criteria) => users.Where(x => x.EMail == criteria);
-            return DaoResponse.QuerySuccessfull(userDao.GetAllAndFilterBy(email, filter).ResultObject.First());
+            return DaoResponse.QuerySuccessfull(userDao.GetAllAndFilterBy(email, filter).ResultObject?.First());
         }
 
         public static DaoResponse<IList<User>> GetAllAndFilterByLastName(this IUserDao userDao, string name)
@@ -27,7 +27,7 @@ namespace UFO.Server.Dal.Common
         public static DaoResponse<User> GetAllAndFilterById(this IUserDao userDao, int id)
         {
             Filter<User, int> filter = (users, criteria) => users.Where(x => x.UserId == criteria);
-            return DaoResponse.QuerySuccessfull(userDao.GetAllAndFilterBy(id, filter).ResultObject.First());
+            return DaoResponse.QuerySuccessfull(userDao.GetAllAndFilterBy(id, filter).ResultObject?.First());
         }
     }
 }

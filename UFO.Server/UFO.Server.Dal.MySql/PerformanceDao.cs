@@ -17,7 +17,10 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
+
+using System;
 using System.Collections.Generic;
+using System.Data;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
@@ -39,12 +42,74 @@ namespace UFO.Server.Dal.MySql
 
         public DaoResponse<IList<Performance>> GetAll()
         {
-            throw new System.NotImplementedException();
+            var performances = new List<Performance>();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAllPerfomances))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    performances.Add(CreatePerformanceObject(dataReader));
+                }
+            }
+
+            return DaoResponse.QuerySuccessfull<IList<Performance>>(performances);
+        }
+
+        private Performance CreatePerformanceObject(IDataReader dataReader)
+        {
+            var performance = new Performance
+            {
+                DateTime = (DateTime)dataReader["Date"]
+            };
+
+            var artist = new Artist
+            {
+                ArtistId = (int)dataReader["ArtistId"],
+                Name = dataReader["ArtistName"] is DBNull ? null : (string)dataReader["ArtistName"],
+                EMail = (string)dataReader["EMail"],
+                PromoVideo = dataReader["PromoVideo"] is DBNull ? null : (string)dataReader["PromoVideo"],
+                Picture = dataReader["Picture"] is DBNull ? null : BlobData.CreateBlobData((string)dataReader["Picture"]),
+                Country = new Country
+                {
+                    Code = (string)dataReader["CountryCode"],
+                    Name = (string)dataReader["CountryName"]
+                }
+            };
+            if (!(dataReader["CategoryId"] is DBNull))
+            {
+                artist.Category = new Category
+                {
+                    CategoryId = (string)dataReader["CategoryId"],
+                    Name = (string)dataReader["CategoryName"]
+                };
+            }
+            performance.Artist = artist;
+
+            if (!(dataReader["VenueId"] is DBNull))
+            {
+                var venue = new Venue
+                {
+                    VenueId = (string)dataReader["VenueId"],
+                    Name = (string)dataReader["VenueName"],
+                    Location = new Location
+                    {
+                        LocationId = (int)dataReader["LocationId"],
+                        Name = (string)dataReader["LocationName"],
+                        Latitude = (decimal)dataReader["Latitude"],
+                        Longitude = (decimal)dataReader["Longitude"]
+                    }
+                };
+                performance.Venue = venue;
+            }
+            
+            return performance;
         }
 
         public DaoResponse<IList<Performance>> GetAllAndFilterBy<T>(T criteria, Filter<Performance, T> filter)
         {
-            throw new System.NotImplementedException();
+            return DaoResponse.QuerySuccessfull<IList<Performance>>(
+                new List<Performance>(filter.Invoke(GetAll().ResultObject, criteria)));
         }
     }
 }

@@ -8,20 +8,31 @@ namespace UFO.Server.Dal.MySql
 {
     public static class SqlQueries
     {
-        public const string SelectAllUser = @"SELECT *
-                                                FROM userview";
+        // User
+        public const string SelectAllUsers = @"SELECT *
+                                                 FROM userview";
 
         public const string UpdateUser = @"UPDATE user 
                                               SET FirstName=?FirstName, LastName=?LastName, Password=?Password, IsAdmin=?IsAdmin, IsArtist=?IsArtist, ArtistId=?ArtistId 
                                             WHERE UserId=?UserId";
 
+        // Performance
+        public const string SelectAllPerfomances = @"SELECT *
+                                                       FROM performanceview";
+
+        // Venue
+        public const string SelectAllVenues = @"SELECT *
+                                                  FROM venueview";
+
+        // Artist
         public const string SelectArtistById = @"SELECT * 
                                                    FROM artist 
                                                   WHERE ArtistId=?ArtistId";
 
         public const string SelectAllArtists =  @"SELECT * 
                                                     FROM artistview";
-
+        
+        // Country
         public const string SelectAllCountries = @"SELECT * 
                                                      FROM country";
 
@@ -29,6 +40,7 @@ namespace UFO.Server.Dal.MySql
                                                     FROM country 
                                                    WHERE Code=?Code";
 
+        // Category
         public const string SelectAllCategories = @"SELECT * 
                                                       FROM category";
 
