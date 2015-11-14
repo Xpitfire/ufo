@@ -126,7 +126,7 @@ namespace UFO.Server.Test
                 TestDbDaoClassName).CreateUserDao();
             var getRsp = userDao.GetByEmail("marius.dinu@mymail.com");
             var user = getRsp.ResultObject;
-            user.FistName = "Marius-Constantin";
+            user.FistName = "Marius";
 
             var updateRsp = userDao.Update(user);
             Assert.IsTrue(updateRsp.ResponseStatus == DaoStatus.Successful);

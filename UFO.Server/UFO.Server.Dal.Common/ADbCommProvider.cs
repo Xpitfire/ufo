@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Linq;
 
 namespace UFO.Server.Dal.Common
 {
@@ -42,7 +43,21 @@ namespace UFO.Server.Dal.Common
         /// <param name="queryText">Database query.</param>
         /// <param name="parameters">Query parameters pairs.</param>
         /// <returns></returns>
-        public abstract DbCommand CreateDbCommand(DbConnection connection, string queryText, Dictionary<string, Tuple<DbType, object>>parameters = null);
+        public abstract DbCommand CreateDbCommand<TDbType>(DbConnection connection, string queryText, Dictionary<string, QueryParameter<TDbType>> parameters = null);
+
+        public DbCommand CreateDbCommand(DbConnection connection, string queryText, Dictionary<string, QueryParameter> parameters = null)
+        {
+            Dictionary<string, QueryParameter<object>> nonGenericParameters = null;
+            if (parameters != null)
+            {
+                nonGenericParameters = new Dictionary<string, QueryParameter<object>>();
+                foreach (var parameter in parameters)
+                {
+                    nonGenericParameters[parameter.Key] = new QueryParameter<object> {ParameterValue = parameter.Value.ParameterValue};
+                }
+            }
+            return CreateDbCommand(connection, queryText, nonGenericParameters);
+        }
 
         public abstract IDataReader ExecuteReader(DbCommand command);
 

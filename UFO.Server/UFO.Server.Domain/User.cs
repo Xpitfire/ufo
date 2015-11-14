@@ -40,7 +40,7 @@ namespace UFO.Server.Domain
 
         public bool IsArtist { get; set; }
 
-        public Artist ArtistId { get; set; }
+        public Artist Artist { get; set; }
 
         public override int GetHashCode()
         {
@@ -52,12 +52,12 @@ namespace UFO.Server.Domain
         public override bool Equals(object obj)
         {
             var user = obj as User;
-            return user != null && (ArtistId == user.ArtistId && EMail == user.EMail);
+            return user != null && (Artist == user.Artist && EMail == user.EMail);
         }
 
         public override string ToString()
         {
-            return $"User ( ArtistId={ArtistId}, FirstName={FistName}, LastName={LastName}, EMail={EMail} )";
+            return $"User ( ArtistId={Artist}, FirstName={FistName}, LastName={LastName}, EMail={EMail} )";
         }
     }
 }

@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using MySql.Data.MySqlClient;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
@@ -36,20 +37,18 @@ namespace UFO.Server.Dal.MySql
 
         public DaoResponse<User> Update(User user)
         {
+            var paramter = new Dictionary<string, QueryParameter>
+            {
+                {"?UserId", new QueryParameter {ParameterValue = user.UserId}},
+                {"?FirstName", new QueryParameter {ParameterValue = user.FistName}},
+                {"?LastName", new QueryParameter {ParameterValue = user.LastName}},
+                {"?Password", new QueryParameter {ParameterValue = user.Password}},
+                {"?IsAdmin", new QueryParameter {ParameterValue = user.IsAdmin}},
+                {"?IsArtist", new QueryParameter {ParameterValue = user.IsArtist}},
+                {"?ArtistId", new QueryParameter {ParameterValue = user.Artist?.ArtistId}}
+            };
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(
-                connection,
-                SqlQueries.UpdateUser, 
-                new Dictionary<string, Tuple<DbType, object>>
-                {
-                    { "UserId", new Tuple<DbType, object>(DbType.Int32, user.UserId) },
-                    { "FirstName", new Tuple<DbType, object>(DbType.String, user.FistName) },
-                    { "LastName", new Tuple<DbType, object>(DbType.String, user.LastName) },
-                    { "Password", new Tuple<DbType, object>(DbType.String, user.Password) },
-                    { "IsAdmin", new Tuple<DbType, object>(DbType.Boolean, user.IsAdmin) },
-                    { "IsArtist", new Tuple<DbType, object>(DbType.Boolean, user.IsArtist) },
-                    { "ArtistId", new Tuple<DbType, object>(DbType.Int32, user.ArtistId?.ArtistId) }
-                }))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, paramter))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
                 return DaoResponse.QuerySuccessfull(user);
@@ -60,7 +59,7 @@ namespace UFO.Server.Dal.MySql
         {
             var users = new List<User>();
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, @"SELECT * FROM user"))
+            using (var command = _dbCommProvider.CreateDbCommand<MySqlDbType>(connection, @"SELECT * FROM user"))
             using (var dataReader = _dbCommProvider.ExecuteReader(command))
             {
                 while (dataReader.Read())

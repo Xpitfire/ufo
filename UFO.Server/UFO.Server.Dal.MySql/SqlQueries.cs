@@ -9,8 +9,8 @@ namespace UFO.Server.Dal.MySql
     public static class SqlQueries
     {
         public const string UpdateUser =
-            @"UPDATE user SET FirstName=@FirstName, LastName=@LastName, Password=@Password, IsAdmin=@IsAdmin, IsArtist=@IsArtist, ArtistId=@ArtistId WHERE UserId=@UserId";
+            @"UPDATE user SET FirstName=?FirstName, LastName=?LastName, Password=?Password, IsAdmin=?IsAdmin, IsArtist=?IsArtist, ArtistId=?ArtistId WHERE UserId=?UserId";
 
-        public const string SelectArtistById = @"SELECT * FROM artist WHERE ArtistId=@ArtistId";
+        public const string SelectArtistById = @"SELECT * FROM artist WHERE ArtistId=?ArtistId";
     }
 }

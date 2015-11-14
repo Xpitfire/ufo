@@ -41,11 +41,12 @@ namespace UFO.Server.Dal.MySql
             return GetOpenConnection();
         }
 
-        public override DbCommand CreateDbCommand(DbConnection connection, string queryText, Dictionary<string, Tuple<DbType, object>> parameters = null)
+        public override DbCommand CreateDbCommand<TDbType>(DbConnection connection, string queryText, Dictionary<string, QueryParameter<TDbType>> parameters = null)
         {
-            var command = connection.CreateCommand();
+            // cast required for own MySql mannerism to use AddWithValue method
+            var command = (MySqlCommand) connection.CreateCommand();
+            command.Connection = (MySqlConnection)connection;
             command.CommandText = queryText;
-            command.Connection = connection;
             command.CommandType = CommandType.Text;
 
             if (parameters == null)
@@ -53,7 +54,7 @@ namespace UFO.Server.Dal.MySql
 
             foreach (var param in parameters)
             {
-                DefineParameter(command, param.Key, param.Value.Item1, param.Value.Item2);
+                DefineParameter(command, param.Key, param.Value.ParameterValue);
             }
             return command;
         }
@@ -95,20 +96,9 @@ namespace UFO.Server.Dal.MySql
             }
         }
 
-        private int DeclareParameter(DbCommand command, string name, DbType type)
+        private void DefineParameter(MySqlCommand command, string name, object value)
         {
-            if (!command.Parameters.Contains(name))
-            {
-                return command.Parameters.Add(new MySqlParameter(name, type));
-            }
-
-            throw new ArgumentException($"Parameter {name} already exists");
-        }
-
-        private void DefineParameter(DbCommand command, string name, DbType type, object value)
-        {
-            int paramIndex = DeclareParameter(command, name, type);
-            command.Parameters[paramIndex].Value = value;
+            command.Parameters.AddWithValue(name, value);
         }
         
         #region connection management

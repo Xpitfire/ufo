@@ -50,6 +50,7 @@
     <Compile Include="IUserDao.cs" />
     <Compile Include="IVenueDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryParameter.cs" />
     <Compile Include="UserDaoExtension.cs" />
   </ItemGroup>
   <ItemGroup>
