@@ -18,8 +18,10 @@
 //     Wurm Florian
 #endregion
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Transactions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
@@ -113,8 +115,8 @@ namespace UFO.Server.Test
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
-            var users = userDao.GetAll();
-            Assert.IsTrue(users.ResultObject?.Count > 10);
+            DaoResponse<IList<User>> response = userDao.GetAll();
+            Assert.IsTrue(response.ResultObject?.Count > 10);
         }
 
         [TestMethod]
@@ -124,12 +126,41 @@ namespace UFO.Server.Test
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
-            var getRsp = userDao.GetAllAndFilterByEmail("marius.dinu@mymail.com");
+
+            DaoResponse<User> getRsp = userDao.GetAllAndFilterByEmail("marius.dinu@mymail.com");
+            Assert.IsNotNull(getRsp);
             var user = getRsp.ResultObject;
             user.FistName = "Marius";
 
             var updateRsp = userDao.Update(user);
             Assert.IsTrue(updateRsp.ResponseStatus == DaoStatus.Successful);
+        }
+
+        [TestMethod]
+        public void TestCategoryDbAccess()
+        {
+            var categoryDao = DalProviderFactories.GetDaoFactory().CreateCategoryDao();
+            var categories = categoryDao.GetAll().ResultObject;
+            Assert.IsNotNull(categories);
+            Assert.IsTrue(categories.Any());
+        }
+
+        [TestMethod]
+        public void TestCountryDbAccess()
+        {
+            var countryDao = DalProviderFactories.GetDaoFactory().CreateCountryDao();
+            var countries = countryDao.GetAll().ResultObject;
+            Assert.IsNotNull(countries);
+            Assert.IsTrue(countries.Any());
+        }
+
+        [TestMethod]
+        public void TestArtistsDbAccess()
+        {
+            var artistDao = DalProviderFactories.GetDaoFactory().CreateArtistDao();
+            var artists = artistDao.GetAll().ResultObject;
+            Assert.IsNotNull(artists);
+            Assert.IsTrue(artists.Any());
         }
 
         #endregion

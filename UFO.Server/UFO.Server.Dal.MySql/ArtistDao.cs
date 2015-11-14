@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Data;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
@@ -30,22 +31,60 @@ namespace UFO.Server.Dal.MySql
 
         public ArtistDao(ADbCommProvider dbCommProvider)
         {
-            _dbCommProvider = dbCommProvider;
+            this._dbCommProvider = dbCommProvider;
+        }
+
+        private Artist CreateArtistObject(IDataReader dataReader)
+        {
+            var artist = new Artist
+            {
+                ArtistId = (int)dataReader["ArtistId"],
+                Name = dataReader["ArtistName"] is DBNull ? null : (string)dataReader["ArtistName"],
+                EMail = (string)dataReader["EMail"],
+                PromoVideo = dataReader["PromoVideo"] is DBNull ? null : (string)dataReader["PromoVideo"],
+                Picture = dataReader["Picture"] is DBNull ? null : BlobData.CreateBlobData((string)dataReader["Picture"]),
+                Country = new Country
+                {
+                    Code = (string)dataReader["CountryCode"],
+                    Name = (string)dataReader["CountryName"]
+                }
+            };
+            if (!(dataReader["CategoryId"] is DBNull))
+            {
+                artist.Category = new Category
+                {
+                    CategoryId = (string)dataReader["CategoryId"],
+                    Name = (string)dataReader["CategoryName"]
+                };
+            }
+            return artist;
         }
 
         public DaoResponse<Artist> Delete(Artist artist)
         {
             throw new NotImplementedException();
         }
-
+        
         public DaoResponse<IList<Artist>> GetAll()
         {
-            throw new NotImplementedException();
+            var artists = new List<Artist>();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAllArtists))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    artists.Add(CreateArtistObject(dataReader));
+                }
+            }
+                
+            return DaoResponse.QuerySuccessfull<IList<Artist>>(artists);
         }
 
         public DaoResponse<IList<Artist>> GetAllAndFilterBy<T>(T criteria, Filter<Artist, T> filter)
         {
-            throw new NotImplementedException();
+            return DaoResponse.QuerySuccessfull<IList<Artist>>(
+                new List<Artist>(filter.Invoke(GetAll().ResultObject, criteria)));
         }
 
         public DaoResponse<Artist> Insert(Artist artist)

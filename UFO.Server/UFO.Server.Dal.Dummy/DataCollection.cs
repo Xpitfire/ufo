@@ -27,8 +27,6 @@ namespace UFO.Server.Dal.Dummy
 {
     sealed class DataCollection
     {
-        public static readonly BlockingCollection<Agenda> Agendas = new BlockingCollection<Agenda>();
-
         public static readonly BlockingCollection<Artist> Artists = new BlockingCollection<Artist>();
         
         public static readonly BlockingCollection<User> Users = new BlockingCollection<User>();

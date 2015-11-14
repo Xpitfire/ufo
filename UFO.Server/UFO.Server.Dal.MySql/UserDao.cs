@@ -17,10 +17,10 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Data;
-using MySql.Data.MySqlClient;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
@@ -32,7 +32,49 @@ namespace UFO.Server.Dal.MySql
 
         public UserDao(ADbCommProvider dbDbCommProvider)
         {
-            _dbCommProvider = dbDbCommProvider;
+            this._dbCommProvider = dbDbCommProvider;
+        }
+
+        private User CreateUserObject(IDataReader dataReader)
+        {
+            var user = new User
+            {
+                UserId = (int)dataReader["UserId"],
+                FistName = (string)dataReader["FirstName"],
+                LastName = (string)dataReader["LastName"],
+                EMail = (string)dataReader["UserMail"],
+                Password = (string)dataReader["Password"],
+                IsAdmin = (bool)dataReader["IsAdmin"],
+                IsArtist = (bool)dataReader["IsArtist"]
+            };
+
+            if (!(dataReader["ArtistId"] is DBNull))
+            {
+                var artist = new Artist
+                {
+                    ArtistId = (int) dataReader["ArtistId"],
+                    Name = dataReader["ArtistName"] is DBNull ? null : (string) dataReader["ArtistName"],
+                    EMail = (string) dataReader["ArtistMail"],
+                    PromoVideo = dataReader["PromoVideo"] is DBNull ? null : (string) dataReader["PromoVideo"],
+                    Picture = dataReader["Picture"] is DBNull ? null : BlobData.CreateBlobData((string) dataReader["Picture"]),
+                    Country = new Country
+                    {
+                        Code = (string) dataReader["CountryCode"],
+                        Name = (string) dataReader["CountryName"]
+                    }
+                };
+                if (!(dataReader["CategoryId"] is DBNull))
+                {
+                    artist.Category = new Category
+                    {
+                        CategoryId = (string) dataReader["CategoryId"],
+                        Name = (string) dataReader["CategoryName"]
+                    };
+                }
+                user.Artist = artist;
+            }
+
+            return user;
         }
 
         public DaoResponse<User> Update(User user)
@@ -59,48 +101,12 @@ namespace UFO.Server.Dal.MySql
         {
             var users = new List<User>();
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand<MySqlDbType>(connection, @"SELECT * FROM user"))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAllUser))
             using (var dataReader = _dbCommProvider.ExecuteReader(command))
             {
                 while (dataReader.Read())
                 {
-                    var user = new User
-                    {
-                        UserId = (int) dataReader["UserId"],
-                        FistName = (string) dataReader["FirstName"],
-                        LastName = (string) dataReader["LastName"],
-                        EMail = (string) dataReader["EMail"],
-                        Password = (string) dataReader["Password"],
-                        IsAdmin = (bool) dataReader["IsAdmin"],
-                        IsArtist = (bool) dataReader["IsArtist"]
-                    };
-                    if (user.IsArtist)
-                    {
-                        //using (var connection2 = _dbCommProvider.CreateDbConnection())
-                        //using (var command2 = _dbCommProvider.CreateDbCommand(
-                        //    connection, 
-                        //    SqlQueries.SelectArtistById,
-                        //    new Dictionary<string, Tuple<DbType, object>>
-                        //    {
-                        //        { "ArtistId", new Tuple<DbType, object>(DbType.Int32, user.ArtistId) }
-                        //    }))
-                        //using (var dataReader2 = _dbCommProvider.ExecuteReader(command))
-                        //{
-                        //    while (dataReader.Read())
-                        //    {
-                        //        var artist = new Artist
-                        //        {
-                        //            ArtistId = (int) dataReader2["ArtistId"],
-                        //            Name = (int) dataReader2["ArtistId"],
-                        //            EMail = (int) dataReader2["ArtistId"],
-                        //            CategoryId = (int) dataReader2["ArtistId"],
-                        //             = (int) dataReader2["ArtistId"],
-                        //            ArtistId = (int) dataReader2["ArtistId"]
-                        //        };
-                        //    }
-                        //}
-                    }
-                    users.Add(user);
+                    users.Add(CreateUserObject(dataReader));
                 }
             }
             return DaoResponse.QuerySuccessfull<IList<User>>(users);

@@ -23,11 +23,6 @@ namespace UFO.Server.Dal.Dummy
 {
     class DaoProviderFactory : IDaoProviderFactory
     {
-        public IAgendaDao CreateAgendaDao()
-        {
-            return new AgendaDao();
-        }
-
         public IArtistDao CreateArtistDao()
         {
             return new ArtistDao();
@@ -46,6 +41,16 @@ namespace UFO.Server.Dal.Dummy
         public IVenueDao CreateVenueDao()
         {
             return new VenueDao();
+        }
+
+        public ICategoryDao CreateCategoryDao()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public ICountryDao CreateCountryDao()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

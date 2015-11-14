@@ -33,7 +33,7 @@ namespace UFO.Server.Domain
         [RegularExpression(Constants.EMailRegex)]
         public string EMail { get; set; }
 
-        public string CategoryId { get; set; }
+        public Category Category { get; set; }
 
         public Country Country { get; set; }
 

@@ -18,6 +18,7 @@
 //     Wurm Florian
 #endregion
 using UFO.Server.Dal.Common;
+using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {
@@ -28,11 +29,6 @@ namespace UFO.Server.Dal.MySql
         public DaoProviderFactory()
         {
             _dbCommProvider = new DbCommProvider();
-        }
-
-        public IAgendaDao CreateAgendaDao()
-        {
-            return new AgendaDao(_dbCommProvider);
         }
 
         public IArtistDao CreateArtistDao()
@@ -53,6 +49,16 @@ namespace UFO.Server.Dal.MySql
         public IVenueDao CreateVenueDao()
         {
             return new VenueDao(_dbCommProvider);
+        }
+
+        public ICategoryDao CreateCategoryDao()
+        {
+            return new CategoryDao(_dbCommProvider);
+        }
+
+        public ICountryDao CreateCountryDao()
+        {
+            return new CountryDao(_dbCommProvider);
         }
     }
 }

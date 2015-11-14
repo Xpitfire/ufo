@@ -21,8 +21,6 @@ namespace UFO.Server.Dal.Common
 {
     public interface IDaoProviderFactory
     {
-        IAgendaDao CreateAgendaDao();
-
         IArtistDao CreateArtistDao();
 
         IPerformanceDao CreatePerformanceDao();
@@ -30,5 +28,9 @@ namespace UFO.Server.Dal.Common
         IUserDao CreateUserDao();
 
         IVenueDao CreateVenueDao();
+
+        ICategoryDao CreateCategoryDao();
+
+        ICountryDao CreateCountryDao();
     }
 }

@@ -34,7 +34,7 @@ namespace UFO.Server.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Dal.Dummy")]
+        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Dal.MySql")]
         public string DaoProviderNameSpace {
             get {
                 return ((string)(this["DaoProviderNameSpace"]));
@@ -46,7 +46,7 @@ namespace UFO.Server.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Dal.Dummy")]
+        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Dal.MySql")]
         public string DaoProviderAssemblyName {
             get {
                 return ((string)(this["DaoProviderAssemblyName"]));

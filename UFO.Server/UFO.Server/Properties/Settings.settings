@@ -6,10 +6,10 @@
       <Value Profile="(Default)">DaoProviderFactory</Value>
     </Setting>
     <Setting Name="DaoProviderNameSpace" Type="System.String" Scope="User">
-      <Value Profile="(Default)">UFO.Server.Dal.Dummy</Value>
+      <Value Profile="(Default)">UFO.Server.Dal.MySql</Value>
     </Setting>
     <Setting Name="DaoProviderAssemblyName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">UFO.Server.Dal.Dummy</Value>
+      <Value Profile="(Default)">UFO.Server.Dal.MySql</Value>
     </Setting>
   </Settings>
 </SettingsFile>

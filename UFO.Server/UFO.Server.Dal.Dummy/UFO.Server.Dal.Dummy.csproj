@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgendaDao.cs" />
     <Compile Include="ArtistDao.cs" />
     <Compile Include="DaoProviderFactory.cs" />
     <Compile Include="DataCollection.cs" />

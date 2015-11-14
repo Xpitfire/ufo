@@ -4,7 +4,7 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.Common
 {
-    public static class UserDaoExtension
+    public static class IUserDaoExtension
     {
         public static DaoResponse<User> GetAllAndFilterByEmail(this IUserDao userDao, string email)
         {

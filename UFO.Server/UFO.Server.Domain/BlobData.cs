@@ -22,10 +22,19 @@ using System;
 namespace UFO.Server.Domain
 {
     [Serializable]
-    public class BlobData
+    public sealed class BlobData
     {
+        private BlobData()
+        {
+        }
+
         public string Name { get; set; }
 
         public byte[] DataStream { get; set; }
+
+        public static BlobData CreateBlobData(string path)
+        {
+            return new BlobData {Name = path};
+        }
     }
 }
