@@ -45,7 +45,7 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<Artist>> Get<T>(T criteria, Filter<Artist, T> filter)
+        public DaoResponse<IList<Artist>> GetAllAndFilterBy<T>(T criteria, Filter<Artist, T> filter)
         {
             throw new System.NotImplementedException();
         }

@@ -35,7 +35,7 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<Performance>> Get<T>(T criteria, Filter<Performance, T> filter)
+        public DaoResponse<IList<Performance>> GetAllAndFilterBy<T>(T criteria, Filter<Performance, T> filter)
         {
             throw new System.NotImplementedException();
         }

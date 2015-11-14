@@ -38,7 +38,7 @@ namespace UFO.Server.Dal.Dummy
             throw new NotImplementedException();
         }
 
-        public DaoResponse<IList<Agenda>> Get<T>(T criteria, Filter<Agenda, T> filter)
+        public DaoResponse<IList<Agenda>> GetAllAndFilterBy<T>(T criteria, Filter<Agenda, T> filter)
         {
             throw new NotImplementedException();
         }

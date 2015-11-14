@@ -80,7 +80,7 @@ namespace UFO.Server.Test
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName);
             var userDao = daoProviderFactory.CreateUserDao();
-            var result = userDao.GetByEmail("marius.dinu@mail.com");
+            var result = userDao.GetAllAndFilterByEmail("marius.dinu@mail.com");
             var user = result.ResultObject;
 
             Assert.IsNotNull(result.ResultObject);
@@ -124,7 +124,7 @@ namespace UFO.Server.Test
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
-            var getRsp = userDao.GetByEmail("marius.dinu@mymail.com");
+            var getRsp = userDao.GetAllAndFilterByEmail("marius.dinu@mymail.com");
             var user = getRsp.ResultObject;
             user.FistName = "Marius";
 

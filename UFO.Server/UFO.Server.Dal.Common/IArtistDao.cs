@@ -32,6 +32,6 @@ namespace UFO.Server.Dal.Common
 
         DaoResponse<IList<Artist>> GetAll();
 
-        DaoResponse<IList<Artist>> Get<T>(T criteria, Filter<Artist, T> filter);
+        DaoResponse<IList<Artist>> GetAllAndFilterBy<T>(T criteria, Filter<Artist, T> filter);
     }
 }

@@ -36,7 +36,7 @@ namespace UFO.Server.Dal.Dummy
             return DaoResponse.QuerySuccessfull<IList<User>>(DataCollection.Users.ToList());
         }
         
-        public DaoResponse<IList<User>> Get<T>(T criteria, Filter<User, T> filter)
+        public DaoResponse<IList<User>> GetAllAndFilterBy<T>(T criteria, Filter<User, T> filter)
         {
             return DaoResponse.QuerySuccessfull<IList<User>>(filter(DataCollection.Users, criteria).ToList());
         }

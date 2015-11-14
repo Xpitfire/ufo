@@ -106,7 +106,7 @@ namespace UFO.Server.Dal.MySql
             return DaoResponse.QuerySuccessfull<IList<User>>(users);
         }
 
-        public DaoResponse<IList<User>> Get<T>(T criteria, Filter<User, T> filter)
+        public DaoResponse<IList<User>> GetAllAndFilterBy<T>(T criteria, Filter<User, T> filter)
         {
             return DaoResponse.QuerySuccessfull<IList<User>>(
                 new List<User>(filter.Invoke(GetAll().ResultObject, criteria)));

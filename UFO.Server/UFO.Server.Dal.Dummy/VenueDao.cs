@@ -40,7 +40,7 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<Venue>> Get<T>(T criteria, Filter<Venue, T> filter)
+        public DaoResponse<IList<Venue>> GetAllAndFilterBy<T>(T criteria, Filter<Venue, T> filter)
         {
             throw new System.NotImplementedException();
         }

@@ -28,6 +28,6 @@ namespace UFO.Server.Dal.Common
 
         DaoResponse<IList<Agenda>> GetAll();
 
-        DaoResponse<IList<Agenda>> Get<T>(T criteria, Filter<Agenda, T> filter);
+        DaoResponse<IList<Agenda>> GetAllAndFilterBy<T>(T criteria, Filter<Agenda, T> filter);
     }
 }

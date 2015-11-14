@@ -30,6 +30,6 @@ namespace UFO.Server.Dal.Common
 
         DaoResponse<IList<Venue>> GetAll();
 
-        DaoResponse<IList<Venue>> Get<T>(T criteria, Filter<Venue, T> filter);
+        DaoResponse<IList<Venue>> GetAllAndFilterBy<T>(T criteria, Filter<Venue, T> filter);
     }
 }

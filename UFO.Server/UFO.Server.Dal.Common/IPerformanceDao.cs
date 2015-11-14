@@ -28,6 +28,6 @@ namespace UFO.Server.Dal.Common
 
         DaoResponse<IList<Performance>> GetAll();
 
-        DaoResponse<IList<Performance>> Get<T>(T criteria, Filter<Performance, T> filter);
+        DaoResponse<IList<Performance>> GetAllAndFilterBy<T>(T criteria, Filter<Performance, T> filter);
     }
 }
