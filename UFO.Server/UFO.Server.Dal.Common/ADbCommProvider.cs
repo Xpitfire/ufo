@@ -45,7 +45,7 @@ namespace UFO.Server.Dal.Common
         /// <returns></returns>
         public abstract DbCommand CreateDbCommand<TDbType>(DbConnection connection, string queryText, Dictionary<string, QueryParameter<TDbType>> parameters = null);
 
-        public DbCommand CreateDbCommand(DbConnection connection, string queryText, Dictionary<string, QueryParameter> parameters = null)
+        public virtual DbCommand CreateDbCommand(DbConnection connection, string queryText, Dictionary<string, QueryParameter> parameters = null)
         {
             Dictionary<string, QueryParameter<object>> nonGenericParameters = null;
             if (parameters != null)
@@ -57,6 +57,16 @@ namespace UFO.Server.Dal.Common
                 }
             }
             return CreateDbCommand(connection, queryText, nonGenericParameters);
+        }
+
+        public virtual T CastDbObject<T>(IDataReader reader, string column)
+        {
+            return !Convert.IsDBNull(reader[column]) ? (T) reader[column] : default(T);
+        }
+
+        public virtual bool IsDbNull(IDataReader reader, string column)
+        {
+            return reader[column] is DBNull;
         }
 
         public abstract IDataReader ExecuteReader(DbCommand command);

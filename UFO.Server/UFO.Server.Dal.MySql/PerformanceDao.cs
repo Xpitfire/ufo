@@ -35,6 +35,57 @@ namespace UFO.Server.Dal.MySql
             _dbCommProvider = dbCommProvider;
         }
 
+
+        private Performance CreatePerformanceObject(IDataReader dataReader)
+        {
+            var performance = new Performance
+            {
+                DateTime = (DateTime)dataReader["Date"]
+            };
+
+            var artist = new Artist
+            {
+                ArtistId = _dbCommProvider.CastDbObject<int>(dataReader, "ArtistId"),
+                Name =  _dbCommProvider.CastDbObject<string>(dataReader, "ArtistName"),
+                EMail = _dbCommProvider.CastDbObject<string>(dataReader, "EMail"),
+                PromoVideo = _dbCommProvider.CastDbObject<string>(dataReader, "PromoVideo"),
+                Picture = BlobData.CreateBlobData(_dbCommProvider.CastDbObject<string>(dataReader, "Picture")),
+                Country = new Country
+                {
+                    Code = _dbCommProvider.CastDbObject<string>(dataReader, "CountryCode"),
+                    Name = _dbCommProvider.CastDbObject<string>(dataReader, "CountryName")
+                }
+            };
+            if (!_dbCommProvider.IsDbNull(dataReader, "CategoryId"))
+            {
+                artist.Category = new Category
+                {
+                    CategoryId = _dbCommProvider.CastDbObject<string>(dataReader, "CategoryId"),
+                    Name = _dbCommProvider.CastDbObject<string>(dataReader, "CategoryName")
+                };
+            }
+            performance.Artist = artist;
+
+            if (!_dbCommProvider.IsDbNull(dataReader, "VenueId"))
+            {
+                var venue = new Venue
+                {
+                    VenueId = _dbCommProvider.CastDbObject<string>(dataReader, "VenueId"),
+                    Name = _dbCommProvider.CastDbObject<string>(dataReader, "VenueName"),
+                    Location = new Location
+                    {
+                        LocationId = _dbCommProvider.CastDbObject<int>(dataReader, "LocationId"),
+                        Name = _dbCommProvider.CastDbObject<string>(dataReader, "LocationName"),
+                        Latitude = _dbCommProvider.CastDbObject<decimal>(dataReader, "Latitude"),
+                        Longitude = _dbCommProvider.CastDbObject<decimal>(dataReader, "Longitude")
+                    }
+                };
+                performance.Venue = venue;
+            }
+
+            return performance;
+        }
+
         public DaoResponse<Performance> Update(Performance performance)
         {
             throw new System.NotImplementedException();
@@ -54,56 +105,6 @@ namespace UFO.Server.Dal.MySql
             }
 
             return DaoResponse.QuerySuccessfull<IList<Performance>>(performances);
-        }
-
-        private Performance CreatePerformanceObject(IDataReader dataReader)
-        {
-            var performance = new Performance
-            {
-                DateTime = (DateTime)dataReader["Date"]
-            };
-
-            var artist = new Artist
-            {
-                ArtistId = (int)dataReader["ArtistId"],
-                Name = dataReader["ArtistName"] is DBNull ? null : (string)dataReader["ArtistName"],
-                EMail = (string)dataReader["EMail"],
-                PromoVideo = dataReader["PromoVideo"] is DBNull ? null : (string)dataReader["PromoVideo"],
-                Picture = dataReader["Picture"] is DBNull ? null : BlobData.CreateBlobData((string)dataReader["Picture"]),
-                Country = new Country
-                {
-                    Code = (string)dataReader["CountryCode"],
-                    Name = (string)dataReader["CountryName"]
-                }
-            };
-            if (!(dataReader["CategoryId"] is DBNull))
-            {
-                artist.Category = new Category
-                {
-                    CategoryId = (string)dataReader["CategoryId"],
-                    Name = (string)dataReader["CategoryName"]
-                };
-            }
-            performance.Artist = artist;
-
-            if (!(dataReader["VenueId"] is DBNull))
-            {
-                var venue = new Venue
-                {
-                    VenueId = (string)dataReader["VenueId"],
-                    Name = (string)dataReader["VenueName"],
-                    Location = new Location
-                    {
-                        LocationId = (int)dataReader["LocationId"],
-                        Name = (string)dataReader["LocationName"],
-                        Latitude = (decimal)dataReader["Latitude"],
-                        Longitude = (decimal)dataReader["Longitude"]
-                    }
-                };
-                performance.Venue = venue;
-            }
-            
-            return performance;
         }
 
         public DaoResponse<IList<Performance>> GetAllAndFilterBy<T>(T criteria, Filter<Performance, T> filter)

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using MySql.Data.MySqlClient;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
@@ -14,9 +15,19 @@ namespace UFO.Server.Dal.MySql
             this._dbCommProvider = dbCommProvider;
         }
 
+        private Category CreateCategoryObject(IDataReader dataReader)
+        {
+            var category = new Category
+            {
+                CategoryId = _dbCommProvider.CastDbObject<string>(dataReader, "CategoryId"),
+                Name = _dbCommProvider.CastDbObject<string>(dataReader, "Name")
+            };
+            return category;
+        }
+
         public DaoResponse<Category> GetById(string id)
         {
-            Category country = null;
+            Category category = null;
             var parameter = new Dictionary<string, QueryParameter>
             {
                 {"?CategoryId", new QueryParameter {ParameterValue = id}}
@@ -27,14 +38,10 @@ namespace UFO.Server.Dal.MySql
             {
                 if (dataReader.Read())
                 {
-                    country = new Category
-                    {
-                        CategoryId = (string)dataReader["CategoryId"],
-                        Name = (string)dataReader["Name"]
-                    };
+                    category = CreateCategoryObject(dataReader);
                 }
             }
-            return DaoResponse.QuerySuccessfull(country);
+            return DaoResponse.QuerySuccessfull(category);
         }
 
         public DaoResponse<IList<Category>> GetAll()
@@ -46,12 +53,7 @@ namespace UFO.Server.Dal.MySql
             {
                 while (dataReader.Read())
                 {
-                    var category = new Category()
-                    {
-                        CategoryId = (string)dataReader["CategoryId"],
-                        Name = (string)dataReader["Name"]
-                    };
-                    categories.Add(category);
+                    categories.Add(CreateCategoryObject(dataReader));
                 }
             }
             return DaoResponse.QuerySuccessfull<IList<Category>>(categories);

@@ -39,36 +39,36 @@ namespace UFO.Server.Dal.MySql
         {
             var user = new User
             {
-                UserId = (int)dataReader["UserId"],
-                FistName = (string)dataReader["FirstName"],
-                LastName = (string)dataReader["LastName"],
-                EMail = (string)dataReader["UserMail"],
-                Password = (string)dataReader["Password"],
-                IsAdmin = (bool)dataReader["IsAdmin"],
-                IsArtist = (bool)dataReader["IsArtist"]
+                UserId = _dbCommProvider.CastDbObject<int>(dataReader, "UserId"),
+                FistName = _dbCommProvider.CastDbObject<string>(dataReader, "FirstName"),
+                LastName = _dbCommProvider.CastDbObject<string>(dataReader, "LastName"),
+                EMail = _dbCommProvider.CastDbObject<string>(dataReader, "UserMail"),
+                Password = _dbCommProvider.CastDbObject<string>(dataReader, "Password"),
+                IsAdmin = _dbCommProvider.CastDbObject<bool>(dataReader, "IsAdmin"),
+                IsArtist = _dbCommProvider.CastDbObject<bool>(dataReader, "IsArtist")
             };
 
-            if (!(dataReader["ArtistId"] is DBNull))
+            if (!_dbCommProvider.IsDbNull(dataReader, "ArtistId"))
             {
                 var artist = new Artist
                 {
-                    ArtistId = (int) dataReader["ArtistId"],
-                    Name = dataReader["ArtistName"] is DBNull ? null : (string) dataReader["ArtistName"],
-                    EMail = (string) dataReader["ArtistMail"],
-                    PromoVideo = dataReader["PromoVideo"] is DBNull ? null : (string) dataReader["PromoVideo"],
-                    Picture = dataReader["Picture"] is DBNull ? null : BlobData.CreateBlobData((string) dataReader["Picture"]),
+                    ArtistId = _dbCommProvider.CastDbObject<int>(dataReader, "ArtistId"),
+                    Name = _dbCommProvider.CastDbObject<string>(dataReader, "ArtistName"),
+                    EMail = _dbCommProvider.CastDbObject<string>(dataReader, "ArtistMail"),
+                    PromoVideo = _dbCommProvider.CastDbObject<string>(dataReader, "PromoVideo"),
+                    Picture = BlobData.CreateBlobData(_dbCommProvider.CastDbObject<string>(dataReader, "Picture")),
                     Country = new Country
                     {
-                        Code = (string) dataReader["CountryCode"],
-                        Name = (string) dataReader["CountryName"]
+                        Code = _dbCommProvider.CastDbObject<string>(dataReader, "CountryCode"),
+                        Name = _dbCommProvider.CastDbObject<string>(dataReader, "CountryName")
                     }
                 };
-                if (!(dataReader["CategoryId"] is DBNull))
+                if (!_dbCommProvider.IsDbNull(dataReader, "CategoryId"))
                 {
                     artist.Category = new Category
                     {
-                        CategoryId = (string) dataReader["CategoryId"],
-                        Name = (string) dataReader["CategoryName"]
+                        CategoryId = _dbCommProvider.CastDbObject<string>(dataReader, "CategoryId"),
+                        Name = _dbCommProvider.CastDbObject<string>(dataReader, "CategoryName")
                     };
                 }
                 user.Artist = artist;

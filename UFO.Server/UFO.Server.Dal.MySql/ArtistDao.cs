@@ -38,23 +38,23 @@ namespace UFO.Server.Dal.MySql
         {
             var artist = new Artist
             {
-                ArtistId = (int)dataReader["ArtistId"],
-                Name = dataReader["ArtistName"] is DBNull ? null : (string)dataReader["ArtistName"],
-                EMail = (string)dataReader["EMail"],
-                PromoVideo = dataReader["PromoVideo"] is DBNull ? null : (string)dataReader["PromoVideo"],
-                Picture = dataReader["Picture"] is DBNull ? null : BlobData.CreateBlobData((string)dataReader["Picture"]),
+                ArtistId = _dbCommProvider.CastDbObject<int>(dataReader, "ArtistId"),
+                Name = _dbCommProvider.CastDbObject<string>(dataReader, "ArtistName"),
+                EMail = _dbCommProvider.CastDbObject<string>(dataReader, "EMail"),
+                PromoVideo = _dbCommProvider.CastDbObject<string>(dataReader, "PromoVideo"),
+                Picture = BlobData.CreateBlobData(_dbCommProvider.CastDbObject<string>(dataReader, "Picture")),
                 Country = new Country
                 {
-                    Code = (string)dataReader["CountryCode"],
-                    Name = (string)dataReader["CountryName"]
+                    Code = _dbCommProvider.CastDbObject<string>(dataReader, "CountryCode"),
+                    Name = _dbCommProvider.CastDbObject<string>(dataReader, "CountryName")
                 }
             };
-            if (!(dataReader["CategoryId"] is DBNull))
+            if (!_dbCommProvider.IsDbNull(dataReader, "CategoryId"))
             {
                 artist.Category = new Category
                 {
-                    CategoryId = (string)dataReader["CategoryId"],
-                    Name = (string)dataReader["CategoryName"]
+                    CategoryId = _dbCommProvider.CastDbObject<string>(dataReader, "CategoryId"),
+                    Name = _dbCommProvider.CastDbObject<string>(dataReader, "CategoryName")
                 };
             }
             return artist;

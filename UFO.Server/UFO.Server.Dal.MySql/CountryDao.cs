@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using MySql.Data.MySqlClient;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
@@ -14,6 +15,16 @@ namespace UFO.Server.Dal.MySql
             this._dbCommProvider = dbCommProvider;
         }
 
+        private Country CreateCountryObject(IDataReader dataReader)
+        {
+            var country = new Country
+            {
+                Code = _dbCommProvider.CastDbObject<string>(dataReader, "Code"),
+                Name = _dbCommProvider.CastDbObject<string>(dataReader, "Name")
+            };
+            return country;
+        }
+
         public DaoResponse<Country> GetByCode(string code)
         {
             Country country = null;
@@ -21,17 +32,13 @@ namespace UFO.Server.Dal.MySql
             {
                 {"?Code", new QueryParameter {ParameterValue = code}}
             };
-            using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectCountryById, parameter))
-            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            using (var connection =     _dbCommProvider.CreateDbConnection())
+            using (var command =        _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectCountryById, parameter))
+            using (var dataReader =     _dbCommProvider.ExecuteReader(command))
             {
                 if (dataReader.Read())
                 {
-                    country = new Country
-                    {
-                        Code = (string) dataReader["Code"],
-                        Name = (string) dataReader["Name"]
-                    };
+                    country = CreateCountryObject(dataReader);
                 }
             }
             return DaoResponse.QuerySuccessfull(country);
@@ -46,12 +53,7 @@ namespace UFO.Server.Dal.MySql
             {
                 while (dataReader.Read())
                 {
-                    var country = new Country()
-                    {
-                        Code = (string)dataReader["Code"],
-                        Name = (string)dataReader["Name"]
-                    };
-                    countries.Add(country);
+                    countries.Add(CreateCountryObject(dataReader));
                 }
             }
             return DaoResponse.QuerySuccessfull<IList<Country>>(countries);
