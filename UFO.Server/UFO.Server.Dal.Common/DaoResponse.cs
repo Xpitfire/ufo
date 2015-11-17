@@ -19,6 +19,9 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.Common
 {
@@ -39,6 +42,8 @@ namespace UFO.Server.Dal.Common
     {
         public DaoStatus ResponseStatus { get; set; } = DaoStatus.Unknown;
 
+        public Exception Exception { get; set; }
+
         public string ErrorMessage { get; set; }
 
         public object ResultObject { get; set; }
@@ -48,19 +53,21 @@ namespace UFO.Server.Dal.Common
             return QueryResponse(responseObject, DaoStatus.Successful);
         }
 
-        public static DaoResponse<TResponse> QueryFailed<TResponse>(TResponse responseObject, string errorMessage)
+        public static DaoResponse<TResponse> QueryFailed<TResponse>(TResponse responseObject, string errorMessage, Exception exception = null)
         {
-            return QueryResponse(responseObject, DaoStatus.Failed, errorMessage);
+            return QueryResponse(responseObject, DaoStatus.Failed, errorMessage, exception);
         }
 
-        public static DaoResponse<TResponse> QueryResponse<TResponse>(TResponse responseObject, DaoStatus status, string errorMessage = "")
+        public static DaoResponse<TResponse> QueryResponse<TResponse>(TResponse responseObject, DaoStatus status, string errorMessage = "", Exception exception = null)
         {
-            return new DaoResponse<TResponse>
+            var daoResponse = new DaoResponse<TResponse>
             {
                 ErrorMessage = errorMessage,
                 ResponseStatus = status,
-                ResultObject = responseObject
+                ResultObject = responseObject,
+                Exception = exception
             };
+            return daoResponse;
         }
     }
 
@@ -72,5 +79,26 @@ namespace UFO.Server.Dal.Common
     public class DaoResponse<TDaoType> : DaoResponse
     {
         public new TDaoType ResultObject { get; set; }
+
+        public DaoResponse<TDaoType> OnSuccess(Action<TDaoType> action)
+        {
+            if (ResponseStatus == DaoStatus.Successful)
+                action(ResultObject);
+            return this;
+        }
+
+        public DaoResponse<TDaoType> OnSuccess(Action<DaoResponse<TDaoType>> action)
+        {
+            if (ResponseStatus == DaoStatus.Successful)
+                action(this);
+            return this;
+        }
+
+        public DaoResponse<TDaoType> OnFailure(Action<DaoResponse<TDaoType>> action)
+        {
+            if (ResponseStatus != DaoStatus.Successful)
+                action(this);
+            return this;
+        }
     }
 }

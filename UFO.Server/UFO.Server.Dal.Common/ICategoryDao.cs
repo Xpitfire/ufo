@@ -10,9 +10,9 @@ namespace UFO.Server.Dal.Common
     public interface ICategoryDao
     {
         DaoResponse<Category> GetById(string id);
-
+        
         DaoResponse<IList<Category>> GetAll();
-
+        
         DaoResponse<IList<Category>> GetAllAndFilterBy<T>(T criteria, Filter<Category, T> filter);
     }
 }

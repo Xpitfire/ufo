@@ -25,9 +25,9 @@ namespace UFO.Server.Dal.Common
     public interface IPerformanceDao
     {
         DaoResponse<Performance> Update(Performance performance);
-
+        
         DaoResponse<IList<Performance>> GetAll();
-
+        
         DaoResponse<IList<Performance>> GetAllAndFilterBy<T>(T criteria, Filter<Performance, T> filter);
     }
 }

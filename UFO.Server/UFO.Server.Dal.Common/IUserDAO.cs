@@ -25,9 +25,9 @@ namespace UFO.Server.Dal.Common
     public interface IUserDao
     {
         DaoResponse<User> Update(User user);
-
+        
         DaoResponse<IList<User>> GetAll();
-
+        
         DaoResponse<IList<User>> GetAllAndFilterBy<T>(T criteria, Filter<User, T> filter);
     }
 }

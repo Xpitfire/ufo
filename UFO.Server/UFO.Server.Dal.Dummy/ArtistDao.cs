@@ -29,22 +29,22 @@ namespace UFO.Server.Dal.Dummy
         {
             throw new System.NotImplementedException();
         }
-
+        
         public DaoResponse<Artist> Update(Artist artist)
         {
             throw new System.NotImplementedException();
         }
-
+        
         public DaoResponse<Artist> Delete(Artist artist)
         {
             throw new System.NotImplementedException();
         }
-
+        
         public DaoResponse<IList<Artist>> GetAll()
         {
             throw new System.NotImplementedException();
         }
-
+        
         public DaoResponse<IList<Artist>> GetAllAndFilterBy<T>(T criteria, Filter<Artist, T> filter)
         {
             throw new System.NotImplementedException();

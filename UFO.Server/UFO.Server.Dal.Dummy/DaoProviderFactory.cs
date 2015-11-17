@@ -45,12 +45,12 @@ namespace UFO.Server.Dal.Dummy
 
         public ICategoryDao CreateCategoryDao()
         {
-            throw new System.NotImplementedException();
+            return new CategoryDao();
         }
 
         public ICountryDao CreateCountryDao()
         {
-            throw new System.NotImplementedException();
+            return new CountryDao();
         }
     }
 }

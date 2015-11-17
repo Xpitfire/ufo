@@ -6,7 +6,7 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {
-    internal class CountryDao : ICountryDao
+    class CountryDao : ICountryDao
     {
         private readonly ADbCommProvider _dbCommProvider;
 
@@ -25,6 +25,7 @@ namespace UFO.Server.Dal.MySql
             return country;
         }
 
+        [DaoExceptionHandler(typeof(Country))]
         public DaoResponse<Country> GetByCode(string code)
         {
             Country country = null;
@@ -44,6 +45,7 @@ namespace UFO.Server.Dal.MySql
             return DaoResponse.QuerySuccessfull(country);
         }
 
+        [DaoExceptionHandler(typeof(IList<Country>))]
         public DaoResponse<IList<Country>> GetAll()
         {
             var countries = new List<Country>();
@@ -59,6 +61,7 @@ namespace UFO.Server.Dal.MySql
             return DaoResponse.QuerySuccessfull<IList<Country>>(countries);
         }
 
+        [DaoExceptionHandler(typeof(IList<Country>))]
         public DaoResponse<IList<Country>> GetAllAndFilterBy<T>(T criteria, Filter<Country, T> filter)
         {
             return DaoResponse.QuerySuccessfull<IList<Country>>(

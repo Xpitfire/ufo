@@ -20,11 +20,22 @@
 using System;
 using System.Configuration;
 using System.Reflection;
+using PostSharp.Patterns.Diagnostics;
+using PostSharp.Extensibility;
 
 namespace UFO.Server
 {
-    sealed class ProviderUtility
+    static class ProviderUtility
     {
+        /// <summary>
+        /// Load classes with reflection.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="assemblyName">Name of the assebly to be loaded.</param>
+        /// <param name="nameSpace">Namespace where the class is embedded.</param>
+        /// <param name="className">Class name which will be instantiated.</param>
+        /// <returns></returns>
+        [LogException]
         public static T LoadClass<T>(string assemblyName, string nameSpace, string className)
         {
             try

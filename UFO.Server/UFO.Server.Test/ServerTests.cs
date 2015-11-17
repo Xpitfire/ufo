@@ -104,7 +104,24 @@ namespace UFO.Server.Test
             Assert.IsTrue(users.ResultObject?.Count > 100);
         }
 
+        /// <summary>
+        /// The country DAO has no implementation. This test checks if the DaoExceptionHandler attribute
+        /// handles the exception properly.
+        /// </summary>
+        [TestMethod]
+        public void TestDaoExceptionHandler()
+        {
+            var countryDao = DalProviderFactories.GetDaoFactory(
+                TestDummyDaoAssembly,
+                TestDummyDaoNameSpace,
+                TestDummyDaoClassName).CreateCountryDao();
+            var daoResponse = countryDao.GetAll();
+            Assert.IsTrue(daoResponse.ResponseStatus == DaoStatus.Failed);
+        }
+
         #endregion
+
+
 
         #region Database Data Access Test
 

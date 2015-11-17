@@ -60,11 +60,13 @@ namespace UFO.Server.Dal.MySql
             return artist;
         }
 
+        [DaoExceptionHandler(typeof(Artist))]
         public DaoResponse<Artist> Delete(Artist artist)
         {
             throw new NotImplementedException();
         }
-        
+
+        [DaoExceptionHandler(typeof(IList<Artist>))]
         public DaoResponse<IList<Artist>> GetAll()
         {
             var artists = new List<Artist>();
@@ -81,17 +83,20 @@ namespace UFO.Server.Dal.MySql
             return DaoResponse.QuerySuccessfull<IList<Artist>>(artists);
         }
 
+        [DaoExceptionHandler(typeof(IList<Artist>))]
         public DaoResponse<IList<Artist>> GetAllAndFilterBy<T>(T criteria, Filter<Artist, T> filter)
         {
             return DaoResponse.QuerySuccessfull<IList<Artist>>(
                 new List<Artist>(filter.Invoke(GetAll().ResultObject, criteria)));
         }
 
+        [DaoExceptionHandler(typeof(Artist))]
         public DaoResponse<Artist> Insert(Artist artist)
         {
             throw new NotImplementedException();
         }
 
+        [DaoExceptionHandler(typeof(Artist))]
         public DaoResponse<Artist> Update(Artist artist)
         {
             throw new NotImplementedException();

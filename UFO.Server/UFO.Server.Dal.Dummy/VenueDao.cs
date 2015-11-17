@@ -29,17 +29,17 @@ namespace UFO.Server.Dal.Dummy
         {
             throw new System.NotImplementedException();
         }
-
+        
         public DaoResponse<Venue> Update(Venue venue)
         {
             throw new System.NotImplementedException();
         }
-
+        
         public DaoResponse<IList<Venue>> GetAll()
         {
             throw new System.NotImplementedException();
         }
-
+        
         public DaoResponse<IList<Venue>> GetAllAndFilterBy<T>(T criteria, Filter<Venue, T> filter)
         {
             throw new System.NotImplementedException();

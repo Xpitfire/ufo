@@ -17,21 +17,26 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
+
+using System;
 using System.Collections.Generic;
 using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.Common
 {
+    public delegate void DaoResponseEventHandler<T>(object sender, DaoResponse<T> daoResponse);
+    
     public interface IArtistDao
     {
         DaoResponse<Artist> Insert(Artist artist);
-
+        
         DaoResponse<Artist> Update(Artist artist);
-
+        
         DaoResponse<Artist> Delete(Artist artist);
-
+        
         DaoResponse<IList<Artist>> GetAll();
-
+        
         DaoResponse<IList<Artist>> GetAllAndFilterBy<T>(T criteria, Filter<Artist, T> filter);
     }
+    
 }

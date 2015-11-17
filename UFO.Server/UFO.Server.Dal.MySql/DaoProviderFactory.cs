@@ -18,6 +18,8 @@
 //     Wurm Florian
 #endregion
 using UFO.Server.Dal.Common;
+using PostSharp.Patterns.Diagnostics;
+using PostSharp.Extensibility;
 
 namespace UFO.Server.Dal.MySql
 {
@@ -25,6 +27,7 @@ namespace UFO.Server.Dal.MySql
     {
         private readonly ADbCommProvider _dbCommProvider;
 
+        [Log]
         public DaoProviderFactory()
         {
             _dbCommProvider = new DbCommProvider();

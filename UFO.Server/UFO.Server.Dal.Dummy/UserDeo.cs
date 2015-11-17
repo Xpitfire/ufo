@@ -30,7 +30,7 @@ namespace UFO.Server.Dal.Dummy
         {
             throw new System.NotImplementedException();
         }
-
+        
         public DaoResponse<IList<User>> GetAll()
         {
             return DaoResponse.QuerySuccessfull<IList<User>>(DataCollection.Users.ToList());

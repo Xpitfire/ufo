@@ -87,8 +87,6 @@ namespace UFO.Server.Dal.Dummy
 
     public sealed class DummyDataGenerator
     {
-        private static int _userIdCnt = 100;
-
         public static User GenerateUser()
         {
             var fixture = new Fixture();

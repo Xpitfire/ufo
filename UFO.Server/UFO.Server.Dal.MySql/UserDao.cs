@@ -77,6 +77,7 @@ namespace UFO.Server.Dal.MySql
             return user;
         }
 
+        [DaoExceptionHandler(typeof(User))]
         public DaoResponse<User> Update(User user)
         {
             var paramter = new Dictionary<string, QueryParameter>
@@ -97,6 +98,7 @@ namespace UFO.Server.Dal.MySql
             }
         }
 
+        [DaoExceptionHandler(typeof(IList<User>))]
         public DaoResponse<IList<User>> GetAll()
         {
             var users = new List<User>();
@@ -112,6 +114,7 @@ namespace UFO.Server.Dal.MySql
             return DaoResponse.QuerySuccessfull<IList<User>>(users);
         }
 
+        [DaoExceptionHandler(typeof(IList<User>))]
         public DaoResponse<IList<User>> GetAllAndFilterBy<T>(T criteria, Filter<User, T> filter)
         {
             return DaoResponse.QuerySuccessfull<IList<User>>(

@@ -40,5 +40,10 @@ namespace UFO.Server.Domain
         public BlobData Picture { get; set; }
 
         public string PromoVideo { get; set; }
+
+        public override string ToString()
+        {
+            return $"ID: {ArtistId}, Name: {Name}, EMail: {EMail}";
+        }
     }
 }

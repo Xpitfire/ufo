@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFO.Server.Dal.MySql", "UFO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFO.Server.Dal.Dummy", "UFO.Server.Dal.Dummy\UFO.Server.Dal.Dummy.csproj", "{08C455B1-B7DB-41A2-A8A6-65D812FC8D0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFO.Server.Console", "UFO.Server.Console\UFO.Server.Console.csproj", "{6814B843-FEA2-48D4-968E-81C0387FC464}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{772073A1-2860-4281-B99D-BE7AF5F49323}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,10 @@ Global
 		{08C455B1-B7DB-41A2-A8A6-65D812FC8D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08C455B1-B7DB-41A2-A8A6-65D812FC8D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08C455B1-B7DB-41A2-A8A6-65D812FC8D0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6814B843-FEA2-48D4-968E-81C0387FC464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6814B843-FEA2-48D4-968E-81C0387FC464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6814B843-FEA2-48D4-968E-81C0387FC464}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6814B843-FEA2-48D4-968E-81C0387FC464}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

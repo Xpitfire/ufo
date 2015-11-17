@@ -86,11 +86,13 @@ namespace UFO.Server.Dal.MySql
             return performance;
         }
 
+        [DaoExceptionHandler(typeof(Performance))]
         public DaoResponse<Performance> Update(Performance performance)
         {
             throw new System.NotImplementedException();
         }
 
+        [DaoExceptionHandler(typeof(IList<Performance>))]
         public DaoResponse<IList<Performance>> GetAll()
         {
             var performances = new List<Performance>();
@@ -107,6 +109,7 @@ namespace UFO.Server.Dal.MySql
             return DaoResponse.QuerySuccessfull<IList<Performance>>(performances);
         }
 
+        [DaoExceptionHandler(typeof(IList<Performance>))]
         public DaoResponse<IList<Performance>> GetAllAndFilterBy<T>(T criteria, Filter<Performance, T> filter)
         {
             return DaoResponse.QuerySuccessfull<IList<Performance>>(

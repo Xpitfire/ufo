@@ -17,13 +17,27 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
+
+using NLog;
+using PostSharp.Patterns.Diagnostics;
 using UFO.Server.Dal.Common;
 using UFO.Server.Properties;
+using LogLevel = NLog.LogLevel;
+using PostSharp.Extensibility;
 
 namespace UFO.Server
 {
-    public sealed class DalProviderFactories
+    public static class DalProviderFactories
     {
+        /// <summary>
+        /// Creates a DAO factory at runtime, which provides methods for DAO creation.
+        /// This is used to create loose coupling between assemblies using technology proprietary implementations
+        /// and the business logic libraries.
+        /// </summary>
+        /// <param name="assemblyName">Name of the assebly to be loaded.</param>
+        /// <param name="nameSpace">Namespace where the class is embedded.</param>
+        /// <param name="providerName">Class name provider which will be instantiated.</param>
+        /// <returns>DAO provider factory.</returns>
         public static IDaoProviderFactory GetDaoFactory(string assemblyName = null, string nameSpace = null, string providerName = null)
         {
             return ProviderUtility.LoadClass<IDaoProviderFactory>(
