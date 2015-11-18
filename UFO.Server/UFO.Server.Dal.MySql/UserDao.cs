@@ -77,10 +77,9 @@ namespace UFO.Server.Dal.MySql
             return user;
         }
 
-        [DaoExceptionHandler(typeof(User))]
-        public DaoResponse<User> Update(User user)
+        private Dictionary<string, QueryParameter> CreateUserParameter(User user)
         {
-            var paramter = new Dictionary<string, QueryParameter>
+            return new Dictionary<string, QueryParameter>
             {
                 {"?UserId", new QueryParameter {ParameterValue = user.UserId}},
                 {"?FirstName", new QueryParameter {ParameterValue = user.FistName}},
@@ -90,14 +89,19 @@ namespace UFO.Server.Dal.MySql
                 {"?IsArtist", new QueryParameter {ParameterValue = user.IsArtist}},
                 {"?ArtistId", new QueryParameter {ParameterValue = user.Artist?.ArtistId}}
             };
+        }
+
+        [DaoExceptionHandler(typeof(User))]
+        public DaoResponse<User> Update(User user)
+        {
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, paramter))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, CreateUserParameter(user)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
                 return DaoResponse.QuerySuccessfull(user);
             }
         }
-
+        
         [DaoExceptionHandler(typeof(IList<User>))]
         public DaoResponse<IList<User>> GetAll()
         {

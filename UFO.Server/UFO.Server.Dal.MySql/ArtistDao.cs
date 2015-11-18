@@ -60,10 +60,29 @@ namespace UFO.Server.Dal.MySql
             return artist;
         }
 
+        private Dictionary<string, QueryParameter> CreateArtistParameter(Artist artist)
+        {
+            return new Dictionary<string, QueryParameter>
+            {
+                {"?ArtistId", new QueryParameter {ParameterValue = artist.ArtistId}},
+                {"?Name", new QueryParameter {ParameterValue = artist.Name}},
+                {"?EMail", new QueryParameter {ParameterValue = artist.EMail}},
+                {"?CategoryId", new QueryParameter {ParameterValue = artist.Category?.CategoryId}},
+                {"?CountryCode", new QueryParameter {ParameterValue = artist.Country?.Code}},
+                {"?Picture", new QueryParameter {ParameterValue = artist.Picture?.Path}},
+                {"?PromoVideo", new QueryParameter {ParameterValue = artist.PromoVideo}}
+            };
+        }
+
         [DaoExceptionHandler(typeof(Artist))]
         public DaoResponse<Artist> Delete(Artist artist)
         {
-            throw new NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteArtist, CreateArtistParameter(artist)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessfull(artist);
+            }
         }
 
         [DaoExceptionHandler(typeof(IList<Artist>))]
@@ -93,13 +112,24 @@ namespace UFO.Server.Dal.MySql
         [DaoExceptionHandler(typeof(Artist))]
         public DaoResponse<Artist> Insert(Artist artist)
         {
-            throw new NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertArtist, CreateArtistParameter(artist)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessfull(artist);
+            }
         }
 
         [DaoExceptionHandler(typeof(Artist))]
         public DaoResponse<Artist> Update(Artist artist)
         {
-            throw new NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateArtist, CreateArtistParameter(artist)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessfull(artist);
+            }
         }
+
     }
 }

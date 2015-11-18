@@ -30,11 +30,13 @@ namespace UFO.Server.Domain
 
         public string Name { get; set; }
 
+        public string Path { get; set; }
+
         public byte[] DataStream { get; set; }
 
         public static BlobData CreateBlobData(string path)
         {
-            return new BlobData {Name = path};
+            return new BlobData {Path = path};
         }
     }
 }

@@ -81,8 +81,8 @@ namespace UFO.Server.Test
                 TestDummyDaoAssembly,
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName);
-            var userDao = daoProviderFactory.CreateUserDao();
-            var result = userDao.GetAllAndFilterByEmail("marius.dinu@mail.com");
+            var dao = daoProviderFactory.CreateUserDao();
+            var result = dao.GetAllAndFilterByEmail("marius.dinu@mail.com");
             var user = result.ResultObject;
 
             Assert.IsNotNull(result.ResultObject);
@@ -96,11 +96,11 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllGeneratedUsers()
         {
-            var userDao = DalProviderFactories.GetDaoFactory(
+            var dao = DalProviderFactories.GetDaoFactory(
                 TestDummyDaoAssembly,
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName).CreateUserDao();
-            var users = userDao.GetAll();
+            var users = dao.GetAll();
             Assert.IsTrue(users.ResultObject?.Count > 100);
         }
 
@@ -111,53 +111,131 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestDaoExceptionHandler()
         {
-            var countryDao = DalProviderFactories.GetDaoFactory(
+            var dao = DalProviderFactories.GetDaoFactory(
                 TestDummyDaoAssembly,
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName).CreateCountryDao();
-            var daoResponse = countryDao.GetAll();
-            Assert.IsTrue(daoResponse.ResponseStatus == DaoStatus.Failed);
+            dao.GetAll()
+                .OnSuccess(() => Assert.Fail("Response should have failed due to test of Exception handling."));
         }
 
         #endregion
-
-
+        
 
         #region Database Data Access Test
 
         [TestMethod]
         public void TestAllUserDbAccess()
         {
-            var userDao = DalProviderFactories.GetDaoFactory(
+            var dao = DalProviderFactories.GetDaoFactory(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
-            DaoResponse<IList<User>> response = userDao.GetAll();
+            DaoResponse<IList<User>> response = dao.GetAll();
             Assert.IsTrue(response.ResultObject?.Count > 10);
         }
 
         [TestMethod]
         public void TestUpdateUserDbAccess()
         {
-            var userDao = DalProviderFactories.GetDaoFactory(
+            var dao = DalProviderFactories.GetDaoFactory(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
 
-            DaoResponse<User> getRsp = userDao.GetAllAndFilterByEmail("marius.dinu@mymail.com");
-            Assert.IsNotNull(getRsp);
-            var user = getRsp.ResultObject;
-            user.FistName = "Marius";
+            using (var scope = new TransactionScope())
+            {
+                var getRsp = dao.GetAllAndFilterByEmail("marius.dinu@mymail.com");
+                Assert.IsNotNull(getRsp);
+                var user = getRsp.ResultObject;
+                user.FistName = "Test";
 
-            var updateRsp = userDao.Update(user);
-            Assert.IsTrue(updateRsp.ResponseStatus == DaoStatus.Successful);
+                dao.Update(user)
+                    .OnFailure(response => Assert.Fail($"Update does not work! {response.Exception}"));
+
+                // do not commit changes; only for testing
+                //scope.Complete();
+            }
+        }
+
+        [TestMethod]
+        public void TestDeleteArtistDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateArtistDao();
+            
+            using (var scope = new TransactionScope())
+            {
+                var getRsp = dao.GetAllAndFilterByName("AC/DC");
+                Assert.IsNotNull(getRsp);
+                var artist = getRsp.ResultObject;
+                artist.Name = "Test";
+
+                dao.Delete(artist)
+                    .OnFailure(response => Assert.Fail($"Delete does not work! {response.Exception}"));
+
+                // do not commit changes; only for testing
+                //scope.Complete();
+            }
+        }
+
+        [TestMethod]
+        public void TestUpdateArtistDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateArtistDao();
+
+            using (var scope = new TransactionScope())
+            {
+                var getRsp = dao.GetAllAndFilterByName("AC/DC");
+                Assert.IsNotNull(getRsp);
+                var artist = getRsp.ResultObject;
+                artist.Name = "Test";
+
+                dao.Update(artist)
+                    .OnFailure(response => Assert.Fail($"Update does not work! {response.Exception}"));
+
+                // do not commit changes; only for testing
+                //scope.Complete();
+            }
+        }
+
+        [TestMethod]
+        public void TestInsertArtistDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateArtistDao();
+
+            using (var scope = new TransactionScope())
+            {
+                var artist = new Artist
+                {
+                    Name = "The Cohle",
+                    Category = new Category {CategoryId = "M"},
+                    Country = new Country {Code = "US"},
+                    EMail = "test@chole.com",
+                    Picture = BlobData.CreateBlobData("/images/prev/blobs.png")
+                };
+
+                dao.Insert(artist)
+                    .OnFailure(response => Assert.Fail($"Insert does not work! {response.Exception}"));
+
+                // do not commit changes; only for testing
+                //scope.Complete();
+            }
         }
 
         [TestMethod]
         public void TestAllCategoryDbAccess()
         {
-            var categoryDao = DalProviderFactories.GetDaoFactory().CreateCategoryDao();
-            var categories = categoryDao.GetAll().ResultObject;
+            var dao = DalProviderFactories.GetDaoFactory().CreateCategoryDao();
+            var categories = dao.GetAll().ResultObject;
             Assert.IsNotNull(categories);
             Assert.IsTrue(categories.Any());
         }
@@ -165,8 +243,8 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllCountryDbAccess()
         {
-            var countryDao = DalProviderFactories.GetDaoFactory().CreateCountryDao();
-            var countries = countryDao.GetAll().ResultObject;
+            var dao = DalProviderFactories.GetDaoFactory().CreateCountryDao();
+            var countries = dao.GetAll().ResultObject;
             Assert.IsNotNull(countries);
             Assert.IsTrue(countries.Any());
         }
@@ -174,8 +252,8 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllArtistDbAccess()
         {
-            var artistDao = DalProviderFactories.GetDaoFactory().CreateArtistDao();
-            var artists = artistDao.GetAll().ResultObject;
+            var dao = DalProviderFactories.GetDaoFactory().CreateArtistDao();
+            var artists = dao.GetAll().ResultObject;
             Assert.IsNotNull(artists);
             Assert.IsTrue(artists.Any());
         }
@@ -183,8 +261,8 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllVenueDbAccess()
         {
-            var venueDao = DalProviderFactories.GetDaoFactory().CreateVenueDao();
-            var venues = venueDao.GetAll().ResultObject;
+            var dao = DalProviderFactories.GetDaoFactory().CreateVenueDao();
+            var venues = dao.GetAll().ResultObject;
             Assert.IsNotNull(venues);
             Assert.IsTrue(venues.Any());
         }
@@ -192,8 +270,8 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllPerformancesDbAccess()
         {
-            var performanceDao = DalProviderFactories.GetDaoFactory().CreatePerformanceDao();
-            var performances = performanceDao.GetAll().ResultObject;
+            var dao = DalProviderFactories.GetDaoFactory().CreatePerformanceDao();
+            var performances = dao.GetAll().ResultObject;
             Assert.IsNotNull(performances);
             Assert.IsTrue(performances.Any());
         }

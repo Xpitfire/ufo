@@ -35,13 +35,16 @@ namespace UFO.Server.Dal.MySql
                                               SET FirstName=?FirstName, LastName=?LastName, Password=?Password, IsAdmin=?IsAdmin, IsArtist=?IsArtist, ArtistId=?ArtistId 
                                             WHERE UserId=?UserId";
 
+
         // Performance
         public const string SelectAllPerfomances = @"SELECT *
                                                        FROM performanceview";
 
+
         // Venue
         public const string SelectAllVenues = @"SELECT *
                                                   FROM venueview";
+
 
         // Artist
         public const string SelectArtistById = @"SELECT * 
@@ -50,7 +53,18 @@ namespace UFO.Server.Dal.MySql
 
         public const string SelectAllArtists =  @"SELECT * 
                                                     FROM artistview";
-        
+
+        public const string DeleteArtist = @"DELETE FROM artist
+                                                   WHERE ArtistId=?ArtistId";
+
+        public const string UpdateArtist = @"UPDATE artist 
+                                                SET Name=?Name, EMail=?EMail, CategoryId=?CategoryId, CountryCode=?CountryCode, Picture=?Picture, PromoVideo=?PromoVideo 
+                                              WHERE ArtistId=?ArtistId";
+
+        public const string InsertArtist = @"INSERT INTO artist (Name, EMail, CategoryId, CountryCode, Picture, PromoVideo)
+                                                  VALUES (?Name, ?EMail, ?CategoryId, ?CountryCode, ?Picture, ?PromoVideo)";
+
+
         // Country
         public const string SelectAllCountries = @"SELECT * 
                                                      FROM country";
@@ -59,6 +73,7 @@ namespace UFO.Server.Dal.MySql
                                                     FROM country 
                                                    WHERE Code=?Code";
 
+
         // Category
         public const string SelectAllCategories = @"SELECT * 
                                                       FROM category";
@@ -66,6 +81,5 @@ namespace UFO.Server.Dal.MySql
         public const string SelectCategoryById = @"SELECT * 
                                                      FROM category 
                                                     WHERE CategoryId=?CategoryId";
-
     }
 }

@@ -94,11 +94,18 @@ namespace UFO.Server.Dal.Common
             return this;
         }
 
+        public DaoResponse<TDaoType> OnSuccess(Action action)
+        {
+            if (ResponseStatus == DaoStatus.Successful)
+                action();
+            return this;
+        }
+
         public DaoResponse<TDaoType> OnFailure(Action<DaoResponse<TDaoType>> action)
         {
             if (ResponseStatus != DaoStatus.Successful)
                 action(this);
             return this;
-        }
+        }    
     }
 }
