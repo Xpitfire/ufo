@@ -25,16 +25,21 @@ namespace UFO.Server.Dal.Dummy
 {
     class VenueDao : IVenueDao
     {
-        public DaoResponse<Venue> Insert(Venue venue)
+        public DaoResponse<Venue> Insert(Venue entity)
         {
             throw new System.NotImplementedException();
         }
         
-        public DaoResponse<Venue> Update(Venue venue)
+        public DaoResponse<Venue> Update(Venue entity)
         {
             throw new System.NotImplementedException();
         }
-        
+
+        public DaoResponse<Venue> Delete(Venue entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public DaoResponse<IList<Venue>> GetAll()
         {
             throw new System.NotImplementedException();

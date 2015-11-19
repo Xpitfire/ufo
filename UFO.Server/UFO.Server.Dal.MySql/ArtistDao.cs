@@ -61,7 +61,7 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(Artist))]
-        public DaoResponse<Artist> Delete(Artist artist)
+        public DaoResponse<Artist> Delete(Artist entity)
         {
             throw new NotImplementedException();
         }
@@ -91,13 +91,13 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(Artist))]
-        public DaoResponse<Artist> Insert(Artist artist)
+        public DaoResponse<Artist> Insert(Artist entity)
         {
             throw new NotImplementedException();
         }
-
+        
         [DaoExceptionHandler(typeof(Artist))]
-        public DaoResponse<Artist> Update(Artist artist)
+        public DaoResponse<Artist> Update(Artist entity)
         {
             throw new NotImplementedException();
         }

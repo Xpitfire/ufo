@@ -14,7 +14,22 @@ namespace UFO.Server.Dal.Dummy
         {
             throw new NotImplementedException();
         }
-        
+
+        public DaoResponse<Category> Insert(Category entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DaoResponse<Category> Update(Category entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DaoResponse<Category> Delete(Category entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public DaoResponse<IList<Category>> GetAll()
         {
             throw new NotImplementedException();

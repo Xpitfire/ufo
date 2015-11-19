@@ -14,7 +14,22 @@ namespace UFO.Server.Dal.Dummy
         {
             throw new NotImplementedException();
         }
-        
+
+        public DaoResponse<Country> Insert(Country entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DaoResponse<Country> Update(Country entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DaoResponse<Country> Delete(Country entity)
+        {
+            throw new NotImplementedException();
+        }
+
         [DaoExceptionHandler(typeof(IList<Country>))]
         public DaoResponse<IList<Country>> GetAll()
         {

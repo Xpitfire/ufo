@@ -52,24 +52,30 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(Venue))]
-        public DaoResponse<Venue> Insert(Venue venue)
+        public DaoResponse<Venue> Insert(Venue entity)
         {
             var paramter = new Dictionary<string, QueryParameter>
             {
-                {"?VenueId", new QueryParameter {ParameterValue = venue.VenueId}},
-                {"?LocationId", new QueryParameter {ParameterValue = venue.Location?.LocationId}},
-                {"?Name", new QueryParameter {ParameterValue = venue.Name}}
+                {"?VenueId", new QueryParameter {ParameterValue = entity.VenueId}},
+                {"?LocationId", new QueryParameter {ParameterValue = entity.Location?.LocationId}},
+                {"?Name", new QueryParameter {ParameterValue = entity.Name}}
             };
             using (var connection = _dbCommProvider.CreateDbConnection())
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, paramter))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(venue);
+                return DaoResponse.QuerySuccessfull(entity);
             }
         }
 
         [DaoExceptionHandler(typeof(Venue))]
-        public DaoResponse<Venue> Update(Venue venue)
+        public DaoResponse<Venue> Update(Venue entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        [DaoExceptionHandler(typeof(Venue))]
+        public DaoResponse<Venue> Delete(Venue entity)
         {
             throw new NotImplementedException();
         }

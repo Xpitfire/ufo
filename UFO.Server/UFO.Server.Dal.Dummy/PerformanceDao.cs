@@ -25,7 +25,17 @@ namespace UFO.Server.Dal.Dummy
 {
     class PerformanceDao : IPerformanceDao
     {
-        public DaoResponse<Performance> Update(Performance performance)
+        public DaoResponse<Performance> Insert(Performance entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public DaoResponse<Performance> Update(Performance entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public DaoResponse<Performance> Delete(Performance entity)
         {
             throw new System.NotImplementedException();
         }

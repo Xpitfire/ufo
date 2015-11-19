@@ -78,24 +78,36 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(User))]
-        public DaoResponse<User> Update(User user)
+        public DaoResponse<User> Insert(User entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        [DaoExceptionHandler(typeof(User))]
+        public DaoResponse<User> Update(User entity)
         {
             var paramter = new Dictionary<string, QueryParameter>
             {
-                {"?UserId", new QueryParameter {ParameterValue = user.UserId}},
-                {"?FirstName", new QueryParameter {ParameterValue = user.FistName}},
-                {"?LastName", new QueryParameter {ParameterValue = user.LastName}},
-                {"?Password", new QueryParameter {ParameterValue = user.Password}},
-                {"?IsAdmin", new QueryParameter {ParameterValue = user.IsAdmin}},
-                {"?IsArtist", new QueryParameter {ParameterValue = user.IsArtist}},
-                {"?ArtistId", new QueryParameter {ParameterValue = user.Artist?.ArtistId}}
+                {"?UserId", new QueryParameter {ParameterValue = entity.UserId}},
+                {"?FirstName", new QueryParameter {ParameterValue = entity.FistName}},
+                {"?LastName", new QueryParameter {ParameterValue = entity.LastName}},
+                {"?Password", new QueryParameter {ParameterValue = entity.Password}},
+                {"?IsAdmin", new QueryParameter {ParameterValue = entity.IsAdmin}},
+                {"?IsArtist", new QueryParameter {ParameterValue = entity.IsArtist}},
+                {"?ArtistId", new QueryParameter {ParameterValue = entity.Artist?.ArtistId}}
             };
             using (var connection = _dbCommProvider.CreateDbConnection())
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, paramter))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(user);
+                return DaoResponse.QuerySuccessfull(entity);
             }
+        }
+
+        [DaoExceptionHandler(typeof(User))]
+        public DaoResponse<User> Delete(User entity)
+        {
+            throw new NotImplementedException();
         }
 
         [DaoExceptionHandler(typeof(IList<User>))]
