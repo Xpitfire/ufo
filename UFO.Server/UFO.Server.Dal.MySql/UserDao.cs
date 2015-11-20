@@ -76,7 +76,21 @@ namespace UFO.Server.Dal.MySql
 
             return user;
         }
-        
+
+        private Dictionary<string, QueryParameter> CreateUserParameter(User entity)
+        {
+            return new Dictionary<string, QueryParameter>
+            {
+                {"?UserId", new QueryParameter {ParameterValue = entity.UserId}},
+                {"?FirstName", new QueryParameter {ParameterValue = entity.FistName}},
+                {"?LastName", new QueryParameter {ParameterValue = entity.LastName}},
+                {"?Password", new QueryParameter {ParameterValue = entity.Password}},
+                {"?IsAdmin", new QueryParameter {ParameterValue = entity.IsAdmin}},
+                {"?IsArtist", new QueryParameter {ParameterValue = entity.IsArtist}},
+                {"?ArtistId", new QueryParameter {ParameterValue = entity.Artist?.ArtistId}}
+            };
+        }
+
         [DaoExceptionHandler(typeof(User))]
         public DaoResponse<User> Insert(User entity)
         {
@@ -84,10 +98,12 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(User))]
-        public DaoResponse<User> Update(User user)
+        public DaoResponse<User> Update(User entity)
         {
+            
+
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, CreateUserParameter(user)))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, CreateUserParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
                 return DaoResponse.QuerySuccessfull(entity);

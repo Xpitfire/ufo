@@ -78,10 +78,10 @@ namespace UFO.Server.Dal.MySql
         public DaoResponse<Artist> Delete(Artist entity)
         {
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteArtist, CreateArtistParameter(artist)))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteArtist, CreateArtistParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(artist);
+                return DaoResponse.QuerySuccessfull(entity);
             }
         }
 
@@ -113,10 +113,10 @@ namespace UFO.Server.Dal.MySql
         public DaoResponse<Artist> Insert(Artist entity)
         {
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertArtist, CreateArtistParameter(artist)))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertArtist, CreateArtistParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(artist);
+                return DaoResponse.QuerySuccessfull(entity);
             }
         }
         
@@ -124,10 +124,10 @@ namespace UFO.Server.Dal.MySql
         public DaoResponse<Artist> Update(Artist entity)
         {
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateArtist, CreateArtistParameter(artist)))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateArtist, CreateArtistParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(artist);
+                return DaoResponse.QuerySuccessfull(entity);
             }
         }
 
