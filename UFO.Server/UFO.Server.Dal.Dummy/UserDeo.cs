@@ -26,11 +26,21 @@ namespace UFO.Server.Dal.Dummy
 {
     class UserDeo : IUserDao
     {
-        public DaoResponse<User> Update(User user)
+        public DaoResponse<User> Insert(User entity)
         {
             throw new System.NotImplementedException();
         }
-        
+
+        public DaoResponse<User> Update(User entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public DaoResponse<User> Delete(User entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public DaoResponse<IList<User>> GetAll()
         {
             return DaoResponse.QuerySuccessfull<IList<User>>(DataCollection.Users.ToList());

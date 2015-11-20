@@ -64,6 +64,24 @@ namespace UFO.Server.Dal.MySql
             return DaoResponse.QuerySuccessfull(country);
         }
 
+        [DaoExceptionHandler(typeof(Country))]
+        public DaoResponse<Country> Insert(Country entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        [DaoExceptionHandler(typeof(Country))]
+        public DaoResponse<Country> Update(Country entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        [DaoExceptionHandler(typeof(Country))]
+        public DaoResponse<Country> Delete(Country entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
         [DaoExceptionHandler(typeof(IList<Country>))]
         public DaoResponse<IList<Country>> GetAll()
         {

@@ -69,6 +69,15 @@ namespace UFO.Server.Dal.Common
             return reader[column] is DBNull;
         }
 
+        public virtual IEnumerable<IDataRecord> ExecuteEnumerableReader(DbCommand cmd)
+        {
+            using (var reader = ExecuteReader(cmd))
+            {
+                while (reader.Read())
+                    yield return reader;
+            }
+        }
+
         public abstract IDataReader ExecuteReader(DbCommand command);
 
         public abstract int ExecuteNonQuery(DbCommand command);

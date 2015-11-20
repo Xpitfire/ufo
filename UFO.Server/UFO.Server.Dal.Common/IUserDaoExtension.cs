@@ -17,14 +17,18 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.Common
 {
     public static class IUserDaoExtension
     {
+
         public static DaoResponse<User> GetAllAndFilterByEmail(this IUserDao userDao, string email)
         {
             Filter<User, string> filter = (users, criteria) => users.Where(x => x.EMail == criteria);
@@ -47,6 +51,10 @@ namespace UFO.Server.Dal.Common
         {
             Filter<User, int> filter = (users, criteria) => users.Where(x => x.UserId == criteria);
             return DaoResponse.QuerySuccessfull(userDao.GetAllAndFilterBy(id, filter).ResultObject?.First());
+        }
+        public static async Task<DaoResponse<IList<User>>> GetAllAsync(this IUserDao userDao)
+        {
+            return await Task.Run(() => userDao.GetAll());
         }
     }
 }

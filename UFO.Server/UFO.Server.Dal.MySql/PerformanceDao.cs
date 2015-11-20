@@ -87,9 +87,21 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(Performance))]
-        public DaoResponse<Performance> Update(Performance performance)
+        public DaoResponse<Performance> Insert(Performance entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        [DaoExceptionHandler(typeof(Performance))]
+        public DaoResponse<Performance> Update(Performance entity)
         {
             throw new System.NotImplementedException();
+        }
+
+        [DaoExceptionHandler(typeof(Performance))]
+        public DaoResponse<Performance> Delete(Performance entity)
+        {
+            throw new NotImplementedException();
         }
 
         [DaoExceptionHandler(typeof(IList<Performance>))]

@@ -76,19 +76,11 @@ namespace UFO.Server.Dal.MySql
 
             return user;
         }
-
-        private Dictionary<string, QueryParameter> CreateUserParameter(User user)
+        
+        [DaoExceptionHandler(typeof(User))]
+        public DaoResponse<User> Insert(User entity)
         {
-            return new Dictionary<string, QueryParameter>
-            {
-                {"?UserId", new QueryParameter {ParameterValue = user.UserId}},
-                {"?FirstName", new QueryParameter {ParameterValue = user.FistName}},
-                {"?LastName", new QueryParameter {ParameterValue = user.LastName}},
-                {"?Password", new QueryParameter {ParameterValue = user.Password}},
-                {"?IsAdmin", new QueryParameter {ParameterValue = user.IsAdmin}},
-                {"?IsArtist", new QueryParameter {ParameterValue = user.IsArtist}},
-                {"?ArtistId", new QueryParameter {ParameterValue = user.Artist?.ArtistId}}
-            };
+            throw new NotImplementedException();
         }
 
         [DaoExceptionHandler(typeof(User))]
@@ -98,10 +90,16 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, CreateUserParameter(user)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(user);
+                return DaoResponse.QuerySuccessfull(entity);
             }
         }
-        
+
+        [DaoExceptionHandler(typeof(User))]
+        public DaoResponse<User> Delete(User entity)
+        {
+            throw new NotImplementedException();
+        }
+
         [DaoExceptionHandler(typeof(IList<User>))]
         public DaoResponse<IList<User>> GetAll()
         {

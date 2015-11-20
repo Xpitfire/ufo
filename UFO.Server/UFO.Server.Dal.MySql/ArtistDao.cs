@@ -75,7 +75,7 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(Artist))]
-        public DaoResponse<Artist> Delete(Artist artist)
+        public DaoResponse<Artist> Delete(Artist entity)
         {
             using (var connection = _dbCommProvider.CreateDbConnection())
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteArtist, CreateArtistParameter(artist)))
@@ -110,7 +110,7 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(Artist))]
-        public DaoResponse<Artist> Insert(Artist artist)
+        public DaoResponse<Artist> Insert(Artist entity)
         {
             using (var connection = _dbCommProvider.CreateDbConnection())
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertArtist, CreateArtistParameter(artist)))
@@ -119,9 +119,9 @@ namespace UFO.Server.Dal.MySql
                 return DaoResponse.QuerySuccessfull(artist);
             }
         }
-
+        
         [DaoExceptionHandler(typeof(Artist))]
-        public DaoResponse<Artist> Update(Artist artist)
+        public DaoResponse<Artist> Update(Artist entity)
         {
             using (var connection = _dbCommProvider.CreateDbConnection())
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateArtist, CreateArtistParameter(artist)))
