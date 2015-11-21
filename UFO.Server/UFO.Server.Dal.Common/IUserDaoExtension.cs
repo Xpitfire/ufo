@@ -52,9 +52,5 @@ namespace UFO.Server.Dal.Common
             Filter<User, int> filter = (users, criteria) => users.Where(x => x.UserId == criteria);
             return DaoResponse.QuerySuccessfull(userDao.GetAllAndFilterBy(id, filter).ResultObject?.First());
         }
-        public static async Task<DaoResponse<IList<User>>> GetAllAsync(this IUserDao userDao)
-        {
-            return await Task.Run(() => userDao.GetAll());
-        }
     }
 }

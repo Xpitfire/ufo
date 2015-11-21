@@ -27,13 +27,7 @@ namespace UFO.Server
                     }
                 })
                 .OnFailure(response => Console.WriteLine($"Error: {response.ErrorMessage}"));
-
-            Console.WriteLine("Race the object 1");
-            daoFacotry.CreateUserDao().GetAllAsync().Result
-                .OnSuccessAsync(response => Console.WriteLine(response.ResultObject)).Result
-                .OnFailureAsync(response => Console.WriteLine(response.ErrorMessage));
-            Console.WriteLine("Race the object 2");
-
+            
             Console.ReadLine();
         }
     }
