@@ -130,5 +130,23 @@ namespace UFO.Server.Dal.MySql
         public const string InsertCategory = @"INSERT INTO category (CategoryId, Name)
                                                     VALUES (?CategoryId, ?Name)";
 
+        // Location
+        public const string SelectAllLocations = @"SELECT * 
+                                                      FROM location";
+
+        public const string SelectLocationById = @"SELECT * 
+                                                     FROM location 
+                                                    WHERE LocationId=?LocationId";
+
+        public const string UpdateLocation = @"UPDATE location 
+                                                  SET Name=?Name, Longitude=?Longitude, Latitude=?Latitude
+                                                WHERE Location=?LocationId";
+
+        public const string DeleteLocation = @"DELETE FROM location
+                                                     WHERE LocationId=?LocationId";
+
+        public const string InsertLocation = @"INSERT INTO location (LocationId, Longitude, Latitude, Name)
+                                                    VALUES (?LocationId, ?Longitude, ?Latitude, ?Name)";
+
     }
 }
