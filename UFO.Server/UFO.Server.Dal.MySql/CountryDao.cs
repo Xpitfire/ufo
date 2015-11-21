@@ -19,6 +19,7 @@
 #endregion
 using System.Collections.Generic;
 using System.Data;
+using System.Linq.Expressions;
 using MySql.Data.MySqlClient;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
@@ -123,10 +124,10 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<Country>))]
-        public DaoResponse<IList<Country>> SelectWhere<T>(T criteria, Filter<Country, T> filterExpression)
+        public DaoResponse<IList<Country>> SelectWhere<T>(T criteria, Expression<Filter<Country, T>> filterExpression)
         {
             return DaoResponse.QuerySuccessfull<IList<Country>>(
-                new List<Country>(filterExpression.Invoke(SelectAll().ResultObject, criteria)));
+                new List<Country>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
         }
     }
 }

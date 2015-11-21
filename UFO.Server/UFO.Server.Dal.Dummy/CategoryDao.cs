@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using UFO.Server.Dal.Common;
@@ -35,7 +36,7 @@ namespace UFO.Server.Dal.Dummy
             throw new NotImplementedException();
         }
         
-        public DaoResponse<IList<Category>> SelectWhere<T>(T criteria, Filter<Category, T> filterExpression)
+        public DaoResponse<IList<Category>> SelectWhere<T>(T criteria, Expression<Filter<Category, T>> filterExpression)
         {
             throw new NotImplementedException();
         }

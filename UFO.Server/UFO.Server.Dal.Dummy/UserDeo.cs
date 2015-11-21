@@ -19,6 +19,7 @@
 #endregion
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
@@ -46,9 +47,9 @@ namespace UFO.Server.Dal.Dummy
             return DaoResponse.QuerySuccessfull<IList<User>>(DataCollection.Users.ToList());
         }
         
-        public DaoResponse<IList<User>> SelectWhere<T>(T criteria, Filter<User, T> filterExpression)
+        public DaoResponse<IList<User>> SelectWhere<T>(T criteria, Expression<Filter<User, T>> filterExpression)
         {
-            return DaoResponse.QuerySuccessfull<IList<User>>(filterExpression(DataCollection.Users, criteria).ToList());
+            return DaoResponse.QuerySuccessfull<IList<User>>(filterExpression.Compile()(DataCollection.Users, criteria).ToList());
         }
     }
 }

@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +32,6 @@ namespace UFO.Server.Dal.Common
         DaoResponse<TType> Update(TType entity);
         DaoResponse<TType> Delete(TType entity);
         DaoResponse<IList<TType>> SelectAll();
-        DaoResponse<IList<TType>> SelectWhere<T>(T criteria, Filter<TType, T> filterExpression);
+        DaoResponse<IList<TType>> SelectWhere<T>(T criteria, Expression<Filter<TType, T>> filterExpression);
     }
 }

@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using UFO.Server.Domain;
@@ -30,7 +31,7 @@ namespace UFO.Server.Dal.Common
     {
         public static DaoResponse<Performance> SelectByDateTime(this IPerformanceDao venueDao, DateTime datetime)
         {
-            Filter<Performance, DateTime> filterExpression = (performances, expression) => performances.Where(x => x.DateTime == expression);
+            Expression<Filter<Performance, DateTime>> filterExpression = (performances, expression) => performances.Where(x => x.DateTime == expression);
             return DaoResponse.QuerySuccessfull(venueDao.SelectWhere(datetime, filterExpression).ResultObject?.First());
         }
     }

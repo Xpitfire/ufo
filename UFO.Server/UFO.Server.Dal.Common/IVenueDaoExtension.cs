@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using UFO.Server.Domain;
@@ -30,13 +31,13 @@ namespace UFO.Server.Dal.Common
     {
         public static DaoResponse<Venue> SelectById(this IVenueDao venueDao, string id)
         {
-            Filter<Venue, string> filterExpression = (venues, expression) => venues.Where(x => x.VenueId == expression);
+            Expression<Filter<Venue, string>> filterExpression = (venues, expression) => venues.Where(x => x.VenueId == expression);
             return DaoResponse.QuerySuccessfull(venueDao.SelectWhere(id, filterExpression).ResultObject?.First());
         }
 
         public static DaoResponse<Venue> SelectByName(this IVenueDao venueDao, string name)
         {
-            Filter<Venue, string> filterExpression = (venues, expression) => venues.Where(x => x.Name == expression);
+            Expression<Filter<Venue, string>> filterExpression = (venues, expression) => venues.Where(x => x.Name == expression);
             return DaoResponse.QuerySuccessfull(venueDao.SelectWhere(name, filterExpression).ResultObject?.First());
         }
     }

@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq.Expressions;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
@@ -122,10 +123,10 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<Performance>))]
-        public DaoResponse<IList<Performance>> SelectWhere<T>(T criteria, Filter<Performance, T> filterExpression)
+        public DaoResponse<IList<Performance>> SelectWhere<T>(T criteria, Expression<Filter<Performance, T>> filterExpression)
         {
             return DaoResponse.QuerySuccessfull<IList<Performance>>(
-                new List<Performance>(filterExpression.Invoke(SelectAll().ResultObject, criteria)));
+                new List<Performance>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
         }
     }
 }

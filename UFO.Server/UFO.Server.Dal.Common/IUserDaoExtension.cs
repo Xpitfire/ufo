@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using UFO.Server.Domain;
 
@@ -31,25 +32,25 @@ namespace UFO.Server.Dal.Common
 
         public static DaoResponse<User> SelectByEmail(this IUserDao userDao, string email)
         {
-            Filter<User, string> filterExpression = (users, expression) => users.Where(x => x.EMail == expression);
+            Expression<Filter<User, string>> filterExpression = (users, expression) => users.Where(x => x.EMail == expression);
             return DaoResponse.QuerySuccessfull(userDao.SelectWhere(email, filterExpression).ResultObject?.First());
         }
 
         public static DaoResponse<IList<User>> SelectByLastName(this IUserDao userDao, string name)
         {
-            Filter<User, string> filterExpression = (users, expression) => users.Where(x => x.LastName == expression);
+            Expression<Filter<User, string>> filterExpression = (users, expression) => users.Where(x => x.LastName == expression);
             return userDao.SelectWhere(name, filterExpression);
         }
 
         public static DaoResponse<IList<User>> SelectByFirstName(this IUserDao userDao, string name)
         {
-            Filter<User, string> filterExpression = (users, expression) => users.Where(x => x.FirstName == expression);
+            Expression<Filter<User, string>> filterExpression = (users, expression) => users.Where(x => x.FirstName == expression);
             return userDao.SelectWhere(name, filterExpression);
         }
 
         public static DaoResponse<User> SelectById(this IUserDao userDao, int id)
         {
-            Filter<User, int> filterExpression = (users, expression) => users.Where(x => x.UserId == expression);
+            Expression<Filter<User, int>> filterExpression = (users, expression) => users.Where(x => x.UserId == expression);
             return DaoResponse.QuerySuccessfull(userDao.SelectWhere(id, filterExpression).ResultObject?.First());
         }
     }

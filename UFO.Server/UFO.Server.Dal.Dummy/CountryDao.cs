@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using UFO.Server.Dal.Common;
@@ -36,7 +37,7 @@ namespace UFO.Server.Dal.Dummy
             throw new NotSupportedException("Test exception for DaoExceptionHandlerAtrribute test!");
         }
         
-        public DaoResponse<IList<Country>> SelectWhere<T>(T criteria, Filter<Country, T> filterExpression)
+        public DaoResponse<IList<Country>> SelectWhere<T>(T criteria, Expression<Filter<Country, T>> filterExpression)
         {
             throw new NotImplementedException();
         }
