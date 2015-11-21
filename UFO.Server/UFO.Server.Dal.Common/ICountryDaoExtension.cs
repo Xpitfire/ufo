@@ -32,13 +32,13 @@ namespace UFO.Server.Dal.Common
         public static DaoResponse<Country> SelectByCode(this ICountryDao countryDao, string id)
         {
             Expression<Filter<Country, string>> filterExpression = (countries, expression) => countries.Where(x => x.Code == expression);
-            return DaoResponse.QuerySuccessfull(countryDao.SelectWhere(id, filterExpression).ResultObject?.First());
+            return DaoResponse.QuerySuccessful(countryDao.SelectWhere(id, filterExpression).ResultObject?.First());
         }
 
         public static DaoResponse<Country> SelectByName(this ICountryDao countryDao, string name)
         {
             Expression<Filter<Country, string>> filterExpression = (countries, expression) => countries.Where(x => x.Name == expression);
-            return DaoResponse.QuerySuccessfull(countryDao.SelectWhere(name, filterExpression).ResultObject?.First());
+            return DaoResponse.QuerySuccessful(countryDao.SelectWhere(name, filterExpression).ResultObject?.First());
         }
     }
 }

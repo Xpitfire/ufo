@@ -71,7 +71,7 @@ namespace UFO.Server.Dal.MySql
                     category = CreateCategoryObject(dataReader);
                 }
             }
-            return DaoResponse.QuerySuccessfull(category);
+            return DaoResponse.QuerySuccessful(category);
         }
 
         [DaoExceptionHandler(typeof(Category))]
@@ -81,7 +81,7 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertCategory, CreateCategoryParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(entity);
+                return DaoResponse.QuerySuccessful(entity);
             }
         }
 
@@ -92,7 +92,7 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateCategory, CreateCategoryParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(entity);
+                return DaoResponse.QuerySuccessful(entity);
             }
         }
         
@@ -103,7 +103,7 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteCategory, CreateCategoryParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(entity);
+                return DaoResponse.QuerySuccessful(entity);
             }
         }
 
@@ -120,13 +120,13 @@ namespace UFO.Server.Dal.MySql
                     categories.Add(CreateCategoryObject(dataReader));
                 }
             }
-            return DaoResponse.QuerySuccessfull<IList<Category>>(categories);
+            return DaoResponse.QuerySuccessful<IList<Category>>(categories);
         }
 
         [DaoExceptionHandler(typeof(IList<Category>))]
         public DaoResponse<IList<Category>> SelectWhere<T>(T criteria, Expression<Filter<Category, T>> filterExpression)
         {
-            return DaoResponse.QuerySuccessfull<IList<Category>>(
+            return DaoResponse.QuerySuccessful<IList<Category>>(
                 new List<Category>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
         }
     }

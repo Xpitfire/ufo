@@ -48,7 +48,7 @@ namespace UFO.Server.Dal.Common
 
         public object ResultObject { get; set; }
 
-        public static DaoResponse<TResponse> QuerySuccessfull<TResponse>(TResponse responseObject)
+        public static DaoResponse<TResponse> QuerySuccessful<TResponse>(TResponse responseObject)
         {
             return QueryResponse(responseObject, DaoStatus.Successful);
         }

@@ -95,7 +95,12 @@ namespace UFO.Server.Dal.MySql
         [DaoExceptionHandler(typeof(User))]
         public DaoResponse<User> Insert(User entity)
         {
-            throw new NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertUser, CreateUserParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessful(entity);
+            }
         }
 
         [DaoExceptionHandler(typeof(User))]
@@ -107,14 +112,19 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, CreateUserParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(entity);
+                return DaoResponse.QuerySuccessful(entity);
             }
         }
 
         [DaoExceptionHandler(typeof(User))]
         public DaoResponse<User> Delete(User entity)
         {
-            throw new NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteUser, CreateUserParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessful(entity);
+            }
         }
 
         [DaoExceptionHandler(typeof(IList<User>))]
@@ -130,13 +140,13 @@ namespace UFO.Server.Dal.MySql
                     users.Add(CreateUserObject(dataReader));
                 }
             }
-            return DaoResponse.QuerySuccessfull<IList<User>>(users);
+            return DaoResponse.QuerySuccessful<IList<User>>(users);
         }
 
         [DaoExceptionHandler(typeof(IList<User>))]
         public DaoResponse<IList<User>> SelectWhere<T>(T criteria, Expression<Filter<User, T>> filterExpression)
         {
-            return DaoResponse.QuerySuccessfull<IList<User>>(
+            return DaoResponse.QuerySuccessful<IList<User>>(
                 new List<User>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
         }
     }

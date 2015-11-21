@@ -32,7 +32,7 @@ namespace UFO.Server.Dal.Common
         public static DaoResponse<Performance> SelectByDateTime(this IPerformanceDao venueDao, DateTime datetime)
         {
             Expression<Filter<Performance, DateTime>> filterExpression = (performances, expression) => performances.Where(x => x.DateTime == expression);
-            return DaoResponse.QuerySuccessfull(venueDao.SelectWhere(datetime, filterExpression).ResultObject?.First());
+            return DaoResponse.QuerySuccessful(venueDao.SelectWhere(datetime, filterExpression).ResultObject?.First());
         }
     }
 }

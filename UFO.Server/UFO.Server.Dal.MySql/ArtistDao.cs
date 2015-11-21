@@ -82,7 +82,7 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteArtist, CreateArtistParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(entity);
+                return DaoResponse.QuerySuccessful(entity);
             }
         }
 
@@ -100,13 +100,13 @@ namespace UFO.Server.Dal.MySql
                 }
             }
                 
-            return DaoResponse.QuerySuccessfull<IList<Artist>>(artists);
+            return DaoResponse.QuerySuccessful<IList<Artist>>(artists);
         }
 
         [DaoExceptionHandler(typeof(IList<Artist>))]
         public DaoResponse<IList<Artist>> SelectWhere<T>(T criteria, Expression<Filter<Artist, T>> filterExpression)
         {
-            return DaoResponse.QuerySuccessfull<IList<Artist>>(
+            return DaoResponse.QuerySuccessful<IList<Artist>>(
                 new List<Artist>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
         }
 
@@ -117,7 +117,7 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertArtist, CreateArtistParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(entity);
+                return DaoResponse.QuerySuccessful(entity);
             }
         }
         
@@ -128,7 +128,7 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateArtist, CreateArtistParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(entity);
+                return DaoResponse.QuerySuccessful(entity);
             }
         }
 

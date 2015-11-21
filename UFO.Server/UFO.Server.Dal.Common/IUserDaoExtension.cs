@@ -33,7 +33,7 @@ namespace UFO.Server.Dal.Common
         public static DaoResponse<User> SelectByEmail(this IUserDao userDao, string email)
         {
             Expression<Filter<User, string>> filterExpression = (users, expression) => users.Where(x => x.EMail == expression);
-            return DaoResponse.QuerySuccessfull(userDao.SelectWhere(email, filterExpression).ResultObject?.First());
+            return DaoResponse.QuerySuccessful(userDao.SelectWhere(email, filterExpression).ResultObject?.First());
         }
 
         public static DaoResponse<IList<User>> SelectByLastName(this IUserDao userDao, string name)
@@ -51,7 +51,7 @@ namespace UFO.Server.Dal.Common
         public static DaoResponse<User> SelectById(this IUserDao userDao, int id)
         {
             Expression<Filter<User, int>> filterExpression = (users, expression) => users.Where(x => x.UserId == expression);
-            return DaoResponse.QuerySuccessfull(userDao.SelectWhere(id, filterExpression).ResultObject?.First());
+            return DaoResponse.QuerySuccessful(userDao.SelectWhere(id, filterExpression).ResultObject?.First());
         }
     }
 }

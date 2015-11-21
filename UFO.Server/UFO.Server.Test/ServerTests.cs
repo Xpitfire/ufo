@@ -337,12 +337,19 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.SelectByCode("AT");
-                Assert.IsNotNull(getRsp);
-                var category = getRsp.ResultObject;
-                category.Name = "Test";
+                var country = new Country
+                {
+                    Code = "PD",
+                    Name = "Pandora"
+                };
+                dao.Insert(country)
+                    .OnFailure(response => Assert.Fail($"Insert does not work! {response.Exception}"));
 
-                dao.Delete(category)
+                var getRsp = dao.SelectByCode("PD");
+                Assert.IsNotNull(getRsp);
+                country = getRsp.ResultObject;
+
+                dao.Delete(country)
                     .OnFailure(response => Assert.Fail($"Delete does not work! {response.Exception}"));
 
                 // do not commit changes; only for testing
@@ -473,7 +480,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestInsertVenueDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var venueDao = DalProviderFactories.GetDaoFactory(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateVenueDao();
@@ -481,9 +488,11 @@ namespace UFO.Server.Test
             {
                 var venue = new Venue
                 {
-                    VenueId = "A7", Name = "Tiki Tiki"
+                    VenueId = "A7",
+                    Name = "Tiki Tiki",
+                    Location = new Location { LocationId = 3}
                 };
-                dao.Insert(venue)
+                venueDao.Insert(venue)
                     .OnFailure(response => Assert.Fail($"Insert does not work! {response.Exception}"));
 
                 // do not commit changes; only for testing
@@ -520,7 +529,7 @@ namespace UFO.Server.Test
             var dao = DalProviderFactories.GetDaoFactory(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
-                TestDbDaoClassName).CreateCategoryDao();
+                TestDbDaoClassName).CreateVenueDao();
 
             using (var scope = new TransactionScope())
             {
