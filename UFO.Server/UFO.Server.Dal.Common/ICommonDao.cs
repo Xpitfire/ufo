@@ -26,12 +26,23 @@ using System.Threading.Tasks;
 
 namespace UFO.Server.Dal.Common
 {
+    /// <summary>
+    /// Declare the common DAL operations.
+    /// </summary>
+    /// <typeparam name="TType"></typeparam>
     public interface ICommonDao<TType>
     {
         DaoResponse<TType> Insert(TType entity);
         DaoResponse<TType> Update(TType entity);
         DaoResponse<TType> Delete(TType entity);
         DaoResponse<IList<TType>> SelectAll();
+        /// <summary>
+        /// Select a value from the DAL implementation with a runtime specified lambda expression.
+        /// </summary>
+        /// <typeparam name="T">Type of the where clause criteria.</typeparam>
+        /// <param name="criteria">Where clause criteria.</param>
+        /// <param name="filterExpression">Expression of the lambda filter used to map the where clause.</param>
+        /// <returns>Response object with the collected types.</returns>
         DaoResponse<IList<TType>> SelectWhere<T>(T criteria, Expression<Filter<TType, T>> filterExpression);
     }
 }
