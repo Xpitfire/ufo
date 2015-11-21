@@ -19,6 +19,7 @@
 #endregion
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Linq.Expressions;
 using MySql.Data.MySqlClient;
 using UFO.Server.Dal.Common;
@@ -71,7 +72,7 @@ namespace UFO.Server.Dal.MySql
                     category = CreateCategoryObject(dataReader);
                 }
             }
-            return DaoResponse.QuerySuccessful(category);
+            return category != null ? DaoResponse.QuerySuccessful(category) : DaoResponse.QueryEmptyResult<Category>();
         }
 
         [DaoExceptionHandler(typeof(Category))]
@@ -81,8 +82,8 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertCategory, CreateCategoryParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
 
         [DaoExceptionHandler(typeof(Category))]
@@ -92,8 +93,8 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateCategory, CreateCategoryParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
         
         [DaoExceptionHandler(typeof(Category))]
@@ -103,8 +104,8 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteCategory, CreateCategoryParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
 
         [DaoExceptionHandler(typeof(IList<Category>))]
@@ -120,7 +121,7 @@ namespace UFO.Server.Dal.MySql
                     categories.Add(CreateCategoryObject(dataReader));
                 }
             }
-            return DaoResponse.QuerySuccessful<IList<Category>>(categories);
+            return categories.Any() ? DaoResponse.QuerySuccessful<IList<Category>>(categories) : DaoResponse.QueryEmptyResult<IList<Category>>();
         }
 
         [DaoExceptionHandler(typeof(IList<Category>))]
