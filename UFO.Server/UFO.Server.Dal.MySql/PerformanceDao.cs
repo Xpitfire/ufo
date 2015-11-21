@@ -119,13 +119,13 @@ namespace UFO.Server.Dal.MySql
                 }
             }
 
-            return DaoResponse.QuerySuccessfull<IList<Performance>>(performances);
+            return DaoResponse.QuerySuccessful<IList<Performance>>(performances);
         }
 
         [DaoExceptionHandler(typeof(IList<Performance>))]
         public DaoResponse<IList<Performance>> SelectWhere<T>(T criteria, Expression<Filter<Performance, T>> filterExpression)
         {
-            return DaoResponse.QuerySuccessfull<IList<Performance>>(
+            return DaoResponse.QuerySuccessful<IList<Performance>>(
                 new List<Performance>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
         }
     }

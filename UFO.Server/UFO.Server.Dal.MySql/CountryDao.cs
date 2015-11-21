@@ -71,7 +71,7 @@ namespace UFO.Server.Dal.MySql
                     country = CreateCountryObject(dataReader);
                 }
             }
-            return DaoResponse.QuerySuccessfull(country);
+            return DaoResponse.QuerySuccessful(country);
         }
 
         [DaoExceptionHandler(typeof(Country))]
@@ -81,7 +81,7 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertCountry, CreateCountryParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(entity);
+                return DaoResponse.QuerySuccessful(entity);
             }
         }
 
@@ -92,7 +92,7 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateCountry, CreateCountryParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(entity);
+                return DaoResponse.QuerySuccessful(entity);
             }
         }
 
@@ -103,7 +103,7 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteCountry, CreateCountryParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(entity);
+                return DaoResponse.QuerySuccessful(entity);
             }
         }
 
@@ -120,13 +120,13 @@ namespace UFO.Server.Dal.MySql
                     countries.Add(CreateCountryObject(dataReader));
                 }
             }
-            return DaoResponse.QuerySuccessfull<IList<Country>>(countries);
+            return DaoResponse.QuerySuccessful<IList<Country>>(countries);
         }
 
         [DaoExceptionHandler(typeof(IList<Country>))]
         public DaoResponse<IList<Country>> SelectWhere<T>(T criteria, Expression<Filter<Country, T>> filterExpression)
         {
-            return DaoResponse.QuerySuccessfull<IList<Country>>(
+            return DaoResponse.QuerySuccessful<IList<Country>>(
                 new List<Country>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
         }
     }

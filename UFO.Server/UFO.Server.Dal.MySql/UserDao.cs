@@ -107,7 +107,7 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, CreateUserParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessfull(entity);
+                return DaoResponse.QuerySuccessful(entity);
             }
         }
 
@@ -130,13 +130,13 @@ namespace UFO.Server.Dal.MySql
                     users.Add(CreateUserObject(dataReader));
                 }
             }
-            return DaoResponse.QuerySuccessfull<IList<User>>(users);
+            return DaoResponse.QuerySuccessful<IList<User>>(users);
         }
 
         [DaoExceptionHandler(typeof(IList<User>))]
         public DaoResponse<IList<User>> SelectWhere<T>(T criteria, Expression<Filter<User, T>> filterExpression)
         {
-            return DaoResponse.QuerySuccessfull<IList<User>>(
+            return DaoResponse.QuerySuccessful<IList<User>>(
                 new List<User>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
         }
     }

@@ -28,6 +28,7 @@ namespace UFO.Server.Dal.Common
     public enum DaoStatus
     {
         Successful,
+        EmptyResult,
         Failed
     }
 
@@ -55,6 +56,15 @@ namespace UFO.Server.Dal.Common
         public static DaoResponse<TResponse> QuerySuccessfull<TResponse>(TResponse responseObject)
         {
             return QueryResponse(responseObject, DaoStatus.Successful);
+        }
+
+        /// <summary>
+        /// Create a DaoResponse object with a DaoStatus member set to EmptyResult.
+        /// </summary>
+        /// <returns>DaoResponse with successful flag, but no real result object. Result value is set to default.</returns>
+        public static DaoResponse<TResponse> QueryEmptyResult<TResponse>()
+        {
+            return QueryResponse(default(TResponse), DaoStatus.Successful);
         }
 
         /// <summary>
@@ -107,7 +117,7 @@ namespace UFO.Server.Dal.Common
         /// if a successful response has occurred.
         /// </summary>
         /// <param name="action">Action to be executed on successful response.</param>
-        /// <returns>Returns itself for fluent interface concept.</returns>
+        /// <returns>Returns itself for a fluent interface concept.</returns>
         public DaoResponse<TDaoType> OnSuccess(Action<TDaoType> action)
         {
             if (ResponseStatus == DaoStatus.Successful)
@@ -120,7 +130,7 @@ namespace UFO.Server.Dal.Common
         /// if a successful response has occurred.
         /// </summary>
         /// <param name="action">Action to be executed on successful response.</param>
-        /// <returns>Returns itself for fluent interface concept.</returns>
+        /// <returns>Returns itself for a fluent interface concept.</returns>
         public DaoResponse<TDaoType> OnSuccess(Action<DaoResponse<TDaoType>> action)
         {
             if (ResponseStatus == DaoStatus.Successful)
@@ -133,8 +143,22 @@ namespace UFO.Server.Dal.Common
         /// if a successful response has occurred.
         /// </summary>
         /// <param name="action">Action to be executed on successful response.</param>
-        /// <returns>Returns itself for fluent interface concept.</returns>
+        /// <returns>Returns itself for a fluent interface concept.</returns>
         public DaoResponse<TDaoType> OnSuccess(Action action)
+        {
+            if (ResponseStatus == DaoStatus.Successful)
+                action();
+            return this;
+        }
+
+        /// <summary>
+        /// Delegates and executes an Action without parameters, 
+        /// if a successful but empty result response has occurred.
+        /// This means the ResultObject of the ResponseStatus is null.
+        /// </summary>
+        /// <param name="action">Action to be executed on successful but empty response.</param>
+        /// <returns>Returns itself for a fluent interface concept.</returns>
+        public DaoResponse<TDaoType> OnEmptyResult(Action action)
         {
             if (ResponseStatus == DaoStatus.Successful)
                 action();
@@ -147,10 +171,10 @@ namespace UFO.Server.Dal.Common
         /// the DaoExceptionHandlerAttribute to catch and wrap exceptions within a DaoResponse.
         /// </summary>
         /// <param name="action">Action to be executed on failed response.</param>
-        /// <returns>Returns itself for fluent interface concept.</returns>
+        /// <returns>Returns itself for a fluent interface concept.</returns>
         public DaoResponse<TDaoType> OnFailure(Action<DaoResponse<TDaoType>> action)
         {
-            if (ResponseStatus != DaoStatus.Successful)
+            if (ResponseStatus == DaoStatus.Failed)
                 action(this);
             return this;
         }    

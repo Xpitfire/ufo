@@ -44,12 +44,12 @@ namespace UFO.Server.Dal.Dummy
 
         public DaoResponse<IList<User>> SelectAll()
         {
-            return DaoResponse.QuerySuccessfull<IList<User>>(DataCollection.Users.ToList());
+            return DaoResponse.QuerySuccessful<IList<User>>(DataCollection.Users.ToList());
         }
         
         public DaoResponse<IList<User>> SelectWhere<T>(T criteria, Expression<Filter<User, T>> filterExpression)
         {
-            return DaoResponse.QuerySuccessfull<IList<User>>(filterExpression.Compile()(DataCollection.Users, criteria).ToList());
+            return DaoResponse.QuerySuccessful<IList<User>>(filterExpression.Compile()(DataCollection.Users, criteria).ToList());
         }
     }
 }
