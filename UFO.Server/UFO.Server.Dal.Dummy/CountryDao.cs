@@ -31,12 +31,12 @@ namespace UFO.Server.Dal.Dummy
         }
 
         [DaoExceptionHandler(typeof(IList<Country>))]
-        public DaoResponse<IList<Country>> GetAll()
+        public DaoResponse<IList<Country>> SelectAll()
         {
             throw new NotSupportedException("Test exception for DaoExceptionHandlerAtrribute test!");
         }
         
-        public DaoResponse<IList<Country>> GetAllAndFilterBy<T>(T criteria, Filter<Country, T> filter)
+        public DaoResponse<IList<Country>> SelectWhere<T>(T criteria, Filter<Country, T> filterExpression)
         {
             throw new NotImplementedException();
         }

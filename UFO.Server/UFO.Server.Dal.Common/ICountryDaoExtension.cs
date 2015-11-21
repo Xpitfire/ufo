@@ -28,16 +28,16 @@ namespace UFO.Server.Dal.Common
 {
     public static class ICountryDaoExtension
     {
-        public static DaoResponse<Country> GetAllAndFilterByCode(this ICountryDao countryDao, string id)
+        public static DaoResponse<Country> SelectByCode(this ICountryDao countryDao, string id)
         {
-            Filter<Country, string> filter = (countries, criteria) => countries.Where(x => x.Code == criteria);
-            return DaoResponse.QuerySuccessfull(countryDao.GetAllAndFilterBy(id, filter).ResultObject?.First());
+            Filter<Country, string> filterExpression = (countries, expression) => countries.Where(x => x.Code == expression);
+            return DaoResponse.QuerySuccessfull(countryDao.SelectWhere(id, filterExpression).ResultObject?.First());
         }
 
-        public static DaoResponse<Country> GetAllAndFilterByName(this ICountryDao countryDao, string name)
+        public static DaoResponse<Country> SelectByName(this ICountryDao countryDao, string name)
         {
-            Filter<Country, string> filter = (countries, criteria) => countries.Where(x => x.Name == criteria);
-            return DaoResponse.QuerySuccessfull(countryDao.GetAllAndFilterBy(name, filter).ResultObject?.First());
+            Filter<Country, string> filterExpression = (countries, expression) => countries.Where(x => x.Name == expression);
+            return DaoResponse.QuerySuccessfull(countryDao.SelectWhere(name, filterExpression).ResultObject?.First());
         }
     }
 }

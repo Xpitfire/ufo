@@ -107,7 +107,7 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<Country>))]
-        public DaoResponse<IList<Country>> GetAll()
+        public DaoResponse<IList<Country>> SelectAll()
         {
             var countries = new List<Country>();
             using (var connection = _dbCommProvider.CreateDbConnection())
@@ -123,10 +123,10 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<Country>))]
-        public DaoResponse<IList<Country>> GetAllAndFilterBy<T>(T criteria, Filter<Country, T> filter)
+        public DaoResponse<IList<Country>> SelectWhere<T>(T criteria, Filter<Country, T> filterExpression)
         {
             return DaoResponse.QuerySuccessfull<IList<Country>>(
-                new List<Country>(filter.Invoke(GetAll().ResultObject, criteria)));
+                new List<Country>(filterExpression.Invoke(SelectAll().ResultObject, criteria)));
         }
     }
 }

@@ -117,7 +117,7 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<User>))]
-        public DaoResponse<IList<User>> GetAll()
+        public DaoResponse<IList<User>> SelectAll()
         {
             var users = new List<User>();
             using (var connection = _dbCommProvider.CreateDbConnection())
@@ -133,10 +133,10 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<User>))]
-        public DaoResponse<IList<User>> GetAllAndFilterBy<T>(T criteria, Filter<User, T> filter)
+        public DaoResponse<IList<User>> SelectWhere<T>(T criteria, Filter<User, T> filterExpression)
         {
             return DaoResponse.QuerySuccessfull<IList<User>>(
-                new List<User>(filter.Invoke(GetAll().ResultObject, criteria)));
+                new List<User>(filterExpression.Invoke(SelectAll().ResultObject, criteria)));
         }
     }
 }

@@ -86,7 +86,7 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<Artist>))]
-        public DaoResponse<IList<Artist>> GetAll()
+        public DaoResponse<IList<Artist>> SelectAll()
         {
             var artists = new List<Artist>();
             using (var connection = _dbCommProvider.CreateDbConnection())
@@ -103,10 +103,10 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<Artist>))]
-        public DaoResponse<IList<Artist>> GetAllAndFilterBy<T>(T criteria, Filter<Artist, T> filter)
+        public DaoResponse<IList<Artist>> SelectWhere<T>(T criteria, Filter<Artist, T> filterExpression)
         {
             return DaoResponse.QuerySuccessfull<IList<Artist>>(
-                new List<Artist>(filter.Invoke(GetAll().ResultObject, criteria)));
+                new List<Artist>(filterExpression.Invoke(SelectAll().ResultObject, criteria)));
         }
 
         [DaoExceptionHandler(typeof(Artist))]

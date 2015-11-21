@@ -41,14 +41,14 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<User>> GetAll()
+        public DaoResponse<IList<User>> SelectAll()
         {
             return DaoResponse.QuerySuccessfull<IList<User>>(DataCollection.Users.ToList());
         }
         
-        public DaoResponse<IList<User>> GetAllAndFilterBy<T>(T criteria, Filter<User, T> filter)
+        public DaoResponse<IList<User>> SelectWhere<T>(T criteria, Filter<User, T> filterExpression)
         {
-            return DaoResponse.QuerySuccessfull<IList<User>>(filter(DataCollection.Users, criteria).ToList());
+            return DaoResponse.QuerySuccessfull<IList<User>>(filterExpression(DataCollection.Users, criteria).ToList());
         }
     }
 }

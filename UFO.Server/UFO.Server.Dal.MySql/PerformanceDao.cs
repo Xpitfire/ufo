@@ -105,7 +105,7 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<Performance>))]
-        public DaoResponse<IList<Performance>> GetAll()
+        public DaoResponse<IList<Performance>> SelectAll()
         {
             var performances = new List<Performance>();
             using (var connection = _dbCommProvider.CreateDbConnection())
@@ -122,10 +122,10 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<Performance>))]
-        public DaoResponse<IList<Performance>> GetAllAndFilterBy<T>(T criteria, Filter<Performance, T> filter)
+        public DaoResponse<IList<Performance>> SelectWhere<T>(T criteria, Filter<Performance, T> filterExpression)
         {
             return DaoResponse.QuerySuccessfull<IList<Performance>>(
-                new List<Performance>(filter.Invoke(GetAll().ResultObject, criteria)));
+                new List<Performance>(filterExpression.Invoke(SelectAll().ResultObject, criteria)));
         }
     }
 }

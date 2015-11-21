@@ -32,7 +32,7 @@ namespace UFO.Server.Test
     [TestClass]
     public class ServerTests
     {
-        // Artist, User, Venue, Category, Country, Performance => GettAlFilterby, GetAll, Insert, Update, Delete
+        // Artist, User, Venue, Category, Country, Performance => GettAlFilterby, SelectAll, Insert, Update, Delete
 
         private const string TestDummyDaoAssembly = "UFO.Server.Dal.Dummy";
         private const string TestDummyDaoNameSpace = "UFO.Server.Dal.Dummy";
@@ -84,7 +84,7 @@ namespace UFO.Server.Test
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName);
             var dao = daoProviderFactory.CreateUserDao();
-            var result = dao.GetAllAndFilterByEmail("marius.dinu@mail.com");
+            var result = dao.SelectByEmail("marius.dinu@mail.com");
             var user = result.ResultObject;
 
             Assert.IsNotNull(result.ResultObject);
@@ -102,7 +102,7 @@ namespace UFO.Server.Test
                 TestDummyDaoAssembly,
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName).CreateUserDao();
-            var users = dao.GetAll();
+            var users = dao.SelectAll();
             Assert.IsTrue(users.ResultObject?.Count > 100);
         }
 
@@ -117,7 +117,7 @@ namespace UFO.Server.Test
                 TestDummyDaoAssembly,
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName).CreateCountryDao();
-            dao.GetAll()
+            dao.SelectAll()
                 .OnSuccess(() => Assert.Fail("Response should have failed due to test of Exception handling."));
         }
 
@@ -135,7 +135,7 @@ namespace UFO.Server.Test
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
-            DaoResponse<IList<User>> response = dao.GetAll();
+            DaoResponse<IList<User>> response = dao.SelectAll();
             Assert.IsTrue(response.ResultObject?.Count > 10);
         }
         /// <summary>
@@ -180,7 +180,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.GetAllAndFilterByEmail("marius.dinu@mymail.com");
+                var getRsp = dao.SelectByEmail("marius.dinu@mymail.com");
                 Assert.IsNotNull(getRsp);
                 var user = getRsp.ResultObject;
                 user.FirstName = "Test";
@@ -203,7 +203,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.GetAllAndFilterById(6);
+                var getRsp = dao.SelectById(6);
                 Assert.IsNotNull(getRsp);
                 var user = getRsp.ResultObject;
                 
@@ -221,7 +221,7 @@ namespace UFO.Server.Test
         public void TestAllCategoryDbAccess()
         {
             var dao = DalProviderFactories.GetDaoFactory().CreateCategoryDao();
-            var categories = dao.GetAll().ResultObject;
+            var categories = dao.SelectAll().ResultObject;
             Assert.IsNotNull(categories);
             Assert.IsTrue(categories.Any());
         }
@@ -258,7 +258,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.GetAllAndFilterById("OT");
+                var getRsp = dao.SelectById("OT");
                 Assert.IsNotNull(getRsp);
                 var category = getRsp.ResultObject;
                 category.Name = "Test";
@@ -281,7 +281,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.GetAllAndFilterByName("Tanz");
+                var getRsp = dao.SelectByName("Tanz");
                 Assert.IsNotNull(getRsp);
                 var category = getRsp.ResultObject;
                 category.Name = "Test";
@@ -300,7 +300,7 @@ namespace UFO.Server.Test
         public void TestAllCountryDbAccess()
         {
             var dao = DalProviderFactories.GetDaoFactory().CreateCountryDao();
-            var countries = dao.GetAll().ResultObject;
+            var countries = dao.SelectAll().ResultObject;
             Assert.IsNotNull(countries);
             Assert.IsTrue(countries.Any());
         }
@@ -337,7 +337,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.GetAllAndFilterByCode("AT");
+                var getRsp = dao.SelectByCode("AT");
                 Assert.IsNotNull(getRsp);
                 var category = getRsp.ResultObject;
                 category.Name = "Test";
@@ -360,7 +360,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.GetAllAndFilterByName("Oman");
+                var getRsp = dao.SelectByName("Oman");
                 Assert.IsNotNull(getRsp);
                 var category = getRsp.ResultObject;
                 category.Name = "Test";
@@ -382,7 +382,7 @@ namespace UFO.Server.Test
         public void TestAllArtistDbAccess()
         {
             var dao = DalProviderFactories.GetDaoFactory().CreateArtistDao();
-            var artists = dao.GetAll().ResultObject;
+            var artists = dao.SelectAll().ResultObject;
             Assert.IsNotNull(artists);
             Assert.IsTrue(artists.Any());
         }
@@ -397,7 +397,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.GetAllAndFilterByName("AC/DC");
+                var getRsp = dao.SelectByName("AC/DC");
                 Assert.IsNotNull(getRsp);
                 var artist = getRsp.ResultObject;
                 artist.Name = "Test";
@@ -420,7 +420,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.GetAllAndFilterByName("AC/DC");
+                var getRsp = dao.SelectByName("AC/DC");
                 Assert.IsNotNull(getRsp);
                 var artist = getRsp.ResultObject;
                 artist.Name = "Test";
@@ -465,7 +465,7 @@ namespace UFO.Server.Test
         public void TestAllVenueDbAccess()
         {
             var dao = DalProviderFactories.GetDaoFactory().CreateVenueDao();
-            var venues = dao.GetAll().ResultObject;
+            var venues = dao.SelectAll().ResultObject;
             Assert.IsNotNull(venues);
             Assert.IsTrue(venues.Any());
         }
@@ -501,7 +501,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.GetAllAndFilterById("A1");
+                var getRsp = dao.SelectById("A1");
                 Assert.IsNotNull(getRsp);
                 var venue = getRsp.ResultObject;
                 venue.Name = "Test";
@@ -524,7 +524,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.GetAllAndFilterByName("Landhaus");
+                var getRsp = dao.SelectByName("Landhaus");
                 Assert.IsNotNull(getRsp);
                 var venue = getRsp.ResultObject;
                 venue.Name = "Test";
@@ -542,7 +542,7 @@ namespace UFO.Server.Test
         public void TestAllPerformancesDbAccess()
         {
             var dao = DalProviderFactories.GetDaoFactory().CreatePerformanceDao();
-            var performances = dao.GetAll().ResultObject;
+            var performances = dao.SelectAll().ResultObject;
             Assert.IsNotNull(performances);
             Assert.IsTrue(performances.Any());
         }
@@ -579,7 +579,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.GetAllAndFilterByDateTime(new DateTime(2015, 11, 13));
+                var getRsp = dao.SelectByDateTime(new DateTime(2015, 11, 13));
                 Assert.IsNotNull(getRsp);
                 var performance = getRsp.ResultObject;
                 performance.DateTime = new DateTime(2015,11,14);
@@ -602,7 +602,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.GetAllAndFilterByDateTime(new DateTime(2015, 11, 13));
+                var getRsp = dao.SelectByDateTime(new DateTime(2015, 11, 13));
                 Assert.IsNotNull(getRsp);
                 var performance = getRsp.ResultObject;
                 performance.DateTime = new DateTime(2015,11,14);

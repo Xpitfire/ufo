@@ -28,16 +28,16 @@ namespace UFO.Server.Dal.Common
 {
     public static class IArtistDaoExtension
     {
-        public static DaoResponse<Artist> GetAllAndFilterById(this IArtistDao userDao, int id)
+        public static DaoResponse<Artist> SelectById(this IArtistDao userDao, int id)
         {
-            Filter<Artist, int> filter = (users, criteria) => users.Where(x => x.ArtistId == criteria);
-            return DaoResponse.QuerySuccessfull(userDao.GetAllAndFilterBy(id, filter).ResultObject?.First());
+            Filter<Artist, int> filterExpression = (users, expression) => users.Where(x => x.ArtistId == expression);
+            return DaoResponse.QuerySuccessfull(userDao.SelectWhere(id, filterExpression).ResultObject?.First());
         }
 
-        public static DaoResponse<Artist> GetAllAndFilterByName(this IArtistDao userDao, string name)
+        public static DaoResponse<Artist> SelectByName(this IArtistDao userDao, string name)
         {
-            Filter<Artist, string> filter = (users, criteria) => users.Where(x => x.Name == criteria);
-            return DaoResponse.QuerySuccessfull(userDao.GetAllAndFilterBy(name, filter).ResultObject?.First());
+            Filter<Artist, string> filterExpression = (users, expression) => users.Where(x => x.Name == expression);
+            return DaoResponse.QuerySuccessfull(userDao.SelectWhere(name, filterExpression).ResultObject?.First());
         }
     }
 }

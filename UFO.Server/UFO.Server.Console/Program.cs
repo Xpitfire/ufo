@@ -18,7 +18,7 @@ namespace UFO.Server
                 .OnSuccess(artist => Console.WriteLine($"Found artist id: {artist.ArtistId}"))
                 .OnFailure(response => Console.WriteLine($"Error: {response.ErrorMessage}; {response.Exception}"));
 
-            artistDao.GetAll()
+            artistDao.SelectAll()
                 .OnSuccess(list =>
                 {
                     foreach (var artist in list)

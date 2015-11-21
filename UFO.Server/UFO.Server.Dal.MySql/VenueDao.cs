@@ -81,7 +81,7 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<Venue>))]
-        public DaoResponse<IList<Venue>> GetAll()
+        public DaoResponse<IList<Venue>> SelectAll()
         {
             var venues = new List<Venue>();
             using (var connection = _dbCommProvider.CreateDbConnection())
@@ -98,10 +98,10 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<Venue>))]
-        public DaoResponse<IList<Venue>> GetAllAndFilterBy<T>(T criteria, Filter<Venue, T> filter)
+        public DaoResponse<IList<Venue>> SelectWhere<T>(T criteria, Filter<Venue, T> filterExpression)
         {
             return DaoResponse.QuerySuccessfull<IList<Venue>>(
-                new List<Venue>(filter.Invoke(GetAll().ResultObject, criteria)));
+                new List<Venue>(filterExpression.Invoke(SelectAll().ResultObject, criteria)));
         }
     }
 }

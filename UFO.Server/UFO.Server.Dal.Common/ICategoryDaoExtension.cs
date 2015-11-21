@@ -28,16 +28,16 @@ namespace UFO.Server.Dal.Common
 {
     public static class ICategoryDaoExtension
     {
-        public static DaoResponse<Category> GetAllAndFilterById(this ICategoryDao categoryDao, string id)
+        public static DaoResponse<Category> SelectById(this ICategoryDao categoryDao, string id)
         {
-            Filter<Category, string> filter = (categories, criteria) => categories.Where(x => x.CategoryId == criteria);
-            return DaoResponse.QuerySuccessfull(categoryDao.GetAllAndFilterBy(id, filter).ResultObject?.First());
+            Filter<Category, string> filterExpression = (categories, expression) => categories.Where(x => x.CategoryId == expression);
+            return DaoResponse.QuerySuccessfull(categoryDao.SelectWhere(id, filterExpression).ResultObject?.First());
         }
 
-        public static DaoResponse<Category> GetAllAndFilterByName(this ICategoryDao categoryDao, string name)
+        public static DaoResponse<Category> SelectByName(this ICategoryDao categoryDao, string name)
         {
-            Filter<Category, string> filter = (categories, criteria) => categories.Where(x => x.Name == criteria);
-            return DaoResponse.QuerySuccessfull(categoryDao.GetAllAndFilterBy(name, filter).ResultObject?.First());
+            Filter<Category, string> filterExpression = (categories, expression) => categories.Where(x => x.Name == expression);
+            return DaoResponse.QuerySuccessfull(categoryDao.SelectWhere(name, filterExpression).ResultObject?.First());
         }
     }
 }

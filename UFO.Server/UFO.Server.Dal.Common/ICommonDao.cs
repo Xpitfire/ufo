@@ -30,7 +30,7 @@ namespace UFO.Server.Dal.Common
         DaoResponse<TType> Insert(TType entity);
         DaoResponse<TType> Update(TType entity);
         DaoResponse<TType> Delete(TType entity);
-        DaoResponse<IList<TType>> GetAll();
-        DaoResponse<IList<TType>> GetAllAndFilterBy<T>(T criteria, Filter<TType, T> filter);
+        DaoResponse<IList<TType>> SelectAll();
+        DaoResponse<IList<TType>> SelectWhere<T>(T criteria, Filter<TType, T> filterExpression);
     }
 }
