@@ -29,5 +29,28 @@ namespace UFO.Server.Domain
         public Artist Artist { get; set; }
 
         public Venue Venue { get; set; }
+
+        public override string ToString()
+        {
+            return $"DateTime: {DateTime}, Artist: ({Artist}), Venue: ({Venue})";
+        }
+
+        public override bool Equals(object obj)
+        {
+            var performance = obj as Performance;
+            return performance != null
+                && DateTime == performance.DateTime
+                && Artist == performance.Artist
+                && Venue == performance.Venue;
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 33;
+            hashCode += DateTime.GetHashCode();
+            hashCode += Venue?.GetHashCode() ?? 0;
+            hashCode += Venue?.GetHashCode() ?? 0;
+            return hashCode;
+        }
     }
 }

@@ -17,11 +17,16 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
+
+using System;
+
 namespace UFO.Server.Domain
 {
     public sealed class Constants
     {
         public const int InvalidIdValue = int.MinValue;
+
+        public const decimal InvalidGeoLocation = decimal.MinValue;
 
         public const string EMailRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
     }
