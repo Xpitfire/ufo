@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArtistDao.cs" />
+    <Compile Include="LocationDao.cs" />
     <Compile Include="CategoryDao.cs" />
     <Compile Include="CountryDao.cs" />
     <Compile Include="DbCommProvider.cs" />
