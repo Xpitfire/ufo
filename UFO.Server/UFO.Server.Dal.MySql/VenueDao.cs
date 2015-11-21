@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Linq.Expressions;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
@@ -52,17 +53,6 @@ namespace UFO.Server.Dal.MySql
             return venue;
         }
 
-        [DaoExceptionHandler(typeof(Venue))]
-        public DaoResponse<Venue> Insert(Venue entity)
-        {
-            using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertVenue, CreateVenueParameter(entity)))
-            {
-                _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
-            }
-        }
-
         private Dictionary<string, QueryParameter> CreateVenueParameter(Venue venue)
         {
             return new Dictionary<string, QueryParameter>
@@ -74,28 +64,36 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(Venue))]
+        public DaoResponse<Venue> Insert(Venue entity)
+        {
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertVenue, CreateVenueParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+            }
+            return DaoResponse.QuerySuccessful(entity);
+        }
+
+        [DaoExceptionHandler(typeof(Venue))]
         public DaoResponse<Venue> Update(Venue entity)
         {
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (
-                var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateVenue,
-                    CreateVenueParameter(entity)))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateVenue, CreateVenueParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
 
         [DaoExceptionHandler(typeof(Venue))]
         public DaoResponse<Venue> Delete(Venue entity)
         {
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteVenue,
-                    CreateVenueParameter(entity)))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteVenue, CreateVenueParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
 
         [DaoExceptionHandler(typeof(IList<Venue>))]
@@ -111,8 +109,7 @@ namespace UFO.Server.Dal.MySql
                     venues.Add(CreateVenueObject(dataReader));
                 }
             }
-
-            return DaoResponse.QuerySuccessful<IList<Venue>>(venues);
+            return venues.Any() ? DaoResponse.QuerySuccessful<IList<Venue>>(venues) : DaoResponse.QueryEmptyResult<IList<Venue>>();
         }
 
         [DaoExceptionHandler(typeof(IList<Venue>))]

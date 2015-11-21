@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Linq.Expressions;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
@@ -99,8 +100,8 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertUser, CreateUserParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
 
         [DaoExceptionHandler(typeof(User))]
@@ -112,8 +113,8 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, CreateUserParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
 
         [DaoExceptionHandler(typeof(User))]
@@ -123,8 +124,8 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteUser, CreateUserParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
 
         [DaoExceptionHandler(typeof(IList<User>))]
@@ -140,7 +141,7 @@ namespace UFO.Server.Dal.MySql
                     users.Add(CreateUserObject(dataReader));
                 }
             }
-            return DaoResponse.QuerySuccessful<IList<User>>(users);
+            return users.Any() ? DaoResponse.QuerySuccessful<IList<User>>(users) : DaoResponse.QueryEmptyResult<IList<User>>();
         }
 
         [DaoExceptionHandler(typeof(IList<User>))]

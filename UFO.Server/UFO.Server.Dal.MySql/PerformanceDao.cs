@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using UFO.Server.Dal.Common;
@@ -36,8 +37,7 @@ namespace UFO.Server.Dal.MySql
         {
             _dbCommProvider = dbCommProvider;
         }
-
-
+        
         private Performance CreatePerformanceObject(IDataReader dataReader)
         {
             var performance = new Performance
@@ -84,8 +84,17 @@ namespace UFO.Server.Dal.MySql
                 };
                 performance.Venue = venue;
             }
-
             return performance;
+        }
+
+        private Dictionary<string, QueryParameter> CreatePerformanceParameter(Performance performance)
+        {
+            return new Dictionary<string, QueryParameter>
+            {
+                {"?Date", new QueryParameter {ParameterValue = performance.DateTime} },
+                {"?ArtistId", new QueryParameter {ParameterValue = performance.Artist.ArtistId}},
+                {"?VenueId", new QueryParameter {ParameterValue = performance.Venue.VenueId}}
+            };
         }
 
         [DaoExceptionHandler(typeof(Performance))]
@@ -95,8 +104,8 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertPerformance, CreatePerformanceParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
 
         [DaoExceptionHandler(typeof(Performance))]
@@ -106,8 +115,8 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdatePerformance, CreatePerformanceParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
 
         [DaoExceptionHandler(typeof(Performance))]
@@ -117,8 +126,8 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeletePerformance, CreatePerformanceParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
 
         [DaoExceptionHandler(typeof(IList<Performance>))]
@@ -134,8 +143,7 @@ namespace UFO.Server.Dal.MySql
                     performances.Add(CreatePerformanceObject(dataReader));
                 }
             }
-
-            return DaoResponse.QuerySuccessful<IList<Performance>>(performances);
+            return performances.Any() ? DaoResponse.QuerySuccessful<IList<Performance>>(performances) : DaoResponse.QueryEmptyResult<IList<Performance>>();
         }
 
         [DaoExceptionHandler(typeof(IList<Performance>))]
@@ -143,16 +151,6 @@ namespace UFO.Server.Dal.MySql
         {
             return DaoResponse.QuerySuccessful<IList<Performance>>(
                 new List<Performance>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
-        }
-
-        private Dictionary<string, QueryParameter> CreatePerformanceParameter(Performance performance)
-        {
-            return new Dictionary<string, QueryParameter>
-            {
-                {"?Date", new QueryParameter {ParameterValue = performance.DateTime} },
-                {"?ArtistId", new QueryParameter {ParameterValue = performance.Artist.ArtistId}},
-                {"?VenueId", new QueryParameter {ParameterValue = performance.Venue.VenueId}}
-            };
         }
     }
 }

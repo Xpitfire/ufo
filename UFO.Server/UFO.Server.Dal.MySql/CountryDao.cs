@@ -19,6 +19,7 @@
 #endregion
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Linq.Expressions;
 using MySql.Data.MySqlClient;
 using UFO.Server.Dal.Common;
@@ -62,16 +63,16 @@ namespace UFO.Server.Dal.MySql
             {
                 {"?Code", new QueryParameter {ParameterValue = code}}
             };
-            using (var connection =     _dbCommProvider.CreateDbConnection())
-            using (var command =        _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectCountryById, parameter))
-            using (var dataReader =     _dbCommProvider.ExecuteReader(command))
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectCountryById, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
             {
                 if (dataReader.Read())
                 {
                     country = CreateCountryObject(dataReader);
                 }
             }
-            return DaoResponse.QuerySuccessful(country);
+            return country != null ? DaoResponse.QuerySuccessful(country) : DaoResponse.QueryEmptyResult<Country>();
         }
 
         [DaoExceptionHandler(typeof(Country))]
@@ -81,8 +82,8 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertCountry, CreateCountryParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
 
         [DaoExceptionHandler(typeof(Country))]
@@ -92,8 +93,8 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateCountry, CreateCountryParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
 
         [DaoExceptionHandler(typeof(Country))]
@@ -103,8 +104,8 @@ namespace UFO.Server.Dal.MySql
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteCountry, CreateCountryParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
-                return DaoResponse.QuerySuccessful(entity);
             }
+            return DaoResponse.QuerySuccessful(entity);
         }
 
         [DaoExceptionHandler(typeof(IList<Country>))]
@@ -120,7 +121,7 @@ namespace UFO.Server.Dal.MySql
                     countries.Add(CreateCountryObject(dataReader));
                 }
             }
-            return DaoResponse.QuerySuccessful<IList<Country>>(countries);
+            return countries.Any() ? DaoResponse.QuerySuccessful<IList<Country>>(countries) : DaoResponse.QueryEmptyResult<IList<Country>>();
         }
 
         [DaoExceptionHandler(typeof(IList<Country>))]
