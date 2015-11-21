@@ -73,6 +73,16 @@ namespace UFO.Server.Dal.MySql
                                                     FROM country 
                                                    WHERE Code=?Code";
 
+        public const string UpdateCountry = @"UPDATE country 
+                                                 SET Name=?Name 
+                                               WHERE Code=?Code";
+
+        public const string DeleteCountry = @"DELETE FROM country
+                                                    WHERE Code=?Code";
+
+        public const string InsertCountry = @"INSERT INTO country (Code, Name)
+                                                   VALUES (?Code, ?Name)";
+
 
         // Category
         public const string SelectAllCategories = @"SELECT * 
@@ -81,5 +91,15 @@ namespace UFO.Server.Dal.MySql
         public const string SelectCategoryById = @"SELECT * 
                                                      FROM category 
                                                     WHERE CategoryId=?CategoryId";
+
+        public const string UpdateCategory = @"UPDATE category 
+                                                  SET Name=?Name 
+                                                WHERE CategoryId=?CategoryId";
+
+        public const string DeleteCategory = @"DELETE FROM category
+                                                     WHERE CategoryId=?CategoryId";
+
+        public const string InsertCategory = @"INSERT INTO category (CategoryId, Name)
+                                                    VALUES (?CategoryId, ?Name)";
     }
 }

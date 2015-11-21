@@ -235,7 +235,11 @@ namespace UFO.Server.Test
                 TestDbDaoClassName).CreateCategoryDao();
             using (var scope = new TransactionScope())
             {
-                var category = new Category() { CategoryId = "KT", Name = "Klassik Tanz" };
+                var category = new Category
+                {
+                    CategoryId = "KT",
+                    Name = "Klassik Tanz"
+                };
                 dao.Insert(category)
                     .OnFailure(response => Assert.Fail($"Insert does not work! {response.Exception}"));
                 
@@ -310,7 +314,11 @@ namespace UFO.Server.Test
                 TestDbDaoClassName).CreateCountryDao();
             using (var scope = new TransactionScope())
             {
-                var country = new Country() { Code="PD", Name="Pandora" };
+                var country = new Country
+                {
+                    Code="PD",
+                    Name ="Pandora"
+                };
                 dao.Insert(country)
                     .OnFailure(response => Assert.Fail($"Insert does not work! {response.Exception}"));
 
@@ -471,7 +479,10 @@ namespace UFO.Server.Test
                 TestDbDaoClassName).CreateVenueDao();
             using (var scope = new TransactionScope())
             {
-                var venue = new Venue() { VenueId = "A7", Name = "Tiki Tiki"};
+                var venue = new Venue
+                {
+                    VenueId = "A7", Name = "Tiki Tiki"
+                };
                 dao.Insert(venue)
                     .OnFailure(response => Assert.Fail($"Insert does not work! {response.Exception}"));
 
@@ -545,7 +556,10 @@ namespace UFO.Server.Test
                 TestDbDaoClassName).CreatePerformanceDao();
             using (var scope = new TransactionScope())
             {
-                var performance = new Performance() { DateTime = new DateTime(2016, 7, 18) };
+                var performance = new Performance
+                {
+                    DateTime = new DateTime(2016, 7, 18)
+                };
 
                 dao.Insert(performance)
                     .OnFailure(response => Assert.Fail($"Insert does not work! {response.Exception}"));

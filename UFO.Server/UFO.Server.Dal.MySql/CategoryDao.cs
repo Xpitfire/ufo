@@ -44,6 +44,15 @@ namespace UFO.Server.Dal.MySql
             return category;
         }
 
+        private Dictionary<string, QueryParameter> CreateCategoryParameter(Category entity)
+        {
+            return new Dictionary<string, QueryParameter>
+            {
+                {"?CategoryId", new QueryParameter {ParameterValue = entity.CategoryId}},
+                {"?Name", new QueryParameter {ParameterValue = entity.Name}}
+            };
+        }
+
         [DaoExceptionHandler(typeof(Category))]
         public DaoResponse<Category> GetById(string id)
         {
@@ -67,19 +76,34 @@ namespace UFO.Server.Dal.MySql
         [DaoExceptionHandler(typeof(Category))]
         public DaoResponse<Category> Insert(Category entity)
         {
-            throw new System.NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertCategory, CreateCategoryParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessfull(entity);
+            }
         }
 
         [DaoExceptionHandler(typeof(Category))]
         public DaoResponse<Category> Update(Category entity)
         {
-            throw new System.NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateCategory, CreateCategoryParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessfull(entity);
+            }
         }
-
+        
         [DaoExceptionHandler(typeof(Category))]
         public DaoResponse<Category> Delete(Category entity)
         {
-            throw new System.NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteCategory, CreateCategoryParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessfull(entity);
+            }
         }
 
         [DaoExceptionHandler(typeof(IList<Category>))]

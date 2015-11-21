@@ -44,6 +44,15 @@ namespace UFO.Server.Dal.MySql
             return country;
         }
 
+        private Dictionary<string, QueryParameter> CreateCountryParameter(Country entity)
+        {
+            return new Dictionary<string, QueryParameter>
+            {
+                {"?Code", new QueryParameter {ParameterValue = entity.Code}},
+                {"?Name", new QueryParameter {ParameterValue = entity.Name}}
+            };
+        }
+
         [DaoExceptionHandler(typeof(Country))]
         public DaoResponse<Country> GetByCode(string code)
         {
@@ -67,19 +76,34 @@ namespace UFO.Server.Dal.MySql
         [DaoExceptionHandler(typeof(Country))]
         public DaoResponse<Country> Insert(Country entity)
         {
-            throw new System.NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertCountry, CreateCountryParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessfull(entity);
+            }
         }
 
         [DaoExceptionHandler(typeof(Country))]
         public DaoResponse<Country> Update(Country entity)
         {
-            throw new System.NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateCountry, CreateCountryParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessfull(entity);
+            }
         }
 
         [DaoExceptionHandler(typeof(Country))]
         public DaoResponse<Country> Delete(Country entity)
         {
-            throw new System.NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteCountry, CreateCountryParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessfull(entity);
+            }
         }
 
         [DaoExceptionHandler(typeof(IList<Country>))]
