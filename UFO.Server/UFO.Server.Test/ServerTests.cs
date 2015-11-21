@@ -510,7 +510,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.SelectById("UU");
+                var getRsp = dao.SelectById("A1");
                 getRsp.OnEmptyResult(() => Assert.Fail("No data found"));
                 var venue = getRsp.ResultObject;
                 venue.Name = "Test";

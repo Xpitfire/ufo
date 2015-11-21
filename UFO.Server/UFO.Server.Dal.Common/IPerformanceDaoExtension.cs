@@ -29,10 +29,11 @@ namespace UFO.Server.Dal.Common
 {
     public static class IPerformanceDaoExtension
     {
-        public static DaoResponse<Performance> SelectByDateTime(this IPerformanceDao venueDao, DateTime datetime)
+        public static DaoResponse<Performance> SelectByDateTime(this IPerformanceDao dao, DateTime datetime)
         {
             Expression<Filter<Performance, DateTime>> filterExpression = (performances, expression) => performances.Where(x => x.DateTime == expression);
-            return DaoResponse.QuerySuccessful(venueDao.SelectWhere(datetime, filterExpression).ResultObject?.First());
+            var values = dao.SelectWhere(datetime, filterExpression).ResultObject;
+            return values.Any() ? DaoResponse.QuerySuccessful(values.First()) : DaoResponse.QueryEmptyResult<Performance>();
         }
     }
 }

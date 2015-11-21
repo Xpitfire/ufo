@@ -64,7 +64,7 @@ namespace UFO.Server.Dal.Common
         /// <returns>DaoResponse with successful flag, but no real result object. Result value is set to default.</returns>
         public static DaoResponse<TResponse> QueryEmptyResult<TResponse>()
         {
-            return QueryResponse(default(TResponse), DaoStatus.Successful);
+            return QueryResponse(default(TResponse), DaoStatus.EmptyResult);
         }
 
         /// <summary>
