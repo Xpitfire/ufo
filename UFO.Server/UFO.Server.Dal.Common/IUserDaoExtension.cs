@@ -43,7 +43,7 @@ namespace UFO.Server.Dal.Common
 
         public static DaoResponse<IList<User>> GetAllAndFilterByFirstName(this IUserDao userDao, string name)
         {
-            Filter<User, string> filter = (users, criteria) => users.Where(x => x.FistName == criteria);
+            Filter<User, string> filter = (users, criteria) => users.Where(x => x.FirstName == criteria);
             return userDao.GetAllAndFilterBy(name, filter);
         }
 

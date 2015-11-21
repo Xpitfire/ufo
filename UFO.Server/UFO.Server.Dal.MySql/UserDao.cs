@@ -40,7 +40,7 @@ namespace UFO.Server.Dal.MySql
             var user = new User
             {
                 UserId = _dbCommProvider.CastDbObject<int>(dataReader, "UserId"),
-                FistName = _dbCommProvider.CastDbObject<string>(dataReader, "FirstName"),
+                FirstName = _dbCommProvider.CastDbObject<string>(dataReader, "FirstName"),
                 LastName = _dbCommProvider.CastDbObject<string>(dataReader, "LastName"),
                 EMail = _dbCommProvider.CastDbObject<string>(dataReader, "UserMail"),
                 Password = _dbCommProvider.CastDbObject<string>(dataReader, "Password"),
@@ -82,7 +82,7 @@ namespace UFO.Server.Dal.MySql
             return new Dictionary<string, QueryParameter>
             {
                 {"?UserId", new QueryParameter {ParameterValue = entity.UserId}},
-                {"?FirstName", new QueryParameter {ParameterValue = entity.FistName}},
+                {"?FirstName", new QueryParameter {ParameterValue = entity.FirstName}},
                 {"?LastName", new QueryParameter {ParameterValue = entity.LastName}},
                 {"?Password", new QueryParameter {ParameterValue = entity.Password}},
                 {"?IsAdmin", new QueryParameter {ParameterValue = entity.IsAdmin}},

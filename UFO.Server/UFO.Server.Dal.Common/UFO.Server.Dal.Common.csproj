@@ -59,6 +59,10 @@
     <Compile Include="ADbCommProvider.cs" />
     <Compile Include="DaoResponseExtension.cs" />
     <Compile Include="IArtistDao.cs" />
+    <Compile Include="IPerformanceDaoExtension.cs" />
+    <Compile Include="IVenueDaoExtension.cs" />
+    <Compile Include="ICountryDaoExtension.cs" />
+    <Compile Include="ICategoryDaoExtension.cs" />
     <Compile Include="IArtistDaoExtension.cs" />
     <Compile Include="ICategoryDao.cs" />
     <Compile Include="ICommonDao.cs" />

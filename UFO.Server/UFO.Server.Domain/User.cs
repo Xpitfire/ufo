@@ -27,7 +27,7 @@ namespace UFO.Server.Domain
     {
         public int UserId { get; set; } = Constants.InvalidIdValue;
 
-        public string FistName { get; set; }
+        public string FirstName { get; set; }
 
         public string LastName { get; set; }
 
@@ -57,7 +57,7 @@ namespace UFO.Server.Domain
 
         public override string ToString()
         {
-            return $"User ( ArtistId={Artist}, FirstName={FistName}, LastName={LastName}, EMail={EMail} )";
+            return $"User ( ArtistId={Artist}, FirstName={FirstName}, LastName={LastName}, EMail={EMail} )";
         }
     }
 }
