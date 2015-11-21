@@ -20,6 +20,9 @@ SET FOREIGN_KEY_CHECKS = 0;
 --
 -- Database: `ufo`
 --
+CREATE DATABASE IF NOT EXISTS `ufo`;
+
+USE `ufo`;
 
 -- --------------------------------------------------------
 

@@ -19,6 +19,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `ufo`
 --
+CREATE DATABASE IF NOT EXISTS `ufo`;
+
+USE `ufo`;
 
 -- --------------------------------------------------------
 
