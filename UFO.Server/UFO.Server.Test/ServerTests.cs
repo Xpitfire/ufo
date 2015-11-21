@@ -567,9 +567,10 @@ namespace UFO.Server.Test
             {
                 var performance = new Performance
                 {
-                    DateTime = new DateTime(2016, 7, 18)
+                    DateTime = new DateTime(2016, 7, 18, 21, 00, 00),
+                    Artist = new Artist { ArtistId = 1},
+                    Venue = new Venue{ VenueId = "A2"}
                 };
-
                 dao.Insert(performance)
                     .OnFailure(response => Assert.Fail($"Insert does not work! {response.Exception}"));
 
@@ -588,7 +589,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.SelectByDateTime(new DateTime(2015, 11, 13));
+                var getRsp = dao.SelectByDateTime(new DateTime(2015, 11, 13, 20, 00, 00));
                 Assert.IsNotNull(getRsp);
                 var performance = getRsp.ResultObject;
                 performance.DateTime = new DateTime(2015,11,14);
@@ -611,10 +612,10 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.SelectByDateTime(new DateTime(2015, 11, 13));
+                var getRsp = dao.SelectByDateTime(new DateTime(2015, 11, 13, 20, 00, 00));
                 Assert.IsNotNull(getRsp);
                 var performance = getRsp.ResultObject;
-                performance.DateTime = new DateTime(2015,11,14);
+                performance.DateTime = new DateTime(2015,11,14, 17, 30, 00);
 
                 dao.Update(performance)
                     .OnFailure(response => Assert.Fail($"Update does not work! {response.Exception}"));
