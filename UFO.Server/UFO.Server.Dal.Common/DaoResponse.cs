@@ -39,7 +39,7 @@ namespace UFO.Server.Dal.Common
     [Serializable]
     public class DaoResponse
     {
-        public DaoStatus ResponseStatus { get; set; } = DaoStatus.Failed;
+        public DaoStatus ResponseStatus { get; set; }
 
         public Exception Exception { get; set; }
 
@@ -53,7 +53,7 @@ namespace UFO.Server.Dal.Common
         /// <typeparam name="TResponse">Response type.</typeparam>
         /// <param name="responseObject">Response object of type TResponse.</param>
         /// <returns>DaoResponse with successful flag.</returns>
-        public static DaoResponse<TResponse> QuerySuccessfull<TResponse>(TResponse responseObject)
+        public static DaoResponse<TResponse> QuerySuccessful<TResponse>(TResponse responseObject)
         {
             return QueryResponse(responseObject, DaoStatus.Successful);
         }
@@ -111,7 +111,7 @@ namespace UFO.Server.Dal.Common
     public class DaoResponse<TDaoType> : DaoResponse
     {
         public new TDaoType ResultObject { get; set; }
-
+        
         /// <summary>
         /// Delegates and executes an Action with parameter of type TDaoType, 
         /// if a successful response has occurred.

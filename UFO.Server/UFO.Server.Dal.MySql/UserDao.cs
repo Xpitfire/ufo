@@ -95,7 +95,12 @@ namespace UFO.Server.Dal.MySql
         [DaoExceptionHandler(typeof(User))]
         public DaoResponse<User> Insert(User entity)
         {
-            throw new NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertUser, CreateUserParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessful(entity);
+            }
         }
 
         [DaoExceptionHandler(typeof(User))]
@@ -114,7 +119,12 @@ namespace UFO.Server.Dal.MySql
         [DaoExceptionHandler(typeof(User))]
         public DaoResponse<User> Delete(User entity)
         {
-            throw new NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteUser, CreateUserParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessful(entity);
+            }
         }
 
         [DaoExceptionHandler(typeof(IList<User>))]

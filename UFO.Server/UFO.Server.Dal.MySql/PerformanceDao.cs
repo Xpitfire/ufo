@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
@@ -90,19 +91,34 @@ namespace UFO.Server.Dal.MySql
         [DaoExceptionHandler(typeof(Performance))]
         public DaoResponse<Performance> Insert(Performance entity)
         {
-            throw new NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertPerformance, CreatePerformanceParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessful(entity);
+            }
         }
 
         [DaoExceptionHandler(typeof(Performance))]
         public DaoResponse<Performance> Update(Performance entity)
         {
-            throw new System.NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdatePerformance, CreatePerformanceParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessful(entity);
+            }
         }
 
         [DaoExceptionHandler(typeof(Performance))]
         public DaoResponse<Performance> Delete(Performance entity)
         {
-            throw new NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeletePerformance, CreatePerformanceParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessful(entity);
+            }
         }
 
         [DaoExceptionHandler(typeof(IList<Performance>))]
@@ -127,6 +143,16 @@ namespace UFO.Server.Dal.MySql
         {
             return DaoResponse.QuerySuccessful<IList<Performance>>(
                 new List<Performance>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
+        }
+
+        private Dictionary<string, QueryParameter> CreatePerformanceParameter(Performance performance)
+        {
+            return new Dictionary<string, QueryParameter>
+            {
+                {"?Date", new QueryParameter {ParameterValue = performance.DateTime} },
+                {"?ArtistId", new QueryParameter {ParameterValue = performance.Artist.ArtistId}},
+                {"?VenueId", new QueryParameter {ParameterValue = performance.Venue.VenueId}}
+            };
         }
     }
 }

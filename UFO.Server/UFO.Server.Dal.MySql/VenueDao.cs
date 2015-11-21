@@ -55,14 +55,31 @@ namespace UFO.Server.Dal.MySql
         [DaoExceptionHandler(typeof(Venue))]
         public DaoResponse<Venue> Insert(Venue entity)
         {
-            var paramter = new Dictionary<string, QueryParameter>
-            {
-                {"?VenueId", new QueryParameter {ParameterValue = entity.VenueId}},
-                {"?LocationId", new QueryParameter {ParameterValue = entity.Location?.LocationId}},
-                {"?Name", new QueryParameter {ParameterValue = entity.Name}}
-            };
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, paramter))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertVenue, CreateVenueParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessful(entity);
+            }
+        }
+
+        private Dictionary<string, QueryParameter> CreateVenueParameter(Venue venue)
+        {
+            return new Dictionary<string, QueryParameter>
+            {
+                {"?VenueId", new QueryParameter {ParameterValue = venue.VenueId}},
+                {"?Name", new QueryParameter {ParameterValue = venue.Name}},
+                {"?LocationId", new QueryParameter {ParameterValue = venue.Location.LocationId}}
+            };
+        }
+
+        [DaoExceptionHandler(typeof(Venue))]
+        public DaoResponse<Venue> Update(Venue entity)
+        {
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (
+                var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateVenue,
+                    CreateVenueParameter(entity)))
             {
                 _dbCommProvider.ExecuteNonQuery(command);
                 return DaoResponse.QuerySuccessful(entity);
@@ -70,15 +87,15 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(Venue))]
-        public DaoResponse<Venue> Update(Venue entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        [DaoExceptionHandler(typeof(Venue))]
         public DaoResponse<Venue> Delete(Venue entity)
         {
-            throw new NotImplementedException();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.DeleteVenue,
+                    CreateVenueParameter(entity)))
+            {
+                _dbCommProvider.ExecuteNonQuery(command);
+                return DaoResponse.QuerySuccessful(entity);
+            }
         }
 
         [DaoExceptionHandler(typeof(IList<Venue>))]

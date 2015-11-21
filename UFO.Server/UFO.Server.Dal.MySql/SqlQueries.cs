@@ -31,19 +31,47 @@ namespace UFO.Server.Dal.MySql
         public const string SelectAllUsers = @"SELECT *
                                                  FROM userview";
 
+        public const string DeleteUser = @"DELETE FROM user
+                                                 WHERE UserId=?UserId";
+
         public const string UpdateUser = @"UPDATE user 
                                               SET FirstName=?FirstName, LastName=?LastName, Password=?Password, IsAdmin=?IsAdmin, IsArtist=?IsArtist, ArtistId=?ArtistId 
                                             WHERE UserId=?UserId";
+
+        public const string InsertUser = @"INSERT INTO user (FirstName, LastName, Password, IsAdmin, IsArtist, ArtistId)
+                                                  VALUES (?FirstName, ?LastName, ?Password, ?IsAdmin, ?IsArtist, ?ArtistId)";
 
 
         // Performance
         public const string SelectAllPerfomances = @"SELECT *
                                                        FROM performanceview";
 
+        public const string DeletePerformance = @"DELETE FROM performance
+                                                   WHERE Date=?Date";
+
+        public const string UpdatePerformance = @"UPDATE performance 
+                                              SET ArtistId=?ArtistId, VenueId=?VenueId
+                                            WHERE Date=?Date";
+
+        public const string InsertPerformance = @"INSERT INTO performance (Date, ArtistId, VenueId)
+                                                  VALUES (?Date, ?ArtistId, ?VenueId)";
+
+
 
         // Venue
         public const string SelectAllVenues = @"SELECT *
                                                   FROM venueview";
+
+        public const string DeleteVenue = @"DELETE FROM venue
+                                                  WHERE VenueId=?VenueId";
+
+        public const string UpdateVenue = @"UPDATE venue 
+                                               SET Name=?Name, LocationId=?LocationId
+                                             WHERE VenueId=?VenueId";
+
+        public const string InsertVenue = @"INSERT INTO venue (Name, VenueId, LocationId)
+                                                  VALUES (?Name, ?VenueId, ?LocationId)";
+
 
 
         // Artist
@@ -101,5 +129,6 @@ namespace UFO.Server.Dal.MySql
 
         public const string InsertCategory = @"INSERT INTO category (CategoryId, Name)
                                                     VALUES (?CategoryId, ?Name)";
+
     }
 }
