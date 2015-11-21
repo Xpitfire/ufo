@@ -51,5 +51,10 @@ namespace UFO.Server.Dal.Dummy
         {
             return DaoResponse.QuerySuccessful<IList<User>>(filterExpression.Compile()(DataCollection.Users, criteria).ToList());
         }
+
+        public DaoResponse<User> SelectById(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

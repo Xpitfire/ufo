@@ -41,6 +41,12 @@ namespace UFO.Server
                 })
                 .OnFailure(response => { throw response.Exception; });
 
+            var performanceDao = daoFacotry.CreatePerformanceDao();
+            performanceDao.SelectById(new DateTime(2015, 11, 15, 22, 00, 00), 64)
+                .OnSuccess(response => Console.WriteLine($"{response.ResultObject}"))
+                .OnEmptyResult(() => Console.WriteLine("No performance data found!"))
+                .OnFailure(response => Console.WriteLine($"{response.Exception}"));
+
             Console.ReadLine();
         }
     }

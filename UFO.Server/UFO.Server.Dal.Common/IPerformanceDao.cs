@@ -17,6 +17,8 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
+
+using System;
 using System.Collections.Generic;
 using UFO.Server.Domain;
 
@@ -24,5 +26,6 @@ namespace UFO.Server.Dal.Common
 {
     public interface IPerformanceDao : ICommonDao<Performance>
     {
+        DaoResponse<Performance> SelectById(DateTime dateTime, int artistId);
     }
 }

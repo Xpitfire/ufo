@@ -107,8 +107,6 @@ namespace UFO.Server.Dal.MySql
         [DaoExceptionHandler(typeof(User))]
         public DaoResponse<User> Update(User entity)
         {
-            
-
             using (var connection = _dbCommProvider.CreateDbConnection())
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, CreateUserParameter(entity)))
             {
@@ -126,6 +124,26 @@ namespace UFO.Server.Dal.MySql
                 _dbCommProvider.ExecuteNonQuery(command);
             }
             return DaoResponse.QuerySuccessful(entity);
+        }
+
+        [DaoExceptionHandler(typeof(IList<User>))]
+        public DaoResponse<User> SelectById(int id)
+        {
+            User user = null;
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?UserId", new QueryParameter {ParameterValue = id}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectUserById, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                if (dataReader.Read())
+                {
+                    user = CreateUserObject(dataReader);
+                }
+            }
+            return user != null ? DaoResponse.QuerySuccessful(user) : DaoResponse.QueryEmptyResult<User>();
         }
 
         [DaoExceptionHandler(typeof(IList<User>))]

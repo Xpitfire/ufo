@@ -87,6 +87,26 @@ namespace UFO.Server.Dal.MySql
             return DaoResponse.QuerySuccessful(entity);
         }
 
+        [DaoExceptionHandler(typeof(Artist))]
+        public DaoResponse<Artist> SelectById(int id)
+        {
+            Artist artist = null;
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?ArtistId", new QueryParameter {ParameterValue = id}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectArtistById, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                if (dataReader.Read())
+                {
+                    artist = CreateArtistObject(dataReader);
+                }
+            }
+            return artist != null ? DaoResponse.QuerySuccessful(artist) : DaoResponse.QueryEmptyResult<Artist>();
+        }
+
         [DaoExceptionHandler(typeof(IList<Artist>))]
         public DaoResponse<IList<Artist>> SelectAll()
         {
@@ -109,7 +129,7 @@ namespace UFO.Server.Dal.MySql
             return DaoResponse.QuerySuccessful<IList<Artist>>(
                 new List<Artist>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
         }
-
+        
         [DaoExceptionHandler(typeof(Artist))]
         public DaoResponse<Artist> Insert(Artist entity)
         {

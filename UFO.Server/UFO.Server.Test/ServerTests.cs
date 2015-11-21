@@ -138,6 +138,18 @@ namespace UFO.Server.Test
             DaoResponse<IList<User>> response = dao.SelectAll();
             Assert.IsTrue(response.ResultObject?.Count > 10);
         }
+
+        [TestMethod]
+        public void TestSelectByIdUserDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateUserDao();
+            var user = dao.SelectById(5).ResultObject;
+            Assert.IsNotNull(user);
+        }
+
         /// <summary>
         /// User.Insert Method is not implemented!
         /// </summary>
@@ -231,6 +243,17 @@ namespace UFO.Server.Test
         }
 
         [TestMethod]
+        public void TestSelectByIdCategoryDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateCategoryDao();
+            var category = dao.SelectById("OT").ResultObject;
+            Assert.IsNotNull(category);
+        }
+
+        [TestMethod]
         public void TestInsertCategoryDbAccess()
         {
             var dao = DalProviderFactories.GetDaoFactory(
@@ -262,7 +285,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.SelectById("OT");
+                var getRsp = ICategoryDaoExtension.SelectById(dao, "OT");
                 getRsp
                     .OnEmptyResult(() => Assert.Fail("No data found"))
                     .OnFailure(response => Assert.Fail($"Unexpected exception occurred: {response.Exception}"));
@@ -307,10 +330,24 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllCountryDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory().CreateCountryDao();
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateCountryDao();
             var countries = dao.SelectAll().ResultObject;
             Assert.IsNotNull(countries);
             Assert.IsTrue(countries.Any());
+        }
+
+        [TestMethod]
+        public void TestSelectByIdCountryDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateCountryDao();
+            var country = dao.SelectByCode("AT").ResultObject;
+            Assert.IsNotNull(country);
         }
 
         [TestMethod]
@@ -391,19 +428,31 @@ namespace UFO.Server.Test
                 //scope.Complete();
             }
         }
-
-
-
+        
 
         // Artist Tests
 
         [TestMethod]
         public void TestAllArtistDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory().CreateArtistDao();
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateArtistDao();
             var artists = dao.SelectAll().ResultObject;
             Assert.IsNotNull(artists);
             Assert.IsTrue(artists.Any());
+        }
+
+        [TestMethod]
+        public void TestSelectByIdArtistDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateArtistDao();
+            var value = dao.SelectById(5).ResultObject;
+            Assert.IsNotNull(value);
         }
 
         [TestMethod]
@@ -487,10 +536,24 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllVenueDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory().CreateVenueDao();
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateVenueDao();
             var venues = dao.SelectAll().ResultObject;
             Assert.IsNotNull(venues);
             Assert.IsTrue(venues.Any());
+        }
+
+        [TestMethod]
+        public void TestSelectByIdVenueDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateVenueDao();
+            var value = dao.SelectById("A1").ResultObject;
+            Assert.IsNotNull(value);
         }
 
         [TestMethod]
@@ -570,10 +633,24 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllPerformancesDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory().CreatePerformanceDao();
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreatePerformanceDao();
             var performances = dao.SelectAll().ResultObject;
             Assert.IsNotNull(performances);
             Assert.IsTrue(performances.Any());
+        }
+
+        [TestMethod]
+        public void TestSelectByIdPerformanceDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreatePerformanceDao();
+            var performance = dao.SelectById(new DateTime(2015, 11, 15, 22, 00, 00), 64).ResultObject;
+            Assert.IsNotNull(performance);
         }
 
         [TestMethod]
@@ -588,11 +665,34 @@ namespace UFO.Server.Test
                 var performance = new Performance
                 {
                     DateTime = new DateTime(2016, 7, 18, 21, 00, 00),
-                    Artist = new Artist { ArtistId = 1},
-                    Venue = new Venue{ VenueId = "A2"}
+                    Artist = new Artist {ArtistId = 1},
+                    Venue = new Venue{VenueId = "A2"}
                 };
                 dao.Insert(performance)
                     .OnFailure(response => Assert.Fail($"Insert does not work! {response.Exception}"));
+
+                // do not commit changes; only for testing
+                //scope.Complete();
+            }
+        }
+
+        [TestMethod]
+        public void TestInsertInvalidPerformanceDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreatePerformanceDao();
+            using (var scope = new TransactionScope())
+            {
+                var performance = new Performance
+                {
+                    DateTime = new DateTime(2015, 11, 15, 23, 00, 00),
+                    Artist = new Artist { ArtistId = 39 },
+                    Venue = new Venue { VenueId = "A2" }
+                };
+                dao.Insert(performance)
+                    .OnSuccess(response => Assert.Fail($"Insert worked although entry already exists! {response.DateTime}"));
 
                 // do not commit changes; only for testing
                 //scope.Complete();
@@ -634,12 +734,12 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.SelectByDateTime(new DateTime(2015, 11, 13, 20, 00, 00));
+                var getRsp = dao.SelectById(new DateTime(2015, 11, 15, 22, 00, 00), 64);
                 getRsp
                     .OnEmptyResult(() => Assert.Fail("No data found"))
                     .OnFailure(response => Assert.Fail($"Unexpected exception occurred: {response.Exception}"));
                 var performance = getRsp.ResultObject;
-                performance.DateTime = new DateTime(2015,11,14, 17, 30, 00);
+                performance.Venue = new Venue {VenueId = "P5"};
 
                 dao.Update(performance)
                     .OnFailure(response => Assert.Fail($"Update does not work! {response.Exception}"));
@@ -649,6 +749,90 @@ namespace UFO.Server.Test
             }
         }
 
+
+        // Country Tests
+
+        [TestMethod]
+        public void TestAllLocationDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateLocationDao();
+            var locations = dao.SelectAll().ResultObject;
+            Assert.IsNotNull(locations);
+            Assert.IsTrue(locations.Any());
+        }
+
+        [TestMethod]
+        public void TestSelectByIdLocationDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateLocationDao();
+            var location = dao.SelectById(1).ResultObject;
+            Assert.IsNotNull(location);
+        }
+
+        [TestMethod]
+        public void TestInsertLocationDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateLocationDao();
+            using (var scope = new TransactionScope())
+            {
+                var location = new Location
+                {
+                    LocationId = 10,
+                    Latitude = 24.43m,
+                    Longitude = 11.3m,
+                    Name = "Test"
+                };
+                dao.Insert(location)
+                    .OnFailure(response => Assert.Fail($"Insert does not work! {response.Exception}"));
+
+                // do not commit changes; only for testing
+                //scope.Complete();
+            }
+        }
+
+        [TestMethod]
+        public void TestDeleteLocationDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateLocationDao();
+
+            using (var scope = new TransactionScope())
+            {
+                var location = new Location
+                {
+                    LocationId = 20,
+                    Latitude = 24.43m,
+                    Longitude = 11.3m,
+                    Name = "Test"
+                };
+                dao.Insert(location)
+                    .OnFailure(response => Assert.Fail($"Insert does not work! {response.Exception}"));
+
+                var getRsp = dao.SelectById(20);
+                getRsp
+                    .OnEmptyResult(() => Assert.Fail("No data found"))
+                    .OnFailure(response => Assert.Fail($"Unexpected exception occurred: {response.Exception}"));
+                location = getRsp.ResultObject;
+
+                dao.Delete(location)
+                    .OnFailure(response => Assert.Fail($"Delete does not work! {response.Exception}"));
+
+                // do not commit changes; only for testing
+                //scope.Complete();
+            }
+        }
+        
         #endregion
     }
 }

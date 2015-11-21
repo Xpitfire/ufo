@@ -35,5 +35,7 @@ namespace UFO.Server.Dal.Common
         ICategoryDao CreateCategoryDao();
 
         ICountryDao CreateCountryDao();
+
+        ILocationDao CreateLocationDao();
     }
 }

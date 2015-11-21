@@ -29,13 +29,6 @@ namespace UFO.Server.Dal.Common
 {
     public static class IArtistDaoExtension
     {
-        public static DaoResponse<Artist> SelectById(this IArtistDao dao, int id)
-        {
-            Expression<Filter<Artist, int>> filterExpression = (users, value) => users.Where(x => x.ArtistId == value);
-            var values = dao.SelectWhere(filterExpression, id).ResultObject;
-            return values.Any() ? DaoResponse.QuerySuccessful(values.First()) : DaoResponse.QueryEmptyResult<Artist>();
-        }
-
         public static DaoResponse<Artist> SelectByName(this IArtistDao dao, string name)
         {
             Expression<Filter <Artist, string>> filterExpression = (users, value) => users.Where(x => x.Name == value);

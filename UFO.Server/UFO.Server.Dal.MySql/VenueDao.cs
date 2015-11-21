@@ -96,6 +96,26 @@ namespace UFO.Server.Dal.MySql
             return DaoResponse.QuerySuccessful(entity);
         }
 
+        [DaoExceptionHandler(typeof(Venue))]
+        public DaoResponse<Venue> SelectById(string id)
+        {
+            Venue venue = null;
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?VenueId", new QueryParameter {ParameterValue = id}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectVenueById, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                if (dataReader.Read())
+                {
+                    venue = CreateVenueObject(dataReader);
+                }
+            }
+            return venue != null ? DaoResponse.QuerySuccessful(venue) : DaoResponse.QueryEmptyResult<Venue>();
+        }
+
         [DaoExceptionHandler(typeof(IList<Venue>))]
         public DaoResponse<IList<Venue>> SelectAll()
         {
