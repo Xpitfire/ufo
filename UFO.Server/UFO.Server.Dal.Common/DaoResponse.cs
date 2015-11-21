@@ -28,9 +28,7 @@ namespace UFO.Server.Dal.Common
     public enum DaoStatus
     {
         Successful,
-        Failed,
-        Invalid,
-        Unknown
+        Failed
     }
 
     /// <summary>
@@ -40,7 +38,7 @@ namespace UFO.Server.Dal.Common
     [Serializable]
     public class DaoResponse
     {
-        public DaoStatus ResponseStatus { get; set; } = DaoStatus.Unknown;
+        public DaoStatus ResponseStatus { get; set; } = DaoStatus.Failed;
 
         public Exception Exception { get; set; }
 
@@ -48,16 +46,40 @@ namespace UFO.Server.Dal.Common
 
         public object ResultObject { get; set; }
 
+        /// <summary>
+        /// Create a DaoResponse object with a DaoStatus member set to Successful.
+        /// </summary>
+        /// <typeparam name="TResponse">Response type.</typeparam>
+        /// <param name="responseObject">Response object of type TResponse.</param>
+        /// <returns>DaoResponse with successful flag.</returns>
         public static DaoResponse<TResponse> QuerySuccessfull<TResponse>(TResponse responseObject)
         {
             return QueryResponse(responseObject, DaoStatus.Successful);
         }
 
+        /// <summary>
+        /// Create a DaoResponse object with a DaoStatus member set to Failed.
+        /// </summary>
+        /// <typeparam name="TResponse">Response type.</typeparam>
+        /// <param name="responseObject">Response object of type TResponse.</param>
+        /// <param name="errorMessage">Reason why the DaoResponse failed.</param>
+        /// <param name="exception">Exception that might have occured, which lead to failed response.</param>
+        /// <returns></returns>
         public static DaoResponse<TResponse> QueryFailed<TResponse>(TResponse responseObject, string errorMessage, Exception exception = null)
         {
             return QueryResponse(responseObject, DaoStatus.Failed, errorMessage, exception);
         }
 
+        /// <summary>
+        /// Create a DaoResponse object with a DaoStatus and in case of a failure with the meta-information why the
+        /// request failed.
+        /// </summary>
+        /// <typeparam name="TResponse">Response type.</typeparam>
+        /// <param name="status">Response object status flag.</param>
+        /// <param name="responseObject">Response object of type TResponse.</param>
+        /// <param name="errorMessage">Reason why the DaoResponse failed.</param>
+        /// <param name="exception">Exception that might have occured, which lead to failed response.</param>
+        /// <returns></returns>
         public static DaoResponse<TResponse> QueryResponse<TResponse>(TResponse responseObject, DaoStatus status, string errorMessage = "", Exception exception = null)
         {
             var daoResponse = new DaoResponse<TResponse>
@@ -80,6 +102,12 @@ namespace UFO.Server.Dal.Common
     {
         public new TDaoType ResultObject { get; set; }
 
+        /// <summary>
+        /// Delegates and executes an Action with parameter of type TDaoType, 
+        /// if a successful response has occurred.
+        /// </summary>
+        /// <param name="action">Action to be executed on successful response.</param>
+        /// <returns>Returns itself for fluent interface concept.</returns>
         public DaoResponse<TDaoType> OnSuccess(Action<TDaoType> action)
         {
             if (ResponseStatus == DaoStatus.Successful)
@@ -87,6 +115,12 @@ namespace UFO.Server.Dal.Common
             return this;
         }
 
+        /// <summary>
+        /// Delegates and executes an Action with parameter of type DaoResponse and inner type TDaoType, 
+        /// if a successful response has occurred.
+        /// </summary>
+        /// <param name="action">Action to be executed on successful response.</param>
+        /// <returns>Returns itself for fluent interface concept.</returns>
         public DaoResponse<TDaoType> OnSuccess(Action<DaoResponse<TDaoType>> action)
         {
             if (ResponseStatus == DaoStatus.Successful)
@@ -94,6 +128,12 @@ namespace UFO.Server.Dal.Common
             return this;
         }
 
+        /// <summary>
+        /// Delegates and executes an Action without parameters, 
+        /// if a successful response has occurred.
+        /// </summary>
+        /// <param name="action">Action to be executed on successful response.</param>
+        /// <returns>Returns itself for fluent interface concept.</returns>
         public DaoResponse<TDaoType> OnSuccess(Action action)
         {
             if (ResponseStatus == DaoStatus.Successful)
@@ -101,6 +141,13 @@ namespace UFO.Server.Dal.Common
             return this;
         }
 
+        /// <summary>
+        /// Delegates and executes an Action with parameter of type DaoResponse and inner type TDaoType, 
+        /// if a failed response has occurred. This concept works only if the interface methods use
+        /// the DaoExceptionHandlerAttribute to catch and wrap exceptions within a DaoResponse.
+        /// </summary>
+        /// <param name="action">Action to be executed on failed response.</param>
+        /// <returns>Returns itself for fluent interface concept.</returns>
         public DaoResponse<TDaoType> OnFailure(Action<DaoResponse<TDaoType>> action)
         {
             if (ResponseStatus != DaoStatus.Successful)
