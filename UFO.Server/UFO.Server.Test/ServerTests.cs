@@ -181,7 +181,7 @@ namespace UFO.Server.Test
             using (var scope = new TransactionScope())
             {
                 var getRsp = dao.SelectByEmail("marius.dinu@mymail.com");
-                Assert.IsNotNull(getRsp);
+                getRsp.OnEmptyResult(() => Assert.Fail("No data found"));
                 var user = getRsp.ResultObject;
                 user.FirstName = "Test";
 
@@ -204,7 +204,7 @@ namespace UFO.Server.Test
             using (var scope = new TransactionScope())
             {
                 var getRsp = dao.SelectById(6);
-                Assert.IsNotNull(getRsp);
+                getRsp.OnEmptyResult(() => Assert.Fail("No data found"));
                 var user = getRsp.ResultObject;
                 
                 dao.Delete(user)
@@ -259,7 +259,7 @@ namespace UFO.Server.Test
             using (var scope = new TransactionScope())
             {
                 var getRsp = dao.SelectById("OT");
-                Assert.IsNotNull(getRsp);
+                getRsp.OnEmptyResult(() => Assert.Fail("No data found"));
                 var category = getRsp.ResultObject;
                 category.Name = "Test";
 
@@ -282,7 +282,7 @@ namespace UFO.Server.Test
             using (var scope = new TransactionScope())
             {
                 var getRsp = dao.SelectByName("Tanz");
-                Assert.IsNotNull(getRsp);
+                getRsp.OnEmptyResult(() => Assert.Fail("No data found"));
                 var category = getRsp.ResultObject;
                 category.Name = "Test";
 
@@ -346,7 +346,7 @@ namespace UFO.Server.Test
                     .OnFailure(response => Assert.Fail($"Insert does not work! {response.Exception}"));
 
                 var getRsp = dao.SelectByCode("PD");
-                Assert.IsNotNull(getRsp);
+                getRsp.OnEmptyResult(() => Assert.Fail("No data found"));
                 country = getRsp.ResultObject;
 
                 dao.Delete(country)
@@ -368,7 +368,7 @@ namespace UFO.Server.Test
             using (var scope = new TransactionScope())
             {
                 var getRsp = dao.SelectByName("Oman");
-                Assert.IsNotNull(getRsp);
+                getRsp.OnEmptyResult(() => Assert.Fail("No data found"));
                 var category = getRsp.ResultObject;
                 category.Name = "Test";
 
@@ -405,7 +405,7 @@ namespace UFO.Server.Test
             using (var scope = new TransactionScope())
             {
                 var getRsp = dao.SelectByName("AC/DC");
-                Assert.IsNotNull(getRsp);
+                getRsp.OnEmptyResult(() => Assert.Fail("No data found"));
                 var artist = getRsp.ResultObject;
                 artist.Name = "Test";
 
@@ -428,7 +428,7 @@ namespace UFO.Server.Test
             using (var scope = new TransactionScope())
             {
                 var getRsp = dao.SelectByName("AC/DC");
-                Assert.IsNotNull(getRsp);
+                getRsp.OnEmptyResult(() => Assert.Fail("No data found"));
                 var artist = getRsp.ResultObject;
                 artist.Name = "Test";
 
@@ -510,8 +510,8 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.SelectById("A1");
-                Assert.IsNotNull(getRsp);
+                var getRsp = dao.SelectById("UU");
+                getRsp.OnEmptyResult(() => Assert.Fail("No data found"));
                 var venue = getRsp.ResultObject;
                 venue.Name = "Test";
 
@@ -534,7 +534,7 @@ namespace UFO.Server.Test
             using (var scope = new TransactionScope())
             {
                 var getRsp = dao.SelectByName("Landhaus");
-                Assert.IsNotNull(getRsp);
+                getRsp.OnEmptyResult(() => Assert.Fail("No data found"));
                 var venue = getRsp.ResultObject;
                 venue.Name = "Test";
 
@@ -590,7 +590,7 @@ namespace UFO.Server.Test
             using (var scope = new TransactionScope())
             {
                 var getRsp = dao.SelectByDateTime(new DateTime(2015, 11, 13, 20, 00, 00));
-                Assert.IsNotNull(getRsp);
+                getRsp.OnEmptyResult(() => Assert.Fail("No data found"));
                 var performance = getRsp.ResultObject;
                 performance.DateTime = new DateTime(2015,11,14);
 
@@ -613,7 +613,7 @@ namespace UFO.Server.Test
             using (var scope = new TransactionScope())
             {
                 var getRsp = dao.SelectByDateTime(new DateTime(2015, 11, 13, 20, 00, 00));
-                Assert.IsNotNull(getRsp);
+                getRsp.OnEmptyResult(() => Assert.Fail("No data found"));
                 var performance = getRsp.ResultObject;
                 performance.DateTime = new DateTime(2015,11,14, 17, 30, 00);
 
