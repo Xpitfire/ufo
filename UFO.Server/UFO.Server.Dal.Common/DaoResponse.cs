@@ -160,7 +160,7 @@ namespace UFO.Server.Dal.Common
         /// <returns>Returns itself for a fluent interface concept.</returns>
         public DaoResponse<TDaoType> OnEmptyResult(Action action)
         {
-            if (ResponseStatus == DaoStatus.Successful)
+            if (ResponseStatus == DaoStatus.EmptyResult)
                 action();
             return this;
         }
