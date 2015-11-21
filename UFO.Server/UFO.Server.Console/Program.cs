@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
@@ -29,15 +31,16 @@ namespace UFO.Server
                 .OnFailure(response => Console.WriteLine($"Error: {response.ErrorMessage}"));
 
             var userDao = daoFacotry.CreateUserDao();
-            userDao.SelectWhere<IList<User>>((list, value) => list.Where(x => x.Artist != null))
-                .OnSuccess(list =>
+            userDao.SelectWhere<IList<User>>((list, value) => list.Where(x => x.IsArtist))
+                .OnSuccess(users =>
                 {
-                    foreach (var user in list)
+                    foreach (var user in users)
                     {
-                        Console.WriteLine($"{user}");
+                        Console.WriteLine($"Update user: ({user}) successful");
                     }
-                });
-            
+                })
+                .OnFailure(response => { throw response.Exception; });
+
             Console.ReadLine();
         }
     }
