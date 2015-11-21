@@ -23,10 +23,20 @@ namespace UFO.Server
                 {
                     foreach (var artist in list)
                     {
-                        Console.WriteLine($"Artist: {artist}");
+                        Console.WriteLine($"{artist}");
                     }
                 })
                 .OnFailure(response => Console.WriteLine($"Error: {response.ErrorMessage}"));
+
+            var userDao = daoFacotry.CreateUserDao();
+            userDao.SelectWhere<IList<User>>((list, value) => list.Where(x => x.Artist != null))
+                .OnSuccess(list =>
+                {
+                    foreach (var user in list)
+                    {
+                        Console.WriteLine($"{user}");
+                    }
+                });
             
             Console.ReadLine();
         }

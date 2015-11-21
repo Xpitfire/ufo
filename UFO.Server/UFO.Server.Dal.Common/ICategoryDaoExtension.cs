@@ -31,15 +31,15 @@ namespace UFO.Server.Dal.Common
     {
         public static DaoResponse<Category> SelectById(this ICategoryDao dao, string id)
         {
-            Expression<Filter<Category, string>> filterExpression = (categories, expression) => categories.Where(x => x.CategoryId == expression);
-            var values = dao.SelectWhere(id, filterExpression).ResultObject;
+            Expression<Filter<Category, string>> filterExpression = (categories, value) => categories.Where(x => x.CategoryId == value);
+            var values = dao.SelectWhere(filterExpression, id).ResultObject;
             return values.Any() ? DaoResponse.QuerySuccessful(values.First()) : DaoResponse.QueryEmptyResult<Category>();
         }
 
         public static DaoResponse<Category> SelectByName(this ICategoryDao dao, string name)
         {
-            Expression<Filter<Category, string>> filterExpression = (categories, expression) => categories.Where(x => x.Name == expression);
-            var values = dao.SelectWhere(name, filterExpression).ResultObject;
+            Expression<Filter<Category, string>> filterExpression = (categories, value) => categories.Where(x => x.Name == value);
+            var values = dao.SelectWhere(filterExpression, name).ResultObject;
             return values.Any() ? DaoResponse.QuerySuccessful(values.First()) : DaoResponse.QueryEmptyResult<Category>();
         }
     }

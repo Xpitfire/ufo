@@ -32,29 +32,29 @@ namespace UFO.Server.Dal.Common
 
         public static DaoResponse<User> SelectByEmail(this IUserDao dao, string email)
         {
-            Expression<Filter<User, string>> filterExpression = (users, expression) => users.Where(x => x.EMail == expression);
-            var values = dao.SelectWhere(email, filterExpression).ResultObject;
+            Expression<Filter<User, string>> filterExpression = (users, value) => users.Where(x => x.EMail == value);
+            var values = dao.SelectWhere(filterExpression, email).ResultObject;
             return values.Any() ? DaoResponse.QuerySuccessful(values.First()) : DaoResponse.QueryEmptyResult<User>();
         }
 
         public static DaoResponse<User> SelectById(this IUserDao dao, int id)
         {
-            Expression<Filter<User, int>> filterExpression = (users, expression) => users.Where(x => x.UserId == expression);
-            var values = dao.SelectWhere(id, filterExpression).ResultObject;
+            Expression<Filter<User, int>> filterExpression = (users, value) => users.Where(x => x.UserId == value);
+            var values = dao.SelectWhere(filterExpression, id).ResultObject;
             return values.Any() ? DaoResponse.QuerySuccessful(values.First()) : DaoResponse.QueryEmptyResult<User>();
         }
 
         public static DaoResponse<IList<User>> SelectByLastName(this IUserDao dao, string name)
         {
-            Expression<Filter<User, string>> filterExpression = (users, expression) => users.Where(x => x.LastName == expression);
-            var values = dao.SelectWhere(name, filterExpression).ResultObject;
+            Expression<Filter<User, string>> filterExpression = (users, value) => users.Where(x => x.LastName == value);
+            var values = dao.SelectWhere(filterExpression, name).ResultObject;
             return values.Any() ? DaoResponse.QuerySuccessful(values) : DaoResponse.QueryEmptyResult<IList<User>>();
         }
 
         public static DaoResponse<IList<User>> SelectByFirstName(this IUserDao dao, string name)
         {
-            Expression<Filter<User, string>> filterExpression = (users, expression) => users.Where(x => x.FirstName == expression);
-            var values = dao.SelectWhere(name, filterExpression).ResultObject;
+            Expression<Filter<User, string>> filterExpression = (users, value) => users.Where(x => x.FirstName == value);
+            var values = dao.SelectWhere(filterExpression, name).ResultObject;
             return values.Any() ? DaoResponse.QuerySuccessful(values) : DaoResponse.QueryEmptyResult<IList<User>>();
         }
     }

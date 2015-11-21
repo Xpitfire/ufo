@@ -47,7 +47,7 @@ namespace UFO.Server.Dal.Dummy
             return DaoResponse.QuerySuccessful<IList<User>>(DataCollection.Users.ToList());
         }
         
-        public DaoResponse<IList<User>> SelectWhere<T>(T criteria, Expression<Filter<User, T>> filterExpression)
+        public DaoResponse<IList<User>> SelectWhere<T>(Expression<Filter<User, T>> filterExpression, T criteria)
         {
             return DaoResponse.QuerySuccessful<IList<User>>(filterExpression.Compile()(DataCollection.Users, criteria).ToList());
         }

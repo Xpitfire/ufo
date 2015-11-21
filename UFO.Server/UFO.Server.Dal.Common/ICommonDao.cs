@@ -43,6 +43,6 @@ namespace UFO.Server.Dal.Common
         /// <param name="criteria">Where clause criteria.</param>
         /// <param name="filterExpression">Expression of the lambda filter used to map the where clause.</param>
         /// <returns>Response object with the collected types.</returns>
-        DaoResponse<IList<TType>> SelectWhere<T>(T criteria, Expression<Filter<TType, T>> filterExpression);
+        DaoResponse<IList<TType>> SelectWhere<T>(Expression<Filter<TType, T>> filterExpression, T criteria = default(T));
     }
 }

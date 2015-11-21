@@ -113,7 +113,7 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<Venue>))]
-        public DaoResponse<IList<Venue>> SelectWhere<T>(T criteria, Expression<Filter<Venue, T>> filterExpression)
+        public DaoResponse<IList<Venue>> SelectWhere<T>(Expression<Filter<Venue, T>> filterExpression, T criteria)
         {
             return DaoResponse.QuerySuccessful<IList<Venue>>(
                 new List<Venue>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));

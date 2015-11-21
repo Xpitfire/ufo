@@ -104,7 +104,7 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(IList<Artist>))]
-        public DaoResponse<IList<Artist>> SelectWhere<T>(T criteria, Expression<Filter<Artist, T>> filterExpression)
+        public DaoResponse<IList<Artist>> SelectWhere<T>(Expression<Filter<Artist, T>> filterExpression, T criteria)
         {
             return DaoResponse.QuerySuccessful<IList<Artist>>(
                 new List<Artist>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));

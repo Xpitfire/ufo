@@ -46,7 +46,7 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
         
-        public DaoResponse<IList<Venue>> SelectWhere<T>(T criteria, Expression<Filter<Venue, T>> filterExpression)
+        public DaoResponse<IList<Venue>> SelectWhere<T>(Expression<Filter<Venue, T>> filterExpression, T criteria)
         {
             throw new System.NotImplementedException();
         }

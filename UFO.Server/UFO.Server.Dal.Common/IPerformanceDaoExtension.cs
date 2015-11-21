@@ -31,8 +31,8 @@ namespace UFO.Server.Dal.Common
     {
         public static DaoResponse<Performance> SelectByDateTime(this IPerformanceDao dao, DateTime datetime)
         {
-            Expression<Filter<Performance, DateTime>> filterExpression = (performances, expression) => performances.Where(x => x.DateTime == expression);
-            var values = dao.SelectWhere(datetime, filterExpression).ResultObject;
+            Expression<Filter<Performance, DateTime>> filterExpression = (performances, value) => performances.Where(x => x.DateTime == value);
+            var values = dao.SelectWhere(filterExpression, datetime).ResultObject;
             return values.Any() ? DaoResponse.QuerySuccessful(values.First()) : DaoResponse.QueryEmptyResult<Performance>();
         }
     }
