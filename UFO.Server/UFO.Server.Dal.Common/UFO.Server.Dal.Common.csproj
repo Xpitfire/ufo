@@ -82,6 +82,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="UFO.Server.Dal.Common.licenseheader" />
     <None Include="UFO.Server.Dal.Common.psproj" />
