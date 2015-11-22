@@ -1,0 +1,39 @@
+\begin{section}{Wator - Optimization}
+
+    \subsection*{Improvements}
+				
+		\begin{enumerate}
+			\item Improved code by moving the neighbors variable from a local scope to a global scope to avoid permanent re-creation of the Point[].
+			\item Improved array access concept of the int[] randomMatrix and the Animal[,] Grid. Changed matrix array access to linear array access. This saves an extra index de-referencing and speeds up the object access. In addition the index operator access has also been reduced by saving values to a temporary variable. randomMatrix has been moved to a global scope.
+			\item To avoid multiple copying of Point struct objects, all method parameter signature have been changed to take Point structs by reference.
+			\item Improved GenerateRandomMatrix and RandomizeMatrix implementation and removed method call to reduce function call-stack overhead.
+		\end{enumerate}
+		
+		OptimizedWatorWorld.cs
+		\lstinputlisting[language=C++]{./src/WatorForStudents/Wator/OptimizedV4/OptimizedWatorWorldV4.cs}
+		Animal.cs
+		\lstinputlisting[language=C++]{./src/WatorForStudents/Wator/OptimizedV4/Animal.cs}
+		Fish.cs
+		\lstinputlisting[language=C++]{./src/WatorForStudents/Wator/OptimizedV4/Fish.cs}
+		Shark.cs
+		\lstinputlisting[language=C++]{./src/WatorForStudents/Wator/OptimizedV4/Shark.cs}
+		
+		Test screen-shots:\\
+		\\
+		After 1. improvement:\\
+		\includegraphics[angle=0, scale=0.45]{./img/Capture_Op1.png}
+		\FloatBarrier
+		After 2. improvement:\\
+		\includegraphics[angle=0, scale=0.45]{./img/Capture_Op2.png}
+		\FloatBarrier
+		After 3. improvement:\\
+		\includegraphics[angle=0, scale=0.45]{./img/Capture_Op3.png}
+		\FloatBarrier
+		After 4. improvement:\\
+		\includegraphics[angle=0, scale=0.45]{./img/Capture_Op4.png}
+		\FloatBarrier
+		
+		SpeedUp overview:\\
+		\includepdf[scale=1, pages={1-2}, angle=0]{./out/Analysis2.pdf}
+
+\end{section}

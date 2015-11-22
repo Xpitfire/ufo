@@ -1,0 +1,133 @@
+\documentclass[pdftex,12pt,a4paper]{article}
+
+% --------------------------------------------- Imports  ----------------------------------------------
+
+% Use auto command spaces formating 
+\usepackage{xspace}
+% Use spelling correction
+\usepackage[german]{babel}
+% Use graphics output format
+\usepackage[pdftex]{graphicx}
+% Use macros for adjusting boxed content
+\usepackage{adjustbox}
+% Use caption text format for images
+\usepackage{caption}
+% Use sub-caption text format for images
+\usepackage{subcaption}
+% Use listings for text enumerations
+\usepackage{listings}
+% Use colorful text for highlighting
+\usepackage[usenames,dvipsnames]{color}
+% Use hyphenate spacing, underlining, etc.
+\usepackage{soul}
+% Use header and footer
+\usepackage[automark,headsepline]{scrpage2}
+% Use URL formatting
+\usepackage{url}
+% Use mathematical formulas
+\usepackage{amsmath,amssymb,amstext}
+% Use different font formats
+\usepackage{pxfonts}
+% Use placement options
+\usepackage{placeins}
+% Use correct type of characters
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}
+\usepackage[table,xcdraw]{xcolor}
+% Use pdf include package
+\usepackage{pdfpages}
+% Use color for formatting
+\usepackage{color}
+% Use page geometry
+\usepackage[a4paper, total={6in, 8.5in}]{geometry}
+% User utf8 characters
+\usepackage[utf8]{inputenc}
+
+% ------------------------------------------- Commands ---------------------------------------------
+
+% Definitions for words to auto-complete
+\newcommand{\sync}{synchrocyclotrons\xspace}
+% Header format definition
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+% Set document info templates
+\newcommand{\UniversityName}{FH Hagenberg}
+
+\newcommand{\AuthorFirstName}{Marius-Constantin}
+\newcommand{\AuthorLastName}{Dinu}
+\newcommand{\AuthorFullName}{\AuthorFirstName \xspace \AuthorLastName}
+\newcommand{\MatrNr}{S1310307054}
+\newcommand{\AuthorFirstNameCo}{Florian}
+\newcommand{\AuthorLastNameCo}{Wurm}
+\newcommand{\AuthorFullNameCo}{\AuthorFirstNameCo \xspace \AuthorLastNameCo}
+\newcommand{\MatrNrCo}{S1310307112}
+\newcommand{\AuthorFullID}{\AuthorFirstName \xspace \AuthorLastName \xspace (\MatrNr) \\ \AuthorFirstNameCo \xspace \AuthorLastNameCo \xspace (\MatrNrCo)}
+
+\newcommand{\SubjectTitle}{SWK5 UEG2 SEv WS15/16}
+\newcommand{\ExerciseTitle}{Ausbaustufe 1}
+
+% Set document command shortcuts
+\newcommand{\nPar}{\par\vspace{0.5cm}}
+\newcommand{\nLine}{\par\vspace{0.1cm}}
+
+% Set in-line highlighting
+\newcommand{\code}{\texttt}
+
+% ------------------------------------------- Formatting ---------------------------------------------
+
+% Set document info
+\title{\SubjectTitle \xspace \ExerciseTitle}
+\author{\AuthorFullID}
+
+% Set document header and footer
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\ihead[]{\SubjectTitle}
+\ohead{\leftmark}
+\cfoot[]{\pagemark}
+
+% Disable indent globally
+\setlength{\parindent}{0pt}
+
+% Set syntax highlighting
+\definecolor{mygray}{rgb}{0.4,0.4,0.4}
+\definecolor{mygreen}{rgb}{0,0.7,0.5}
+\definecolor{myorange}{rgb}{1.0,0.4,0}
+
+% Set programming language style
+\lstset{
+    language=C++,
+    basicstyle=\scriptsize\sffamily\color{black},
+    commentstyle=\color{mygray},
+    frame=single,
+    breaklines=true,
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+    numbers=left,
+    linewidth=15cm,
+    numbersep=5pt,
+    numberstyle=\tiny\color{mygray},
+    keywordstyle=\color{mygreen},
+    showspaces=false,
+    showstringspaces=false,
+    stringstyle=\color{myorange},
+    tabsize=2
+}
+
+% -------------------------------------------- Document ---------------------------------------------
+
+\begin{document}
+
+		\maketitle
+		\newpage
+		\tableofcontents
+		
+    \includepdf[scale=1, pages={1}, angle=0]{./specs/Projekt-SWK5-WEA5-VZ-Ausbaustufe1.pdf}
+
+    % sections
+    \input{./doc/section_1.tex}
+    \newpage
+		\input{./doc/section_2.tex}
+		\newpage
+		\input{./doc/section_3.tex}
+    
+\end{document}
