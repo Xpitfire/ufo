@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Transactions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UFO.Server.Dal.Common;
@@ -53,7 +54,7 @@ namespace UFO.Server.Test
 
         #endregion
 
-        #region DAO Tests
+        #region DAO Settings Tests
 
         [TestMethod]
         public void TestDaoDefaultProvider()
@@ -122,7 +123,6 @@ namespace UFO.Server.Test
         }
 
         #endregion
-
 
         #region Database Data Access Test
 
@@ -834,5 +834,45 @@ namespace UFO.Server.Test
         }
         
         #endregion
+
+        [TestMethod]
+        public void TestCryptoHash()
+        {
+            using (var md5 = MD5.Create())
+            {
+                var password = "password";
+                var hash = Crypto.GetMd5Hash(md5, password);
+                var user = DalProviderFactories.GetDaoFactory(
+                    TestDbDaoAssemblyName,
+                    TestDbDaoNameSpace,
+                    TestDbDaoClassName).CreateUserDao()
+                    .SelectById(0)?.ResultObject;
+                Assert.IsTrue(Crypto.VerifyMd5Hash(md5, password, user?.Password));
+                Assert.IsTrue(hash == user?.Password);
+            }
+        }
+
+        [TestMethod]
+        public void TestVerifyAdminCredentials()
+        {
+            var password = "password";
+            string hash = null;
+            using (var md5 = MD5.Create())
+            {
+                hash = Crypto.GetMd5Hash(md5, password);
+            }
+            var user = new User
+            {
+                UserId = 0,
+                Password = hash
+            };
+            DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateUserDao()
+                .VerifyAdminCredentials(user)
+                .OnFailure(response => Assert.Fail($"Exception occurred! {response.Exception}"))
+                .OnEmptyResult(() => Assert.Fail("User not found!"));
+        }
     }
 }

@@ -177,6 +177,6 @@ namespace UFO.Server.Dal.Common
             if (ResponseStatus == DaoStatus.Failed)
                 action(this);
             return this;
-        }    
+        }
     }
 }

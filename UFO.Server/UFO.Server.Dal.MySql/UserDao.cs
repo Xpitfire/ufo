@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Authentication;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
@@ -144,6 +145,34 @@ namespace UFO.Server.Dal.MySql
                 }
             }
             return user != null ? DaoResponse.QuerySuccessful(user) : DaoResponse.QueryEmptyResult<User>();
+        }
+
+        [DaoExceptionHandler(typeof(bool))]
+        public DaoResponse<bool> VerifyAdminCredentials(User user)
+        {
+            DaoResponse<bool> daoResponse = null;
+            SelectById(user.UserId)
+                .OnFailure(response =>
+                {
+                    throw response.Exception;
+                })
+                .OnSuccess(u =>
+                {
+                    if (u.Password == user.Password && u.IsAdmin)
+                    {
+                        daoResponse = DaoResponse.QuerySuccessful(true);
+                    }
+                    else
+                    {
+                        const string msg = "Invalid user credentials.";
+                        daoResponse = DaoResponse.QueryFailed(false, msg, new InvalidCredentialException(msg));
+                    }
+                })
+                .OnEmptyResult(() =>
+                {
+                    daoResponse = DaoResponse.QueryEmptyResult<bool>();
+                });
+            return daoResponse;
         }
 
         [DaoExceptionHandler(typeof(IList<User>))]

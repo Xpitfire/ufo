@@ -56,5 +56,10 @@ namespace UFO.Server.Dal.Dummy
         {
             throw new System.NotImplementedException();
         }
+
+        public DaoResponse<bool> VerifyAdminCredentials(User user)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

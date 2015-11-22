@@ -1009,8 +1009,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`UserId`, `FirstName`, `LastName`, `Password`, `IsAdmin`, `IsArtist`, `ArtistId`, `EMail`) VALUES
-(0, 'Florian', 'Wurm', '5f4dcc3b5aa765d61d8327deb882cf', 1, 1, 1, 'untitled-no1@mail.com'),
-(1, 'Marius', 'Dinu', '5f4dcc3b5aa765d61d8327deb882cf', 1, 0, NULL, 'marius.dinu@mymail.com'),
+(0, 'Florian', 'Wurm', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 1, 1, 'untitled-no1@mail.com'),
+(1, 'Marius', 'Dinu', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 0, NULL, 'marius.dinu@mymail.com'),
 (2, 'Frances', 'Bates', 'e742IcC#]ukX2^mn6wMEg&ERSftPzl', 0, 1, 90, 'win@kobwe.co.uk'),
 (3, 'Mary', 'Simpson', '77CXPTtfAQ7M0$WiEjBzxg(DvaWK!s', 0, 1, 89, 'rakicumi@diso.gov'),
 (4, 'Kate', 'Paul', 'LVbi]rD3L50%xaHHpPWwjG(3UvXP*T', 0, 1, 276, 'an@nu.co.uk'),
