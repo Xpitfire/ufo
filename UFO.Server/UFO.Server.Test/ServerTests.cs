@@ -124,7 +124,7 @@ namespace UFO.Server.Test
 
         #endregion
 
-        #region Database Data Access Test
+        #region Database Data Access Tests
 
         // User Tests
 
@@ -832,8 +832,10 @@ namespace UFO.Server.Test
                 //scope.Complete();
             }
         }
-        
+
         #endregion
+
+        #region Credentials Tests
 
         [TestMethod]
         public void TestCryptoHash()
@@ -874,5 +876,7 @@ namespace UFO.Server.Test
                 .OnFailure(response => Assert.Fail($"Exception occurred! {response.Exception}"))
                 .OnEmptyResult(() => Assert.Fail("User not found!"));
         }
+
+        #endregion
     }
 }
