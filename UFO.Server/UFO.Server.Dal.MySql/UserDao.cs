@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Authentication;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
@@ -107,8 +108,6 @@ namespace UFO.Server.Dal.MySql
         [DaoExceptionHandler(typeof(User))]
         public DaoResponse<User> Update(User entity)
         {
-            
-
             using (var connection = _dbCommProvider.CreateDbConnection())
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.UpdateUser, CreateUserParameter(entity)))
             {
@@ -126,6 +125,54 @@ namespace UFO.Server.Dal.MySql
                 _dbCommProvider.ExecuteNonQuery(command);
             }
             return DaoResponse.QuerySuccessful(entity);
+        }
+
+        [DaoExceptionHandler(typeof(IList<User>))]
+        public DaoResponse<User> SelectById(int id)
+        {
+            User user = null;
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?UserId", new QueryParameter {ParameterValue = id}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectUserById, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                if (dataReader.Read())
+                {
+                    user = CreateUserObject(dataReader);
+                }
+            }
+            return user != null ? DaoResponse.QuerySuccessful(user) : DaoResponse.QueryEmptyResult<User>();
+        }
+
+        [DaoExceptionHandler(typeof(bool))]
+        public DaoResponse<bool> VerifyAdminCredentials(User user)
+        {
+            DaoResponse<bool> daoResponse = null;
+            SelectById(user.UserId)
+                .OnFailure(response =>
+                {
+                    throw response.Exception;
+                })
+                .OnSuccess(u =>
+                {
+                    if (u.Password == user.Password && u.IsAdmin)
+                    {
+                        daoResponse = DaoResponse.QuerySuccessful(true);
+                    }
+                    else
+                    {
+                        const string msg = "Invalid user credentials.";
+                        daoResponse = DaoResponse.QueryFailed(false, msg, new InvalidCredentialException(msg));
+                    }
+                })
+                .OnEmptyResult(() =>
+                {
+                    daoResponse = DaoResponse.QueryEmptyResult<bool>();
+                });
+            return daoResponse;
         }
 
         [DaoExceptionHandler(typeof(IList<User>))]

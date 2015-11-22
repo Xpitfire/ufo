@@ -24,5 +24,6 @@ namespace UFO.Server.Dal.Common
 {
     public interface IVenueDao : ICommonDao<Venue>
     {
+        DaoResponse<Venue> SelectById(string id);
     }
 }

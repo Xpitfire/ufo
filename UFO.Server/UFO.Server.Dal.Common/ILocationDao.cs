@@ -28,6 +28,6 @@ namespace UFO.Server.Dal.Common
 {
     public interface ILocationDao : ICommonDao<Location>
     {
-        DaoResponse<Location> GetById(int id);
+        DaoResponse<Location> SelectById(int id);
     }
 }

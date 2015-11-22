@@ -31,6 +31,10 @@ namespace UFO.Server.Dal.MySql
         public const string SelectAllUsers = @"SELECT *
                                                  FROM userview";
 
+        public const string SelectUserById = @"SELECT *
+                                                 FROM userview
+                                                WHERE UserId=?UserId";
+
         public const string DeleteUser = @"DELETE FROM user
                                                  WHERE UserId=?UserId";
 
@@ -42,25 +46,38 @@ namespace UFO.Server.Dal.MySql
                                                   VALUES (?FirstName, ?LastName, ?Password, ?IsAdmin, ?IsArtist, ?ArtistId)";
 
 
+
         // Performance
         public const string SelectAllPerfomances = @"SELECT *
                                                        FROM performanceview";
 
+        public const string SelectPerformanceById = @"SELECT *
+                                                        FROM performanceview
+                                                       WHERE Date=?Date AND ArtistId=?ArtistId";
+
         public const string DeletePerformance = @"DELETE FROM performance
-                                                   WHERE Date=?Date";
+                                                   WHERE Date=?Date AND ArtistId=?ArtistId";
 
         public const string UpdatePerformance = @"UPDATE performance 
-                                              SET ArtistId=?ArtistId, VenueId=?VenueId
-                                            WHERE Date=?Date";
+                                                     SET VenueId=?VenueId
+                                                   WHERE Date=?Date AND ArtistId=?ArtistId";
 
         public const string InsertPerformance = @"INSERT INTO performance (Date, ArtistId, VenueId)
-                                                  VALUES (?Date, ?ArtistId, ?VenueId)";
+                                                       VALUES (?Date, ?ArtistId, ?VenueId)";
 
+        public const string SelectPerformanceBetweenHours = @"SELECT * 
+                                                                FROM performance
+                                                               WHERE Date BETWEEN CAST(?FromTime AS DATE) AND CAST(?ToTime AS DATE)
+                                                                 AND ArtistId=?ArtistId";
 
 
         // Venue
         public const string SelectAllVenues = @"SELECT *
                                                   FROM venueview";
+
+        public const string SelectVenueById = @"SELECT *
+                                                  FROM venueview
+                                                 WHERE VenueId=?VenueId";
 
         public const string DeleteVenue = @"DELETE FROM venue
                                                   WHERE VenueId=?VenueId";
@@ -75,12 +92,12 @@ namespace UFO.Server.Dal.MySql
 
 
         // Artist
-        public const string SelectArtistById = @"SELECT * 
-                                                   FROM artist 
-                                                  WHERE ArtistId=?ArtistId";
-
         public const string SelectAllArtists =  @"SELECT * 
                                                     FROM artistview";
+
+        public const string SelectArtistById = @"SELECT * 
+                                                   FROM artistview 
+                                                  WHERE ArtistId=?ArtistId";
 
         public const string DeleteArtist = @"DELETE FROM artist
                                                    WHERE ArtistId=?ArtistId";
@@ -91,6 +108,7 @@ namespace UFO.Server.Dal.MySql
 
         public const string InsertArtist = @"INSERT INTO artist (Name, EMail, CategoryId, CountryCode, Picture, PromoVideo)
                                                   VALUES (?Name, ?EMail, ?CategoryId, ?CountryCode, ?Picture, ?PromoVideo)";
+
 
 
         // Country
@@ -130,6 +148,7 @@ namespace UFO.Server.Dal.MySql
         public const string InsertCategory = @"INSERT INTO category (CategoryId, Name)
                                                     VALUES (?CategoryId, ?Name)";
 
+        
         // Location
         public const string SelectAllLocations = @"SELECT * 
                                                       FROM location";

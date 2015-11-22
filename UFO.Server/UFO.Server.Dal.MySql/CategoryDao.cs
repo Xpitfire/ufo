@@ -56,7 +56,7 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(Category))]
-        public DaoResponse<Category> GetById(string id)
+        public DaoResponse<Category> SelectById(string id)
         {
             Category category = null;
             var parameter = new Dictionary<string, QueryParameter>
@@ -64,7 +64,7 @@ namespace UFO.Server.Dal.MySql
                 {"?CategoryId", new QueryParameter {ParameterValue = id}}
             };
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectCountryById, parameter))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectCategoryById, parameter))
             using (var dataReader = _dbCommProvider.ExecuteReader(command))
             {
                 if (dataReader.Read())

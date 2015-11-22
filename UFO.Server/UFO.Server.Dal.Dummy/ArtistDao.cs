@@ -50,5 +50,10 @@ namespace UFO.Server.Dal.Dummy
         {
             throw new System.NotImplementedException();
         }
+
+        public DaoResponse<Artist> SelectById(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

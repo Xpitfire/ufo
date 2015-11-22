@@ -61,7 +61,7 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(Location))]
-        public DaoResponse<Location> GetById(int id)
+        public DaoResponse<Location> SelectById(int id)
         {
             Location location = null;
             var parameter = new Dictionary<string, QueryParameter>

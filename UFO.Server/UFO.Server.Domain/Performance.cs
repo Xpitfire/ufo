@@ -18,6 +18,7 @@
 //     Wurm Florian
 #endregion
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace UFO.Server.Domain
 {
@@ -32,7 +33,7 @@ namespace UFO.Server.Domain
 
         public override string ToString()
         {
-            return $"DateTime: {DateTime}, Artist: ({Artist}), Venue: ({Venue})";
+            return $"DateTime: {DateTime.ToString(Constants.CommonDateFormat)}, Artist: ({Artist}), Venue: ({Venue})";
         }
 
         public override bool Equals(object obj)

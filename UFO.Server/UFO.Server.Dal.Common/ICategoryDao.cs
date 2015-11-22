@@ -28,6 +28,6 @@ namespace UFO.Server.Dal.Common
 {
     public interface ICategoryDao : ICommonDao<Category>
     {
-        DaoResponse<Category> GetById(string id);
+        DaoResponse<Category> SelectById(string id);
     }
 }

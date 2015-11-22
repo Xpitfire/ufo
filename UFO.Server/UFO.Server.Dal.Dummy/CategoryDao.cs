@@ -11,7 +11,7 @@ namespace UFO.Server.Dal.Dummy
 {
     class CategoryDao : ICategoryDao
     {
-        public DaoResponse<Category> GetById(string id)
+        public DaoResponse<Category> SelectById(string id)
         {
             throw new NotImplementedException();
         }

@@ -87,11 +87,39 @@ namespace UFO.Server.Dal.MySql
             return performance;
         }
 
+        private void VerifyPerformanceValue(Performance entity)
+        {
+            if (entity.DateTime.Minute != 0 || entity.DateTime.Second != 0 || entity.DateTime.Millisecond != 0)
+            {
+                throw new InvalidOperationException("Invalid Date format: Only full hours allowed!");
+            }
+
+            var fromTime = entity.DateTime.AddHours(-1);
+            var toTime = entity.DateTime.AddHours(1);
+
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?FromTime", new QueryParameter {ParameterValue = fromTime.ToString(Constants.CommonDateFormat)}},
+                {"?ToTime", new QueryParameter {ParameterValue = toTime.ToString(Constants.CommonDateFormat)}},
+                {"?ArtistId", new QueryParameter {ParameterValue = entity.Artist?.ArtistId}}
+            };
+
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectPerformanceBetweenHours, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                if (dataReader.Read())
+                {
+                    throw new InvalidOperationException("Invalid Date format: ArtistId already performing!");
+                }
+            }
+        }
+
         private Dictionary<string, QueryParameter> CreatePerformanceParameter(Performance performance)
         {
             return new Dictionary<string, QueryParameter>
             {
-                {"?Date", new QueryParameter {ParameterValue = performance.DateTime} },
+                {"?Date", new QueryParameter {ParameterValue = performance.DateTime.ToString(Constants.CommonDateFormat)}},
                 {"?ArtistId", new QueryParameter {ParameterValue = performance.Artist.ArtistId}},
                 {"?VenueId", new QueryParameter {ParameterValue = performance.Venue.VenueId}}
             };
@@ -100,6 +128,7 @@ namespace UFO.Server.Dal.MySql
         [DaoExceptionHandler(typeof(Performance))]
         public DaoResponse<Performance> Insert(Performance entity)
         {
+            VerifyPerformanceValue(entity);
             using (var connection = _dbCommProvider.CreateDbConnection())
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.InsertPerformance, CreatePerformanceParameter(entity)))
             {
@@ -128,6 +157,27 @@ namespace UFO.Server.Dal.MySql
                 _dbCommProvider.ExecuteNonQuery(command);
             }
             return DaoResponse.QuerySuccessful(entity);
+        }
+
+        [DaoExceptionHandler(typeof(Performance))]
+        public DaoResponse<Performance> SelectById(DateTime dateTime, int artistId)
+        {
+            Performance performance = null;
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?Date", new QueryParameter {ParameterValue = dateTime.ToString(Constants.CommonDateFormat)}},
+                {"?ArtistId", new QueryParameter {ParameterValue = artistId}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectPerformanceById, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                if (dataReader.Read())
+                {
+                    performance = CreatePerformanceObject(dataReader);
+                }
+            }
+            return performance != null ? DaoResponse.QuerySuccessful(performance) : DaoResponse.QueryEmptyResult<Performance>();
         }
 
         [DaoExceptionHandler(typeof(IList<Performance>))]
