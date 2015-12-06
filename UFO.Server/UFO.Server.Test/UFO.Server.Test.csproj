@@ -44,12 +44,21 @@
       <HintPath>..\packages\PostSharp.4.1.30\lib\net35-client\PostSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PostSharp.Patterns.Common, Version=4.1.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+      <HintPath>..\packages\PostSharp.Patterns.Common.4.1.30\lib\net40\PostSharp.Patterns.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PostSharp.Patterns.Diagnostics, Version=4.1.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
       <HintPath>..\packages\PostSharp.Patterns.Diagnostics.4.1.30\lib\net40\PostSharp.Patterns.Diagnostics.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PostSharp.Patterns.Model, Version=4.1.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+      <HintPath>..\packages\PostSharp.Patterns.Model.4.1.30\lib\net40\PostSharp.Patterns.Model.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Transactions" />
   </ItemGroup>
   <Choose>
@@ -60,15 +69,26 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ServerTests.cs" />
+    <Compile Include="ServerBllTests.cs" />
+    <Compile Include="ServerDalTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UFO.Server.Bll.Common\UFO.Server.Bll.Common.csproj">
+      <Project>{8f5dcb11-1d74-4674-9a16-8fa37b9b4c72}</Project>
+      <Name>UFO.Server.Bll.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UFO.Server.Bll.Impl\UFO.Server.Bll.Impl.csproj">
+      <Project>{5ff73985-1ab5-44da-b28c-60e767b6bbb5}</Project>
+      <Name>UFO.Server.Bll.Impl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UFO.Server.Dal.Common\UFO.Server.Dal.Common.csproj">
       <Project>{90aa318d-269a-4c83-9ee9-85718a0fdd67}</Project>
       <Name>UFO.Server.Dal.Common</Name>

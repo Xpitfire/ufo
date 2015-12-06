@@ -45,7 +45,7 @@ namespace UFO.Server.Domain
         {
             return $"ArtistId: {ArtistId}, ArtistName: {Name}, ArtistEMail: {EMail}";
         }
-
+        
         public override bool Equals(object obj)
         {
             var artist = obj as Artist;
@@ -71,5 +71,6 @@ namespace UFO.Server.Domain
             hashCode += PromoVideo?.GetHashCode() ?? 0;
             return hashCode;
         }
+        
     }
 }

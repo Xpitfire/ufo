@@ -823,7 +823,7 @@ CREATE TABLE IF NOT EXISTS `location` (
   `Longitude` decimal(8,5) NOT NULL,
   `Latitude` decimal(8,5) NOT NULL,
   `Name` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `location`
@@ -11207,6 +11207,11 @@ ALTER TABLE `venue`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `LocationId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `artist`
 --

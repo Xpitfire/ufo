@@ -33,6 +33,8 @@ namespace UFO.Server.Dal.Common
     /// <returns>A collection of TResult values.</returns>
     public delegate IEnumerable<TResult> Filter<TResult, in TCriteria>(IEnumerable<TResult> enumerable, TCriteria criteria);
 
+    public delegate IEnumerable<TResult> Filter<TResult>(IEnumerable<TResult> enumerable);
+
     public static class Extensions
     {
         /// <summary>
