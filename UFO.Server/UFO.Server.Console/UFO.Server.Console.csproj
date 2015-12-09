@@ -66,6 +66,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="UFO.Server.Console.licenseheader" />
     <None Include="UFO.Server.Console.psproj" />
   </ItemGroup>
   <ItemGroup>

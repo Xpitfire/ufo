@@ -17,7 +17,6 @@ extensions: .cs .cpp .h
 //
 // Contributors:
 //     Dinu Marius-Constantin
-//     Wurm Florian
 #endregion
 extensions: .aspx .ascx
 <%-- 

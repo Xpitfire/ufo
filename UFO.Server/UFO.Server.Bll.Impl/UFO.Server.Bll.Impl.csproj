@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="UFO.Server.Bll.Impl.licenseheader" />
     <None Include="UFO.Server.Bll.Impl.psproj" />
     <None Include="ufo.snk">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

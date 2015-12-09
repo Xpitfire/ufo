@@ -17,7 +17,6 @@ extensions: .cs .cpp .h
 //
 // Contributors:
 //     Dinu Marius-Constantin
-//     Wurm Florian
 #endregion
 extensions: .aspx .ascx
 <%-- 
@@ -37,7 +36,6 @@ limitations under the License.
 
 Contributors:
     Dinu Marius-Constantin
-    Wurm Florian
 --%>
 extensions: .vb
 ' (C) Copyright %CreationYear% Dinu Marius-Constantin (http://dinu.at) and others.
@@ -56,7 +54,6 @@ extensions: .vb
 '
 ' Contributors:
 '     Dinu Marius-Constantin
-'     Wurm Florian
 extensions:  .xml .config .xsd
 <!--
 (C) Copyright %CreationYear% Dinu Marius-Constantin (http://dinu.at) and others.
@@ -75,5 +72,4 @@ limitations under the License.
 
 Contributors:
     Dinu Marius-Constantin
-    Wurm Florian
 -->
