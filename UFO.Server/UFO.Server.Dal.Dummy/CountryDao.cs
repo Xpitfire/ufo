@@ -36,10 +36,5 @@ namespace UFO.Server.Dal.Dummy
         {
             throw new NotSupportedException("Test exception for DaoExceptionHandlerAtrribute test!");
         }
-        
-        public DaoResponse<IList<Country>> SelectWhere<T>(Expression<Filter<Country, T>> filterExpression, T criteria)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

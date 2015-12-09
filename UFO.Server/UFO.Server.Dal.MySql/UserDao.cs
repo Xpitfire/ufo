@@ -190,12 +190,5 @@ namespace UFO.Server.Dal.MySql
             }
             return users.Any() ? DaoResponse.QuerySuccessful<IList<User>>(users) : DaoResponse.QueryEmptyResult<IList<User>>();
         }
-
-        [DaoExceptionHandler(typeof(IList<User>))]
-        public DaoResponse<IList<User>> SelectWhere<T>(Expression<Filter<User, T>> filterExpression, T criteria)
-        {
-            return DaoResponse.QuerySuccessful<IList<User>>(
-                new List<User>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
-        }
     }
 }

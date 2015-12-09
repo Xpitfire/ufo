@@ -123,12 +123,5 @@ namespace UFO.Server.Dal.MySql
             }
             return categories.Any() ? DaoResponse.QuerySuccessful<IList<Category>>(categories) : DaoResponse.QueryEmptyResult<IList<Category>>();
         }
-
-        [DaoExceptionHandler(typeof(IList<Category>))]
-        public DaoResponse<IList<Category>> SelectWhere<T>(Expression<Filter<Category, T>> filterExpression, T criteria)
-        {
-            return DaoResponse.QuerySuccessful<IList<Category>>(
-                new List<Category>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
-        }
     }
 }

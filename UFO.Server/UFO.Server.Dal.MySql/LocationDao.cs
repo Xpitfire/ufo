@@ -128,12 +128,6 @@ namespace UFO.Server.Dal.MySql
             }
             return locations.Any() ? DaoResponse.QuerySuccessful<IList<Location>>(locations) : DaoResponse.QueryEmptyResult<IList<Location>>();
         }
-
-        [DaoExceptionHandler(typeof(IList<Location>))]
-        public DaoResponse<IList<Location>> SelectWhere<T>(Expression<Filter<Location, T>> filterExpression, T criteria)
-        {
-            return DaoResponse.QuerySuccessful<IList<Location>>(
-                new List<Location>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
-        }
+        
     }
 }

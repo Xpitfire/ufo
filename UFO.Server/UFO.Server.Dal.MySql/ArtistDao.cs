@@ -122,13 +122,6 @@ namespace UFO.Server.Dal.MySql
             }
             return artists.Any() ? DaoResponse.QuerySuccessful<IList<Artist>>(artists) : DaoResponse.QueryEmptyResult<IList<Artist>>();
         }
-
-        [DaoExceptionHandler(typeof(IList<Artist>))]
-        public DaoResponse<IList<Artist>> SelectWhere<T>(Expression<Filter<Artist, T>> filterExpression, T criteria)
-        {
-            return DaoResponse.QuerySuccessful<IList<Artist>>(
-                new List<Artist>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
-        }
         
         [DaoExceptionHandler(typeof(Artist))]
         public DaoResponse<Artist> Insert(Artist entity)

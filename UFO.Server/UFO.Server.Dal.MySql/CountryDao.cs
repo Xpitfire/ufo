@@ -123,12 +123,5 @@ namespace UFO.Server.Dal.MySql
             }
             return countries.Any() ? DaoResponse.QuerySuccessful<IList<Country>>(countries) : DaoResponse.QueryEmptyResult<IList<Country>>();
         }
-
-        [DaoExceptionHandler(typeof(IList<Country>))]
-        public DaoResponse<IList<Country>> SelectWhere<T>(Expression<Filter<Country, T>> filterExpression, T criteria)
-        {
-            return DaoResponse.QuerySuccessful<IList<Country>>(
-                new List<Country>(filterExpression.Compile()(SelectAll().ResultObject, criteria)));
-        }
     }
 }

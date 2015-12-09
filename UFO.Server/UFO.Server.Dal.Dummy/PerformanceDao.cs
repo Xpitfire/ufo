@@ -48,11 +48,6 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<Performance>> SelectWhere<T>(Expression<Filter<Performance, T>> filterExpression, T criteria)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public DaoResponse<Performance> SelectById(DateTime dateTime, int artistId)
         {
             throw new NotImplementedException();

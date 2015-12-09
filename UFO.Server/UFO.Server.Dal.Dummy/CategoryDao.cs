@@ -35,10 +35,5 @@ namespace UFO.Server.Dal.Dummy
         {
             throw new NotImplementedException();
         }
-        
-        public DaoResponse<IList<Category>> SelectWhere<T>(Expression<Filter<Category, T>> filterExpression, T criteria)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -9,17 +9,32 @@ namespace UFO.Server.Dal.Common
 {
     public static class ICommonDaoExtension
     {
-        public static IEnumerable<IEnumerable<TType>> SelectWhere<TType>(this ICommonDao<TType> commonDao, Expression<Func<TType, bool>> filterExpression)
+        /// <summary>
+        /// Select a value from the DAL implementation with a runtime specified lambda expression and a selective filter criteria.
+        /// </summary>
+        /// <typeparam name="T">Type of the where clause criteria.</typeparam>
+        /// <typeparam name="TType">Type of the return value.</typeparam>
+        /// <param name="criteria">Where clause criteria.</param>
+        /// <param name="dao">Extended object type.</param>
+        /// <param name="filterExpression">Expression of the lambda filter used to map the where clause.</param>
+        /// <returns>Response object with the collected types.</returns>
+        public static DaoResponse<IList<TType>> SelectWhere<TType, T>(this ICommonDao<TType> dao, Expression<Filter<TType, T>> filterExpression, T criteria = default(T))
         {
-            Expression<Filter<TType, TType>> innerExpression = (values, criteria) => yield return commonDao.SelectAll().ResultObject.Select(type => commonDao.SelectAll().ResultObject.Where(value => filterExpression.Compile()(type)));
-            //return commonDao.SelectWhere(innerExpression, default(TType));
+            return DaoResponse.QuerySuccessful<IList<TType>>(
+                new List<TType>(filterExpression.Compile()(dao.SelectAll().ResultObject, criteria)));
         }
 
-        //public static DaoResponse<IList<TType>> SelectWhere<TType>(this ICommonDao<TType> commonDao, Expression<Func<IList<TType>, bool>> filterExpression)
-        //{
-        //    Expression<Filter<TType, TType>> innerExpression =
-        //        (values, criteria) => values.Where(value => filterExpression.Compile()(commonDao.SelectAll().ResultObject));
-        //    return commonDao.SelectWhere(innerExpression, default(TType));
-        //}
+        /// <summary>
+        /// Select a value from the DAL implementation with a runtime specified lambda expression.
+        /// </summary>
+        /// <typeparam name="TType">Type of the return value.</typeparam>
+        /// <param name="dao">Extended object type.</param>
+        /// <param name="filterExpression">Expression of the lambda filter used to map the where clause.</param>
+        /// <returns>Response object with the collected types.</returns>
+        public static DaoResponse<IList<TType>> SelectWhere<TType>(this ICommonDao<TType> dao, Expression<Filter<TType>> filterExpression)
+        {
+            return DaoResponse.QuerySuccessful<IList<TType>>(
+                new List<TType>(filterExpression.Compile()(dao.SelectAll().ResultObject)));
+        }
     }
 }

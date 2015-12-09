@@ -31,7 +31,8 @@ namespace UFO.Server
                 .OnFailure(response => Console.WriteLine($"Error: {response.ErrorMessage}"));
 
             var userDao = daoFacotry.CreateUserDao();
-            userDao.SelectWhere<IList<User>>((list, value) => list.Where(x => x.IsArtist))
+
+            userDao.SelectWhere(users => users.Where(u => u.IsAdmin))
                 .OnSuccess(users =>
                 {
                     foreach (var user in users)

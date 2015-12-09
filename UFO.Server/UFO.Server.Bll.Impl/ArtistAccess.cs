@@ -28,7 +28,8 @@ namespace UFO.Server.Bll.Impl
             return DalProviderFactories
                 .GetDaoFactory()
                 .CreateArtistDao()
-                .SelectWhere(artist => artist.Equals(category)).ResultObject;
+                .SelectWhere(artists => artists.Where(
+                    artist => artist.Category.Equals(category))).ResultObject;
         }
     }
 }
