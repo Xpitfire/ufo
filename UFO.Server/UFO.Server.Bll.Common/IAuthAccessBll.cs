@@ -25,9 +25,14 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Bll.Common
 {
-    public interface IArtistAccessBll
+    public interface IAuthAccessBll
     {
-        IList<Artist> GetAll();
-        IList<Artist> GetAndFilterByCatrgory(Category category);
+        // user
+        IList<User> GetAll();
+        bool IsUserAuthenticated();
+        bool IsValidAdmin(User user);
+        void LoginAdmin(User user);
+        void LoginAdmin(string email, string passwordHash);
+        void EncryptUserCredentials(User user);
     }
 }

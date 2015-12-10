@@ -20,6 +20,7 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UFO.Server.Bll.Common;
 using UFO.Server.Bll.Impl;
+using UFO.Server.Domain;
 
 namespace UFO.Server.Test
 {
@@ -29,10 +30,24 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestArtistBllGetAll()
         {
-            var artistAccessBll = new ArtistAccess();
-            var list = artistAccessBll.GetAll();
+            var viewAccessBll = new ViewAccessBll();
+            var list = viewAccessBll.GetAllArtist();
             Assert.IsNotNull(list);
             Assert.IsTrue(list.Count > 0);
+        }
+
+        [TestMethod]
+        public void TestAdminLogin()
+        {
+            var authAccessBll = new AuthAccessBll();
+            var user = new User
+            {
+                EMail = "marius.dinu@mymail.com",
+                Password = "password"
+            };
+            authAccessBll.EncryptUserCredentials(user);
+            authAccessBll.LoginAdmin(user);
+            Assert.IsTrue(authAccessBll.IsUserAuthenticated());
         }
     }
 }

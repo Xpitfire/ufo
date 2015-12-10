@@ -60,7 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtistAccess.cs" />
+    <Compile Include="AuthAccessBll.cs" />
+    <Compile Include="ViewAccessBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,9 +86,6 @@
     <None Include="packages.config" />
     <None Include="UFO.Server.Bll.Impl.licenseheader" />
     <None Include="UFO.Server.Bll.Impl.psproj" />
-    <None Include="ufo.snk">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\PostSharp.4.1.30\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.1.30\tools\PostSharp.targets')" />
