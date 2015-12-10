@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFO.Server", "UFO.Server\UFO.Server.csproj", "{75DF68F2-A526-469F-9CAB-35EBBAA3F9E6}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFO.Server.Bll.Common", "UFO.Server.Bll.Common\UFO.Server.Bll.Common.csproj", "{8F5DCB11-1D74-4674-9A16-8FA37B9B4C72}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFO.Server.Bll.Impl", "UFO.Server.Bll.Impl\UFO.Server.Bll.Impl.csproj", "{5FF73985-1AB5-44DA-B28C-60E767B6BBB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFO.Commander", "UFO.Commander\UFO.Commander.csproj", "{E97FDDE7-DB85-4852-91FC-585557B7FFC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{5FF73985-1AB5-44DA-B28C-60E767B6BBB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FF73985-1AB5-44DA-B28C-60E767B6BBB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FF73985-1AB5-44DA-B28C-60E767B6BBB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E97FDDE7-DB85-4852-91FC-585557B7FFC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E97FDDE7-DB85-4852-91FC-585557B7FFC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E97FDDE7-DB85-4852-91FC-585557B7FFC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E97FDDE7-DB85-4852-91FC-585557B7FFC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
