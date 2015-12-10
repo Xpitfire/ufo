@@ -31,8 +31,9 @@ namespace UFO.Server.Bll.Common
         IList<User> GetAll();
         bool IsUserAuthenticated();
         bool IsValidAdmin(User user);
-        void LoginAdmin(User user);
-        void LoginAdmin(string email, string passwordHash);
+        bool LoginAdmin(User user);
+        bool LoginAdmin(string email, string passwordHash);
+        void LogoutAdmin();
         void EncryptUserCredentials(User user);
     }
 }

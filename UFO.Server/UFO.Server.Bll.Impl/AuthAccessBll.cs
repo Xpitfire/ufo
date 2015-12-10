@@ -32,16 +32,30 @@ namespace UFO.Server.Bll.Impl
 {
     public class AuthAccessBll : IAuthAccessBll
     {
-        private User CurrentAuthUser { get; set; }
+        private User _currentAuthUser;
+
+        private User CurrentAuthUser
+        {
+            get { return _currentAuthUser; }
+            set
+            {
+                if (value == null)
+                {
+                    SessionHandler.Instance.RemoveUserSession(_currentAuthUser);
+                }
+                else
+                {
+                    SessionHandler.Instance.CreateUserSession(value, this);
+                }
+                _currentAuthUser = value;
+            }
+        }
+
+        private readonly IUserDao _userDao = DalProviderFactories.GetDaoFactory().CreateUserDao();
 
         public IList<User> GetAll()
         {
-            return IsUserAuthenticated()
-                ? DalProviderFactories
-                    .GetDaoFactory()
-                    .CreateUserDao()
-                    .SelectAll().ResultObject
-                : null;
+            return IsUserAuthenticated() ? _userDao.SelectAll().ResultObject : null;
         }
 
         public bool IsUserAuthenticated()
@@ -51,9 +65,7 @@ namespace UFO.Server.Bll.Impl
 
         public bool IsValidAdmin([NotNull] User user)
         {
-            return DalProviderFactories
-                .GetDaoFactory()
-                .CreateUserDao()
+            return _userDao
                 .SelectWhere(users => users.Where(
                     u => u.EMail != null
                     && u.Password != null 
@@ -64,16 +76,25 @@ namespace UFO.Server.Bll.Impl
                 .IsAdmin ?? false;
         }
 
-        public void LoginAdmin(User user)
+        public bool LoginAdmin(User user)
         {
             // if user is already authenticated, then kick admin from session
-            CurrentAuthUser = IsValidAdmin(user) && !IsUserAuthenticated() 
-                ?  DalProviderFactories.GetDaoFactory().CreateUserDao().SelectByEmail(user.EMail).ResultObject : null;
+            if (IsValidAdmin(user) && !IsUserAuthenticated())
+            {
+                CurrentAuthUser = _userDao.SelectByEmail(user.EMail).ResultObject;
+                return true;
+            }
+            return false;
         }
 
-        public void LoginAdmin(string email, string passwordHash)
+        public bool LoginAdmin(string email, string passwordHash)
         {
-            LoginAdmin(new User {EMail = email, Password = passwordHash});
+            return LoginAdmin(new User {EMail = email, Password = passwordHash});
+        }
+
+        public void LogoutAdmin()
+        {
+            CurrentAuthUser = null;
         }
 
         public void EncryptUserCredentials(User user)

@@ -35,11 +35,12 @@ namespace UFO.Server.Test
             Assert.IsNotNull(list);
             Assert.IsTrue(list.Count > 0);
         }
-
+        
         [TestMethod]
-        public void TestAdminLogin()
+        public void TestAdminAuthentication()
         {
             var authAccessBll = new AuthAccessBll();
+            Assert.IsFalse(authAccessBll.IsUserAuthenticated());
             var user = new User
             {
                 EMail = "marius.dinu@mymail.com",
@@ -48,6 +49,8 @@ namespace UFO.Server.Test
             authAccessBll.EncryptUserCredentials(user);
             authAccessBll.LoginAdmin(user);
             Assert.IsTrue(authAccessBll.IsUserAuthenticated());
+            authAccessBll.LogoutAdmin();
+            Assert.IsFalse(authAccessBll.IsUserAuthenticated());
         }
     }
 }
