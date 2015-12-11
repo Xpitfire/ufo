@@ -22,11 +22,13 @@
     <MetadataSource Address="http://localhost:4321/AuthAccessBll" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AuthAccessBll.xsd" MetadataType="Schema" ID="c8250b2b-8240-4340-bb13-76cc22ccfcda" SourceId="1" SourceUrl="http://localhost:4321/AuthAccessBll?xsd=xsd1" />
-    <MetadataFile FileName="AuthAccessBll.disco" MetadataType="Disco" ID="7f02631b-dee5-4998-822d-691a203e97b1" SourceId="1" SourceUrl="http://localhost:4321/AuthAccessBll?disco" />
+    <MetadataFile FileName="AuthAccessBll3.xsd" MetadataType="Schema" ID="bd35d504-601a-458f-adfd-e70170bdbf82" SourceId="1" SourceUrl="http://localhost:4321/AuthAccessBll?xsd=xsd4" />
+    <MetadataFile FileName="AuthAccessBll2.xsd" MetadataType="Schema" ID="e0674169-ce22-4908-a8ba-7a117855e5dd" SourceId="1" SourceUrl="http://localhost:4321/AuthAccessBll?xsd=xsd2" />
     <MetadataFile FileName="AuthAccessBll.wsdl" MetadataType="Wsdl" ID="89cf537e-d1ed-49d1-9b0d-bff8c653f335" SourceId="1" SourceUrl="http://localhost:4321/AuthAccessBll?wsdl" />
     <MetadataFile FileName="AuthAccessBll1.xsd" MetadataType="Schema" ID="39818741-4c25-4f08-b3fc-45a8473e5152" SourceId="1" SourceUrl="http://localhost:4321/AuthAccessBll?xsd=xsd0" />
-    <MetadataFile FileName="AuthAccessBll2.xsd" MetadataType="Schema" ID="e0674169-ce22-4908-a8ba-7a117855e5dd" SourceId="1" SourceUrl="http://localhost:4321/AuthAccessBll?xsd=xsd2" />
+    <MetadataFile FileName="AuthAccessBll.disco" MetadataType="Disco" ID="7f02631b-dee5-4998-822d-691a203e97b1" SourceId="1" SourceUrl="http://localhost:4321/AuthAccessBll?disco" />
+    <MetadataFile FileName="AuthAccessBll31.xsd" MetadataType="Schema" ID="5ac531d3-eaa6-48d8-b7a1-7266f3c18661" SourceId="1" SourceUrl="http://localhost:4321/AuthAccessBll?xsd=xsd3" />
+    <MetadataFile FileName="AuthAccessBll.xsd" MetadataType="Schema" ID="c8250b2b-8240-4340-bb13-76cc22ccfcda" SourceId="1" SourceUrl="http://localhost:4321/AuthAccessBll?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

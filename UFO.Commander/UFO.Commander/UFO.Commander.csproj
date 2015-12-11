@@ -81,6 +81,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\AuthAccessViewModel.cs" />
+    <Compile Include="ViewModels\Crypto.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewAccessViewModel.cs" />
     <Compile Include="Views\UserControls\CustomLoginDialog.xaml.cs">

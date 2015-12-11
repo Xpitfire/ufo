@@ -32,27 +32,21 @@ namespace UFO.Server.Bll.Common
     {
         // user
         [OperationContract]
-        IList<User> GetAll(string sessionId);
+        IList<User> GetAll(SessionToken token);
 
         [OperationContract]
-        bool IsUserAuthenticated(string sessionId);
+        bool IsUserAuthenticated(SessionToken token);
 
         [OperationContract]
-        bool IsValidAdmin(User user);
+        bool IsValidAdmin(SessionToken token);
 
         [OperationContract]
-        bool LoginAdmin(string sessionId, User user);
-
-        [OperationContract(Name = "LoginAdminByMailAndPassword")]
-        bool LoginAdmin(string sessionId, string email, string passwordHash);
-
+        bool LoginAdmin(SessionToken token);
+        
         [OperationContract]
-        void LogoutAdmin(string sessionId);
-
+        void LogoutAdmin(SessionToken token);
+        
         [OperationContract]
-        void EncryptUserCredentials(ref User user);
-
-        [OperationContract]
-        string RequestSessionId(User user);
+        SessionToken RequestSessionToken(User user);
     }
 }

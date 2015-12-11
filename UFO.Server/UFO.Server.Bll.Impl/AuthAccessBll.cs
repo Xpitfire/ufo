@@ -19,7 +19,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using UFO.Server.Bll.Common;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
@@ -30,73 +29,39 @@ namespace UFO.Server.Bll.Impl
     {
         private readonly IUserDao _userDao = DalProviderFactories.GetDaoFactory().CreateUserDao();
 
-        public IList<User> GetAll(string sessionId)
+        public IList<User> GetAll(SessionToken token)
         {
-            return IsUserAuthenticated(sessionId) ? _userDao.SelectAll().ResultObject : null;
+            return IsUserAuthenticated(token) ? _userDao.SelectAll().ResultObject : null;
         }
 
-        public bool IsUserAuthenticated(string sessionId)
+        public bool IsUserAuthenticated(SessionToken token)
         {
-            return SessionHandler.Instance.GetUserFromSession(sessionId)?.IsAdmin ?? false;
+            return SessionHandler.Instance.GetUserFromSession(token)?.IsAdmin ?? false;
         }
 
-        public bool IsValidAdmin(User user)
+        public bool IsValidAdmin(SessionToken token)
         {
-            return _userDao
-                .SelectWhere(users => users.Where(
-                    u => u.EMail != null
-                    && u.Password != null 
-                    && u.EMail.Equals(user.EMail) 
-                    && u.Password.Equals(user.Password)))
-                .ResultObject?
-                .FirstOrDefault()?
-                .IsAdmin ?? false;
+            return _userDao.VerifyAdminCredentials(token.User).ResultObject;
         }
 
-        public bool LoginAdmin(string sessionId, User user)
+        public bool LoginAdmin(SessionToken token)
         {
-            if (IsValidAdmin(user))
-            {
-                LogoutAdmin(user);
-                SessionHandler.Instance.SetUserSession(sessionId, _userDao.SelectByEmail(user.EMail).ResultObject, this);
-                return true;
-            }
-            return false;
+            if (!IsValidAdmin(token))
+                return false;
+            LogoutAdmin(token);
+            SessionHandler.Instance.SetUserSession(token, this);
+            return true;
+        }
+        
+        public void LogoutAdmin(SessionToken token)
+        {
+            SessionHandler.Instance.RemoveUserSession(token.User);
+        }
+        
+        public SessionToken RequestSessionToken(User user)
+        {
+            return SessionHandler.Instance.GenerateSessionId(_userDao.SelectByEmail(user.EMail).ResultObject);
         }
 
-        public bool LoginAdmin(string sessionId, string email, string passwordHash)
-        {
-            var user = new User
-            {
-                EMail = email,
-                Password = passwordHash
-            };
-            EncryptUserCredentials(ref user);
-            return LoginAdmin(sessionId, user);
-        }
-
-        public void LogoutAdmin(string sessionId)
-        {
-            SessionHandler.Instance.RemoveUserSession(
-                SessionHandler.Instance.GetUserFromSession(sessionId));
-        }
-
-        private void LogoutAdmin(User user)
-        {
-            SessionHandler.Instance.RemoveUserSession(user);
-        }
-
-        public void EncryptUserCredentials(ref User user)
-        {
-            using (var md5 = MD5.Create())
-            {
-                user.Password = Crypto.GetMd5Hash(md5, user.Password);
-            }
-        }
-
-        public string RequestSessionId(User user)
-        {
-            return IsValidAdmin(user) ? SessionHandler.Instance.GenerateSessionId(user) : null;
-        }
     }
 }

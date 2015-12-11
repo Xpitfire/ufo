@@ -30,20 +30,23 @@ namespace UFO.Server
 
         private const int MaxSessions = 100;
         private static int _sessionIndex = 0;
-        private static readonly string[] SessionIds = new string[MaxSessions]; 
+        private static readonly SessionToken[] SessionIds = new SessionToken[MaxSessions]; 
 
-        private readonly Dictionary<User, KeyValuePair<string, IAuthAccessBll>> _sessionDirectory = new Dictionary<User, KeyValuePair<string, IAuthAccessBll>>();
+        private readonly Dictionary<User, KeyValuePair<SessionToken, IAuthAccessBll>> _sessionDirectory = new Dictionary<User, KeyValuePair<SessionToken, IAuthAccessBll>>();
 
         private SessionHandler()
         {
         }
 
-        public void SetUserSession(string sessionId, User user, IAuthAccessBll authAccessBll)
+        public void SetUserSession(SessionToken token, IAuthAccessBll authAccessBll)
         {
             lock (_sessionDirectory)
             {
-                if (sessionId != null && !sessionId.Equals(string.Empty))
-                    _sessionDirectory[user] = new KeyValuePair<string, IAuthAccessBll>(sessionId, authAccessBll);
+                if (token?.SessionId != null && token.User != null)
+                {
+                    _sessionDirectory[token.User] = 
+                        new KeyValuePair<SessionToken, IAuthAccessBll>(token, authAccessBll);
+                }
             }
         }
 
@@ -58,25 +61,31 @@ namespace UFO.Server
             }
         }
 
-        public User GetUserFromSession(string sessionId)
+        public User GetUserFromSession(SessionToken token)
         {
             User user;
             lock (_sessionDirectory)
             {
                 user = (from accessBll in _sessionDirectory
-                        where accessBll.Value.Key == sessionId
+                        where accessBll.Value.Key.Equals(token)
                         select accessBll.Key).FirstOrDefault();
             }
             return user;
         }
 
-        public string GenerateSessionId(User user)
+        public SessionToken GenerateSessionId(User user)
         {
             lock (_sessionDirectory)
             {
-                var index = ++_sessionIndex%MaxSessions;
-                SessionIds[index] = GenerateSessionIds.GenerateRandomString();
-                return SessionIds[index];
+                var index = ++_sessionIndex % MaxSessions;
+                var sessionId = GenerateSessionIds.GenerateRandomString();
+                var sessionToken = new SessionToken
+                {
+                    SessionId = sessionId.ToCharArray(0, sessionId.Length),
+                    User = user
+                };
+                SessionIds[index] = sessionToken;
+                return sessionToken;
             }
         }
     }

@@ -15,6 +15,65 @@ namespace UFO.Server {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SessionToken", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Bll.Common")]
+    [System.SerializableAttribute()]
+    public partial class SessionToken : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private char[] SessionIdk__BackingFieldField;
+        
+        private UFO.Server.User Userk__BackingFieldField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<SessionId>k__BackingField", IsRequired=true)]
+        public char[] SessionIdk__BackingField {
+            get {
+                return this.SessionIdk__BackingFieldField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SessionIdk__BackingFieldField, value) != true)) {
+                    this.SessionIdk__BackingFieldField = value;
+                    this.RaisePropertyChanged("SessionIdk__BackingField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<User>k__BackingField", IsRequired=true)]
+        public UFO.Server.User Userk__BackingField {
+            get {
+                return this.Userk__BackingFieldField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Userk__BackingFieldField, value) != true)) {
+                    this.Userk__BackingFieldField = value;
+                    this.RaisePropertyChanged("Userk__BackingField");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
     [System.SerializableAttribute()]
     public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -493,85 +552,40 @@ namespace UFO.Server {
     public interface IAuthAccessBll {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/GetAll", ReplyAction="http://tempuri.org/IAuthAccessBll/GetAllResponse")]
-        UFO.Server.User[] GetAll(string sessionId);
+        UFO.Server.User[] GetAll(UFO.Server.SessionToken token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/GetAll", ReplyAction="http://tempuri.org/IAuthAccessBll/GetAllResponse")]
-        System.Threading.Tasks.Task<UFO.Server.User[]> GetAllAsync(string sessionId);
+        System.Threading.Tasks.Task<UFO.Server.User[]> GetAllAsync(UFO.Server.SessionToken token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/IsUserAuthenticated", ReplyAction="http://tempuri.org/IAuthAccessBll/IsUserAuthenticatedResponse")]
-        bool IsUserAuthenticated(string sessionId);
+        bool IsUserAuthenticated(UFO.Server.SessionToken token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/IsUserAuthenticated", ReplyAction="http://tempuri.org/IAuthAccessBll/IsUserAuthenticatedResponse")]
-        System.Threading.Tasks.Task<bool> IsUserAuthenticatedAsync(string sessionId);
+        System.Threading.Tasks.Task<bool> IsUserAuthenticatedAsync(UFO.Server.SessionToken token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/IsValidAdmin", ReplyAction="http://tempuri.org/IAuthAccessBll/IsValidAdminResponse")]
-        bool IsValidAdmin(UFO.Server.User user);
+        bool IsValidAdmin(UFO.Server.SessionToken token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/IsValidAdmin", ReplyAction="http://tempuri.org/IAuthAccessBll/IsValidAdminResponse")]
-        System.Threading.Tasks.Task<bool> IsValidAdminAsync(UFO.Server.User user);
+        System.Threading.Tasks.Task<bool> IsValidAdminAsync(UFO.Server.SessionToken token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/LoginAdmin", ReplyAction="http://tempuri.org/IAuthAccessBll/LoginAdminResponse")]
-        bool LoginAdmin(string sessionId, UFO.Server.User user);
+        bool LoginAdmin(UFO.Server.SessionToken token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/LoginAdmin", ReplyAction="http://tempuri.org/IAuthAccessBll/LoginAdminResponse")]
-        System.Threading.Tasks.Task<bool> LoginAdminAsync(string sessionId, UFO.Server.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/LoginAdminByMailAndPassword", ReplyAction="http://tempuri.org/IAuthAccessBll/LoginAdminByMailAndPasswordResponse")]
-        bool LoginAdminByMailAndPassword(string sessionId, string email, string passwordHash);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/LoginAdminByMailAndPassword", ReplyAction="http://tempuri.org/IAuthAccessBll/LoginAdminByMailAndPasswordResponse")]
-        System.Threading.Tasks.Task<bool> LoginAdminByMailAndPasswordAsync(string sessionId, string email, string passwordHash);
+        System.Threading.Tasks.Task<bool> LoginAdminAsync(UFO.Server.SessionToken token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/LogoutAdmin", ReplyAction="http://tempuri.org/IAuthAccessBll/LogoutAdminResponse")]
-        void LogoutAdmin(string sessionId);
+        void LogoutAdmin(UFO.Server.SessionToken token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/LogoutAdmin", ReplyAction="http://tempuri.org/IAuthAccessBll/LogoutAdminResponse")]
-        System.Threading.Tasks.Task LogoutAdminAsync(string sessionId);
+        System.Threading.Tasks.Task LogoutAdminAsync(UFO.Server.SessionToken token);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/EncryptUserCredentials", ReplyAction="http://tempuri.org/IAuthAccessBll/EncryptUserCredentialsResponse")]
-        UFO.Server.EncryptUserCredentialsResponse EncryptUserCredentials(UFO.Server.EncryptUserCredentialsRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/RequestSessionToken", ReplyAction="http://tempuri.org/IAuthAccessBll/RequestSessionTokenResponse")]
+        UFO.Server.SessionToken RequestSessionToken(UFO.Server.User user);
         
-        // CODEGEN: Generating message contract since the operation has multiple return values.
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/EncryptUserCredentials", ReplyAction="http://tempuri.org/IAuthAccessBll/EncryptUserCredentialsResponse")]
-        System.Threading.Tasks.Task<UFO.Server.EncryptUserCredentialsResponse> EncryptUserCredentialsAsync(UFO.Server.EncryptUserCredentialsRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/RequestSessionId", ReplyAction="http://tempuri.org/IAuthAccessBll/RequestSessionIdResponse")]
-        string RequestSessionId(UFO.Server.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/RequestSessionId", ReplyAction="http://tempuri.org/IAuthAccessBll/RequestSessionIdResponse")]
-        System.Threading.Tasks.Task<string> RequestSessionIdAsync(UFO.Server.User user);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="EncryptUserCredentials", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class EncryptUserCredentialsRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public UFO.Server.User user;
-        
-        public EncryptUserCredentialsRequest() {
-        }
-        
-        public EncryptUserCredentialsRequest(UFO.Server.User user) {
-            this.user = user;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="EncryptUserCredentialsResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class EncryptUserCredentialsResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public UFO.Server.User user;
-        
-        public EncryptUserCredentialsResponse() {
-        }
-        
-        public EncryptUserCredentialsResponse(UFO.Server.User user) {
-            this.user = user;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/RequestSessionToken", ReplyAction="http://tempuri.org/IAuthAccessBll/RequestSessionTokenResponse")]
+        System.Threading.Tasks.Task<UFO.Server.SessionToken> RequestSessionTokenAsync(UFO.Server.User user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -601,76 +615,52 @@ namespace UFO.Server {
                 base(binding, remoteAddress) {
         }
         
-        public UFO.Server.User[] GetAll(string sessionId) {
-            return base.Channel.GetAll(sessionId);
+        public UFO.Server.User[] GetAll(UFO.Server.SessionToken token) {
+            return base.Channel.GetAll(token);
         }
         
-        public System.Threading.Tasks.Task<UFO.Server.User[]> GetAllAsync(string sessionId) {
-            return base.Channel.GetAllAsync(sessionId);
+        public System.Threading.Tasks.Task<UFO.Server.User[]> GetAllAsync(UFO.Server.SessionToken token) {
+            return base.Channel.GetAllAsync(token);
         }
         
-        public bool IsUserAuthenticated(string sessionId) {
-            return base.Channel.IsUserAuthenticated(sessionId);
+        public bool IsUserAuthenticated(UFO.Server.SessionToken token) {
+            return base.Channel.IsUserAuthenticated(token);
         }
         
-        public System.Threading.Tasks.Task<bool> IsUserAuthenticatedAsync(string sessionId) {
-            return base.Channel.IsUserAuthenticatedAsync(sessionId);
+        public System.Threading.Tasks.Task<bool> IsUserAuthenticatedAsync(UFO.Server.SessionToken token) {
+            return base.Channel.IsUserAuthenticatedAsync(token);
         }
         
-        public bool IsValidAdmin(UFO.Server.User user) {
-            return base.Channel.IsValidAdmin(user);
+        public bool IsValidAdmin(UFO.Server.SessionToken token) {
+            return base.Channel.IsValidAdmin(token);
         }
         
-        public System.Threading.Tasks.Task<bool> IsValidAdminAsync(UFO.Server.User user) {
-            return base.Channel.IsValidAdminAsync(user);
+        public System.Threading.Tasks.Task<bool> IsValidAdminAsync(UFO.Server.SessionToken token) {
+            return base.Channel.IsValidAdminAsync(token);
         }
         
-        public bool LoginAdmin(string sessionId, UFO.Server.User user) {
-            return base.Channel.LoginAdmin(sessionId, user);
+        public bool LoginAdmin(UFO.Server.SessionToken token) {
+            return base.Channel.LoginAdmin(token);
         }
         
-        public System.Threading.Tasks.Task<bool> LoginAdminAsync(string sessionId, UFO.Server.User user) {
-            return base.Channel.LoginAdminAsync(sessionId, user);
+        public System.Threading.Tasks.Task<bool> LoginAdminAsync(UFO.Server.SessionToken token) {
+            return base.Channel.LoginAdminAsync(token);
         }
         
-        public bool LoginAdminByMailAndPassword(string sessionId, string email, string passwordHash) {
-            return base.Channel.LoginAdminByMailAndPassword(sessionId, email, passwordHash);
+        public void LogoutAdmin(UFO.Server.SessionToken token) {
+            base.Channel.LogoutAdmin(token);
         }
         
-        public System.Threading.Tasks.Task<bool> LoginAdminByMailAndPasswordAsync(string sessionId, string email, string passwordHash) {
-            return base.Channel.LoginAdminByMailAndPasswordAsync(sessionId, email, passwordHash);
+        public System.Threading.Tasks.Task LogoutAdminAsync(UFO.Server.SessionToken token) {
+            return base.Channel.LogoutAdminAsync(token);
         }
         
-        public void LogoutAdmin(string sessionId) {
-            base.Channel.LogoutAdmin(sessionId);
+        public UFO.Server.SessionToken RequestSessionToken(UFO.Server.User user) {
+            return base.Channel.RequestSessionToken(user);
         }
         
-        public System.Threading.Tasks.Task LogoutAdminAsync(string sessionId) {
-            return base.Channel.LogoutAdminAsync(sessionId);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        UFO.Server.EncryptUserCredentialsResponse UFO.Server.IAuthAccessBll.EncryptUserCredentials(UFO.Server.EncryptUserCredentialsRequest request) {
-            return base.Channel.EncryptUserCredentials(request);
-        }
-        
-        public void EncryptUserCredentials(ref UFO.Server.User user) {
-            UFO.Server.EncryptUserCredentialsRequest inValue = new UFO.Server.EncryptUserCredentialsRequest();
-            inValue.user = user;
-            UFO.Server.EncryptUserCredentialsResponse retVal = ((UFO.Server.IAuthAccessBll)(this)).EncryptUserCredentials(inValue);
-            user = retVal.user;
-        }
-        
-        public System.Threading.Tasks.Task<UFO.Server.EncryptUserCredentialsResponse> EncryptUserCredentialsAsync(UFO.Server.EncryptUserCredentialsRequest request) {
-            return base.Channel.EncryptUserCredentialsAsync(request);
-        }
-        
-        public string RequestSessionId(UFO.Server.User user) {
-            return base.Channel.RequestSessionId(user);
-        }
-        
-        public System.Threading.Tasks.Task<string> RequestSessionIdAsync(UFO.Server.User user) {
-            return base.Channel.RequestSessionIdAsync(user);
+        public System.Threading.Tasks.Task<UFO.Server.SessionToken> RequestSessionTokenAsync(UFO.Server.User user) {
+            return base.Channel.RequestSessionTokenAsync(user);
         }
     }
 }

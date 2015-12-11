@@ -45,14 +45,13 @@ namespace UFO.Server.Test
                 EMail = "marius.dinu@mymail.com",
                 Password = "password"
             };
-            authAccessBll.EncryptUserCredentials(ref user);
+            var token = authAccessBll.RequestSessionToken(user);
 
-            var sessionId = authAccessBll.RequestSessionId(user);
-            Assert.IsFalse(authAccessBll.IsUserAuthenticated(sessionId));
-            authAccessBll.LoginAdmin(sessionId, user);
-            Assert.IsTrue(authAccessBll.IsUserAuthenticated(sessionId));
-            authAccessBll.LogoutAdmin(sessionId);
-            Assert.IsFalse(authAccessBll.IsUserAuthenticated(sessionId));
+            Assert.IsFalse(authAccessBll.IsUserAuthenticated(token));
+            authAccessBll.LoginAdmin(token);
+            Assert.IsTrue(authAccessBll.IsUserAuthenticated(token));
+            authAccessBll.LogoutAdmin(token);
+            Assert.IsFalse(authAccessBll.IsUserAuthenticated(token));
         }
     }
 }

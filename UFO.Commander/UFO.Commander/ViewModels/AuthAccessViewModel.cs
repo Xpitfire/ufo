@@ -17,6 +17,7 @@
 //     Dinu Marius-Constantin
 #endregion
 using System;
+using System.Security.Cryptography;
 using System.Windows.Input;
 using UFO.Server;
 
@@ -25,25 +26,25 @@ namespace UFO.Commander.ViewModels
     class AuthAccessViewModel
     {
         private readonly AuthAccessBllClient _authAccessBll = new AuthAccessBllClient();
-        private static string _appSessionId;
+        private static SessionToken _sessionToken;
 
-        public bool IsValidLogin(string textBoxUserName, string password)
+        public bool RequestLogin(string textBoxUserName, string password)
         {
             var user = new User
             {
-                EMailk__BackingField = textBoxUserName,
-                Passwordk__BackingField = password
+                EMailk__BackingField = textBoxUserName
             };
-            _authAccessBll.EncryptUserCredentials(ref user);
-            if (!_authAccessBll.IsValidAdmin(user))
-                return false;
-            _appSessionId = _authAccessBll.RequestSessionId(user);
-            return true;
+            using (var md5 = MD5.Create())
+            {
+                user.Passwordk__BackingField = Crypto.GetMd5Hash(md5, password);
+            }
+            _sessionToken = _authAccessBll.RequestSessionToken(user);
+            return _authAccessBll.IsValidAdmin(_sessionToken);
         }
 
-        public void LoginAdmin(string textBoxUserName, string password)
+        public void Login()
         {
-            _authAccessBll.LoginAdminByMailAndPassword(_appSessionId, textBoxUserName, password);
+            _authAccessBll.LoginAdmin(_sessionToken);
         }
 
         private ICommand _checkLoginCommand;
@@ -53,7 +54,7 @@ namespace UFO.Commander.ViewModels
             {
                 return _checkLoginCommand ?? (_checkLoginCommand = new RelayCommand(obj =>
                 {
-                    if (!_authAccessBll.IsUserAuthenticated(_appSessionId))
+                    if (!_authAccessBll.IsUserAuthenticated(_sessionToken))
                     {
                         throw new Exception("Lost server connection session!");
                     }

@@ -248,44 +248,6 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAuthAccessBll_LoginAdminByMailAndPassword_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAuthAccessBll_LoginAdminByMailAndPassword_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_IAuthAccessBll_LogoutAdmin_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -324,7 +286,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAuthAccessBll_EncryptUserCredentials_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IAuthAccessBll_RequestSessionToken_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -343,45 +305,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAuthAccessBll_EncryptUserCredentials_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAuthAccessBll_RequestSessionId_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAuthAccessBll_RequestSessionId_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IAuthAccessBll_RequestSessionToken_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -404,7 +328,9 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:4321/AuthAccessBll?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:4321/AuthAccessBll?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:4321/AuthAccessBll?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" />
+      <xsd:import schemaLocation="http://localhost:4321/AuthAccessBll?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Bll.Common" />
+      <xsd:import schemaLocation="http://localhost:4321/AuthAccessBll?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:4321/AuthAccessBll?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAuthAccessBll_GetAll_InputMessage">
@@ -431,29 +357,17 @@
   <wsdl:message name="IAuthAccessBll_LoginAdmin_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginAdminResponse" />
   </wsdl:message>
-  <wsdl:message name="IAuthAccessBll_LoginAdminByMailAndPassword_InputMessage">
-    <wsdl:part name="parameters" element="tns:LoginAdminByMailAndPassword" />
-  </wsdl:message>
-  <wsdl:message name="IAuthAccessBll_LoginAdminByMailAndPassword_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LoginAdminByMailAndPasswordResponse" />
-  </wsdl:message>
   <wsdl:message name="IAuthAccessBll_LogoutAdmin_InputMessage">
     <wsdl:part name="parameters" element="tns:LogoutAdmin" />
   </wsdl:message>
   <wsdl:message name="IAuthAccessBll_LogoutAdmin_OutputMessage">
     <wsdl:part name="parameters" element="tns:LogoutAdminResponse" />
   </wsdl:message>
-  <wsdl:message name="IAuthAccessBll_EncryptUserCredentials_InputMessage">
-    <wsdl:part name="parameters" element="tns:EncryptUserCredentials" />
+  <wsdl:message name="IAuthAccessBll_RequestSessionToken_InputMessage">
+    <wsdl:part name="parameters" element="tns:RequestSessionToken" />
   </wsdl:message>
-  <wsdl:message name="IAuthAccessBll_EncryptUserCredentials_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EncryptUserCredentialsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IAuthAccessBll_RequestSessionId_InputMessage">
-    <wsdl:part name="parameters" element="tns:RequestSessionId" />
-  </wsdl:message>
-  <wsdl:message name="IAuthAccessBll_RequestSessionId_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RequestSessionIdResponse" />
+  <wsdl:message name="IAuthAccessBll_RequestSessionToken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RequestSessionTokenResponse" />
   </wsdl:message>
   <wsdl:portType name="IAuthAccessBll">
     <wsdl:operation name="GetAll">
@@ -472,21 +386,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthAccessBll/LoginAdmin" message="tns:IAuthAccessBll_LoginAdmin_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAuthAccessBll/LoginAdminResponse" message="tns:IAuthAccessBll_LoginAdmin_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="LoginAdminByMailAndPassword">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthAccessBll/LoginAdminByMailAndPassword" message="tns:IAuthAccessBll_LoginAdminByMailAndPassword_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthAccessBll/LoginAdminByMailAndPasswordResponse" message="tns:IAuthAccessBll_LoginAdminByMailAndPassword_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="LogoutAdmin">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthAccessBll/LogoutAdmin" message="tns:IAuthAccessBll_LogoutAdmin_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAuthAccessBll/LogoutAdminResponse" message="tns:IAuthAccessBll_LogoutAdmin_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="EncryptUserCredentials">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthAccessBll/EncryptUserCredentials" message="tns:IAuthAccessBll_EncryptUserCredentials_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthAccessBll/EncryptUserCredentialsResponse" message="tns:IAuthAccessBll_EncryptUserCredentials_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RequestSessionId">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthAccessBll/RequestSessionId" message="tns:IAuthAccessBll_RequestSessionId_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthAccessBll/RequestSessionIdResponse" message="tns:IAuthAccessBll_RequestSessionId_OutputMessage" />
+    <wsdl:operation name="RequestSessionToken">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthAccessBll/RequestSessionToken" message="tns:IAuthAccessBll_RequestSessionToken_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthAccessBll/RequestSessionTokenResponse" message="tns:IAuthAccessBll_RequestSessionToken_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IAuthAccessBll" type="tns:IAuthAccessBll">
@@ -536,17 +442,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="LoginAdminByMailAndPassword">
-      <soap12:operation soapAction="http://tempuri.org/IAuthAccessBll/LoginAdminByMailAndPassword" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAuthAccessBll_LoginAdminByMailAndPassword_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAuthAccessBll_LoginAdminByMailAndPassword_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="LogoutAdmin">
       <soap12:operation soapAction="http://tempuri.org/IAuthAccessBll/LogoutAdmin" style="document" />
       <wsdl:input>
@@ -558,25 +453,14 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="EncryptUserCredentials">
-      <soap12:operation soapAction="http://tempuri.org/IAuthAccessBll/EncryptUserCredentials" style="document" />
+    <wsdl:operation name="RequestSessionToken">
+      <soap12:operation soapAction="http://tempuri.org/IAuthAccessBll/RequestSessionToken" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAuthAccessBll_EncryptUserCredentials_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IAuthAccessBll_RequestSessionToken_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAuthAccessBll_EncryptUserCredentials_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RequestSessionId">
-      <soap12:operation soapAction="http://tempuri.org/IAuthAccessBll/RequestSessionId" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAuthAccessBll_RequestSessionId_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAuthAccessBll_RequestSessionId_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IAuthAccessBll_RequestSessionToken_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
