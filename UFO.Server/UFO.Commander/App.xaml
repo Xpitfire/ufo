@@ -6,23 +6,39 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
             <Style x:Key="CustomMetroWindowStyle" TargetType="{x:Type controls:MetroWindow}">
+                <Setter Property="TitleForeground" Value="DarkSlateGray" />
                 <Setter Property="Background" Value="#EEEEF2" />
                 <Setter Property="BorderBrush" Value="#EEEEF2" />
                 <Setter Property="WindowTitleBrush" Value="#EEEEF2" />
                 <Setter Property="TitleCaps" Value="False" />
                 <Setter Property="ShowIconOnTitleBar" Value="True" />
                 <Setter Property="NonActiveWindowTitleBrush" Value="#EEEEF2" />
-                <Setter Property="GlowBrush" Value="LightBlue" />
+                <Setter Property="GlowBrush" Value="CornflowerBlue" />
                 <Setter Property="BorderThickness" Value="0,1,0,0" />
             </Style>
+
+            <Style x:Key="WindowButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MetroWindowButtonStyle}">
+                <Setter Property="Foreground" Value="Black"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#FFF" />
+                    </Trigger>
+                    <Trigger Property="IsPressed" Value="True">
+                        <Setter Property="Background" Value="DodgerBlue" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

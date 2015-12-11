@@ -4,12 +4,22 @@
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                       xmlns:local="clr-namespace:UFO.Commander"
+                      xmlns:ucviews="clr-namespace:UFO.Commander.Views.UserControls"
                       xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                      xmlns:viewModels="clr-namespace:UFO.Commander.ViewModels"
                       Title="UFO Commander"
                       Style="{DynamicResource CustomMetroWindowStyle}"
+                      WindowCloseButtonStyle="{DynamicResource WindowButtonStyle}"
+                      WindowMaxButtonStyle="{DynamicResource WindowButtonStyle}"
+                      WindowMinButtonStyle="{DynamicResource WindowButtonStyle}"
+                      Loaded="LoginEvent"
                       Height="720" 
                       Width="1200">
+    <Window.DataContext>
+        <viewModels:AuthAccessViewModel/>
+    </Window.DataContext>
+    
     <Grid>
-        
     </Grid>
 </controls:MetroWindow>

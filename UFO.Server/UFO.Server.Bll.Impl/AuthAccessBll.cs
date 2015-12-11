@@ -63,7 +63,7 @@ namespace UFO.Server.Bll.Impl
             return CurrentAuthUser?.IsAdmin ?? false;
         }
 
-        public bool IsValidAdmin([NotNull] User user)
+        public bool IsValidAdmin(User user)
         {
             return _userDao
                 .SelectWhere(users => users.Where(
