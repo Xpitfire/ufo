@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="DalProviderFactories.cs" />
     <Compile Include="ProviderUtility.cs" />
+    <Compile Include="SessionHandler.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +81,10 @@
     <None Include="UFO.Server.psproj" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UFO.Server.Bll.Common\UFO.Server.Bll.Common.csproj">
+      <Project>{8F5DCB11-1D74-4674-9A16-8FA37B9B4C72}</Project>
+      <Name>UFO.Server.Bll.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UFO.Server.Dal.Common\UFO.Server.Dal.Common.csproj">
       <Project>{90aa318d-269a-4c83-9ee9-85718a0fdd67}</Project>
       <Name>UFO.Server.Dal.Common</Name>

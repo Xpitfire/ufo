@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAuthAccessBll.cs" />
-    <Compile Include="SessionHandler.cs" />
     <Compile Include="IViewAccessBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
