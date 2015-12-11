@@ -16,14 +16,10 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
-using System;
+
 using System.Collections.Generic;
-using System.EnterpriseServices;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using PostSharp.Patterns.Contracts;
 using UFO.Server.Bll.Common;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
@@ -32,35 +28,16 @@ namespace UFO.Server.Bll.Impl
 {
     public class AuthAccessBll : IAuthAccessBll
     {
-        private User _currentAuthUser;
-
-        private User CurrentAuthUser
-        {
-            get { return _currentAuthUser; }
-            set
-            {
-                if (value == null)
-                {
-                    SessionHandler.Instance.RemoveUserSession(_currentAuthUser);
-                }
-                else
-                {
-                    SessionHandler.Instance.CreateUserSession(value, this);
-                }
-                _currentAuthUser = value;
-            }
-        }
-
         private readonly IUserDao _userDao = DalProviderFactories.GetDaoFactory().CreateUserDao();
 
-        public IList<User> GetAll()
+        public IList<User> GetAll(string sessionId)
         {
-            return IsUserAuthenticated() ? _userDao.SelectAll().ResultObject : null;
+            return IsUserAuthenticated(sessionId) ? _userDao.SelectAll().ResultObject : null;
         }
 
-        public bool IsUserAuthenticated()
+        public bool IsUserAuthenticated(string sessionId)
         {
-            return CurrentAuthUser?.IsAdmin ?? false;
+            return SessionHandler.Instance.GetUserFromSession(sessionId)?.IsAdmin ?? false;
         }
 
         public bool IsValidAdmin(User user)
@@ -76,33 +53,50 @@ namespace UFO.Server.Bll.Impl
                 .IsAdmin ?? false;
         }
 
-        public bool LoginAdmin(User user)
+        public bool LoginAdmin(string sessionId, User user)
         {
-            // if user is already authenticated, then kick admin from session
-            if (IsValidAdmin(user) && !IsUserAuthenticated())
+            if (IsValidAdmin(user))
             {
-                CurrentAuthUser = _userDao.SelectByEmail(user.EMail).ResultObject;
+                LogoutAdmin(user);
+                SessionHandler.Instance.SetUserSession(sessionId, _userDao.SelectByEmail(user.EMail).ResultObject, this);
                 return true;
             }
             return false;
         }
 
-        public bool LoginAdmin(string email, string passwordHash)
+        public bool LoginAdmin(string sessionId, string email, string passwordHash)
         {
-            return LoginAdmin(new User {EMail = email, Password = passwordHash});
+            var user = new User
+            {
+                EMail = email,
+                Password = passwordHash
+            };
+            EncryptUserCredentials(ref user);
+            return LoginAdmin(sessionId, user);
         }
 
-        public void LogoutAdmin()
+        public void LogoutAdmin(string sessionId)
         {
-            CurrentAuthUser = null;
+            SessionHandler.Instance.RemoveUserSession(
+                SessionHandler.Instance.GetUserFromSession(sessionId));
         }
 
-        public void EncryptUserCredentials(User user)
+        private void LogoutAdmin(User user)
+        {
+            SessionHandler.Instance.RemoveUserSession(user);
+        }
+
+        public void EncryptUserCredentials(ref User user)
         {
             using (var md5 = MD5.Create())
             {
                 user.Password = Crypto.GetMd5Hash(md5, user.Password);
             }
+        }
+
+        public string RequestSessionId(User user)
+        {
+            return IsValidAdmin(user) ? SessionHandler.Instance.GenerateSessionId(user) : null;
         }
     }
 }

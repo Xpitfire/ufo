@@ -19,21 +19,40 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using UFO.Server.Domain;
+using PostSharp.Constraints;
 
 namespace UFO.Server.Bll.Common
 {
+    [ServiceContract]
     public interface IAuthAccessBll
     {
         // user
-        IList<User> GetAll();
-        bool IsUserAuthenticated();
+        [OperationContract]
+        IList<User> GetAll(string sessionId);
+
+        [OperationContract]
+        bool IsUserAuthenticated(string sessionId);
+
+        [OperationContract]
         bool IsValidAdmin(User user);
-        bool LoginAdmin(User user);
-        bool LoginAdmin(string email, string passwordHash);
-        void LogoutAdmin();
-        void EncryptUserCredentials(User user);
+
+        [OperationContract]
+        bool LoginAdmin(string sessionId, User user);
+
+        [OperationContract(Name = "LoginAdminByMailAndPassword")]
+        bool LoginAdmin(string sessionId, string email, string passwordHash);
+
+        [OperationContract]
+        void LogoutAdmin(string sessionId);
+
+        [OperationContract]
+        void EncryptUserCredentials(ref User user);
+
+        [OperationContract]
+        string RequestSessionId(User user);
     }
 }

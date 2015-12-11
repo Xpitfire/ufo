@@ -17,6 +17,7 @@
 //     Dinu Marius-Constantin
 #endregion
 using System.Collections.Generic;
+using System.Linq;
 using UFO.Server.Bll.Common;
 using UFO.Server.Domain;
 
@@ -24,20 +25,25 @@ namespace UFO.Server
 {
     public class SessionHandler
     {
-        public static SessionHandler Instance => new SessionHandler();
+        private static SessionHandler _instance;
+        public static SessionHandler Instance => _instance ?? (_instance = new SessionHandler());
 
-        private readonly Dictionary<User, IAuthAccessBll> _sessionDirectory = new Dictionary<User, IAuthAccessBll>();
+        private const int MaxSessions = 100;
+        private static int _sessionIndex = 0;
+        private static readonly string[] SessionIds = new string[MaxSessions]; 
+
+        private readonly Dictionary<User, KeyValuePair<string, IAuthAccessBll>> _sessionDirectory = new Dictionary<User, KeyValuePair<string, IAuthAccessBll>>();
 
         private SessionHandler()
         {
         }
 
-        public void CreateUserSession(User user, IAuthAccessBll authAccessBll)
+        public void SetUserSession(string sessionId, User user, IAuthAccessBll authAccessBll)
         {
             lock (_sessionDirectory)
             {
-                RemoveUserSession(user);
-                _sessionDirectory[user] = authAccessBll;
+                if (sessionId != null && !sessionId.Equals(string.Empty))
+                    _sessionDirectory[user] = new KeyValuePair<string, IAuthAccessBll>(sessionId, authAccessBll);
             }
         }
 
@@ -47,11 +53,31 @@ namespace UFO.Server
             {
                 if (_sessionDirectory.ContainsKey(user))
                 {
-                    _sessionDirectory[user].LogoutAdmin();
                     _sessionDirectory.Remove(user);
                 }
             }
         }
 
+        public User GetUserFromSession(string sessionId)
+        {
+            User user;
+            lock (_sessionDirectory)
+            {
+                user = (from accessBll in _sessionDirectory
+                        where accessBll.Value.Key == sessionId
+                        select accessBll.Key).FirstOrDefault();
+            }
+            return user;
+        }
+
+        public string GenerateSessionId(User user)
+        {
+            lock (_sessionDirectory)
+            {
+                var index = ++_sessionIndex%MaxSessions;
+                SessionIds[index] = GenerateSessionIds.GenerateRandomString();
+                return SessionIds[index];
+            }
+        }
     }
 }

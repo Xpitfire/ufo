@@ -39,6 +39,7 @@ namespace UFO.Commander
 
             if (viewModel.IsValidLogin(_loginDialog.TextBoxUserName.Text, _loginDialog.PasswordBox.Password))
             {
+                viewModel.LoginAdmin(_loginDialog.TextBoxUserName.Text, _loginDialog.PasswordBox.Password);
                 this.HideMetroDialogAsync(_customDialog);
             }
             else
@@ -50,7 +51,7 @@ namespace UFO.Commander
         private void ButtonCancelOnClick(object sender, RoutedEventArgs e)
         {
             Close();
-        }
+        }    
     }
     
 }

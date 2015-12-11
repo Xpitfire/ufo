@@ -19,7 +19,11 @@
     <Window.DataContext>
         <viewModels:AuthAccessViewModel/>
     </Window.DataContext>
-    
-    <Grid>
+    <Window.Resources>
+        <viewModels:AuthAccessViewModel x:Key="AccessViewModel"/>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource AccessViewModel}">
+        <Button Content="TestConnection" Command="{Binding CheckLoginCommand}" />
     </Grid>
 </controls:MetroWindow>

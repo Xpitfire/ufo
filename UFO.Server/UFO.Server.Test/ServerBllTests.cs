@@ -40,17 +40,19 @@ namespace UFO.Server.Test
         public void TestAdminAuthentication()
         {
             var authAccessBll = new AuthAccessBll();
-            Assert.IsFalse(authAccessBll.IsUserAuthenticated());
             var user = new User
             {
                 EMail = "marius.dinu@mymail.com",
                 Password = "password"
             };
-            authAccessBll.EncryptUserCredentials(user);
-            authAccessBll.LoginAdmin(user);
-            Assert.IsTrue(authAccessBll.IsUserAuthenticated());
-            authAccessBll.LogoutAdmin();
-            Assert.IsFalse(authAccessBll.IsUserAuthenticated());
+            authAccessBll.EncryptUserCredentials(ref user);
+
+            var sessionId = authAccessBll.RequestSessionId(user);
+            Assert.IsFalse(authAccessBll.IsUserAuthenticated(sessionId));
+            authAccessBll.LoginAdmin(sessionId, user);
+            Assert.IsTrue(authAccessBll.IsUserAuthenticated(sessionId));
+            authAccessBll.LogoutAdmin(sessionId);
+            Assert.IsFalse(authAccessBll.IsUserAuthenticated(sessionId));
         }
     }
 }

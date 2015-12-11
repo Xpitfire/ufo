@@ -13,5 +13,8 @@ namespace UFO.Commander
     /// </summary>
     public partial class App
     {
+        public App()
+        {
+        }
     }
 }
