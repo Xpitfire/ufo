@@ -56,7 +56,7 @@ namespace UFO.Commander.ViewModels
                 {
                     if (!_authAccessBll.IsUserAuthenticated(_sessionToken))
                     {
-                        throw new Exception("Lost server connection session!");
+                        Console.WriteLine("Failed");
                     }
                 }));
             }

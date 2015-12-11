@@ -16,7 +16,6 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
-
 using System.Collections.Generic;
 using System.Linq;
 using UFO.Server.Bll.Common;
@@ -55,7 +54,7 @@ namespace UFO.Server.Bll.Impl
         
         public void LogoutAdmin(SessionToken token)
         {
-            SessionHandler.Instance.RemoveUserSession(token.User);
+            SessionHandler.Instance.RemoveUserSession(token);
         }
         
         public SessionToken RequestSessionToken(User user)

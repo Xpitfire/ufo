@@ -16,6 +16,7 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UFO.Server.Bll.Common;
@@ -32,7 +33,7 @@ namespace UFO.Server
         private static int _sessionIndex = 0;
         private static readonly SessionToken[] SessionIds = new SessionToken[MaxSessions]; 
 
-        private readonly Dictionary<User, KeyValuePair<SessionToken, IAuthAccessBll>> _sessionDirectory = new Dictionary<User, KeyValuePair<SessionToken, IAuthAccessBll>>();
+        private readonly Dictionary<SessionToken, IAuthAccessBll> _sessionDirectory = new Dictionary<SessionToken, IAuthAccessBll>();
 
         private SessionHandler()
         {
@@ -42,35 +43,34 @@ namespace UFO.Server
         {
             lock (_sessionDirectory)
             {
-                if (token?.SessionId != null && token.User != null)
-                {
-                    _sessionDirectory[token.User] = 
-                        new KeyValuePair<SessionToken, IAuthAccessBll>(token, authAccessBll);
-                }
+                if (token?.SessionId == null || token.User == null)
+                    return;
+                _sessionDirectory[token] = authAccessBll;
+                Console.WriteLine($"Registered new session key: {token}");
             }
         }
 
-        public void RemoveUserSession(User user)
+        public void RemoveUserSession(SessionToken token)
         {
             lock (_sessionDirectory)
             {
-                if (_sessionDirectory.ContainsKey(user))
-                {
-                    _sessionDirectory.Remove(user);
-                }
+                var value = _sessionDirectory.Keys.AsParallel().FirstOrDefault(x => x.User.Equals(token.User));
+                if (value == null)
+                    return;
+                _sessionDirectory.Remove(value);
+                Console.WriteLine($"Removed session key: {value}");
             }
         }
 
         public User GetUserFromSession(SessionToken token)
         {
-            User user;
             lock (_sessionDirectory)
             {
-                user = (from accessBll in _sessionDirectory
-                        where accessBll.Value.Key.Equals(token)
-                        select accessBll.Key).FirstOrDefault();
+                if (_sessionDirectory.ContainsKey(token)
+                    && _sessionDirectory.AsParallel().Any(x => x.Key.Equals(token)))
+                    return token.User;
             }
-            return user;
+            return null;
         }
 
         public SessionToken GenerateSessionId(User user)
@@ -85,6 +85,7 @@ namespace UFO.Server
                     User = user
                 };
                 SessionIds[index] = sessionToken;
+                Console.WriteLine($"Created new session key: {new string(sessionToken.SessionId)}");
                 return sessionToken;
             }
         }
