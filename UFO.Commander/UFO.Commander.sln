@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFO.Commander", "UFO.Commander\UFO.Commander.csproj", "{E97FDDE7-DB85-4852-91FC-585557B7FFC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFO.Commander.Services.Generated", "UFO.Commander.Services.Generated\UFO.Commander.Services.Generated.csproj", "{B3A19AEC-D98F-4D48-A27F-514DBDF002C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UFO.Services.Generated", "UFO.Services.Generated\UFO.Services.Generated.csproj", "{B3A19AEC-D98F-4D48-A27F-514DBDF002C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -19,27 +19,37 @@
 #endregion
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace UFO.Server.Domain
 {
     [Serializable]
+    [DataContract(Name = nameof(User))]
     public class User
     {
+        [DataMember(Name = nameof(UserId))]
         public int UserId { get; set; } = Constants.InvalidIdValue;
 
+        [DataMember(Name = nameof(FirstName))]
         public string FirstName { get; set; }
 
+        [DataMember(Name = nameof(LastName))]
         public string LastName { get; set; }
 
         [RegularExpression(Constants.EMailRegex)]
+        [DataMember(Name = nameof(EMail))]
         public string EMail { get; set; }
-        
+
+        [DataMember(Name = nameof(Password))]
         public string Password { get; set; }
 
+        [DataMember(Name = nameof(IsAdmin))]
         public bool IsAdmin { get; set; }
 
+        [DataMember(Name = nameof(IsArtist))]
         public bool IsArtist { get; set; }
 
+        [DataMember(Name = nameof(Artist))]
         public Artist Artist { get; set; }
 
         public override string ToString()

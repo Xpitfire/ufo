@@ -147,9 +147,9 @@
     <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UFO.Commander.Services.Generated\UFO.Commander.Services.Generated.csproj">
+    <ProjectReference Include="..\UFO.Services.Generated\UFO.Services.Generated.csproj">
       <Project>{b3a19aec-d98f-4d48-a27f-514dbdf002c3}</Project>
-      <Name>UFO.Commander.Services.Generated</Name>
+      <Name>UFO.Services.Generated</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

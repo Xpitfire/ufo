@@ -19,28 +19,37 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using UFO.Server.Domain;
 
 namespace UFO.Server.Bll.Common
 {
+    [ServiceContract]
     public interface IViewAccessBll
     {
         // artist
+        [OperationContract]
         IList<Artist> GetAllArtist();
+
+        [OperationContract]
         IList<Artist> GetArtistWhereCatrgory(Category category);
 
         // category
+        [OperationContract]
         IList<Category> GetAllCategories();
 
         // Country
+        [OperationContract]
         IList<Country> GetAllCountries();
 
         // Location
+        [OperationContract]
         IList<Location> GetAllLocations();
 
         // venue
+        [OperationContract]
         IList<Venue> GetAllVenues();
     }
 }

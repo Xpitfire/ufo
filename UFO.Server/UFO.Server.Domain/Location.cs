@@ -18,18 +18,24 @@
 //     Wurm Florian
 #endregion
 using System;
+using System.Runtime.Serialization;
 
 namespace UFO.Server.Domain
 {
     [Serializable]
+    [DataContract(Name = nameof(Location))]
     public class Location
     {
+        [DataMember(Name = nameof(LocationId))]
         public int LocationId { get; set; } = Constants.InvalidIdValue;
 
+        [DataMember(Name = nameof(Longitude))]
         public decimal Longitude { get; set; } = Constants.InvalidGeoLocation;
 
+        [DataMember(Name = nameof(Latitude))]
         public decimal Latitude { get; set; } = Constants.InvalidGeoLocation;
 
+        [DataMember(Name = nameof(Name))]
         public string Name { get; set; }
 
         public override string ToString()

@@ -24,7 +24,7 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Bll.Impl
 {
-    public class AuthAccessBll : IAuthAccessBll
+    public abstract class AAdminAccessBll : IAdminAccessBll
     {
         private readonly IUserDao _userDao = DalProviderFactories.GetDaoFactory().CreateUserDao();
 
@@ -62,5 +62,6 @@ namespace UFO.Server.Bll.Impl
             return SessionHandler.Instance.GenerateSessionId(_userDao.SelectByEmail(user.EMail).ResultObject);
         }
 
+        public abstract void InsertArtist(Artist artist);
     }
 }

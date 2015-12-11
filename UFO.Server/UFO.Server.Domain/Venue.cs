@@ -18,16 +18,21 @@
 //     Wurm Florian
 #endregion
 using System;
+using System.Runtime.Serialization;
 
 namespace UFO.Server.Domain
 {
     [Serializable]
+    [DataContract(Name = nameof(Venue))]
     public class Venue
     {
+        [DataMember(Name = nameof(VenueId))]
         public string VenueId { get; set; }
 
+        [DataMember(Name = nameof(Name))]
         public string Name { get; set; }
 
+        [DataMember(Name = nameof(Location))]
         public Location Location { get; set; }
 
         public override string ToString()

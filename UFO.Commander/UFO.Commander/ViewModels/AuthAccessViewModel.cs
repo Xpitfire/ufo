@@ -19,24 +19,24 @@
 using System;
 using System.Security.Cryptography;
 using System.Windows.Input;
-using UFO.Server;
+using UFO.Services.AdminAccess;
 
 namespace UFO.Commander.ViewModels
 {
     class AuthAccessViewModel
     {
-        private readonly AuthAccessBllClient _authAccessBll = new AuthAccessBllClient();
+        private readonly IAdminAccessBll _authAccessBll = new AdminAccessBllClient();
         private static SessionToken _sessionToken;
 
         public bool RequestLogin(string textBoxUserName, string password)
         {
             var user = new User
             {
-                EMailk__BackingField = textBoxUserName
+                EMail = textBoxUserName
             };
             using (var md5 = MD5.Create())
             {
-                user.Passwordk__BackingField = Crypto.GetMd5Hash(md5, password);
+                user.Password = Crypto.GetMd5Hash(md5, password);
             }
             _sessionToken = _authAccessBll.RequestSessionToken(user);
             return _authAccessBll.IsValidAdmin(_sessionToken);

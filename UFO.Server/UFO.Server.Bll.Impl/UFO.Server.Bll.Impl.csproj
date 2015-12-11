@@ -52,6 +52,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,7 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthAccessBll.cs" />
+    <Compile Include="AAdminAccessBll.cs" />
+    <Compile Include="AdminAccessBll.cs" />
     <Compile Include="ViewAccessBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

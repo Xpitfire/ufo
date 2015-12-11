@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c9daefbd-7f11-4816-bce1-ec68a86b462b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:4321/ViewAccess" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ViewAccess.disco" MetadataType="Disco" ID="f71d81f8-4980-4ff0-9e67-2ca43cbfb868" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?disco" />
+    <MetadataFile FileName="ViewAccess.xsd" MetadataType="Schema" ID="0b08cdbc-9f2a-42f0-9997-cbf99cb89454" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd4" />
+    <MetadataFile FileName="AdminAccessBll.wsdl" MetadataType="Wsdl" ID="32aeb52c-5d31-4a3b-939c-e9bfc5cc4571" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?wsdl" />
+    <MetadataFile FileName="ViewAccess1.xsd" MetadataType="Schema" ID="a782e3f6-e5c0-46c4-a30d-2855a1c07f22" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd1" />
+    <MetadataFile FileName="ViewAccess2.xsd" MetadataType="Schema" ID="4e63d0a4-55eb-489f-bb20-da2ac864dc06" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd0" />
+    <MetadataFile FileName="ViewAccess3.xsd" MetadataType="Schema" ID="dcb229f0-3eec-4b5e-8de3-7987289a5c2e" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd3" />
+    <MetadataFile FileName="ViewAccess4.xsd" MetadataType="Schema" ID="f2a1525e-88a6-4347-8912-ed70ac4dcf7f" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

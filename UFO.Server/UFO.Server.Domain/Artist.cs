@@ -20,25 +20,34 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace UFO.Server.Domain
 {
     [Serializable]
+    [DataContract(Name = nameof(Artist))]
     public class Artist
     {
+        [DataMember(Name = nameof(ArtistId))]
         public int ArtistId { get; set; } = Constants.InvalidIdValue;
 
+        [DataMember(Name = nameof(Name))]
         public string Name { get; set; }
 
         [RegularExpression(Constants.EMailRegex)]
+        [DataMember(Name = nameof(EMail))]
         public string EMail { get; set; }
 
+        [DataMember(Name = nameof(Category))]
         public Category Category { get; set; }
 
+        [DataMember(Name = nameof(Country))]
         public Country Country { get; set; }
 
+        [DataMember(Name = nameof(Picture))]
         public BlobData Picture { get; set; }
 
+        [DataMember(Name = nameof(PromoVideo))]
         public string PromoVideo { get; set; }
 
         public override string ToString()

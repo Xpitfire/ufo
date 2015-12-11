@@ -19,16 +19,21 @@
 #endregion
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace UFO.Server.Domain
 {
     [Serializable]
+    [DataContract(Name = nameof(Performance))]
     public class Performance
     {
+        [DataMember(Name = nameof(DateTime))]
         public DateTime DateTime { get; set; }
-        
+
+        [DataMember(Name = nameof(Artist))]
         public Artist Artist { get; set; }
 
+        [DataMember(Name = nameof(Venue))]
         public Venue Venue { get; set; }
 
         public override string ToString()

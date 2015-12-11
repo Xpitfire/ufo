@@ -34,38 +34,55 @@ namespace UFO.Server
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            ServiceHost studentServiceHost = null;
+            var host = "http://localhost";
+            var port = 4321;
+
+            var adminAccessName = "AdminAccess";
+            var viewAccessName = "ViewAccess";
+
+            ServiceHost adminAccessServiceHost = null;
+            ServiceHost viewAccessServiceHost = null;
             try
             {
-                //Base Address for StudentService
-                var httpBaseAddress = new Uri("http://localhost:4321/AuthAccessBll");
+                // Base Address for StudentService
+                var adminAccessUri = new Uri($"{host}:{port}/{adminAccessName}");
+                var viewAccessUri = new Uri($"{host}:{port}/{viewAccessName}");
 
-                //Instantiate ServiceHost
-                studentServiceHost = new ServiceHost(typeof(AuthAccessBll), httpBaseAddress);
+                // Instantiate ServiceHost
+                adminAccessServiceHost = new ServiceHost(typeof(AdminAccessBll), adminAccessUri);
+                viewAccessServiceHost = new ServiceHost(typeof(ViewAccessBll), viewAccessUri);
 
-                //Add Endpoint to Host
-                studentServiceHost.AddServiceEndpoint(typeof(IAuthAccessBll), new WSHttpBinding(), "");
+                // Add Endpoint to Host
+                adminAccessServiceHost.AddServiceEndpoint(typeof(IAdminAccessBll), new WSHttpBinding(), "");
+                viewAccessServiceHost.AddServiceEndpoint(typeof(IViewAccessBll), new WSHttpBinding(), "");
 
-                //Metadata Exchange
+                // Metadata Exchange
                 var serviceBehavior = new ServiceMetadataBehavior {HttpGetEnabled = true};
-                studentServiceHost.Description.Behaviors.Add(serviceBehavior);
+                adminAccessServiceHost.Description.Behaviors.Add(serviceBehavior);
+                viewAccessServiceHost.Description.Behaviors.Add(serviceBehavior);
 
-                //Open
-                studentServiceHost.Open();
-                Console.WriteLine($"Service is live now at: {httpBaseAddress}");
+                // Open
+                adminAccessServiceHost.Open();
+                Console.WriteLine($"Service is live now at: {adminAccessUri}");
+                viewAccessServiceHost.Open();
+                Console.WriteLine($"Service is live now at: {viewAccessUri}");
+
                 Console.WriteLine("Press any key to exit the application...");
             }
 
             catch (Exception ex)
             {
-                studentServiceHost?.Abort();
-                studentServiceHost = null;
-                Console.WriteLine($"There is an issue with IAuthAccessBll: {ex.Message}");
+                adminAccessServiceHost?.Abort();
+                adminAccessServiceHost = null;
+                viewAccessServiceHost?.Abort();
+                viewAccessServiceHost = null;
+                Console.WriteLine($"There is an issue with AdminAccessBll: {ex.Message}");
             }
             Console.ReadLine();
-            studentServiceHost?.Close();
+            adminAccessServiceHost?.Close();
+            viewAccessServiceHost?.Close();
         }
     }
 }
