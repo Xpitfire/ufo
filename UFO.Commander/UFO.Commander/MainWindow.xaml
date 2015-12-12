@@ -7,7 +7,7 @@
                       xmlns:ucviews="clr-namespace:UFO.Commander.Views.UserControls"
                       xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
-                      xmlns:viewModels="clr-namespace:UFO.Commander.ViewModels"
+                      xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel"
                       Title="UFO Commander"
                       Style="{DynamicResource CustomMetroWindowStyle}"
                       WindowCloseButtonStyle="{DynamicResource WindowButtonStyle}"
@@ -17,13 +17,12 @@
                       Height="720" 
                       Width="1200">
     <Window.DataContext>
-        <viewModels:AuthAccessViewModel/>
+        <viewModel:AuthAccessViewModel/>
     </Window.DataContext>
     <Window.Resources>
-        <viewModels:AuthAccessViewModel x:Key="AccessViewModel"/>
+        <viewModel:AuthAccessViewModel x:Key="AccessViewModel"/>
     </Window.Resources>
 
     <Grid DataContext="{StaticResource AccessViewModel}">
-        <Button Content="TestConnection" Command="{Binding CheckLoginCommand}" />
     </Grid>
 </controls:MetroWindow>

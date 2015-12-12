@@ -21,14 +21,23 @@
 using System;
 using System.Security.Cryptography;
 using System.Text;
+using UFO.Server.Domain;
 
-namespace UFO.Commander.ViewModels
+namespace UFO.Commander.Helper
 {
     /// <summary>
     /// This class is used to encrypt and verify user password inputs.
     /// </summary>
     public class Crypto
     {
+        public static string EncryptPassword(string password)
+        {
+            using (var md5 = MD5.Create())
+            {
+                return GetMd5Hash(md5, password);
+            }
+        }
+
         /// <summary>
         /// Returns a MD5 Hash string from specified user input.
         /// </summary>

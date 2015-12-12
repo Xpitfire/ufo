@@ -25,22 +25,17 @@ namespace UFO.Server.Bll.Common
 {
     public abstract class AAdminAccessBll : IAdminAccessBll
     {
-        private readonly IUserDao _userDao = DalProviderFactories.GetDaoFactory().CreateUserDao();
+        protected readonly IUserDao UserDao = DalProviderFactories.GetDaoFactory().CreateUserDao();
 
-        public virtual List<User> GetAll(SessionToken token)
-        {
-            return IsUserAuthenticated(token) ? _userDao.SelectAll().ResultObject : null;
-        }
-
-        public virtual bool IsUserAuthenticated(SessionToken token)
-        {
-            return GetSession().GetUserFromSession(token)?.IsAdmin ?? false;
-        }
-
-        public virtual bool IsValidAdmin(SessionToken token)
-        {
-            return _userDao.VerifyAdminCredentials(token.User).ResultObject;
-        }
+        public abstract List<User> GetAllUser(SessionToken token);
+        public abstract void ModifyArtist(SessionToken token, Artist artist);
+        public abstract void RemoveArtist(SessionToken token, Artist artist);
+        public abstract void ModifyVenue(SessionToken token, Venue venue);
+        public abstract void RemoveVenue(SessionToken token, Venue venue);
+        public abstract void ModifyPerformance(SessionToken token, Performance performance);
+        public abstract bool IsUserAuthenticated(SessionToken token);
+        public abstract bool IsValidAdmin(SessionToken token);
+        public abstract ISessionBll GetSession();
 
         public virtual bool LoginAdmin(SessionToken token)
         {
@@ -58,11 +53,8 @@ namespace UFO.Server.Bll.Common
         
         public virtual SessionToken RequestSessionToken(User user)
         {
-            return GetSession().RequestSessionId(_userDao.SelectByEmail(user.EMail).ResultObject);
+            return GetSession().RequestSessionId(UserDao.SelectByEmail(user.EMail).ResultObject);
         }
 
-        public abstract ISessionBll GetSession();
-
-        public abstract void InsertArtist(Artist artist);
     }
 }

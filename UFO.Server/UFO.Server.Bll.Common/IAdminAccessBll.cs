@@ -24,7 +24,18 @@ namespace UFO.Server.Bll.Common
 {
     public interface IAdminAccessBll : IAuthAccessBll, IValidationAccessBll
     {
-        List<User> GetAll(SessionToken token);
-        void InsertArtist(Artist artist);
+        // User
+        List<User> GetAllUser(SessionToken token);
+
+        // Artist
+        void ModifyArtist(SessionToken token, Artist artist);
+        void RemoveArtist(SessionToken token, Artist artist);
+
+        // Venue
+        void ModifyVenue(SessionToken token, Venue venue);
+        void RemoveVenue(SessionToken token, Venue venue);
+
+        // Performance
+        void ModifyPerformance(SessionToken token, Performance performance);        
     }
 }

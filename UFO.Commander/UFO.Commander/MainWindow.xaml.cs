@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
-using UFO.Commander.ViewModels;
+using UFO.Commander.ViewModel;
 using UFO.Commander.Views.UserControls;
 
 namespace UFO.Commander
@@ -11,25 +11,32 @@ namespace UFO.Commander
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        private readonly CustomDialog _customDialog;
+        private readonly CustomLoginDialog _loginDialog;
+
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private CustomDialog _customDialog;
-        private CustomLoginDialog _loginDialog;
-
-        private async void LoginEvent(object sender, RoutedEventArgs e)
-        {
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
             _customDialog = new CustomDialog
             {
-                Title = "Pleas enter user credentials ..."
+                Title = "Pleas enter your user credentials ..."
             };
             _loginDialog = new CustomLoginDialog();
             _loginDialog.ButtonCancel.Click += ButtonCancelOnClick;
             _loginDialog.ButtonLogin.Click += ButtonLoginOnClick;
             _customDialog.Content = _loginDialog;
+
+            var authViewModel = (AuthAccessViewModel)this.DataContext;
+            var mainWindow = this;
+            authViewModel.LogoutEvent += (sender, args) =>
+            {
+                mainWindow.ShowMetroDialogAsync(_customDialog);
+            };
+        }
+        
+        private async void LoginEvent(object sender, RoutedEventArgs e)
+        {
             await this.ShowMetroDialogAsync(_customDialog);
         }
 
@@ -37,7 +44,7 @@ namespace UFO.Commander
         {
             var viewModel = (AuthAccessViewModel) this.DataContext;
 
-            if (viewModel.RequestLogin(_loginDialog.TextBoxUserName.Text, _loginDialog.PasswordBox.Password))
+            if (viewModel.IsCredentialsValid(_loginDialog.TextBoxUserName.Text, _loginDialog.PasswordBox.Password))
             {
                 viewModel.Login();
                 this.HideMetroDialogAsync(_customDialog);

@@ -27,9 +27,9 @@ namespace UFO.Commander.Proxy
     {
         private readonly WS.AdminAccessWs _adminAccessWs = new WS.AdminAccessWsClient();
 
-        public List<Domain.User> GetAll(Domain.SessionToken token)
+        public List<Domain.User> GetAllUser(Domain.SessionToken token)
         {
-            var result = _adminAccessWs.GetAll(token.ToWebSeriveObject<WS.SessionToken>());
+            var result = _adminAccessWs.GetAllUser(token.ToWebSeriveObject<WS.SessionToken>());
             return ProxyHelper.ToListOf<WS.User, Domain.User>(result);
         }
 
@@ -58,10 +58,40 @@ namespace UFO.Commander.Proxy
             var result = _adminAccessWs.RequestSessionToken(user.ToWebSeriveObject<WS.User>());
             return result.ToDomainObject<Domain.SessionToken>();
         }
-
-        public void InsertArtist(Domain.Artist artist)
+        
+        public void ModifyArtist(Domain.SessionToken token, Domain.Artist artist)
         {
-            _adminAccessWs.InsertArtist(artist.ToWebSeriveObject<WS.Artist>());
+            var artistWs = artist.ToWebSeriveObject<WS.Artist>();
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            _adminAccessWs.ModifyArtist(tokenWs, artistWs);
+        }
+
+        public void RemoveArtist(Domain.SessionToken token, Domain.Artist artist)
+        {
+            var artistWs = artist.ToWebSeriveObject<WS.Artist>();
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            _adminAccessWs.RemoveArtist(tokenWs, artistWs);
+        }
+
+        public void ModifyVenue(Domain.SessionToken token, Domain.Venue venue)
+        {
+            var venueWs = venue.ToWebSeriveObject<WS.Venue>();
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            _adminAccessWs.ModifyVenue(tokenWs, venueWs);
+        }
+
+        public void RemoveVenue(Domain.SessionToken token, Domain.Venue venue)
+        {
+            var venueWs = venue.ToWebSeriveObject<WS.Venue>();
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            _adminAccessWs.RemoveVenue(tokenWs, venueWs);
+        }
+
+        public void ModifyPerformance(Domain.SessionToken token, Domain.Performance performance)
+        {
+            var performanceWs = performance.ToWebSeriveObject<WS.Performance>();
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            _adminAccessWs.ModifyPerformance(tokenWs, performanceWs);
         }
     }
 }

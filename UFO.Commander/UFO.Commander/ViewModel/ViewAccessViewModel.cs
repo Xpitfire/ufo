@@ -16,15 +16,12 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace UFO.Commander.ViewModels
+using GalaSoft.MvvmLight;
+
+namespace UFO.Commander.ViewModel
 {
-    class ViewAccessViewModel
+    class ViewAccessViewModel : ViewModelBase
     {
     }
 }

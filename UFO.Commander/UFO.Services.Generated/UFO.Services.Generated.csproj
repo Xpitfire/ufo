@@ -92,6 +92,9 @@
     <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.Location.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.Performance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.SessionToken.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

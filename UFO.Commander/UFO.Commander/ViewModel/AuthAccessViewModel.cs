@@ -16,30 +16,47 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
+
 using System;
-using System.Security.Cryptography;
 using System.Windows.Input;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using UFO.Commander.Helper;
 using UFO.Commander.Proxy;
 using UFO.Server.Bll.Common;
 using UFO.Server.Domain;
 
-namespace UFO.Commander.ViewModels
+namespace UFO.Commander.ViewModel
 {
-    class AuthAccessViewModel
+    public class AuthAccessViewModel : ViewModelBase
     {
         private readonly IAdminAccessBll _authAccessBll = BllFactory.CreateAdminAccessBll();
         private static SessionToken _sessionToken;
 
-        public bool RequestLogin(string textBoxUserName, string password)
+        public event EventHandler LogoutEvent;
+
+        private bool _isLoggedIn;
+        public bool IsLoggedIn
+        {
+            get { return _isLoggedIn; }
+            set
+            {
+                _isLoggedIn = value;
+                if (!value)
+                {
+                    LogoutEvent?.Invoke(this, null);
+                }
+            }
+        }
+
+        public bool IsCredentialsValid(string textBoxUserName, string password)
         {
             var user = new User
             {
-                EMail = textBoxUserName
+                EMail = textBoxUserName,
+                Password = Crypto.EncryptPassword(password)
             };
-            using (var md5 = MD5.Create())
-            {
-                user.Password = Crypto.GetMd5Hash(md5, password);
-            }
+            
             _sessionToken = _authAccessBll.RequestSessionToken(user);
             return _authAccessBll.IsValidAdmin(_sessionToken);
         }
@@ -47,18 +64,19 @@ namespace UFO.Commander.ViewModels
         public void Login()
         {
             _authAccessBll.LoginAdmin(_sessionToken);
+            IsLoggedIn = true;
         }
 
-        private ICommand _checkLoginCommand;
-        public ICommand CheckLoginCommand
+        private ICommand _logoutCommand;
+        public ICommand LogoutCommand
         {
             get
             {
-                return _checkLoginCommand ?? (_checkLoginCommand = new RelayCommand(obj =>
+                return _logoutCommand ?? (_logoutCommand = new RelayCommand(() =>
                 {
                     if (!_authAccessBll.IsUserAuthenticated(_sessionToken))
                     {
-                        Console.WriteLine("Failed");
+                        IsLoggedIn = false;
                     }
                 }));
             }

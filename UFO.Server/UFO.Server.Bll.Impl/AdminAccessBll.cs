@@ -17,6 +17,7 @@
 //     Dinu Marius-Constantin
 #endregion
 using System;
+using System.Collections.Generic;
 using UFO.Server.Bll.Common;
 using UFO.Server.Domain;
 
@@ -24,14 +25,50 @@ namespace UFO.Server.Bll.Impl
 {
     public class AdminAccessBll : AAdminAccessBll
     {
+        public override List<User> GetAllUser(SessionToken token)
+        {
+            return IsUserAuthenticated(token) ? UserDao.SelectAll().ResultObject : null;
+        }
+        
+        public override bool IsUserAuthenticated(SessionToken token)
+        {
+            return GetSession().GetUserFromSession(token)?.IsAdmin ?? false;
+        }
+
+        public override bool IsValidAdmin(SessionToken token)
+        {
+            return UserDao.VerifyAdminCredentials(token.User).ResultObject;
+        }
+
         public override ISessionBll GetSession()
         {
             return SessionHandler.Instance;
         }
-
-        public override void InsertArtist(Artist artist)
+        
+        public override void ModifyArtist(SessionToken token, Artist artist)
         {
             throw new NotImplementedException();
         }
+
+        public override void RemoveArtist(SessionToken token, Artist artist)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void ModifyVenue(SessionToken token, Venue venue)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void RemoveVenue(SessionToken token, Venue venue)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void ModifyPerformance(SessionToken token, Performance performance)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

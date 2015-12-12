@@ -25,7 +25,6 @@ namespace UFO.Server.Bll.Common
     {
         // Artist
         List<Artist> GetAllArtist();
-        List<Artist> GetArtistWhereCatrgory(Category category);
 
         // Category
         List<Category> GetAllCategories();

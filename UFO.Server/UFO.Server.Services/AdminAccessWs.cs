@@ -18,7 +18,6 @@
 #endregion
 using System.Collections.Generic;
 using System.ServiceModel;
-using UFO.Server.Bll.Common;
 using UFO.Server.Bll.Impl;
 using UFO.Server.Domain;
 
@@ -28,15 +27,9 @@ namespace UFO.Server.Services
     public class AdminAccessWs : AdminAccessBll
     {
         [OperationContract]
-        public override void InsertArtist(Artist artist)
+        public override List<User> GetAllUser(SessionToken token)
         {
-            base.InsertArtist(artist);
-        }
-
-        [OperationContract]
-        public override List<User> GetAll(SessionToken token)
-        {
-            return base.GetAll(token);
+            return base.GetAllUser(token);
         }
 
         [OperationContract]
@@ -67,6 +60,36 @@ namespace UFO.Server.Services
         public override SessionToken RequestSessionToken(User user)
         {
             return base.RequestSessionToken(user);
+        }
+
+        [OperationContract]
+        public override void ModifyArtist(SessionToken token, Artist artist)
+        {
+            base.ModifyArtist(token, artist);
+        }
+
+        [OperationContract]
+        public override void RemoveArtist(SessionToken token, Artist artist)
+        {
+            base.RemoveArtist(token, artist);
+        }
+
+        [OperationContract]
+        public override void ModifyVenue(SessionToken token, Venue venue)
+        {
+            base.ModifyVenue(token, venue);
+        }
+
+        [OperationContract]
+        public override void RemoveVenue(SessionToken token, Venue venue)
+        {
+            base.RemoveVenue(token, venue);
+        }
+
+        [OperationContract]
+        public override void ModifyPerformance(SessionToken token, Performance performance)
+        {
+            base.ModifyPerformance(token, performance);
         }
     }
 }

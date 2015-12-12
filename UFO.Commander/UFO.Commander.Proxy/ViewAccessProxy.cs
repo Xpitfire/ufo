@@ -33,13 +33,6 @@ namespace UFO.Commander.Proxy
             return ProxyHelper.ToListOf<WS.Artist, Domain.Artist>(_viewAccessWs.GetAllArtist());
         }
 
-        public List<Domain.Artist> GetArtistWhereCatrgory(Domain.Category category)
-        {
-            var domainCategory = category.ToWebSeriveObject<WS.Category>();
-            var result = _viewAccessWs.GetArtistWhereCatrgory(domainCategory);
-            return ProxyHelper.ToListOf<WS.Artist, Domain.Artist>(result);
-        }
-
         public List<Domain.Category> GetAllCategories()
         {
             return ProxyHelper.ToListOf<WS.Category, Domain.Category>(_viewAccessWs.GetAllCategories());
@@ -58,6 +51,11 @@ namespace UFO.Commander.Proxy
         public List<Domain.Venue> GetAllVenues()
         {
             return ProxyHelper.ToListOf<WS.Venue, Domain.Venue>(_viewAccessWs.GetAllVenues());
+        }
+
+        public List<Domain.Performance> GetAllPerformances()
+        {
+            return ProxyHelper.ToListOf<WS.Performance, Domain.Performance>(_viewAccessWs.GetAllPerformances());
         }
     }
 }
