@@ -35,6 +35,6 @@ namespace UFO.Server.Dal.Common
         DaoResponse<TType> Insert(TType entity);
         DaoResponse<TType> Update(TType entity);
         DaoResponse<TType> Delete(TType entity);
-        DaoResponse<IList<TType>> SelectAll();
+        DaoResponse<List<TType>> SelectAll();
     }
 }

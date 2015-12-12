@@ -175,8 +175,8 @@ namespace UFO.Server.Dal.MySql
             return daoResponse;
         }
 
-        [DaoExceptionHandler(typeof(IList<User>))]
-        public DaoResponse<IList<User>> SelectAll()
+        [DaoExceptionHandler(typeof(List<User>))]
+        public DaoResponse<List<User>> SelectAll()
         {
             var users = new List<User>();
             using (var connection = _dbCommProvider.CreateDbConnection())
@@ -188,7 +188,7 @@ namespace UFO.Server.Dal.MySql
                     users.Add(CreateUserObject(dataReader));
                 }
             }
-            return users.Any() ? DaoResponse.QuerySuccessful<IList<User>>(users) : DaoResponse.QueryEmptyResult<IList<User>>();
+            return users.Any() ? DaoResponse.QuerySuccessful(users) : DaoResponse.QueryEmptyResult<List<User>>();
         }
     }
 }

@@ -39,7 +39,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAdminAuthentication()
         {
-            var authAccessBll = new AuthAccessBll();
+            var authAccessBll = new AdminAccessBll();
             var user = new User
             {
                 EMail = "marius.dinu@mymail.com",

@@ -24,7 +24,7 @@ namespace UFO.Server.Domain
 {
     [Serializable]
     [DataContract(Name = nameof(BlobData))]
-    public sealed class BlobData
+    public sealed class BlobData : DomainObject
     {
         [DataMember(Name = nameof(Name))]
         public string Name { get; set; }

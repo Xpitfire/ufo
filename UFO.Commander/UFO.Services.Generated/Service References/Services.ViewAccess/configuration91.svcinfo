@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="SuhiUjmVwSUX/XDjQ6np6PwP4ck=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="gseNtcRlUOvYVkymGZBOvNY4IQE=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_IAdminAccessBll1">
+    <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_AdminAccessWs1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IAdminAccessBll1</serializedValue>
+          <serializedValue>WSHttpBinding_AdminAccessWs1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -125,10 +125,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_IViewAccessBll1">
+    <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_ViewAccessWs">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IViewAccessBll1</serializedValue>
+          <serializedValue>WSHttpBinding_ViewAccessWs</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -251,7 +251,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WSHttpBinding_IAdminAccessBll1" contract="Services.ViewAccess.IAdminAccessBll" bindingType="wsHttpBinding" address="http://localhost:4321/AdminAccess" bindingConfiguration="WSHttpBinding_IAdminAccessBll1">
+    <endpoint name="WSHttpBinding_AdminAccessWs1" contract="Services.ViewAccess.AdminAccessWs" bindingType="wsHttpBinding" address="http://localhost:4321/AdminAccess" bindingConfiguration="WSHttpBinding_AdminAccessWs1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:4321/AdminAccess</serializedValue>
@@ -263,10 +263,10 @@
           <serializedValue>wsHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IAdminAccessBll1</serializedValue>
+          <serializedValue>WSHttpBinding_AdminAccessWs1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>Services.ViewAccess.IAdminAccessBll</serializedValue>
+          <serializedValue>Services.ViewAccess.AdminAccessWs</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -326,7 +326,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IAdminAccessBll1</serializedValue>
+          <serializedValue>WSHttpBinding_AdminAccessWs1</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -336,7 +336,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="WSHttpBinding_IViewAccessBll1" contract="Services.ViewAccess.IViewAccessBll" bindingType="wsHttpBinding" address="http://localhost:4321/ViewAccess" bindingConfiguration="WSHttpBinding_IViewAccessBll1">
+    <endpoint name="WSHttpBinding_ViewAccessWs" contract="Services.ViewAccess.ViewAccessWs" bindingType="wsHttpBinding" address="http://localhost:4321/ViewAccess" bindingConfiguration="WSHttpBinding_ViewAccessWs">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:4321/ViewAccess</serializedValue>
@@ -348,10 +348,10 @@
           <serializedValue>wsHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IViewAccessBll1</serializedValue>
+          <serializedValue>WSHttpBinding_ViewAccessWs</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>Services.ViewAccess.IViewAccessBll</serializedValue>
+          <serializedValue>Services.ViewAccess.ViewAccessWs</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -411,7 +411,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IViewAccessBll1</serializedValue>
+          <serializedValue>WSHttpBinding_ViewAccessWs</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

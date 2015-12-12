@@ -19,13 +19,15 @@
 using System;
 using System.Security.Cryptography;
 using System.Windows.Input;
-using UFO.Services.AdminAccess;
+using UFO.Commander.Proxy;
+using UFO.Server.Bll.Common;
+using UFO.Server.Domain;
 
 namespace UFO.Commander.ViewModels
 {
     class AuthAccessViewModel
     {
-        private readonly IAdminAccessBll _authAccessBll = new AdminAccessBllClient();
+        private readonly IAdminAccessBll _authAccessBll = BllFactory.CreateAdminAccessBll();
         private static SessionToken _sessionToken;
 
         public bool RequestLogin(string textBoxUserName, string password)

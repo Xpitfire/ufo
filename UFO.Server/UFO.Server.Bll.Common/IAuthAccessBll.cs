@@ -16,37 +16,17 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using UFO.Server.Domain;
-using PostSharp.Constraints;
 
 namespace UFO.Server.Bll.Common
 {
-    [ServiceContract]
     public interface IAuthAccessBll
     {
         // user
-        [OperationContract]
-        IList<User> GetAll(SessionToken token);
-
-        [OperationContract]
         bool IsUserAuthenticated(SessionToken token);
-
-        [OperationContract]
         bool IsValidAdmin(SessionToken token);
-
-        [OperationContract]
         bool LoginAdmin(SessionToken token);
-        
-        [OperationContract]
         void LogoutAdmin(SessionToken token);
-        
-        [OperationContract]
         SessionToken RequestSessionToken(User user);
     }
 }

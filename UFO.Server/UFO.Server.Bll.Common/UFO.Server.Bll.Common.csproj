@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,14 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AAdminAccessBll.cs" />
+    <Compile Include="AViewAccessBll.cs" />
     <Compile Include="IAdminAccessBll.cs" />
     <Compile Include="IAuthAccessBll.cs" />
+    <Compile Include="ISessionBll.cs" />
     <Compile Include="IValidationAccessBll.cs" />
     <Compile Include="IViewAccessBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SessionToken.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UFO.Server.Common\UFO.Server.Common.csproj">
+      <Project>{75DF68F2-A526-469F-9CAB-35EBBAA3F9E6}</Project>
+      <Name>UFO.Server.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UFO.Server.Dal.Common\UFO.Server.Dal.Common.csproj">
+      <Project>{90AA318D-269A-4C83-9EE9-85718A0FDD67}</Project>
+      <Name>UFO.Server.Dal.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UFO.Server.Domain\UFO.Server.Domain.csproj">
       <Project>{d1adb3d6-b6dc-42ca-9468-71dc9693f89c}</Project>
       <Name>UFO.Server.Domain</Name>

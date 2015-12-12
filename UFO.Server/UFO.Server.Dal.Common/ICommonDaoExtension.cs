@@ -36,9 +36,9 @@ namespace UFO.Server.Dal.Common
         /// <param name="dao">Extended object type.</param>
         /// <param name="filterExpression">Expression of the lambda filter used to map the where clause.</param>
         /// <returns>Response object with the collected types.</returns>
-        public static DaoResponse<IList<TType>> SelectWhere<TType, T>(this ICommonDao<TType> dao, Expression<Filter<TType, T>> filterExpression, T criteria = default(T))
+        public static DaoResponse<List<TType>> SelectWhere<TType, T>(this ICommonDao<TType> dao, Expression<Filter<TType, T>> filterExpression, T criteria = default(T))
         {
-            return DaoResponse.QuerySuccessful<IList<TType>>(
+            return DaoResponse.QuerySuccessful(
                 new List<TType>(filterExpression.Compile()(dao.SelectAll().ResultObject, criteria)));
         }
 
@@ -49,9 +49,9 @@ namespace UFO.Server.Dal.Common
         /// <param name="dao">Extended object type.</param>
         /// <param name="filterExpression">Expression of the lambda filter used to map the where clause.</param>
         /// <returns>Response object with the collected types.</returns>
-        public static DaoResponse<IList<TType>> SelectWhere<TType>(this ICommonDao<TType> dao, Expression<Filter<TType>> filterExpression)
+        public static DaoResponse<List<TType>> SelectWhere<TType>(this ICommonDao<TType> dao, Expression<Filter<TType>> filterExpression)
         {
-            return DaoResponse.QuerySuccessful<IList<TType>>(
+            return DaoResponse.QuerySuccessful(
                 new List<TType>(filterExpression.Compile()(dao.SelectAll().ResultObject)));
         }
     }

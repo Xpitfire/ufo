@@ -16,16 +16,20 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
-using System;
-using System.Linq;
-using UFO.Server.Domain;
 
-namespace UFO.Server.Bll.Common
+using System;
+using System.Runtime.Serialization;
+
+namespace UFO.Server.Domain
 {
     [Serializable]
-    public class SessionToken
+    [DataContract(Name = nameof(SessionToken))]
+    public class SessionToken : DomainObject
     {
+        [DataMember(Name = nameof(SessionId))]
         public char[] SessionId { get; set; }
+
+        [DataMember(Name = nameof(User))]
         public User User { get; set; }
 
         public override string ToString()

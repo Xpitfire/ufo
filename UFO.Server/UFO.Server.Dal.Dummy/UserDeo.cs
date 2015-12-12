@@ -42,9 +42,9 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<User>> SelectAll()
+        public DaoResponse<List<User>> SelectAll()
         {
-            return DaoResponse.QuerySuccessful<IList<User>>(DataCollection.Users.ToList());
+            return DaoResponse.QuerySuccessful<List<User>>(DataCollection.Users.ToList());
         }
 
         public DaoResponse<User> SelectById(int id)

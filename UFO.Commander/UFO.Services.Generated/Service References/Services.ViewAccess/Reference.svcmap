@@ -23,7 +23,6 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="ViewAccess.disco" MetadataType="Disco" ID="f71d81f8-4980-4ff0-9e67-2ca43cbfb868" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?disco" />
-    <MetadataFile FileName="ViewAccess.xsd" MetadataType="Schema" ID="0b08cdbc-9f2a-42f0-9997-cbf99cb89454" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd4" />
     <MetadataFile FileName="AdminAccessBll.wsdl" MetadataType="Wsdl" ID="32aeb52c-5d31-4a3b-939c-e9bfc5cc4571" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?wsdl" />
     <MetadataFile FileName="ViewAccess1.xsd" MetadataType="Schema" ID="a782e3f6-e5c0-46c4-a30d-2855a1c07f22" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd1" />
     <MetadataFile FileName="ViewAccess2.xsd" MetadataType="Schema" ID="4e63d0a4-55eb-489f-bb20-da2ac864dc06" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd0" />

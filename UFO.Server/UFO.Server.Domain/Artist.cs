@@ -18,7 +18,6 @@
 //     Wurm Florian
 #endregion
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
@@ -26,7 +25,7 @@ namespace UFO.Server.Domain
 {
     [Serializable]
     [DataContract(Name = nameof(Artist))]
-    public class Artist
+    public class Artist : DomainObject
     {
         [DataMember(Name = nameof(ArtistId))]
         public int ArtistId { get; set; } = Constants.InvalidIdValue;

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UFO</RootNamespace>
     <AssemblyName>UFO.Services.Generated</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -71,29 +72,11 @@
     <None Include="Service References\Services.AdminAccess\AdminAccess3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Services.AdminAccess\AdminAccess4.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\Services.AdminAccess\AdminAccessBll.wsdl" />
-    <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.Artist.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.Category.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.Country.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.Location.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.SessionToken.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.Venue.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Services.ViewAccess\AdminAccessBll.wsdl" />
@@ -117,9 +100,6 @@
     </None>
     <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.Venue.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\Services.ViewAccess\ViewAccess.xsd">
-      <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Services.ViewAccess\ViewAccess1.xsd">
       <SubType>Designer</SubType>

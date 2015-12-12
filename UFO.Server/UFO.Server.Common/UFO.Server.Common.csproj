@@ -7,7 +7,7 @@
     <ProjectGuid>{75DF68F2-A526-469F-9CAB-35EBBAA3F9E6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UFO.Server</RootNamespace>
+    <RootNamespace>UFO.Server.Common</RootNamespace>
     <AssemblyName>UFO.Server</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -56,16 +56,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenerateSessionIds.cs" />
+    <Compile Include="Crypto.cs" />
+    <Compile Include="DalProviderFactories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="DalProviderFactories.cs" />
     <Compile Include="ProviderUtility.cs" />
-    <Compile Include="SessionHandler.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,10 +81,6 @@
     <None Include="UFO.Server.psproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UFO.Server.Bll.Common\UFO.Server.Bll.Common.csproj">
-      <Project>{8F5DCB11-1D74-4674-9A16-8FA37B9B4C72}</Project>
-      <Name>UFO.Server.Bll.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\UFO.Server.Dal.Common\UFO.Server.Dal.Common.csproj">
       <Project>{90aa318d-269a-4c83-9ee9-85718a0fdd67}</Project>
       <Name>UFO.Server.Dal.Common</Name>

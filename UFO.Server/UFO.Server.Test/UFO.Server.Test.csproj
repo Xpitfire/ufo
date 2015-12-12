@@ -90,6 +90,10 @@
       <Project>{5ff73985-1ab5-44da-b28c-60e767b6bbb5}</Project>
       <Name>UFO.Server.Bll.Impl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UFO.Server.Common\UFO.Server.Common.csproj">
+      <Project>{75DF68F2-A526-469F-9CAB-35EBBAA3F9E6}</Project>
+      <Name>UFO.Server.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UFO.Server.Dal.Common\UFO.Server.Dal.Common.csproj">
       <Project>{90aa318d-269a-4c83-9ee9-85718a0fdd67}</Project>
       <Name>UFO.Server.Dal.Common</Name>
@@ -105,10 +109,6 @@
     <ProjectReference Include="..\UFO.Server.Domain\UFO.Server.Domain.csproj">
       <Project>{d1adb3d6-b6dc-42ca-9468-71dc9693f89c}</Project>
       <Name>UFO.Server.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UFO.Server\UFO.Server.csproj">
-      <Project>{75df68f2-a526-469f-9cab-35ebbaa3f9e6}</Project>
-      <Name>UFO.Server</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

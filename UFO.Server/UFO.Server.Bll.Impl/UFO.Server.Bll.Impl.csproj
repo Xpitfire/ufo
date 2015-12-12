@@ -61,8 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AAdminAccessBll.cs" />
     <Compile Include="AdminAccessBll.cs" />
+    <Compile Include="SessionHandler.cs" />
     <Compile Include="ViewAccessBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,6 +71,10 @@
       <Project>{8F5DCB11-1D74-4674-9A16-8FA37B9B4C72}</Project>
       <Name>UFO.Server.Bll.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UFO.Server.Common\UFO.Server.Common.csproj">
+      <Project>{75DF68F2-A526-469F-9CAB-35EBBAA3F9E6}</Project>
+      <Name>UFO.Server.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UFO.Server.Dal.Common\UFO.Server.Dal.Common.csproj">
       <Project>{90AA318D-269A-4C83-9EE9-85718A0FDD67}</Project>
       <Name>UFO.Server.Dal.Common</Name>
@@ -78,10 +82,6 @@
     <ProjectReference Include="..\UFO.Server.Domain\UFO.Server.Domain.csproj">
       <Project>{d1adb3d6-b6dc-42ca-9468-71dc9693f89c}</Project>
       <Name>UFO.Server.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UFO.Server\UFO.Server.csproj">
-      <Project>{75df68f2-a526-469f-9cab-35ebbaa3f9e6}</Project>
-      <Name>UFO.Server</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

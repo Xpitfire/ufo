@@ -41,7 +41,7 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<Venue>> SelectAll()
+        public DaoResponse<List<Venue>> SelectAll()
         {
             throw new System.NotImplementedException();
         }

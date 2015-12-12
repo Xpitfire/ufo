@@ -1,12 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/UFO.Server.Bll.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UFO.Server.Bll.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:4321/AdminAccess?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://localhost:4321/AdminAccess?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" />
+  <xs:complexType name="Artist">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ArtistId" type="xs:int" />
+          <xs:element minOccurs="0" name="Category" nillable="true" type="tns:Category" />
+          <xs:element minOccurs="0" name="Country" nillable="true" type="tns:Country" />
+          <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Picture" nillable="true" type="tns:BlobData" />
+          <xs:element minOccurs="0" name="PromoVideo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Artist" nillable="true" type="tns:Artist" />
+  <xs:complexType name="DomainObject">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="DomainObject" nillable="true" type="tns:DomainObject" />
+  <xs:complexType name="Category">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CategoryId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Category" nillable="true" type="tns:Category" />
+  <xs:complexType name="Country">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Country" nillable="true" type="tns:Country" />
+  <xs:complexType name="BlobData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataStream" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BlobData" nillable="true" type="tns:BlobData" />
   <xs:complexType name="SessionToken">
-    <xs:sequence>
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" name="_x003C_SessionId_x003E_k__BackingField" nillable="true" type="q1:ArrayOfchar" />
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" name="_x003C_User_x003E_k__BackingField" nillable="true" type="q2:User" />
-    </xs:sequence>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SessionId" nillable="true" type="q1:ArrayOfchar" />
+          <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:element name="SessionToken" nillable="true" type="tns:SessionToken" />
+  <xs:complexType name="User">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Artist" nillable="true" type="tns:Artist" />
+          <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsAdmin" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsArtist" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
 </xs:schema>

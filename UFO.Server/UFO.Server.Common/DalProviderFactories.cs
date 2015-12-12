@@ -18,14 +18,10 @@
 //     Wurm Florian
 #endregion
 
-using NLog;
-using PostSharp.Patterns.Diagnostics;
+using UFO.Server.Common.Properties;
 using UFO.Server.Dal.Common;
-using UFO.Server.Properties;
-using LogLevel = NLog.LogLevel;
-using PostSharp.Extensibility;
 
-namespace UFO.Server
+namespace UFO.Server.Common
 {
     public static class DalProviderFactories
     {

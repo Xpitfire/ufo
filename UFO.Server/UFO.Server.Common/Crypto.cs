@@ -17,11 +17,12 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
+
 using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace UFO.Server.Domain
+namespace UFO.Server.Common
 {
     /// <summary>
     /// This class is used to encrypt and verify user password inputs.

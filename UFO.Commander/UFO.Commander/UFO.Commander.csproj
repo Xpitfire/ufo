@@ -147,8 +147,20 @@
     <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\UFO.Server\UFO.Server.Bll.Common\UFO.Server.Bll.Common.csproj">
+      <Project>{8f5dcb11-1d74-4674-9a16-8fa37b9b4c72}</Project>
+      <Name>UFO.Server.Bll.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\UFO.Server\UFO.Server.Domain\UFO.Server.Domain.csproj">
+      <Project>{d1adb3d6-b6dc-42ca-9468-71dc9693f89c}</Project>
+      <Name>UFO.Server.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UFO.Commander.Proxy\UFO.Commander.Proxy.csproj">
+      <Project>{61714fc8-bfec-4773-bca7-757a8bd0a0d6}</Project>
+      <Name>UFO.Commander.Proxy</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UFO.Services.Generated\UFO.Services.Generated.csproj">
-      <Project>{b3a19aec-d98f-4d48-a27f-514dbdf002c3}</Project>
+      <Project>{B3A19AEC-D98F-4D48-A27F-514DBDF002C3}</Project>
       <Name>UFO.Services.Generated</Name>
     </ProjectReference>
   </ItemGroup>

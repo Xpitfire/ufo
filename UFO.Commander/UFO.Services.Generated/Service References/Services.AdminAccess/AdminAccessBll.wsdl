@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AdminAccessBll" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_policy">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AdminAccessWs" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -96,7 +96,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_GetAll_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_InsertArtist_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -115,7 +115,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_GetAll_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_InsertArtist_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -134,7 +134,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_IsUserAuthenticated_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_GetAll_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -153,7 +153,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_IsUserAuthenticated_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_GetAll_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -172,7 +172,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_IsValidAdmin_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_IsUserAuthenticated_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -191,7 +191,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_IsValidAdmin_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_IsUserAuthenticated_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -210,7 +210,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_LoginAdmin_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_IsValidAdmin_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -229,7 +229,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_LoginAdmin_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_IsValidAdmin_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -248,7 +248,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_LogoutAdmin_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_LoginAdmin_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -267,7 +267,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_LogoutAdmin_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_LoginAdmin_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -286,7 +286,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_RequestSessionToken_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_LogoutAdmin_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -305,7 +305,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_RequestSessionToken_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_LogoutAdmin_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -324,7 +324,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_InsertArtist_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_RequestSessionToken_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -343,331 +343,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IAdminAccessBll_InsertArtist_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IViewAccessBll_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <wsp:Policy>
-            <sp:ProtectionToken>
-              <wsp:Policy>
-                <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
-                  <wsp:Policy>
-                    <sp:RequireDerivedKeys />
-                    <sp:BootstrapPolicy>
-                      <wsp:Policy>
-                        <sp:SignedParts>
-                          <sp:Body />
-                          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-                          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-                          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-                          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-                          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-                          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-                          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-                        </sp:SignedParts>
-                        <sp:EncryptedParts>
-                          <sp:Body />
-                        </sp:EncryptedParts>
-                        <sp:SymmetricBinding>
-                          <wsp:Policy>
-                            <sp:ProtectionToken>
-                              <wsp:Policy>
-                                <sp:SpnegoContextToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
-                                  <wsp:Policy>
-                                    <sp:RequireDerivedKeys />
-                                  </wsp:Policy>
-                                </sp:SpnegoContextToken>
-                              </wsp:Policy>
-                            </sp:ProtectionToken>
-                            <sp:AlgorithmSuite>
-                              <wsp:Policy>
-                                <sp:Basic256 />
-                              </wsp:Policy>
-                            </sp:AlgorithmSuite>
-                            <sp:Layout>
-                              <wsp:Policy>
-                                <sp:Strict />
-                              </wsp:Policy>
-                            </sp:Layout>
-                            <sp:IncludeTimestamp />
-                            <sp:EncryptSignature />
-                            <sp:OnlySignEntireHeadersAndBody />
-                          </wsp:Policy>
-                        </sp:SymmetricBinding>
-                        <sp:Wss11>
-                          <wsp:Policy />
-                        </sp:Wss11>
-                        <sp:Trust10>
-                          <wsp:Policy>
-                            <sp:MustSupportIssuedTokens />
-                            <sp:RequireClientEntropy />
-                            <sp:RequireServerEntropy />
-                          </wsp:Policy>
-                        </sp:Trust10>
-                      </wsp:Policy>
-                    </sp:BootstrapPolicy>
-                  </wsp:Policy>
-                </sp:SecureConversationToken>
-              </wsp:Policy>
-            </sp:ProtectionToken>
-            <sp:AlgorithmSuite>
-              <wsp:Policy>
-                <sp:Basic256 />
-              </wsp:Policy>
-            </sp:AlgorithmSuite>
-            <sp:Layout>
-              <wsp:Policy>
-                <sp:Strict />
-              </wsp:Policy>
-            </sp:Layout>
-            <sp:IncludeTimestamp />
-            <sp:EncryptSignature />
-            <sp:OnlySignEntireHeadersAndBody />
-          </wsp:Policy>
-        </sp:SymmetricBinding>
-        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <wsp:Policy />
-        </sp:Wss11>
-        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <wsp:Policy>
-            <sp:MustSupportIssuedTokens />
-            <sp:RequireClientEntropy />
-            <sp:RequireServerEntropy />
-          </wsp:Policy>
-        </sp:Trust10>
-        <wsaw:UsingAddressing />
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IViewAccessBll_GetAllArtist_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IViewAccessBll_GetAllArtist_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IViewAccessBll_GetArtistWhereCatrgory_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IViewAccessBll_GetArtistWhereCatrgory_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IViewAccessBll_GetAllCategories_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IViewAccessBll_GetAllCategories_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IViewAccessBll_GetAllCountries_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IViewAccessBll_GetAllCountries_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IViewAccessBll_GetAllLocations_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IViewAccessBll_GetAllLocations_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IViewAccessBll_GetAllVenues_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IViewAccessBll_GetAllVenues_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_RequestSessionToken_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -690,312 +366,168 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:4321/AdminAccess?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:4321/AdminAccess?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:4321/AdminAccess?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Bll.Common" />
+      <xsd:import schemaLocation="http://localhost:4321/AdminAccess?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" />
       <xsd:import schemaLocation="http://localhost:4321/AdminAccess?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://localhost:4321/AdminAccess?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IAdminAccessBll_GetAll_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAll" />
-  </wsdl:message>
-  <wsdl:message name="IAdminAccessBll_GetAll_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllResponse" />
-  </wsdl:message>
-  <wsdl:message name="IAdminAccessBll_IsUserAuthenticated_InputMessage">
-    <wsdl:part name="parameters" element="tns:IsUserAuthenticated" />
-  </wsdl:message>
-  <wsdl:message name="IAdminAccessBll_IsUserAuthenticated_OutputMessage">
-    <wsdl:part name="parameters" element="tns:IsUserAuthenticatedResponse" />
-  </wsdl:message>
-  <wsdl:message name="IAdminAccessBll_IsValidAdmin_InputMessage">
-    <wsdl:part name="parameters" element="tns:IsValidAdmin" />
-  </wsdl:message>
-  <wsdl:message name="IAdminAccessBll_IsValidAdmin_OutputMessage">
-    <wsdl:part name="parameters" element="tns:IsValidAdminResponse" />
-  </wsdl:message>
-  <wsdl:message name="IAdminAccessBll_LoginAdmin_InputMessage">
-    <wsdl:part name="parameters" element="tns:LoginAdmin" />
-  </wsdl:message>
-  <wsdl:message name="IAdminAccessBll_LoginAdmin_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LoginAdminResponse" />
-  </wsdl:message>
-  <wsdl:message name="IAdminAccessBll_LogoutAdmin_InputMessage">
-    <wsdl:part name="parameters" element="tns:LogoutAdmin" />
-  </wsdl:message>
-  <wsdl:message name="IAdminAccessBll_LogoutAdmin_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LogoutAdminResponse" />
-  </wsdl:message>
-  <wsdl:message name="IAdminAccessBll_RequestSessionToken_InputMessage">
-    <wsdl:part name="parameters" element="tns:RequestSessionToken" />
-  </wsdl:message>
-  <wsdl:message name="IAdminAccessBll_RequestSessionToken_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RequestSessionTokenResponse" />
-  </wsdl:message>
-  <wsdl:message name="IAdminAccessBll_InsertArtist_InputMessage">
+  <wsdl:message name="AdminAccessWs_InsertArtist_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertArtist" />
   </wsdl:message>
-  <wsdl:message name="IAdminAccessBll_InsertArtist_OutputMessage">
+  <wsdl:message name="AdminAccessWs_InsertArtist_OutputMessage">
     <wsdl:part name="parameters" element="tns:InsertArtistResponse" />
   </wsdl:message>
-  <wsdl:message name="IViewAccessBll_GetAllArtist_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllArtist" />
+  <wsdl:message name="AdminAccessWs_GetAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll" />
   </wsdl:message>
-  <wsdl:message name="IViewAccessBll_GetAllArtist_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllArtistResponse" />
+  <wsdl:message name="AdminAccessWs_GetAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllResponse" />
   </wsdl:message>
-  <wsdl:message name="IViewAccessBll_GetArtistWhereCatrgory_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetArtistWhereCatrgory" />
+  <wsdl:message name="AdminAccessWs_IsUserAuthenticated_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsUserAuthenticated" />
   </wsdl:message>
-  <wsdl:message name="IViewAccessBll_GetArtistWhereCatrgory_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetArtistWhereCatrgoryResponse" />
+  <wsdl:message name="AdminAccessWs_IsUserAuthenticated_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsUserAuthenticatedResponse" />
   </wsdl:message>
-  <wsdl:message name="IViewAccessBll_GetAllCategories_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCategories" />
+  <wsdl:message name="AdminAccessWs_IsValidAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsValidAdmin" />
   </wsdl:message>
-  <wsdl:message name="IViewAccessBll_GetAllCategories_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCategoriesResponse" />
+  <wsdl:message name="AdminAccessWs_IsValidAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsValidAdminResponse" />
   </wsdl:message>
-  <wsdl:message name="IViewAccessBll_GetAllCountries_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCountries" />
+  <wsdl:message name="AdminAccessWs_LoginAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginAdmin" />
   </wsdl:message>
-  <wsdl:message name="IViewAccessBll_GetAllCountries_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCountriesResponse" />
+  <wsdl:message name="AdminAccessWs_LoginAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginAdminResponse" />
   </wsdl:message>
-  <wsdl:message name="IViewAccessBll_GetAllLocations_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllLocations" />
+  <wsdl:message name="AdminAccessWs_LogoutAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutAdmin" />
   </wsdl:message>
-  <wsdl:message name="IViewAccessBll_GetAllLocations_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllLocationsResponse" />
+  <wsdl:message name="AdminAccessWs_LogoutAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutAdminResponse" />
   </wsdl:message>
-  <wsdl:message name="IViewAccessBll_GetAllVenues_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllVenues" />
+  <wsdl:message name="AdminAccessWs_RequestSessionToken_InputMessage">
+    <wsdl:part name="parameters" element="tns:RequestSessionToken" />
   </wsdl:message>
-  <wsdl:message name="IViewAccessBll_GetAllVenues_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllVenuesResponse" />
+  <wsdl:message name="AdminAccessWs_RequestSessionToken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RequestSessionTokenResponse" />
   </wsdl:message>
-  <wsdl:portType name="IAdminAccessBll">
+  <wsdl:portType name="AdminAccessWs">
+    <wsdl:operation name="InsertArtist">
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/InsertArtist" message="tns:AdminAccessWs_InsertArtist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/InsertArtistResponse" message="tns:AdminAccessWs_InsertArtist_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetAll">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthAccessBll/GetAll" message="tns:IAdminAccessBll_GetAll_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthAccessBll/GetAllResponse" message="tns:IAdminAccessBll_GetAll_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/GetAll" message="tns:AdminAccessWs_GetAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/GetAllResponse" message="tns:AdminAccessWs_GetAll_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="IsUserAuthenticated">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthAccessBll/IsUserAuthenticated" message="tns:IAdminAccessBll_IsUserAuthenticated_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthAccessBll/IsUserAuthenticatedResponse" message="tns:IAdminAccessBll_IsUserAuthenticated_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/IsUserAuthenticated" message="tns:AdminAccessWs_IsUserAuthenticated_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/IsUserAuthenticatedResponse" message="tns:AdminAccessWs_IsUserAuthenticated_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="IsValidAdmin">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthAccessBll/IsValidAdmin" message="tns:IAdminAccessBll_IsValidAdmin_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthAccessBll/IsValidAdminResponse" message="tns:IAdminAccessBll_IsValidAdmin_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/IsValidAdmin" message="tns:AdminAccessWs_IsValidAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/IsValidAdminResponse" message="tns:AdminAccessWs_IsValidAdmin_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="LoginAdmin">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthAccessBll/LoginAdmin" message="tns:IAdminAccessBll_LoginAdmin_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthAccessBll/LoginAdminResponse" message="tns:IAdminAccessBll_LoginAdmin_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/LoginAdmin" message="tns:AdminAccessWs_LoginAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/LoginAdminResponse" message="tns:AdminAccessWs_LoginAdmin_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="LogoutAdmin">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthAccessBll/LogoutAdmin" message="tns:IAdminAccessBll_LogoutAdmin_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthAccessBll/LogoutAdminResponse" message="tns:IAdminAccessBll_LogoutAdmin_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/LogoutAdmin" message="tns:AdminAccessWs_LogoutAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/LogoutAdminResponse" message="tns:AdminAccessWs_LogoutAdmin_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RequestSessionToken">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAuthAccessBll/RequestSessionToken" message="tns:IAdminAccessBll_RequestSessionToken_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAuthAccessBll/RequestSessionTokenResponse" message="tns:IAdminAccessBll_RequestSessionToken_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="InsertArtist">
-      <wsdl:input wsaw:Action="http://tempuri.org/IAdminAccessBll/InsertArtist" message="tns:IAdminAccessBll_InsertArtist_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IAdminAccessBll/InsertArtistResponse" message="tns:IAdminAccessBll_InsertArtist_OutputMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/RequestSessionToken" message="tns:AdminAccessWs_RequestSessionToken_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/RequestSessionTokenResponse" message="tns:AdminAccessWs_RequestSessionToken_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:portType name="IViewAccessBll">
-    <wsdl:operation name="GetAllArtist">
-      <wsdl:input wsaw:Action="http://tempuri.org/IViewAccessBll/GetAllArtist" message="tns:IViewAccessBll_GetAllArtist_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IViewAccessBll/GetAllArtistResponse" message="tns:IViewAccessBll_GetAllArtist_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetArtistWhereCatrgory">
-      <wsdl:input wsaw:Action="http://tempuri.org/IViewAccessBll/GetArtistWhereCatrgory" message="tns:IViewAccessBll_GetArtistWhereCatrgory_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IViewAccessBll/GetArtistWhereCatrgoryResponse" message="tns:IViewAccessBll_GetArtistWhereCatrgory_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllCategories">
-      <wsdl:input wsaw:Action="http://tempuri.org/IViewAccessBll/GetAllCategories" message="tns:IViewAccessBll_GetAllCategories_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IViewAccessBll/GetAllCategoriesResponse" message="tns:IViewAccessBll_GetAllCategories_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllCountries">
-      <wsdl:input wsaw:Action="http://tempuri.org/IViewAccessBll/GetAllCountries" message="tns:IViewAccessBll_GetAllCountries_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IViewAccessBll/GetAllCountriesResponse" message="tns:IViewAccessBll_GetAllCountries_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllLocations">
-      <wsdl:input wsaw:Action="http://tempuri.org/IViewAccessBll/GetAllLocations" message="tns:IViewAccessBll_GetAllLocations_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IViewAccessBll/GetAllLocationsResponse" message="tns:IViewAccessBll_GetAllLocations_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllVenues">
-      <wsdl:input wsaw:Action="http://tempuri.org/IViewAccessBll/GetAllVenues" message="tns:IViewAccessBll_GetAllVenues_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IViewAccessBll/GetAllVenuesResponse" message="tns:IViewAccessBll_GetAllVenues_OutputMessage" />
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:binding name="WSHttpBinding_IAdminAccessBll" type="tns:IAdminAccessBll">
-    <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_policy" />
+  <wsdl:binding name="WSHttpBinding_AdminAccessWs" type="tns:AdminAccessWs">
+    <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAll">
-      <soap12:operation soapAction="http://tempuri.org/IAuthAccessBll/GetAll" style="document" />
+    <wsdl:operation name="InsertArtist">
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/InsertArtist" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_GetAll_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_InsertArtist_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_GetAll_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_InsertArtist_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/GetAll" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_GetAll_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_GetAll_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="IsUserAuthenticated">
-      <soap12:operation soapAction="http://tempuri.org/IAuthAccessBll/IsUserAuthenticated" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/IsUserAuthenticated" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_IsUserAuthenticated_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_IsUserAuthenticated_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_IsUserAuthenticated_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_IsUserAuthenticated_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="IsValidAdmin">
-      <soap12:operation soapAction="http://tempuri.org/IAuthAccessBll/IsValidAdmin" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/IsValidAdmin" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_IsValidAdmin_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_IsValidAdmin_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_IsValidAdmin_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_IsValidAdmin_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="LoginAdmin">
-      <soap12:operation soapAction="http://tempuri.org/IAuthAccessBll/LoginAdmin" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/LoginAdmin" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_LoginAdmin_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_LoginAdmin_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_LoginAdmin_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_LoginAdmin_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="LogoutAdmin">
-      <soap12:operation soapAction="http://tempuri.org/IAuthAccessBll/LogoutAdmin" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/LogoutAdmin" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_LogoutAdmin_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_LogoutAdmin_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_LogoutAdmin_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_LogoutAdmin_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RequestSessionToken">
-      <soap12:operation soapAction="http://tempuri.org/IAuthAccessBll/RequestSessionToken" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/RequestSessionToken" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_RequestSessionToken_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_RequestSessionToken_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_RequestSessionToken_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="InsertArtist">
-      <soap12:operation soapAction="http://tempuri.org/IAdminAccessBll/InsertArtist" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_InsertArtist_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IAdminAccessBll_InsertArtist_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_RequestSessionToken_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="WSHttpBinding_IViewAccessBll" type="tns:IViewAccessBll">
-    <wsp:PolicyReference URI="#WSHttpBinding_IViewAccessBll_policy" />
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAllArtist">
-      <soap12:operation soapAction="http://tempuri.org/IViewAccessBll/GetAllArtist" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IViewAccessBll_GetAllArtist_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IViewAccessBll_GetAllArtist_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetArtistWhereCatrgory">
-      <soap12:operation soapAction="http://tempuri.org/IViewAccessBll/GetArtistWhereCatrgory" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IViewAccessBll_GetArtistWhereCatrgory_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IViewAccessBll_GetArtistWhereCatrgory_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllCategories">
-      <soap12:operation soapAction="http://tempuri.org/IViewAccessBll/GetAllCategories" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IViewAccessBll_GetAllCategories_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IViewAccessBll_GetAllCategories_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllCountries">
-      <soap12:operation soapAction="http://tempuri.org/IViewAccessBll/GetAllCountries" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IViewAccessBll_GetAllCountries_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IViewAccessBll_GetAllCountries_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllLocations">
-      <soap12:operation soapAction="http://tempuri.org/IViewAccessBll/GetAllLocations" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IViewAccessBll_GetAllLocations_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IViewAccessBll_GetAllLocations_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllVenues">
-      <soap12:operation soapAction="http://tempuri.org/IViewAccessBll/GetAllVenues" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IViewAccessBll_GetAllVenues_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IViewAccessBll_GetAllVenues_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:service name="AdminAccessBll">
-    <wsdl:port name="WSHttpBinding_IAdminAccessBll" binding="tns:WSHttpBinding_IAdminAccessBll">
+  <wsdl:service name="AdminAccessWs">
+    <wsdl:port name="WSHttpBinding_AdminAccessWs" binding="tns:WSHttpBinding_AdminAccessWs">
       <soap12:address location="http://localhost:4321/AdminAccess" />
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:4321/AdminAccess</wsa10:Address>
-        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>XPITFIRE-PC\dinum_000</Upn>
-        </Identity>
-      </wsa10:EndpointReference>
-    </wsdl:port>
-  </wsdl:service>
-  <wsdl:service name="ViewAccessBll">
-    <wsdl:port name="WSHttpBinding_IViewAccessBll" binding="tns:WSHttpBinding_IViewAccessBll">
-      <soap12:address location="http://localhost:4321/ViewAccess" />
-      <wsa10:EndpointReference>
-        <wsa10:Address>http://localhost:4321/ViewAccess</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
           <Upn>XPITFIRE-PC\dinum_000</Upn>
         </Identity>

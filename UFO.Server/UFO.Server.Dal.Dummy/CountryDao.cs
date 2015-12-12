@@ -49,8 +49,8 @@ namespace UFO.Server.Dal.Dummy
             throw new NotImplementedException();
         }
 
-        [DaoExceptionHandler(typeof(IList<Country>))]
-        public DaoResponse<IList<Country>> SelectAll()
+        [DaoExceptionHandler(typeof(List<Country>))]
+        public DaoResponse<List<Country>> SelectAll()
         {
             throw new NotSupportedException("Test exception for DaoExceptionHandlerAtrribute test!");
         }

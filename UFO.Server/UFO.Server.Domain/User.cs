@@ -25,7 +25,7 @@ namespace UFO.Server.Domain
 {
     [Serializable]
     [DataContract(Name = nameof(User))]
-    public class User
+    public class User : DomainObject
     {
         [DataMember(Name = nameof(UserId))]
         public int UserId { get; set; } = Constants.InvalidIdValue;

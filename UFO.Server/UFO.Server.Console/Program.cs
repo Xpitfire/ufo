@@ -17,18 +17,9 @@
 //     Dinu Marius-Constantin
 #endregion
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Description;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
-using UFO.Server.Bll.Common;
-using UFO.Server.Bll.Impl;
-using UFO.Server.Dal.Common;
-using UFO.Server.Domain;
+using UFO.Server.Services;
 
 namespace UFO.Server
 {
@@ -51,12 +42,12 @@ namespace UFO.Server
                 var viewAccessUri = new Uri($"{host}:{port}/{viewAccessName}");
 
                 // Instantiate ServiceHost
-                adminAccessServiceHost = new ServiceHost(typeof(AdminAccessBll), adminAccessUri);
-                viewAccessServiceHost = new ServiceHost(typeof(ViewAccessBll), viewAccessUri);
+                adminAccessServiceHost = new ServiceHost(typeof(AdminAccessWs), adminAccessUri);
+                viewAccessServiceHost = new ServiceHost(typeof(ViewAccessWs), viewAccessUri);
 
                 // Add Endpoint to Host
-                adminAccessServiceHost.AddServiceEndpoint(typeof(IAdminAccessBll), new WSHttpBinding(), "");
-                viewAccessServiceHost.AddServiceEndpoint(typeof(IViewAccessBll), new WSHttpBinding(), "");
+                adminAccessServiceHost.AddServiceEndpoint(typeof(AdminAccessWs), new WSHttpBinding(), "");
+                viewAccessServiceHost.AddServiceEndpoint(typeof(ViewAccessWs), new WSHttpBinding(), "");
 
                 // Metadata Exchange
                 var serviceBehavior = new ServiceMetadataBehavior {HttpGetEnabled = true};

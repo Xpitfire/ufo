@@ -43,7 +43,7 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
 
-        public DaoResponse<IList<Performance>> SelectAll()
+        public DaoResponse<List<Performance>> SelectAll()
         {
             throw new System.NotImplementedException();
         }

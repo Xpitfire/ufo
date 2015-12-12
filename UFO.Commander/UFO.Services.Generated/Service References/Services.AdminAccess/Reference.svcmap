@@ -27,7 +27,6 @@
     <MetadataFile FileName="AdminAccess2.xsd" MetadataType="Schema" ID="997396fb-0177-439f-a20a-b6748e812d8e" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?xsd=xsd1" />
     <MetadataFile FileName="AdminAccess3.xsd" MetadataType="Schema" ID="152b7887-f1b3-4c24-93e2-dd8e4a08b70c" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?xsd=xsd0" />
     <MetadataFile FileName="AdminAccessBll.wsdl" MetadataType="Wsdl" ID="e23b653e-7aa3-4452-94ee-14cd7271df1e" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?wsdl" />
-    <MetadataFile FileName="AdminAccess4.xsd" MetadataType="Schema" ID="79ba0de5-f75f-49a9-8e70-9ba410520173" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?xsd=xsd4" />
     <MetadataFile FileName="AdminAccess.disco" MetadataType="Disco" ID="8a832b4f-7513-4f29-a573-58cb5c6b7da2" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?disco" />
   </Metadata>
   <Extensions>

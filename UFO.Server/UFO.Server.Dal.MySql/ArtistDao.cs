@@ -107,8 +107,8 @@ namespace UFO.Server.Dal.MySql
             return artist != null ? DaoResponse.QuerySuccessful(artist) : DaoResponse.QueryEmptyResult<Artist>();
         }
 
-        [DaoExceptionHandler(typeof(IList<Artist>))]
-        public DaoResponse<IList<Artist>> SelectAll()
+        [DaoExceptionHandler(typeof(List<Artist>))]
+        public DaoResponse<List<Artist>> SelectAll()
         {
             var artists = new List<Artist>();
             using (var connection = _dbCommProvider.CreateDbConnection())
@@ -120,7 +120,7 @@ namespace UFO.Server.Dal.MySql
                     artists.Add(CreateArtistObject(dataReader));
                 }
             }
-            return artists.Any() ? DaoResponse.QuerySuccessful<IList<Artist>>(artists) : DaoResponse.QueryEmptyResult<IList<Artist>>();
+            return artists.Any() ? DaoResponse.QuerySuccessful(artists) : DaoResponse.QueryEmptyResult<List<Artist>>();
         }
         
         [DaoExceptionHandler(typeof(Artist))]

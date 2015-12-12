@@ -22,9 +22,9 @@ using System.Linq;
 using UFO.Server.Bll.Common;
 using UFO.Server.Domain;
 
-namespace UFO.Server
+namespace UFO.Server.Bll.Impl
 {
-    public class SessionHandler
+    public class SessionHandler : ISessionBll
     {
         private static SessionHandler _instance;
         public static SessionHandler Instance => _instance ?? (_instance = new SessionHandler());
@@ -39,7 +39,7 @@ namespace UFO.Server
         {
         }
 
-        public void SetUserSession(SessionToken token, IAuthAccessBll authAccessBll)
+        public void RegisterUserSession(SessionToken token, IAuthAccessBll authAccessBll)
         {
             lock (_sessionDirectory)
             {
@@ -50,7 +50,7 @@ namespace UFO.Server
             }
         }
 
-        public void RemoveUserSession(SessionToken token)
+        public void DeleteUserSession(SessionToken token)
         {
             lock (_sessionDirectory)
             {
@@ -73,7 +73,7 @@ namespace UFO.Server
             return null;
         }
 
-        public SessionToken GenerateSessionId(User user)
+        public SessionToken RequestSessionId(User user)
         {
             lock (_sessionDirectory)
             {
@@ -88,6 +88,30 @@ namespace UFO.Server
                 Console.WriteLine($"Created new session key: {new string(sessionToken.SessionId)}");
                 return sessionToken;
             }
+        }
+    }
+
+    internal class GenerateSessionIds
+    {
+        private const int SessionKeyLength = 128;
+        // available char
+        private static string possibleChars = "0123456789ABCDEF";
+        // optimized (?) what's available
+        private static readonly char[] PossibleCharsArray = possibleChars.ToCharArray();
+        // optimized (precalculated) count
+        private static readonly int PossibleCharsAvailable = possibleChars.Length;
+        // shared randomization thingy
+        private static readonly Random Random = new Random();
+
+        public static string GenerateRandomString()
+        {
+            var num = SessionKeyLength;
+            var rBytes = new byte[num];
+            Random.NextBytes(rBytes);
+            var rName = new char[num];
+            while (num-- > 0)
+                rName[num] = PossibleCharsArray[rBytes[num] % PossibleCharsAvailable];
+            return new string(rName);
         }
     }
 }

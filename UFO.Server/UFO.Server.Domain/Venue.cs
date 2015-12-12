@@ -24,7 +24,7 @@ namespace UFO.Server.Domain
 {
     [Serializable]
     [DataContract(Name = nameof(Venue))]
-    public class Venue
+    public class Venue : DomainObject
     {
         [DataMember(Name = nameof(VenueId))]
         public string VenueId { get; set; }

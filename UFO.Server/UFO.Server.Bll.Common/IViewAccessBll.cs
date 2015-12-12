@@ -16,40 +16,30 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using UFO.Server.Domain;
 
 namespace UFO.Server.Bll.Common
 {
-    [ServiceContract]
     public interface IViewAccessBll
     {
-        // artist
-        [OperationContract]
-        IList<Artist> GetAllArtist();
+        // Artist
+        List<Artist> GetAllArtist();
+        List<Artist> GetArtistWhereCatrgory(Category category);
 
-        [OperationContract]
-        IList<Artist> GetArtistWhereCatrgory(Category category);
-
-        // category
-        [OperationContract]
-        IList<Category> GetAllCategories();
+        // Category
+        List<Category> GetAllCategories();
 
         // Country
-        [OperationContract]
-        IList<Country> GetAllCountries();
+        List<Country> GetAllCountries();
 
         // Location
-        [OperationContract]
-        IList<Location> GetAllLocations();
+        List<Location> GetAllLocations();
 
-        // venue
-        [OperationContract]
-        IList<Venue> GetAllVenues();
+        // Venue
+        List<Venue> GetAllVenues();
+
+        // Performance
+        List<Performance> GetAllPerformances();
     }
 }

@@ -49,7 +49,7 @@ namespace UFO.Server.Dal.Dummy
             throw new NotImplementedException();
         }
 
-        public DaoResponse<IList<Category>> SelectAll()
+        public DaoResponse<List<Category>> SelectAll()
         {
             throw new NotImplementedException();
         }

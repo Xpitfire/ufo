@@ -25,7 +25,7 @@ namespace UFO.Server.Domain
 {
     [Serializable]
     [DataContract(Name = nameof(Performance))]
-    public class Performance
+    public class Performance : DomainObject
     {
         [DataMember(Name = nameof(DateTime))]
         public DateTime DateTime { get; set; }

@@ -113,8 +113,8 @@ namespace UFO.Server.Dal.MySql
             return DaoResponse.QuerySuccessful(entity);
         }
 
-        [DaoExceptionHandler(typeof(IList<Location>))]
-        public DaoResponse<IList<Location>> SelectAll()
+        [DaoExceptionHandler(typeof(List<Location>))]
+        public DaoResponse<List<Location>> SelectAll()
         {
             var locations = new List<Location>();
             using (var connection = _dbCommProvider.CreateDbConnection())
@@ -126,7 +126,7 @@ namespace UFO.Server.Dal.MySql
                     locations.Add(CreateLocationObject(dataReader));
                 }
             }
-            return locations.Any() ? DaoResponse.QuerySuccessful<IList<Location>>(locations) : DaoResponse.QueryEmptyResult<IList<Location>>();
+            return locations.Any() ? DaoResponse.QuerySuccessful(locations) : DaoResponse.QueryEmptyResult<List<Location>>();
         }
         
     }

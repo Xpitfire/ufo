@@ -15,16 +15,20 @@ namespace UFO.Services.ViewAccess {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SessionToken", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Bll.Common")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DomainObject", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
     [System.SerializableAttribute()]
-    public partial class SessionToken : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Category))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Country))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.BlobData))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.SessionToken))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.User))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Location))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Venue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Artist))]
+    public partial class DomainObject : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private char[] SessionIdk__BackingFieldField;
-        
-        private UFO.Services.ViewAccess.User Userk__BackingFieldField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -33,32 +37,6 @@ namespace UFO.Services.ViewAccess {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<SessionId>k__BackingField", IsRequired=true)]
-        public char[] SessionIdk__BackingField {
-            get {
-                return this.SessionIdk__BackingFieldField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SessionIdk__BackingFieldField, value) != true)) {
-                    this.SessionIdk__BackingFieldField = value;
-                    this.RaisePropertyChanged("SessionIdk__BackingField");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="<User>k__BackingField", IsRequired=true)]
-        public UFO.Services.ViewAccess.User Userk__BackingField {
-            get {
-                return this.Userk__BackingFieldField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Userk__BackingFieldField, value) != true)) {
-                    this.Userk__BackingFieldField = value;
-                    this.RaisePropertyChanged("Userk__BackingField");
-                }
             }
         }
         
@@ -74,12 +52,181 @@ namespace UFO.Services.ViewAccess {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Category", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
+    [System.SerializableAttribute()]
+    public partial class Category : UFO.Services.ViewAccess.DomainObject {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoryIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CategoryId {
+            get {
+                return this.CategoryIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryIdField, value) != true)) {
+                    this.CategoryIdField = value;
+                    this.RaisePropertyChanged("CategoryId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Country", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
+    [System.SerializableAttribute()]
+    public partial class Country : UFO.Services.ViewAccess.DomainObject {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Code {
+            get {
+                return this.CodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
+                    this.CodeField = value;
+                    this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BlobData", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
+    [System.SerializableAttribute()]
+    public partial class BlobData : UFO.Services.ViewAccess.DomainObject {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] DataStreamField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PathField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] DataStream {
+            get {
+                return this.DataStreamField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DataStreamField, value) != true)) {
+                    this.DataStreamField = value;
+                    this.RaisePropertyChanged("DataStream");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Path {
+            get {
+                return this.PathField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PathField, value) != true)) {
+                    this.PathField = value;
+                    this.RaisePropertyChanged("Path");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SessionToken", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
+    [System.SerializableAttribute()]
+    public partial class SessionToken : UFO.Services.ViewAccess.DomainObject {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private char[] SessionIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UFO.Services.ViewAccess.User UserField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public char[] SessionId {
+            get {
+                return this.SessionIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SessionIdField, value) != true)) {
+                    this.SessionIdField = value;
+                    this.RaisePropertyChanged("SessionId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UFO.Services.ViewAccess.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
     [System.SerializableAttribute()]
-    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+    public partial class User : UFO.Services.ViewAccess.DomainObject {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private UFO.Services.ViewAccess.Artist ArtistField;
@@ -104,16 +251,6 @@ namespace UFO.Services.ViewAccess {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int UserIdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public UFO.Services.ViewAccess.Artist Artist {
@@ -218,13 +355,130 @@ namespace UFO.Services.ViewAccess {
                 }
             }
         }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Location", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
+    [System.SerializableAttribute()]
+    public partial class Location : UFO.Services.ViewAccess.DomainObject {
         
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal LatitudeField;
         
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LocationIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal LongitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((this.LatitudeField.Equals(value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LocationId {
+            get {
+                return this.LocationIdField;
+            }
+            set {
+                if ((this.LocationIdField.Equals(value) != true)) {
+                    this.LocationIdField = value;
+                    this.RaisePropertyChanged("LocationId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((this.LongitudeField.Equals(value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Venue", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
+    [System.SerializableAttribute()]
+    public partial class Venue : UFO.Services.ViewAccess.DomainObject {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UFO.Services.ViewAccess.Location LocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VenueIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UFO.Services.ViewAccess.Location Location {
+            get {
+                return this.LocationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocationField, value) != true)) {
+                    this.LocationField = value;
+                    this.RaisePropertyChanged("Location");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string VenueId {
+            get {
+                return this.VenueIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VenueIdField, value) != true)) {
+                    this.VenueIdField = value;
+                    this.RaisePropertyChanged("VenueId");
+                }
             }
         }
     }
@@ -233,10 +487,7 @@ namespace UFO.Services.ViewAccess {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Artist", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
     [System.SerializableAttribute()]
-    public partial class Artist : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+    public partial class Artist : UFO.Services.ViewAccess.DomainObject {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ArtistIdField;
@@ -258,16 +509,6 @@ namespace UFO.Services.ViewAccess {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PromoVideoField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int ArtistId {
@@ -359,458 +600,88 @@ namespace UFO.Services.ViewAccess {
                 }
             }
         }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Category", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
-    [System.SerializableAttribute()]
-    public partial class Category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CategoryIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CategoryId {
-            get {
-                return this.CategoryIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CategoryIdField, value) != true)) {
-                    this.CategoryIdField = value;
-                    this.RaisePropertyChanged("CategoryId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Country", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
-    [System.SerializableAttribute()]
-    public partial class Country : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Code {
-            get {
-                return this.CodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
-                    this.CodeField = value;
-                    this.RaisePropertyChanged("Code");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BlobData", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
-    [System.SerializableAttribute()]
-    public partial class BlobData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte[] DataStreamField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PathField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public byte[] DataStream {
-            get {
-                return this.DataStreamField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DataStreamField, value) != true)) {
-                    this.DataStreamField = value;
-                    this.RaisePropertyChanged("DataStream");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Path {
-            get {
-                return this.PathField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PathField, value) != true)) {
-                    this.PathField = value;
-                    this.RaisePropertyChanged("Path");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Location", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
-    [System.SerializableAttribute()]
-    public partial class Location : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal LatitudeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int LocationIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal LongitudeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Latitude {
-            get {
-                return this.LatitudeField;
-            }
-            set {
-                if ((this.LatitudeField.Equals(value) != true)) {
-                    this.LatitudeField = value;
-                    this.RaisePropertyChanged("Latitude");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int LocationId {
-            get {
-                return this.LocationIdField;
-            }
-            set {
-                if ((this.LocationIdField.Equals(value) != true)) {
-                    this.LocationIdField = value;
-                    this.RaisePropertyChanged("LocationId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Longitude {
-            get {
-                return this.LongitudeField;
-            }
-            set {
-                if ((this.LongitudeField.Equals(value) != true)) {
-                    this.LongitudeField = value;
-                    this.RaisePropertyChanged("Longitude");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Venue", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
-    [System.SerializableAttribute()]
-    public partial class Venue : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UFO.Services.ViewAccess.Location LocationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string VenueIdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UFO.Services.ViewAccess.Location Location {
-            get {
-                return this.LocationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LocationField, value) != true)) {
-                    this.LocationField = value;
-                    this.RaisePropertyChanged("Location");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string VenueId {
-            get {
-                return this.VenueIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.VenueIdField, value) != true)) {
-                    this.VenueIdField = value;
-                    this.RaisePropertyChanged("VenueId");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Services.ViewAccess.IAdminAccessBll")]
-    public interface IAdminAccessBll {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Services.ViewAccess.AdminAccessWs")]
+    public interface AdminAccessWs {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/GetAll", ReplyAction="http://tempuri.org/IAuthAccessBll/GetAllResponse")]
-        UFO.Services.ViewAccess.User[] GetAll(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/GetAll", ReplyAction="http://tempuri.org/IAuthAccessBll/GetAllResponse")]
-        System.Threading.Tasks.Task<UFO.Services.ViewAccess.User[]> GetAllAsync(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/IsUserAuthenticated", ReplyAction="http://tempuri.org/IAuthAccessBll/IsUserAuthenticatedResponse")]
-        bool IsUserAuthenticated(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/IsUserAuthenticated", ReplyAction="http://tempuri.org/IAuthAccessBll/IsUserAuthenticatedResponse")]
-        System.Threading.Tasks.Task<bool> IsUserAuthenticatedAsync(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/IsValidAdmin", ReplyAction="http://tempuri.org/IAuthAccessBll/IsValidAdminResponse")]
-        bool IsValidAdmin(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/IsValidAdmin", ReplyAction="http://tempuri.org/IAuthAccessBll/IsValidAdminResponse")]
-        System.Threading.Tasks.Task<bool> IsValidAdminAsync(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/LoginAdmin", ReplyAction="http://tempuri.org/IAuthAccessBll/LoginAdminResponse")]
-        bool LoginAdmin(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/LoginAdmin", ReplyAction="http://tempuri.org/IAuthAccessBll/LoginAdminResponse")]
-        System.Threading.Tasks.Task<bool> LoginAdminAsync(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/LogoutAdmin", ReplyAction="http://tempuri.org/IAuthAccessBll/LogoutAdminResponse")]
-        void LogoutAdmin(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/LogoutAdmin", ReplyAction="http://tempuri.org/IAuthAccessBll/LogoutAdminResponse")]
-        System.Threading.Tasks.Task LogoutAdminAsync(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/RequestSessionToken", ReplyAction="http://tempuri.org/IAuthAccessBll/RequestSessionTokenResponse")]
-        UFO.Services.ViewAccess.SessionToken RequestSessionToken(UFO.Services.ViewAccess.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthAccessBll/RequestSessionToken", ReplyAction="http://tempuri.org/IAuthAccessBll/RequestSessionTokenResponse")]
-        System.Threading.Tasks.Task<UFO.Services.ViewAccess.SessionToken> RequestSessionTokenAsync(UFO.Services.ViewAccess.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminAccessBll/InsertArtist", ReplyAction="http://tempuri.org/IAdminAccessBll/InsertArtistResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/InsertArtist", ReplyAction="http://tempuri.org/AdminAccessWs/InsertArtistResponse")]
         void InsertArtist(UFO.Services.ViewAccess.Artist artist);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdminAccessBll/InsertArtist", ReplyAction="http://tempuri.org/IAdminAccessBll/InsertArtistResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/InsertArtist", ReplyAction="http://tempuri.org/AdminAccessWs/InsertArtistResponse")]
         System.Threading.Tasks.Task InsertArtistAsync(UFO.Services.ViewAccess.Artist artist);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/GetAll", ReplyAction="http://tempuri.org/AdminAccessWs/GetAllResponse")]
+        UFO.Services.ViewAccess.User[] GetAll(UFO.Services.ViewAccess.SessionToken token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/GetAll", ReplyAction="http://tempuri.org/AdminAccessWs/GetAllResponse")]
+        System.Threading.Tasks.Task<UFO.Services.ViewAccess.User[]> GetAllAsync(UFO.Services.ViewAccess.SessionToken token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/IsUserAuthenticated", ReplyAction="http://tempuri.org/AdminAccessWs/IsUserAuthenticatedResponse")]
+        bool IsUserAuthenticated(UFO.Services.ViewAccess.SessionToken token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/IsUserAuthenticated", ReplyAction="http://tempuri.org/AdminAccessWs/IsUserAuthenticatedResponse")]
+        System.Threading.Tasks.Task<bool> IsUserAuthenticatedAsync(UFO.Services.ViewAccess.SessionToken token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/IsValidAdmin", ReplyAction="http://tempuri.org/AdminAccessWs/IsValidAdminResponse")]
+        bool IsValidAdmin(UFO.Services.ViewAccess.SessionToken token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/IsValidAdmin", ReplyAction="http://tempuri.org/AdminAccessWs/IsValidAdminResponse")]
+        System.Threading.Tasks.Task<bool> IsValidAdminAsync(UFO.Services.ViewAccess.SessionToken token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/LoginAdmin", ReplyAction="http://tempuri.org/AdminAccessWs/LoginAdminResponse")]
+        bool LoginAdmin(UFO.Services.ViewAccess.SessionToken token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/LoginAdmin", ReplyAction="http://tempuri.org/AdminAccessWs/LoginAdminResponse")]
+        System.Threading.Tasks.Task<bool> LoginAdminAsync(UFO.Services.ViewAccess.SessionToken token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/LogoutAdmin", ReplyAction="http://tempuri.org/AdminAccessWs/LogoutAdminResponse")]
+        void LogoutAdmin(UFO.Services.ViewAccess.SessionToken token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/LogoutAdmin", ReplyAction="http://tempuri.org/AdminAccessWs/LogoutAdminResponse")]
+        System.Threading.Tasks.Task LogoutAdminAsync(UFO.Services.ViewAccess.SessionToken token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RequestSessionToken", ReplyAction="http://tempuri.org/AdminAccessWs/RequestSessionTokenResponse")]
+        UFO.Services.ViewAccess.SessionToken RequestSessionToken(UFO.Services.ViewAccess.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RequestSessionToken", ReplyAction="http://tempuri.org/AdminAccessWs/RequestSessionTokenResponse")]
+        System.Threading.Tasks.Task<UFO.Services.ViewAccess.SessionToken> RequestSessionTokenAsync(UFO.Services.ViewAccess.User user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IAdminAccessBllChannel : UFO.Services.ViewAccess.IAdminAccessBll, System.ServiceModel.IClientChannel {
+    public interface AdminAccessWsChannel : UFO.Services.ViewAccess.AdminAccessWs, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class AdminAccessBllClient : System.ServiceModel.ClientBase<UFO.Services.ViewAccess.IAdminAccessBll>, UFO.Services.ViewAccess.IAdminAccessBll {
+    public partial class AdminAccessWsClient : System.ServiceModel.ClientBase<UFO.Services.ViewAccess.AdminAccessWs>, UFO.Services.ViewAccess.AdminAccessWs {
         
-        public AdminAccessBllClient() {
+        public AdminAccessWsClient() {
         }
         
-        public AdminAccessBllClient(string endpointConfigurationName) : 
+        public AdminAccessWsClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public AdminAccessBllClient(string endpointConfigurationName, string remoteAddress) : 
+        public AdminAccessWsClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public AdminAccessBllClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public AdminAccessWsClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public AdminAccessBllClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public AdminAccessWsClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public void InsertArtist(UFO.Services.ViewAccess.Artist artist) {
+            base.Channel.InsertArtist(artist);
+        }
+        
+        public System.Threading.Tasks.Task InsertArtistAsync(UFO.Services.ViewAccess.Artist artist) {
+            return base.Channel.InsertArtistAsync(artist);
         }
         
         public UFO.Services.ViewAccess.User[] GetAll(UFO.Services.ViewAccess.SessionToken token) {
@@ -860,81 +731,73 @@ namespace UFO.Services.ViewAccess {
         public System.Threading.Tasks.Task<UFO.Services.ViewAccess.SessionToken> RequestSessionTokenAsync(UFO.Services.ViewAccess.User user) {
             return base.Channel.RequestSessionTokenAsync(user);
         }
-        
-        public void InsertArtist(UFO.Services.ViewAccess.Artist artist) {
-            base.Channel.InsertArtist(artist);
-        }
-        
-        public System.Threading.Tasks.Task InsertArtistAsync(UFO.Services.ViewAccess.Artist artist) {
-            return base.Channel.InsertArtistAsync(artist);
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Services.ViewAccess.IViewAccessBll")]
-    public interface IViewAccessBll {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Services.ViewAccess.ViewAccessWs")]
+    public interface ViewAccessWs {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViewAccessBll/GetAllArtist", ReplyAction="http://tempuri.org/IViewAccessBll/GetAllArtistResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAllArtist", ReplyAction="http://tempuri.org/ViewAccessWs/GetAllArtistResponse")]
         UFO.Services.ViewAccess.Artist[] GetAllArtist();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViewAccessBll/GetAllArtist", ReplyAction="http://tempuri.org/IViewAccessBll/GetAllArtistResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAllArtist", ReplyAction="http://tempuri.org/ViewAccessWs/GetAllArtistResponse")]
         System.Threading.Tasks.Task<UFO.Services.ViewAccess.Artist[]> GetAllArtistAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViewAccessBll/GetArtistWhereCatrgory", ReplyAction="http://tempuri.org/IViewAccessBll/GetArtistWhereCatrgoryResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetArtistWhereCatrgory", ReplyAction="http://tempuri.org/ViewAccessWs/GetArtistWhereCatrgoryResponse")]
         UFO.Services.ViewAccess.Artist[] GetArtistWhereCatrgory(UFO.Services.ViewAccess.Category category);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViewAccessBll/GetArtistWhereCatrgory", ReplyAction="http://tempuri.org/IViewAccessBll/GetArtistWhereCatrgoryResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetArtistWhereCatrgory", ReplyAction="http://tempuri.org/ViewAccessWs/GetArtistWhereCatrgoryResponse")]
         System.Threading.Tasks.Task<UFO.Services.ViewAccess.Artist[]> GetArtistWhereCatrgoryAsync(UFO.Services.ViewAccess.Category category);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViewAccessBll/GetAllCategories", ReplyAction="http://tempuri.org/IViewAccessBll/GetAllCategoriesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAllCategories", ReplyAction="http://tempuri.org/ViewAccessWs/GetAllCategoriesResponse")]
         UFO.Services.ViewAccess.Category[] GetAllCategories();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViewAccessBll/GetAllCategories", ReplyAction="http://tempuri.org/IViewAccessBll/GetAllCategoriesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAllCategories", ReplyAction="http://tempuri.org/ViewAccessWs/GetAllCategoriesResponse")]
         System.Threading.Tasks.Task<UFO.Services.ViewAccess.Category[]> GetAllCategoriesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViewAccessBll/GetAllCountries", ReplyAction="http://tempuri.org/IViewAccessBll/GetAllCountriesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAllCountries", ReplyAction="http://tempuri.org/ViewAccessWs/GetAllCountriesResponse")]
         UFO.Services.ViewAccess.Country[] GetAllCountries();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViewAccessBll/GetAllCountries", ReplyAction="http://tempuri.org/IViewAccessBll/GetAllCountriesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAllCountries", ReplyAction="http://tempuri.org/ViewAccessWs/GetAllCountriesResponse")]
         System.Threading.Tasks.Task<UFO.Services.ViewAccess.Country[]> GetAllCountriesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViewAccessBll/GetAllLocations", ReplyAction="http://tempuri.org/IViewAccessBll/GetAllLocationsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAllLocations", ReplyAction="http://tempuri.org/ViewAccessWs/GetAllLocationsResponse")]
         UFO.Services.ViewAccess.Location[] GetAllLocations();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViewAccessBll/GetAllLocations", ReplyAction="http://tempuri.org/IViewAccessBll/GetAllLocationsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAllLocations", ReplyAction="http://tempuri.org/ViewAccessWs/GetAllLocationsResponse")]
         System.Threading.Tasks.Task<UFO.Services.ViewAccess.Location[]> GetAllLocationsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViewAccessBll/GetAllVenues", ReplyAction="http://tempuri.org/IViewAccessBll/GetAllVenuesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAllVenues", ReplyAction="http://tempuri.org/ViewAccessWs/GetAllVenuesResponse")]
         UFO.Services.ViewAccess.Venue[] GetAllVenues();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IViewAccessBll/GetAllVenues", ReplyAction="http://tempuri.org/IViewAccessBll/GetAllVenuesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAllVenues", ReplyAction="http://tempuri.org/ViewAccessWs/GetAllVenuesResponse")]
         System.Threading.Tasks.Task<UFO.Services.ViewAccess.Venue[]> GetAllVenuesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IViewAccessBllChannel : UFO.Services.ViewAccess.IViewAccessBll, System.ServiceModel.IClientChannel {
+    public interface ViewAccessWsChannel : UFO.Services.ViewAccess.ViewAccessWs, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ViewAccessBllClient : System.ServiceModel.ClientBase<UFO.Services.ViewAccess.IViewAccessBll>, UFO.Services.ViewAccess.IViewAccessBll {
+    public partial class ViewAccessWsClient : System.ServiceModel.ClientBase<UFO.Services.ViewAccess.ViewAccessWs>, UFO.Services.ViewAccess.ViewAccessWs {
         
-        public ViewAccessBllClient() {
+        public ViewAccessWsClient() {
         }
         
-        public ViewAccessBllClient(string endpointConfigurationName) : 
+        public ViewAccessWsClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public ViewAccessBllClient(string endpointConfigurationName, string remoteAddress) : 
+        public ViewAccessWsClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ViewAccessBllClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ViewAccessWsClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ViewAccessBllClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ViewAccessWsClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
