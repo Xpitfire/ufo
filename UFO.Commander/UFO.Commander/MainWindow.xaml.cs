@@ -44,7 +44,7 @@ namespace UFO.Commander
         {
             var viewModel = (AuthAccessViewModel) this.DataContext;
 
-            if (viewModel.IsCredentialsValid(_loginDialog.TextBoxUserName.Text, _loginDialog.PasswordBox.Password))
+            if (viewModel.RequestSessionToken(_loginDialog.TextBoxUserName.Text, _loginDialog.PasswordBox.Password))
             {
                 viewModel.Login();
                 this.HideMetroDialogAsync(_customDialog);

@@ -54,6 +54,9 @@ namespace UFO.Commander.Proxy
     {
         public static TTarget ToObjectOf<TSource, TTarget>(TSource source)
         {
+            if (source == null)
+                return default(TTarget);
+
             var targetType = typeof(TTarget);
             var targetProps = targetType.GetProperties();
             var obj = Activator.CreateInstance(targetType);
@@ -100,6 +103,8 @@ namespace UFO.Commander.Proxy
 
         public static List<TTarget> ToListOf<TSource, TTarget>(List<TSource> sourceList)
         {
+            if (sourceList == null)
+                return null;
             var targetList = new List<TTarget>();
             sourceList.ForEach(elem => targetList.Add(ToObjectOf<TSource, TTarget>(elem)));
             return targetList;
@@ -107,13 +112,12 @@ namespace UFO.Commander.Proxy
 
         public static TTarget[] ToArrayOf<TSource, TTarget>(List<TSource> sourceList)
         {
-            return ToArrayOf<TSource, TTarget>(sourceList.ToArray());
+            return sourceList == null ? null : ToArrayOf<TSource, TTarget>(sourceList.ToArray());
         }
 
         public static List<TTarget> ToListOf<TSource, TTarget>(TSource[] sourceList)
         {
-            return ToListOf<TSource, TTarget>(sourceList.ToList());
+            return sourceList == null ? null : ToListOf<TSource, TTarget>(sourceList.ToList());
         }
-        
     }
 }

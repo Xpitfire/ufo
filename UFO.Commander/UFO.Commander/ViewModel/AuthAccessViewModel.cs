@@ -34,6 +34,7 @@ namespace UFO.Commander.ViewModel
     {
         private readonly IAdminAccessBll _authAccessBll = BllFactory.CreateAdminAccessBll();
         private static SessionToken _sessionToken;
+        public SessionToken CurrentSessionToken => _sessionToken;
 
         public event EventHandler LogoutEvent;
 
@@ -50,8 +51,8 @@ namespace UFO.Commander.ViewModel
                 }
             }
         }
-
-        public bool IsCredentialsValid(string textBoxUserName, string password)
+        
+        public bool RequestSessionToken(string textBoxUserName, string password)
         {
             var user = new User
             {

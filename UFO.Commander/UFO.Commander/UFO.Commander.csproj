@@ -109,6 +109,7 @@
     <Compile Include="ViewModel\Entities\CountryViewModel.cs" />
     <Compile Include="ViewModel\Entities\LocationViewModel.cs" />
     <Compile Include="ViewModel\Entities\PerformanceViewModel.cs" />
+    <Compile Include="ViewModel\Entities\UserCollectionViewModel.cs" />
     <Compile Include="ViewModel\Entities\UserViewModel.cs" />
     <Compile Include="ViewModel\Entities\VenueViewModel.cs" />
     <Compile Include="Helper\ViewModelExtensions.cs" />
