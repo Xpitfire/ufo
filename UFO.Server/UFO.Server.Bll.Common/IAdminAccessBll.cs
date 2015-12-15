@@ -28,14 +28,14 @@ namespace UFO.Server.Bll.Common
         List<User> GetAllUser(SessionToken token);
 
         // Artist
-        void ModifyArtist(SessionToken token, Artist artist);
-        void RemoveArtist(SessionToken token, Artist artist);
+        bool ModifyArtist(SessionToken token, Artist artist);
+        bool RemoveArtist(SessionToken token, Artist artist);
 
         // Venue
-        void ModifyVenue(SessionToken token, Venue venue);
-        void RemoveVenue(SessionToken token, Venue venue);
+        bool ModifyVenue(SessionToken token, Venue venue);
+        bool RemoveVenue(SessionToken token, Venue venue);
 
         // Performance
-        void ModifyPerformance(SessionToken token, Performance performance);        
+        bool ModifyPerformance(SessionToken token, Performance performance);        
     }
 }

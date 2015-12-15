@@ -57,5 +57,10 @@ namespace UFO.Commander.Proxy
         {
             return ProxyHelper.ToListOf<WS.Performance, BLL.Performance>(_viewAccessWs.GetAllPerformances());
         }
+
+        public List<BLL.Performance> GetPerformancesPerDate(DateTime date)
+        {
+            return ProxyHelper.ToListOf<WS.Performance, BLL.Performance>(_viewAccessWs.GetPerformancesPerDate(date));
+        }
     }
 }

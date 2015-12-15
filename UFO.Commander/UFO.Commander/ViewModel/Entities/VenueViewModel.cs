@@ -7,7 +7,6 @@ namespace UFO.Commander.ViewModel.Entities
     public class VenueViewModel : Venue
     {
         public override string VenueId { get; set; }
-        public new LocationViewModel Location { get; set; }
         public override string Name { get; set; }
     }
 }

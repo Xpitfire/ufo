@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using UFO.Server.Bll.Common;
+using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
 namespace UFO.Server.Bll.Impl
@@ -45,29 +46,67 @@ namespace UFO.Server.Bll.Impl
             return SessionHandler.Instance;
         }
         
-        public override void ModifyArtist(SessionToken token, Artist artist)
+        public override bool ModifyArtist(SessionToken token, Artist artist)
         {
-            throw new NotImplementedException();
+            if (!IsUserAuthenticated(token) || artist == null)
+                return false;
+
+            var result = ArtistDao.SelectById(artist.ArtistId);
+            result = result.ResponseStatus == DaoStatus.Successful 
+                ? ArtistDao.Update(artist) 
+                : ArtistDao.Insert(artist);
+
+            return result.ResponseStatus == DaoStatus.Successful;
         }
 
-        public override void RemoveArtist(SessionToken token, Artist artist)
+        public override bool RemoveArtist(SessionToken token, Artist artist)
         {
-            throw new NotImplementedException();
+            if (!IsUserAuthenticated(token) || artist == null)
+                return false;
+
+            var result = ArtistDao.SelectById(artist.ArtistId);
+            if (result.ResponseStatus == DaoStatus.Successful)
+                result = ArtistDao.Delete(artist);
+
+            return result.ResponseStatus == DaoStatus.Successful;
         }
 
-        public override void ModifyVenue(SessionToken token, Venue venue)
+        public override bool ModifyVenue(SessionToken token, Venue venue)
         {
-            throw new NotImplementedException();
+            if (!IsUserAuthenticated(token) || venue == null)
+                return false;
+
+            var result = VenueDao.SelectById(venue.VenueId);
+            result = result.ResponseStatus == DaoStatus.Successful
+                ? VenueDao.Update(venue)
+                : VenueDao.Insert(venue);
+
+            return result.ResponseStatus == DaoStatus.Successful;
         }
 
-        public override void RemoveVenue(SessionToken token, Venue venue)
+        public override bool RemoveVenue(SessionToken token, Venue venue)
         {
-            throw new NotImplementedException();
+            if (!IsUserAuthenticated(token) || venue == null)
+                return false;
+
+            var result = VenueDao.SelectById(venue.VenueId);
+            if (result.ResponseStatus == DaoStatus.Successful)
+                result = VenueDao.Delete(venue);
+
+            return result.ResponseStatus == DaoStatus.Successful;
         }
 
-        public override void ModifyPerformance(SessionToken token, Performance performance)
+        public override bool ModifyPerformance(SessionToken token, Performance performance)
         {
-            throw new NotImplementedException();
+            if (!IsUserAuthenticated(token) || performance?.Artist == null)
+                return false;
+
+            var result = PerformanceDao.SelectById(performance.DateTime, performance.Artist.ArtistId);
+            result = result.ResponseStatus == DaoStatus.Successful
+                ? PerformanceDao.Update(performance)
+                : PerformanceDao.Insert(performance);
+
+            return result.ResponseStatus == DaoStatus.Successful;
         }
 
     }

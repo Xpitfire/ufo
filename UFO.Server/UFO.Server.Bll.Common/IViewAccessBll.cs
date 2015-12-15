@@ -16,6 +16,8 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
+
+using System;
 using System.Collections.Generic;
 using UFO.Server.Domain;
 
@@ -40,5 +42,6 @@ namespace UFO.Server.Bll.Common
 
         // Performance
         List<Performance> GetAllPerformances();
+        List<Performance> GetPerformancesPerDate(DateTime date);
     }
 }

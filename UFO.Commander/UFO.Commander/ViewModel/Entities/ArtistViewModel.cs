@@ -9,9 +9,6 @@ namespace UFO.Commander.ViewModel.Entities
         public override int ArtistId { get; set; }
         public override string Name { get; set; }
         public override string EMail { get; set; }
-        public new CategoryViewModel Category { get; set; }
-        public new CountryViewModel Country { get; set; }
-        public new BlobDataViewModel Picture { get; set; }
         public override string PromoVideo { get; set; }
     }
 }

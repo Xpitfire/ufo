@@ -63,33 +63,33 @@ namespace UFO.Server.Services
         }
 
         [OperationContract]
-        public override void ModifyArtist(SessionToken token, Artist artist)
+        public override bool ModifyArtist(SessionToken token, Artist artist)
         {
-            base.ModifyArtist(token, artist);
+            return base.ModifyArtist(token, artist);
         }
 
         [OperationContract]
-        public override void RemoveArtist(SessionToken token, Artist artist)
+        public override bool RemoveArtist(SessionToken token, Artist artist)
         {
-            base.RemoveArtist(token, artist);
+            return base.RemoveArtist(token, artist);
         }
 
         [OperationContract]
-        public override void ModifyVenue(SessionToken token, Venue venue)
+        public override bool ModifyVenue(SessionToken token, Venue venue)
         {
-            base.ModifyVenue(token, venue);
+            return base.ModifyVenue(token, venue);
         }
 
         [OperationContract]
-        public override void RemoveVenue(SessionToken token, Venue venue)
+        public override bool RemoveVenue(SessionToken token, Venue venue)
         {
-            base.RemoveVenue(token, venue);
+            return base.RemoveVenue(token, venue);
         }
 
         [OperationContract]
-        public override void ModifyPerformance(SessionToken token, Performance performance)
+        public override bool ModifyPerformance(SessionToken token, Performance performance)
         {
-            base.ModifyPerformance(token, performance);
+            return base.ModifyPerformance(token, performance);
         }
     }
 }

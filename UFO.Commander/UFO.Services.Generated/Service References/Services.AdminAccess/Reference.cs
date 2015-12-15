@@ -699,34 +699,34 @@ namespace UFO.Services.AdminAccess {
         System.Threading.Tasks.Task<UFO.Services.AdminAccess.SessionToken> RequestSessionTokenAsync(UFO.Services.AdminAccess.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyArtist", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyArtistResponse")]
-        void ModifyArtist(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist);
+        bool ModifyArtist(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyArtist", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyArtistResponse")]
-        System.Threading.Tasks.Task ModifyArtistAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist);
+        System.Threading.Tasks.Task<bool> ModifyArtistAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemoveArtist", ReplyAction="http://tempuri.org/AdminAccessWs/RemoveArtistResponse")]
-        void RemoveArtist(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist);
+        bool RemoveArtist(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemoveArtist", ReplyAction="http://tempuri.org/AdminAccessWs/RemoveArtistResponse")]
-        System.Threading.Tasks.Task RemoveArtistAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist);
+        System.Threading.Tasks.Task<bool> RemoveArtistAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyVenue", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyVenueResponse")]
-        void ModifyVenue(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue);
+        bool ModifyVenue(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyVenue", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyVenueResponse")]
-        System.Threading.Tasks.Task ModifyVenueAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue);
+        System.Threading.Tasks.Task<bool> ModifyVenueAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemoveVenue", ReplyAction="http://tempuri.org/AdminAccessWs/RemoveVenueResponse")]
-        void RemoveVenue(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue);
+        bool RemoveVenue(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemoveVenue", ReplyAction="http://tempuri.org/AdminAccessWs/RemoveVenueResponse")]
-        System.Threading.Tasks.Task RemoveVenueAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue);
+        System.Threading.Tasks.Task<bool> RemoveVenueAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyPerformance", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyPerformanceResponse")]
-        void ModifyPerformance(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance performance);
+        bool ModifyPerformance(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance performance);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyPerformance", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyPerformanceResponse")]
-        System.Threading.Tasks.Task ModifyPerformanceAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance performance);
+        System.Threading.Tasks.Task<bool> ModifyPerformanceAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance performance);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -804,43 +804,43 @@ namespace UFO.Services.AdminAccess {
             return base.Channel.RequestSessionTokenAsync(user);
         }
         
-        public void ModifyArtist(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist) {
-            base.Channel.ModifyArtist(token, artist);
+        public bool ModifyArtist(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist) {
+            return base.Channel.ModifyArtist(token, artist);
         }
         
-        public System.Threading.Tasks.Task ModifyArtistAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist) {
+        public System.Threading.Tasks.Task<bool> ModifyArtistAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist) {
             return base.Channel.ModifyArtistAsync(token, artist);
         }
         
-        public void RemoveArtist(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist) {
-            base.Channel.RemoveArtist(token, artist);
+        public bool RemoveArtist(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist) {
+            return base.Channel.RemoveArtist(token, artist);
         }
         
-        public System.Threading.Tasks.Task RemoveArtistAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist) {
+        public System.Threading.Tasks.Task<bool> RemoveArtistAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist artist) {
             return base.Channel.RemoveArtistAsync(token, artist);
         }
         
-        public void ModifyVenue(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue) {
-            base.Channel.ModifyVenue(token, venue);
+        public bool ModifyVenue(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue) {
+            return base.Channel.ModifyVenue(token, venue);
         }
         
-        public System.Threading.Tasks.Task ModifyVenueAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue) {
+        public System.Threading.Tasks.Task<bool> ModifyVenueAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue) {
             return base.Channel.ModifyVenueAsync(token, venue);
         }
         
-        public void RemoveVenue(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue) {
-            base.Channel.RemoveVenue(token, venue);
+        public bool RemoveVenue(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue) {
+            return base.Channel.RemoveVenue(token, venue);
         }
         
-        public System.Threading.Tasks.Task RemoveVenueAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue) {
+        public System.Threading.Tasks.Task<bool> RemoveVenueAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue venue) {
             return base.Channel.RemoveVenueAsync(token, venue);
         }
         
-        public void ModifyPerformance(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance performance) {
-            base.Channel.ModifyPerformance(token, performance);
+        public bool ModifyPerformance(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance performance) {
+            return base.Channel.ModifyPerformance(token, performance);
         }
         
-        public System.Threading.Tasks.Task ModifyPerformanceAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance performance) {
+        public System.Threading.Tasks.Task<bool> ModifyPerformanceAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance performance) {
             return base.Channel.ModifyPerformanceAsync(token, performance);
         }
     }

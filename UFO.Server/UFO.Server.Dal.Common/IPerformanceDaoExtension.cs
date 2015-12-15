@@ -21,19 +21,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.Common
 {
     public static class IPerformanceDaoExtension
     {
-        public static DaoResponse<Performance> SelectByDateTime(this IPerformanceDao dao, DateTime datetime)
+        public static DaoResponse<List<Performance>> SelectByDateTime(this IPerformanceDao dao, DateTime datetime)
         {
             Expression<Filter<Performance, DateTime>> filterExpression = (performances, value) => performances.Where(x => x.DateTime == value);
             var values = dao.SelectWhere(filterExpression, datetime).ResultObject;
-            return values.Any() ? DaoResponse.QuerySuccessful(values.First()) : DaoResponse.QueryEmptyResult<Performance>();
+            return values.Any() ? DaoResponse.QuerySuccessful(values) : DaoResponse.QueryEmptyResult<List<Performance>>();
         }
     }
 }

@@ -16,6 +16,7 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
+using System;
 using System.Collections.Generic;
 using UFO.Server.Bll.Common;
 using BLL = UFO.Server.Domain;
@@ -59,39 +60,40 @@ namespace UFO.Commander.Proxy
             return result.ToDomainObject<BLL.SessionToken>();
         }
 
-        public void ModifyArtist(BLL.SessionToken token, BLL.Artist artist)
+        public bool ModifyArtist(BLL.SessionToken token, BLL.Artist artist)
         {
             var artistWs = artist.ToWebSeriveObject<WS.Artist>();
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
-            _adminAccessWs.ModifyArtist(tokenWs, artistWs);
+            return _adminAccessWs.ModifyArtist(tokenWs, artistWs);
         }
 
-        public void RemoveArtist(BLL.SessionToken token, BLL.Artist artist)
+        public bool RemoveArtist(BLL.SessionToken token, BLL.Artist artist)
         {
             var artistWs = artist.ToWebSeriveObject<WS.Artist>();
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
-            _adminAccessWs.RemoveArtist(tokenWs, artistWs);
+            return _adminAccessWs.RemoveArtist(tokenWs, artistWs);
         }
 
-        public void ModifyVenue(BLL.SessionToken token, BLL.Venue venue)
+        public bool ModifyVenue(BLL.SessionToken token, BLL.Venue venue)
         {
             var venueWs = venue.ToWebSeriveObject<WS.Venue>();
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
-            _adminAccessWs.ModifyVenue(tokenWs, venueWs);
+            return _adminAccessWs.ModifyVenue(tokenWs, venueWs);
         }
 
-        public void RemoveVenue(BLL.SessionToken token, BLL.Venue venue)
+        public bool RemoveVenue(BLL.SessionToken token, BLL.Venue venue)
         {
             var venueWs = venue.ToWebSeriveObject<WS.Venue>();
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
-            _adminAccessWs.RemoveVenue(tokenWs, venueWs);
+            return _adminAccessWs.RemoveVenue(tokenWs, venueWs);
         }
 
-        public void ModifyPerformance(BLL.SessionToken token, BLL.Performance performance)
+        public bool ModifyPerformance(BLL.SessionToken token, BLL.Performance performance)
         {
             var performanceWs = performance.ToWebSeriveObject<WS.Performance>();
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
-            _adminAccessWs.ModifyPerformance(tokenWs, performanceWs);
+            return _adminAccessWs.ModifyPerformance(tokenWs, performanceWs);
         }
+        
     }
 }

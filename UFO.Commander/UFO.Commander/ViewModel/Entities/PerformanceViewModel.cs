@@ -8,7 +8,5 @@ namespace UFO.Commander.ViewModel.Entities
     public class PerformanceViewModel : Performance
     {
         public override DateTime DateTime { get; set; }
-        public new ArtistViewModel Artist { get; set; }
-        public new VenueViewModel Venue { get; set; }
     }
 }

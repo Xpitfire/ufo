@@ -16,10 +16,12 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
+
+using System;
 using System.Collections.Generic;
 using UFO.Server.Bll.Common;
 using UFO.Server.Domain;
-using UFO.Server.Common;
+using UFO.Server.Dal.Common;
 
 namespace UFO.Server.Bll.Impl
 {
@@ -27,47 +29,37 @@ namespace UFO.Server.Bll.Impl
     {
         public override List<Artist> GetAllArtist()
         {
-            return DalProviderFactories.GetDaoFactory().CreateArtistDao().SelectAll().ResultObject;
+            return ArtistDao.SelectAll().ResultObject;
         }
         
         public override List<Category> GetAllCategories()
         {
-            return DalProviderFactories
-                .GetDaoFactory()
-                .CreateCategoryDao()
-                .SelectAll().ResultObject;
+            return CategoryDao.SelectAll().ResultObject;
         }
 
         public override List<Country> GetAllCountries()
         {
-            return DalProviderFactories
-                .GetDaoFactory()
-                .CreateCountryDao()
-                .SelectAll().ResultObject;
+            return CountryDao.SelectAll().ResultObject;
         }
 
         public override List<Location> GetAllLocations()
         {
-            return DalProviderFactories
-                .GetDaoFactory()
-                .CreateLocationDao()
-                .SelectAll().ResultObject;
+            return LocationDao.SelectAll().ResultObject;
         }
 
         public override List<Venue> GetAllVenues()
         {
-            return DalProviderFactories
-                .GetDaoFactory()
-                .CreateVenueDao()
-                .SelectAll().ResultObject;
+            return VenueDao.SelectAll().ResultObject;
         }
 
         public override List<Performance> GetAllPerformances()
         {
-            return DalProviderFactories
-                .GetDaoFactory()
-                .CreatePerformanceDao()
-                .SelectAll().ResultObject;
+            return PerformanceDao.SelectAll().ResultObject;
+        }
+
+        public override List<Performance> GetPerformancesPerDate(DateTime date)
+        {
+            return PerformanceDao.SelectByDateTime(date).ResultObject;
         }
     }
 }

@@ -13,6 +13,5 @@ namespace UFO.Commander.ViewModel.Entities
         public override string Password { get; set; }
         public override bool IsAdmin { get; set; }
         public override bool IsArtist { get; set; }
-        public new ArtistViewModel Artist { get; set; }
     }
 }

@@ -648,6 +648,44 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetPerformancesPerDate_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetPerformancesPerDate_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAllCategories_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -918,6 +956,12 @@
   <wsdl:message name="ViewAccessWs_GetAllArtist_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllArtistResponse" />
   </wsdl:message>
+  <wsdl:message name="ViewAccessWs_GetPerformancesPerDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPerformancesPerDate" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_GetPerformancesPerDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPerformancesPerDateResponse" />
+  </wsdl:message>
   <wsdl:message name="ViewAccessWs_GetAllCategories_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCategories" />
   </wsdl:message>
@@ -998,6 +1042,10 @@
     <wsdl:operation name="GetAllArtist">
       <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllArtist" message="tns:ViewAccessWs_GetAllArtist_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllArtistResponse" message="tns:ViewAccessWs_GetAllArtist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPerformancesPerDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetPerformancesPerDate" message="tns:ViewAccessWs_GetPerformancesPerDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetPerformancesPerDateResponse" message="tns:ViewAccessWs_GetPerformancesPerDate_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllCategories">
       <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllCategories" message="tns:ViewAccessWs_GetAllCategories_InputMessage" />
@@ -1156,6 +1204,17 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAllArtist_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPerformancesPerDate">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetPerformancesPerDate" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetPerformancesPerDate_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetPerformancesPerDate_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

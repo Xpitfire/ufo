@@ -132,6 +132,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfArtist" nillable="true" type="tns:ArrayOfArtist" />
+  <xs:complexType name="ArrayOfPerformance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Performance" nillable="true" type="tns:Performance" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPerformance" nillable="true" type="tns:ArrayOfPerformance" />
   <xs:complexType name="ArrayOfCategory">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
@@ -156,10 +162,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfVenue" nillable="true" type="tns:ArrayOfVenue" />
-  <xs:complexType name="ArrayOfPerformance">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Performance" nillable="true" type="tns:Performance" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPerformance" nillable="true" type="tns:ArrayOfPerformance" />
 </xs:schema>

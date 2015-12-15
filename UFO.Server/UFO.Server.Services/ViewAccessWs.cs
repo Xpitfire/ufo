@@ -16,6 +16,8 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
+
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 using UFO.Server.Bll.Impl;
@@ -30,6 +32,12 @@ namespace UFO.Server.Services
         public override List<Artist> GetAllArtist()
         {
             return base.GetAllArtist();
+        }
+
+        [OperationContract]
+        public override List<Performance> GetPerformancesPerDate(DateTime date)
+        {
+            return base.GetPerformancesPerDate(date);
         }
 
         [OperationContract]

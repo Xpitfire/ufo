@@ -25,14 +25,20 @@ namespace UFO.Server.Bll.Common
 {
     public abstract class AAdminAccessBll : IAdminAccessBll
     {
-        protected readonly IUserDao UserDao = DalProviderFactories.GetDaoFactory().CreateUserDao();
+        protected IUserDao UserDao = DalProviderFactories.GetDaoFactory().CreateUserDao();
+        protected IPerformanceDao PerformanceDao = DalProviderFactories.GetDaoFactory().CreatePerformanceDao();
+        protected IArtistDao ArtistDao = DalProviderFactories.GetDaoFactory().CreateArtistDao();
+        protected ICategoryDao CategoryDao = DalProviderFactories.GetDaoFactory().CreateCategoryDao();
+        protected ICountryDao CountryDao = DalProviderFactories.GetDaoFactory().CreateCountryDao();
+        protected ILocationDao LocationDao = DalProviderFactories.GetDaoFactory().CreateLocationDao();
+        protected IVenueDao VenueDao = DalProviderFactories.GetDaoFactory().CreateVenueDao();
 
         public abstract List<User> GetAllUser(SessionToken token);
-        public abstract void ModifyArtist(SessionToken token, Artist artist);
-        public abstract void RemoveArtist(SessionToken token, Artist artist);
-        public abstract void ModifyVenue(SessionToken token, Venue venue);
-        public abstract void RemoveVenue(SessionToken token, Venue venue);
-        public abstract void ModifyPerformance(SessionToken token, Performance performance);
+        public abstract bool ModifyArtist(SessionToken token, Artist artist);
+        public abstract bool RemoveArtist(SessionToken token, Artist artist);
+        public abstract bool ModifyVenue(SessionToken token, Venue venue);
+        public abstract bool RemoveVenue(SessionToken token, Venue venue);
+        public abstract bool ModifyPerformance(SessionToken token, Performance performance);
         public abstract bool IsUserAuthenticated(SessionToken token);
         public abstract bool IsValidAdmin(SessionToken token);
         public abstract ISessionBll GetSession();
