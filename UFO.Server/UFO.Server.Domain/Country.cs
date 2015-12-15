@@ -27,10 +27,10 @@ namespace UFO.Server.Domain
     public class Country : DomainObject
     {
         [DataMember(Name = nameof(Code))]
-        public string Code { get; set; }
+        public virtual string Code { get; set; }
 
         [DataMember(Name = nameof(Name))]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         public override string ToString()
         {

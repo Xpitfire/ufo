@@ -27,13 +27,13 @@ namespace UFO.Server.Domain
     public class Venue : DomainObject
     {
         [DataMember(Name = nameof(VenueId))]
-        public string VenueId { get; set; }
+        public virtual string VenueId { get; set; }
 
         [DataMember(Name = nameof(Name))]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [DataMember(Name = nameof(Location))]
-        public Location Location { get; set; }
+        public virtual Location Location { get; set; }
 
         public override string ToString()
         {

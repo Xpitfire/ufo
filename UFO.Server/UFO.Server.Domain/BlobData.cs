@@ -24,16 +24,16 @@ namespace UFO.Server.Domain
 {
     [Serializable]
     [DataContract(Name = nameof(BlobData))]
-    public sealed class BlobData : DomainObject
+    public class BlobData : DomainObject
     {
         [DataMember(Name = nameof(Name))]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [DataMember(Name = nameof(Path))]
-        public string Path { get; set; }
+        public virtual string Path { get; set; }
 
         [DataMember(Name = nameof(DataStream))]
-        public byte[] DataStream { get; set; }
+        public virtual byte[] DataStream { get; set; }
        
         public override string ToString()
         {

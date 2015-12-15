@@ -27,10 +27,10 @@ namespace UFO.Server.Domain
     public class Category : DomainObject
     {
         [DataMember(Name = nameof(CategoryId))]
-        public string CategoryId { get; set; }
+        public virtual string CategoryId { get; set; }
 
         [DataMember(Name = nameof(Name))]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         public override string ToString()
         {

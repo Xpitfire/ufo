@@ -27,16 +27,16 @@ namespace UFO.Server.Domain
     public class Location : DomainObject
     {
         [DataMember(Name = nameof(LocationId))]
-        public int LocationId { get; set; } = Constants.InvalidIdValue;
+        public virtual int LocationId { get; set; } = Constants.InvalidIdValue;
 
         [DataMember(Name = nameof(Longitude))]
-        public decimal Longitude { get; set; } = Constants.InvalidGeoLocation;
+        public virtual decimal Longitude { get; set; } = Constants.InvalidGeoLocation;
 
         [DataMember(Name = nameof(Latitude))]
-        public decimal Latitude { get; set; } = Constants.InvalidGeoLocation;
+        public virtual decimal Latitude { get; set; } = Constants.InvalidGeoLocation;
 
         [DataMember(Name = nameof(Name))]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         public override string ToString()
         {

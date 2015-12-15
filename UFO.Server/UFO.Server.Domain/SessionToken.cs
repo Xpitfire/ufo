@@ -27,10 +27,10 @@ namespace UFO.Server.Domain
     public class SessionToken : DomainObject
     {
         [DataMember(Name = nameof(SessionId))]
-        public char[] SessionId { get; set; }
+        public virtual char[] SessionId { get; set; }
 
         [DataMember(Name = nameof(User))]
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
         public override string ToString()
         {

@@ -100,8 +100,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\AuthAccessViewModel.cs" />
     <Compile Include="Helper\Crypto.cs" />
+    <Compile Include="ViewModel\Entities\ArtistViewModel.cs" />
+    <Compile Include="ViewModel\Entities\BlobDataViewModel.cs" />
+    <Compile Include="ViewModel\Entities\CategoryViewModel.cs" />
+    <Compile Include="ViewModel\Entities\CountryViewModel.cs" />
+    <Compile Include="ViewModel\Entities\LocationViewModel.cs" />
+    <Compile Include="ViewModel\Entities\PerformanceViewModel.cs" />
+    <Compile Include="ViewModel\Entities\UserViewModel.cs" />
+    <Compile Include="ViewModel\Entities\VenueViewModel.cs" />
+    <Compile Include="ViewModel\Entities\ViewModelExtensions.cs" />
     <Compile Include="ViewModel\ViewAccessViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />

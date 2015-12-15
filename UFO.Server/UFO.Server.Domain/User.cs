@@ -28,29 +28,29 @@ namespace UFO.Server.Domain
     public class User : DomainObject
     {
         [DataMember(Name = nameof(UserId))]
-        public int UserId { get; set; } = Constants.InvalidIdValue;
+        public virtual int UserId { get; set; } = Constants.InvalidIdValue;
 
         [DataMember(Name = nameof(FirstName))]
-        public string FirstName { get; set; }
+        public virtual string FirstName { get; set; }
 
         [DataMember(Name = nameof(LastName))]
-        public string LastName { get; set; }
+        public virtual string LastName { get; set; }
 
         [RegularExpression(Constants.EMailRegex)]
         [DataMember(Name = nameof(EMail))]
-        public string EMail { get; set; }
+        public virtual string EMail { get; set; }
 
         [DataMember(Name = nameof(Password))]
-        public string Password { get; set; }
+        public virtual string Password { get; set; }
 
         [DataMember(Name = nameof(IsAdmin))]
-        public bool IsAdmin { get; set; }
+        public virtual bool IsAdmin { get; set; }
 
         [DataMember(Name = nameof(IsArtist))]
-        public bool IsArtist { get; set; }
+        public virtual bool IsArtist { get; set; }
 
         [DataMember(Name = nameof(Artist))]
-        public Artist Artist { get; set; }
+        public virtual Artist Artist { get; set; }
 
         public override string ToString()
         {

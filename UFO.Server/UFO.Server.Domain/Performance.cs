@@ -28,13 +28,13 @@ namespace UFO.Server.Domain
     public class Performance : DomainObject
     {
         [DataMember(Name = nameof(DateTime))]
-        public DateTime DateTime { get; set; }
+        public virtual DateTime DateTime { get; set; }
 
         [DataMember(Name = nameof(Artist))]
-        public Artist Artist { get; set; }
+        public virtual Artist Artist { get; set; }
 
         [DataMember(Name = nameof(Venue))]
-        public Venue Venue { get; set; }
+        public virtual Venue Venue { get; set; }
 
         public override string ToString()
         {

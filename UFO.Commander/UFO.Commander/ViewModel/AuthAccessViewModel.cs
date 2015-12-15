@@ -21,8 +21,10 @@ using System;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using PostSharp.Patterns.Model;
 using UFO.Commander.Helper;
 using UFO.Commander.Proxy;
+using UFO.Commander.ViewModel.Entities;
 using UFO.Server.Bll.Common;
 using UFO.Server.Domain;
 
@@ -55,8 +57,8 @@ namespace UFO.Commander.ViewModel
             {
                 EMail = textBoxUserName,
                 Password = Crypto.EncryptPassword(password)
-            };
-            
+            }.ToViewModelObject();
+
             _sessionToken = _authAccessBll.RequestSessionToken(user);
             return _authAccessBll.IsValidAdmin(_sessionToken);
         }

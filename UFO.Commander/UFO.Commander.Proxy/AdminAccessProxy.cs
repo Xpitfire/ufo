@@ -18,7 +18,8 @@
 #endregion
 using System.Collections.Generic;
 using UFO.Server.Bll.Common;
-using Domain = UFO.Server.Domain;
+using VM = UFO.Commander.Domain;
+using BLL = UFO.Server.Domain;
 using WS = UFO.Services.AdminAccess;
 
 namespace UFO.Commander.Proxy
@@ -27,67 +28,67 @@ namespace UFO.Commander.Proxy
     {
         private readonly WS.AdminAccessWs _adminAccessWs = new WS.AdminAccessWsClient();
 
-        public List<Domain.User> GetAllUser(Domain.SessionToken token)
+        public List<BLL.User> GetAllUser(BLL.SessionToken token)
         {
             var result = _adminAccessWs.GetAllUser(token.ToWebSeriveObject<WS.SessionToken>());
-            return ProxyHelper.ToListOf<WS.User, Domain.User>(result);
+            return ProxyHelper.ToListOf<WS.User, BLL.User>(result);
         }
 
-        public bool IsUserAuthenticated(Domain.SessionToken token)
+        public bool IsUserAuthenticated(BLL.SessionToken token)
         {
             return _adminAccessWs.IsUserAuthenticated(token.ToWebSeriveObject<WS.SessionToken>());
         }
 
-        public bool IsValidAdmin(Domain.SessionToken token)
+        public bool IsValidAdmin(BLL.SessionToken token)
         {
             return _adminAccessWs.IsValidAdmin(token.ToWebSeriveObject<WS.SessionToken>());
         }
 
-        public bool LoginAdmin(Domain.SessionToken token)
+        public bool LoginAdmin(BLL.SessionToken token)
         {
             return _adminAccessWs.LoginAdmin(token.ToWebSeriveObject<WS.SessionToken>());
         }
 
-        public void LogoutAdmin(Domain.SessionToken token)
+        public void LogoutAdmin(BLL.SessionToken token)
         {
             _adminAccessWs.LogoutAdmin(token.ToWebSeriveObject<WS.SessionToken>());
         }
 
-        public Domain.SessionToken RequestSessionToken(Domain.User user)
+        public BLL.SessionToken RequestSessionToken(BLL.User user)
         {
             var result = _adminAccessWs.RequestSessionToken(user.ToWebSeriveObject<WS.User>());
-            return result.ToDomainObject<Domain.SessionToken>();
+            return result.ToDomainObject<BLL.SessionToken>();
         }
-        
-        public void ModifyArtist(Domain.SessionToken token, Domain.Artist artist)
+
+        public void ModifyArtist(BLL.SessionToken token, BLL.Artist artist)
         {
             var artistWs = artist.ToWebSeriveObject<WS.Artist>();
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
             _adminAccessWs.ModifyArtist(tokenWs, artistWs);
         }
 
-        public void RemoveArtist(Domain.SessionToken token, Domain.Artist artist)
+        public void RemoveArtist(BLL.SessionToken token, BLL.Artist artist)
         {
             var artistWs = artist.ToWebSeriveObject<WS.Artist>();
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
             _adminAccessWs.RemoveArtist(tokenWs, artistWs);
         }
 
-        public void ModifyVenue(Domain.SessionToken token, Domain.Venue venue)
+        public void ModifyVenue(BLL.SessionToken token, BLL.Venue venue)
         {
             var venueWs = venue.ToWebSeriveObject<WS.Venue>();
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
             _adminAccessWs.ModifyVenue(tokenWs, venueWs);
         }
 
-        public void RemoveVenue(Domain.SessionToken token, Domain.Venue venue)
+        public void RemoveVenue(BLL.SessionToken token, BLL.Venue venue)
         {
             var venueWs = venue.ToWebSeriveObject<WS.Venue>();
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
             _adminAccessWs.RemoveVenue(tokenWs, venueWs);
         }
 
-        public void ModifyPerformance(Domain.SessionToken token, Domain.Performance performance)
+        public void ModifyPerformance(BLL.SessionToken token, BLL.Performance performance)
         {
             var performanceWs = performance.ToWebSeriveObject<WS.Performance>();
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();

@@ -28,26 +28,26 @@ namespace UFO.Server.Domain
     public class Artist : DomainObject
     {
         [DataMember(Name = nameof(ArtistId))]
-        public int ArtistId { get; set; } = Constants.InvalidIdValue;
+        public virtual int ArtistId { get; set; } = Constants.InvalidIdValue;
 
         [DataMember(Name = nameof(Name))]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [RegularExpression(Constants.EMailRegex)]
         [DataMember(Name = nameof(EMail))]
-        public string EMail { get; set; }
+        public virtual string EMail { get; set; }
 
         [DataMember(Name = nameof(Category))]
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
         [DataMember(Name = nameof(Country))]
-        public Country Country { get; set; }
+        public virtual Country Country { get; set; }
 
         [DataMember(Name = nameof(Picture))]
-        public BlobData Picture { get; set; }
+        public virtual BlobData Picture { get; set; }
 
         [DataMember(Name = nameof(PromoVideo))]
-        public string PromoVideo { get; set; }
+        public virtual string PromoVideo { get; set; }
 
         public override string ToString()
         {

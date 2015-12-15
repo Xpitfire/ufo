@@ -19,7 +19,7 @@
 using System;
 using System.Collections.Generic;
 using UFO.Server.Bll.Common;
-using Domain = UFO.Server.Domain;
+using BLL = UFO.Server.Domain;
 using WS = UFO.Services.ViewAccess;
 
 namespace UFO.Commander.Proxy
@@ -28,34 +28,34 @@ namespace UFO.Commander.Proxy
     {
         private readonly WS.ViewAccessWsClient _viewAccessWs = new WS.ViewAccessWsClient();
 
-        public List<Domain.Artist> GetAllArtist()
+        public List<BLL.Artist> GetAllArtist()
         {
-            return ProxyHelper.ToListOf<WS.Artist, Domain.Artist>(_viewAccessWs.GetAllArtist());
+            return ProxyHelper.ToListOf<WS.Artist, BLL.Artist>(_viewAccessWs.GetAllArtist());
         }
 
-        public List<Domain.Category> GetAllCategories()
+        public List<BLL.Category> GetAllCategories()
         {
-            return ProxyHelper.ToListOf<WS.Category, Domain.Category>(_viewAccessWs.GetAllCategories());
+            return ProxyHelper.ToListOf<WS.Category, BLL.Category>(_viewAccessWs.GetAllCategories());
         }
 
-        public List<Domain.Country> GetAllCountries()
+        public List<BLL.Country> GetAllCountries()
         {
-            return ProxyHelper.ToListOf<WS.Country, Domain.Country>(_viewAccessWs.GetAllCountries());
+            return ProxyHelper.ToListOf<WS.Country, BLL.Country>(_viewAccessWs.GetAllCountries());
         }
 
-        public List<Domain.Location> GetAllLocations()
+        public List<BLL.Location> GetAllLocations()
         {
-            return ProxyHelper.ToListOf<WS.Location, Domain.Location>(_viewAccessWs.GetAllLocations());
+            return ProxyHelper.ToListOf<WS.Location, BLL.Location>(_viewAccessWs.GetAllLocations());
         }
 
-        public List<Domain.Venue> GetAllVenues()
+        public List<BLL.Venue> GetAllVenues()
         {
-            return ProxyHelper.ToListOf<WS.Venue, Domain.Venue>(_viewAccessWs.GetAllVenues());
+            return ProxyHelper.ToListOf<WS.Venue, BLL.Venue>(_viewAccessWs.GetAllVenues());
         }
 
-        public List<Domain.Performance> GetAllPerformances()
+        public List<BLL.Performance> GetAllPerformances()
         {
-            return ProxyHelper.ToListOf<WS.Performance, Domain.Performance>(_viewAccessWs.GetAllPerformances());
+            return ProxyHelper.ToListOf<WS.Performance, BLL.Performance>(_viewAccessWs.GetAllPerformances());
         }
     }
 }
