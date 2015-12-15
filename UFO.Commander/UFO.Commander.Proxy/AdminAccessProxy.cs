@@ -18,7 +18,6 @@
 #endregion
 using System.Collections.Generic;
 using UFO.Server.Bll.Common;
-using VM = UFO.Commander.Domain;
 using BLL = UFO.Server.Domain;
 using WS = UFO.Services.AdminAccess;
 
