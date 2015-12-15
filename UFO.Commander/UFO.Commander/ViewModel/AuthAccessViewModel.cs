@@ -57,7 +57,7 @@ namespace UFO.Commander.ViewModel
             {
                 EMail = textBoxUserName,
                 Password = Crypto.EncryptPassword(password)
-            }.ToViewModelObject();
+            }.ToViewModelObject<UserViewModel>();
 
             _sessionToken = _authAccessBll.RequestSessionToken(user);
             return _authAccessBll.IsValidAdmin(_sessionToken);

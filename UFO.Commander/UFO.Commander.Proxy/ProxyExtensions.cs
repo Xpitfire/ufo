@@ -34,6 +34,11 @@ namespace UFO.Commander.Proxy
             return ProxyHelper.ToObjectOf<DomainObjectDomain, TTarget>(domainObject);
         }
 
+        public static TTarget ToDomainObject<TTarget>(this DomainObjectDomain domainObject)
+        {
+            return ProxyHelper.ToObjectOf<DomainObjectDomain, TTarget>(domainObject);
+        }
+
         public static TTarget ToDomainObject<TTarget>(this DomainObjectAdminWs domainObject)
         {
             return ProxyHelper.ToObjectOf<DomainObjectAdminWs, TTarget>(domainObject);
