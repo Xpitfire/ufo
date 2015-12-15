@@ -45,6 +45,8 @@ namespace UFO.Server.Domain
 
         public override bool Equals(object obj)
         {
+            if (obj == null) return false;
+
             var location = obj as Location;
             return location != null
                 && LocationId == location.LocationId
@@ -52,15 +54,17 @@ namespace UFO.Server.Domain
                 && Longitude == location.Longitude
                 && Latitude == location.Latitude;
         }
-
+        
         public override int GetHashCode()
         {
-            var hashCode = 33;
-            hashCode += LocationId;
-            hashCode += Longitude.GetHashCode();
-            hashCode += Latitude.GetHashCode();
-            hashCode += Name?.GetHashCode() ?? 0;
-            return hashCode;
+            unchecked
+            {
+                var hashCode = LocationId;
+                hashCode = (hashCode * 397) ^ Longitude.GetHashCode();
+                hashCode = (hashCode * 397) ^ Latitude.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
+                return hashCode;
+            }
         }
     }
 }

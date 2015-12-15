@@ -56,28 +56,32 @@ namespace UFO.Server.Domain
         
         public override bool Equals(object obj)
         {
+            if (obj == null) return false;
+
             var artist = obj as Artist;
             return artist != null 
                 && ArtistId == artist.ArtistId
                 && Name == artist.Name
                 && EMail == artist.EMail
-                && Category == artist.Category
-                && Country == artist.Country
+                && Category.Equals(artist.Category)
+                && Country.Equals(artist.Country)
                 && Picture == artist.Picture
                 && PromoVideo == artist.PromoVideo;
         }
 
         public override int GetHashCode()
         {
-            var hashCode = 33;
-            hashCode += ArtistId;
-            hashCode += Name?.GetHashCode() ?? 0;
-            hashCode += EMail?.GetHashCode() ?? 0;
-            hashCode += Category?.GetHashCode() ?? 0;
-            hashCode += Country?.GetHashCode() ?? 0;
-            hashCode += Picture?.GetHashCode() ?? 0;
-            hashCode += PromoVideo?.GetHashCode() ?? 0;
-            return hashCode;
+            unchecked
+            {
+                var hashCode = ArtistId;
+                hashCode = (hashCode * 397) ^ (Name?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (EMail?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Category?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Country?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Picture?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (PromoVideo?.GetHashCode() ?? 0);
+                return hashCode;
+            }
         }
         
     }

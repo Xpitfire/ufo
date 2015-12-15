@@ -26,6 +26,7 @@ namespace UFO.Server.Domain
     [DataContract(Name = nameof(BlobData))]
     public class BlobData : DomainObject
     {
+        
         [DataMember(Name = nameof(Name))]
         public virtual string Name { get; set; }
 
@@ -42,25 +43,24 @@ namespace UFO.Server.Domain
 
         public override bool Equals(object obj)
         {
-            var blobData = obj as BlobData;
-            return blobData != null
-                && Name == blobData.Name
-                && Path == blobData.Path
-                && DataStream == blobData.DataStream;
-        }
+            if (obj == null) return false;
 
+            var other = obj as BlobData;
+            return other != null 
+                && string.Equals(Name, other.Name) 
+                && string.Equals(Path, other.Path) 
+                && Equals(DataStream, other.DataStream);
+        }
+        
         public override int GetHashCode()
         {
-            var hashCode = 33;
-            hashCode += Name?.GetHashCode() ?? 0;
-            hashCode += Path?.GetHashCode() ?? 0;
-            hashCode += DataStream?.GetHashCode() ?? 0;
-            return hashCode;
-        }
-
-        public static BlobData CreateBlobData(string path)
-        {
-            return new BlobData { Path = path };
+            unchecked
+            {
+                var hashCode = Name?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ (Path?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (DataStream?.GetHashCode() ?? 0);
+                return hashCode;
+            }
         }
     }
 }

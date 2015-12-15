@@ -43,6 +43,8 @@ namespace UFO.Server.Domain
 
         public override bool Equals(object obj)
         {
+            if (obj == null) return false;
+
             var performance = obj as Performance;
             return performance != null
                 && DateTime == performance.DateTime
@@ -52,11 +54,13 @@ namespace UFO.Server.Domain
 
         public override int GetHashCode()
         {
-            var hashCode = 33;
-            hashCode += DateTime.GetHashCode();
-            hashCode += Venue?.GetHashCode() ?? 0;
-            hashCode += Venue?.GetHashCode() ?? 0;
-            return hashCode;
+            unchecked
+            {
+                var hashCode = DateTime.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Artist?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Venue?.GetHashCode() ?? 0);
+                return hashCode;
+            }
         }
     }
 }

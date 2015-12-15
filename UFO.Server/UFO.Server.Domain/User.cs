@@ -59,6 +59,8 @@ namespace UFO.Server.Domain
 
         public override bool Equals(object obj)
         {
+            if (obj == null) return false;
+
             var user = obj as User;
             return user != null
                 && Artist == user.Artist
@@ -73,13 +75,19 @@ namespace UFO.Server.Domain
 
         public override int GetHashCode()
         {
-            var hashCode = 33;
-            hashCode += FirstName?.GetHashCode() ?? 0;
-            hashCode += LastName?.GetHashCode() ?? 0;
-            hashCode += EMail?.GetHashCode() ?? 0;
-            hashCode += Artist?.GetHashCode() ?? 0;
-            return hashCode;
+            unchecked
+            {
+                var hashCode = UserId;
+                hashCode = (hashCode * 397) ^ (FirstName?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (LastName?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (EMail?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Password?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ IsAdmin.GetHashCode();
+                hashCode = (hashCode * 397) ^ IsArtist.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Artist?.GetHashCode() ?? 0);
+                return hashCode;
+            }
         }
-        
+
     }
 }

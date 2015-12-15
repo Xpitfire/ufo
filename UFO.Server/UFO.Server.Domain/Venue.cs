@@ -42,6 +42,8 @@ namespace UFO.Server.Domain
 
         public override bool Equals(object obj)
         {
+            if (obj == null) return false;
+
             var venue = obj as Venue;
             return venue != null
                 && VenueId == venue.VenueId
@@ -51,11 +53,13 @@ namespace UFO.Server.Domain
 
         public override int GetHashCode()
         {
-            var hashCode = 33;
-            hashCode += VenueId?.GetHashCode() ?? 0;
-            hashCode += Name?.GetHashCode() ?? 0;
-            hashCode += Location?.GetHashCode() ?? 0;
-            return hashCode;
+            unchecked
+            {
+                var hashCode = VenueId?.GetHashCode() ?? 0;
+                hashCode = (hashCode * 397) ^ (Name?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (Location?.GetHashCode() ?? 0);
+                return hashCode;
+            }
         }
     }
 }

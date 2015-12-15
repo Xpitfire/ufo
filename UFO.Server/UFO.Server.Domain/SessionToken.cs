@@ -47,10 +47,10 @@ namespace UFO.Server.Domain
 
         public override int GetHashCode()
         {
-            var hashCode = 34;
-            hashCode += ToString().GetHashCode();
-            hashCode += User?.GetHashCode() ?? 0;
-            return hashCode;
+            unchecked
+            {
+                return ((SessionId?.GetHashCode() ?? 0) * 397) ^ (User?.GetHashCode() ?? 0);
+            }
         }
     }
 }
