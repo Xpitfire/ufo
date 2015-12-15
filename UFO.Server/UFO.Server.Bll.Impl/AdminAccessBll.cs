@@ -26,9 +26,9 @@ namespace UFO.Server.Bll.Impl
 {
     public class AdminAccessBll : AAdminAccessBll
     {
-        public override List<User> GetAllUser(SessionToken token)
+        public override List<User> GetUser(SessionToken token, PagingData page)
         {
-            return IsUserAuthenticated(token) ? UserDao.SelectAll().ResultObject : null;
+            return EvaluateSessionPagingResult(token, page, () => UserDao.Select(page).ResultObject);
         }
         
         public override bool IsUserAuthenticated(SessionToken token)

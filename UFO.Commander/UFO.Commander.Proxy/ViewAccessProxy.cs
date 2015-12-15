@@ -28,39 +28,76 @@ namespace UFO.Commander.Proxy
     {
         private readonly WS.ViewAccessWsClient _viewAccessWs = new WS.ViewAccessWsClient();
 
-        public List<BLL.Artist> GetAllArtist()
+        public List<BLL.Artist> GetArtist(BLL.PagingData page)
         {
-            return ProxyHelper.ToListOf<WS.Artist, BLL.Artist>(_viewAccessWs.GetAllArtist());
+            return ProxyHelper.ToListOf<WS.Artist, BLL.Artist>(
+                _viewAccessWs.GetArtist(page.ToWebSeriveObject<WS.PagingData>()));
         }
 
-        public List<BLL.Category> GetAllCategories()
+        public List<BLL.Category> GetCategories(BLL.PagingData page)
         {
-            return ProxyHelper.ToListOf<WS.Category, BLL.Category>(_viewAccessWs.GetAllCategories());
+            return ProxyHelper.ToListOf<WS.Category, BLL.Category>(
+                _viewAccessWs.GetCategories(page.ToWebSeriveObject<WS.PagingData>()));
         }
 
-        public List<BLL.Country> GetAllCountries()
+        public List<BLL.Country> GetCountries(BLL.PagingData page)
         {
-            return ProxyHelper.ToListOf<WS.Country, BLL.Country>(_viewAccessWs.GetAllCountries());
+            return ProxyHelper.ToListOf<WS.Country, BLL.Country>(
+                _viewAccessWs.GetCountries(page.ToWebSeriveObject<WS.PagingData>()));
         }
 
-        public List<BLL.Location> GetAllLocations()
+        public List<BLL.Location> GetLocations(BLL.PagingData page)
         {
-            return ProxyHelper.ToListOf<WS.Location, BLL.Location>(_viewAccessWs.GetAllLocations());
+            return ProxyHelper.ToListOf<WS.Location, BLL.Location>(
+                _viewAccessWs.GetLocations(page.ToWebSeriveObject<WS.PagingData>()));
         }
 
-        public List<BLL.Venue> GetAllVenues()
+        public List<BLL.Venue> GetVenues(BLL.PagingData page)
         {
-            return ProxyHelper.ToListOf<WS.Venue, BLL.Venue>(_viewAccessWs.GetAllVenues());
+            return ProxyHelper.ToListOf<WS.Venue, BLL.Venue>(
+                _viewAccessWs.GetVenues(page.ToWebSeriveObject<WS.PagingData>()));
         }
 
-        public List<BLL.Performance> GetAllPerformances()
+        public List<BLL.Performance> GetPerformances(BLL.PagingData page)
         {
-            return ProxyHelper.ToListOf<WS.Performance, BLL.Performance>(_viewAccessWs.GetAllPerformances());
+            return ProxyHelper.ToListOf<WS.Performance, BLL.Performance>(
+                _viewAccessWs.GetPerformances(page.ToWebSeriveObject<WS.PagingData>()));
         }
 
         public List<BLL.Performance> GetPerformancesPerDate(DateTime date)
         {
-            return ProxyHelper.ToListOf<WS.Performance, BLL.Performance>(_viewAccessWs.GetPerformancesPerDate(date));
+            return ProxyHelper.ToListOf<WS.Performance, BLL.Performance>(
+                _viewAccessWs.GetPerformancesPerDate(date));
+        }
+
+        public BLL.PagingData RequestArtistPagingData()
+        {
+            return _viewAccessWs.RequestArtistPagingData().ToDomainObject<BLL.PagingData>();
+        }
+
+        public BLL.PagingData RequestCategoryPagingData()
+        {
+            return _viewAccessWs.RequestCategoryPagingData().ToDomainObject<BLL.PagingData>();
+        }
+
+        public BLL.PagingData RequestCountryPagingData()
+        {
+            return _viewAccessWs.RequestCountryPagingData().ToDomainObject<BLL.PagingData>();
+        }
+
+        public BLL.PagingData RequestLocationPagingData()
+        {
+            return _viewAccessWs.RequestLocationPagingData().ToDomainObject<BLL.PagingData>();
+        }
+
+        public BLL.PagingData RequestPerformancePagingData()
+        {
+            return _viewAccessWs.RequestPerformancePagingData().ToDomainObject<BLL.PagingData>();
+        }
+
+        public BLL.PagingData RequestVenuePagingData()
+        {
+            return _viewAccessWs.RequestVenuePagingData().ToDomainObject<BLL.PagingData>();
         }
     }
 }

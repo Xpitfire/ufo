@@ -83,6 +83,19 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="BlobData" nillable="true" type="tns:BlobData" />
+  <xs:complexType name="PagingData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Offset" type="xs:long" />
+          <xs:element minOccurs="0" name="Remaining" type="xs:long" />
+          <xs:element minOccurs="0" name="Request" type="xs:long" />
+          <xs:element minOccurs="0" name="Size" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PagingData" nillable="true" type="tns:PagingData" />
   <xs:complexType name="ArrayOfUser">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />

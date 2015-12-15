@@ -27,9 +27,15 @@ namespace UFO.Server.Services
     public class AdminAccessWs : AdminAccessBll
     {
         [OperationContract]
-        public override List<User> GetAllUser(SessionToken token)
+        public override List<User> GetUser(SessionToken token, PagingData page)
         {
-            return base.GetAllUser(token);
+            return base.GetUser(token, page);
+        }
+
+        [OperationContract]
+        public override PagingData RequestUserPagingData(SessionToken token)
+        {
+            return base.RequestUserPagingData(token);
         }
 
         [OperationContract]

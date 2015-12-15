@@ -31,6 +31,8 @@ namespace UFO.Server.Dal.MySql
     {
         private readonly ADbCommProvider _dbCommProvider;
 
+        private const string EntityName = "location";
+
         public LocationDao(ADbCommProvider dbCommProvider)
         {
             this._dbCommProvider = dbCommProvider;
@@ -118,7 +120,7 @@ namespace UFO.Server.Dal.MySql
         {
             var locations = new List<Location>();
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand<MySqlDbType>(connection, SqlQueries.SelectAllLocations))
+            using (var command = _dbCommProvider.CreateDbCommand<MySqlDbType>(connection, SqlQueries.SelectAll(EntityName)))
             using (var dataReader = _dbCommProvider.ExecuteReader(command))
             {
                 while (dataReader.Read())
@@ -128,6 +130,42 @@ namespace UFO.Server.Dal.MySql
             }
             return locations.Any() ? DaoResponse.QuerySuccessful(locations) : DaoResponse.QueryEmptyResult<List<Location>>();
         }
-        
+
+        [DaoExceptionHandler(typeof(List<Location>))]
+        public DaoResponse<List<Location>> Select(PagingData page)
+        {
+            var locations = new List<Location>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?Offset", new QueryParameter {ParameterValue = page.Offset}},
+                {"?Request", new QueryParameter {ParameterValue = page.Request}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectLimit(EntityName), parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    locations.Add(CreateLocationObject(dataReader));
+                }
+            }
+            return locations.Any() ? DaoResponse.QuerySuccessful(locations) : DaoResponse.QueryEmptyResult<List<Location>>();
+        }
+
+        [DaoExceptionHandler(typeof(long))]
+        public DaoResponse<long> Count()
+        {
+            var size = 0L;
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.Count(EntityName)))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    size = _dbCommProvider.CastDbObject<long>(dataReader, 0);
+                }
+            }
+            return DaoResponse.QuerySuccessful(size);
+        }
     }
 }

@@ -18,7 +18,6 @@
 #endregion
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using UFO.Server.Bll.Common;
 using UFO.Server.Bll.Impl;
 using UFO.Server.Domain;
 
@@ -31,11 +30,15 @@ namespace UFO.Server.Test
         public void TestArtistBllGetAll()
         {
             var viewAccessBll = new ViewAccessBll();
-            var list = viewAccessBll.GetAllArtist();
+            var list = viewAccessBll.GetArtist(new PagingData
+            {
+                Offset = 0, 
+                Request = Constants.LastPage
+            });
             Assert.IsNotNull(list);
             Assert.IsTrue(list.Count > 0);
         }
-        
+
         [TestMethod]
         public void TestAdminAuthentication()
         {

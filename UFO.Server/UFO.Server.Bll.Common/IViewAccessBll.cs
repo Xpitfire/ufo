@@ -26,22 +26,29 @@ namespace UFO.Server.Bll.Common
     public interface IViewAccessBll
     {
         // Artist
-        List<Artist> GetAllArtist();
+        List<Artist> GetArtist(PagingData page);
 
         // Category
-        List<Category> GetAllCategories();
+        List<Category> GetCategories(PagingData page);
 
         // Country
-        List<Country> GetAllCountries();
+        List<Country> GetCountries(PagingData page);
 
         // Location
-        List<Location> GetAllLocations();
+        List<Location> GetLocations(PagingData page);
 
         // Venue
-        List<Venue> GetAllVenues();
+        List<Venue> GetVenues(PagingData page);
 
         // Performance
-        List<Performance> GetAllPerformances();
+        List<Performance> GetPerformances(PagingData page);
         List<Performance> GetPerformancesPerDate(DateTime date);
+        
+        PagingData RequestArtistPagingData();
+        PagingData RequestCategoryPagingData();
+        PagingData RequestCountryPagingData();
+        PagingData RequestLocationPagingData();
+        PagingData RequestPerformancePagingData();
+        PagingData RequestVenuePagingData();
     }
 }

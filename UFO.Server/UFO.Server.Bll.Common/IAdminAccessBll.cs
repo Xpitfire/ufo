@@ -25,7 +25,8 @@ namespace UFO.Server.Bll.Common
     public interface IAdminAccessBll : IAuthAccessBll, IValidationAccessBll
     {
         // User
-        List<User> GetAllUser(SessionToken token);
+        List<User> GetUser(SessionToken token, PagingData page);
+        PagingData RequestUserPagingData(SessionToken token);
 
         // Artist
         bool ModifyArtist(SessionToken token, Artist artist);
@@ -36,6 +37,7 @@ namespace UFO.Server.Bll.Common
         bool RemoveVenue(SessionToken token, Venue venue);
 
         // Performance
-        bool ModifyPerformance(SessionToken token, Performance performance);        
+        bool ModifyPerformance(SessionToken token, Performance performance);
+
     }
 }

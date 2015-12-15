@@ -22,6 +22,7 @@ namespace UFO.Services.AdminAccess {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.Category))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.Country))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.BlobData))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.PagingData))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.Venue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.Location))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.Performance))]
@@ -440,6 +441,77 @@ namespace UFO.Services.AdminAccess {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PagingData", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
+    [System.SerializableAttribute()]
+    public partial class PagingData : UFO.Services.AdminAccess.DomainObject {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long OffsetField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long RemainingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long RequestField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long SizeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Offset {
+            get {
+                return this.OffsetField;
+            }
+            set {
+                if ((this.OffsetField.Equals(value) != true)) {
+                    this.OffsetField = value;
+                    this.RaisePropertyChanged("Offset");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Remaining {
+            get {
+                return this.RemainingField;
+            }
+            set {
+                if ((this.RemainingField.Equals(value) != true)) {
+                    this.RemainingField = value;
+                    this.RaisePropertyChanged("Remaining");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Request {
+            get {
+                return this.RequestField;
+            }
+            set {
+                if ((this.RequestField.Equals(value) != true)) {
+                    this.RequestField = value;
+                    this.RaisePropertyChanged("Request");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Size {
+            get {
+                return this.SizeField;
+            }
+            set {
+                if ((this.SizeField.Equals(value) != true)) {
+                    this.SizeField = value;
+                    this.RaisePropertyChanged("Size");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Venue", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
     [System.SerializableAttribute()]
     public partial class Venue : UFO.Services.AdminAccess.DomainObject {
@@ -662,11 +734,17 @@ namespace UFO.Services.AdminAccess {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Services.AdminAccess.AdminAccessWs")]
     public interface AdminAccessWs {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/GetAllUser", ReplyAction="http://tempuri.org/AdminAccessWs/GetAllUserResponse")]
-        UFO.Services.AdminAccess.User[] GetAllUser(UFO.Services.AdminAccess.SessionToken token);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/GetUser", ReplyAction="http://tempuri.org/AdminAccessWs/GetUserResponse")]
+        UFO.Services.AdminAccess.User[] GetUser(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.PagingData page);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/GetAllUser", ReplyAction="http://tempuri.org/AdminAccessWs/GetAllUserResponse")]
-        System.Threading.Tasks.Task<UFO.Services.AdminAccess.User[]> GetAllUserAsync(UFO.Services.AdminAccess.SessionToken token);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/GetUser", ReplyAction="http://tempuri.org/AdminAccessWs/GetUserResponse")]
+        System.Threading.Tasks.Task<UFO.Services.AdminAccess.User[]> GetUserAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.PagingData page);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RequestUserPagingData", ReplyAction="http://tempuri.org/AdminAccessWs/RequestUserPagingDataResponse")]
+        UFO.Services.AdminAccess.PagingData RequestUserPagingData(UFO.Services.AdminAccess.SessionToken token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RequestUserPagingData", ReplyAction="http://tempuri.org/AdminAccessWs/RequestUserPagingDataResponse")]
+        System.Threading.Tasks.Task<UFO.Services.AdminAccess.PagingData> RequestUserPagingDataAsync(UFO.Services.AdminAccess.SessionToken token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/IsUserAuthenticated", ReplyAction="http://tempuri.org/AdminAccessWs/IsUserAuthenticatedResponse")]
         bool IsUserAuthenticated(UFO.Services.AdminAccess.SessionToken token);
@@ -756,12 +834,20 @@ namespace UFO.Services.AdminAccess {
                 base(binding, remoteAddress) {
         }
         
-        public UFO.Services.AdminAccess.User[] GetAllUser(UFO.Services.AdminAccess.SessionToken token) {
-            return base.Channel.GetAllUser(token);
+        public UFO.Services.AdminAccess.User[] GetUser(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.PagingData page) {
+            return base.Channel.GetUser(token, page);
         }
         
-        public System.Threading.Tasks.Task<UFO.Services.AdminAccess.User[]> GetAllUserAsync(UFO.Services.AdminAccess.SessionToken token) {
-            return base.Channel.GetAllUserAsync(token);
+        public System.Threading.Tasks.Task<UFO.Services.AdminAccess.User[]> GetUserAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.PagingData page) {
+            return base.Channel.GetUserAsync(token, page);
+        }
+        
+        public UFO.Services.AdminAccess.PagingData RequestUserPagingData(UFO.Services.AdminAccess.SessionToken token) {
+            return base.Channel.RequestUserPagingData(token);
+        }
+        
+        public System.Threading.Tasks.Task<UFO.Services.AdminAccess.PagingData> RequestUserPagingDataAsync(UFO.Services.AdminAccess.SessionToken token) {
+            return base.Channel.RequestUserPagingDataAsync(token);
         }
         
         public bool IsUserAuthenticated(UFO.Services.AdminAccess.SessionToken token) {

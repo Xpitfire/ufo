@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AAdminAccessBll.cs" />
     <Compile Include="AViewAccessBll.cs" />
+    <Compile Include="Helper\PagingHelper.cs" />
     <Compile Include="IAdminAccessBll.cs" />
     <Compile Include="IAuthAccessBll.cs" />
     <Compile Include="ISessionBll.cs" />

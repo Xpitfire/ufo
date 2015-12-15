@@ -40,8 +40,18 @@ namespace UFO.Server.Dal.Dummy
         {
             throw new System.NotImplementedException();
         }
-        
+
+        public DaoResponse<long> Count()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public DaoResponse<List<Artist>> SelectAll()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public DaoResponse<List<Artist>> Select(PagingData page)
         {
             throw new System.NotImplementedException();
         }

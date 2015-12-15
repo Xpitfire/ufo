@@ -31,6 +31,9 @@ namespace UFO.Server.Dal.MySql
     {
         private readonly ADbCommProvider _dbCommProvider;
 
+        private const string EntityName = "artist";
+        private const string EntityViewName = "artistview";
+
         public ArtistDao(ADbCommProvider dbCommProvider)
         {
             this._dbCommProvider = dbCommProvider;
@@ -44,7 +47,10 @@ namespace UFO.Server.Dal.MySql
                 Name = _dbCommProvider.CastDbObject<string>(dataReader, "ArtistName"),
                 EMail = _dbCommProvider.CastDbObject<string>(dataReader, "EMail"),
                 PromoVideo = _dbCommProvider.CastDbObject<string>(dataReader, "PromoVideo"),
-                Picture = BlobData.CreateBlobData(_dbCommProvider.CastDbObject<string>(dataReader, "Picture")),
+                Picture = new BlobData
+                {
+                    Path = _dbCommProvider.CastDbObject<string>(dataReader, "Picture")
+                },
                 Country = new Country
                 {
                     Code = _dbCommProvider.CastDbObject<string>(dataReader, "CountryCode"),
@@ -112,7 +118,7 @@ namespace UFO.Server.Dal.MySql
         {
             var artists = new List<Artist>();
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAllArtists))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAll(EntityViewName)))
             using (var dataReader = _dbCommProvider.ExecuteReader(command))
             {
                 while (dataReader.Read())
@@ -122,7 +128,28 @@ namespace UFO.Server.Dal.MySql
             }
             return artists.Any() ? DaoResponse.QuerySuccessful(artists) : DaoResponse.QueryEmptyResult<List<Artist>>();
         }
-        
+
+        [DaoExceptionHandler(typeof(List<Artist>))]
+        public DaoResponse<List<Artist>> Select(PagingData page)
+        {
+            var artists = new List<Artist>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?Offset", new QueryParameter {ParameterValue = page.Offset}},
+                {"?Request", new QueryParameter {ParameterValue = page.Request}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectLimit(EntityViewName), parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    artists.Add(CreateArtistObject(dataReader));
+                }
+            }
+            return artists.Any() ? DaoResponse.QuerySuccessful(artists) : DaoResponse.QueryEmptyResult<List<Artist>>();
+        }
+
         [DaoExceptionHandler(typeof(Artist))]
         public DaoResponse<Artist> Insert(Artist entity)
         {
@@ -143,6 +170,22 @@ namespace UFO.Server.Dal.MySql
                 _dbCommProvider.ExecuteNonQuery(command);
             }
             return DaoResponse.QuerySuccessful(entity);
+        }
+
+        [DaoExceptionHandler(typeof(long))]
+        public DaoResponse<long> Count()
+        {
+            var size = 0L;
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.Count(EntityName)))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    size = _dbCommProvider.CastDbObject<long>(dataReader, 0);
+                }
+            }
+            return DaoResponse.QuerySuccessful(size);
         }
 
     }

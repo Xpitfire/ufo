@@ -96,7 +96,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_GetAllUser_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_GetUser_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -115,7 +115,45 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_GetAllUser_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_GetUser_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_RequestUserPagingData_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_RequestUserPagingData_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -610,7 +648,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAllArtist_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_RequestArtistPagingData_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -629,7 +667,235 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAllArtist_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_RequestArtistPagingData_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_RequestCategoryPagingData_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_RequestCategoryPagingData_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_RequestCountryPagingData_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_RequestCountryPagingData_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_RequestLocationPagingData_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_RequestLocationPagingData_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_RequestPerformancePagingData_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_RequestPerformancePagingData_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_RequestVenuePagingData_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_RequestVenuePagingData_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetArtist_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetArtist_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -686,7 +952,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAllCategories_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetCategories_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -705,7 +971,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAllCategories_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetCategories_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -724,7 +990,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAllCountries_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetCountries_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -743,7 +1009,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAllCountries_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetCountries_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -762,7 +1028,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAllLocations_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetLocations_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -781,7 +1047,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAllLocations_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetLocations_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -800,7 +1066,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAllVenues_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetVenues_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -819,7 +1085,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAllVenues_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetVenues_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -838,7 +1104,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAllPerformances_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetPerformances_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -857,7 +1123,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAllPerformances_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetPerformances_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -884,11 +1150,17 @@
       <xsd:import schemaLocation="http://localhost:4321/ViewAccess?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="AdminAccessWs_GetAllUser_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllUser" />
+  <wsdl:message name="AdminAccessWs_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
   </wsdl:message>
-  <wsdl:message name="AdminAccessWs_GetAllUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllUserResponse" />
+  <wsdl:message name="AdminAccessWs_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_RequestUserPagingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:RequestUserPagingData" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_RequestUserPagingData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RequestUserPagingDataResponse" />
   </wsdl:message>
   <wsdl:message name="AdminAccessWs_IsUserAuthenticated_InputMessage">
     <wsdl:part name="parameters" element="tns:IsUserAuthenticated" />
@@ -950,11 +1222,47 @@
   <wsdl:message name="AdminAccessWs_ModifyPerformance_OutputMessage">
     <wsdl:part name="parameters" element="tns:ModifyPerformanceResponse" />
   </wsdl:message>
-  <wsdl:message name="ViewAccessWs_GetAllArtist_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllArtist" />
+  <wsdl:message name="ViewAccessWs_RequestArtistPagingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:RequestArtistPagingData" />
   </wsdl:message>
-  <wsdl:message name="ViewAccessWs_GetAllArtist_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllArtistResponse" />
+  <wsdl:message name="ViewAccessWs_RequestArtistPagingData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RequestArtistPagingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_RequestCategoryPagingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:RequestCategoryPagingData" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_RequestCategoryPagingData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RequestCategoryPagingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_RequestCountryPagingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:RequestCountryPagingData" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_RequestCountryPagingData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RequestCountryPagingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_RequestLocationPagingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:RequestLocationPagingData" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_RequestLocationPagingData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RequestLocationPagingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_RequestPerformancePagingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:RequestPerformancePagingData" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_RequestPerformancePagingData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RequestPerformancePagingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_RequestVenuePagingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:RequestVenuePagingData" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_RequestVenuePagingData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RequestVenuePagingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_GetArtist_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetArtist" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_GetArtist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetArtistResponse" />
   </wsdl:message>
   <wsdl:message name="ViewAccessWs_GetPerformancesPerDate_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPerformancesPerDate" />
@@ -962,40 +1270,44 @@
   <wsdl:message name="ViewAccessWs_GetPerformancesPerDate_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPerformancesPerDateResponse" />
   </wsdl:message>
-  <wsdl:message name="ViewAccessWs_GetAllCategories_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCategories" />
+  <wsdl:message name="ViewAccessWs_GetCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategories" />
   </wsdl:message>
-  <wsdl:message name="ViewAccessWs_GetAllCategories_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCategoriesResponse" />
+  <wsdl:message name="ViewAccessWs_GetCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoriesResponse" />
   </wsdl:message>
-  <wsdl:message name="ViewAccessWs_GetAllCountries_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCountries" />
+  <wsdl:message name="ViewAccessWs_GetCountries_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountries" />
   </wsdl:message>
-  <wsdl:message name="ViewAccessWs_GetAllCountries_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllCountriesResponse" />
+  <wsdl:message name="ViewAccessWs_GetCountries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountriesResponse" />
   </wsdl:message>
-  <wsdl:message name="ViewAccessWs_GetAllLocations_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllLocations" />
+  <wsdl:message name="ViewAccessWs_GetLocations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocations" />
   </wsdl:message>
-  <wsdl:message name="ViewAccessWs_GetAllLocations_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllLocationsResponse" />
+  <wsdl:message name="ViewAccessWs_GetLocations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocationsResponse" />
   </wsdl:message>
-  <wsdl:message name="ViewAccessWs_GetAllVenues_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllVenues" />
+  <wsdl:message name="ViewAccessWs_GetVenues_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVenues" />
   </wsdl:message>
-  <wsdl:message name="ViewAccessWs_GetAllVenues_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllVenuesResponse" />
+  <wsdl:message name="ViewAccessWs_GetVenues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVenuesResponse" />
   </wsdl:message>
-  <wsdl:message name="ViewAccessWs_GetAllPerformances_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllPerformances" />
+  <wsdl:message name="ViewAccessWs_GetPerformances_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPerformances" />
   </wsdl:message>
-  <wsdl:message name="ViewAccessWs_GetAllPerformances_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllPerformancesResponse" />
+  <wsdl:message name="ViewAccessWs_GetPerformances_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPerformancesResponse" />
   </wsdl:message>
   <wsdl:portType name="AdminAccessWs">
-    <wsdl:operation name="GetAllUser">
-      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/GetAllUser" message="tns:AdminAccessWs_GetAllUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/GetAllUserResponse" message="tns:AdminAccessWs_GetAllUser_OutputMessage" />
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/GetUser" message="tns:AdminAccessWs_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/GetUserResponse" message="tns:AdminAccessWs_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestUserPagingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/RequestUserPagingData" message="tns:AdminAccessWs_RequestUserPagingData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/RequestUserPagingDataResponse" message="tns:AdminAccessWs_RequestUserPagingData_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="IsUserAuthenticated">
       <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/IsUserAuthenticated" message="tns:AdminAccessWs_IsUserAuthenticated_InputMessage" />
@@ -1039,46 +1351,81 @@
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ViewAccessWs">
-    <wsdl:operation name="GetAllArtist">
-      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllArtist" message="tns:ViewAccessWs_GetAllArtist_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllArtistResponse" message="tns:ViewAccessWs_GetAllArtist_OutputMessage" />
+    <wsdl:operation name="RequestArtistPagingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/RequestArtistPagingData" message="tns:ViewAccessWs_RequestArtistPagingData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/RequestArtistPagingDataResponse" message="tns:ViewAccessWs_RequestArtistPagingData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestCategoryPagingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/RequestCategoryPagingData" message="tns:ViewAccessWs_RequestCategoryPagingData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/RequestCategoryPagingDataResponse" message="tns:ViewAccessWs_RequestCategoryPagingData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestCountryPagingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/RequestCountryPagingData" message="tns:ViewAccessWs_RequestCountryPagingData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/RequestCountryPagingDataResponse" message="tns:ViewAccessWs_RequestCountryPagingData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestLocationPagingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/RequestLocationPagingData" message="tns:ViewAccessWs_RequestLocationPagingData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/RequestLocationPagingDataResponse" message="tns:ViewAccessWs_RequestLocationPagingData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestPerformancePagingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/RequestPerformancePagingData" message="tns:ViewAccessWs_RequestPerformancePagingData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/RequestPerformancePagingDataResponse" message="tns:ViewAccessWs_RequestPerformancePagingData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestVenuePagingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/RequestVenuePagingData" message="tns:ViewAccessWs_RequestVenuePagingData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/RequestVenuePagingDataResponse" message="tns:ViewAccessWs_RequestVenuePagingData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArtist">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetArtist" message="tns:ViewAccessWs_GetArtist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetArtistResponse" message="tns:ViewAccessWs_GetArtist_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPerformancesPerDate">
       <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetPerformancesPerDate" message="tns:ViewAccessWs_GetPerformancesPerDate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetPerformancesPerDateResponse" message="tns:ViewAccessWs_GetPerformancesPerDate_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllCategories">
-      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllCategories" message="tns:ViewAccessWs_GetAllCategories_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllCategoriesResponse" message="tns:ViewAccessWs_GetAllCategories_OutputMessage" />
+    <wsdl:operation name="GetCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetCategories" message="tns:ViewAccessWs_GetCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetCategoriesResponse" message="tns:ViewAccessWs_GetCategories_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllCountries">
-      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllCountries" message="tns:ViewAccessWs_GetAllCountries_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllCountriesResponse" message="tns:ViewAccessWs_GetAllCountries_OutputMessage" />
+    <wsdl:operation name="GetCountries">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetCountries" message="tns:ViewAccessWs_GetCountries_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetCountriesResponse" message="tns:ViewAccessWs_GetCountries_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllLocations">
-      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllLocations" message="tns:ViewAccessWs_GetAllLocations_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllLocationsResponse" message="tns:ViewAccessWs_GetAllLocations_OutputMessage" />
+    <wsdl:operation name="GetLocations">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetLocations" message="tns:ViewAccessWs_GetLocations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetLocationsResponse" message="tns:ViewAccessWs_GetLocations_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllVenues">
-      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllVenues" message="tns:ViewAccessWs_GetAllVenues_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllVenuesResponse" message="tns:ViewAccessWs_GetAllVenues_OutputMessage" />
+    <wsdl:operation name="GetVenues">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetVenues" message="tns:ViewAccessWs_GetVenues_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetVenuesResponse" message="tns:ViewAccessWs_GetVenues_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllPerformances">
-      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllPerformances" message="tns:ViewAccessWs_GetAllPerformances_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetAllPerformancesResponse" message="tns:ViewAccessWs_GetAllPerformances_OutputMessage" />
+    <wsdl:operation name="GetPerformances">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetPerformances" message="tns:ViewAccessWs_GetPerformances_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetPerformancesResponse" message="tns:ViewAccessWs_GetPerformances_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_AdminAccessWs" type="tns:AdminAccessWs">
     <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAllUser">
-      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/GetAllUser" style="document" />
+    <wsdl:operation name="GetUser">
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/GetUser" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_GetAllUser_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_GetUser_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_GetAllUser_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_GetUser_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestUserPagingData">
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/RequestUserPagingData" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_RequestUserPagingData_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_RequestUserPagingData_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -1196,14 +1543,80 @@
   <wsdl:binding name="WSHttpBinding_ViewAccessWs" type="tns:ViewAccessWs">
     <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAllArtist">
-      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetAllArtist" style="document" />
+    <wsdl:operation name="RequestArtistPagingData">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/RequestArtistPagingData" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAllArtist_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_RequestArtistPagingData_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAllArtist_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_RequestArtistPagingData_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestCategoryPagingData">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/RequestCategoryPagingData" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_RequestCategoryPagingData_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_RequestCategoryPagingData_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestCountryPagingData">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/RequestCountryPagingData" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_RequestCountryPagingData_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_RequestCountryPagingData_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestLocationPagingData">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/RequestLocationPagingData" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_RequestLocationPagingData_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_RequestLocationPagingData_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestPerformancePagingData">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/RequestPerformancePagingData" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_RequestPerformancePagingData_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_RequestPerformancePagingData_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RequestVenuePagingData">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/RequestVenuePagingData" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_RequestVenuePagingData_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_RequestVenuePagingData_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArtist">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetArtist" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetArtist_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetArtist_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -1218,58 +1631,58 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllCategories">
-      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetAllCategories" style="document" />
+    <wsdl:operation name="GetCategories">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetCategories" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAllCategories_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetCategories_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAllCategories_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetCategories_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllCountries">
-      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetAllCountries" style="document" />
+    <wsdl:operation name="GetCountries">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetCountries" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAllCountries_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetCountries_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAllCountries_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetCountries_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllLocations">
-      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetAllLocations" style="document" />
+    <wsdl:operation name="GetLocations">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetLocations" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAllLocations_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetLocations_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAllLocations_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetLocations_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllVenues">
-      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetAllVenues" style="document" />
+    <wsdl:operation name="GetVenues">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetVenues" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAllVenues_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetVenues_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAllVenues_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetVenues_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllPerformances">
-      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetAllPerformances" style="document" />
+    <wsdl:operation name="GetPerformances">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetPerformances" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAllPerformances_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetPerformances_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAllPerformances_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetPerformances_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

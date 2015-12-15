@@ -22,15 +22,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.MySql
 {
     public static class SqlQueries
     {
-        // User
-        public const string SelectAllUsers = @"SELECT *
-                                                 FROM userview";
 
+        public static string SelectAll(string entity)
+        {
+            return $@"SELECT *
+                        FROM {entity}";
+        }
+
+        public static string SelectLimit(string entity)
+        {
+            return $@"SELECT *
+                        FROM {entity} LIMIT ?Offset,?Request";
+        }
+        
+        public static string Count(string entity)
+        {
+            return $@"SELECT COUNT(*)
+                        FROM {entity}";
+        }
+
+        // User
         public const string SelectUserById = @"SELECT *
                                                  FROM userview
                                                 WHERE UserId=?UserId";
@@ -48,9 +65,6 @@ namespace UFO.Server.Dal.MySql
 
 
         // Performance
-        public const string SelectAllPerfomances = @"SELECT *
-                                                       FROM performanceview";
-
         public const string SelectPerformanceById = @"SELECT *
                                                         FROM performanceview
                                                        WHERE Date=?Date AND ArtistId=?ArtistId";
@@ -72,9 +86,6 @@ namespace UFO.Server.Dal.MySql
 
 
         // Venue
-        public const string SelectAllVenues = @"SELECT *
-                                                  FROM venueview";
-
         public const string SelectVenueById = @"SELECT *
                                                   FROM venueview
                                                  WHERE VenueId=?VenueId";
@@ -92,9 +103,6 @@ namespace UFO.Server.Dal.MySql
 
 
         // Artist
-        public const string SelectAllArtists =  @"SELECT * 
-                                                    FROM artistview";
-
         public const string SelectArtistById = @"SELECT * 
                                                    FROM artistview 
                                                   WHERE ArtistId=?ArtistId";
@@ -112,9 +120,6 @@ namespace UFO.Server.Dal.MySql
 
 
         // Country
-        public const string SelectAllCountries = @"SELECT * 
-                                                     FROM country";
-
         public const string SelectCountryById = @"SELECT * 
                                                     FROM country 
                                                    WHERE Code=?Code";
@@ -131,9 +136,6 @@ namespace UFO.Server.Dal.MySql
 
 
         // Category
-        public const string SelectAllCategories = @"SELECT * 
-                                                      FROM category";
-
         public const string SelectCategoryById = @"SELECT * 
                                                      FROM category 
                                                     WHERE CategoryId=?CategoryId";
@@ -150,9 +152,6 @@ namespace UFO.Server.Dal.MySql
 
         
         // Location
-        public const string SelectAllLocations = @"SELECT * 
-                                                      FROM location";
-
         public const string SelectLocationById = @"SELECT * 
                                                      FROM location 
                                                     WHERE LocationId=?LocationId";

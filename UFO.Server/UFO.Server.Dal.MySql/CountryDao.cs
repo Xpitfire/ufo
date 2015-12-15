@@ -31,6 +31,8 @@ namespace UFO.Server.Dal.MySql
     {
         private readonly ADbCommProvider _dbCommProvider;
 
+        private const string EntityName = "country";
+
         public CountryDao(ADbCommProvider dbCommProvider)
         {
             this._dbCommProvider = dbCommProvider;
@@ -113,7 +115,7 @@ namespace UFO.Server.Dal.MySql
         {
             var countries = new List<Country>();
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand<MySqlDbType>(connection, SqlQueries.SelectAllCountries))
+            using (var command = _dbCommProvider.CreateDbCommand<MySqlDbType>(connection, SqlQueries.SelectAll(EntityName)))
             using (var dataReader = _dbCommProvider.ExecuteReader(command))
             {
                 while (dataReader.Read())
@@ -122,6 +124,43 @@ namespace UFO.Server.Dal.MySql
                 }
             }
             return countries.Any() ? DaoResponse.QuerySuccessful(countries) : DaoResponse.QueryEmptyResult<List<Country>>();
+        }
+
+        [DaoExceptionHandler(typeof(List<Country>))]
+        public DaoResponse<List<Country>> Select(PagingData page)
+        {
+            var countries = new List<Country>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?Offset", new QueryParameter {ParameterValue = page.Offset}},
+                {"?Request", new QueryParameter {ParameterValue = page.Request}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectLimit(EntityName), parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    countries.Add(CreateCountryObject(dataReader));
+                }
+            }
+            return countries.Any() ? DaoResponse.QuerySuccessful(countries) : DaoResponse.QueryEmptyResult<List<Country>>();
+        }
+
+        [DaoExceptionHandler(typeof(long))]
+        public DaoResponse<long> Count()
+        {
+            var size = 0L;
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.Count(EntityName)))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    size = _dbCommProvider.CastDbObject<long>(dataReader, 0);
+                }
+            }
+            return DaoResponse.QuerySuccessful(size);
         }
     }
 }

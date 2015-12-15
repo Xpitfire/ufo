@@ -29,9 +29,45 @@ namespace UFO.Server.Services
     public class ViewAccessWs : ViewAccessBll
     {
         [OperationContract]
-        public override List<Artist> GetAllArtist()
+        public override PagingData RequestArtistPagingData()
         {
-            return base.GetAllArtist();
+            return base.RequestArtistPagingData();
+        }
+
+        [OperationContract]
+        public override PagingData RequestCategoryPagingData()
+        {
+            return base.RequestCategoryPagingData();
+        }
+
+        [OperationContract]
+        public override PagingData RequestCountryPagingData()
+        {
+            return base.RequestCountryPagingData();
+        }
+
+        [OperationContract]
+        public override PagingData RequestLocationPagingData()
+        {
+            return base.RequestLocationPagingData();
+        }
+
+        [OperationContract]
+        public override PagingData RequestPerformancePagingData()
+        {
+            return base.RequestPerformancePagingData();
+        }
+
+        [OperationContract]
+        public override PagingData RequestVenuePagingData()
+        {
+            return base.RequestVenuePagingData();
+        }
+
+        [OperationContract]
+        public override List<Artist> GetArtist(PagingData page)
+        {
+            return base.GetArtist(page);
         }
 
         [OperationContract]
@@ -41,33 +77,33 @@ namespace UFO.Server.Services
         }
 
         [OperationContract]
-        public override List<Category> GetAllCategories()
+        public override List<Category> GetCategories(PagingData page)
         {
-            return base.GetAllCategories();
+            return base.GetCategories(page);
         }
 
         [OperationContract]
-        public override List<Country> GetAllCountries()
+        public override List<Country> GetCountries(PagingData page)
         {
-            return base.GetAllCountries();
+            return base.GetCountries(page);
         }
 
         [OperationContract]
-        public override List<Location> GetAllLocations()
+        public override List<Location> GetLocations(PagingData page)
         {
-            return base.GetAllLocations();
+            return base.GetLocations(page);
         }
 
         [OperationContract]
-        public override List<Venue> GetAllVenues()
+        public override List<Venue> GetVenues(PagingData page)
         {
-            return base.GetAllVenues();
+            return base.GetVenues(page);
         }
 
         [OperationContract]
-        public override List<Performance> GetAllPerformances()
+        public override List<Performance> GetPerformances(PagingData page)
         {
-            return base.GetAllPerformances();
+            return base.GetPerformances(page);
         }
     }
 }

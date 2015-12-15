@@ -42,9 +42,19 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
 
+        public DaoResponse<long> Count()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public DaoResponse<List<User>> SelectAll()
         {
             return DaoResponse.QuerySuccessful<List<User>>(DataCollection.Users.ToList());
+        }
+
+        public DaoResponse<List<User>> Select(PagingData page)
+        {
+            throw new System.NotImplementedException();
         }
 
         public DaoResponse<User> SelectById(int id)

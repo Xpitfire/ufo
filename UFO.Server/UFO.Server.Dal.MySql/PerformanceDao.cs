@@ -33,6 +33,9 @@ namespace UFO.Server.Dal.MySql
     {
         private readonly ADbCommProvider _dbCommProvider;
 
+        private const string EntityName = "performance";
+        private const string EntityViewName = "performanceview";
+
         public PerformanceDao(ADbCommProvider dbCommProvider)
         {
             _dbCommProvider = dbCommProvider;
@@ -51,7 +54,10 @@ namespace UFO.Server.Dal.MySql
                 Name =  _dbCommProvider.CastDbObject<string>(dataReader, "ArtistName"),
                 EMail = _dbCommProvider.CastDbObject<string>(dataReader, "EMail"),
                 PromoVideo = _dbCommProvider.CastDbObject<string>(dataReader, "PromoVideo"),
-                Picture = BlobData.CreateBlobData(_dbCommProvider.CastDbObject<string>(dataReader, "Picture")),
+                Picture = new BlobData
+                {
+                    Path = _dbCommProvider.CastDbObject<string>(dataReader, "Picture")
+                },
                 Country = new Country
                 {
                     Code = _dbCommProvider.CastDbObject<string>(dataReader, "CountryCode"),
@@ -185,7 +191,7 @@ namespace UFO.Server.Dal.MySql
         {
             var performances = new List<Performance>();
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAllPerfomances))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAll(EntityViewName)))
             using (var dataReader = _dbCommProvider.ExecuteReader(command))
             {
                 while (dataReader.Read())
@@ -194,6 +200,43 @@ namespace UFO.Server.Dal.MySql
                 }
             }
             return performances.Any() ? DaoResponse.QuerySuccessful(performances) : DaoResponse.QueryEmptyResult<List<Performance>>();
+        }
+
+        [DaoExceptionHandler(typeof(List<Performance>))]
+        public DaoResponse<List<Performance>> Select(PagingData page)
+        {
+            var locations = new List<Performance>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?Offset", new QueryParameter {ParameterValue = page.Offset}},
+                {"?Request", new QueryParameter {ParameterValue = page.Request}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectLimit(EntityViewName), parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    locations.Add(CreatePerformanceObject(dataReader));
+                }
+            }
+            return locations.Any() ? DaoResponse.QuerySuccessful(locations) : DaoResponse.QueryEmptyResult<List<Performance>>();
+        }
+
+        [DaoExceptionHandler(typeof(long))]
+        public DaoResponse<long> Count()
+        {
+            var size = 0L;
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.Count(EntityName)))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    size = _dbCommProvider.CastDbObject<long>(dataReader, 0);
+                }
+            }
+            return DaoResponse.QuerySuccessful(size);
         }
     }
 }

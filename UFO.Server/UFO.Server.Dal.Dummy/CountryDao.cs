@@ -49,10 +49,20 @@ namespace UFO.Server.Dal.Dummy
             throw new NotImplementedException();
         }
 
+        public DaoResponse<long> Count()
+        {
+            throw new NotImplementedException();
+        }
+
         [DaoExceptionHandler(typeof(List<Country>))]
         public DaoResponse<List<Country>> SelectAll()
         {
             throw new NotSupportedException("Test exception for DaoExceptionHandlerAtrribute test!");
+        }
+
+        public DaoResponse<List<Country>> Select(PagingData page)
+        {
+            throw new NotImplementedException();
         }
     }
 }

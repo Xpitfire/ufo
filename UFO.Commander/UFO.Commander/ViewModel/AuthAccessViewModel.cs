@@ -64,10 +64,9 @@ namespace UFO.Commander.ViewModel
             return _authAccessBll.IsValidAdmin(_sessionToken);
         }
 
-        public void Login()
+        public bool Login()
         {
-            _authAccessBll.LoginAdmin(_sessionToken);
-            IsLoggedIn = true;
+            return IsLoggedIn = _authAccessBll.LoginAdmin(_sessionToken);
         }
 
         private ICommand _logoutCommand;

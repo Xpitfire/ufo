@@ -16,6 +16,11 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
+
+using System;
+using UFO.Server.Dal.Common;
+using UFO.Server.Domain;
+
 namespace UFO.Server.Bll.Common
 {
     public interface IValidationAccessBll

@@ -39,6 +39,8 @@ namespace UFO.Server.Domain
 
         public override bool Equals(object obj)
         {
+            if (obj == null) return false;
+
             var token = obj as SessionToken;
             return token != null && User != null
                 && ToString().Equals(token.ToString())
@@ -47,10 +49,7 @@ namespace UFO.Server.Domain
 
         public override int GetHashCode()
         {
-            unchecked
-            {
-                return ((SessionId?.GetHashCode() ?? 0) * 397) ^ (User?.GetHashCode() ?? 0);
-            }
+            return User?.GetHashCode() ?? 0;
         }
     }
 }

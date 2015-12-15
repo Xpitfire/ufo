@@ -16,7 +16,10 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
+
+using System;
 using System.Collections.Generic;
+using UFO.Server.Bll.Common.Helper;
 using UFO.Server.Common;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
@@ -33,7 +36,7 @@ namespace UFO.Server.Bll.Common
         protected ILocationDao LocationDao = DalProviderFactories.GetDaoFactory().CreateLocationDao();
         protected IVenueDao VenueDao = DalProviderFactories.GetDaoFactory().CreateVenueDao();
 
-        public abstract List<User> GetAllUser(SessionToken token);
+        public abstract List<User> GetUser(SessionToken token, PagingData page);
         public abstract bool ModifyArtist(SessionToken token, Artist artist);
         public abstract bool RemoveArtist(SessionToken token, Artist artist);
         public abstract bool ModifyVenue(SessionToken token, Venue venue);
@@ -62,5 +65,17 @@ namespace UFO.Server.Bll.Common
             return GetSession().RequestSessionId(UserDao.SelectByEmail(user.EMail).ResultObject);
         }
 
+        public virtual TResult EvaluateSessionPagingResult<TResult>(SessionToken token, PagingData page, Func<TResult> function)
+        {
+            if (!IsUserAuthenticated(token) || !PagingHelper.IsPageValid(page))
+                return default(TResult);
+
+            return PagingHelper.EvaluatePagingResult(page, function);
+        }
+
+        public virtual PagingData RequestUserPagingData(SessionToken token)
+        {
+            return IsUserAuthenticated(token) ? PagingHelper.RequestPagingData(UserDao) : null;
+        }
     }
 }

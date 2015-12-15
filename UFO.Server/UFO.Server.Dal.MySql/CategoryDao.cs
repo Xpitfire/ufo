@@ -17,6 +17,8 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -30,6 +32,8 @@ namespace UFO.Server.Dal.MySql
     class CategoryDao : ICategoryDao
     {
         private readonly ADbCommProvider _dbCommProvider;
+
+        private const string EntityName = "category";
 
         public CategoryDao(ADbCommProvider dbCommProvider)
         {
@@ -113,7 +117,7 @@ namespace UFO.Server.Dal.MySql
         {
             var categories = new List<Category>();
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand<MySqlDbType>(connection, SqlQueries.SelectAllCategories))
+            using (var command = _dbCommProvider.CreateDbCommand<MySqlDbType>(connection, SqlQueries.SelectAll(EntityName)))
             using (var dataReader = _dbCommProvider.ExecuteReader(command))
             {
                 while (dataReader.Read())
@@ -122,6 +126,43 @@ namespace UFO.Server.Dal.MySql
                 }
             }
             return categories.Any() ? DaoResponse.QuerySuccessful(categories) : DaoResponse.QueryEmptyResult<List<Category>>();
+        }
+
+        [DaoExceptionHandler(typeof(List<Category>))]
+        public DaoResponse<List<Category>> Select(PagingData page)
+        {
+            var categories = new List<Category>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?Offset", new QueryParameter {ParameterValue = page.Offset}},
+                {"?Request", new QueryParameter {ParameterValue = page.Request}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectLimit(EntityName), parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    categories.Add(CreateCategoryObject(dataReader));
+                }
+            }
+            return categories.Any() ? DaoResponse.QuerySuccessful(categories) : DaoResponse.QueryEmptyResult<List<Category>>();
+        }
+
+        [DaoExceptionHandler(typeof(long))]
+        public DaoResponse<long> Count()
+        {
+            var size = 0L;
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.Count(EntityName)))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    size = _dbCommProvider.CastDbObject<long>(dataReader, 0);
+                }
+            }
+            return DaoResponse.QuerySuccessful(size);
         }
     }
 }

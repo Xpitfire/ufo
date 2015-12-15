@@ -43,9 +43,19 @@ namespace UFO.Server.Dal.Dummy
             throw new System.NotImplementedException();
         }
 
+        public DaoResponse<long> Count()
+        {
+            throw new NotImplementedException();
+        }
+
         public DaoResponse<List<Performance>> SelectAll()
         {
             throw new System.NotImplementedException();
+        }
+
+        public DaoResponse<List<Performance>> Select(PagingData page)
+        {
+            throw new NotImplementedException();
         }
 
         public DaoResponse<Performance> SelectById(DateTime dateTime, int artistId)

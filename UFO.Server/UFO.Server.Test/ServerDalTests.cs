@@ -34,8 +34,6 @@ namespace UFO.Server.Test
     [TestClass]
     public class ServerDalTests
     {
-        // Artist, User, Venue, Category, Country, Performance => GettAlFilterby, SelectAll, Insert, Update, Delete
-
         private const string TestDummyDaoAssembly = "UFO.Server.Dal.Dummy";
         private const string TestDummyDaoNameSpace = "UFO.Server.Dal.Dummy";
         private const string TestDummyDaoClassName = "DaoProviderFactory";
@@ -522,7 +520,10 @@ namespace UFO.Server.Test
                     Category = new Category { CategoryId = "M" },
                     Country = new Country { Code = "US" },
                     EMail = "test@chole.com",
-                    Picture = BlobData.CreateBlobData("/images/prev/blobs.png")
+                    Picture = new BlobData
+                    {
+                        Path = "/images/prev/blobs.png"
+                    }
                 };
 
                 dao.Insert(artist)
@@ -714,7 +715,8 @@ namespace UFO.Server.Test
                 getRsp
                     .OnEmptyResult(() => Assert.Fail("No data found"))
                     .OnFailure(response => Assert.Fail($"Unexpected exception occurred: {response.Exception}"));
-                var performance = getRsp.ResultObject;
+                var performance = getRsp.ResultObject.FirstOrDefault();
+                Assert.IsNotNull(performance);
                 performance.DateTime = new DateTime(2015,11,14);
 
                 dao.Delete(performance)
@@ -876,6 +878,132 @@ namespace UFO.Server.Test
                 .VerifyAdminCredentials(user)
                 .OnFailure(response => Assert.Fail($"Exception occurred! {response.Exception}"))
                 .OnEmptyResult(() => Assert.Fail("User not found!"));
+        }
+
+        private readonly PagingData _page = new PagingData
+        {
+            Offset = 0,
+            Request = 2
+        };
+
+        [TestMethod]
+        public void TestLimitPerformanceDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreatePerformanceDao();
+
+            var rsp = dao.Select(_page)
+                .OnFailure(response => Assert.Fail(response.ErrorMessage));
+            var value = rsp.ResultObject;
+            Assert.IsNotNull(value);
+            Assert.IsTrue(value.Count == 2);
+        }
+
+        [TestMethod]
+        public void TestLimitArtistDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateArtistDao();
+
+            var rsp = dao.Select(_page)
+                .OnFailure(response => Assert.Fail(response.ErrorMessage));
+            var value = rsp.ResultObject;
+            Assert.IsNotNull(value);
+            Assert.IsTrue(value.Count == 2);
+        }
+
+        [TestMethod]
+        public void TestLimitUserDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateUserDao();
+
+            var rsp = dao.Select(_page)
+                .OnFailure(response => Assert.Fail(response.ErrorMessage));
+            var value = rsp.ResultObject;
+            Assert.IsNotNull(value);
+            Assert.IsTrue(value.Count == 2);
+        }
+
+        [TestMethod]
+        public void TestLimitVenueDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateVenueDao();
+
+            var rsp = dao.Select(_page)
+                .OnFailure(response => Assert.Fail(response.ErrorMessage));
+            var value = rsp.ResultObject;
+            Assert.IsNotNull(value);
+            Assert.IsTrue(value.Count == 2);
+        }
+
+        [TestMethod]
+        public void TestLimitLocationDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateLocationDao();
+
+            var rsp = dao.Select(_page)
+                .OnFailure(response => Assert.Fail(response.ErrorMessage));
+            var value = rsp.ResultObject;
+            Assert.IsNotNull(value);
+            Assert.IsTrue(value.Count == 2);
+        }
+
+        [TestMethod]
+        public void TestLimitCountryDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateCountryDao();
+
+            var rsp = dao.Select(_page)
+                .OnFailure(response => Assert.Fail(response.ErrorMessage));
+            var value = rsp.ResultObject;
+            Assert.IsNotNull(value);
+            Assert.IsTrue(value.Count == 2);
+        }
+
+        [TestMethod]
+        public void TestLimitCategoryDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateCategoryDao();
+
+            var rsp = dao.Select(_page)
+                .OnFailure(response => Assert.Fail(response.ErrorMessage));
+            var value = rsp.ResultObject;
+            Assert.IsNotNull(value);
+            Assert.IsTrue(value.Count == 2);
+        }
+        
+        [TestMethod]
+        public void TestCountDbAccess()
+        {
+            var dao = DalProviderFactories.GetDaoFactory(
+                TestDbDaoAssemblyName,
+                TestDbDaoNameSpace,
+                TestDbDaoClassName).CreateArtistDao();
+
+            var rsp = dao.Count()
+                .OnFailure(response => Assert.Fail(response.ErrorMessage));
+            var value = rsp.ResultObject;
+            Assert.IsNotNull(value);
+            Assert.IsTrue(value > 0);
         }
 
         #endregion

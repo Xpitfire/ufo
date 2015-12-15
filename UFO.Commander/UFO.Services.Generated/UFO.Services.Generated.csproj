@@ -73,6 +73,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Services.AdminAccess\AdminAccessBll.wsdl" />
+    <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.PagingData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.SessionToken.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -90,6 +93,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.Location.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.PagingData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.Performance.datasource">

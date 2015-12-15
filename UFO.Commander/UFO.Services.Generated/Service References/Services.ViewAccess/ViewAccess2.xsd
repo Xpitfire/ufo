@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:4321/ViewAccess?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" />
-  <xs:element name="GetAllUser">
+  <xs:element name="GetUser">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q1:SessionToken" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="page" nillable="true" type="q2:PagingData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllUserResponse">
+  <xs:element name="GetUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetAllUserResult" nillable="true" type="q2:ArrayOfUser" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetUserResult" nillable="true" type="q3:ArrayOfUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestUserPagingData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q4:SessionToken" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestUserPagingDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="RequestUserPagingDataResult" nillable="true" type="q5:PagingData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="IsUserAuthenticated">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q3:SessionToken" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q6:SessionToken" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -32,7 +47,7 @@
   <xs:element name="IsValidAdmin">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q4:SessionToken" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q7:SessionToken" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -46,7 +61,7 @@
   <xs:element name="LoginAdmin">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q5:SessionToken" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q8:SessionToken" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -60,7 +75,7 @@
   <xs:element name="LogoutAdmin">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q6:SessionToken" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q9:SessionToken" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -72,22 +87,22 @@
   <xs:element name="RequestSessionToken">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="user" nillable="true" type="q7:User" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="user" nillable="true" type="q10:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RequestSessionTokenResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="RequestSessionTokenResult" nillable="true" type="q8:SessionToken" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="RequestSessionTokenResult" nillable="true" type="q11:SessionToken" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ModifyArtist">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q9:SessionToken" />
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="artist" nillable="true" type="q10:Artist" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q12:SessionToken" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="artist" nillable="true" type="q13:Artist" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -101,8 +116,8 @@
   <xs:element name="RemoveArtist">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q11:SessionToken" />
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="artist" nillable="true" type="q12:Artist" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q14:SessionToken" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="artist" nillable="true" type="q15:Artist" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -116,8 +131,8 @@
   <xs:element name="ModifyVenue">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q13:SessionToken" />
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="venue" nillable="true" type="q14:Venue" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q16:SessionToken" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="venue" nillable="true" type="q17:Venue" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -131,8 +146,8 @@
   <xs:element name="RemoveVenue">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q15:SessionToken" />
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="venue" nillable="true" type="q16:Venue" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q18:SessionToken" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="venue" nillable="true" type="q19:Venue" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -146,8 +161,8 @@
   <xs:element name="ModifyPerformance">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q17:SessionToken" />
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="performance" nillable="true" type="q18:Performance" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="token" nillable="true" type="q20:SessionToken" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="performance" nillable="true" type="q21:Performance" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -158,15 +173,89 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllArtist">
+  <xs:element name="RequestArtistPagingData">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllArtistResponse">
+  <xs:element name="RequestArtistPagingDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetAllArtistResult" nillable="true" type="q19:ArrayOfArtist" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="RequestArtistPagingDataResult" nillable="true" type="q22:PagingData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestCategoryPagingData">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestCategoryPagingDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="RequestCategoryPagingDataResult" nillable="true" type="q23:PagingData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestCountryPagingData">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestCountryPagingDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="RequestCountryPagingDataResult" nillable="true" type="q24:PagingData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestLocationPagingData">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestLocationPagingDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="RequestLocationPagingDataResult" nillable="true" type="q25:PagingData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestPerformancePagingData">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestPerformancePagingDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="RequestPerformancePagingDataResult" nillable="true" type="q26:PagingData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestVenuePagingData">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RequestVenuePagingDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="RequestVenuePagingDataResult" nillable="true" type="q27:PagingData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetArtist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="page" nillable="true" type="q28:PagingData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetArtistResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetArtistResult" nillable="true" type="q29:ArrayOfArtist" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -180,67 +269,77 @@
   <xs:element name="GetPerformancesPerDateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetPerformancesPerDateResult" nillable="true" type="q20:ArrayOfPerformance" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetPerformancesPerDateResult" nillable="true" type="q30:ArrayOfPerformance" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllCategories">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllCategoriesResponse">
+  <xs:element name="GetCategories">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetAllCategoriesResult" nillable="true" type="q21:ArrayOfCategory" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="page" nillable="true" type="q31:PagingData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllCountries">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllCountriesResponse">
+  <xs:element name="GetCategoriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetAllCountriesResult" nillable="true" type="q22:ArrayOfCountry" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q32:ArrayOfCategory" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllLocations">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllLocationsResponse">
+  <xs:element name="GetCountries">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetAllLocationsResult" nillable="true" type="q23:ArrayOfLocation" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="page" nillable="true" type="q33:PagingData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllVenues">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllVenuesResponse">
+  <xs:element name="GetCountriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetAllVenuesResult" nillable="true" type="q24:ArrayOfVenue" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetCountriesResult" nillable="true" type="q34:ArrayOfCountry" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllPerformances">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllPerformancesResponse">
+  <xs:element name="GetLocations">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetAllPerformancesResult" nillable="true" type="q25:ArrayOfPerformance" />
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="page" nillable="true" type="q35:PagingData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetLocationsResult" nillable="true" type="q36:ArrayOfLocation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVenues">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="page" nillable="true" type="q37:PagingData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVenuesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetVenuesResult" nillable="true" type="q38:ArrayOfVenue" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPerformances">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="page" nillable="true" type="q39:PagingData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPerformancesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" minOccurs="0" name="GetPerformancesResult" nillable="true" type="q40:ArrayOfPerformance" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

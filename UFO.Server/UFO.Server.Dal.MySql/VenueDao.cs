@@ -31,6 +31,9 @@ namespace UFO.Server.Dal.MySql
     {
         private readonly ADbCommProvider _dbCommProvider;
 
+        private const string EntityName = "venue";
+        private const string EntityViewName = "venueview";
+
         public VenueDao(ADbCommProvider dbCommProvider)
         {
             _dbCommProvider = dbCommProvider;
@@ -121,7 +124,7 @@ namespace UFO.Server.Dal.MySql
         {
             var venues = new List<Venue>();
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAllVenues))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAll(EntityViewName)))
             using (var dataReader = _dbCommProvider.ExecuteReader(command))
             {
                 while (dataReader.Read())
@@ -130,6 +133,43 @@ namespace UFO.Server.Dal.MySql
                 }
             }
             return venues.Any() ? DaoResponse.QuerySuccessful(venues) : DaoResponse.QueryEmptyResult<List<Venue>>();
+        }
+
+        [DaoExceptionHandler(typeof(List<Venue>))]
+        public DaoResponse<List<Venue>> Select(PagingData page)
+        {
+            var venues = new List<Venue>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?Offset", new QueryParameter {ParameterValue = page.Offset}},
+                {"?Request", new QueryParameter {ParameterValue = page.Request}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectLimit(EntityViewName), parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    venues.Add(CreateVenueObject(dataReader));
+                }
+            }
+            return venues.Any() ? DaoResponse.QuerySuccessful(venues) : DaoResponse.QueryEmptyResult<List<Venue>>();
+        }
+
+        [DaoExceptionHandler(typeof(long))]
+        public DaoResponse<long> Count()
+        {
+            var size = 0L;
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.Count(EntityName)))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    size = _dbCommProvider.CastDbObject<long>(dataReader, 0);
+                }
+            }
+            return DaoResponse.QuerySuccessful(size);
         }
     }
 }

@@ -22,7 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Security.Authentication;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
@@ -32,6 +31,9 @@ namespace UFO.Server.Dal.MySql
     class UserDao : IUserDao
     {
         private readonly ADbCommProvider _dbCommProvider;
+
+        private const string EntityName = "user";
+        private const string EntityViewName = "userview";
 
         public UserDao(ADbCommProvider dbDbCommProvider)
         {
@@ -59,7 +61,10 @@ namespace UFO.Server.Dal.MySql
                     Name = _dbCommProvider.CastDbObject<string>(dataReader, "ArtistName"),
                     EMail = _dbCommProvider.CastDbObject<string>(dataReader, "ArtistMail"),
                     PromoVideo = _dbCommProvider.CastDbObject<string>(dataReader, "PromoVideo"),
-                    Picture = BlobData.CreateBlobData(_dbCommProvider.CastDbObject<string>(dataReader, "Picture")),
+                    Picture = new BlobData
+                    {
+                        Path = _dbCommProvider.CastDbObject<string>(dataReader, "Picture")
+                    },
                     Country = new Country
                     {
                         Code = _dbCommProvider.CastDbObject<string>(dataReader, "CountryCode"),
@@ -180,7 +185,7 @@ namespace UFO.Server.Dal.MySql
         {
             var users = new List<User>();
             using (var connection = _dbCommProvider.CreateDbConnection())
-            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAllUsers))
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAll(EntityViewName)))
             using (var dataReader = _dbCommProvider.ExecuteReader(command))
             {
                 while (dataReader.Read())
@@ -189,6 +194,43 @@ namespace UFO.Server.Dal.MySql
                 }
             }
             return users.Any() ? DaoResponse.QuerySuccessful(users) : DaoResponse.QueryEmptyResult<List<User>>();
+        }
+
+        [DaoExceptionHandler(typeof(List<User>))]
+        public DaoResponse<List<User>> Select(PagingData page)
+        {
+            var users = new List<User>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?Offset", new QueryParameter {ParameterValue = page.Offset}},
+                {"?Request", new QueryParameter {ParameterValue = page.Request}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectLimit(EntityViewName), parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    users.Add(CreateUserObject(dataReader));
+                }
+            }
+            return users.Any() ? DaoResponse.QuerySuccessful(users) : DaoResponse.QueryEmptyResult<List<User>>();
+        }
+
+        [DaoExceptionHandler(typeof(long))]
+        public DaoResponse<long> Count()
+        {
+            var size = 0L;
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.Count(EntityName)))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    size = _dbCommProvider.CastDbObject<long>(dataReader, 0);
+                }
+            }
+            return DaoResponse.QuerySuccessful(size);
         }
     }
 }

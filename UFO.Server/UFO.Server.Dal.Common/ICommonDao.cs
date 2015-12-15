@@ -23,6 +23,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using UFO.Server.Domain;
 
 namespace UFO.Server.Dal.Common
 {
@@ -35,6 +36,8 @@ namespace UFO.Server.Dal.Common
         DaoResponse<TType> Insert(TType entity);
         DaoResponse<TType> Update(TType entity);
         DaoResponse<TType> Delete(TType entity);
+        DaoResponse<long> Count();
         DaoResponse<List<TType>> SelectAll();
+        DaoResponse<List<TType>> Select(PagingData page);
     }
 }

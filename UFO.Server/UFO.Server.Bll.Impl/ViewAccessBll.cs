@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using UFO.Server.Bll.Common;
+using UFO.Server.Bll.Common.Helper;
 using UFO.Server.Domain;
 using UFO.Server.Dal.Common;
 
@@ -27,34 +28,34 @@ namespace UFO.Server.Bll.Impl
 {
     public class ViewAccessBll : AViewAccessBll
     {
-        public override List<Artist> GetAllArtist()
+        public override List<Artist> GetArtist(PagingData page)
         {
-            return ArtistDao.SelectAll().ResultObject;
+            return PagingHelper.EvaluatePagingResult(page, () => ArtistDao.SelectAll().ResultObject);
         }
         
-        public override List<Category> GetAllCategories()
+        public override List<Category> GetCategories(PagingData page)
         {
-            return CategoryDao.SelectAll().ResultObject;
+            return PagingHelper.EvaluatePagingResult(page, () => CategoryDao.SelectAll().ResultObject);
         }
 
-        public override List<Country> GetAllCountries()
+        public override List<Country> GetCountries(PagingData page)
         {
             return CountryDao.SelectAll().ResultObject;
         }
 
-        public override List<Location> GetAllLocations()
+        public override List<Location> GetLocations(PagingData page)
         {
-            return LocationDao.SelectAll().ResultObject;
+            return PagingHelper.EvaluatePagingResult(page, () => LocationDao.SelectAll().ResultObject);
         }
 
-        public override List<Venue> GetAllVenues()
+        public override List<Venue> GetVenues(PagingData page)
         {
-            return VenueDao.SelectAll().ResultObject;
+            return PagingHelper.EvaluatePagingResult(page, () => VenueDao.SelectAll().ResultObject);
         }
 
-        public override List<Performance> GetAllPerformances()
+        public override List<Performance> GetPerformances(PagingData page)
         {
-            return PerformanceDao.SelectAll().ResultObject;
+            return PagingHelper.EvaluatePagingResult(page, () => PerformanceDao.SelectAll().ResultObject);
         }
 
         public override List<Performance> GetPerformancesPerDate(DateTime date)

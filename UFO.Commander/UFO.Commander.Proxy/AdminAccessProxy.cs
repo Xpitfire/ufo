@@ -27,11 +27,19 @@ namespace UFO.Commander.Proxy
     class AdminAccessProxy : IAdminAccessBll
     {
         private readonly WS.AdminAccessWs _adminAccessWs = new WS.AdminAccessWsClient();
-
-        public List<BLL.User> GetAllUser(BLL.SessionToken token)
+        
+        public List<BLL.User> GetUser(BLL.SessionToken token, BLL.PagingData page)
         {
-            var result = _adminAccessWs.GetAllUser(token.ToWebSeriveObject<WS.SessionToken>());
+            var result = _adminAccessWs.GetUser(
+                token.ToWebSeriveObject<WS.SessionToken>(), 
+                page.ToWebSeriveObject<WS.PagingData>());
             return ProxyHelper.ToListOf<WS.User, BLL.User>(result);
+        }
+
+        public BLL.PagingData RequestUserPagingData(BLL.SessionToken token)
+        {
+            return _adminAccessWs.RequestUserPagingData(
+                token.ToWebSeriveObject<WS.SessionToken>()).ToDomainObject<BLL.PagingData>();
         }
 
         public bool IsUserAuthenticated(BLL.SessionToken token)

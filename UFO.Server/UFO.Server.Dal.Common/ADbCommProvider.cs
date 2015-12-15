@@ -79,6 +79,18 @@ namespace UFO.Server.Dal.Common
         }
 
         /// <summary>
+        /// Cast a read object from the IDataReader to the target generic type.
+        /// </summary>
+        /// <typeparam name="T">Type used for the cast.</typeparam>
+        /// <param name="reader">Database reader.</param>
+        /// <param name="column">Index position of the IDataReader.</param>
+        /// <returns>Cast type or default value of T.</returns>
+        public virtual T CastDbObject<T>(IDataReader reader, int column)
+        {
+            return !Convert.IsDBNull(reader[column]) ? (T)reader[column] : default(T);
+        }
+
+        /// <summary>
         /// Verify if the IDataReader did not contain an specified column. Null value checks.
         /// </summary>
         /// <param name="reader">Database reader.</param>
