@@ -24,5 +24,14 @@
     </Window.Resources>
 
     <Grid DataContext="{StaticResource AccessViewModel}">
+        <TabControl TabStripPlacement="Top">
+            <TabItem Name="PerformanceTabContent" Header="Performances">
+            </TabItem>
+            <TabItem Name="ArtistTabContent" Header="Artists">
+            </TabItem>
+            <TabItem Name="VenueTabContent" Header="Venues">
+            </TabItem>
+        </TabControl>
     </Grid>
+    
 </controls:MetroWindow>

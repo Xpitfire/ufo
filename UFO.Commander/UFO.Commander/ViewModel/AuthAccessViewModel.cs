@@ -18,10 +18,12 @@
 #endregion
 
 using System;
+using System.Reflection;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using PostSharp.Patterns.Model;
+using UFO.Commander.Handler;
 using UFO.Commander.Helper;
 using UFO.Commander.Proxy;
 using UFO.Commander.ViewModel.Entities;
@@ -30,6 +32,7 @@ using UFO.Server.Domain;
 
 namespace UFO.Commander.ViewModel
 {
+    [ViewClassExceptionHandler("Authentication Exception")]
     public class AuthAccessViewModel : ViewModelBase
     {
         private readonly IAdminAccessBll _authAccessBll = BllFactory.CreateAdminAccessBll();
@@ -51,7 +54,8 @@ namespace UFO.Commander.ViewModel
                 }
             }
         }
-        
+
+        [ViewClassExceptionHandler("Login Session Exception")]
         public bool RequestSessionToken(string textBoxUserName, string password)
         {
             var user = new User
@@ -64,6 +68,7 @@ namespace UFO.Commander.ViewModel
             return _authAccessBll.IsValidAdmin(_sessionToken);
         }
 
+        [ViewClassExceptionHandler("Login Exception")]
         public bool Login()
         {
             return IsLoggedIn = _authAccessBll.LoginAdmin(_sessionToken);

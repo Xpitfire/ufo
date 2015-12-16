@@ -62,7 +62,10 @@ namespace UFO.Server.Bll.Common
         
         public virtual SessionToken RequestSessionToken(User user)
         {
-            return GetSession().RequestSessionId(UserDao.SelectByEmail(user.EMail).ResultObject);
+            SessionToken token = null;
+            UserDao.SelectByEmail(user.EMail)
+                .OnSuccess(u => token = GetSession().RequestSessionId(u));
+            return token;
         }
 
         public virtual TResult EvaluateSessionPagingResult<TResult>(SessionToken token, PagingData page, Func<TResult> function)

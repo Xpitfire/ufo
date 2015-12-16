@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using UFO.Commander.ViewModel;
@@ -11,12 +12,17 @@ namespace UFO.Commander
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        private readonly CustomDialog _customDialog;
-        private readonly CustomLoginDialog _loginDialog;
+        private CustomDialog _customDialog;
+        private CustomLoginDialog _loginDialog;
 
         public MainWindow()
         {
             InitializeComponent();
+            PresentLoginScreen();
+        }
+
+        private void PresentLoginScreen()
+        {
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
             _customDialog = new CustomDialog
             {
@@ -28,11 +34,12 @@ namespace UFO.Commander
             _customDialog.Content = _loginDialog;
 
             var authViewModel = (AuthAccessViewModel)this.DataContext;
-            var mainWindow = this;
-            authViewModel.LogoutEvent += (sender, args) =>
-            {
-                mainWindow.ShowMetroDialogAsync(_customDialog);
-            };
+            authViewModel.LogoutEvent += LogoutEvent;
+        }
+
+        private async void LogoutEvent(object sender, EventArgs e)
+        {
+            await this.ShowMetroDialogAsync(_customDialog);
         }
         
         private async void LoginEvent(object sender, RoutedEventArgs e)

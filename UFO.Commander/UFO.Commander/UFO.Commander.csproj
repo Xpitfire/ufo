@@ -100,6 +100,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Handler\ViewClassExceptionHandlerAttribute.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\AuthAccessViewModel.cs" />
     <Compile Include="Helper\Crypto.cs" />
