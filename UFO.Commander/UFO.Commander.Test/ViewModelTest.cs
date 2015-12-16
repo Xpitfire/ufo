@@ -12,7 +12,7 @@ namespace UFO.Commander.Test
     public class ViewModelTest
     {
         private static readonly IAdminAccessBll AdminAccessBll = BllFactory.CreateAdminAccessBll();
-        private static readonly AuthAccessViewModel AuthAccessViewModel = new AuthAccessViewModel();
+        private static readonly LoginViewModel AuthAccessViewModel = new LoginViewModel();
         private static readonly string EMail = "marius.dinu@mymail.com";
         private static readonly string Password = "password";
         

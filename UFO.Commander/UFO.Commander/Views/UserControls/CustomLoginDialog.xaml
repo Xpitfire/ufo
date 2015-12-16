@@ -6,10 +6,16 @@
              xmlns:local="clr-namespace:UFO.Commander.Views.UserControls"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+             xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="150"
              d:DesignWidth="300">
-    <Grid>
+
+    <UserControl.Resources>
+        <viewModel:LoginViewModel x:Key="LoginViewModel"/>
+    </UserControl.Resources>
+
+    <Grid DataContext="{StaticResource LoginViewModel}">
         <Grid.RowDefinitions >
             <RowDefinition Height="Auto" />
             <RowDefinition Height="15*" />

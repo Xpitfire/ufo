@@ -21,7 +21,7 @@ using GalaSoft.MvvmLight;
 
 namespace UFO.Commander.ViewModel
 {
-    class ViewAccessViewModel : ViewModelBase
+    public class ViewAccessViewModel : ViewModelBase
     {
     }
 }

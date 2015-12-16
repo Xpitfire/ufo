@@ -9,12 +9,12 @@ namespace UFO.Commander.Handler
 {
     [Serializable]
     [MulticastAttributeUsage(MulticastTargets.Method | MulticastTargets.InstanceConstructor, AllowMultiple = false)]
-    public class ViewClassExceptionHandlerAttribute : OnExceptionAspect
+    public class ViewExceptionHandlerAttribute : OnExceptionAspect
     {
         protected string Title;
         protected string Message;
 
-        public ViewClassExceptionHandlerAttribute(string title = "", string message = "")
+        public ViewExceptionHandlerAttribute(string title = "", string message = "")
         {
             this.Title = title;
             this.Message = message;

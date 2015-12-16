@@ -1,37 +1,17 @@
 ﻿<controls:MetroWindow x:Class="UFO.Commander.MainWindow"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                      xmlns:local="clr-namespace:UFO.Commander"
-                      xmlns:ucviews="clr-namespace:UFO.Commander.Views.UserControls"
                       xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-                      xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
-                      xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel"
-                      Title="UFO Commander"
                       Style="{DynamicResource CustomMetroWindowStyle}"
+                      Height="720" Width="1200"
                       WindowCloseButtonStyle="{DynamicResource WindowButtonStyle}"
                       WindowMaxButtonStyle="{DynamicResource WindowButtonStyle}"
                       WindowMinButtonStyle="{DynamicResource WindowButtonStyle}"
-                      Loaded="LoginEvent"
-                      Height="720" 
-                      Width="1200">
-    <Window.DataContext>
-        <viewModel:AuthAccessViewModel/>
-    </Window.DataContext>
-    <Window.Resources>
-        <viewModel:AuthAccessViewModel x:Key="AccessViewModel"/>
-    </Window.Resources>
+                      DataContext="{Binding Path=MainViewModel, Source={StaticResource ViewModelLocator}}"
+                      Title="{Binding Path=CurrentContent}">
 
-    <Grid DataContext="{StaticResource AccessViewModel}">
-        <TabControl TabStripPlacement="Top">
-            <TabItem Name="PerformanceTabContent" Header="Performances">
-            </TabItem>
-            <TabItem Name="ArtistTabContent" Header="Artists">
-            </TabItem>
-            <TabItem Name="VenueTabContent" Header="Venues">
-            </TabItem>
-        </TabControl>
+    <Grid>
+        <ContentPresenter Content="{Binding Path=CurrentContent}" />
     </Grid>
     
 </controls:MetroWindow>

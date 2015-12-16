@@ -1,4 +1,8 @@
+using System.ComponentModel;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
+using PostSharp.Patterns.Model;
+using UFO.Commander.Messages;
 
 namespace UFO.Commander.ViewModel
 {
@@ -7,16 +11,28 @@ namespace UFO.Commander.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        private ViewModelBase _currentViewModel;
-        public ViewModelBase CurrentViewModel
+        private ViewModelBase _currentContent;
+        public ViewModelBase CurrentContent
         {
-            get { return _currentViewModel; }
-            set { Set(ref _currentViewModel, value); }
+            get { return _currentContent; }
+            set
+            {
+                Set(ref _currentContent, value);
+                if (_currentContent == null)
+                {
+                    // TODO: Send logout msg
+                }
+            }
         }
 
         public MainViewModel()
         {
+            Messenger.Default.Register<ShowMainContentMessage>(this, msg => CurrentContent = msg.ViewModel);
+        }
 
+        public override string ToString()
+        {
+            return "UFO Commander";
         }
     }
 }

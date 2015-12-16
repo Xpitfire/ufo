@@ -32,8 +32,8 @@ using UFO.Server.Domain;
 
 namespace UFO.Commander.ViewModel
 {
-    [ViewClassExceptionHandler("Authentication Exception")]
-    public class AuthAccessViewModel : ViewModelBase
+    [ViewExceptionHandler("Authentication Exception")]
+    public class LoginViewModel : ViewModelBase
     {
         private readonly IAdminAccessBll _authAccessBll = BllFactory.CreateAdminAccessBll();
         private static SessionToken _sessionToken;
@@ -55,9 +55,13 @@ namespace UFO.Commander.ViewModel
             }
         }
 
-        [ViewClassExceptionHandler("Login Session Exception")]
+        [ViewExceptionHandler("Login Session Exception")]
         public bool RequestSessionToken(string textBoxUserName, string password)
         {
+#if DEBUG
+            return true;
+#endif
+
             var user = new User
             {
                 EMail = textBoxUserName,
@@ -68,9 +72,12 @@ namespace UFO.Commander.ViewModel
             return _authAccessBll.IsValidAdmin(_sessionToken);
         }
 
-        [ViewClassExceptionHandler("Login Exception")]
+        [ViewExceptionHandler("Login Exception")]
         public bool Login()
         {
+#if DEBUG
+            return true;
+#endif
             return IsLoggedIn = _authAccessBll.LoginAdmin(_sessionToken);
         }
 

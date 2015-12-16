@@ -28,9 +28,10 @@ namespace UFO.Server.Bll.Impl
 {
     public class ViewAccessBll : AViewAccessBll
     {
+        // TODO: paging for all view objects
         public override List<Artist> GetArtist(PagingData page)
         {
-            return PagingHelper.EvaluatePagingResult(page, () => ArtistDao.SelectAll().ResultObject);
+            return PagingHelper.EvaluatePagingResult(page, () => ArtistDao.Select(page).ResultObject);
         }
         
         public override List<Category> GetCategories(PagingData page)

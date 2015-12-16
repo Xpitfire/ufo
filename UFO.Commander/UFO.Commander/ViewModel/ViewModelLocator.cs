@@ -12,7 +12,6 @@
   See http://www.galasoft.ch/mvvm
 */
 
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 
@@ -27,25 +26,28 @@ namespace UFO.Commander.ViewModel
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
-
+            
             SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<AuthAccessViewModel>();
+            SimpleIoc.Default.Register<LoginViewModel>();
+            SimpleIoc.Default.Register<ViewAccessViewModel>();
+            SimpleIoc.Default.Register<TabControlViewModel>();
+            SimpleIoc.Default.Register<ArtistListViewModel>();
+            SimpleIoc.Default.Register<ArtistDialogViewModel>();
         }
 
-        public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+        public static MainViewModel MainViewModel => ServiceLocator.Current.GetInstance<MainViewModel>();
 
-        public AuthAccessViewModel AuthAccess => ServiceLocator.Current.GetInstance<AuthAccessViewModel>();
+        public static LoginViewModel LoginViewModel => ServiceLocator.Current.GetInstance<LoginViewModel>();
+
+        public static ViewAccessViewModel ViewAccessViewModel => ServiceLocator.Current.GetInstance<ViewAccessViewModel>();
+
+        public static ArtistListViewModel ArtistListViewModel => ServiceLocator.Current.GetInstance<ArtistListViewModel>();
+
+        public static ArtistDialogViewModel ArtistDialogViewModel
+            => ServiceLocator.Current.GetInstance<ArtistDialogViewModel>();
+
+        public static TabControlViewModel TabControlViewModel
+            => ServiceLocator.Current.GetInstance<TabControlViewModel>();
 
         public static void Cleanup()
         {
