@@ -14,14 +14,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls.Dialogs;
 
-namespace UFO.Commander.Views.UserControls
+namespace UFO.Commander.Views.Dialogs
 {
     /// <summary>
     /// Interaction logic for ExceptionDialog.xaml
     /// </summary>
-    public partial class ExceptionControl : UserControl
+    public partial class ExceptionDialog : BaseMetroDialog
     {
-        public ExceptionControl()
+        public ExceptionDialog()
         {
             InitializeComponent();
         }

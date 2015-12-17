@@ -16,7 +16,7 @@
     <DataTemplate DataType="{x:Type vm:LoginViewModel}">
         <dialogs:CustomLoginDialog />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vm:ExceptionViewModel}">
-        <uc:ExceptionControl />
+    <DataTemplate DataType="{x:Type vm:ExceptionDialogViewModel}">
+        <dialogs:ExceptionDialog />
     </DataTemplate>
 </ResourceDictionary>

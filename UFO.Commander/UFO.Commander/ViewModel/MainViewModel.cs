@@ -5,6 +5,8 @@ using GalaSoft.MvvmLight.Messaging;
 using PostSharp.Patterns.Model;
 using UFO.Commander.Messages;
 using UFO.Commander.Views;
+using UFO.Commander.Views.Dialogs;
+using UFO.Commander.Views.UserControls;
 
 namespace UFO.Commander.ViewModel
 {
@@ -26,12 +28,16 @@ namespace UFO.Commander.ViewModel
                 }
             }
         }
-
+        
         public MainViewModel()
         {
+            RegisterUserControls();
+        }
+
+        private void RegisterUserControls()
+        {
             Messenger.Default.Register<ShowContentMessage<TabContentView>>(this, msg => CurrentContent = msg.ViewModel);
-            Messenger.Default.Register<ShowContentMessage<UserControl>>(
-                ViewModelLocator.ExceptionViewModel, msg => CurrentContent = msg.ViewModel);
+            Messenger.Default.Register<ShowContentMessage<ArtistList>>(this, msg => CurrentContent = msg.ViewModel);
         }
 
         public override string ToString()

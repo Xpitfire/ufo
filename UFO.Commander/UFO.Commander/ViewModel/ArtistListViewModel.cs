@@ -39,7 +39,7 @@ namespace UFO.Commander.ViewModel
 
         public ArtistListViewModel()
         {
-            //Page = _viewAccessBll.RequestArtistPagingData();
+            Page = _viewAccessBll.RequestArtistPagingData();
             EditArtistCommand = new RelayCommand<ArtistViewModel>(a =>
             {
                 var artistVm = ViewModelLocator.ArtistDialogViewModel;

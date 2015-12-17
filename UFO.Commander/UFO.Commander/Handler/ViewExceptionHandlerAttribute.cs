@@ -7,6 +7,7 @@ using PostSharp.Extensibility;
 using PostSharp.Patterns.Diagnostics;
 using UFO.Commander.Messages;
 using UFO.Commander.ViewModel;
+using UFO.Commander.Views.Dialogs;
 using UFO.Commander.Views.UserControls;
 
 namespace UFO.Commander.Handler
@@ -28,11 +29,11 @@ namespace UFO.Commander.Handler
         public override void OnException(MethodExecutionArgs args)
         {
             args.FlowBehavior = FlowBehavior.Continue;
-            var viewModel = ViewModelLocator.ExceptionViewModel;
+            var viewModel = ViewModelLocator.ExceptionDialogViewModel;
             viewModel.Exception = args.Exception;
             viewModel.Title = Title;
             viewModel.Message = Message;
-            Messenger.Default.Send(new ShowContentMessage<ExceptionControl>(viewModel));
+            Messenger.Default.Send(new ShowDialogMessage<ExceptionDialog>(viewModel));
         }
         
     }

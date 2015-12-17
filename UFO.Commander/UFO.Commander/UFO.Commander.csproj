@@ -110,7 +110,7 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\ArtistDialogViewModel.cs" />
     <Compile Include="ViewModel\ArtistListViewModel.cs" />
-    <Compile Include="ViewModel\ExceptionViewModel.cs" />
+    <Compile Include="ViewModel\ExceptionDialogViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="Helper\Crypto.cs" />
     <Compile Include="ViewModel\Entities\ArtistViewModel.cs" />
@@ -134,8 +134,8 @@
     <Compile Include="Views\Dialogs\CustomLoginDialog.xaml.cs">
       <DependentUpon>CustomLoginDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\ExceptionControl.xaml.cs">
-      <DependentUpon>ExceptionControl.xaml</DependentUpon>
+    <Compile Include="Views\Dialogs\ExceptionDialog.xaml.cs">
+      <DependentUpon>ExceptionDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TabContentView.xaml.cs">
       <DependentUpon>TabContentView.xaml</DependentUpon>
@@ -171,7 +171,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\UserControls\ExceptionControl.xaml">
+    <Page Include="Views\Dialogs\ExceptionDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
