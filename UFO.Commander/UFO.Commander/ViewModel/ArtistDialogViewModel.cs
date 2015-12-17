@@ -12,7 +12,7 @@ using UFO.Commander.ViewModel.Entities;
 
 namespace UFO.Commander.ViewModel
 {
-    [ViewExceptionHandler("Artist Request Exception")]
+    [ViewExceptionHandler("User Request Exception")]
     public class ArtistDialogViewModel : ViewModelBase
     {
         public ArtistDialogViewModel()

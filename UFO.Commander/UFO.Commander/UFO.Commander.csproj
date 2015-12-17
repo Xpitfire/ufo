@@ -123,6 +123,7 @@
     <Compile Include="ViewModel\TabControlViewModel.cs" />
     <Compile Include="ViewModel\ViewAccessViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelCommon.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Messages\LoginDialogMessage.cs" />
     <Compile Include="Views\Dialogs\ArtistDialog.xaml.cs">

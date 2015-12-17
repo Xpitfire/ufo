@@ -8,42 +8,49 @@ using UFO.Commander.Views.Dialogs;
 
 namespace UFO.Commander.Messages
 {
-    class LoginDialogMessage : MessageBase
+    public class LoginDialogMessage : ShowDialogMessage
     {
         private readonly MetroWindow _window;
-        private readonly CustomDialog _customDialog;
-        private readonly CustomLoginDialog _loginDialog;
+        private readonly BaseMetroDialog _dialog;
 
-        public LoginDialogMessage(MetroWindow window)
+        public LoginDialogMessage(MetroWindow window, BaseMetroDialog dialog) : base(ViewModelLocator.LoginViewModel)
         {
             this._window = window;
-            window.MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
-            _customDialog = new CustomDialog
-            {
-                Title = "Pleas enter your user credentials ..."
-            };
-            _loginDialog = new CustomLoginDialog();
-            _loginDialog.ButtonCancel.Click += ButtonCancelOnClick;
-            _loginDialog.ButtonLogin.Click += ButtonLoginOnClick;
-            _customDialog.Content = _loginDialog;
+            this._dialog = dialog;
+            //window.MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
+            //_customDialog = new CustomDialog
+            //{
+            //    Title = "Pleas enter your user credentials ..."
+            //};
+            var customDialog = new CustomLoginDialog();
+            customDialog.ButtonCancel.Click += ButtonCancelOnClick;
+            customDialog.ButtonLogin.Click += ButtonLoginOnClick;
+            CustomDialog = customDialog;
+            Title = "Login";
 
-            var loginViewModel = ViewModelLocator.LoginViewModel;
-            loginViewModel.LogoutEvent += (sender, args) => _window.ShowMetroDialogAsync(_customDialog);
+            //var loginViewModel = ViewModelLocator.LoginViewModel;
+            //loginViewModel.LogoutEvent += (sender, args) => _window.ShowMetroDialogAsync(_customDialog);
         }
 
-        private void ButtonLoginOnClick(object sender, RoutedEventArgs e)
+        private async void ButtonLoginOnClick(object sender, RoutedEventArgs e)
         {
             var viewModel = ViewModelLocator.LoginViewModel;
+            var userDialog = CustomDialog as CustomLoginDialog;
 
-            if (viewModel.RequestSessionToken(_loginDialog.TextBoxUserName.Text, _loginDialog.PasswordBox.Password))
+            var result = await Task.Run(() => viewModel.RequestSessionToken(userDialog.TextBoxUserName.Text, userDialog.PasswordBox.Password));
+
+            if (result)
             {
                 viewModel.Login();
-                _window.HideMetroDialogAsync(_customDialog);
+                lock (MainWindow.CurrentDialog)
+                {
+                    _window.HideMetroDialogAsync(_dialog).RunSynchronously();
+                }
                 Messenger.Default.Send(new ShowMainContentMessage(ViewModelLocator.TabControlViewModel));
             }
             else
             {
-                _loginDialog.InvalidLogin.Visibility = Visibility.Visible;
+                userDialog.InvalidLogin.Visibility = Visibility.Visible;
             }
         }
 
@@ -51,10 +58,6 @@ namespace UFO.Commander.Messages
         {
             _window.Close();
         }
-
-        public Task ShowDialog()
-        {
-            return _window.ShowMetroDialogAsync(_customDialog);
-        }
+        
     }
 }

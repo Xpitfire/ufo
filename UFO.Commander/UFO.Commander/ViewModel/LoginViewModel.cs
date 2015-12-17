@@ -58,7 +58,7 @@ namespace UFO.Commander.ViewModel
         [ViewExceptionHandler("Login Session Exception")]
         public bool RequestSessionToken(string textBoxUserName, string password)
         {
-#if DEBUG
+#if !DEBUG
             return true;
 #endif
 
@@ -75,7 +75,7 @@ namespace UFO.Commander.ViewModel
         [ViewExceptionHandler("Login Exception")]
         public bool Login()
         {
-#if DEBUG
+#if !DEBUG
             return true;
 #endif
             return IsLoggedIn = _authAccessBll.LoginAdmin(_sessionToken);

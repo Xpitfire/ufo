@@ -27,7 +27,11 @@ namespace UFO.Commander.Handler
         public override void OnException(MethodExecutionArgs args)
         {
             args.FlowBehavior = FlowBehavior.Continue;
-            Messenger.Default.Send(new ExceptionDialogMessage(ViewModelLocator.ExceptionDialogViewModel));
+            var viewModel = ViewModelLocator.ExceptionDialogViewModel;
+            viewModel.Exception = args.Exception;
+            viewModel.Title = Title;
+            viewModel.Message = Message;
+            Messenger.Default.Send(new ExceptionDialogMessage(viewModel));
         }
         
     }

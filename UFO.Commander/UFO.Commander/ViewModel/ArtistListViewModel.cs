@@ -17,7 +17,7 @@ using UFO.Server.Domain;
 
 namespace UFO.Commander.ViewModel
 {
-    [ViewExceptionHandler("Artist Request Exception")]
+    [ViewExceptionHandler("User Request Exception")]
     public class ArtistListViewModel : ViewModelBase
     {
         private ObservableCollection<ArtistViewModel> _artists = new ObservableCollection<ArtistViewModel>();
@@ -38,7 +38,7 @@ namespace UFO.Commander.ViewModel
 
         public ArtistListViewModel()
         {
-            Page = _viewAccessBll.RequestArtistPagingData();
+            //Page = _viewAccessBll.RequestArtistPagingData();
             EditArtistCommand = new RelayCommand<ArtistViewModel>(a =>
             {
                 var artistVm = ViewModelLocator.ArtistDialogViewModel;

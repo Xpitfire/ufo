@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
+using UFO.Commander.ViewModel;
+using UFO.Commander.Views.Dialogs;
 
 namespace UFO.Commander.Messages
 {
@@ -11,6 +13,8 @@ namespace UFO.Commander.Messages
     {
         public ExceptionDialogMessage(ViewModelBase viewModel) : base(viewModel)
         {
+            CustomDialog = new ExceptionDialog();
+            Title = "Failed to perform operation ...";
         }
     }
 }

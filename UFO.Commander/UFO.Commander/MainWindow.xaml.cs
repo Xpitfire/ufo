@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using GalaSoft.MvvmLight.Messaging;
 using MahApps.Metro.Controls;
@@ -14,39 +15,40 @@ namespace UFO.Commander
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        private CustomDialog _currentDialog;
+        public static readonly CustomDialog CurrentDialog = new CustomDialog();
 
         public MainWindow()
         {
             InitializeComponent();
-            Messenger.Default.Register<ExceptionDialogMessage>(ViewModelLocator.ExceptionDialogViewModel, ShowDialg);
-            Messenger.Default.Register<LoginDialogMessage>(this, dialog => dialog.ShowDialog());
-            Messenger.Default.Register<ShowDialogMessage>(this, ShowDialg);
+            Messenger.Default.Register<ExceptionDialogMessage>(this, ShowDialog);
+            Messenger.Default.Register<LoginDialogMessage>(this, ShowDialog);
+            Messenger.Default.Register<ShowDialogMessage>(this, ShowDialog);
             Messenger.Default.Register<HideDialogMessage>(this, HideDialog);
-
-            this.Loaded += (s, e) => new LoginDialogMessage(this).ShowDialog();
+            
+            this.Loaded += (s, e) => Messenger.Default.Send(new LoginDialogMessage(this, CurrentDialog));
         }
         
         private void HideDialog(HideDialogMessage obj)
         {
-            if (_currentDialog != null)
+            lock (CurrentDialog)
             {
-                this.HideMetroDialogAsync(_currentDialog);
+                if (CurrentDialog.IsVisible)
+                {
+                    this.HideMetroDialogAsync(CurrentDialog).GetAwaiter();
+                }
             }
         }
 
-        private void ShowDialg(ShowDialogMessage dialogMsg)
+        private void ShowDialog(ShowDialogMessage dialogMsg)
         {
-            if (_currentDialog != null)
-                this.HideMetroDialogAsync(_currentDialog);
-
-            _currentDialog = new CustomDialog
+            lock (CurrentDialog)
             {
-                Title = "Pleas enter your user credentials ...",
-                Content = dialogMsg.ViewModel
-            };
-            MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
-            this.ShowMetroDialogAsync(_currentDialog);
+                HideDialog(null);
+                MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
+                CurrentDialog.Title = "Info";
+                CurrentDialog.Content = dialogMsg.CustomDialog;
+                this.ShowMetroDialogAsync(CurrentDialog);
+            }
         }
     }
 

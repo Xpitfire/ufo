@@ -20,6 +20,14 @@ namespace UFO.Commander.ViewModel
             });
         }
 
+        private ExceptionDialogViewModel _exceptionViewModel;
+
+        public ExceptionDialogViewModel ExceptionViewModel
+        {
+            get { return _exceptionViewModel; }
+            set { Set(ref _exceptionViewModel, value); }
+        }
+
         public RelayCommand ConfirmCommand { get; set; }
 
         public Exception Exception { get; set; }
