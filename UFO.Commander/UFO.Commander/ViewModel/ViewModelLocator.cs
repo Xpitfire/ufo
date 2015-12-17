@@ -33,21 +33,29 @@ namespace UFO.Commander.ViewModel
             SimpleIoc.Default.Register<TabControlViewModel>();
             SimpleIoc.Default.Register<ArtistListViewModel>();
             SimpleIoc.Default.Register<ArtistDialogViewModel>();
+            SimpleIoc.Default.Register<ExceptionDialogViewModel>();
         }
 
-        public static MainViewModel MainViewModel => ServiceLocator.Current.GetInstance<MainViewModel>();
+        public static MainViewModel MainViewModel 
+            => ServiceLocator.Current.GetInstance<MainViewModel>();
 
-        public static LoginViewModel LoginViewModel => ServiceLocator.Current.GetInstance<LoginViewModel>();
+        public static LoginViewModel LoginViewModel 
+            => ServiceLocator.Current.GetInstance<LoginViewModel>();
 
-        public static ViewAccessViewModel ViewAccessViewModel => ServiceLocator.Current.GetInstance<ViewAccessViewModel>();
+        public static ViewAccessViewModel ViewAccessViewModel 
+            => ServiceLocator.Current.GetInstance<ViewAccessViewModel>();
 
-        public static ArtistListViewModel ArtistListViewModel => ServiceLocator.Current.GetInstance<ArtistListViewModel>();
+        public static ArtistListViewModel ArtistListViewModel 
+            => ServiceLocator.Current.GetInstance<ArtistListViewModel>();
 
         public static ArtistDialogViewModel ArtistDialogViewModel
             => ServiceLocator.Current.GetInstance<ArtistDialogViewModel>();
 
         public static TabControlViewModel TabControlViewModel
             => ServiceLocator.Current.GetInstance<TabControlViewModel>();
+
+        public static ExceptionDialogViewModel ExceptionDialogViewModel
+            => ServiceLocator.Current.GetInstance<ExceptionDialogViewModel>();
 
         public static void Cleanup()
         {

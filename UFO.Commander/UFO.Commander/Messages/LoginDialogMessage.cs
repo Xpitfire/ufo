@@ -4,7 +4,7 @@ using GalaSoft.MvvmLight.Messaging;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using UFO.Commander.ViewModel;
-using UFO.Commander.Views.UserControls;
+using UFO.Commander.Views.Dialogs;
 
 namespace UFO.Commander.Messages
 {

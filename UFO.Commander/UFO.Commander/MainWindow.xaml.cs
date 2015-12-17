@@ -14,35 +14,39 @@ namespace UFO.Commander
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        private CustomDialog currentDialog;
+        private CustomDialog _currentDialog;
 
         public MainWindow()
         {
             InitializeComponent();
-            Messenger.Default.Register<LoginDialogMessage>(new LoginDialogMessage(this), dialog => dialog.ShowDialog());
-            this.Loaded += (s, e) => new LoginDialogMessage(this).ShowDialog();
+            Messenger.Default.Register<ExceptionDialogMessage>(ViewModelLocator.ExceptionDialogViewModel, ShowDialg);
+            Messenger.Default.Register<LoginDialogMessage>(this, dialog => dialog.ShowDialog());
             Messenger.Default.Register<ShowDialogMessage>(this, ShowDialg);
             Messenger.Default.Register<HideDialogMessage>(this, HideDialog);
-        }
 
+            this.Loaded += (s, e) => new LoginDialogMessage(this).ShowDialog();
+        }
+        
         private void HideDialog(HideDialogMessage obj)
         {
-            if (currentDialog != null)
+            if (_currentDialog != null)
             {
-                this.HideMetroDialogAsync(currentDialog);
+                this.HideMetroDialogAsync(_currentDialog);
             }
         }
 
         private void ShowDialg(ShowDialogMessage dialogMsg)
         {
-            currentDialog = new CustomDialog
+            if (_currentDialog != null)
+                this.HideMetroDialogAsync(_currentDialog);
+
+            _currentDialog = new CustomDialog
             {
-                Title = "Pleas enter your user credentials ..."
+                Title = "Pleas enter your user credentials ...",
+                Content = dialogMsg.ViewModel
             };
-
-            currentDialog.Content = dialogMsg.ViewModel;
-
-            this.ShowMetroDialogAsync(currentDialog);
+            MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
+            this.ShowMetroDialogAsync(_currentDialog);
         }
     }
 

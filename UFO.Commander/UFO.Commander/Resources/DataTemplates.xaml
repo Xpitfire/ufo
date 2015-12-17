@@ -3,8 +3,7 @@
                     xmlns:vm="clr-namespace:UFO.Commander.ViewModel"
                     xmlns:v="clr-namespace:UFO.Commander.Views"
                     xmlns:uc="clr-namespace:UFO.Commander.Views.UserControls"
-                    xmlns:dialogs="clr-namespace:UFO.Commander.Views.Dialogs"
-                    xmlns:local="clr-namespace:UFO.Commander.Resources">
+                    xmlns:dialogs="clr-namespace:UFO.Commander.Views.Dialogs">
     <DataTemplate DataType="{x:Type vm:TabControlViewModel}">
         <v:TabContentView/>
     </DataTemplate>
@@ -13,5 +12,11 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type vm:ArtistDialogViewModel}">
         <dialogs:ArtistDialog/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+        <dialogs:CustomLoginDialog />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ExceptionDialogViewModel}">
+        <dialogs:ExceptionDialog />
     </DataTemplate>
 </ResourceDictionary>

@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using UFO.Commander.Handler;
 using UFO.Commander.Messages;
 using UFO.Commander.ViewModel.Entities;
 
 namespace UFO.Commander.ViewModel
 {
+    [ViewExceptionHandler("Artist Request Exception")]
     public class ArtistDialogViewModel : ViewModelBase
     {
         public ArtistDialogViewModel()

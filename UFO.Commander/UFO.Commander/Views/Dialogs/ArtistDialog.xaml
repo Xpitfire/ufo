@@ -5,8 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:UFO.Commander.ViewModel"
              d:DataContext="{d:DesignInstance Type=vm:ArtistDialogViewModel, IsDesignTimeCreatable=True}"
-             
-             xmlns:local="clr-namespace:UFO.Commander.Views.Dialogs"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>

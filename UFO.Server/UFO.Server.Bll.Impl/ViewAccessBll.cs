@@ -28,7 +28,6 @@ namespace UFO.Server.Bll.Impl
 {
     public class ViewAccessBll : AViewAccessBll
     {
-        // TODO: paging for all view objects
         public override List<Artist> GetArtist(PagingData page)
         {
             return PagingHelper.EvaluatePagingResult(page, () => ArtistDao.Select(page).ResultObject);
@@ -36,27 +35,27 @@ namespace UFO.Server.Bll.Impl
         
         public override List<Category> GetCategories(PagingData page)
         {
-            return PagingHelper.EvaluatePagingResult(page, () => CategoryDao.SelectAll().ResultObject);
+            return PagingHelper.EvaluatePagingResult(page, () => CategoryDao.Select(page).ResultObject);
         }
 
         public override List<Country> GetCountries(PagingData page)
         {
-            return CountryDao.SelectAll().ResultObject;
+            return CountryDao.Select(page).ResultObject;
         }
 
         public override List<Location> GetLocations(PagingData page)
         {
-            return PagingHelper.EvaluatePagingResult(page, () => LocationDao.SelectAll().ResultObject);
+            return PagingHelper.EvaluatePagingResult(page, () => LocationDao.Select(page).ResultObject);
         }
 
         public override List<Venue> GetVenues(PagingData page)
         {
-            return PagingHelper.EvaluatePagingResult(page, () => VenueDao.SelectAll().ResultObject);
+            return PagingHelper.EvaluatePagingResult(page, () => VenueDao.Select(page).ResultObject);
         }
 
         public override List<Performance> GetPerformances(PagingData page)
         {
-            return PagingHelper.EvaluatePagingResult(page, () => PerformanceDao.SelectAll().ResultObject);
+            return PagingHelper.EvaluatePagingResult(page, () => PerformanceDao.Select(page).ResultObject);
         }
 
         public override List<Performance> GetPerformancesPerDate(DateTime date)

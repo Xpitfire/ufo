@@ -101,12 +101,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Handler\ViewExceptionHandlerAttribute.cs" />
+    <Compile Include="Messages\ExceptionDialogMessage.cs" />
     <Compile Include="Messages\HideDialogMessage.cs" />
     <Compile Include="Messages\ShowDialogMessage.cs" />
     <Compile Include="Messages\ShowMainContentMessage.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\ArtistDialogViewModel.cs" />
     <Compile Include="ViewModel\ArtistListViewModel.cs" />
+    <Compile Include="ViewModel\ExceptionDialogViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="Helper\Crypto.cs" />
     <Compile Include="ViewModel\Entities\ArtistViewModel.cs" />
@@ -115,7 +117,6 @@
     <Compile Include="ViewModel\Entities\CountryViewModel.cs" />
     <Compile Include="ViewModel\Entities\LocationViewModel.cs" />
     <Compile Include="ViewModel\Entities\PerformanceViewModel.cs" />
-    <Compile Include="ViewModel\Entities\UserCollectionViewModel.cs" />
     <Compile Include="ViewModel\Entities\UserViewModel.cs" />
     <Compile Include="ViewModel\Entities\VenueViewModel.cs" />
     <Compile Include="Helper\ViewModelExtensions.cs" />
@@ -127,13 +128,16 @@
     <Compile Include="Views\Dialogs\ArtistDialog.xaml.cs">
       <DependentUpon>ArtistDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\ExceptionDialog.xaml.cs">
+      <DependentUpon>ExceptionDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TabContentView.xaml.cs">
       <DependentUpon>TabContentView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\ArtistList.xaml.cs">
       <DependentUpon>ArtistList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\CustomLoginDialog.xaml.cs">
+    <Compile Include="Views\Dialogs\CustomLoginDialog.xaml.cs">
       <DependentUpon>CustomLoginDialog.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -160,6 +164,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Dialogs\ExceptionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TabContentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,7 +176,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UserControls\CustomLoginDialog.xaml">
+    <Page Include="Views\Dialogs\CustomLoginDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
