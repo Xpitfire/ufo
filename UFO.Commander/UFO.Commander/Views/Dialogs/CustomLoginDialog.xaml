@@ -1,19 +1,22 @@
-﻿<UserControl x:Class="UFO.Commander.Views.Dialogs.CustomLoginDialog"
+﻿<dialogs:BaseMetroDialog x:Class="UFO.Commander.Views.Dialogs.CustomLoginDialog"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:UFO.Commander.Views.UserControls"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
              xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel"
-             mc:Ignorable="d" 
+             xmlns:commander="clr-namespace:UFO.Commander"
+             xmlns:views="clr-namespace:UFO.Commander.Views"
+             xmlns:helper="clr-namespace:UFO.Commander.Helper"
+             xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+             mc:Ignorable="d"
              d:DesignHeight="150"
              d:DesignWidth="300">
 
-    <UserControl.Resources>
+    <dialogs:BaseMetroDialog.Resources>
         <viewModel:LoginViewModel x:Key="LoginViewModel"/>
-    </UserControl.Resources>
+    </dialogs:BaseMetroDialog.Resources>
 
     <Grid DataContext="{StaticResource LoginViewModel}">
         <Grid.RowDefinitions >
@@ -28,21 +31,31 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
-               Foreground="Red"
-               Name="InvalidLogin"
-               Visibility="Hidden">Invalid user login ...</Label>
-        
-        <TextBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" 
-                 Name="TextBoxUserName" 
+           Foreground="Red"
+           Name="InvalidLogin"
+           Visibility="Hidden">Invalid user login ...</Label>
+
+        <TextBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+             Name="TextBoxUserName"
+             VerticalAlignment="Center"
+             controls:TextBoxHelper.Watermark="e-mail"
+             Text="{Binding Username}" />
+
+        <!--<PasswordBox Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+                 Name="PasswordBox"
                  VerticalAlignment="Center"
-                 controls:TextBoxHelper.Watermark="e-mail" />
-        
-        <PasswordBox Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" 
-                     Name="PasswordBox" 
+                 controls:TextBoxHelper.Watermark="password" 
+                 controls:PasswordHelp/>-->
+
+        <PasswordBox Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+                     x:Name="PasswordBox"
                      VerticalAlignment="Center"
-                     controls:TextBoxHelper.Watermark="password" />
-        
-        <Button Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Name="ButtonLogin" IsDefault="True">Login</Button>
-        <Button Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Name="ButtonCancel">Cancel</Button>
+                     controls:TextBoxHelper.Watermark="password"
+                     helper:PasswordBoxHelper.BindPassword="true"
+                     helper:PasswordBoxHelper.BoundPassword="{Binding Path=Password, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+        <Button Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Name="ButtonLogin" IsDefault="True" Content="Login" Command="{Binding LoginCommand}" />
+        <Button Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Name="ButtonCancel" Content="Cancel" Click="ButtonCancel_Click" />
     </Grid>
-</UserControl>
+</dialogs:BaseMetroDialog>

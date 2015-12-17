@@ -1,9 +1,10 @@
-﻿<UserControl x:Class="UFO.Commander.Views.Dialogs.ArtistDialog"
+﻿<dialogs:BaseMetroDialog x:Class="UFO.Commander.Views.Dialogs.ArtistDialog"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:UFO.Commander.ViewModel"
+             xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
              d:DataContext="{d:DesignInstance Type=vm:ArtistDialogViewModel, IsDesignTimeCreatable=True}"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -17,4 +18,4 @@
             <Button Command="{Binding CancelCommand}" Content="Cancel"/>
         </StackPanel>
     </Grid>
-</UserControl>
+</dialogs:BaseMetroDialog>

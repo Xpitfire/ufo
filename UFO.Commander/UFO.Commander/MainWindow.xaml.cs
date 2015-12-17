@@ -6,7 +6,7 @@ using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using UFO.Commander.Messages;
 using UFO.Commander.ViewModel;
-using UFO.Commander.Views.UserControls;
+using UFO.Commander.Views.Dialogs;
 
 namespace UFO.Commander
 {
@@ -20,35 +20,24 @@ namespace UFO.Commander
         public MainWindow()
         {
             InitializeComponent();
-            Messenger.Default.Register<ExceptionDialogMessage>(this, ShowDialog);
-            Messenger.Default.Register<LoginDialogMessage>(this, ShowDialog);
-            Messenger.Default.Register<ShowDialogMessage>(this, ShowDialog);
-            Messenger.Default.Register<HideDialogMessage>(this, HideDialog);
+            Messenger.Default.Register<ShowDialogMessage<CustomLoginDialog>>(this, ShowDialog);
+            Messenger.Default.Register<HideDialogMessage<CustomLoginDialog>>(this, HideDialog);
             
-            this.Loaded += (s, e) => Messenger.Default.Send(new LoginDialogMessage(this, CurrentDialog));
+            this.Loaded += 
+                (s, e) => Messenger.Default.Send(
+                    new ShowDialogMessage<CustomLoginDialog>(ViewModelLocator.LoginViewModel));
         }
         
-        private void HideDialog(HideDialogMessage obj)
+        private async void HideDialog(HideDialogMessage<CustomLoginDialog> obj)
         {
-            lock (CurrentDialog)
-            {
-                if (CurrentDialog.IsVisible)
-                {
-                    this.HideMetroDialogAsync(CurrentDialog).GetAwaiter();
-                }
-            }
+            if (obj.Dialog.IsVisible)
+                await this.HideMetroDialogAsync(obj.Dialog);
         }
 
-        private void ShowDialog(ShowDialogMessage dialogMsg)
+        private async void ShowDialog(ShowDialogMessage<CustomLoginDialog> dialogMsg)
         {
-            lock (CurrentDialog)
-            {
-                HideDialog(null);
-                MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
-                CurrentDialog.Title = "Info";
-                CurrentDialog.Content = dialogMsg.CustomDialog;
-                this.ShowMetroDialogAsync(CurrentDialog);
-            }
+            MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
+            await this.ShowMetroDialogAsync(dialogMsg.Dialog);
         }
     }
 

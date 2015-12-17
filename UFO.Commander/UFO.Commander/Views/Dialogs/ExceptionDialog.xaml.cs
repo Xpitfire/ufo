@@ -12,13 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace UFO.Commander.Views.Dialogs
 {
     /// <summary>
     /// Interaction logic for ExceptionDialog.xaml
     /// </summary>
-    public partial class ExceptionDialog : UserControl
+    public partial class ExceptionDialog : BaseMetroDialog
     {
         public ExceptionDialog()
         {

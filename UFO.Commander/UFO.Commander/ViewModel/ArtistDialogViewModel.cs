@@ -9,6 +9,7 @@ using GalaSoft.MvvmLight.Messaging;
 using UFO.Commander.Handler;
 using UFO.Commander.Messages;
 using UFO.Commander.ViewModel.Entities;
+using UFO.Commander.Views.Dialogs;
 
 namespace UFO.Commander.ViewModel
 {
@@ -25,7 +26,7 @@ namespace UFO.Commander.ViewModel
 
             CancelCommand = new RelayCommand(() =>
             {
-                Messenger.Default.Send(new HideDialogMessage());
+                Messenger.Default.Send(new HideDialogMessage<ArtistDialog>(ViewModelLocator.ArtistDialogViewModel));
             });
         }
 

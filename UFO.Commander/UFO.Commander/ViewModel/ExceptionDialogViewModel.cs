@@ -16,7 +16,7 @@ namespace UFO.Commander.ViewModel
         {
             ConfirmCommand = new RelayCommand(() =>
             {
-                Messenger.Default.Send(new HideDialogMessage());
+                //Messenger.Default.Send(new HideDialogMessage());
             });
         }
 

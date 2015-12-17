@@ -19,6 +19,7 @@
 
 using System;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -29,10 +30,13 @@ using UFO.Commander.Proxy;
 using UFO.Commander.ViewModel.Entities;
 using UFO.Server.Bll.Common;
 using UFO.Server.Domain;
+using GalaSoft.MvvmLight.Messaging;
+using UFO.Commander.Messages;
+using UFO.Commander.Views;
+using UFO.Commander.Views.Dialogs;
 
 namespace UFO.Commander.ViewModel
 {
-    [ViewExceptionHandler("Authentication Exception")]
     public class LoginViewModel : ViewModelBase
     {
         private readonly IAdminAccessBll _authAccessBll = BllFactory.CreateAdminAccessBll();
@@ -55,7 +59,9 @@ namespace UFO.Commander.ViewModel
             }
         }
 
-        [ViewExceptionHandler("Login Session Exception")]
+        public string Username { get; set; }
+        public string Password { get; set; }
+        
         public bool RequestSessionToken(string textBoxUserName, string password)
         {
 #if !DEBUG
@@ -88,11 +94,30 @@ namespace UFO.Commander.ViewModel
             {
                 return _logoutCommand ?? (_logoutCommand = new RelayCommand(() =>
                 {
-                    if (!_authAccessBll.IsUserAuthenticated(_sessionToken))
+                    if (_sessionToken == null)
                     {
-                        IsLoggedIn = false;
+                        Messenger.Default.Send(new ShowDialogMessage<CustomLoginDialog>(this));
                     }
                 }));
+            }
+        }
+        
+        private ICommand _loginCommand;
+        public ICommand LoginCommand => _loginCommand ?? (_loginCommand = new RelayCommand(LoginCommandExecute));
+
+        private async void LoginCommandExecute()
+        {
+            var username = Username;
+            var password = Password;
+            var validSession = await Task.Run(() => RequestSessionToken(username, password));
+
+            if (validSession)
+            {
+                validSession = await Task.Run(() => Login());
+                if (!validSession) return;
+                
+                Messenger.Default.Send(new ShowContentMessage<TabContentView>(ViewModelLocator.TabControlViewModel));
+                Messenger.Default.Send(new HideDialogMessage<CustomLoginDialog>(this));
             }
         }
     }

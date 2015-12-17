@@ -6,20 +6,18 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using UFO.Commander.Views;
 
 namespace UFO.Commander.Messages
 {
-    public class ShowDialogMessage : MessageBase
+    public class ShowDialogMessage<TDialog> : MessageBase where TDialog : BaseMetroDialog
     {
-        public UserControl CustomDialog { get; set; }
-        public string Title { get; set; }
-        public string Message { get; set; }
-        public Exception Exception { get; set; }
+        public TDialog Dialog { get; set; } = DialogLocator.GetInstance<TDialog>();
 
-        public ViewModelBase ViewModel { get; set; }
-        public ShowDialogMessage(ViewModelBase viewModel)
+        public ShowDialogMessage(ViewModelBase viewModel) : base(viewModel)
         {
-            ViewModel = viewModel;
         }
     }
 }

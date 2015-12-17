@@ -12,13 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace UFO.Commander.Views.Dialogs
 {
     /// <summary>
     /// Interaction logic for ArtistDialog.xaml
     /// </summary>
-    public partial class ArtistDialog : UserControl
+    public partial class ArtistDialog : BaseMetroDialog
     {
         public ArtistDialog()
         {

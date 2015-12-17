@@ -12,6 +12,7 @@ using UFO.Commander.Helper;
 using UFO.Commander.Messages;
 using UFO.Commander.Proxy;
 using UFO.Commander.ViewModel.Entities;
+using UFO.Commander.Views.Dialogs;
 using UFO.Server.Bll.Common;
 using UFO.Server.Domain;
 
@@ -43,7 +44,7 @@ namespace UFO.Commander.ViewModel
             {
                 var artistVm = ViewModelLocator.ArtistDialogViewModel;
                 artistVm.Artist = a;
-                Messenger.Default.Send(new ShowDialogMessage(artistVm));
+                Messenger.Default.Send(new ShowDialogMessage<ArtistDialog>(artistVm));
             });
 
             NextPageCommand = new RelayCommand(ToNextPage);
