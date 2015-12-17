@@ -16,9 +16,7 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
-
 using UFO.Commander.Proxy;
-using UFO.Commander.ViewModel.Entities;
 using BLL = UFO.Server.Domain;
 
 namespace UFO.Commander.Helper

@@ -37,6 +37,7 @@ using UFO.Commander.Views.Dialogs;
 
 namespace UFO.Commander.ViewModel
 {
+    [ViewExceptionHandler("Authentication Exception")]
     public class LoginViewModel : ViewModelBase
     {
         private readonly IAdminAccessBll _authAccessBll = BllFactory.CreateAdminAccessBll();

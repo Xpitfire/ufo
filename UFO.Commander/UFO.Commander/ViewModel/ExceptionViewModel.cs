@@ -10,22 +10,14 @@ using UFO.Commander.Messages;
 
 namespace UFO.Commander.ViewModel
 {
-    public class ExceptionDialogViewModel : ViewModelBase
+    public class ExceptionViewModel : ViewModelBase
     {
-        public ExceptionDialogViewModel()
+        public ExceptionViewModel()
         {
             ConfirmCommand = new RelayCommand(() =>
             {
                 //Messenger.Default.Send(new HideDialogMessage());
             });
-        }
-
-        private ExceptionDialogViewModel _exceptionViewModel;
-
-        public ExceptionDialogViewModel ExceptionViewModel
-        {
-            get { return _exceptionViewModel; }
-            set { Set(ref _exceptionViewModel, value); }
         }
 
         public RelayCommand ConfirmCommand { get; set; }

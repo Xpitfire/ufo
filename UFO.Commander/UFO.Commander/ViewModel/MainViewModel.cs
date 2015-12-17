@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Windows.Controls;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using PostSharp.Patterns.Model;
@@ -29,6 +30,8 @@ namespace UFO.Commander.ViewModel
         public MainViewModel()
         {
             Messenger.Default.Register<ShowContentMessage<TabContentView>>(this, msg => CurrentContent = msg.ViewModel);
+            Messenger.Default.Register<ShowContentMessage<UserControl>>(
+                ViewModelLocator.ExceptionViewModel, msg => CurrentContent = msg.ViewModel);
         }
 
         public override string ToString()
