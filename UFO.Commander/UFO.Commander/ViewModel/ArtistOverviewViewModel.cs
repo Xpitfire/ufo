@@ -84,11 +84,11 @@ namespace UFO.Commander.ViewModel
 
         public void GetAllCategories()
         {
-            CategoryPage.ToLastPage();
-            var artists = _viewAccessBll.GetArtist(CategoryPage);
-            if (artists == null)
+            CategoryPage.ToFullRange();
+            var categories = _viewAccessBll.GetCategories(CategoryPage);
+            if (categories == null)
                 return;
-            foreach (var category in artists)
+            foreach (var category in categories)
             {
                 Categories.Add(category.ToViewModelObject<CategoryViewModel>());
             }
@@ -96,12 +96,17 @@ namespace UFO.Commander.ViewModel
 
         public RelayCommand NewArtistCommand { get; set; }
         public RelayCommand NextPageCommand { get; set; }
-        public RelayCommand<ArtistViewModel> EditArtistCommand { get; set; }
+        public RelayCommand<ArtistViewModel> EditArtistCommand { get; set;}
         public RelayCommand<ArtistViewModel> DeleteArtistCommand { get; set; }
 
         #region SingelStep
 
-        public ArtistViewModel CurrentArtist { get; set; }
+        private ArtistViewModel _currentArtist;
+        public ArtistViewModel CurrentArtist
+        {
+            get { return _currentArtist; }
+            set { Set(ref _currentArtist, value); }
+        }
 
 
         #endregion

@@ -27,8 +27,9 @@
                 </Style>
             </ScrollViewer.Style>
             <DataGrid ItemsSource="{Binding Artists}"
-                          AutoGenerateColumns="False"
-                          VerticalScrollBarVisibility="Disabled">
+                      SelectedItem="{Binding CurrentArtist, Mode=TwoWay}"
+                      AutoGenerateColumns="False"
+                      VerticalScrollBarVisibility="Disabled">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Action">
                         <DataGridTemplateColumn.CellTemplate>
@@ -59,6 +60,5 @@
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
-        <local:ArtistEdit Grid.Row="0" Grid.Column="1" />
     </Grid>
 </UserControl>

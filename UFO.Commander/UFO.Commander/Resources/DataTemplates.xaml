@@ -3,7 +3,8 @@
                     xmlns:vm="clr-namespace:UFO.Commander.ViewModel"
                     xmlns:v="clr-namespace:UFO.Commander.Views"
                     xmlns:uc="clr-namespace:UFO.Commander.Views.UserControls"
-                    xmlns:dialogs="clr-namespace:UFO.Commander.Views.Dialogs">
+                    xmlns:dialogs="clr-namespace:UFO.Commander.Views.Dialogs"
+                    xmlns:entities="clr-namespace:UFO.Commander.ViewModel.Entities">
     <DataTemplate DataType="{x:Type vm:TabControlViewModel}">
         <v:TabContentView/>
     </DataTemplate>
@@ -18,5 +19,8 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type vm:ArtistOverviewViewModel}">
         <v:ArtistOverviewView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type entities:ArtistViewModel}">
+        <uc:ArtistEdit />
     </DataTemplate>
 </ResourceDictionary>

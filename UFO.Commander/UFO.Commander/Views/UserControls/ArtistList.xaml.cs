@@ -31,7 +31,7 @@ namespace UFO.Commander.Views.UserControls
             ScrollViewer scv = (ScrollViewer)sender;
             ArtistOverviewViewModel vm = (ArtistOverviewViewModel)DataContext;
             scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
-            if (Math.Abs(scv.VerticalOffset - scv.ScrollableHeight) < 5)
+            if (vm != null && Math.Abs(scv.VerticalOffset - scv.ScrollableHeight) < 5)
                 vm.ToNextArtistPage();
             e.Handled = true;
         }

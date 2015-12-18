@@ -252,6 +252,10 @@
       <Project>{61714fc8-bfec-4773-bca7-757a8bd0a0d6}</Project>
       <Name>UFO.Commander.Proxy</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UFO.Services.Generated\UFO.Services.Generated.csproj">
+      <Project>{b3a19aec-d98f-4d48-a27f-514dbdf002c3}</Project>
+      <Name>UFO.Services.Generated</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

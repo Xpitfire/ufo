@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UFO.Commander.Views.UserControls"
-             xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel">
+             xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel"
+             xmlns:entities="clr-namespace:UFO.Commander.ViewModel.Entities">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -17,15 +18,16 @@
 
         <StackPanel Grid.Row="0" Grid.Column="0">
             <Label Content="Name" />
-            <TextBox Text="{Binding CurrentArtist.Name}" />
+            <TextBox Text="{Binding Name}" />
             <Label Content="EMail" />
-            <TextBox Text="{Binding CurrentArtist.EMail}" />
+            <TextBox Text="{Binding EMail}" />
             <Label Content="Category" />
-            <ComboBox Text="{Binding CurrentArtist.Category}" />
+            <ComboBox ItemsSource="{Binding Path=ArtistOverviewViewModel.Categories, Source={StaticResource Locator}}" 
+                      SelectedItem="{Binding CategoryViewModel}" />
             <Label Content="Country" />
-            <ComboBox Text="{Binding CurrentArtist.Country}" />
+            <ComboBox Text="{Binding Country}" />
         </StackPanel>
-        
+
         <Grid Grid.Row="0" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -36,12 +38,12 @@
                 <Image Height="200" Width="200" />
                 <Button Content="Upload Image" />
             </StackPanel>
-            
+
             <StackPanel Grid.Row="1">
                 <Label Content="Upload Video" />
-                <TextBox Text="{Binding CurrentArtist.PromoVideo}" />
+                <TextBox Text="{Binding PromoVideo}" />
             </StackPanel>
-            
+
         </Grid>
 
     </Grid>

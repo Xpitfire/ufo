@@ -6,14 +6,12 @@
              xmlns:local="clr-namespace:UFO.Commander.Views"
              xmlns:userControls="clr-namespace:UFO.Commander.Views.UserControls"
              xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel"
-             mc:Ignorable="d">
-    <UserControl.Resources>
-        <viewModel:ArtistOverviewViewModel x:Key="ArtistOverviewViewModel" />
-    </UserControl.Resources>
-    <Grid DataContext="{DynamicResource ArtistOverviewViewModel}">
-
+             d:DataContext="{d:DesignInstance Type=viewModel:ArtistOverviewViewModel, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d" >
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="70*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
@@ -33,6 +31,10 @@
                     Command="{Binding DataContext.NextPageCommand, RelativeSource={RelativeSource AncestorType=Grid}}"/>-->
 
         </Grid>
+
+        <ContentControl Grid.Column="1" Content="{Binding CurrentArtist}" />
         
+        <!--<userControls:ArtistEdit Grid.Row="0" Grid.Column="1" />-->
+
     </Grid>
 </UserControl>

@@ -12,7 +12,12 @@
             <TabItem Name="PerformanceTabContent" Header="Performances">
             </TabItem>
             <TabItem Name="ArtistTabContent" Header="Artists">
-                <view:ArtistOverviewView />
+                <TabItem.ContentTemplate>
+                    <DataTemplate>
+                        <ContentControl Content="{Binding Path=ArtistOverviewViewModel , Source={StaticResource Locator}}" />
+                    </DataTemplate>
+                </TabItem.ContentTemplate>
+                <!--<view:ArtistOverviewView />-->
             </TabItem>
             <TabItem Name="VenueTabContent" Header="Venues">
             </TabItem>
