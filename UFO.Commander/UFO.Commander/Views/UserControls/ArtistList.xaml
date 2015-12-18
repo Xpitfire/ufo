@@ -54,7 +54,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Binding="{Binding Path=Country}" Header="Country"/>
+                    <DataGridTextColumn Binding="{Binding Path=CountryViewModel}" Header="Country" IsReadOnly="True" />
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>

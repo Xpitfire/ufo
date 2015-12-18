@@ -16,6 +16,8 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
+
+using PostSharp.Patterns.Model;
 using UFO.Commander.Proxy;
 using BLL = UFO.Server.Domain;
 

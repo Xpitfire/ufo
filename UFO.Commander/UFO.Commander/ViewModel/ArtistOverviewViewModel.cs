@@ -95,10 +95,10 @@ namespace UFO.Commander.ViewModel
             }
         }
 
-        public RelayCommand NewArtistCommand { get; private set; }
-        public RelayCommand NextPageCommand { get; private set; }
-        public RelayCommand<ArtistViewModel> EditArtistCommand { get; private set; }
-        public RelayCommand<ArtistViewModel> DeleteArtistCommand { get; private set; }
+        public RelayCommand NewArtistCommand { get; set; }
+        public RelayCommand NextPageCommand { get; set; }
+        public RelayCommand<ArtistViewModel> EditArtistCommand { get; set; }
+        public RelayCommand<ArtistViewModel> DeleteArtistCommand { get; set; }
 
     }
 }

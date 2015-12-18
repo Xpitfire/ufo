@@ -1,4 +1,5 @@
 ﻿using PostSharp.Patterns.Model;
+using UFO.Commander.Helper;
 using UFO.Server.Domain;
 
 namespace UFO.Commander.ViewModel.Entities
@@ -13,5 +14,9 @@ namespace UFO.Commander.ViewModel.Entities
         public override string Password { get; set; }
         public override bool IsAdmin { get; set; }
         public override bool IsArtist { get; set; }
+        public override Artist Artist { get; set; }
+
+        [SafeForDependencyAnalysis]
+        public virtual ArtistViewModel ArtistViewModel => Artist?.ToViewModelObject<ArtistViewModel>();
     }
 }

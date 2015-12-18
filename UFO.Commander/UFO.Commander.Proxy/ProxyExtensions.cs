@@ -60,23 +60,28 @@ namespace UFO.Commander.Proxy
             var targetType = typeof(TTarget);
             var targetProps = targetType.GetProperties();
             var obj = Activator.CreateInstance(targetType);
+            var sourceProps = source.GetType().GetProperties();
+            var sourcePropsNames = new string[sourceProps.Length];
+            for (var i = 0; i < sourceProps.Length; i++)
+                sourcePropsNames[i] = sourceProps[i].Name;
 
             foreach (var prop in targetProps)
             {
+                if (!sourcePropsNames.Contains(prop.Name)) continue;
                 var value = source
                     .GetType()
                     .GetProperty(prop.Name)?
                     .GetValue(source);
 
-                if (value is DomainObjectDomain 
-                    || value is DomainObjectAdminWs 
+                if (value is DomainObjectDomain
+                    || value is DomainObjectAdminWs
                     || value is DomainObjectViewWs)
                 {
                     var methodType = typeof(ProxyHelper);
                     var method = methodType
                         .GetMethod(nameof(ToObjectOf), BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
                         .MakeGenericMethod(value.GetType(), prop.PropertyType);
-                    value = method.Invoke(null, new [] {value});
+                    value = method.Invoke(null, new[] { value });
                 }
 
                 prop.SetValue(obj, value);

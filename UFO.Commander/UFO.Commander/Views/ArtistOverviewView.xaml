@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <viewModel:ArtistOverviewViewModel x:Key="ArtistOverviewViewModel" />
     </UserControl.Resources>
-    <Grid DataContext="{StaticResource ArtistOverviewViewModel}">
+    <Grid DataContext="{DynamicResource ArtistOverviewViewModel}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
