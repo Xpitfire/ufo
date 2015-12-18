@@ -25,7 +25,7 @@ namespace UFO.Commander
 
             this.Loaded += 
                 (s, e) => Messenger.Default.Send(
-                    new ShowDialogMessage<CustomLoginDialog>(ViewModelLocator.LoginViewModel));
+                    new ShowDialogMessage<CustomLoginDialog>(Locator.LoginViewModel));
         }
 
         private void RegisterDialogs()

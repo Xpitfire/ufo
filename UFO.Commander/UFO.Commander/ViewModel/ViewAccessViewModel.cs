@@ -18,6 +18,7 @@
 #endregion
 
 using GalaSoft.MvvmLight;
+using PostSharp.Patterns.Model;
 
 namespace UFO.Commander.ViewModel
 {

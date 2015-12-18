@@ -48,8 +48,8 @@ namespace UFO.Server.Domain
             var performance = obj as Performance;
             return performance != null
                 && DateTime == performance.DateTime
-                && Artist == performance.Artist
-                && Venue == performance.Venue;
+                && Equals(Artist, performance.Artist)
+                && Equals(Venue, performance.Venue);
         }
 
         public override int GetHashCode()

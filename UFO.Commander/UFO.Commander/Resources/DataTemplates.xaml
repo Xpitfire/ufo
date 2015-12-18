@@ -7,9 +7,6 @@
     <DataTemplate DataType="{x:Type vm:TabControlViewModel}">
         <v:TabContentView/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vm:ArtistListViewModel}">
-        <uc:ArtistList/>
-    </DataTemplate>
     <DataTemplate DataType="{x:Type vm:ArtistDialogViewModel}">
         <dialogs:ArtistDialog />
     </DataTemplate>
@@ -18,5 +15,8 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type vm:ExceptionDialogViewModel}">
         <dialogs:ExceptionDialog />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ArtistOverviewViewModel}">
+        <v:ArtistOverviewView />
     </DataTemplate>
 </ResourceDictionary>

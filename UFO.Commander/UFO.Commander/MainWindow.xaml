@@ -8,7 +8,7 @@
                       WindowCloseButtonStyle="{DynamicResource WindowButtonStyle}"
                       WindowMaxButtonStyle="{DynamicResource WindowButtonStyle}"
                       WindowMinButtonStyle="{DynamicResource WindowButtonStyle}"
-                      DataContext="{Binding Path=MainViewModel, Source={StaticResource ViewModelLocator}}"
+                      DataContext="{Binding Path=MainViewModel, Source={StaticResource Locator}}"
                       Title="{Binding Path=CurrentContent}">
     <Grid>
         <Grid.RowDefinitions>

@@ -8,5 +8,10 @@ namespace UFO.Commander.ViewModel.Entities
     {
         public override string Code { get; set; }
         public override string Name { get; set; }
+
+        public override string ToString()
+        {
+            return Code;
+        }
     }
 }

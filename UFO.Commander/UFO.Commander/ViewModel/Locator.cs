@@ -1,7 +1,7 @@
 /*
   In App.xaml:
   <Application.Resources>
-      <vm:ViewModelLocator xmlns:vm="clr-namespace:UFO.Commander"
+      <vm:Locator xmlns:vm="clr-namespace:UFO.Commander"
                            x:Key="Locator" />
   </Application.Resources>
   
@@ -21,9 +21,9 @@ namespace UFO.Commander.ViewModel
     /// This class contains static references to all the view models in the
     /// application and provides an entry point for the bindings.
     /// </summary>
-    public class ViewModelLocator
+    public class Locator
     {
-        public ViewModelLocator()
+        public Locator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             
@@ -31,8 +31,8 @@ namespace UFO.Commander.ViewModel
             SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<ViewAccessViewModel>();
             SimpleIoc.Default.Register<TabControlViewModel>();
-            SimpleIoc.Default.Register<ArtistListViewModel>();
             SimpleIoc.Default.Register<ArtistDialogViewModel>();
+            SimpleIoc.Default.Register<ArtistOverviewViewModel>();
             SimpleIoc.Default.Register<ExceptionDialogViewModel>();
         }
 
@@ -44,10 +44,7 @@ namespace UFO.Commander.ViewModel
 
         public static ViewAccessViewModel ViewAccessViewModel 
             => ServiceLocator.Current.GetInstance<ViewAccessViewModel>();
-
-        public static ArtistListViewModel ArtistListViewModel 
-            => ServiceLocator.Current.GetInstance<ArtistListViewModel>();
-
+        
         public static ArtistDialogViewModel ArtistDialogViewModel
             => ServiceLocator.Current.GetInstance<ArtistDialogViewModel>();
 
@@ -56,6 +53,9 @@ namespace UFO.Commander.ViewModel
 
         public static ExceptionDialogViewModel ExceptionDialogViewModel
             => ServiceLocator.Current.GetInstance<ExceptionDialogViewModel>();
+
+        public static ArtistOverviewViewModel ArtistOverviewViewModel
+            => ServiceLocator.Current.GetInstance<ArtistOverviewViewModel>();
 
         public static void Cleanup()
         {

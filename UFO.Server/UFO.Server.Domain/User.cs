@@ -70,7 +70,7 @@ namespace UFO.Server.Domain
                 && Password == user.Password
                 && IsAdmin == user.IsAdmin
                 && IsArtist == user.IsArtist
-                && Artist == user.Artist;
+                && Equals(Artist, user.Artist);
         }
 
         public override int GetHashCode()

@@ -65,7 +65,7 @@ namespace UFO.Commander.ViewModel
         
         public bool RequestSessionToken(string textBoxUserName, string password)
         {
-#if !DEBUG
+#if DEBUG
             return true;
 #endif
 
@@ -82,7 +82,7 @@ namespace UFO.Commander.ViewModel
         [ViewExceptionHandler("Login Exception")]
         public bool Login()
         {
-#if !DEBUG
+#if DEBUG
             return true;
 #endif
             return IsLoggedIn = _authAccessBll.LoginAdmin(_sessionToken);
@@ -117,7 +117,7 @@ namespace UFO.Commander.ViewModel
                 validSession = await Task.Run(() => Login());
                 if (!validSession) return;
                 
-                Messenger.Default.Send(new ShowContentMessage<TabContentView>(ViewModelLocator.TabControlViewModel));
+                Messenger.Default.Send(new ShowContentMessage<TabContentView>(Locator.TabControlViewModel));
                 Messenger.Default.Send(new HideDialogMessage<CustomLoginDialog>(this));
             }
         }

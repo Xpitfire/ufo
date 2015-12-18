@@ -29,7 +29,7 @@ namespace UFO.Commander.Handler
         public override void OnException(MethodExecutionArgs args)
         {
             args.FlowBehavior = FlowBehavior.Continue;
-            var viewModel = ViewModelLocator.ExceptionDialogViewModel;
+            var viewModel = Locator.ExceptionDialogViewModel;
             viewModel.Exception = args.Exception;
             viewModel.Title = Title;
             viewModel.Message = Message;

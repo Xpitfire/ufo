@@ -6,38 +6,57 @@
              xmlns:local="clr-namespace:UFO.Commander.Views.UserControls"
              xmlns:vm="clr-namespace:UFO.Commander.ViewModel"
              mc:Ignorable="d" 
-             DataContext="{Binding Path=ArtistListViewModel, Source={StaticResource ViewModelLocator}}"
-             d:DataContext="{d:DesignInstance Type=vm:ArtistListViewModel, IsDesignTimeCreatable=True}"
-             d:DesignHeight="300" d:DesignWidth="300">
+             DataContext="{Binding Path=ArtistOverviewViewModel, Source={StaticResource Locator}}"
+             d:DataContext="{d:DesignInstance Type=vm:ArtistOverviewViewModel, IsDesignTimeCreatable=True}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <Button Content="New User" Command="{Binding NewArtistCommand}"/>
-            <Button Content="Next Page" Command="{Binding NextPageCommand}"/>
-        </StackPanel>
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Visible">
-            <StackPanel>
-                <DataGrid ItemsSource="{Binding Artists}"
-                      AutoGenerateColumns="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=Name}"/>
-                        <DataGridTextColumn Binding="{Binding Path=EMail}"/>
-                        <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Button Content="Edit" Command="{Binding DataContext.EditArtistCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" CommandParameter="{Binding}" />
-                                        <Button Content="Delete" Command="{Binding DeleteArtistCommand}" CommandParameter="{Binding}" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.Row="0" Grid.Column="0" VerticalScrollBarVisibility="Visible" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+            <ScrollViewer.Style>
+                <Style TargetType="ScrollViewer">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=dataGrid, Path=HasItems}" Value="False">
+                            <Setter Property="HorizontalScrollBarVisibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ScrollViewer.Style>
+            <DataGrid ItemsSource="{Binding Artists}"
+                          AutoGenerateColumns="False"
+                          VerticalScrollBarVisibility="Disabled">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Action">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Edit"
+                                                Command="{Binding DataContext.EditArtistCommand, RelativeSource={RelativeSource AncestorType=Grid}}" 
+                                                CommandParameter="{Binding}" />
+                                    <Button Content="Delete" 
+                                                Command="{Binding DataContext.DeleteArtistCommand, RelativeSource={RelativeSource AncestorType=Grid}}" 
+                                                CommandParameter="{Binding}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name"/>
+                    <DataGridTextColumn Binding="{Binding Path=EMail}" Header="EMail"/>
+                    <!--<DataGridTextColumn Binding="{Binding Path=Category}" Header="Category"/>-->
+                    <DataGridTemplateColumn Header="Category">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox SelectedItem="{Binding Categories}" 
+                                          SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Column.DisplayIndex}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Binding="{Binding Path=Country}" Header="Country"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </ScrollViewer>
     </Grid>
 </UserControl>

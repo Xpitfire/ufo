@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using PostSharp.Patterns.Model;
 using UFO.Commander.Handler;
 using UFO.Commander.Messages;
 using UFO.Commander.ViewModel.Entities;
@@ -26,7 +27,7 @@ namespace UFO.Commander.ViewModel
 
             CancelCommand = new RelayCommand(() =>
             {
-                Messenger.Default.Send(new HideDialogMessage<ArtistDialog>(ViewModelLocator.ArtistDialogViewModel));
+                Messenger.Default.Send(new HideDialogMessage<ArtistDialog>(Locator.ArtistDialogViewModel));
             });
         }
 

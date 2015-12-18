@@ -63,8 +63,8 @@ namespace UFO.Server.Domain
                 && ArtistId == artist.ArtistId
                 && Name == artist.Name
                 && EMail == artist.EMail
-                && Category.Equals(artist.Category)
-                && Country.Equals(artist.Country)
+                && Equals(Category, artist.Category)
+                && Equals(Country, artist.Country)
                 && Picture == artist.Picture
                 && PromoVideo == artist.PromoVideo;
         }

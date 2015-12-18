@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:uc="clr-namespace:UFO.Commander.Views.UserControls"
-             xmlns:local="clr-namespace:UFO.Commander.Views"
+             xmlns:view="clr-namespace:UFO.Commander.Views"
              xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel"
              mc:Ignorable="d" >
     <Grid>
@@ -12,7 +12,7 @@
             <TabItem Name="PerformanceTabContent" Header="Performances">
             </TabItem>
             <TabItem Name="ArtistTabContent" Header="Artists">
-                <uc:ArtistList />
+                <view:ArtistOverviewView />
             </TabItem>
             <TabItem Name="VenueTabContent" Header="Venues">
             </TabItem>
