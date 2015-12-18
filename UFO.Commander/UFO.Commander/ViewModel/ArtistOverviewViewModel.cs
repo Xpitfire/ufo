@@ -48,11 +48,11 @@ namespace UFO.Commander.ViewModel
         public void InitializeData()
         {
             NextPageCommand = new RelayCommand(ToNextArtistPage);
-            EditArtistCommand = new RelayCommand<ArtistViewModel>(a =>
+            DeleteArtistCommand = new RelayCommand<ArtistViewModel>(a =>
             {
                 var artistVm = Locator.ArtistDialogViewModel;
                 artistVm.Artist = a;
-                Messenger.Default.Send(new ShowDialogMessage(artistVm));
+                // TODO Delete
             });
         }
 
@@ -96,7 +96,6 @@ namespace UFO.Commander.ViewModel
 
         public RelayCommand NewArtistCommand { get; set; }
         public RelayCommand NextPageCommand { get; set; }
-        public RelayCommand<ArtistViewModel> EditArtistCommand { get; set;}
         public RelayCommand<ArtistViewModel> DeleteArtistCommand { get; set; }
 
         #region SingelStep

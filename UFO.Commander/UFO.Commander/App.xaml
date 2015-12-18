@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.Scrollbars.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.DataGrid.xaml" />
                 <ResourceDictionary Source="Resources/DataTemplates.xaml"/>
+                <ResourceDictionary Source="Resources/Converters.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <vm:Locator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:UFO.Commander.ViewModel" />
             <Style x:Key="CustomMetroWindowStyle" TargetType="{x:Type controls:MetroWindow}">

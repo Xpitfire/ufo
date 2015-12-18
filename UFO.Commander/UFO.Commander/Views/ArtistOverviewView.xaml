@@ -32,6 +32,7 @@
 
         </Grid>
 
+        <TextBlock Grid.Column="1" Visibility="{Binding CurrentArtist, Converter={StaticResource NotNullToVisibilityConverter}}" Text="Please select a artist" />
         <ContentControl Grid.Column="1" Content="{Binding CurrentArtist}" />
         
         <!--<userControls:ArtistEdit Grid.Row="0" Grid.Column="1" />-->

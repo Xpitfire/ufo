@@ -35,11 +35,8 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Content="Edit"
-                                                Command="{Binding DataContext.EditArtistCommand, RelativeSource={RelativeSource AncestorType=Grid}}" 
-                                                CommandParameter="{Binding}" />
                                     <Button Content="Delete" 
-                                                Command="{Binding DataContext.DeleteArtistCommand, RelativeSource={RelativeSource AncestorType=Grid}}" 
+                                                Command="{Binding Path=ArtistOverviewViewModel.DeleteArtistCommand, Source={StaticResource Locator}}" 
                                                 CommandParameter="{Binding}" />
                                 </StackPanel>
                             </DataTemplate>
