@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Messaging;
 using PostSharp.Patterns.Model;
+using UFO.Commander.Messages;
 
 namespace UFO.Commander.ViewModel
 {
@@ -15,7 +17,7 @@ namespace UFO.Commander.ViewModel
         {
             ConfirmCommand = new RelayCommand(() =>
             {
-                //Messenger.Default.Send(new HideDialogMessage());
+                Messenger.Default.Send(new HideExceptionDialogMessage(this));
             });
         }
 

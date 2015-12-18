@@ -9,12 +9,11 @@ using GalaSoft.MvvmLight.Messaging;
 
 namespace UFO.Commander.Messages
 {
-    class ShowContentMessage<TControl> : MessageBase where TControl : UserControl
+    class ShowContentMessage : MessageBase
     {
-        public TControl UserControl { get; set; }
         public ViewModelBase ViewModel { get; set; }
 
-        public ShowContentMessage(ViewModelBase viewModel) : base(viewModel)
+        public ShowContentMessage(ViewModelBase viewModel)
         {
             ViewModel = viewModel;
         }

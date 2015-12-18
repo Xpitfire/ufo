@@ -52,7 +52,7 @@ namespace UFO.Commander.ViewModel
             {
                 var artistVm = Locator.ArtistDialogViewModel;
                 artistVm.Artist = a;
-                Messenger.Default.Send(new ShowDialogMessage<ArtistDialog>(artistVm));
+                Messenger.Default.Send(new ShowDialogMessage(artistVm));
             });
         }
 

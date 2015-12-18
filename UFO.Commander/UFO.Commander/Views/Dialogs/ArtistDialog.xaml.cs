@@ -19,7 +19,7 @@ namespace UFO.Commander.Views.Dialogs
     /// <summary>
     /// Interaction logic for ArtistDialog.xaml
     /// </summary>
-    public partial class ArtistDialog : BaseMetroDialog
+    public partial class ArtistDialog : UserControl
     {
         public ArtistDialog()
         {

@@ -13,7 +13,9 @@
 */
 
 using GalaSoft.MvvmLight.Ioc;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Practices.ServiceLocation;
+using UFO.Commander.Views;
 
 namespace UFO.Commander.ViewModel
 {
@@ -34,6 +36,8 @@ namespace UFO.Commander.ViewModel
             SimpleIoc.Default.Register<ArtistDialogViewModel>();
             SimpleIoc.Default.Register<ArtistOverviewViewModel>();
             SimpleIoc.Default.Register<ExceptionDialogViewModel>();
+            SimpleIoc.Default.Register<CustomViewDialog>();
+            SimpleIoc.Default.Register<CustomExceptionDialog>();
         }
 
         public static MainViewModel MainViewModel 
@@ -56,6 +60,12 @@ namespace UFO.Commander.ViewModel
 
         public static ArtistOverviewViewModel ArtistOverviewViewModel
             => ServiceLocator.Current.GetInstance<ArtistOverviewViewModel>();
+
+        public static CustomViewDialog CustomViewDialog
+            => ServiceLocator.Current.GetInstance<CustomViewDialog>();
+
+        public static CustomExceptionDialog CustomExceptionDialog
+            => ServiceLocator.Current.GetInstance<CustomExceptionDialog>();
 
         public static void Cleanup()
         {

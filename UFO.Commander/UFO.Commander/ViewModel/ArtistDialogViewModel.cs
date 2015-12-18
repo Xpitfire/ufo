@@ -27,7 +27,7 @@ namespace UFO.Commander.ViewModel
 
             CancelCommand = new RelayCommand(() =>
             {
-                Messenger.Default.Send(new HideDialogMessage<ArtistDialog>(Locator.ArtistDialogViewModel));
+                Messenger.Default.Send(new HideDialogMessage(Locator.ArtistDialogViewModel));
             });
         }
 

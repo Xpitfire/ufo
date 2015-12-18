@@ -36,9 +36,7 @@ namespace UFO.Commander.ViewModel
 
         private void RegisterUserControls()
         {
-            Messenger.Default.Register<ShowContentMessage<TabContentView>>(this, msg => CurrentContent = msg.ViewModel);
-            Messenger.Default.Register<ShowContentMessage<ArtistOverviewView>>(this, msg => CurrentContent = msg.ViewModel);
-            Messenger.Default.Register<ShowContentMessage<ArtistList>>(this, msg => CurrentContent = msg.ViewModel);
+            Messenger.Default.Register<ShowContentMessage>(this, msg => CurrentContent = msg.ViewModel);
         }
 
         public override string ToString()

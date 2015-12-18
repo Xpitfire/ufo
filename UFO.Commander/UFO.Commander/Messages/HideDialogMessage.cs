@@ -10,12 +10,13 @@ using UFO.Commander.Views;
 
 namespace UFO.Commander.Messages
 {
-    public class HideDialogMessage<TDialog> : MessageBase where TDialog : BaseMetroDialog
+    public class HideDialogMessage : MessageBase
     {
-        public TDialog Dialog { get; set; } = DialogLocator.GetInstance<TDialog>();
-        
-        public HideDialogMessage(ViewModelBase viewModel) : base(viewModel)
+        public ViewModelBase ViewModel { get; set; }
+
+        public HideDialogMessage(ViewModelBase viewModel)
         {
+            ViewModel = viewModel;
         }
     }
 }

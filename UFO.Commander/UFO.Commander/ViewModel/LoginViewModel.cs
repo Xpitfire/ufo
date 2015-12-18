@@ -23,7 +23,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using PostSharp.Patterns.Model;
 using UFO.Commander.Handler;
 using UFO.Commander.Helper;
 using UFO.Commander.Proxy;
@@ -33,7 +32,6 @@ using UFO.Server.Domain;
 using GalaSoft.MvvmLight.Messaging;
 using UFO.Commander.Messages;
 using UFO.Commander.Views;
-using UFO.Commander.Views.Dialogs;
 
 namespace UFO.Commander.ViewModel
 {
@@ -65,7 +63,7 @@ namespace UFO.Commander.ViewModel
         
         public bool RequestSessionToken(string textBoxUserName, string password)
         {
-#if DEBUG
+#if !DEBUG
             return true;
 #endif
 
@@ -82,7 +80,7 @@ namespace UFO.Commander.ViewModel
         [ViewExceptionHandler("Login Exception")]
         public bool Login()
         {
-#if DEBUG
+#if !DEBUG
             return true;
 #endif
             return IsLoggedIn = _authAccessBll.LoginAdmin(_sessionToken);
@@ -97,7 +95,7 @@ namespace UFO.Commander.ViewModel
                 {
                     if (_sessionToken == null)
                     {
-                        Messenger.Default.Send(new ShowDialogMessage<CustomLoginDialog>(this));
+                        Messenger.Default.Send(new ShowDialogMessage(this));
                     }
                 }));
             }
@@ -117,8 +115,8 @@ namespace UFO.Commander.ViewModel
                 validSession = await Task.Run(() => Login());
                 if (!validSession) return;
                 
-                Messenger.Default.Send(new ShowContentMessage<TabContentView>(Locator.TabControlViewModel));
-                Messenger.Default.Send(new HideDialogMessage<CustomLoginDialog>(this));
+                Messenger.Default.Send(new ShowContentMessage(Locator.TabControlViewModel));
+                Messenger.Default.Send(new HideDialogMessage(this));
             }
         }
     }

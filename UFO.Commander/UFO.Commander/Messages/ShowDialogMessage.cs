@@ -12,12 +12,16 @@ using UFO.Commander.Views;
 
 namespace UFO.Commander.Messages
 {
-    public class ShowDialogMessage<TDialog> : MessageBase where TDialog : BaseMetroDialog
+    public class ShowDialogMessage : MessageBase
     {
-        public TDialog Dialog { get; set; } = DialogLocator.GetInstance<TDialog>();
+        public ViewModelBase ViewModel { get; set; }
 
-        public ShowDialogMessage(ViewModelBase viewModel) : base(viewModel)
+        public CustomDialog df;
+        public BaseMetroDialog dfd;
+
+        public ShowDialogMessage(ViewModelBase viewModel)
         {
+            ViewModel = viewModel;
         }
     }
 }

@@ -33,7 +33,7 @@ namespace UFO.Commander.Handler
             viewModel.Exception = args.Exception;
             viewModel.Title = Title;
             viewModel.Message = Message;
-            Messenger.Default.Send(new ShowDialogMessage<ExceptionDialog>(viewModel));
+            Messenger.Default.Send(new ShowExceptionDialogMessage(viewModel));
         }
         
     }

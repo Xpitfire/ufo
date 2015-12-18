@@ -25,30 +25,56 @@ namespace UFO.Commander
 
             this.Loaded += 
                 (s, e) => Messenger.Default.Send(
-                    new ShowDialogMessage<CustomLoginDialog>(Locator.LoginViewModel));
+                    new ShowDialogMessage(Locator.LoginViewModel));
         }
 
         private void RegisterDialogs()
         {
-            Messenger.Default.Register<ShowDialogMessage<CustomLoginDialog>>(this, async p => await Dispatcher.InvokeAsync(() => ShowDialog(p)));
-            Messenger.Default.Register<HideDialogMessage<CustomLoginDialog>>(this, async p => await Dispatcher.InvokeAsync(() => HideDialog(p)));
-            Messenger.Default.Register<ShowDialogMessage<ArtistDialog>>(this, async p => await Dispatcher.InvokeAsync(() => ShowDialog(p)));
-            Messenger.Default.Register<HideDialogMessage<ArtistDialog>>(this, async p => await Dispatcher.InvokeAsync(() => HideDialog(p)));
-            Messenger.Default.Register<ShowDialogMessage<ExceptionDialog>>(this, async p => await Dispatcher.InvokeAsync(() => ShowDialog(p)));
-            Messenger.Default.Register<HideDialogMessage<ExceptionDialog>>(this, async p => await Dispatcher.InvokeAsync(() => HideDialog(p)));
+            Messenger.Default.Register<ShowDialogMessage>(this, async p => await Dispatcher.InvokeAsync(() => ShowDialog(p)));
+            Messenger.Default.Register<HideDialogMessage>(this, async p => await Dispatcher.InvokeAsync(() => HideDialog(p)));
+            Messenger.Default.Register<ShowExceptionDialogMessage>(this, async p => await Dispatcher.InvokeAsync(() => ShowExceptionDialog(p)));
+            Messenger.Default.Register<HideExceptionDialogMessage>(this, async p => await Dispatcher.InvokeAsync(() => HideExceptionDialog(p)));
         }
 
-
-        private async Task HideDialog<TDialog>(HideDialogMessage<TDialog> obj) where TDialog : BaseMetroDialog
+        private async Task HideDialog(HideDialogMessage dialogMsg)
         {
-            if (obj.Dialog.IsVisible)
-                await this.HideMetroDialogAsync(obj.Dialog);
+            var dialog = Locator.CustomViewDialog;
+            await this.HideMetroDialogAsync(dialog);
         }
 
-        private async Task ShowDialog<TDialog>(ShowDialogMessage<TDialog> dialogMsg) where TDialog : BaseMetroDialog
+        private async Task ShowDialog(ShowDialogMessage dialogMsg)
         {
+            var dialog = Locator.CustomViewDialog;
+            dialog.Content = dialogMsg.ViewModel;
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
-            await this.ShowMetroDialogAsync(dialogMsg.Dialog);
+            await this.ShowMetroDialogAsync(dialog);
+        }
+
+        private bool _recallPreviousState;
+
+        private async Task HideExceptionDialog(HideExceptionDialogMessage dialogMsg)
+        {
+            var exceptionDialog = Locator.CustomExceptionDialog;
+            await this.HideMetroDialogAsync(exceptionDialog);
+            if (_recallPreviousState)
+            {
+                var dialog = Locator.CustomViewDialog;
+                await this.ShowMetroDialogAsync(dialog);
+            }
+        }
+
+        private async Task ShowExceptionDialog(ShowExceptionDialogMessage dialogMsg)
+        {
+            var dialog = Locator.CustomViewDialog;
+            if (dialog.IsVisible)
+            {
+                await this.HideMetroDialogAsync(dialog);
+                _recallPreviousState = true;
+            }
+            var exceptionDialog = Locator.CustomExceptionDialog;
+            exceptionDialog.Content = dialogMsg.ViewModel;
+            MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
+            await this.ShowMetroDialogAsync(exceptionDialog);
         }
     }
 

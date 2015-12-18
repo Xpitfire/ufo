@@ -105,8 +105,10 @@
     <Compile Include="Handler\ViewExceptionHandlerAttribute.cs" />
     <Compile Include="Helper\PasswordBoxHelper.cs" />
     <Compile Include="Messages\HideDialogMessage.cs" />
+    <Compile Include="Messages\HideExceptionDialogMessage.cs" />
     <Compile Include="Messages\ShowContentMessage.cs" />
     <Compile Include="Messages\ShowDialogMessage.cs" />
+    <Compile Include="Messages\ShowExceptionDialogMessage.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\ArtistDialogViewModel.cs" />
     <Compile Include="ViewModel\ArtistOverviewViewModel.cs" />
@@ -130,6 +132,7 @@
     <Compile Include="Views\ArtistOverviewView.xaml.cs">
       <DependentUpon>ArtistOverviewView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewDialogs.cs" />
     <Compile Include="Views\DialogLocator.cs" />
     <Compile Include="Views\Dialogs\ArtistDialog.xaml.cs">
       <DependentUpon>ArtistDialog.xaml</DependentUpon>

@@ -13,7 +13,7 @@ namespace UFO.Commander.Views.Dialogs
     /// <summary>
     /// Interaction logic for LoginDialog.xaml
     /// </summary>
-    public partial class CustomLoginDialog : BaseMetroDialog
+    public partial class CustomLoginDialog : UserControl
     {
         public CustomLoginDialog()
         {

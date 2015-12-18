@@ -19,7 +19,7 @@ namespace UFO.Commander.Views.Dialogs
     /// <summary>
     /// Interaction logic for ExceptionDialog.xaml
     /// </summary>
-    public partial class ExceptionDialog : BaseMetroDialog
+    public partial class ExceptionDialog : UserControl
     {
         public ExceptionDialog()
         {
