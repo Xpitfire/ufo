@@ -21,6 +21,8 @@ namespace UFO.Commander.ViewModel
 {
     public class ArtistOverviewViewModel : ViewModelBase
     {
+        #region ViewModels
+
         private ObservableCollection<ArtistViewModel> _artists = new ObservableCollection<ArtistViewModel>();
         public ObservableCollection<ArtistViewModel> Artists
         {
@@ -35,41 +37,66 @@ namespace UFO.Commander.ViewModel
             set { Set(ref _categories, value); }
         }
 
-        private readonly IViewAccessBll _viewAccessBll = BllFactory.CreateViewAccessBll();
-        private PagingData ArtistPage { get; set; }
-        private PagingData CategoryPage { get; set; }
+        private ObservableCollection<CountryViewModel> _countries = new ObservableCollection<CountryViewModel>();
+        public ObservableCollection<CountryViewModel> Countries
+        {
+            get { return _countries; }
+            set { Set(ref _countries, value); }
+        }
+
+        private ArtistViewModel _currentArtist;
+        public ArtistViewModel CurrentArtist
+        {
+            get { return _currentArtist; }
+            set { Set(ref _currentArtist, value); }
+        }
+
+        #endregion
+
+        private readonly IViewAccessBll _viewAccessBll = BllAccessHandler.ViewAccessBll;
+        private readonly IAdminAccessBll _adminAccessBll = BllAccessHandler.AuthAccessBll;
 
         public ArtistOverviewViewModel()
         {
-            InitializeData();
+            InitializeCommands();
             LoadInitialData();
         }
 
-        public void InitializeData()
+        public void InitializeCommands()
         {
             NextPageCommand = new RelayCommand(ToNextArtistPage);
             DeleteArtistCommand = new RelayCommand<ArtistViewModel>(a =>
             {
-                var artistVm = Locator.ArtistDialogViewModel;
-                artistVm.Artist = a;
-                // TODO Delete
+                Dispatcher.CurrentDispatcher.InvokeAsync(() => Artists.Remove(a));
+                //_adminAccessBll.RemoveArtist(BllAccessHandler.SessionToken, a.ToDomainObject<Artist>());
             });
         }
 
-        public void LoadInitialData()
+        #region LoadData
+
+        private PagingData ArtistPage { get; set; }
+        private PagingData CategoryPage { get; set; }
+        private PagingData CountryPage { get; set; }
+
+        public async void LoadInitialData()
         {
-            Dispatcher.CurrentDispatcher.Invoke(() =>
+            await Dispatcher.CurrentDispatcher.InvokeAsync(() =>
             {
                 ArtistPage = _viewAccessBll.RequestArtistPagingData();
                 ToNextArtistPage();
             });
-            Dispatcher.CurrentDispatcher.Invoke(() =>
+            await Dispatcher.CurrentDispatcher.InvokeAsync(() =>
             {
                 CategoryPage = _viewAccessBll.RequestCategoryPagingData();
                 GetAllCategories();
             });
+            await Dispatcher.CurrentDispatcher.InvokeAsync(() =>
+            {
+                CountryPage = _viewAccessBll.RequestCountryPagingData();
+                GetAllCountries();
+            });
         }
-
+        
         public void ToNextArtistPage()
         {
             var parcialArtists = _viewAccessBll.GetArtist(ArtistPage);
@@ -94,21 +121,23 @@ namespace UFO.Commander.ViewModel
             }
         }
 
-        public RelayCommand NewArtistCommand { get; set; }
-        public RelayCommand NextPageCommand { get; set; }
-        public RelayCommand<ArtistViewModel> DeleteArtistCommand { get; set; }
-
-        #region SingelStep
-
-        private ArtistViewModel _currentArtist;
-        public ArtistViewModel CurrentArtist
+        public void GetAllCountries()
         {
-            get { return _currentArtist; }
-            set { Set(ref _currentArtist, value); }
+            CountryPage.ToFullRange();
+            var countries = _viewAccessBll.GetCountries(CountryPage);
+            if (countries == null)
+                return;
+            foreach (var country in countries)
+            {
+                Countries.Add(country.ToViewModelObject<CountryViewModel>());
+            }
         }
-
 
         #endregion
 
+        public RelayCommand NewArtistCommand { get; set; }
+        public RelayCommand NextPageCommand { get; set; }
+        public RelayCommand<ArtistViewModel> DeleteArtistCommand { get; set; }
+        
     }
 }

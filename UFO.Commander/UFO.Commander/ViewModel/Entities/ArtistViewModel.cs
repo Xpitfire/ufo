@@ -19,12 +19,15 @@ namespace UFO.Commander.ViewModel.Entities
         [SafeForDependencyAnalysis]
         public virtual CategoryViewModel CategoryViewModel
         {
-            get { return Category.ToViewModelObject<CategoryViewModel>(); }
-            set { Category = value.ToDomainObject<Category>(); }
+            get { return Category?.ToViewModelObject<CategoryViewModel>(); }
+            set { Category = value?.ToDomainObject<Category>(); }
         }
 
-        // TODO
         [SafeForDependencyAnalysis]
-        public virtual CountryViewModel CountryViewModel => Country?.ToViewModelObject<CountryViewModel>();    
+        public virtual CountryViewModel CountryViewModel
+        {
+            get { return Country?.ToViewModelObject<CountryViewModel>(); }
+            set { Country = value?.ToDomainObject<Country>(); }
+        }
     }
 }

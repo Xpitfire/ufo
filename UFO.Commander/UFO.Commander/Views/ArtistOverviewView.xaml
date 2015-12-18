@@ -11,11 +11,12 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70*" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
@@ -24,7 +25,12 @@
                     Content="New User" 
                     Command="{Binding DataContext.NewArtistCommand, RelativeSource={RelativeSource AncestorType=Grid}}"/>
 
-            <userControls:ArtistList Grid.Row="1" Grid.Column="0" />
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center" Background="LightBlue" 
+                       Visibility="{Binding CurrentArtist, Converter={StaticResource NotNullToVisibilityConverter}}" 
+                       Text="Please select a artist" />
+
+
+            <userControls:ArtistList Grid.Row="2" Grid.Column="0" />
 
             <!--<Button Grid.Row="2" 
                     Content="Next Page" 
@@ -32,7 +38,6 @@
 
         </Grid>
 
-        <TextBlock Grid.Column="1" Visibility="{Binding CurrentArtist, Converter={StaticResource NotNullToVisibilityConverter}}" Text="Please select a artist" />
         <ContentControl Grid.Column="1" Content="{Binding CurrentArtist}" />
         
         <!--<userControls:ArtistEdit Grid.Row="0" Grid.Column="1" />-->

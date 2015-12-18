@@ -25,7 +25,8 @@
             <ComboBox ItemsSource="{Binding Path=ArtistOverviewViewModel.Categories, Source={StaticResource Locator}}" 
                       SelectedItem="{Binding CategoryViewModel}" />
             <Label Content="Country" />
-            <ComboBox Text="{Binding Country}" />
+            <ComboBox ItemsSource="{Binding Path=ArtistOverviewViewModel.Countries, Source={StaticResource Locator}}"
+                      SelectedItem="{Binding CountryViewModel}" />
         </StackPanel>
 
         <Grid Grid.Row="0" Grid.Column="1">

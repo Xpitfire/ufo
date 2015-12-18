@@ -29,7 +29,7 @@
             <DataGrid ItemsSource="{Binding Artists}"
                       SelectedItem="{Binding CurrentArtist, Mode=TwoWay}"
                       AutoGenerateColumns="False"
-                      VerticalScrollBarVisibility="Disabled">
+                      VerticalScrollBarVisibility="Disabled" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Action">
                         <DataGridTemplateColumn.CellTemplate>
@@ -44,16 +44,16 @@
                     </DataGridTemplateColumn>
                     <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name"/>
                     <DataGridTextColumn Binding="{Binding Path=EMail}" Header="EMail"/>
-                    <!--<DataGridTextColumn Binding="{Binding Path=Category}" Header="Category"/>-->
-                    <DataGridTemplateColumn Header="Category">
+                    <DataGridTextColumn Binding="{Binding Path=CategoryViewModel}" Header="Category"/>
+                    <!--<DataGridTemplateColumn Header="Category">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <ComboBox SelectedItem="{Binding Categories}" 
                                           SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Column.DisplayIndex}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn Binding="{Binding Path=CountryViewModel}" Header="Country" IsReadOnly="True" />
+                    </DataGridTemplateColumn>-->
+                    <DataGridTextColumn Binding="{Binding Path=CountryViewModel}" Header="Country" />
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>

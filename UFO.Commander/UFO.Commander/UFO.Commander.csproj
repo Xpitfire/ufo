@@ -104,6 +104,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\NotNullToVisibilityConverter.cs" />
     <Compile Include="Handler\ViewExceptionHandlerAttribute.cs" />
+    <Compile Include="Helper\BllAccessHandler.cs" />
     <Compile Include="Helper\PasswordBoxHelper.cs" />
     <Compile Include="Messages\HideDialogMessage.cs" />
     <Compile Include="Messages\HideExceptionDialogMessage.cs" />

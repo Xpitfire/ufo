@@ -31,16 +31,13 @@ using UFO.Server.Bll.Common;
 using UFO.Server.Domain;
 using GalaSoft.MvvmLight.Messaging;
 using UFO.Commander.Messages;
-using UFO.Commander.Views;
 
 namespace UFO.Commander.ViewModel
 {
     [ViewExceptionHandler("Authentication Exception")]
     public class LoginViewModel : ViewModelBase
     {
-        private readonly IAdminAccessBll _authAccessBll = BllFactory.CreateAdminAccessBll();
-        private static SessionToken _sessionToken;
-        public SessionToken CurrentSessionToken => _sessionToken;
+        private readonly IAdminAccessBll _authAccessBll = BllAccessHandler.AuthAccessBll;
 
         public event EventHandler LogoutEvent;
 
@@ -73,8 +70,8 @@ namespace UFO.Commander.ViewModel
                 Password = Crypto.EncryptPassword(password)
             }.ToViewModelObject<UserViewModel>();
 
-            _sessionToken = _authAccessBll.RequestSessionToken(user);
-            return _authAccessBll.IsValidAdmin(_sessionToken);
+            BllAccessHandler.SessionToken = _authAccessBll.RequestSessionToken(user);
+            return _authAccessBll.IsValidAdmin(BllAccessHandler.SessionToken);
         }
 
         [ViewExceptionHandler("Login Exception")]
@@ -83,7 +80,7 @@ namespace UFO.Commander.ViewModel
 #if DEBUG
             return true;
 #endif
-            return IsLoggedIn = _authAccessBll.LoginAdmin(_sessionToken);
+            return IsLoggedIn = _authAccessBll.LoginAdmin(BllAccessHandler.SessionToken);
         }
 
         private ICommand _logoutCommand;
@@ -93,7 +90,7 @@ namespace UFO.Commander.ViewModel
             {
                 return _logoutCommand ?? (_logoutCommand = new RelayCommand(() =>
                 {
-                    if (_sessionToken == null)
+                    if (BllAccessHandler.SessionToken == null)
                     {
                         Messenger.Default.Send(new ShowDialogMessage(this));
                     }
