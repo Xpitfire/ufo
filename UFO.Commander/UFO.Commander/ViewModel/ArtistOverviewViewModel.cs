@@ -9,7 +9,6 @@ using System.Windows.Threading;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
-using PostSharp.Patterns.Model;
 using UFO.Commander.Helper;
 using UFO.Commander.Messages;
 using UFO.Commander.Proxy;
@@ -99,6 +98,13 @@ namespace UFO.Commander.ViewModel
         public RelayCommand NextPageCommand { get; set; }
         public RelayCommand<ArtistViewModel> EditArtistCommand { get; set; }
         public RelayCommand<ArtistViewModel> DeleteArtistCommand { get; set; }
+
+        #region SingelStep
+
+        public ArtistViewModel CurrentArtist { get; set; }
+
+
+        #endregion
 
     }
 }

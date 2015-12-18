@@ -143,6 +143,9 @@
     <Compile Include="Views\TabContentView.xaml.cs">
       <DependentUpon>TabContentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\ArtistEdit.xaml.cs">
+      <DependentUpon>ArtistEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\ArtistList.xaml.cs">
       <DependentUpon>ArtistList.xaml</DependentUpon>
     </Compile>
@@ -183,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TabContentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\ArtistEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

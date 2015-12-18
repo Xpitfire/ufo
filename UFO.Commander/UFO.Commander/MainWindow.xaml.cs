@@ -30,22 +30,22 @@ namespace UFO.Commander
 
         private void RegisterDialogs()
         {
-            Messenger.Default.Register<ShowDialogMessage<CustomLoginDialog>>(this, ShowDialog);
-            Messenger.Default.Register<HideDialogMessage<CustomLoginDialog>>(this, HideDialog);
-            Messenger.Default.Register<ShowDialogMessage<ArtistDialog>>(this, ShowDialog);
-            Messenger.Default.Register<HideDialogMessage<ArtistDialog>>(this, HideDialog);
-            Messenger.Default.Register<ShowDialogMessage<ExceptionDialog>>(this, ShowDialog);
-            Messenger.Default.Register<HideDialogMessage<ExceptionDialog>>(this, HideDialog);
+            Messenger.Default.Register<ShowDialogMessage<CustomLoginDialog>>(this, async p => await Dispatcher.InvokeAsync(() => ShowDialog(p)));
+            Messenger.Default.Register<HideDialogMessage<CustomLoginDialog>>(this, async p => await Dispatcher.InvokeAsync(() => HideDialog(p)));
+            Messenger.Default.Register<ShowDialogMessage<ArtistDialog>>(this, async p => await Dispatcher.InvokeAsync(() => ShowDialog(p)));
+            Messenger.Default.Register<HideDialogMessage<ArtistDialog>>(this, async p => await Dispatcher.InvokeAsync(() => HideDialog(p)));
+            Messenger.Default.Register<ShowDialogMessage<ExceptionDialog>>(this, async p => await Dispatcher.InvokeAsync(() => ShowDialog(p)));
+            Messenger.Default.Register<HideDialogMessage<ExceptionDialog>>(this, async p => await Dispatcher.InvokeAsync(() => HideDialog(p)));
         }
 
 
-        private async void HideDialog<TDialog>(HideDialogMessage<TDialog> obj) where TDialog : BaseMetroDialog
+        private async Task HideDialog<TDialog>(HideDialogMessage<TDialog> obj) where TDialog : BaseMetroDialog
         {
             if (obj.Dialog.IsVisible)
                 await this.HideMetroDialogAsync(obj.Dialog);
         }
 
-        private async void ShowDialog<TDialog>(ShowDialogMessage<TDialog> dialogMsg) where TDialog : BaseMetroDialog
+        private async Task ShowDialog<TDialog>(ShowDialogMessage<TDialog> dialogMsg) where TDialog : BaseMetroDialog
         {
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
             await this.ShowMetroDialogAsync(dialogMsg.Dialog);
