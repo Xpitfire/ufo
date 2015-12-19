@@ -106,6 +106,10 @@
       <Project>{5FF73985-1AB5-44DA-B28C-60E767B6BBB5}</Project>
       <Name>UFO.Server.Bll.Impl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UFO.Server.Common\UFO.Server.Common.csproj">
+      <Project>{75DF68F2-A526-469F-9CAB-35EBBAA3F9E6}</Project>
+      <Name>UFO.Server.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UFO.Server.Dal.Common\UFO.Server.Dal.Common.csproj">
       <Project>{90aa318d-269a-4c83-9ee9-85718a0fdd67}</Project>
       <Name>UFO.Server.Dal.Common</Name>

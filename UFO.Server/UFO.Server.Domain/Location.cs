@@ -49,10 +49,7 @@ namespace UFO.Server.Domain
 
             var location = obj as Location;
             return location != null
-                && LocationId == location.LocationId
-                && Name == location.Name
-                && Longitude == location.Longitude
-                && Latitude == location.Latitude;
+                && LocationId == location.LocationId;
         }
         
         public override int GetHashCode()

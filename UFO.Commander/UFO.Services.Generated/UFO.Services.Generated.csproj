@@ -72,7 +72,7 @@
     <None Include="Service References\Services.AdminAccess\AdminAccess3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Services.AdminAccess\AdminAccessBll.wsdl" />
+    <None Include="Service References\Services.AdminAccess\AdminAccessWs.wsdl" />
     <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.PagingData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -82,7 +82,7 @@
     <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\Services.ViewAccess\AdminAccessBll.wsdl" />
+    <None Include="Service References\Services.ViewAccess\AdminAccessWs.wsdl" />
     <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.Artist.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -110,6 +110,9 @@
     <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.Venue.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\Services.ViewAccess\ViewAccess.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Services.ViewAccess\ViewAccess1.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -117,9 +120,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Services.ViewAccess\ViewAccess3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Services.ViewAccess\ViewAccess4.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

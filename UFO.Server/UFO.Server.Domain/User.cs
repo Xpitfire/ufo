@@ -63,14 +63,8 @@ namespace UFO.Server.Domain
 
             var user = obj as User;
             return user != null
-                && Artist == user.Artist
-                && FirstName == user.FirstName
-                && LastName == user.LastName
                 && EMail == user.EMail
-                && Password == user.Password
-                && IsAdmin == user.IsAdmin
-                && IsArtist == user.IsArtist
-                && Equals(Artist, user.Artist);
+                && Password == user.Password;
         }
 
         public override int GetHashCode()

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -74,29 +76,37 @@ namespace UFO.Commander.ViewModel
             NewArtistCommand = new RelayCommand(
                 () => Messenger.Default.Send(new ShowDialogMessage(Locator.ArtistDialogViewModel)));
 
-            SaveCommand = new RelayCommand(() =>
+            SaveCommand = new RelayCommand(async () =>
             {
-                Dispatcher.CurrentDispatcher.InvokeAsync(() =>
+                await Dispatcher.CurrentDispatcher.InvokeAsync(async () =>
                 {
                     foreach (var modifiedArtist in ModifiedArtists)
                     {
-                        if (!Artists.Contains(modifiedArtist))
-                            Artists.Add(modifiedArtist);
+                        CheckedAdd(Artists, modifiedArtist, model => model.ArtistId == modifiedArtist.ArtistId);
                     }
                     if (DebugHelper.IsReleaseMode)
                     {
                         var artistList = ProxyHelper.ToListOf<ArtistViewModel, Artist>(new List<ArtistViewModel>(ModifiedArtists));
-                        Task.Run(() => _adminAccessBll.ModifyArtistRange(BllAccessHandler.SessionToken, artistList));
+                        await _adminAccessBll.ModifyArtistRangeAsync(BllAccessHandler.SessionToken, artistList);
                     }
-                    ModifiedArtists.Clear();
+                    lock (ModifiedArtists)
+                    {
+                        ModifiedArtists.Clear();
+                    }
                 });
 
             });
-            DeleteArtistCommand = new RelayCommand<ArtistViewModel>(a =>
+            DeleteArtistCommand = new RelayCommand<ArtistViewModel>(async a =>
             {
-                Dispatcher.CurrentDispatcher.InvokeAsync(() => Artists.Remove(a));
+                await Dispatcher.CurrentDispatcher.InvokeAsync(() =>
+                {
+                    lock (Artists)
+                    {
+                        Artists.Remove(a);
+                    }
+                });
                 if (DebugHelper.IsReleaseMode)
-                    _adminAccessBll.RemoveArtist(BllAccessHandler.SessionToken, a.ToDomainObject<Artist>());
+                    await _adminAccessBll.RemoveArtistAsync(BllAccessHandler.SessionToken, a.ToDomainObject<Artist>());
             });
         }
 
@@ -108,26 +118,26 @@ namespace UFO.Commander.ViewModel
 
         public async void LoadInitialData()
         {
-            await Dispatcher.CurrentDispatcher.InvokeAsync(() =>
+            await Dispatcher.CurrentDispatcher.InvokeAsync(async () =>
             {
-                ArtistPage = _viewAccessBll.RequestArtistPagingData();
-                ToNextArtistPage();
+                ArtistPage = await _viewAccessBll.RequestArtistPagingDataAsync();
+                await ToNextArtistPage();
             });
-            await Dispatcher.CurrentDispatcher.InvokeAsync(() =>
+            await Dispatcher.CurrentDispatcher.InvokeAsync(async () =>
             {
-                CategoryPage = _viewAccessBll.RequestCategoryPagingData();
-                GetAllCategories();
+                CategoryPage = await _viewAccessBll.RequestCategoryPagingDataAsync();
+                await GetAllCategories();
             });
-            await Dispatcher.CurrentDispatcher.InvokeAsync(() =>
+            await Dispatcher.CurrentDispatcher.InvokeAsync(async () =>
             {
-                CountryPage = _viewAccessBll.RequestCountryPagingData();
-                GetAllCountries();
+                CountryPage = await _viewAccessBll.RequestCountryPagingDataAsync();
+                await GetAllCountries();
             });
         }
         
-        public void ToNextArtistPage()
+        public async Task ToNextArtistPage()
         {
-            var parcialArtists = _viewAccessBll.GetArtist(ArtistPage);
+            var parcialArtists = await _viewAccessBll.GetArtistAsync(ArtistPage);
             if (parcialArtists == null)
                 return;
             ArtistPage.ToNextPage();
@@ -137,17 +147,26 @@ namespace UFO.Commander.ViewModel
                 artistViewModel.PropertyChanged += (sender, args) =>
                 {
                     var value = (ArtistViewModel) sender;
-                    if (!ModifiedArtists.Contains(value))
-                        ModifiedArtists.Add(value);
+                    CheckedAdd(ModifiedArtists, value, model => model.ArtistId == value.ArtistId);
                 };
-                Artists.Add(artistViewModel);
+                CheckedAdd(Artists, artistViewModel, model => model.ArtistId == artistViewModel.ArtistId);
             }
         }
 
-        public void GetAllCategories()
+        private void CheckedAdd<TValue>(ObservableCollection<TValue> collection, TValue value, Func<TValue, bool> criteria)
+        {
+            lock (collection)
+            {
+                var contains = collection.Any(criteria);
+                if (!contains)
+                    collection.Add(value);
+            }
+        }
+
+        public async Task GetAllCategories()
         {
             CategoryPage.ToFullRange();
-            var categories = _viewAccessBll.GetCategories(CategoryPage);
+            var categories = await _viewAccessBll.GetCategoriesAsync(CategoryPage);
             if (categories == null)
                 return;
             foreach (var category in categories)
@@ -156,10 +175,10 @@ namespace UFO.Commander.ViewModel
             }
         }
 
-        public void GetAllCountries()
+        public async Task GetAllCountries()
         {
             CountryPage.ToFullRange();
-            var countries = _viewAccessBll.GetCountries(CountryPage);
+            var countries = await _viewAccessBll.GetCountriesAsync(CountryPage);
             if (countries == null)
                 return;
             foreach (var country in countries)

@@ -54,20 +54,28 @@
                     <DataGridTemplateColumn Header="Action">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Content="Delete" 
-                                            Command="{Binding Path=ArtistOverviewViewModel.DeleteArtistCommand, Source={StaticResource Locator}}" 
-                                            CommandParameter="{Binding}" />
-                                </StackPanel>
+                                <Image MinWidth="50" MinHeight="50" MaxHeight="50" MaxWidth="50" Source="{Binding Path=Picture.Path}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+
                     <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name"/>
                     <DataGridTextColumn Binding="{Binding Path=EMail}" Header="EMail"/>
                     <DataGridTextColumn Binding="{Binding Path=CategoryViewModel}" Header="Category"/>
                     <DataGridTextColumn Binding="{Binding Path=CountryViewModel}" Header="Country" />
-                    <DataGridTextColumn Binding="{Binding Path=Picture.Path}" Header="Picture Path" />
-                    <DataGridTextColumn Binding="{Binding Path=PromoVideo}" Header="Video Path" />
+
+                    <DataGridTemplateColumn Header="Action">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Button Content="Delete" 
+                                                Command="{Binding Path=ArtistOverviewViewModel.DeleteArtistCommand, Source={StaticResource Locator}}" 
+                                                CommandParameter="{Binding}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>

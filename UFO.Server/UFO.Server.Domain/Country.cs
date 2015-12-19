@@ -41,8 +41,7 @@ namespace UFO.Server.Domain
         {
             var country = obj as Country;
             return country != null
-                && Code == country.Code
-                && Name == country.Name;
+                && Code == country.Code;
         }
 
         public override int GetHashCode()

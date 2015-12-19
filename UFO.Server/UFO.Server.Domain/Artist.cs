@@ -60,13 +60,7 @@ namespace UFO.Server.Domain
 
             var artist = obj as Artist;
             return artist != null 
-                && ArtistId == artist.ArtistId
-                && Name == artist.Name
-                && EMail == artist.EMail
-                && Equals(Category, artist.Category)
-                && Equals(Country, artist.Country)
-                && Picture == artist.Picture
-                && PromoVideo == artist.PromoVideo;
+                && ArtistId == artist.ArtistId;
         }
 
         public override int GetHashCode()

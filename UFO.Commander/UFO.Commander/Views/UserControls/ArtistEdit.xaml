@@ -28,13 +28,14 @@
             <Label Content="Country" />
             <ComboBox ItemsSource="{Binding Path=ArtistOverviewViewModel.Countries, Source={StaticResource Locator}}"
                       SelectedItem="{Binding CountryViewModel}" />
-            <Label Content="Upload Video" />
+            <Label Content="Video Link" />
             <TextBox Text="{Binding PromoVideo}" />
+            <Label Content="Picture Link" />
+            <TextBox Text="{Binding Picture.Path}" />
         </StackPanel>
-
-        <StackPanel Grid.Row="1" Orientation="Vertical">
-            <Image Height="200" Width="200" />
-            <Button Content="Upload Image" />
-        </StackPanel>
+        
+        <Grid Grid.Row="1" Margin="20">
+            <Image MinWidth="250" MinHeight="250" MaxHeight="250" MaxWidth="250" Source="{Binding Path=Picture.Path}" />
+        </Grid>
     </Grid>
 </UserControl>

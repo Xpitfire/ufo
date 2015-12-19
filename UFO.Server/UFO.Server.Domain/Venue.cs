@@ -46,9 +46,7 @@ namespace UFO.Server.Domain
 
             var venue = obj as Venue;
             return venue != null
-                && VenueId == venue.VenueId
-                && Name == venue.Name
-                && Equals(Location, venue.Location);
+                && VenueId == venue.VenueId;
         }
 
         public override int GetHashCode()

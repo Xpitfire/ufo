@@ -43,8 +43,7 @@ namespace UFO.Server.Domain
 
             var category = obj as Category;
             return category != null
-                && CategoryId == category.CategoryId
-                && Name == category.Name;
+                && CategoryId == category.CategoryId;
         }
 
         public override int GetHashCode()

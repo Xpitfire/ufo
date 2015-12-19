@@ -1,10 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:4321/ViewAccess?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:complexType name="ArrayOfchar">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:4321/ViewAccess?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="SessionToken">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SessionId" nillable="true" type="q1:ArrayOfchar" />
+          <xs:element minOccurs="0" name="User" nillable="true" type="tns:User" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SessionToken" nillable="true" type="tns:SessionToken" />
+  <xs:complexType name="DomainObject">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="DomainObject" nillable="true" type="tns:DomainObject" />
+  <xs:complexType name="User">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Artist" nillable="true" type="tns:Artist" />
+          <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsAdmin" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsArtist" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="User" nillable="true" type="tns:User" />
+  <xs:complexType name="Artist">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ArtistId" type="xs:int" />
+          <xs:element minOccurs="0" name="Category" nillable="true" type="tns:Category" />
+          <xs:element minOccurs="0" name="Country" nillable="true" type="tns:Country" />
+          <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Picture" nillable="true" type="tns:BlobData" />
+          <xs:element minOccurs="0" name="PromoVideo" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Artist" nillable="true" type="tns:Artist" />
+  <xs:complexType name="Category">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CategoryId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Category" nillable="true" type="tns:Category" />
+  <xs:complexType name="Country">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Country" nillable="true" type="tns:Country" />
+  <xs:complexType name="BlobData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataStream" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BlobData" nillable="true" type="tns:BlobData" />
+  <xs:complexType name="ArrayOfArtist">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="char" type="ser:char" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Artist" nillable="true" type="tns:Artist" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfchar" nillable="true" type="tns:ArrayOfchar" />
+  <xs:element name="ArrayOfArtist" nillable="true" type="tns:ArrayOfArtist" />
+  <xs:complexType name="ArrayOfVenue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Venue" nillable="true" type="tns:Venue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVenue" nillable="true" type="tns:ArrayOfVenue" />
+  <xs:complexType name="Venue">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Location" nillable="true" type="tns:Location" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VenueId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Venue" nillable="true" type="tns:Venue" />
+  <xs:complexType name="Location">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Latitude" type="xs:decimal" />
+          <xs:element minOccurs="0" name="LocationId" type="xs:int" />
+          <xs:element minOccurs="0" name="Longitude" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Location" nillable="true" type="tns:Location" />
+  <xs:complexType name="ArrayOfPerformance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Performance" nillable="true" type="tns:Performance" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPerformance" nillable="true" type="tns:ArrayOfPerformance" />
+  <xs:complexType name="Performance">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Artist" nillable="true" type="tns:Artist" />
+          <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Venue" nillable="true" type="tns:Venue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Performance" nillable="true" type="tns:Performance" />
+  <xs:complexType name="PagingData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Offset" type="xs:long" />
+          <xs:element minOccurs="0" name="Remaining" type="xs:long" />
+          <xs:element minOccurs="0" name="Request" type="xs:long" />
+          <xs:element minOccurs="0" name="Size" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PagingData" nillable="true" type="tns:PagingData" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:complexType name="ArrayOfCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCategory" nillable="true" type="tns:ArrayOfCategory" />
+  <xs:complexType name="ArrayOfCountry">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Country" nillable="true" type="tns:Country" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCountry" nillable="true" type="tns:ArrayOfCountry" />
+  <xs:complexType name="ArrayOfLocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Location" nillable="true" type="tns:Location" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLocation" nillable="true" type="tns:ArrayOfLocation" />
 </xs:schema>

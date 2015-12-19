@@ -59,7 +59,7 @@ namespace UFO.Commander.ViewModel
         public string Username { get; set; }
         public string Password { get; set; }
         
-        public bool RequestSessionToken(string textBoxUserName, string password)
+        public async Task<bool> RequestSessionToken(string textBoxUserName, string password)
         {
             if (!DebugHelper.IsReleaseMode) return true;
 
@@ -69,16 +69,16 @@ namespace UFO.Commander.ViewModel
                 Password = Crypto.EncryptPassword(password)
             }.ToViewModelObject<UserViewModel>();
 
-            BllAccessHandler.SessionToken = _authAccessBll.RequestSessionToken(user);
-            return _authAccessBll.IsValidAdmin(BllAccessHandler.SessionToken);
+            BllAccessHandler.SessionToken = await _authAccessBll.RequestSessionTokenAsync(user);
+            return await _authAccessBll.IsValidAdminAsync(BllAccessHandler.SessionToken);
         }
 
         [ViewExceptionHandler("Login Exception")]
-        public bool Login()
+        public async Task<bool> Login()
         {
             if (!DebugHelper.IsReleaseMode) return true;
 
-            return IsLoggedIn = _authAccessBll.LoginAdmin(BllAccessHandler.SessionToken);
+            return IsLoggedIn = await _authAccessBll.LoginAdminAsync(BllAccessHandler.SessionToken);
         }
 
         private ICommand _logoutCommand;
@@ -103,11 +103,11 @@ namespace UFO.Commander.ViewModel
         {
             var username = Username;
             var password = Password;
-            var validSession = await Task.Run(() => RequestSessionToken(username, password));
+            var validSession = await RequestSessionToken(username, password);
 
             if (validSession)
             {
-                validSession = await Task.Run(() => Login());
+                validSession = await Login();
                 if (!validSession) return;
                 
                 Messenger.Default.Send(new ShowContentMessage(Locator.TabControlViewModel));

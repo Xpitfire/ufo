@@ -84,6 +84,8 @@ namespace UFO.Server.Dal.Common
         [LogException]
         public override void OnException(MethodExecutionArgs args)
         {
+            Console.WriteLine(args.Exception.StackTrace);
+
             // set the method behavior after an exception occurred
             args.FlowBehavior = FlowBehavior.Return;
 

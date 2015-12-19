@@ -20,6 +20,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using UFO.Server.Dal.Common;
@@ -68,6 +70,28 @@ namespace UFO.Server.Dal.MySql
             return artist;
         }
 
+        /// <summary>
+        /// Unused due to WebService MaxSize exceed message.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        private byte[] LoadImagesSource(string fileName)
+        {
+            if (fileName == null || fileName.Equals(string.Empty)) return null;
+            var filePath = Path.Combine(Environment.CurrentDirectory, "images", fileName);
+            if (!File.Exists(filePath)) return null;
+            if (Path.GetExtension(filePath) != ".jpg") return null;
+
+            var image = Image.FromFile(filePath);
+            byte[] imageArray;
+            using (var ms = new MemoryStream())
+            {
+                image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                imageArray = ms.ToArray();
+            }
+            return imageArray;
+        }
+
         private Dictionary<string, QueryParameter> CreateArtistParameter(Artist artist)
         {
             return new Dictionary<string, QueryParameter>
@@ -108,8 +132,11 @@ namespace UFO.Server.Dal.MySql
                 if (dataReader.Read())
                 {
                     artist = CreateArtistObject(dataReader);
+                    //if (artist.Picture != null)
+                    //    artist.Picture.DataStream = LoadImagesSource(artist.Picture.Path);
                 }
             }
+
             return artist != null ? DaoResponse.QuerySuccessful(artist) : DaoResponse.QueryEmptyResult<Artist>();
         }
 
@@ -123,7 +150,10 @@ namespace UFO.Server.Dal.MySql
             {
                 while (dataReader.Read())
                 {
-                    artists.Add(CreateArtistObject(dataReader));
+                    var artist = CreateArtistObject(dataReader);
+                    artists.Add(artist);
+                    //if (artist.Picture != null)
+                    //    artist.Picture.DataStream = LoadImagesSource(artist.Picture.Path);
                 }
             }
             return artists.Any() ? DaoResponse.QuerySuccessful(artists) : DaoResponse.QueryEmptyResult<List<Artist>>();
@@ -144,7 +174,10 @@ namespace UFO.Server.Dal.MySql
             {
                 while (dataReader.Read())
                 {
-                    artists.Add(CreateArtistObject(dataReader));
+                    var artist = CreateArtistObject(dataReader);
+                    artists.Add(artist);
+                    //if (artist.Picture != null)
+                    //    artist.Picture.DataStream = LoadImagesSource(artist.Picture.Path);
                 }
             }
             return artists.Any() ? DaoResponse.QuerySuccessful(artists) : DaoResponse.QueryEmptyResult<List<Artist>>();
