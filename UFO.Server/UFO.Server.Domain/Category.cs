@@ -18,6 +18,7 @@
 //     Wurm Florian
 #endregion
 using System;
+using System.Drawing;
 using System.Runtime.Serialization;
 
 namespace UFO.Server.Domain
@@ -32,8 +33,12 @@ namespace UFO.Server.Domain
         [DataMember(Name = nameof(Name))]
         public virtual string Name { get; set; }
 
+        [DataMember(Name = nameof(Color))]
+        public virtual string Color { get; set; }
+
         public override string ToString()
         {
+            Color c = ColorTranslator.FromHtml("#FFCC66");
             return $"CategoryId: {CategoryId}, CategoryName: {Name}";
         }
 

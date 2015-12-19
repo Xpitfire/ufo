@@ -2,9 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:UFO.Commander.Views.UserControls"
-             xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:entities="clr-namespace:UFO.Commander.ViewModel.Entities"
              d:DataContext="{d:DesignInstance Type=entities:ArtistViewModel, IsDesignTimeCreatable=True}"
              mc:Ignorable="d">
@@ -33,7 +31,7 @@
             <Label Content="Picture Link" />
             <TextBox Text="{Binding Picture.Path}" />
         </StackPanel>
-        
+
         <Grid Grid.Row="1" Margin="20">
             <Image MinWidth="250" MinHeight="250" MaxHeight="250" MaxWidth="250" Source="{Binding Path=Picture.Path}" />
         </Grid>

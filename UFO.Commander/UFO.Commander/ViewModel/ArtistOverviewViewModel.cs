@@ -146,8 +146,10 @@ namespace UFO.Commander.ViewModel
                 var artistViewModel = artist.ToViewModelObject<ArtistViewModel>();
                 artistViewModel.PropertyChanged += (sender, args) =>
                 {
-                    var value = (ArtistViewModel) sender;
-                    CheckedAdd(ModifiedArtists, value, model => model.ArtistId == value.ArtistId);
+                    if (CurrentArtist != null && (!Equals((ArtistViewModel) sender, CurrentArtist)))
+                    {
+                        CheckedAdd(ModifiedArtists, CurrentArtist, model => model.ArtistId == CurrentArtist.ArtistId);
+                    }
                 };
                 CheckedAdd(Artists, artistViewModel, model => model.ArtistId == artistViewModel.ArtistId);
             }

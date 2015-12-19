@@ -54,6 +54,7 @@
       <xs:extension base="tns:DomainObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="CategoryId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>

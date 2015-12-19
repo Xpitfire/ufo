@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:UFO.Commander.Views.UserControls"
              xmlns:vm="clr-namespace:UFO.Commander.ViewModel"
              mc:Ignorable="d" 
-             DataContext="{Binding Path=ArtistOverviewViewModel, Source={StaticResource Locator}}"
              d:DataContext="{d:DesignInstance Type=vm:ArtistOverviewViewModel, IsDesignTimeCreatable=True}">
     <Grid>
         <Grid.RowDefinitions>
@@ -24,6 +23,7 @@
                       SelectedItem="{Binding CurrentArtist, Mode=TwoWay}"
                       SelectionMode="Single"
                       AutoGenerateColumns="False"
+                      Focusable="False"
                       VerticalScrollBarVisibility="Disabled" 
                       IsReadOnly="True">
                 <DataGrid.Columns>
@@ -35,10 +35,10 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name"/>
-                    <DataGridTextColumn Binding="{Binding Path=EMail}" Header="EMail"/>
-                    <DataGridTextColumn Binding="{Binding Path=CategoryViewModel}" Header="Category"/>
-                    <DataGridTextColumn Binding="{Binding Path=CountryViewModel}" Header="Country" />
+                    <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" />
+                    <DataGridTextColumn Binding="{Binding Path=EMail}" Header="EMail" />
+                    <DataGridTextColumn Binding="{Binding Path=CategoryViewModel}" Header="Category" />
+                    <DataGridTextColumn Binding="{Binding Path=CountryViewModel.Name}" Header="Country" />
 
                     <DataGridTemplateColumn Header="Action">
                         <DataGridTemplateColumn.CellTemplate>

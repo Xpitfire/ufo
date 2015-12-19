@@ -14,7 +14,7 @@ namespace UFO.Commander.ViewModel.Entities
 
         public override string ToString()
         {
-            return Code;
+            return Name;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

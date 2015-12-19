@@ -141,14 +141,14 @@ namespace UFO.Server.Dal.MySql
                                                     WHERE CategoryId=?CategoryId";
 
         public const string UpdateCategory = @"UPDATE category 
-                                                  SET Name=?Name 
+                                                  SET Name=?Name, Color=?Color
                                                 WHERE CategoryId=?CategoryId";
 
         public const string DeleteCategory = @"DELETE FROM category
                                                      WHERE CategoryId=?CategoryId";
 
-        public const string InsertCategory = @"INSERT INTO category (CategoryId, Name)
-                                                    VALUES (?CategoryId, ?Name)";
+        public const string InsertCategory = @"INSERT INTO category (CategoryId, Name, Color)
+                                                    VALUES (?CategoryId, ?Name, ?Color)";
 
         
         // Location
