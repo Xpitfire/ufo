@@ -128,7 +128,6 @@
     <Compile Include="ViewModel\Entities\VenueViewModel.cs" />
     <Compile Include="Helper\ViewModelExtensions.cs" />
     <Compile Include="ViewModel\TabControlViewModel.cs" />
-    <Compile Include="ViewModel\ViewAccessViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelCommon.cs" />
     <Compile Include="ViewModel\Locator.cs" />

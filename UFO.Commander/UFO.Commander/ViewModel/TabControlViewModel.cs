@@ -10,9 +10,5 @@ namespace UFO.Commander.ViewModel
 {
     public class TabControlViewModel : ViewModelBase
     {
-        public TabControlViewModel()
-        {
-            Console.WriteLine();
-        }
     }
 }
