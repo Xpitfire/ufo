@@ -22,10 +22,10 @@ namespace UFO.Services.AdminAccess {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.Category))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.Country))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.BlobData))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.PagingData))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.Venue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.Location))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.Performance))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.PagingData))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.SessionToken))]
     public partial class DomainObject : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -441,77 +441,6 @@ namespace UFO.Services.AdminAccess {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PagingData", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
-    [System.SerializableAttribute()]
-    public partial class PagingData : UFO.Services.AdminAccess.DomainObject {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long OffsetField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long RemainingField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long RequestField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long SizeField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long Offset {
-            get {
-                return this.OffsetField;
-            }
-            set {
-                if ((this.OffsetField.Equals(value) != true)) {
-                    this.OffsetField = value;
-                    this.RaisePropertyChanged("Offset");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long Remaining {
-            get {
-                return this.RemainingField;
-            }
-            set {
-                if ((this.RemainingField.Equals(value) != true)) {
-                    this.RemainingField = value;
-                    this.RaisePropertyChanged("Remaining");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long Request {
-            get {
-                return this.RequestField;
-            }
-            set {
-                if ((this.RequestField.Equals(value) != true)) {
-                    this.RequestField = value;
-                    this.RaisePropertyChanged("Request");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long Size {
-            get {
-                return this.SizeField;
-            }
-            set {
-                if ((this.SizeField.Equals(value) != true)) {
-                    this.SizeField = value;
-                    this.RaisePropertyChanged("Size");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Venue", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
     [System.SerializableAttribute()]
     public partial class Venue : UFO.Services.AdminAccess.DomainObject {
@@ -693,6 +622,77 @@ namespace UFO.Services.AdminAccess {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PagingData", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
+    [System.SerializableAttribute()]
+    public partial class PagingData : UFO.Services.AdminAccess.DomainObject {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long OffsetField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long RemainingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long RequestField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long SizeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Offset {
+            get {
+                return this.OffsetField;
+            }
+            set {
+                if ((this.OffsetField.Equals(value) != true)) {
+                    this.OffsetField = value;
+                    this.RaisePropertyChanged("Offset");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Remaining {
+            get {
+                return this.RemainingField;
+            }
+            set {
+                if ((this.RemainingField.Equals(value) != true)) {
+                    this.RemainingField = value;
+                    this.RaisePropertyChanged("Remaining");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Request {
+            get {
+                return this.RequestField;
+            }
+            set {
+                if ((this.RequestField.Equals(value) != true)) {
+                    this.RequestField = value;
+                    this.RaisePropertyChanged("Request");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Size {
+            get {
+                return this.SizeField;
+            }
+            set {
+                if ((this.SizeField.Equals(value) != true)) {
+                    this.SizeField = value;
+                    this.RaisePropertyChanged("Size");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="SessionToken", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
     [System.SerializableAttribute()]
     public partial class SessionToken : UFO.Services.AdminAccess.DomainObject {
@@ -733,6 +733,24 @@ namespace UFO.Services.AdminAccess {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Services.AdminAccess.AdminAccessWs")]
     public interface AdminAccessWs {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyArtistRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyArtistRangeResponse")]
+        bool ModifyArtistRange(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist[] artists);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyArtistRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyArtistRangeResponse")]
+        System.Threading.Tasks.Task<bool> ModifyArtistRangeAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist[] artists);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyVenueRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyVenueRangeResponse")]
+        bool ModifyVenueRange(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue[] venues);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyVenueRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyVenueRangeResponse")]
+        System.Threading.Tasks.Task<bool> ModifyVenueRangeAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue[] venues);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyPerformanceRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyPerformanceRangeResponse")]
+        bool ModifyPerformanceRange(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance[] performances);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyPerformanceRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyPerformanceRangeResponse")]
+        System.Threading.Tasks.Task<bool> ModifyPerformanceRangeAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance[] performances);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/GetUser", ReplyAction="http://tempuri.org/AdminAccessWs/GetUserResponse")]
         UFO.Services.AdminAccess.User[] GetUser(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.PagingData page);
@@ -832,6 +850,30 @@ namespace UFO.Services.AdminAccess {
         
         public AdminAccessWsClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public bool ModifyArtistRange(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist[] artists) {
+            return base.Channel.ModifyArtistRange(token, artists);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModifyArtistRangeAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Artist[] artists) {
+            return base.Channel.ModifyArtistRangeAsync(token, artists);
+        }
+        
+        public bool ModifyVenueRange(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue[] venues) {
+            return base.Channel.ModifyVenueRange(token, venues);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModifyVenueRangeAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Venue[] venues) {
+            return base.Channel.ModifyVenueRangeAsync(token, venues);
+        }
+        
+        public bool ModifyPerformanceRange(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance[] performances) {
+            return base.Channel.ModifyPerformanceRange(token, performances);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModifyPerformanceRangeAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance[] performances) {
+            return base.Channel.ModifyPerformanceRangeAsync(token, performances);
         }
         
         public UFO.Services.AdminAccess.User[] GetUser(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.PagingData page) {

@@ -27,6 +27,24 @@ namespace UFO.Server.Services
     public class AdminAccessWs : AdminAccessBll
     {
         [OperationContract]
+        public override bool ModifyArtistRange(SessionToken token, List<Artist> artists)
+        {
+            return base.ModifyArtistRange(token, artists);
+        }
+
+        [OperationContract]
+        public override bool ModifyVenueRange(SessionToken token, List<Venue> venues)
+        {
+            return base.ModifyVenueRange(token, venues);
+        }
+
+        [OperationContract]
+        public override bool ModifyPerformanceRange(SessionToken token, List<Performance> performances)
+        {
+            return base.ModifyPerformanceRange(token, performances);
+        }
+
+        [OperationContract]
         public override List<User> GetUser(SessionToken token, PagingData page)
         {
             return base.GetUser(token, page);

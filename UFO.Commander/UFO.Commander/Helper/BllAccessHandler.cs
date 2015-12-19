@@ -11,8 +11,10 @@ namespace UFO.Commander.Helper
 {
     class BllAccessHandler
     {
-        public static IViewAccessBll ViewAccessBll => BllFactory.CreateViewAccessBll();
-        public static IAdminAccessBll AuthAccessBll => BllFactory.CreateAdminAccessBll();
+        private static IViewAccessBll _viewAccessBll;
+        public static IViewAccessBll ViewAccessBll => _viewAccessBll ?? (_viewAccessBll = BllFactory.CreateViewAccessBll());
+        private static IAdminAccessBll _adminAccessBll;
+        public static IAdminAccessBll AdminAccessBll => _adminAccessBll ?? (_adminAccessBll = BllFactory.CreateAdminAccessBll());
         public static SessionToken SessionToken { get; set; }
     }
 }

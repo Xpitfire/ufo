@@ -37,10 +37,13 @@ namespace UFO.Server.Bll.Common
         protected IVenueDao VenueDao = DalProviderFactories.GetDaoFactory().CreateVenueDao();
 
         public abstract List<User> GetUser(SessionToken token, PagingData page);
+        public abstract bool ModifyArtistRange(SessionToken token, List<Artist> artists);
         public abstract bool ModifyArtist(SessionToken token, Artist artist);
         public abstract bool RemoveArtist(SessionToken token, Artist artist);
+        public abstract bool ModifyVenueRange(SessionToken token, List<Venue> venues);
         public abstract bool ModifyVenue(SessionToken token, Venue venue);
         public abstract bool RemoveVenue(SessionToken token, Venue venue);
+        public abstract bool ModifyPerformanceRange(SessionToken token, List<Performance> performances);
         public abstract bool ModifyPerformance(SessionToken token, Performance performance);
         public abstract bool IsUserAuthenticated(SessionToken token);
         public abstract bool IsValidAdmin(SessionToken token);

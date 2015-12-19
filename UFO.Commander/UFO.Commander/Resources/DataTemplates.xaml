@@ -4,8 +4,7 @@
                     xmlns:v="clr-namespace:UFO.Commander.Views"
                     xmlns:uc="clr-namespace:UFO.Commander.Views.UserControls"
                     xmlns:dialogs="clr-namespace:UFO.Commander.Views.Dialogs"
-                    xmlns:entities="clr-namespace:UFO.Commander.ViewModel.Entities"
-                    xmlns:properties="clr-namespace:UFO.Commander.DependencyProperties">
+                    xmlns:entities="clr-namespace:UFO.Commander.ViewModel.Entities">
     <DataTemplate DataType="{x:Type vm:TabControlViewModel}">
         <v:TabContentView/>
     </DataTemplate>

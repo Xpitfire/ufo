@@ -8,7 +8,7 @@ namespace UFO.Commander.Helper
 {
     public static class DebugHelper
     {
-        public static bool IsDebugMode
+        private static bool IsDebugMode
         {
             get
             {

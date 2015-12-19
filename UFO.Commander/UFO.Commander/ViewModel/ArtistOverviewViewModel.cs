@@ -61,7 +61,7 @@ namespace UFO.Commander.ViewModel
         #endregion
 
         private readonly IViewAccessBll _viewAccessBll = BllAccessHandler.ViewAccessBll;
-        private readonly IAdminAccessBll _adminAccessBll = BllAccessHandler.AuthAccessBll;
+        private readonly IAdminAccessBll _adminAccessBll = BllAccessHandler.AdminAccessBll;
 
         public ArtistOverviewViewModel()
         {
@@ -82,15 +82,15 @@ namespace UFO.Commander.ViewModel
                     {
                         if (!Artists.Contains(modifiedArtist))
                             Artists.Add(modifiedArtist);
-                        if (DebugHelper.IsReleaseMode)
-                        {
-                            Task.Run(() => _adminAccessBll.ModifyArtist(
-                                BllAccessHandler.SessionToken, modifiedArtist.ToDomainObject<Artist>()));
-                        }
+                    }
+                    if (DebugHelper.IsReleaseMode)
+                    {
+                        var artistList = ProxyHelper.ToListOf<ArtistViewModel, Artist>(new List<ArtistViewModel>(ModifiedArtists));
+                        Task.Run(() => _adminAccessBll.ModifyArtistRange(BllAccessHandler.SessionToken, artistList));
                     }
                     ModifiedArtists.Clear();
-                    CurrentArtist = null;
                 });
+
             });
             DeleteArtistCommand = new RelayCommand<ArtistViewModel>(a =>
             {

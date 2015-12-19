@@ -83,25 +83,18 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="BlobData" nillable="true" type="tns:BlobData" />
-  <xs:complexType name="PagingData">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:DomainObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Offset" type="xs:long" />
-          <xs:element minOccurs="0" name="Remaining" type="xs:long" />
-          <xs:element minOccurs="0" name="Request" type="xs:long" />
-          <xs:element minOccurs="0" name="Size" type="xs:long" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="PagingData" nillable="true" type="tns:PagingData" />
-  <xs:complexType name="ArrayOfUser">
+  <xs:complexType name="ArrayOfArtist">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Artist" nillable="true" type="tns:Artist" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
+  <xs:element name="ArrayOfArtist" nillable="true" type="tns:ArrayOfArtist" />
+  <xs:complexType name="ArrayOfVenue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Venue" nillable="true" type="tns:Venue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVenue" nillable="true" type="tns:ArrayOfVenue" />
   <xs:complexType name="Venue">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:DomainObject">
@@ -127,6 +120,12 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Location" nillable="true" type="tns:Location" />
+  <xs:complexType name="ArrayOfPerformance">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Performance" nillable="true" type="tns:Performance" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPerformance" nillable="true" type="tns:ArrayOfPerformance" />
   <xs:complexType name="Performance">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:DomainObject">
@@ -139,4 +138,23 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Performance" nillable="true" type="tns:Performance" />
+  <xs:complexType name="PagingData">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Offset" type="xs:long" />
+          <xs:element minOccurs="0" name="Remaining" type="xs:long" />
+          <xs:element minOccurs="0" name="Request" type="xs:long" />
+          <xs:element minOccurs="0" name="Size" type="xs:long" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PagingData" nillable="true" type="tns:PagingData" />
+  <xs:complexType name="ArrayOfUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUser" nillable="true" type="tns:ArrayOfUser" />
 </xs:schema>

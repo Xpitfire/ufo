@@ -38,7 +38,7 @@ namespace UFO.Commander.ViewModel
     [ViewExceptionHandler("Authentication Exception")]
     public class LoginViewModel : ViewModelBase
     {
-        private readonly IAdminAccessBll _authAccessBll = BllAccessHandler.AuthAccessBll;
+        private readonly IAdminAccessBll _authAccessBll = BllAccessHandler.AdminAccessBll;
 
         public event EventHandler LogoutEvent;
 
@@ -61,7 +61,7 @@ namespace UFO.Commander.ViewModel
         
         public bool RequestSessionToken(string textBoxUserName, string password)
         {
-            if (DebugHelper.IsDebugMode) return true;
+            if (!DebugHelper.IsReleaseMode) return true;
 
             var user = new User
             {
@@ -76,7 +76,7 @@ namespace UFO.Commander.ViewModel
         [ViewExceptionHandler("Login Exception")]
         public bool Login()
         {
-            if (DebugHelper.IsDebugMode) return true;
+            if (!DebugHelper.IsReleaseMode) return true;
 
             return IsLoggedIn = _authAccessBll.LoginAdmin(BllAccessHandler.SessionToken);
         }

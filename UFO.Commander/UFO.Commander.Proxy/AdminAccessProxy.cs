@@ -42,6 +42,13 @@ namespace UFO.Commander.Proxy
                 token.ToWebSeriveObject<WS.SessionToken>()).ToDomainObject<BLL.PagingData>();
         }
 
+        public bool ModifyArtistRange(BLL.SessionToken token, List<BLL.Artist> artists)
+        {
+            var artistsWs = ProxyHelper.ToArrayOf<BLL.Artist, WS.Artist>(artists);
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            return _adminAccessWs.ModifyArtistRange(tokenWs, artistsWs);
+        }
+
         public bool IsUserAuthenticated(BLL.SessionToken token)
         {
             return _adminAccessWs.IsUserAuthenticated(token.ToWebSeriveObject<WS.SessionToken>());
@@ -82,6 +89,13 @@ namespace UFO.Commander.Proxy
             return _adminAccessWs.RemoveArtist(tokenWs, artistWs);
         }
 
+        public bool ModifyVenueRange(BLL.SessionToken token, List<BLL.Venue> venues)
+        {
+            var venuesWs = ProxyHelper.ToArrayOf<BLL.Venue, WS.Venue>(venues);
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            return _adminAccessWs.ModifyVenueRange(tokenWs, venuesWs);
+        }
+
         public bool ModifyVenue(BLL.SessionToken token, BLL.Venue venue)
         {
             var venueWs = venue.ToWebSeriveObject<WS.Venue>();
@@ -94,6 +108,13 @@ namespace UFO.Commander.Proxy
             var venueWs = venue.ToWebSeriveObject<WS.Venue>();
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
             return _adminAccessWs.RemoveVenue(tokenWs, venueWs);
+        }
+
+        public bool ModifyPerformanceRange(BLL.SessionToken token, List<BLL.Performance> performances)
+        {
+            var performancesWs = ProxyHelper.ToArrayOf<BLL.Performance, WS.Performance>(performances);
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            return _adminAccessWs.ModifyPerformanceRange(tokenWs, performancesWs);
         }
 
         public bool ModifyPerformance(BLL.SessionToken token, BLL.Performance performance)

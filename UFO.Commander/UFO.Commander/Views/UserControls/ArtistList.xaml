@@ -16,28 +16,48 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer Grid.Row="0" Grid.Column="0" VerticalScrollBarVisibility="Visible" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
-            <ScrollViewer.Style>
-                <Style TargetType="ScrollViewer">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=dataGrid, Path=HasItems}" Value="False">
-                            <Setter Property="HorizontalScrollBarVisibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </ScrollViewer.Style>
+        <ScrollViewer Grid.Row="0" Grid.Column="0" 
+                      VerticalScrollBarVisibility="Visible" 
+                      PreviewMouseWheel="ScrollViewer_PreviewMouseWheel"
+                      Focusable="False">
             <DataGrid ItemsSource="{Binding Artists}"
                       SelectedItem="{Binding CurrentArtist, Mode=TwoWay}"
+                      SelectionMode="Single"
                       AutoGenerateColumns="False"
-                      VerticalScrollBarVisibility="Disabled" IsReadOnly="True">
+                      VerticalScrollBarVisibility="Disabled" 
+                      IsReadOnly="True">
+                <DataGrid.CellStyle>
+                    <!--Override Highlighting so that its easy to see what is selected even when the control is not focused-->
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <Style.Triggers>
+                            <Trigger  Property="IsSelected" Value="true">
+                                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                            </Trigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="True" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}, Path=IsKeyboardFocusWithin}" Value="False" />
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.Setters>
+                                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                                    <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                </MultiDataTrigger.Setters>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
+
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Header="Action">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <Button Content="Delete" 
-                                                Command="{Binding Path=ArtistOverviewViewModel.DeleteArtistCommand, Source={StaticResource Locator}}" 
-                                                CommandParameter="{Binding}" />
+                                            Command="{Binding Path=ArtistOverviewViewModel.DeleteArtistCommand, Source={StaticResource Locator}}" 
+                                            CommandParameter="{Binding}" />
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -45,14 +65,6 @@
                     <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name"/>
                     <DataGridTextColumn Binding="{Binding Path=EMail}" Header="EMail"/>
                     <DataGridTextColumn Binding="{Binding Path=CategoryViewModel}" Header="Category"/>
-                    <!--<DataGridTemplateColumn Header="Category">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <ComboBox SelectedItem="{Binding Categories}" 
-                                          SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell}, Path=Column.DisplayIndex}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>-->
                     <DataGridTextColumn Binding="{Binding Path=CountryViewModel}" Header="Country" />
                     <DataGridTextColumn Binding="{Binding Path=Picture.Path}" Header="Picture Path" />
                     <DataGridTextColumn Binding="{Binding Path=PromoVideo}" Header="Video Path" />

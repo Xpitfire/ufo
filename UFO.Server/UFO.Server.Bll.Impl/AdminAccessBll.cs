@@ -18,6 +18,8 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Transactions;
 using UFO.Server.Bll.Common;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
@@ -30,7 +32,18 @@ namespace UFO.Server.Bll.Impl
         {
             return EvaluateSessionPagingResult(token, page, () => UserDao.Select(page).ResultObject);
         }
-        
+
+        public override bool ModifyArtistRange(SessionToken token, List<Artist> artists)
+        {
+            bool result;
+            using (var scope = new TransactionScope())
+            {
+                result = artists.Aggregate(true, (current, artist) => current & ModifyArtist(token, artist));
+                scope.Complete();
+            }
+            return result;
+        }
+
         public override bool IsUserAuthenticated(SessionToken token)
         {
             return GetSession().GetUserFromSession(token)?.IsAdmin ?? false;
@@ -71,6 +84,17 @@ namespace UFO.Server.Bll.Impl
             return result.ResponseStatus == DaoStatus.Successful;
         }
 
+        public override bool ModifyVenueRange(SessionToken token, List<Venue> venues)
+        {
+            bool result;
+            using (var scope = new TransactionScope())
+            {
+                result = venues.Aggregate(true, (current, venue) => current & ModifyVenue(token, venue));
+                scope.Complete();
+            }
+            return result;
+        }
+
         public override bool ModifyVenue(SessionToken token, Venue venue)
         {
             if (!IsUserAuthenticated(token) || venue == null)
@@ -94,6 +118,17 @@ namespace UFO.Server.Bll.Impl
                 result = VenueDao.Delete(venue);
 
             return result.ResponseStatus == DaoStatus.Successful;
+        }
+
+        public override bool ModifyPerformanceRange(SessionToken token, List<Performance> performances)
+        {
+            bool result;
+            using (var scope = new TransactionScope())
+            {
+                result = performances.Aggregate(true, (current, performance) => current & ModifyPerformance(token, performance));
+                scope.Complete();
+            }
+            return result;
         }
 
         public override bool ModifyPerformance(SessionToken token, Performance performance)

@@ -29,14 +29,17 @@ namespace UFO.Server.Bll.Common
         PagingData RequestUserPagingData(SessionToken token);
 
         // Artist
+        bool ModifyArtistRange(SessionToken token, List<Artist> artists);
         bool ModifyArtist(SessionToken token, Artist artist);
         bool RemoveArtist(SessionToken token, Artist artist);
 
         // Venue
+        bool ModifyVenueRange(SessionToken token, List<Venue> venues);
         bool ModifyVenue(SessionToken token, Venue venue);
         bool RemoveVenue(SessionToken token, Venue venue);
 
         // Performance
+        bool ModifyPerformanceRange(SessionToken token, List<Performance> performances);
         bool ModifyPerformance(SessionToken token, Performance performance);
 
     }
