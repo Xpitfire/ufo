@@ -54,6 +54,8 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>-->
                     <DataGridTextColumn Binding="{Binding Path=CountryViewModel}" Header="Country" />
+                    <DataGridTextColumn Binding="{Binding Path=Picture.Path}" Header="Picture Path" />
+                    <DataGridTextColumn Binding="{Binding Path=PromoVideo}" Header="Video Path" />
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>

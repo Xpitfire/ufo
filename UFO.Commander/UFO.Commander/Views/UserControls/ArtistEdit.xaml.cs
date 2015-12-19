@@ -24,5 +24,25 @@ namespace UFO.Commander.Views.UserControls
         {
             InitializeComponent();
         }
+
+        public static Visibility GetSaveButtonVisibility(ArtistEdit element)
+        {
+            return (Visibility)element.GetValue(SaveButtonVisibilityProperty);
+        }
+
+        public static void SetSaveButtonVisibility(ArtistEdit element, Visibility value)
+        {
+            element.SetValue(SaveButtonVisibilityProperty, value);
+        }
+
+        public Visibility SaveButtonVisibility
+        {
+            get { return (Visibility)GetValue(SaveButtonVisibilityProperty); }
+            set { SetValue(SaveButtonVisibilityProperty, value); }
+        }
+
+        public static readonly DependencyProperty SaveButtonVisibilityProperty =
+            DependencyProperty.RegisterAttached(nameof(SaveButtonVisibility), typeof(Visibility), typeof(ArtistEdit), new PropertyMetadata(Visibility.Visible));
+
     }
 }

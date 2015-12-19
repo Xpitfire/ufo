@@ -20,6 +20,7 @@
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -60,9 +61,7 @@ namespace UFO.Commander.ViewModel
         
         public bool RequestSessionToken(string textBoxUserName, string password)
         {
-#if DEBUG
-            return true;
-#endif
+            if (DebugHelper.IsDebugMode) return true;
 
             var user = new User
             {
@@ -77,9 +76,8 @@ namespace UFO.Commander.ViewModel
         [ViewExceptionHandler("Login Exception")]
         public bool Login()
         {
-#if DEBUG
-            return true;
-#endif
+            if (DebugHelper.IsDebugMode) return true;
+
             return IsLoggedIn = _authAccessBll.LoginAdmin(BllAccessHandler.SessionToken);
         }
 
@@ -116,5 +114,9 @@ namespace UFO.Commander.ViewModel
                 Messenger.Default.Send(new HideDialogMessage(this));
             }
         }
+
+        private ICommand _cancelCommand;
+        public ICommand CancelCommand
+            => _cancelCommand ?? (_cancelCommand = new RelayCommand(() => Application.Current.Shutdown()));
     }
 }

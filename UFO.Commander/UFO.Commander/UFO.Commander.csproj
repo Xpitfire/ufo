@@ -102,9 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converters\NotNullToVisibilityConverter.cs" />
+    <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Handler\ViewExceptionHandlerAttribute.cs" />
     <Compile Include="Helper\BllAccessHandler.cs" />
+    <Compile Include="Helper\DebugHelper.cs" />
     <Compile Include="Helper\PasswordBoxHelper.cs" />
     <Compile Include="Messages\HideDialogMessage.cs" />
     <Compile Include="Messages\HideExceptionDialogMessage.cs" />
@@ -263,7 +264,9 @@
       <Name>UFO.Services.Generated</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DependencyProperties\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\PostSharp.4.2.14\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.2.14\tools\PostSharp.targets')" />
   <Target Name="EnsurePostSharpImported" BeforeTargets="BeforeBuild" Condition="'$(PostSharp30Imported)' == ''">

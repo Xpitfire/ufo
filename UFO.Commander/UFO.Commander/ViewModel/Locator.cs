@@ -16,6 +16,8 @@ using GalaSoft.MvvmLight.Ioc;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Practices.ServiceLocation;
 using UFO.Commander.Views;
+using UFO.Commander.Views.Dialogs;
+using UFO.Commander.Views.UserControls;
 
 namespace UFO.Commander.ViewModel
 {
@@ -66,7 +68,7 @@ namespace UFO.Commander.ViewModel
 
         public static CustomExceptionDialog CustomExceptionDialog
             => ServiceLocator.Current.GetInstance<CustomExceptionDialog>();
-
+        
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

@@ -19,10 +19,5 @@ namespace UFO.Commander.Views.Dialogs
         {
             InitializeComponent();
         }
-
-        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
     }
 }

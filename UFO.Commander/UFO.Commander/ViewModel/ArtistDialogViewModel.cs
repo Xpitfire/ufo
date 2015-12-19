@@ -6,25 +6,29 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
-using PostSharp.Patterns.Model;
 using UFO.Commander.Handler;
 using UFO.Commander.Messages;
 using UFO.Commander.ViewModel.Entities;
-using UFO.Commander.Views.Dialogs;
 
 namespace UFO.Commander.ViewModel
 {
     [ViewExceptionHandler("User Request Exception")]
     public class ArtistDialogViewModel : ViewModelBase
     {
+        private ArtistViewModel _currentArtist = new ArtistViewModel();
+        public ArtistViewModel CurrentArtist
+        {
+            get { return _currentArtist; }
+            set { Set(ref _currentArtist, value); }
+        }
+
         public ArtistDialogViewModel()
         {
-            SaveCommand = new RelayCommand(() =>
+            SaveCommand = new RelayCommand<ArtistViewModel>(artist =>
             {
-                // DO ME
-                Console.WriteLine();
+                Locator.ArtistOverviewViewModel.SaveCommand.Execute(artist);
+                Messenger.Default.Send(new HideDialogMessage(Locator.ArtistDialogViewModel));
             });
-
             CancelCommand = new RelayCommand(() =>
             {
                 Messenger.Default.Send(new HideDialogMessage(Locator.ArtistDialogViewModel));
@@ -38,8 +42,8 @@ namespace UFO.Commander.ViewModel
             get { return _artist; }
             set { Set(ref _artist, value); }
         }
-
-        public RelayCommand SaveCommand { get; set; }
+        
         public RelayCommand CancelCommand { get; set; }
+        public RelayCommand<ArtistViewModel> SaveCommand { get; set; }
     }
 }

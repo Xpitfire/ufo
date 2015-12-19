@@ -3,22 +3,21 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Threading;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
+using UFO.Commander.Handler;
 using UFO.Commander.Helper;
 using UFO.Commander.Messages;
 using UFO.Commander.Proxy;
 using UFO.Commander.ViewModel.Entities;
-using UFO.Commander.Views.Dialogs;
 using UFO.Server.Bll.Common;
 using UFO.Server.Domain;
 
 namespace UFO.Commander.ViewModel
 {
+    [ViewExceptionHandler("Artist data access Exception")]
     public class ArtistOverviewViewModel : ViewModelBase
     {
         #region ViewModels
@@ -64,15 +63,28 @@ namespace UFO.Commander.ViewModel
 
         public void InitializeCommands()
         {
-            NextPageCommand = new RelayCommand(ToNextArtistPage);
+            NewArtistCommand = new RelayCommand(
+                () => Messenger.Default.Send(new ShowDialogMessage(Locator.ArtistDialogViewModel)));
+
+            SaveCommand = new RelayCommand<ArtistViewModel>(a =>
+            {
+                Dispatcher.CurrentDispatcher.InvokeAsync(() =>
+                {
+                    if (!Artists.Contains(a))
+                        Artists.Add(a);
+                });
+                if (DebugHelper.IsReleaseMode)
+                    _adminAccessBll.ModifyArtist(BllAccessHandler.SessionToken, a.ToDomainObject<Artist>());
+            });
             DeleteArtistCommand = new RelayCommand<ArtistViewModel>(a =>
             {
                 Dispatcher.CurrentDispatcher.InvokeAsync(() => Artists.Remove(a));
-                //_adminAccessBll.RemoveArtist(BllAccessHandler.SessionToken, a.ToDomainObject<Artist>());
+                if (DebugHelper.IsReleaseMode)
+                    _adminAccessBll.RemoveArtist(BllAccessHandler.SessionToken, a.ToDomainObject<Artist>());
             });
         }
 
-        #region LoadData
+#region LoadData
 
         private PagingData ArtistPage { get; set; }
         private PagingData CategoryPage { get; set; }
@@ -133,11 +145,10 @@ namespace UFO.Commander.ViewModel
             }
         }
 
-        #endregion
+#endregion
 
         public RelayCommand NewArtistCommand { get; set; }
-        public RelayCommand NextPageCommand { get; set; }
+        public RelayCommand<ArtistViewModel> SaveCommand { get; set; }
         public RelayCommand<ArtistViewModel> DeleteArtistCommand { get; set; }
-        
     }
 }

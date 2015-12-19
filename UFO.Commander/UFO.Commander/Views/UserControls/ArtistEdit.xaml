@@ -5,15 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UFO.Commander.Views.UserControls"
              xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel"
-             xmlns:entities="clr-namespace:UFO.Commander.ViewModel.Entities">
+             xmlns:entities="clr-namespace:UFO.Commander.ViewModel.Entities"
+             d:DataContext="{d:DesignInstance Type=entities:ArtistViewModel, IsDesignTimeCreatable=True}"
+             mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="200" />
-            <ColumnDefinition Width="*"  />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0">
@@ -27,25 +30,20 @@
             <Label Content="Country" />
             <ComboBox ItemsSource="{Binding Path=ArtistOverviewViewModel.Countries, Source={StaticResource Locator}}"
                       SelectedItem="{Binding CountryViewModel}" />
+            <Label Content="Upload Video" />
+            <TextBox Text="{Binding PromoVideo}" />
         </StackPanel>
 
-        <Grid Grid.Row="0" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <Image Height="200" Width="200" />
+            <Button Content="Upload Image" />
+        </StackPanel>
 
-            <StackPanel Grid.Row="0" Orientation="Vertical">
-                <Image Height="200" Width="200" />
-                <Button Content="Upload Image" />
-            </StackPanel>
-
-            <StackPanel Grid.Row="1">
-                <Label Content="Upload Video" />
-                <TextBox Text="{Binding PromoVideo}" />
-            </StackPanel>
-
-        </Grid>
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" 
+                Content="Save"
+                Command="{Binding Path=ArtistOverviewViewModel.SaveCommand, Source={StaticResource Locator}}"
+                CommandParameter="{Binding}"
+                Visibility="{Binding Path=SaveButtonVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}" />
 
     </Grid>
 </UserControl>

@@ -51,6 +51,6 @@
 
 
         <Button Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Name="ButtonLogin" IsDefault="True" Content="Login" Command="{Binding LoginCommand}" />
-        <Button Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Name="ButtonCancel" Content="Cancel" Click="ButtonCancel_Click" />
+        <Button Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Name="ButtonCancel" Content="Cancel" Command="{Binding CancelCommand}" />
     </Grid>
 </UserControl>

@@ -23,19 +23,12 @@
             
             <Button Grid.Row="0" 
                     Content="New User" 
-                    Command="{Binding DataContext.NewArtistCommand, RelativeSource={RelativeSource AncestorType=Grid}}"/>
+                    Command="{Binding Path=ArtistOverviewViewModel.NewArtistCommand, Source={StaticResource Locator}}"/>
 
             <TextBlock Grid.Row="1" HorizontalAlignment="Center" Background="LightBlue" 
                        Visibility="{Binding CurrentArtist, Converter={StaticResource NotNullToVisibilityConverter}}" 
                        Text="Please select a artist" />
-
-
             <userControls:ArtistList Grid.Row="2" Grid.Column="0" />
-
-            <!--<Button Grid.Row="2" 
-                    Content="Next Page" 
-                    Command="{Binding DataContext.NextPageCommand, RelativeSource={RelativeSource AncestorType=Grid}}"/>-->
-
         </Grid>
 
         <ContentControl Grid.Column="1" Content="{Binding CurrentArtist}" />

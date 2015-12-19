@@ -5,17 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:UFO.Commander.ViewModel"
              xmlns:dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+             xmlns:userControls="clr-namespace:UFO.Commander.Views.UserControls"
              d:DataContext="{d:DesignInstance Type=vm:ArtistDialogViewModel, IsDesignTimeCreatable=True}"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Name:"/>
-                <TextBox Margin="5 0" Text="{Binding Artist.Name}"/>
-            </StackPanel>
-            <Button Command="{Binding SaveCommand}" Content="Save"/>
-            <Button Command="{Binding CancelCommand}" Content="Cancel"/>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <userControls:ArtistEdit Grid.Row="0" 
+                                 SaveButtonVisibility="Collapsed" 
+                                 DataContext="{Binding CurrentArtist}"/>
+        <Button Grid.Row="1" 
+                Content="Save"
+                Command="{Binding ArtistDialogViewModel.SaveCommand, Source={StaticResource Locator}}"
+                CommandParameter="{Binding CurrentArtist}" />
+        <Button Grid.Row="2" 
+                Content="Cancel"
+                Command="{Binding ArtistDialogViewModel.CancelCommand, Source={StaticResource Locator}}" />
     </Grid>
 </UserControl>
