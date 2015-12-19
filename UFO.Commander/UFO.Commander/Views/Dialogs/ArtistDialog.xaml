@@ -15,13 +15,13 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        
         <userControls:ArtistEdit Grid.Row="0" 
-                                 SaveButtonVisibility="Collapsed" 
                                  DataContext="{Binding CurrentArtist}"/>
+        
         <Button Grid.Row="1" 
                 Content="Save"
-                Command="{Binding ArtistDialogViewModel.SaveCommand, Source={StaticResource Locator}}"
-                CommandParameter="{Binding CurrentArtist}" />
+                Command="{Binding ArtistDialogViewModel.SaveCommand, Source={StaticResource Locator}}" />
         <Button Grid.Row="2" 
                 Content="Cancel"
                 Command="{Binding ArtistDialogViewModel.CancelCommand, Source={StaticResource Locator}}" />

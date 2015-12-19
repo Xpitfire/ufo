@@ -1,4 +1,8 @@
-﻿using PostSharp.Patterns.Model;
+﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using PostSharp.Patterns.Model;
+using UFO.Commander.Annotations;
 using UFO.Commander.Helper;
 using UFO.Commander.Proxy;
 using UFO.Server.Domain;
@@ -6,7 +10,7 @@ using UFO.Server.Domain;
 namespace UFO.Commander.ViewModel.Entities
 {
     [NotifyPropertyChanged]
-    public class ArtistViewModel : Artist
+    public class ArtistViewModel : Artist, INotifyPropertyChanged
     {
         public override int ArtistId { get; set; }
         public override string Name { get; set; }
@@ -28,6 +32,13 @@ namespace UFO.Commander.ViewModel.Entities
         {
             get { return Country?.ToViewModelObject<CountryViewModel>(); }
             set { Country = value?.ToDomainObject<Country>(); }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

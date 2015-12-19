@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace UFO.Commander.ViewModel
     [ViewExceptionHandler("User Request Exception")]
     public class ArtistDialogViewModel : ViewModelBase
     {
-        private ArtistViewModel _currentArtist = new ArtistViewModel();
+        private ArtistViewModel _currentArtist;
         public ArtistViewModel CurrentArtist
         {
             get { return _currentArtist; }
@@ -24,15 +25,26 @@ namespace UFO.Commander.ViewModel
 
         public ArtistDialogViewModel()
         {
-            SaveCommand = new RelayCommand<ArtistViewModel>(artist =>
+            CurrentArtist = new ArtistViewModel();
+            CurrentArtist.PropertyChanged += NewUserPropertyChangedEvent;
+            SaveCommand = new RelayCommand(() =>
             {
-                Locator.ArtistOverviewViewModel.SaveCommand.Execute(artist);
+                Locator.ArtistOverviewViewModel.SaveCommand.Execute(null);
                 Messenger.Default.Send(new HideDialogMessage(Locator.ArtistDialogViewModel));
+                CurrentArtist = new ArtistViewModel();
+                CurrentArtist.PropertyChanged += NewUserPropertyChangedEvent;
             });
             CancelCommand = new RelayCommand(() =>
             {
                 Messenger.Default.Send(new HideDialogMessage(Locator.ArtistDialogViewModel));
             });
+        }
+
+        private void NewUserPropertyChangedEvent(object sender, PropertyChangedEventArgs e)
+        {
+            var value = (ArtistViewModel)sender;
+            if (!Locator.ArtistOverviewViewModel.ModifiedArtists.Contains(value))
+                Locator.ArtistOverviewViewModel.ModifiedArtists.Add(value);
         }
 
         private ArtistViewModel _artist;
@@ -44,6 +56,6 @@ namespace UFO.Commander.ViewModel
         }
         
         public RelayCommand CancelCommand { get; set; }
-        public RelayCommand<ArtistViewModel> SaveCommand { get; set; }
+        public RelayCommand SaveCommand { get; set; }
     }
 }

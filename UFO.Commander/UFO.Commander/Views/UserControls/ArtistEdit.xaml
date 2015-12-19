@@ -12,8 +12,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -34,16 +32,9 @@
             <TextBox Text="{Binding PromoVideo}" />
         </StackPanel>
 
-        <StackPanel Grid.Row="0" Orientation="Vertical">
+        <StackPanel Grid.Row="1" Orientation="Vertical">
             <Image Height="200" Width="200" />
             <Button Content="Upload Image" />
         </StackPanel>
-
-        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" 
-                Content="Save"
-                Command="{Binding Path=ArtistOverviewViewModel.SaveCommand, Source={StaticResource Locator}}"
-                CommandParameter="{Binding}"
-                Visibility="{Binding Path=SaveButtonVisibility, RelativeSource={RelativeSource AncestorType=UserControl}}" />
-
     </Grid>
 </UserControl>

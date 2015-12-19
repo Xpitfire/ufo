@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Threading;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -28,6 +29,13 @@ namespace UFO.Commander.ViewModel
             get { return _artists; }
             set { Set(ref _artists, value); }
         }
+
+        private ObservableCollection<ArtistViewModel> _modifiedArtists = new ObservableCollection<ArtistViewModel>();
+        public ObservableCollection<ArtistViewModel> ModifiedArtists
+        {
+            get { return _modifiedArtists; }
+            set { Set(ref _modifiedArtists, value); }
+        } 
 
         private ObservableCollection<CategoryViewModel> _categories = new ObservableCollection<CategoryViewModel>();
         public ObservableCollection<CategoryViewModel> Categories
@@ -60,21 +68,29 @@ namespace UFO.Commander.ViewModel
             InitializeCommands();
             LoadInitialData();
         }
-
+        
         public void InitializeCommands()
         {
             NewArtistCommand = new RelayCommand(
                 () => Messenger.Default.Send(new ShowDialogMessage(Locator.ArtistDialogViewModel)));
 
-            SaveCommand = new RelayCommand<ArtistViewModel>(a =>
+            SaveCommand = new RelayCommand(() =>
             {
                 Dispatcher.CurrentDispatcher.InvokeAsync(() =>
                 {
-                    if (!Artists.Contains(a))
-                        Artists.Add(a);
+                    foreach (var modifiedArtist in ModifiedArtists)
+                    {
+                        if (!Artists.Contains(modifiedArtist))
+                            Artists.Add(modifiedArtist);
+                        if (DebugHelper.IsReleaseMode)
+                        {
+                            Task.Run(() => _adminAccessBll.ModifyArtist(
+                                BllAccessHandler.SessionToken, modifiedArtist.ToDomainObject<Artist>()));
+                        }
+                    }
+                    ModifiedArtists.Clear();
+                    CurrentArtist = null;
                 });
-                if (DebugHelper.IsReleaseMode)
-                    _adminAccessBll.ModifyArtist(BllAccessHandler.SessionToken, a.ToDomainObject<Artist>());
             });
             DeleteArtistCommand = new RelayCommand<ArtistViewModel>(a =>
             {
@@ -117,7 +133,14 @@ namespace UFO.Commander.ViewModel
             ArtistPage.ToNextPage();
             foreach (var artist in parcialArtists)
             {
-                Artists.Add(artist.ToViewModelObject<ArtistViewModel>());
+                var artistViewModel = artist.ToViewModelObject<ArtistViewModel>();
+                artistViewModel.PropertyChanged += (sender, args) =>
+                {
+                    var value = (ArtistViewModel) sender;
+                    if (!ModifiedArtists.Contains(value))
+                        ModifiedArtists.Add(value);
+                };
+                Artists.Add(artistViewModel);
             }
         }
 
@@ -148,7 +171,7 @@ namespace UFO.Commander.ViewModel
 #endregion
 
         public RelayCommand NewArtistCommand { get; set; }
-        public RelayCommand<ArtistViewModel> SaveCommand { get; set; }
+        public RelayCommand SaveCommand { get; set; }
         public RelayCommand<ArtistViewModel> DeleteArtistCommand { get; set; }
     }
 }
