@@ -1,0 +1,66 @@
+\begin{section}{Wator - Eat or be eaten...}
+
+    \subsection*{System analysis}
+		
+		Windows Task Manager:\\
+		\includegraphics[angle=0, scale=0.45]{./img/Capture0.png}
+    \FloatBarrier
+		\includegraphics[angle=0, scale=0.45]{./img/Capture1.png}
+    \FloatBarrier
+		
+		It seems that the processors are only about 40 percent busy while executing the program.
+		In general this might be caused by the following facts:
+		    
+    \begin{itemize}
+    	\item thread synchronization bottleneck (lock/unlock)
+			\item thread overhead; too many threads started in parallel until the threads exceed available data to process
+			\item too many sequential code parts
+			\item too less RAM, which results to too high amount of data flow between the registers and the memory
+    \end{itemize}
+		
+		\subsection*{Test results}
+		
+		Result overview:\\
+		\includepdf[scale=1, pages={1-2}, angle=0]{./out/Analysis.pdf}
+		
+		Test screen-shots:\\
+		\includegraphics[angle=0, scale=0.45]{./img/Capture1_0.png}
+		\includegraphics[angle=0, scale=0.45]{./img/Capture1_1.png}
+		\includegraphics[angle=0, scale=0.45]{./img/Capture1_2.png}
+		\includegraphics[angle=0, scale=0.45]{./img/Capture1_3.png}
+		\includegraphics[angle=0, scale=0.45]{./img/Capture1_4.png}
+    \FloatBarrier
+				
+		\subsection*{Diagnostic Tools analysis}
+		
+		\subsubsection*{CPU Usage}
+		
+		Started two test runs:\\
+		\includegraphics[angle=0, scale=0.48]{./img/Capture2_0.png}
+    \FloatBarrier
+		
+		View of CPU most intense functions:\\
+		\includegraphics[angle=0, scale=0.48]{./img/Capture2_1.png}
+    \FloatBarrier
+		\includegraphics[angle=0, scale=0.48]{./img/Capture2_2.png}
+    \FloatBarrier
+		
+		\subsection*{Performance Improvements}
+		
+		Code snipped showing most performance critical hotspots, which can be improved:\\
+		\\
+		VSS.Wator.Original.OriginalWatorWorld.ExecuteStep\\
+		\includegraphics[angle=0, scale=0.48]{./img/Capture2_3.png}
+    \FloatBarrier
+		VSS.Wator.Original.Shark.ExecuteStep\\
+		\includegraphics[angle=0, scale=0.48]{./img/Capture2_7.png}
+    \FloatBarrier
+		VSS.Wator.Original.OriginalWatorWorld.RandomizeMatrix\\
+		\includegraphics[angle=0, scale=0.48]{./img/Capture2_5.png}
+    \FloatBarrier
+		VSS.Wator.Original.OriginalWatorWorld.SelectNeighbor\\
+		\includegraphics[angle=0, scale=0.48]{./img/Capture2_6.png}
+    \FloatBarrier
+		
+
+\end{section}

@@ -86,6 +86,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="BllClassDiagram.cd" />
     <None Include="packages.config" />
     <None Include="UFO.Server.Bll.Impl.licenseheader" />
     <None Include="UFO.Server.Bll.Impl.psproj" />

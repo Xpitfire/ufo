@@ -1,11 +1,12 @@
-﻿using PostSharp.Patterns.Model;
+﻿using System;
+using PostSharp.Patterns.Model;
 using UFO.Commander.Helper;
 using UFO.Server.Domain;
 
 namespace UFO.Commander.ViewModel.Entities
 {
     [NotifyPropertyChanged]
-    public class UserViewModel : User
+    public class UserViewModel : User, IComparable<UserViewModel>
     {
         public override int UserId { get; set; }
         public override string FirstName { get; set; }
@@ -18,5 +19,10 @@ namespace UFO.Commander.ViewModel.Entities
 
         [SafeForDependencyAnalysis]
         public virtual ArtistViewModel ArtistViewModel => Artist?.ToViewModelObject<ArtistViewModel>();
+
+        public int CompareTo(UserViewModel other)
+        {
+            return string.CompareOrdinal(LastName, other.LastName);
+        }
     }
 }

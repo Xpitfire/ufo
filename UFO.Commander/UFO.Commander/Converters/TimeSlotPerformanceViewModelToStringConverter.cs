@@ -15,7 +15,7 @@ namespace UFO.Commander.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var timeSlot = value as PerformanceOverviewViewModel.TimeSlotPerformanceViewModel;
-            return (timeSlot == null || !Equals(parameter, timeSlot.TimeKey)) ? "" : timeSlot.PerformanceViewModel?.Artist?.Name;
+            return (timeSlot == null || !Equals(parameter, timeSlot.TimeKey)) ? "+" : timeSlot.PerformanceViewModel?.Artist?.Name;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

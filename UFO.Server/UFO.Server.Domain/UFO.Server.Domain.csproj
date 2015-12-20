@@ -72,6 +72,7 @@
     <Compile Include="Venue.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="DomainClassDiagram.cd" />
     <None Include="packages.config" />
     <None Include="UFO.Server.Domain.licenseheader" />
   </ItemGroup>

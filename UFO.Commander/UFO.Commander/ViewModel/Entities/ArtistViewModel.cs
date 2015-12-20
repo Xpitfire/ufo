@@ -12,7 +12,7 @@ using UFO.Server.Domain;
 namespace UFO.Commander.ViewModel.Entities
 {
     [NotifyPropertyChanged]
-    public class ArtistViewModel : Artist, INotifyPropertyChanged, ICloneable
+    public class ArtistViewModel : Artist, INotifyPropertyChanged, ICloneable, IComparable<ArtistViewModel>
     {
         public override int ArtistId { get; set; }
         public override string Name { get; set; }
@@ -66,6 +66,11 @@ namespace UFO.Commander.ViewModel.Entities
                 && Equals(Category, other.Category) 
                 && Equals(Country, other.Country) 
                 && Equals(Picture, other.Picture);
+        }
+
+        public int CompareTo(ArtistViewModel other)
+        {
+            return string.CompareOrdinal(Name, other.Name);
         }
 
         public override bool Equals(object obj)

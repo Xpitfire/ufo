@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UFO.Server.Domain.Artist" Collapsed="true">
+    <Position X="6.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAEgAAAEAQAACIAAIAAAAAAAAAASAA=</HashCode>
+      <FileName>Artist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Server.Domain.BlobData" Collapsed="true">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIEgAAAAAQAAAAAAIAAAAAAAgAAAAA=</HashCode>
+      <FileName>BlobData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Server.Domain.Category" Collapsed="true">
+    <Position X="12.5" Y="3.25" Width="1.5" />
+    <InheritanceLine Type="UFO.Server.Domain.DomainObject" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="1.062" />
+        <Point X="11.25" Y="1.375" />
+        <Point X="13.25" Y="1.375" />
+        <Point X="13.25" Y="3.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAEgAAAAAQAAAAAAIAAAAAAgAAAAAA=</HashCode>
+      <FileName>Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Server.Domain.Country" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAgAAQAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Country.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Server.Domain.DomainObject" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Server.Domain.Location" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAEAAAAAEgAAIAAQAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Location.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Server.Domain.PagingData" Collapsed="true">
+    <Position X="14.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAhAAEgAAAAAEAAAAAgIAAAAAAACAAgEA=</HashCode>
+      <FileName>PagingData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Server.Domain.Performance" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAEgAAAAAAAAIAAAIQAAAAAAAAAAAA=</HashCode>
+      <FileName>Performance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Server.Domain.SessionToken" Collapsed="true">
+    <Position X="10.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAEgAAAAAAIAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>SessionToken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Server.Domain.User" Collapsed="true">
+    <Position X="13.5" Y="1.75" Width="1.5" />
+    <InheritanceLine Type="UFO.Server.Domain.DomainObject" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="1.062" />
+        <Point X="11.25" Y="1.375" />
+        <Point X="14.25" Y="1.375" />
+        <Point X="14.25" Y="1.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAEgAAAAAgACKgAAIACAAAAAAAAAAg=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Server.Domain.Venue" Collapsed="true">
+    <Position X="15.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAIAAAQAAAgAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Venue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

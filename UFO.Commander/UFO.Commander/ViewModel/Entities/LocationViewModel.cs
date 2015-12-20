@@ -29,7 +29,7 @@ namespace UFO.Commander.ViewModel.Entities
 
         public int CompareTo(LocationViewModel other)
         {
-            return string.Compare(Name, other?.Name, StringComparison.Ordinal);
+            return string.CompareOrdinal(Name, other?.Name);
         }
     }
 }

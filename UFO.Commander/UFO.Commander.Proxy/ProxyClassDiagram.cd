@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UFO.Commander.Proxy.AdminAccessAsyncProxy" Collapsed="true">
+    <Position X="1" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIgEAAAQgAgIBgAAAABBAAKAAAAAAhAAQQAIQAAAQA=</HashCode>
+      <FileName>AdminAccessAsyncProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Commander.Proxy.AdminAccessProxy" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>CAoBAAACAAAAAQAAAAAABggCAAAACEBAEAAAAA0AgAA=</HashCode>
+      <FileName>AdminAccessProxy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="UFO.Commander.Proxy.BllFactory" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>BllFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Commander.Proxy.ProxyExtensions">
+    <Position X="3.5" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>ProxyExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Commander.Proxy.ProxyHelper">
+    <Position X="3.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAEAAAEAAAAAAA=</HashCode>
+      <FileName>ProxyExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Commander.Proxy.ViewAccessAsyncProxy" Collapsed="true">
+    <Position X="1" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QQAAAAAKABEAAAAABAAAAECAIAAAAIABgAACAAAAAAA=</HashCode>
+      <FileName>ViewAccessAsyncProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UFO.Commander.Proxy.ViewAccessProxy" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="1.25" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAISAAAAAAAAAAAAAACAEQAIAQAACQAAABAACAA=</HashCode>
+      <FileName>ViewAccessProxy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Enum Name="UFO.Commander.Proxy.BllType" Collapsed="true">
+    <Position X="6.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BllFactory.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -33,7 +33,7 @@ namespace UFO.Commander.ViewModel.Entities
 
         public int CompareTo(VenueViewModel other)
         {
-            return string.Compare(Name, other?.Name, StringComparison.Ordinal);
+            return string.CompareOrdinal(Name, other?.Name);
         }
     }
 }

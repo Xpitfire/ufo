@@ -32,10 +32,8 @@ namespace UFO.Commander.Views
                 viewModel.DataAvailableEvent += (o, models) =>
                 {
                     var performancesView = CollectionViewSource.GetDefaultView(models);
-
-                    // Set the grouping proprty
-                    performancesView.GroupDescriptions.Add(new PropertyGroupDescription("PerformanceViewModel.VenueViewModel.LocationViewModel"));
-                    
+                    var grouping = new PropertyGroupDescription("PerformanceViewModel.VenueViewModel.LocationViewModel");
+                    performancesView.GroupDescriptions.Add(grouping);
                 };
             };
         }

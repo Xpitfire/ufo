@@ -10,7 +10,7 @@ using UFO.Server.Domain;
 namespace UFO.Commander.ViewModel.Entities
 {
     [NotifyPropertyChanged]
-    public class PerformanceViewModel : Performance, INotifyPropertyChanged
+    public class PerformanceViewModel : Performance, INotifyPropertyChanged, IComparable<PerformanceViewModel>
     {
         public override DateTime DateTime { get; set; }
         public override Artist Artist { get; set; }
@@ -43,6 +43,12 @@ namespace UFO.Commander.ViewModel.Entities
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public int CompareTo(PerformanceViewModel other)
+        {
+            return VenueViewModel.CompareTo(other.VenueViewModel) 
+                + ArtistViewModel.CompareTo(other.ArtistViewModel);
         }
     }
 }
