@@ -45,6 +45,10 @@ namespace UFO.Server.Bll.Common
         public abstract bool RemoveVenue(SessionToken token, Venue venue);
         public abstract bool ModifyPerformanceRange(SessionToken token, List<Performance> performances);
         public abstract bool ModifyPerformance(SessionToken token, Performance performance);
+        public abstract bool RemovePerformance(SessionToken token, Performance performance);
+        public abstract bool ModifyLocationRange(SessionToken token, List<Location> locations);
+        public abstract bool ModifyLocation(SessionToken token, Location location);
+        public abstract bool RemoveLocation(SessionToken token, Location location);
         public abstract bool IsUserAuthenticated(SessionToken token);
         public abstract bool IsValidAdmin(SessionToken token);
         public abstract ISessionBll GetSession();

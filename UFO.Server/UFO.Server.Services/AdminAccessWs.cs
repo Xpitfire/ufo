@@ -33,6 +33,30 @@ namespace UFO.Server.Services
         }
 
         [OperationContract]
+        public override bool RemovePerformance(SessionToken token, Performance performance)
+        {
+            return base.RemovePerformance(token, performance);
+        }
+
+        [OperationContract]
+        public override bool ModifyLocationRange(SessionToken token, List<Location> locations)
+        {
+            return base.ModifyLocationRange(token, locations);
+        }
+
+        [OperationContract]
+        public override bool ModifyLocation(SessionToken token, Location location)
+        {
+            return base.ModifyLocation(token, location);
+        }
+
+        [OperationContract]
+        public override bool RemoveLocation(SessionToken token, Location location)
+        {
+            return base.RemoveLocation(token, location);
+        }
+
+        [OperationContract]
         public override bool ModifyVenueRange(SessionToken token, List<Venue> venues)
         {
             return base.ModifyVenueRange(token, venues);

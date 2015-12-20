@@ -39,6 +39,11 @@ namespace UFO.Commander.ViewModel
             SimpleIoc.Default.Register<ExceptionDialogViewModel>();
             SimpleIoc.Default.Register<CustomViewDialog>();
             SimpleIoc.Default.Register<CustomExceptionDialog>();
+            SimpleIoc.Default.Register<VenueOverviewViewModel>();
+            SimpleIoc.Default.Register<VenueEditViewModel>();
+            SimpleIoc.Default.Register<LocationEditViewModel>();
+            SimpleIoc.Default.Register<VenueDialogViewModel>();
+            SimpleIoc.Default.Register<LocationDialogViewModel>();
         }
 
         public static MainViewModel MainViewModel 
@@ -64,6 +69,21 @@ namespace UFO.Commander.ViewModel
 
         public static CustomExceptionDialog CustomExceptionDialog
             => ServiceLocator.Current.GetInstance<CustomExceptionDialog>();
-        
+
+        public static VenueOverviewViewModel VenueOverviewViewModel
+            => ServiceLocator.Current.GetInstance<VenueOverviewViewModel>();
+
+        public static VenueEditViewModel VenueEditViewModel
+            => ServiceLocator.Current.GetInstance<VenueEditViewModel>();
+
+        public static LocationEditViewModel LocationEditViewModel
+            => ServiceLocator.Current.GetInstance<LocationEditViewModel>();
+
+        public static VenueDialogViewModel VenueDialogViewModel
+            => ServiceLocator.Current.GetInstance<VenueDialogViewModel>();
+
+        public static LocationDialogViewModel LocationDialogViewModel
+            => ServiceLocator.Current.GetInstance<LocationDialogViewModel>();
+
     }
 }

@@ -20,6 +20,11 @@
                 </TabItem.ContentTemplate>
             </TabItem>
             <TabItem Name="VenueTabContent" Header="Venues">
+                <TabItem.ContentTemplate>
+                    <DataTemplate>
+                        <ContentControl Content="{Binding Path=VenueOverviewViewModel , Source={StaticResource Locator}}" />
+                    </DataTemplate>
+                </TabItem.ContentTemplate>
             </TabItem>
         </TabControl>
     </Grid>

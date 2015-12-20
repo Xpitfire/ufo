@@ -23,4 +23,19 @@
     <DataTemplate DataType="{x:Type entities:ArtistViewModel}">
         <uc:ArtistEdit />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:VenueOverviewViewModel}">
+        <v:VenueOverviewView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:VenueEditViewModel}">
+        <uc:VenueEdit />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:LocationEditViewModel}">
+        <uc:LocationEdit />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:VenueDialogViewModel}">
+        <dialogs:VenueDialog />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:LocationDialogViewModel}">
+        <dialogs:LocationDialog />
+    </DataTemplate>
 </ResourceDictionary>

@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="UFO.Commander.Views.UserControls.VenueEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UFO.Commander.Views.UserControls"
+             xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=viewModel:VenueOverviewViewModel, IsDesignTimeCreatable=True}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid DataContext="{Binding Path=VenueOverviewViewModel, Source={StaticResource Locator}}">
+        <StackPanel>
+            <Label Content="Name" />
+            <TextBox Text="{Binding CurrentVenueViewModel.Name}" />
+            <Label Content="Location" />
+            <ComboBox ItemsSource="{Binding Locations}" 
+                      SelectedItem="{Binding CurrentVenueViewModel.LocationViewModel}" />
+            <Button Content="Save" 
+                    Command="{Binding SaveVenueCommand}"/>
+            <Button Content="Delete" 
+                    Command="{Binding DeleteVenueCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

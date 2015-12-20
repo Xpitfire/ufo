@@ -90,12 +90,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfArtist" nillable="true" type="tns:ArrayOfArtist" />
-  <xs:complexType name="ArrayOfVenue">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Venue" nillable="true" type="tns:Venue" />
-    </xs:sequence>
+  <xs:complexType name="Performance">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Artist" nillable="true" type="tns:Artist" />
+          <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Venue" nillable="true" type="tns:Venue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
-  <xs:element name="ArrayOfVenue" nillable="true" type="tns:ArrayOfVenue" />
+  <xs:element name="Performance" nillable="true" type="tns:Performance" />
   <xs:complexType name="Venue">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:DomainObject">
@@ -121,24 +127,24 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="Location" nillable="true" type="tns:Location" />
+  <xs:complexType name="ArrayOfLocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Location" nillable="true" type="tns:Location" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLocation" nillable="true" type="tns:ArrayOfLocation" />
+  <xs:complexType name="ArrayOfVenue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Venue" nillable="true" type="tns:Venue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVenue" nillable="true" type="tns:ArrayOfVenue" />
   <xs:complexType name="ArrayOfPerformance">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Performance" nillable="true" type="tns:Performance" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfPerformance" nillable="true" type="tns:ArrayOfPerformance" />
-  <xs:complexType name="Performance">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:DomainObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Artist" nillable="true" type="tns:Artist" />
-          <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="Venue" nillable="true" type="tns:Venue" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Performance" nillable="true" type="tns:Performance" />
   <xs:complexType name="PagingData">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:DomainObject">

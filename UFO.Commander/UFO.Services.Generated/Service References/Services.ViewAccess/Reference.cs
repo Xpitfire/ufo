@@ -22,9 +22,9 @@ namespace UFO.Services.ViewAccess {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Category))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Country))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.BlobData))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Performance))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Venue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Location))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Performance))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.PagingData))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.SessionToken))]
     public partial class DomainObject : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -457,6 +457,61 @@ namespace UFO.Services.ViewAccess {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Performance", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
+    [System.SerializableAttribute()]
+    public partial class Performance : UFO.Services.ViewAccess.DomainObject {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UFO.Services.ViewAccess.Artist ArtistField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private UFO.Services.ViewAccess.Venue VenueField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UFO.Services.ViewAccess.Artist Artist {
+            get {
+                return this.ArtistField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ArtistField, value) != true)) {
+                    this.ArtistField = value;
+                    this.RaisePropertyChanged("Artist");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DateTime {
+            get {
+                return this.DateTimeField;
+            }
+            set {
+                if ((this.DateTimeField.Equals(value) != true)) {
+                    this.DateTimeField = value;
+                    this.RaisePropertyChanged("DateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public UFO.Services.ViewAccess.Venue Venue {
+            get {
+                return this.VenueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VenueField, value) != true)) {
+                    this.VenueField = value;
+                    this.RaisePropertyChanged("Venue");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Venue", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
     [System.SerializableAttribute()]
     public partial class Venue : UFO.Services.ViewAccess.DomainObject {
@@ -583,61 +638,6 @@ namespace UFO.Services.ViewAccess {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Performance", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
-    [System.SerializableAttribute()]
-    public partial class Performance : UFO.Services.ViewAccess.DomainObject {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UFO.Services.ViewAccess.Artist ArtistField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UFO.Services.ViewAccess.Venue VenueField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UFO.Services.ViewAccess.Artist Artist {
-            get {
-                return this.ArtistField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ArtistField, value) != true)) {
-                    this.ArtistField = value;
-                    this.RaisePropertyChanged("Artist");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime DateTime {
-            get {
-                return this.DateTimeField;
-            }
-            set {
-                if ((this.DateTimeField.Equals(value) != true)) {
-                    this.DateTimeField = value;
-                    this.RaisePropertyChanged("DateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UFO.Services.ViewAccess.Venue Venue {
-            get {
-                return this.VenueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.VenueField, value) != true)) {
-                    this.VenueField = value;
-                    this.RaisePropertyChanged("Venue");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PagingData", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
     [System.SerializableAttribute()]
     public partial class PagingData : UFO.Services.ViewAccess.DomainObject {
@@ -755,6 +755,30 @@ namespace UFO.Services.ViewAccess {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyArtistRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyArtistRangeResponse")]
         System.Threading.Tasks.Task<bool> ModifyArtistRangeAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist[] artists);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemovePerformance", ReplyAction="http://tempuri.org/AdminAccessWs/RemovePerformanceResponse")]
+        bool RemovePerformance(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance performance);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemovePerformance", ReplyAction="http://tempuri.org/AdminAccessWs/RemovePerformanceResponse")]
+        System.Threading.Tasks.Task<bool> RemovePerformanceAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance performance);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyLocationRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyLocationRangeResponse")]
+        bool ModifyLocationRange(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location[] locations);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyLocationRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyLocationRangeResponse")]
+        System.Threading.Tasks.Task<bool> ModifyLocationRangeAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location[] locations);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyLocation", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyLocationResponse")]
+        bool ModifyLocation(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyLocation", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyLocationResponse")]
+        System.Threading.Tasks.Task<bool> ModifyLocationAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemoveLocation", ReplyAction="http://tempuri.org/AdminAccessWs/RemoveLocationResponse")]
+        bool RemoveLocation(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemoveLocation", ReplyAction="http://tempuri.org/AdminAccessWs/RemoveLocationResponse")]
+        System.Threading.Tasks.Task<bool> RemoveLocationAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyVenueRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyVenueRangeResponse")]
         bool ModifyVenueRange(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue[] venues);
@@ -874,6 +898,38 @@ namespace UFO.Services.ViewAccess {
         
         public System.Threading.Tasks.Task<bool> ModifyArtistRangeAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist[] artists) {
             return base.Channel.ModifyArtistRangeAsync(token, artists);
+        }
+        
+        public bool RemovePerformance(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance performance) {
+            return base.Channel.RemovePerformance(token, performance);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RemovePerformanceAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance performance) {
+            return base.Channel.RemovePerformanceAsync(token, performance);
+        }
+        
+        public bool ModifyLocationRange(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location[] locations) {
+            return base.Channel.ModifyLocationRange(token, locations);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModifyLocationRangeAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location[] locations) {
+            return base.Channel.ModifyLocationRangeAsync(token, locations);
+        }
+        
+        public bool ModifyLocation(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location) {
+            return base.Channel.ModifyLocation(token, location);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModifyLocationAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location) {
+            return base.Channel.ModifyLocationAsync(token, location);
+        }
+        
+        public bool RemoveLocation(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location) {
+            return base.Channel.RemoveLocation(token, location);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RemoveLocationAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location) {
+            return base.Channel.RemoveLocationAsync(token, location);
         }
         
         public bool ModifyVenueRange(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue[] venues) {

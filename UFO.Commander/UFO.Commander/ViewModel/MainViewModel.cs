@@ -21,22 +21,10 @@ namespace UFO.Commander.ViewModel
         public ViewModelBase CurrentContent
         {
             get { return _currentContent; }
-            set
-            {
-                Set(ref _currentContent, value);
-                if (_currentContent == null)
-                {
-                    // TODO: Send logout msg
-                }
-            }
+            set { Set(ref _currentContent, value); }
         }
         
         public MainViewModel()
-        {
-            RegisterUserControls();
-        }
-
-        private void RegisterUserControls()
         {
             Messenger.Default.Register<ShowContentMessage>(this, msg => CurrentContent = msg.ViewModel);
         }

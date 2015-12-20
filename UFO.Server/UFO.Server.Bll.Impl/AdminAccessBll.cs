@@ -44,6 +44,54 @@ namespace UFO.Server.Bll.Impl
             return result;
         }
 
+        public override bool RemovePerformance(SessionToken token, Performance performance)
+        {
+            if (!IsUserAuthenticated(token) || performance == null)
+                return false;
+
+            var result = PerformanceDao.SelectById(performance.DateTime, performance.Artist.ArtistId);
+            if (result.ResponseStatus == DaoStatus.Successful)
+                result = PerformanceDao.Delete(performance);
+
+            return result.ResponseStatus == DaoStatus.Successful;
+        }
+
+        public override bool ModifyLocationRange(SessionToken token, List<Location> locations)
+        {
+            bool result;
+            using (var scope = new TransactionScope())
+            {
+                result = locations.Aggregate(true, (current, location) => current & ModifyLocation(token, location));
+                scope.Complete();
+            }
+            return result;
+        }
+
+        public override bool ModifyLocation(SessionToken token, Location location)
+        {
+            if (!IsUserAuthenticated(token) || location == null)
+                return false;
+
+            var result = LocationDao.SelectById(location.LocationId);
+            result = result.ResponseStatus == DaoStatus.Successful
+                ? LocationDao.Update(location)
+                : LocationDao.Insert(location);
+
+            return result.ResponseStatus == DaoStatus.Successful;
+        }
+
+        public override bool RemoveLocation(SessionToken token, Location location)
+        {
+            if (!IsUserAuthenticated(token) || location == null)
+                return false;
+
+            var result = LocationDao.SelectById(location.LocationId);
+            if (result.ResponseStatus == DaoStatus.Successful)
+                result = LocationDao.Delete(location);
+
+            return result.ResponseStatus == DaoStatus.Successful;
+        }
+
         public override bool IsUserAuthenticated(SessionToken token)
         {
             return GetSession().GetUserFromSession(token)?.IsAdmin ?? false;
@@ -143,6 +191,6 @@ namespace UFO.Server.Bll.Impl
 
             return result.ResponseStatus == DaoStatus.Successful;
         }
-
+        
     }
 }

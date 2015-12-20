@@ -123,6 +123,33 @@ namespace UFO.Commander.Proxy
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
             return AdminAccessWs.ModifyPerformance(tokenWs, performanceWs);
         }
-        
+
+        public bool RemovePerformance(BLL.SessionToken token, BLL.Performance performance)
+        {
+            var performanceWs = performance.ToWebSeriveObject<WS.Performance>();
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            return AdminAccessWs.RemovePerformance(tokenWs, performanceWs);
+        }
+
+        public bool ModifyLocationRange(BLL.SessionToken token, List<BLL.Location> locations)
+        {
+            var locationsWs = ProxyHelper.ToArrayOf<BLL.Location, WS.Location>(locations);
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            return AdminAccessWs.ModifyLocationRange(tokenWs, locationsWs);
+        }
+
+        public bool ModifyLocation(BLL.SessionToken token, BLL.Location location)
+        {
+            var locationWs = location.ToWebSeriveObject<WS.Location>();
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            return AdminAccessWs.ModifyLocation(tokenWs, locationWs);
+        }
+
+        public bool RemoveLocation(BLL.SessionToken token, BLL.Location location)
+        {
+            var locationWs = location.ToWebSeriveObject<WS.Location>();
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            return AdminAccessWs.RemoveLocation(tokenWs, locationWs);
+        }
     }
 }

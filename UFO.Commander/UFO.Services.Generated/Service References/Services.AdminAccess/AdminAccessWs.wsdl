@@ -134,6 +134,158 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_RemovePerformance_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_RemovePerformance_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_ModifyLocationRange_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_ModifyLocationRange_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_ModifyLocation_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_ModifyLocation_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_RemoveLocation_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_RemoveLocation_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_ModifyVenueRange_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -680,6 +832,30 @@
   <wsdl:message name="AdminAccessWs_ModifyArtistRange_OutputMessage">
     <wsdl:part name="parameters" element="tns:ModifyArtistRangeResponse" />
   </wsdl:message>
+  <wsdl:message name="AdminAccessWs_RemovePerformance_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePerformance" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_RemovePerformance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePerformanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_ModifyLocationRange_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyLocationRange" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_ModifyLocationRange_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyLocationRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_ModifyLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyLocation" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_ModifyLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_RemoveLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveLocation" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_RemoveLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveLocationResponse" />
+  </wsdl:message>
   <wsdl:message name="AdminAccessWs_ModifyVenueRange_InputMessage">
     <wsdl:part name="parameters" element="tns:ModifyVenueRange" />
   </wsdl:message>
@@ -769,6 +945,22 @@
       <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/ModifyArtistRange" message="tns:AdminAccessWs_ModifyArtistRange_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/ModifyArtistRangeResponse" message="tns:AdminAccessWs_ModifyArtistRange_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RemovePerformance">
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/RemovePerformance" message="tns:AdminAccessWs_RemovePerformance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/RemovePerformanceResponse" message="tns:AdminAccessWs_RemovePerformance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyLocationRange">
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/ModifyLocationRange" message="tns:AdminAccessWs_ModifyLocationRange_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/ModifyLocationRangeResponse" message="tns:AdminAccessWs_ModifyLocationRange_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/ModifyLocation" message="tns:AdminAccessWs_ModifyLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/ModifyLocationResponse" message="tns:AdminAccessWs_ModifyLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/RemoveLocation" message="tns:AdminAccessWs_RemoveLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/RemoveLocationResponse" message="tns:AdminAccessWs_RemoveLocation_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ModifyVenueRange">
       <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/ModifyVenueRange" message="tns:AdminAccessWs_ModifyVenueRange_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/ModifyVenueRangeResponse" message="tns:AdminAccessWs_ModifyVenueRange_OutputMessage" />
@@ -837,6 +1029,50 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_ModifyArtistRange_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemovePerformance">
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/RemovePerformance" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_RemovePerformance_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_RemovePerformance_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyLocationRange">
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/ModifyLocationRange" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_ModifyLocationRange_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_ModifyLocationRange_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyLocation">
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/ModifyLocation" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_ModifyLocation_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_ModifyLocation_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveLocation">
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/RemoveLocation" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_RemoveLocation_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_RemoveLocation_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

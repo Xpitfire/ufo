@@ -37,6 +37,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Caliburn.Micro, Version=2.0.2.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.Core.2.0.2\lib\net45\Caliburn.Micro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Platform, Version=2.0.2.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.2.0.2\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="GalaSoft.MvvmLight, Version=5.2.0.37222, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
       <Private>True</Private>
@@ -112,10 +120,13 @@
     <Compile Include="Messages\ShowContentMessage.cs" />
     <Compile Include="Messages\ShowDialogMessage.cs" />
     <Compile Include="Messages\ShowExceptionDialogMessage.cs" />
+    <Compile Include="Messages\ShowVenueOverviewContentMessage.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\ArtistDialogViewModel.cs" />
     <Compile Include="ViewModel\ArtistOverviewViewModel.cs" />
     <Compile Include="ViewModel\ExceptionDialogViewModel.cs" />
+    <Compile Include="ViewModel\LocationDialogViewModel.cs" />
+    <Compile Include="ViewModel\LocationEditViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="Helper\Crypto.cs" />
     <Compile Include="ViewModel\Entities\ArtistViewModel.cs" />
@@ -129,10 +140,31 @@
     <Compile Include="Helper\ViewModelExtensions.cs" />
     <Compile Include="ViewModel\TabControlViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\VenueDialogViewModel.cs" />
+    <Compile Include="ViewModel\VenueEditViewModel.cs" />
+    <Compile Include="ViewModel\VenueOverviewViewModel.cs" />
     <Compile Include="ViewModel\ViewModelCommon.cs" />
     <Compile Include="ViewModel\Locator.cs" />
     <Compile Include="Views\ArtistOverviewView.xaml.cs">
       <DependentUpon>ArtistOverviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\LocationDialog.xaml.cs">
+      <DependentUpon>LocationDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\VenueDialog.xaml.cs">
+      <DependentUpon>VenueDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\LocationEdit.xaml.cs">
+      <DependentUpon>LocationEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\VenueEdit.xaml.cs">
+      <DependentUpon>VenueEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\VenueTree.xaml.cs">
+      <DependentUpon>VenueTree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VenueOverviewView.xaml.cs">
+      <DependentUpon>VenueOverviewView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewDialogs.cs" />
     <Compile Include="Views\DialogLocator.cs" />
@@ -194,6 +226,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Dialogs\LocationDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\VenueDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TabContentView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -203,6 +243,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserControls\ArtistList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\LocationEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\VenueEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\VenueTree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VenueOverviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

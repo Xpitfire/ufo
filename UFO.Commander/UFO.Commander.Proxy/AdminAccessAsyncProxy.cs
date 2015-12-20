@@ -111,5 +111,33 @@ namespace UFO.Commander.Proxy
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
             return await AdminAccessWs.ModifyPerformanceAsync(tokenWs, performanceWs);
         }
+
+        public static async Task<bool> RemovePerformanceAsync(this IAdminAccessBll accessBll, BLL.SessionToken token, BLL.Performance performance)
+        {
+            var performanceWs = performance.ToWebSeriveObject<WS.Performance>();
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            return await AdminAccessWs.RemovePerformanceAsync(tokenWs, performanceWs);
+        }
+
+        public static async Task<bool> ModifyLocationRangeAsync(this IAdminAccessBll accessBll, BLL.SessionToken token, List<BLL.Location> locations)
+        {
+            var locationsWs = ProxyHelper.ToArrayOf<BLL.Location, WS.Location>(locations);
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            return await AdminAccessWs.ModifyLocationRangeAsync(tokenWs, locationsWs);
+        }
+
+        public static async Task<bool> ModifyLocationAsync(this IAdminAccessBll accessBll, BLL.SessionToken token, BLL.Location location)
+        {
+            var locationWs = location.ToWebSeriveObject<WS.Location>();
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            return await AdminAccessWs.ModifyLocationAsync(tokenWs, locationWs);
+        }
+
+        public static async Task<bool> RemoveLocationAsync(this IAdminAccessBll accessBll, BLL.SessionToken token, BLL.Location location)
+        {
+            var locationWs = location.ToWebSeriveObject<WS.Location>();
+            var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
+            return await AdminAccessWs.RemoveLocationAsync(tokenWs, locationWs);
+        }
     }
 }
