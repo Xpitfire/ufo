@@ -26,7 +26,16 @@ namespace UFO.Commander.ViewModel
         private readonly IViewAccessBll _viewAccessBll = BllAccessHandler.ViewAccessBll;
         private readonly IAdminAccessBll _adminAccessBll = BllAccessHandler.AdminAccessBll;
 
-        public DateTime CurrentPerformanceDateTime { get; set; } = DateTime.Parse("2015-11-15");
+        private DateTime _currentPerformanceDateTime = DateTime.Parse("2015-11-15");
+        public DateTime CurrentPerformanceDateTime
+        {
+            get { return _currentPerformanceDateTime; }
+            set
+            {
+                Set(ref _currentPerformanceDateTime, value);
+                LoadInitialData();
+            }
+        }
 
         public ObservableCollection<TimeSlotPerformanceViewModel> TimeSlotPerformanceViewModels { get; } = new ObservableCollection<TimeSlotPerformanceViewModel>();
         
@@ -63,12 +72,14 @@ namespace UFO.Commander.ViewModel
         {
             await Dispatcher.CurrentDispatcher.InvokeAsync(async () =>
             {
+                TimeSlotPerformanceViewModels.Clear();
                 await InitializeData();
             });
         }
 
         public async Task InitializeData()
         {
+
             var performances = await _viewAccessBll.GetPerformancesPerDateAsync(CurrentPerformanceDateTime);
             if (performances == null) return;
             

@@ -33,6 +33,7 @@ namespace UFO.Commander.Views
                 {
                     var performancesView = CollectionViewSource.GetDefaultView(models);
                     var grouping = new PropertyGroupDescription("PerformanceViewModel.VenueViewModel.LocationViewModel");
+                    performancesView.GroupDescriptions.Clear();
                     performancesView.GroupDescriptions.Add(grouping);
                 };
             };

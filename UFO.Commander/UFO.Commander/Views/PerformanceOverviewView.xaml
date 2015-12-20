@@ -8,12 +8,6 @@
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=viewModel:PerformanceOverviewViewModel ,IsDesignTimeCreatable=True}">
     <UserControl.Resources>
-        <!--<Style TargetType="DataGridColumnHeader">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Stretch"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>-->
         <Style TargetType="DataGridCell">
             <Setter Property="Width" Value="100" />
             <Setter Property="Height" Value="50" />
@@ -26,13 +20,21 @@
     
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer Grid.Row="0" Grid.Column="0" 
+        
+        <DatePicker Grid.Row="0" Grid.Column="0"
+                    SelectedDate="{Binding CurrentPerformanceDateTime}"
+                    HorizontalAlignment="Right"
+                    IsTodayHighlighted="True"
+                    Width="200"/>
+        
+        <ScrollViewer Grid.Row="1" Grid.Column="0" 
                       VerticalScrollBarVisibility="Visible" 
                       HorizontalScrollBarVisibility="Visible" 
                       Focusable="False">

@@ -7,8 +7,6 @@ using PostSharp.Extensibility;
 using PostSharp.Patterns.Diagnostics;
 using UFO.Commander.Messages;
 using UFO.Commander.ViewModel;
-using UFO.Commander.Views.Dialogs;
-using UFO.Commander.Views.UserControls;
 
 namespace UFO.Commander.Handler
 {

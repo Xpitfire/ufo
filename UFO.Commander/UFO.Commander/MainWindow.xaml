@@ -4,7 +4,7 @@
                       xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       xmlns:userControls="clr-namespace:UFO.Commander.Views.UserControls"
                       Style="{DynamicResource CustomMetroWindowStyle}"
-                      Height="720" Width="1200"
+                      Height="720" Width="1250"
                       WindowCloseButtonStyle="{DynamicResource WindowButtonStyle}"
                       WindowMaxButtonStyle="{DynamicResource WindowButtonStyle}"
                       WindowMinButtonStyle="{DynamicResource WindowButtonStyle}"
