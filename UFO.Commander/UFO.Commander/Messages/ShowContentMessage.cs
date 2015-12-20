@@ -13,6 +13,8 @@ namespace UFO.Commander.Messages
     {
         public ViewModelBase ViewModel { get; set; }
 
+        public string Title { get; set; }
+
         public ShowContentMessage(ViewModelBase viewModel)
         {
             ViewModel = viewModel;

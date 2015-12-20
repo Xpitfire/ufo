@@ -227,5 +227,10 @@ namespace UFO.Commander.ViewModel
 
             public LocationViewModel LocationViewModel { get; set; }
         }
+
+        public override string ToString()
+        {
+            return "UFO Venue Overview";
+        }
     }
 }

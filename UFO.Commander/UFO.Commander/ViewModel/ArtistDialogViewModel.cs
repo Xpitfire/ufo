@@ -13,7 +13,7 @@ using UFO.Commander.ViewModel.Entities;
 
 namespace UFO.Commander.ViewModel
 {
-    [ViewExceptionHandler("User Request Exception")]
+    [ViewExceptionHandler("Artist Request Exception")]
     public class ArtistDialogViewModel : ViewModelBase
     {
         private ArtistViewModel _currentArtist;
@@ -57,5 +57,10 @@ namespace UFO.Commander.ViewModel
         
         public RelayCommand CancelCommand { get; set; }
         public RelayCommand SaveCommand { get; set; }
+
+        public override string ToString()
+        {
+            return "UFO Edit Artist";
+        }
     }
 }

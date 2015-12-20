@@ -20,7 +20,7 @@ using UFO.Server.Domain;
 
 namespace UFO.Commander.ViewModel
 {
-    [ViewExceptionHandler("Artist data access Exception")]
+    [ViewExceptionHandler("Artist Request Exception")]
     public class ArtistOverviewViewModel : ViewModelBase
     {
         #region ViewModels
@@ -194,5 +194,10 @@ namespace UFO.Commander.ViewModel
         public RelayCommand NewArtistCommand { get; set; }
         public RelayCommand SaveCommand { get; set; }
         public RelayCommand<ArtistViewModel> DeleteArtistCommand { get; set; }
+
+        public override string ToString()
+        {
+            return "UFO Artist Overview";
+        }
     }
 }

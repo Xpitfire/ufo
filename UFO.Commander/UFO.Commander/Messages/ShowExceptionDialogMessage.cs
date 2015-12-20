@@ -7,10 +7,16 @@ using GalaSoft.MvvmLight;
 
 namespace UFO.Commander.Messages
 {
-    class ShowExceptionDialogMessage : ShowDialogMessage
+    public class ShowExceptionDialogMessage
     {
-        public ShowExceptionDialogMessage(ViewModelBase viewModel) : base(viewModel)
+        public ViewModelBase ViewModel { get; set; }
+
+        public string Title { get; set; }
+
+        public ShowExceptionDialogMessage(ViewModelBase viewModel)
         {
+            ViewModel = viewModel;
+            Title = ViewModel.ToString();
         }
     }
 }

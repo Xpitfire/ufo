@@ -46,6 +46,7 @@ namespace UFO.Commander
         {
             var dialog = Locator.CustomViewDialog;
             dialog.Content = dialogMsg.ViewModel;
+            dialog.Title = dialogMsg.Title;
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
             await this.ShowMetroDialogAsync(dialog);
         }
@@ -72,7 +73,9 @@ namespace UFO.Commander
                 _recallPreviousState = true;
             }
             var exceptionDialog = Locator.CustomExceptionDialog;
+            var viewModel = dialogMsg.ViewModel as ExceptionDialogViewModel;
             exceptionDialog.Content = dialogMsg.ViewModel;
+            exceptionDialog.Title = viewModel?.Title ?? dialogMsg.Title;
             MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
             await this.ShowMetroDialogAsync(exceptionDialog);
         }

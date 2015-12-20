@@ -61,10 +61,10 @@
 \newcommand{\AuthorLastNameCo}{Wurm}
 \newcommand{\AuthorFullNameCo}{\AuthorFirstNameCo \xspace \AuthorLastNameCo}
 \newcommand{\MatrNrCo}{S1310307112}
-\newcommand{\AuthorFullID}{\AuthorFirstName \xspace \AuthorLastName \xspace (\MatrNr) \\ \AuthorFirstNameCo \xspace \AuthorLastNameCo \xspace (\MatrNrCo)}
+\newcommand{\AuthorFullID}{\AuthorFirstName \xspace \AuthorLastName \xspace (\MatrNr)}
 
 \newcommand{\SubjectTitle}{SWK5 UEG2 SEv WS15/16}
-\newcommand{\ExerciseTitle}{Ausbaustufe 1}
+\newcommand{\ExerciseTitle}{Ausbaustufe 2}
 
 % Set document command shortcuts
 \newcommand{\nPar}{\par\vspace{0.5cm}}
@@ -121,6 +121,8 @@
 		\newpage
 		\tableofcontents
 		
+		\includepdf[scale=1, pages={1-5}, angle=0]{./specs/Projekt-SWK5-WEA5-VZ-Anforderungsdefinition.pdf}
+		
     \includepdf[scale=1, pages={1}, angle=0]{./specs/Projekt-SWK5-WEA5-VZ-Ausbaustufe1.pdf}
 
     % sections
@@ -129,5 +131,10 @@
 		\input{./doc/section_2.tex}
 		\newpage
 		\input{./doc/section_3.tex}
+		\newpage
+		
+		\includepdf[scale=1, pages={1}, angle=0]{./specs/Projekt-SWK5-WEA5-BB-Ausbaustufe2.pdf}
+		
+		\input{./doc/section_4.tex}
     
 \end{document}

@@ -35,7 +35,7 @@ using UFO.Commander.Messages;
 
 namespace UFO.Commander.ViewModel
 {
-    [ViewExceptionHandler("Authentication Exception")]
+    [ViewExceptionHandler("Login Exception")]
     public class LoginViewModel : ViewModelBase
     {
         private readonly IAdminAccessBll _authAccessBll = BllAccessHandler.AdminAccessBll;
@@ -72,8 +72,7 @@ namespace UFO.Commander.ViewModel
             BllAccessHandler.SessionToken = await _authAccessBll.RequestSessionTokenAsync(user);
             return await _authAccessBll.IsValidAdminAsync(BllAccessHandler.SessionToken);
         }
-
-        [ViewExceptionHandler("Login Exception")]
+        
         public async Task<bool> Login()
         {
             if (!DebugHelper.IsReleaseMode) return true;
@@ -118,5 +117,10 @@ namespace UFO.Commander.ViewModel
         private ICommand _cancelCommand;
         public ICommand CancelCommand
             => _cancelCommand ?? (_cancelCommand = new RelayCommand(() => Application.Current.Shutdown()));
+
+        public override string ToString()
+        {
+            return "UFO Login";
+        }
     }
 }

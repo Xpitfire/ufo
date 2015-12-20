@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
-using PostSharp.Patterns.Model;
 using UFO.Commander.Messages;
 
 namespace UFO.Commander.ViewModel
@@ -26,5 +25,10 @@ namespace UFO.Commander.ViewModel
         public Exception Exception { get; set; }
         public string Message { get; set; }
         public string Title { get; set; }
+
+        public override string ToString()
+        {
+            return "UFO Exception";
+        }
     }
 }

@@ -13,6 +13,7 @@ using UFO.Commander.Views.UserControls;
 namespace UFO.Commander.Handler
 {
     [Serializable]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
     [MulticastAttributeUsage(MulticastTargets.Method | MulticastTargets.InstanceConstructor, AllowMultiple = false)]
     public class ViewExceptionHandlerAttribute : OnExceptionAspect
     {

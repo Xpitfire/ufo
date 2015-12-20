@@ -15,9 +15,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="{Binding Title}" />
-        <TextBlock Grid.Row="1" Text="{Binding Message}" />
+        <TextBlock Grid.Row="0" Name="ExceptionTitle" Text="{Binding Title}" />
+        <TextBlock Grid.Row="1" Name="ExceptionMessage" Text="{Binding Message}" />
         <Button Grid.Row="2" Content="Confirm" Command="{Binding ConfirmCommand}" />
-        <TextBlock Grid.Row="3" Text="{Binding Exception.StackTrace}" />
+        <TextBlock Grid.Row="3" Name="ExceptionInfo"  Text="{Binding Exception.StackTrace}" />
     </Grid>
 </UserControl>

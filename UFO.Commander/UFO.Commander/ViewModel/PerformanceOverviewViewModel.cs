@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 using GalaSoft.MvvmLight;
+using UFO.Commander.Handler;
 using UFO.Commander.Helper;
 using UFO.Commander.Proxy;
 using UFO.Commander.ViewModel.Entities;
@@ -15,6 +16,7 @@ using UFO.Server.Domain;
 
 namespace UFO.Commander.ViewModel
 {
+    [ViewExceptionHandler("Performance Request Exception")]
     public class PerformanceOverviewViewModel : ViewModelBase
     {
         public const int MaxPerformances = 24;
@@ -59,14 +61,6 @@ namespace UFO.Commander.ViewModel
 
         public async void LoadInitialData()
         {
-            //for (var i = 0; i < MaxPerformances; i++)
-            //{
-            //    var id = $"{i%24}:00";
-            //    if (id.Length < 5)
-            //        id = $"0{id}";
-            //    TimeSlotPerformanceViewModels[i].TimeKey = id;
-            //}
-
             await Dispatcher.CurrentDispatcher.InvokeAsync(async () =>
             {
                 await InitializeData();
@@ -92,6 +86,9 @@ namespace UFO.Commander.ViewModel
             DataAvailableEvent?.Invoke(this, TimeSlotPerformanceViewModels);
         }
 
-        
+        public override string ToString()
+        {
+            return "UFO Performance Overview";
+        }
     }
 }
