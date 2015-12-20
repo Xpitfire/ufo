@@ -111,6 +111,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Converters\TimeSlotPerformanceViewModelToStringConverter.cs" />
     <Compile Include="Handler\ViewExceptionHandlerAttribute.cs" />
     <Compile Include="Helper\BllAccessHandler.cs" />
     <Compile Include="Helper\DebugHelper.cs" />
@@ -124,13 +125,13 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\ArtistDialogViewModel.cs" />
     <Compile Include="ViewModel\ArtistOverviewViewModel.cs" />
+    <Compile Include="ViewModel\Entities\DateTimeViewModel.cs" />
     <Compile Include="ViewModel\ExceptionDialogViewModel.cs" />
     <Compile Include="ViewModel\LocationDialogViewModel.cs" />
     <Compile Include="ViewModel\LocationEditViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="Helper\Crypto.cs" />
     <Compile Include="ViewModel\Entities\ArtistViewModel.cs" />
-    <Compile Include="ViewModel\Entities\BlobDataViewModel.cs" />
     <Compile Include="ViewModel\Entities\CategoryViewModel.cs" />
     <Compile Include="ViewModel\Entities\CountryViewModel.cs" />
     <Compile Include="ViewModel\Entities\LocationViewModel.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="ViewModel\Entities\UserViewModel.cs" />
     <Compile Include="ViewModel\Entities\VenueViewModel.cs" />
     <Compile Include="Helper\ViewModelExtensions.cs" />
+    <Compile Include="ViewModel\PerformanceOverviewViewModel.cs" />
     <Compile Include="ViewModel\TabControlViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\VenueDialogViewModel.cs" />
@@ -153,6 +155,9 @@
     </Compile>
     <Compile Include="Views\Dialogs\VenueDialog.xaml.cs">
       <DependentUpon>VenueDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PerformanceOverviewView.xaml.cs">
+      <DependentUpon>PerformanceOverviewView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\LocationEdit.xaml.cs">
       <DependentUpon>LocationEdit.xaml</DependentUpon>
@@ -231,6 +236,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\VenueDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PerformanceOverviewView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

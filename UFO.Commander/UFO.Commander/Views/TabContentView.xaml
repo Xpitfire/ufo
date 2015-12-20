@@ -10,7 +10,11 @@
     <Grid>
         <TabControl TabStripPlacement="Top">
             <TabItem Name="PerformanceTabContent" Header="Performances">
-                
+                <TabItem.ContentTemplate>
+                    <DataTemplate>
+                        <ContentControl Content="{Binding Path=PerformanceOverviewViewModel , Source={StaticResource Locator}}" />
+                    </DataTemplate>
+                </TabItem.ContentTemplate>
             </TabItem>
             <TabItem Name="ArtistTabContent" Header="Artists">
                 <TabItem.ContentTemplate>

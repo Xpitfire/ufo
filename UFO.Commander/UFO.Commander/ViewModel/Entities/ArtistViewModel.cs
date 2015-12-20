@@ -12,7 +12,7 @@ using UFO.Server.Domain;
 namespace UFO.Commander.ViewModel.Entities
 {
     [NotifyPropertyChanged]
-    public class ArtistViewModel : Artist, INotifyPropertyChanged
+    public class ArtistViewModel : Artist, INotifyPropertyChanged, ICloneable
     {
         public override int ArtistId { get; set; }
         public override string Name { get; set; }
@@ -55,6 +55,46 @@ namespace UFO.Commander.ViewModel.Entities
             }
             image.Freeze();
             return image;
+        }
+
+        protected bool Equals(ArtistViewModel other)
+        {
+            return base.Equals(other) && ArtistId == other.ArtistId 
+                && string.Equals(Name, other.Name) 
+                && string.Equals(EMail, other.EMail) 
+                && string.Equals(PromoVideo, other.PromoVideo) 
+                && Equals(Category, other.Category) 
+                && Equals(Country, other.Country) 
+                && Equals(Picture, other.Picture);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((ArtistViewModel) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = base.GetHashCode();
+                hashCode = (hashCode*397) ^ ArtistId;
+                hashCode = (hashCode*397) ^ (Name != null ? Name.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (EMail != null ? EMail.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (PromoVideo != null ? PromoVideo.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (Category != null ? Category.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (Country != null ? Country.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (Picture != null ? Picture.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

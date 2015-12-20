@@ -38,4 +38,7 @@
     <DataTemplate DataType="{x:Type vm:LocationDialogViewModel}">
         <dialogs:LocationDialog />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:PerformanceOverviewViewModel}">
+        <v:PerformanceOverviewView />
+    </DataTemplate>
 </ResourceDictionary>

@@ -17,6 +17,13 @@ namespace UFO.Commander.ViewModel.Entities
         public override Venue Venue { get; set; }
 
         [SafeForDependencyAnalysis]
+        public virtual DateTimeViewModel DateTimeViewModel
+        {
+            get { return new DateTimeViewModel(DateTime); }
+            set { DateTime = value.DateTime; }
+        }
+
+        [SafeForDependencyAnalysis]
         public virtual ArtistViewModel ArtistViewModel
         {
             get { return Artist?.ToViewModelObject<ArtistViewModel>(); }
