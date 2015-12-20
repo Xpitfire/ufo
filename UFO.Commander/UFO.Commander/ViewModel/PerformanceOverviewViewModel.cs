@@ -19,6 +19,8 @@ namespace UFO.Commander.ViewModel
     {
         public const int MaxPerformances = 24;
 
+        public event EventHandler<ObservableCollection<TimeSlotPerformanceViewModel>> DataAvailableEvent;
+
         private readonly IViewAccessBll _viewAccessBll = BllAccessHandler.ViewAccessBll;
         private readonly IAdminAccessBll _adminAccessBll = BllAccessHandler.AdminAccessBll;
 
@@ -86,6 +88,8 @@ namespace UFO.Commander.ViewModel
                 };
                 TimeSlotPerformanceViewModels.Add(timeSlot);
             }
+
+            DataAvailableEvent?.Invoke(this, TimeSlotPerformanceViewModels);
         }
 
         

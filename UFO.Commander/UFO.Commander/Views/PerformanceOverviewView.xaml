@@ -19,17 +19,45 @@
                       VerticalScrollBarVisibility="Visible" 
                       HorizontalScrollBarVisibility="Visible" 
                       Focusable="False">
-            
-            <DataGrid ItemsSource="{Binding TimeSlotPerformanceViewModels}"
+
+            <DataGrid Name="PerformancesDataGrid"
+                      ItemsSource="{Binding TimeSlotPerformanceViewModels}"
                       SelectedItem="{Binding CurrentPerformanceViewModel}"
                       SelectionMode="Single"
                       AutoGenerateColumns="False"
                       Focusable="False"
                       VerticalScrollBarVisibility="Disabled" 
-                      IsReadOnly="True">
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      SelectionUnit="Cell">
+                <DataGrid.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="Location" FontWeight="Bold" Padding="3"/>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                        <GroupStyle.ContainerStyle>
+                            <Style TargetType="{x:Type GroupItem}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type GroupItem}">
+                                            <Expander>
+                                                <Expander.Header>
+                                                    <TextBlock Text="{Binding Name}" />
+                                                </Expander.Header>
+                                                <ItemsPresenter />
+                                            </Expander>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </GroupStyle.ContainerStyle>
+                    </GroupStyle>
+                </DataGrid.GroupStyle>
+
                 <DataGrid.Columns>
-                    
-                    <DataGridTextColumn Binding="{Binding PerformanceViewModel.VenueViewModel.LocationViewModel}" />
+
                     <DataGridTextColumn Binding="{Binding PerformanceViewModel.VenueViewModel}" />
                     <DataGridTextColumn Header="14:00" Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=14:00}" />
                     <DataGridTextColumn Header="15:00" Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=15:00}" />
@@ -42,7 +70,7 @@
                     <DataGridTextColumn Header="22:00" Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=22:00}" />
                     <DataGridTextColumn Header="23:00" Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=23:00}" />
                     <DataGridTextColumn Header="00:00" Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=00:00}" />
-                    
+
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>

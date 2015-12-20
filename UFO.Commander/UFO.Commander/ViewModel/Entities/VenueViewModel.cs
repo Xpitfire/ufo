@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using PostSharp.Patterns.Model;
 using UFO.Commander.Annotations;
@@ -9,7 +11,7 @@ using UFO.Server.Domain;
 namespace UFO.Commander.ViewModel.Entities
 {
     [NotifyPropertyChanged]
-    public class VenueViewModel : Venue, INotifyPropertyChanged
+    public class VenueViewModel : Venue, INotifyPropertyChanged, IComparable<VenueViewModel>
     {
         public override string VenueId { get; set; }
         public override string Name { get; set; }
@@ -27,6 +29,11 @@ namespace UFO.Commander.ViewModel.Entities
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public int CompareTo(VenueViewModel other)
+        {
+            return string.Compare(Name, other?.Name, StringComparison.Ordinal);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UFO.Commander.ViewModel;
 
 namespace UFO.Commander.Views
 {
@@ -23,6 +25,19 @@ namespace UFO.Commander.Views
         public PerformanceOverviewView()
         {
             InitializeComponent();
+
+            Loaded += (sender, args) =>
+            {
+                var viewModel = Locator.PerformanceOverviewViewModel;
+                viewModel.DataAvailableEvent += (o, models) =>
+                {
+                    var performancesView = CollectionViewSource.GetDefaultView(models);
+
+                    // Set the grouping proprty
+                    performancesView.GroupDescriptions.Add(new PropertyGroupDescription("PerformanceViewModel.VenueViewModel.LocationViewModel"));
+                    
+                };
+            };
         }
     }
 }
