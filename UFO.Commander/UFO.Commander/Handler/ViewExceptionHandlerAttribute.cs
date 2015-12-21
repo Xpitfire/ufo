@@ -12,7 +12,7 @@ namespace UFO.Commander.Handler
 {
     [Serializable]
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
-    [MulticastAttributeUsage(MulticastTargets.Method | MulticastTargets.InstanceConstructor, AllowMultiple = false)]
+    [MulticastAttributeUsage(MulticastTargets.Method | MulticastTargets.InstanceConstructor, AllowMultiple = true)]
     public class ViewExceptionHandlerAttribute : OnExceptionAspect
     {
         protected string Title;

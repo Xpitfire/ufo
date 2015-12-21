@@ -109,6 +109,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\NullToStringConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Converters\TimeSlotPerformanceViewModelToStringConverter.cs" />
     <Compile Include="Handler\ViewExceptionHandlerAttribute.cs" />
@@ -123,7 +124,9 @@
     <Compile Include="Messages\ShowVenueOverviewContentMessage.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\ArtistDialogViewModel.cs" />
+    <Compile Include="ViewModel\ArtistEditViewModel.cs" />
     <Compile Include="ViewModel\ArtistOverviewViewModel.cs" />
+    <Compile Include="ViewModel\ArtistSelectionViewModel.cs" />
     <Compile Include="ViewModel\Entities\DateTimeViewModel.cs" />
     <Compile Include="ViewModel\ExceptionDialogViewModel.cs" />
     <Compile Include="ViewModel\LocationDialogViewModel.cs" />
@@ -156,6 +159,9 @@
     </Compile>
     <Compile Include="Views\PerformanceOverviewView.xaml.cs">
       <DependentUpon>PerformanceOverviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\ArtistSelection.xaml.cs">
+      <DependentUpon>ArtistSelection.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\LocationEdit.xaml.cs">
       <DependentUpon>LocationEdit.xaml</DependentUpon>
@@ -250,6 +256,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserControls\ArtistList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\ArtistSelection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

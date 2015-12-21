@@ -20,9 +20,6 @@
     <DataTemplate DataType="{x:Type vm:ArtistOverviewViewModel}">
         <v:ArtistOverviewView />
     </DataTemplate>
-    <DataTemplate DataType="{x:Type entities:ArtistViewModel}">
-        <uc:ArtistEdit />
-    </DataTemplate>
     <DataTemplate DataType="{x:Type vm:VenueOverviewViewModel}">
         <v:VenueOverviewView />
     </DataTemplate>
@@ -40,5 +37,11 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type vm:PerformanceOverviewViewModel}">
         <v:PerformanceOverviewView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ArtistSelectionViewModel}">
+        <uc:ArtistSelection />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ArtistEditViewModel}">
+        <uc:ArtistEdit />
     </DataTemplate>
 </ResourceDictionary>

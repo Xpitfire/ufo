@@ -7,8 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using UFO.Commander.Handler;
 using UFO.Commander.Helper;
+using UFO.Commander.Messages;
 using UFO.Commander.Proxy;
 using UFO.Commander.ViewModel.Entities;
 using UFO.Server.Bll.Common;
@@ -26,7 +29,7 @@ namespace UFO.Commander.ViewModel
         private readonly IViewAccessBll _viewAccessBll = BllAccessHandler.ViewAccessBll;
         private readonly IAdminAccessBll _adminAccessBll = BllAccessHandler.AdminAccessBll;
 
-        private DateTime _currentPerformanceDateTime = DateTime.Parse("2015-11-15");
+        private DateTime _currentPerformanceDateTime = DateTime.Now;
         public DateTime CurrentPerformanceDateTime
         {
             get { return _currentPerformanceDateTime; }
@@ -37,7 +40,23 @@ namespace UFO.Commander.ViewModel
             }
         }
 
+        public event EventHandler<TimeSlotPerformanceViewModel> TimeSlotPerformanceChangedEvent; 
+        
+        private TimeSlotPerformanceViewModel _currentTimeSlotPerformance;
+        public TimeSlotPerformanceViewModel CurrentTimeSlotPerformance
+        {
+            get { return _currentTimeSlotPerformance; }
+            set { Set(ref _currentTimeSlotPerformance, value); }
+        }
+
+        public void SelectedTimeSlotPerformanceChanged(TimeSlotPerformanceViewModel timeSlotPerformance)
+        {
+            TimeSlotPerformanceChangedEvent?.Invoke(this, timeSlotPerformance);
+            Messenger.Default.Send(new ShowDialogMessage(Locator.ArtistSelectionViewModel));
+        }
+
         public ObservableCollection<TimeSlotPerformanceViewModel> TimeSlotPerformanceViewModels { get; } = new ObservableCollection<TimeSlotPerformanceViewModel>();
+        
         
         public class TimeSlotPerformanceViewModel : ViewModelBase
         {
@@ -81,20 +100,20 @@ namespace UFO.Commander.ViewModel
         {
 
             var performances = await _viewAccessBll.GetPerformancesPerDateAsync(CurrentPerformanceDateTime);
-            if (performances == null) return;
-            
-            foreach (var performance in performances)
-            {
-                var time = performance.DateTime.ToString("HH:mm");
-                var timeSlot = new TimeSlotPerformanceViewModel
+            if (performances != null)
+            { 
+                foreach (var performance in performances)
                 {
-                    TimeKey = time,
-                    PerformanceViewModel = performance.ToViewModelObject<PerformanceViewModel>()
-                };
-                TimeSlotPerformanceViewModels.Add(timeSlot);
+                    var time = performance.DateTime.ToString("HH:mm");
+                    var timeSlot = new TimeSlotPerformanceViewModel
+                    {
+                        TimeKey = time,
+                        PerformanceViewModel = performance.ToViewModelObject<PerformanceViewModel>()
+                    };
+                    TimeSlotPerformanceViewModels.Add(timeSlot);
+                }
+                DataAvailableEvent?.Invoke(this, TimeSlotPerformanceViewModels);
             }
-
-            DataAvailableEvent?.Invoke(this, TimeSlotPerformanceViewModels);
         }
 
         public override string ToString()

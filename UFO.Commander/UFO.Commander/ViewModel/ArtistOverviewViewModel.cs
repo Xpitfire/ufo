@@ -73,8 +73,11 @@ namespace UFO.Commander.ViewModel
         
         public void InitializeCommands()
         {
-            NewArtistCommand = new RelayCommand(
-                () => Messenger.Default.Send(new ShowDialogMessage(Locator.ArtistDialogViewModel)));
+            NewArtistCommand = new RelayCommand(() =>
+                {
+                    CurrentArtist = new ArtistViewModel();
+                    Messenger.Default.Send(new ShowDialogMessage(Locator.ArtistDialogViewModel));
+                });
 
             SaveCommand = new RelayCommand(async () =>
             {
@@ -108,6 +111,9 @@ namespace UFO.Commander.ViewModel
                 if (DebugHelper.IsReleaseMode)
                     await _adminAccessBll.RemoveArtistAsync(BllAccessHandler.SessionToken, a.ToDomainObject<Artist>());
             });
+
+            EditArtistCommand = new RelayCommand<ArtistViewModel>(
+                artist =>  Messenger.Default.Send(new ShowDialogMessage(Locator.ArtistDialogViewModel)));
         }
 
 #region LoadData
@@ -194,6 +200,7 @@ namespace UFO.Commander.ViewModel
         public RelayCommand NewArtistCommand { get; set; }
         public RelayCommand SaveCommand { get; set; }
         public RelayCommand<ArtistViewModel> DeleteArtistCommand { get; set; }
+        public RelayCommand<ArtistViewModel> EditArtistCommand { get; set; }
 
         public override string ToString()
         {

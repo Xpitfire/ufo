@@ -17,23 +17,24 @@
 
         <StackPanel Grid.Row="0" Grid.Column="0">
             <Label Content="Name" />
-            <TextBox Text="{Binding Name}" />
+            <TextBox Text="{Binding ArtistOverviewViewModel.CurrentArtist.Name, Source={StaticResource Locator}}" />
             <Label Content="EMail" />
-            <TextBox Text="{Binding EMail}" />
+            <TextBox Text="{Binding ArtistOverviewViewModel.CurrentArtist.EMail, Source={StaticResource Locator}}" />
             <Label Content="Category" />
             <ComboBox ItemsSource="{Binding Path=ArtistOverviewViewModel.Categories, Source={StaticResource Locator}}" 
-                      SelectedItem="{Binding CategoryViewModel}" />
+                      SelectedItem="{Binding Path=ArtistOverviewViewModel.CurrentArtist.CategoryViewModel, Source={StaticResource Locator}}" />
             <Label Content="Country" />
             <ComboBox ItemsSource="{Binding Path=ArtistOverviewViewModel.Countries, Source={StaticResource Locator}}"
-                      SelectedItem="{Binding CountryViewModel}" />
+                      SelectedItem="{Binding Path=ArtistOverviewViewModel.CurrentArtist.CountryViewModel, Source={StaticResource Locator}}" />
             <Label Content="Video Link" />
-            <TextBox Text="{Binding PromoVideo}" />
+            <TextBox Text="{Binding ArtistOverviewViewModel.CurrentArtist.PromoVideo, Source={StaticResource Locator}}" />
             <Label Content="Picture Link" />
-            <TextBox Text="{Binding Picture.Path}" />
+            <TextBox Text="{Binding ArtistOverviewViewModel.CurrentArtist.Picture.Path, Source={StaticResource Locator}}" />
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="20">
-            <Image MinWidth="250" MinHeight="250" MaxHeight="250" MaxWidth="250" Source="{Binding Path=Picture.Path}" />
+            <Image MinWidth="250" MinHeight="250" MaxHeight="250" MaxWidth="250" 
+                   Source="{Binding ArtistOverviewViewModel.CurrentArtist.Picture.Path, Source={StaticResource Locator}}" />
         </Grid>
     </Grid>
 </UserControl>

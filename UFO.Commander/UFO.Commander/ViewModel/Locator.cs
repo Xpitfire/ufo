@@ -37,6 +37,7 @@ namespace UFO.Commander.ViewModel
             SimpleIoc.Default.Register<ArtistDialogViewModel>();
             SimpleIoc.Default.Register<ArtistOverviewViewModel>();
             SimpleIoc.Default.Register<ExceptionDialogViewModel>();
+            SimpleIoc.Default.Register<ArtistEditViewModel>();
             SimpleIoc.Default.Register<CustomViewDialog>();
             SimpleIoc.Default.Register<CustomExceptionDialog>();
             SimpleIoc.Default.Register<VenueOverviewViewModel>();
@@ -45,6 +46,7 @@ namespace UFO.Commander.ViewModel
             SimpleIoc.Default.Register<VenueDialogViewModel>();
             SimpleIoc.Default.Register<LocationDialogViewModel>();
             SimpleIoc.Default.Register<PerformanceOverviewViewModel>();
+            SimpleIoc.Default.Register<ArtistSelectionViewModel>();
         }
 
         public static MainViewModel MainViewModel 
@@ -55,6 +57,9 @@ namespace UFO.Commander.ViewModel
         
         public static ArtistDialogViewModel ArtistDialogViewModel
             => ServiceLocator.Current.GetInstance<ArtistDialogViewModel>();
+
+        public static ArtistEditViewModel ArtistEditViewModel
+            => ServiceLocator.Current.GetInstance<ArtistEditViewModel>();
 
         public static TabControlViewModel TabControlViewModel
             => ServiceLocator.Current.GetInstance<TabControlViewModel>();
@@ -88,6 +93,9 @@ namespace UFO.Commander.ViewModel
 
         public static PerformanceOverviewViewModel PerformanceOverviewViewModel
             => ServiceLocator.Current.GetInstance<PerformanceOverviewViewModel>();
+
+        public static ArtistSelectionViewModel ArtistSelectionViewModel
+            => ServiceLocator.Current.GetInstance<ArtistSelectionViewModel>();
 
     }
 }

@@ -3,4 +3,5 @@
                     xmlns:converters="clr-namespace:UFO.Commander.Converters">
     <converters:NullToVisibilityConverter x:Key="NotNullToVisibilityConverter" />
     <converters:TimeSlotPerformanceViewModelToStringConverter x:Key="TimeSlotPerformanceViewModelToStringConverter" />
+    <converters:NullToStringConverter x:Key="NullToStringConverter" />
 </ResourceDictionary>

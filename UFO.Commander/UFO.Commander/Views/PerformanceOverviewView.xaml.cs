@@ -36,6 +36,17 @@ namespace UFO.Commander.Views
                     performancesView.GroupDescriptions.Clear();
                     performancesView.GroupDescriptions.Add(grouping);
                 };
+                PerformancesDataGrid.SelectedCellsChanged += (o, eventArgs) =>
+                {
+                    var item = PerformancesDataGrid.CurrentCell.Item as PerformanceOverviewViewModel.TimeSlotPerformanceViewModel;
+                    if (item != null)
+                    {
+                        //var columnValue = PerformancesDataGrid.CurrentColumn.Header.ToString();
+                        //item = item.TimeKey.Equals(columnValue) ? item : null;
+                        
+                    }
+                    Locator.PerformanceOverviewViewModel.SelectedTimeSlotPerformanceChanged(item);
+                };
             };
         }
     }

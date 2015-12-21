@@ -40,18 +40,24 @@
                     <DataGridTextColumn Binding="{Binding Path=CategoryViewModel}" Header="Category" />
                     <DataGridTextColumn Binding="{Binding Path=CountryViewModel.Name}" Header="Country" />
 
+                    <DataGridHyperlinkColumn Binding="{Binding Path=PromoVideo, Converter={StaticResource NullToStringConverter}}" Header="Video Link" />
+
                     <DataGridTemplateColumn Header="Action">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Button Content="Delete" 
-                                                Command="{Binding Path=ArtistOverviewViewModel.DeleteArtistCommand, Source={StaticResource Locator}}" 
-                                                CommandParameter="{Binding}" />
+                                <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                                    <Button Width="60" Height="30" Margin="5" Background="Tomato" Foreground="Bisque"
+                                            Content="Delete" 
+                                            Command="{Binding Path=ArtistOverviewViewModel.DeleteArtistCommand, Source={StaticResource Locator}}" 
+                                            CommandParameter="{Binding}" />
+                                    <Button Width="60" Height="30" Margin="5" Background="CornflowerBlue" Foreground="Bisque"
+                                            Content="Edit" 
+                                            Command="{Binding Path=ArtistOverviewViewModel.EditArtistCommand, Source={StaticResource Locator}}" 
+                                            CommandParameter="{Binding}" />
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
