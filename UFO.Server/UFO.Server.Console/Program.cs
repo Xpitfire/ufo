@@ -32,33 +32,41 @@ namespace UFO.Server
 
             var adminAccessName = "AdminAccess";
             var viewAccessName = "ViewAccess";
+            //var webAccessName = "WebAccess";
 
             ServiceHost adminAccessServiceHost = null;
             ServiceHost viewAccessServiceHost = null;
+            //ServiceHost webAccessServiceHost = null; // classic WebService, not WCF AddServiceEndpoint
             try
             {
                 // Base Address for StudentService
                 var adminAccessUri = new Uri($"{host}:{port}/{adminAccessName}");
                 var viewAccessUri = new Uri($"{host}:{port}/{viewAccessName}");
+                //var webAccessUri = new Uri($"{host}:{port}/{webAccessName}");
 
                 // Instantiate ServiceHost
                 adminAccessServiceHost = new ServiceHost(typeof(AdminAccessWs), adminAccessUri);
                 viewAccessServiceHost = new ServiceHost(typeof(ViewAccessWs), viewAccessUri);
+                //webAccessServiceHost = new ServiceHost(typeof(WebAccessWs), webAccessUri);
 
                 // Add Endpoint to Host
                 adminAccessServiceHost.AddServiceEndpoint(typeof(AdminAccessWs), new WSHttpBinding(), "");
                 viewAccessServiceHost.AddServiceEndpoint(typeof(ViewAccessWs), new WSHttpBinding(), "");
+                //webAccessServiceHost.AddServiceEndpoint(typeof(WebAccessWs), new WSHttpBinding(), "");
 
                 // Metadata Exchange
                 var serviceBehavior = new ServiceMetadataBehavior {HttpGetEnabled = true};
                 adminAccessServiceHost.Description.Behaviors.Add(serviceBehavior);
                 viewAccessServiceHost.Description.Behaviors.Add(serviceBehavior);
+                //webAccessServiceHost.Description.Behaviors.Add(serviceBehavior);
 
                 // Open
                 adminAccessServiceHost.Open();
                 Console.WriteLine($"Service is live now at: {adminAccessUri}");
                 viewAccessServiceHost.Open();
                 Console.WriteLine($"Service is live now at: {viewAccessUri}");
+                //webAccessServiceHost.Open();
+                //Console.WriteLine($"Service is live now at: {webAccessUri}");
 
                 Console.WriteLine("Press any key to exit the application...");
             }
@@ -69,11 +77,14 @@ namespace UFO.Server
                 adminAccessServiceHost = null;
                 viewAccessServiceHost?.Abort();
                 viewAccessServiceHost = null;
+                //webAccessServiceHost?.Abort();
+                //webAccessServiceHost = null;
                 Console.WriteLine($"There is an issue with AdminAccessBll: {ex.Message}");
             }
             Console.ReadLine();
             adminAccessServiceHost?.Close();
             viewAccessServiceHost?.Close();
+            //webAccessServiceHost?.Close();
         }
     }
 }

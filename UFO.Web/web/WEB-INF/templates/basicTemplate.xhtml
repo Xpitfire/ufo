@@ -1,32 +1,35 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-  <title><ui:insert name="title">Default title</ui:insert></title>
+    <title><ui:insert name="title">UFO</ui:insert></title>
+
+    <h:outputStylesheet library="css" name="ufo/normalize.css"/>
+    <h:outputStylesheet library="css" name="bootstrap/bootstrap-theme.min.css"/>
+
+    <h:outputScript library="js" name="jquery/jquery-2.2.0.min.js"/>
+    <h:outputScript name="js/bootstrap/bootstrap.min.js"/>
 </h:head>
 
 <h:body>
-<ui:debug hotkey="x" rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}"/>
+    <ui:debug hotkey="x" rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}"/>
+    <div id="header">
+        <ui:insert name="header">
+            <ui:include src="header.xhtml"/>
+        </ui:insert>
+    </div>
 
-<div id="header">
-    <ui:insert name="header">
-		<ui:include src="header.xhtml"/>
-    </ui:insert>
-</div>
+    <div id="content">
+        <ui:insert name="content">
+        </ui:insert>
+    </div>
 
-<div id="content">
-  <ui:insert name="content">
-  </ui:insert>
-</div>
-
-<div id="footer">
-  <ui:insert name="footer">
-    	<ui:include src="footer.xhtml"/>
-  </ui:insert>
-</div>
-
+    <div id="footer">
+        <ui:insert name="footer">
+            <ui:include src="footer.xhtml"/>
+        </ui:insert>
+    </div>
 </h:body>
-
 </html>

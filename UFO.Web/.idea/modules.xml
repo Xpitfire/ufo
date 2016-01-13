@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/UFO.Web.iml" filepath="$PROJECT_DIR$/UFO.Web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WebServiceClient/WebServiceClient.iml" filepath="$PROJECT_DIR$/WebServiceClient/WebServiceClient.iml" />
     </modules>
   </component>
 </project>
