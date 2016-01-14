@@ -49,7 +49,7 @@ public class ServiceLocator {
 	 * The delegate object is created with the Java reflection mechanism.
 	 */
     @SuppressWarnings("unchecked")
-    public UfoDelegate getShopDelegate() throws ServletException {
+    public UfoDelegate getUfoDelegate() throws ServletException {
 
         if (!initialized)
             throw new ServletException("ServiceLocator isn't initialized!");

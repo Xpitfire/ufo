@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<c:metadata>
+    <c:viewParam name="id" value="#{artistBean.id}" />
+    <c:event type="preRenderView" listener="#{artistBean.init}" />
+</c:metadata>
+
+<ui:composition template="/WEB-INF/templates/basicTemplate.xhtml">
+    <ui:define name="title">UFO Web</ui:define>
+    <ui:define name="content">
+        <div id="page_login" class="page">
+            <div class="row">
+
+                <div class="sidebar col-md-4"/>
+
+                <div class="mainbar col-md-8">
+
+                    <h:form>
+                        <p:inputText id="username" value="#{loginBean.username}"/>
+                        <p:password id="password" value="#{loginBean.password}" />
+
+                        <p:commandButton actionListener="#{loginBean.login}" value="Anmelden" update="display"/>
+
+                        <h:outputText id="display" value="#{loginBean.errorMessage}" />
+                    </h:form>
+
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

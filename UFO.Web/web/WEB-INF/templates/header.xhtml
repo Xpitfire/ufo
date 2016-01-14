@@ -1,12 +1,30 @@
-<div xmlns:h="http://java.sun.com/jsf/html">
-    <div>
-        UFO Web
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a class="navbar-brand"
+               href="#{request.contextPath}/ufo/index.xhtml">Pflasterspektakel</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#{request.contextPath}/ufo/index.xhtml">Tagesprogramm</a></li>
+                <li><a href="#{request.contextPath}/ufo/artist.xhtml?id=0">Künstler</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <h:panelGroup id="login" layout="block" rendered="#{!loginBean.authenticated}">
+                        <a href="#{request.contextPath}/ufo/login.xhtml">Anmelden</a>
+                    </h:panelGroup>
+
+                    <h:panelGroup id="logout" layout="block" rendered="#{loginBean.authenticated}">
+                        <p:commandButton value="Abmelden" actionListener="#{loginBean.logout}" update="page"/>
+                    </h:panelGroup>
+                </li>
+            </ul>
+        </div>
     </div>
-
-    <h:form id="navForm">
-        <h:panelGrid column="5">
-            <h:commandButton type="submit" value="Home" action="HomeScreenEvent"/>
-        </h:panelGrid>
-    </h:form>
-
-</div>
+</nav>
+</html>

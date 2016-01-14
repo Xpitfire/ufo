@@ -16,6 +16,16 @@
         <url-pattern>/ufo/*</url-pattern>
     </servlet-mapping>
 
+    <error-page>
+        <exception-type>com.sun.faces.context.FacesFileNotFoundException</exception-type>
+        <location>/errors/error404.xhtml</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>java.lang.IllegalStateException</exception-type>
+        <location>/errors/error500.xhtml</location>
+    </error-page>
+
     <context-param>
         <description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
         <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
