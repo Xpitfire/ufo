@@ -59,5 +59,14 @@ namespace UFO.Commander.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resources\images\placeholder.jpg.
+        /// </summary>
+        internal static string Placeholder {
+            get {
+                return ResourceManager.GetString("Placeholder", resourceCulture);
+            }
+        }
     }
 }

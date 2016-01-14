@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a556213-c57c-4804-bacd-f86ed9bdd6bf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/AAdminAccessBll.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/AAdminAccessBll.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/AViewAccessBll.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/AViewAccessBll.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/App.config" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/App.config" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/AdminAccessWs.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/AdminAccessWs.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/UFO.Server.Services.csproj" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/UFO.Server.Services.csproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/ViewAccessWs.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/ViewAccessWs.cs" />
-    </list>
+    <list default="true" id="1a556213-c57c-4804-bacd-f86ed9bdd6bf" name="Default" comment="" />
     <ignored path="UFO.Web.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />

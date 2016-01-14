@@ -109,6 +109,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\NullToImageSourceConverter.cs" />
     <Compile Include="Converters\NullToStringConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
     <Compile Include="Converters\TimeSlotPerformanceViewModelToStringConverter.cs" />
@@ -297,6 +298,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -338,6 +340,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DependencyProperties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images\placeholder.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\PostSharp.4.2.16\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.2.16\tools\PostSharp.targets')" />

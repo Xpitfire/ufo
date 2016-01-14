@@ -15,7 +15,12 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0">
+        <Grid Grid.Row="0">
+            <Image MinWidth="200" MinHeight="200" MaxHeight="200" MaxWidth="200" 
+                   Source="{Binding ArtistOverviewViewModel.CurrentArtist.Picture.Path, Source={StaticResource Locator}, Converter={StaticResource NullToImageSourceConverter}}" />
+        </Grid>
+
+        <StackPanel Grid.Row="1" Grid.Column="0">
             <Label Content="Name" />
             <TextBox Text="{Binding ArtistOverviewViewModel.CurrentArtist.Name, Source={StaticResource Locator}}" />
             <Label Content="EMail" />
@@ -32,9 +37,5 @@
             <TextBox Text="{Binding ArtistOverviewViewModel.CurrentArtist.Picture.Path, Source={StaticResource Locator}}" />
         </StackPanel>
 
-        <Grid Grid.Row="1" Margin="20">
-            <Image MinWidth="250" MinHeight="250" MaxHeight="250" MaxWidth="250" 
-                   Source="{Binding ArtistOverviewViewModel.CurrentArtist.Picture.Path, Source={StaticResource Locator}}" />
-        </Grid>
     </Grid>
 </UserControl>

@@ -4,4 +4,5 @@
     <converters:NullToVisibilityConverter x:Key="NotNullToVisibilityConverter" />
     <converters:TimeSlotPerformanceViewModelToStringConverter x:Key="TimeSlotPerformanceViewModelToStringConverter" />
     <converters:NullToStringConverter x:Key="NullToStringConverter" />
+    <converters:NullToImageSourceConverter x:Key="NullToImageSourceConverter" />
 </ResourceDictionary>
