@@ -17,6 +17,7 @@
 //     Dinu Marius-Constantin
 //     Wurm Florian
 #endregion
+
 namespace UFO.Server.Dal.Common
 {
     /// <summary>
@@ -25,17 +26,11 @@ namespace UFO.Server.Dal.Common
     public interface IDaoProviderFactory
     {
         IArtistDao CreateArtistDao();
-
         IPerformanceDao CreatePerformanceDao();
-
         IUserDao CreateUserDao();
-
         IVenueDao CreateVenueDao();
-
         ICategoryDao CreateCategoryDao();
-
         ICountryDao CreateCountryDao();
-
         ILocationDao CreateLocationDao();
     }
 }

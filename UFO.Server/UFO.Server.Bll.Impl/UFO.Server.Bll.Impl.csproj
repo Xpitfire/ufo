@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminAccessBll.cs" />
+    <Compile Include="BllProviderFactory.cs" />
     <Compile Include="SessionHandler.cs" />
     <Compile Include="ViewAccessBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UFO.Server.Web.Properties {
+namespace UFO.Server.Dal.Common.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -20,16 +20,6 @@ namespace UFO.Server.Web.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:5002/WebAccessService.asmx")]
-        public string WebAccessService {
-            get {
-                return ((string)(this["WebAccessService"]));
             }
         }
         
@@ -57,33 +47,6 @@ namespace UFO.Server.Web.Properties {
         public string DaoProviderAssemblyName {
             get {
                 return ((string)(this["DaoProviderAssemblyName"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("BllProviderFactory")]
-        public string BllProviderClassName {
-            get {
-                return ((string)(this["BllProviderClassName"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Bll.Impl")]
-        public string BllProviderNameSpace {
-            get {
-                return ((string)(this["BllProviderNameSpace"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Bll.Impl")]
-        public string BllProviderAssemblyName {
-            get {
-                return ((string)(this["BllProviderAssemblyName"]));
             }
         }
     }

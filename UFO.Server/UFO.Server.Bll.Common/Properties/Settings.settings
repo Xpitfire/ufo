@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="UFO.Server.Bll.Common.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BllProviderClassName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">BllProviderFactory</Value>
+    </Setting>
+    <Setting Name="BllProviderNameSpace" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UFO.Server.Bll.Impl</Value>
+    </Setting>
+    <Setting Name="BllProviderAssemblyName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UFO.Server.Bll.Impl</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

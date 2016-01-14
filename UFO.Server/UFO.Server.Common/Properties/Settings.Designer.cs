@@ -49,5 +49,32 @@ namespace UFO.Server.Common.Properties {
                 return ((string)(this["DaoProviderAssemblyName"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("BllProviderFactory")]
+        public string BllProviderClassName {
+            get {
+                return ((string)(this["BllProviderClassName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Bll.Impl")]
+        public string BllProviderNameSpace {
+            get {
+                return ((string)(this["BllProviderNameSpace"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Bll.Impl")]
+        public string BllProviderAssemblyName {
+            get {
+                return ((string)(this["BllProviderAssemblyName"]));
+            }
+        }
     }
 }

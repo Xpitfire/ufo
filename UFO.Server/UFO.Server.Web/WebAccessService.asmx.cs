@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Web.Services;
 using UFO.Server.Bll.Common;
 using UFO.Server.Bll.Impl;
+using UFO.Server.Common;
 using UFO.Server.Common.Properties;
 using UFO.Server.Domain;
 
@@ -17,86 +18,86 @@ namespace UFO.Server.Web
     [System.ComponentModel.ToolboxItem(false)]
     public class WebAccessService : WebService
     {
-        private readonly AViewAccessBll _viewAccessDelegate = new ViewAccessBll();
+        private static AViewAccessBll _viewAccessDelegate;
+        private static readonly AViewAccessBll ViewAccessDelegate = 
+            _viewAccessDelegate ?? (_viewAccessDelegate = FactoryProvider.GetFactory<IBllProviderFactory>(BllProviderSettings.Instance).CreateAViewAccessBll());
 
         [WebMethod]
         public List<Artist> GetArtist(PagingData page)
         {
-            var test = UFO.Server.Common.Properties.Settings.Default.DaoProviderAssemblyName;
-            var test2 = UFO.Server.Web.Properties.Settings.Default.DaoProviderAssemblyName;
-            return _viewAccessDelegate.GetArtist(page);
+            return ViewAccessDelegate.GetArtist(page);
         }
 
         [WebMethod]
         public List<Category> GetCategories(PagingData page)
         {
-            return _viewAccessDelegate.GetCategories(page);
+            return ViewAccessDelegate.GetCategories(page);
         }
 
         [WebMethod]
         public List<Country> GetCountries(PagingData page)
         {
-            return _viewAccessDelegate.GetCountries(page);
+            return ViewAccessDelegate.GetCountries(page);
         }
 
         [WebMethod]
         public List<Location> GetLocations(PagingData page)
         {
-            return _viewAccessDelegate.GetLocations(page);
+            return ViewAccessDelegate.GetLocations(page);
         }
 
         [WebMethod]
         public List<Venue> GetVenues(PagingData page)
         {
-            return _viewAccessDelegate.GetVenues(page);
+            return ViewAccessDelegate.GetVenues(page);
         }
 
         [WebMethod]
         public List<Performance> GetPerformances(PagingData page)
         {
-            return _viewAccessDelegate.GetPerformances(page);
+            return ViewAccessDelegate.GetPerformances(page);
         }
 
         [WebMethod]
         public List<Performance> GetPerformancesPerDate(DateTime date)
         {
-            return _viewAccessDelegate.GetPerformancesPerDate(date);
+            return ViewAccessDelegate.GetPerformancesPerDate(date);
         }
 
         [WebMethod]
         public PagingData RequestArtistPagingData()
         {
-            return _viewAccessDelegate.RequestArtistPagingData();
+            return ViewAccessDelegate.RequestArtistPagingData();
         }
 
         [WebMethod]
         public PagingData RequestCategoryPagingData()
         {
-            return _viewAccessDelegate.RequestCategoryPagingData();
+            return ViewAccessDelegate.RequestCategoryPagingData();
         }
 
         [WebMethod]
         public PagingData RequestCountryPagingData()
         {
-            return _viewAccessDelegate.RequestCountryPagingData();
+            return ViewAccessDelegate.RequestCountryPagingData();
         }
 
         [WebMethod]
         public PagingData RequestLocationPagingData()
         {
-            return _viewAccessDelegate.RequestLocationPagingData();
+            return ViewAccessDelegate.RequestLocationPagingData();
         }
 
         [WebMethod]
         public PagingData RequestPerformancePagingData()
         {
-            return _viewAccessDelegate.RequestPerformancePagingData();
+            return ViewAccessDelegate.RequestPerformancePagingData();
         }
 
         [WebMethod]
         public PagingData RequestVenuePagingData()
         {
-            return _viewAccessDelegate.RequestVenuePagingData();
+            return ViewAccessDelegate.RequestVenuePagingData();
         }
     }
 }

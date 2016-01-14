@@ -19,27 +19,26 @@
 #endregion
 
 using UFO.Server.Common.Properties;
-using UFO.Server.Dal.Common;
 
 namespace UFO.Server.Common
 {
-    public static class DalProviderFactories
+    public static class FactoryProvider
     {
         /// <summary>
-        /// Creates a DAO factory at runtime, which provides methods for DAO creation.
+        /// Creates a factory object at runtime, which provides methods for object creation.
         /// This is used to create loose coupling between assemblies using technology proprietary implementations
         /// and the business logic libraries.
         /// </summary>
         /// <param name="assemblyName">Name of the assebly to be loaded.</param>
-        /// <param name="nameSpace">Namespace where the class is embedded.</param>
+        /// <param name="namespace">Namespace where the class is embedded.</param>
         /// <param name="providerName">Class name provider which will be instantiated.</param>
-        /// <returns>DAO provider factory.</returns>
-        public static IDaoProviderFactory GetDaoFactory(string assemblyName = null, string nameSpace = null, string providerName = null)
+        /// <returns>Provider factory.</returns>
+        public static T GetFactory<T>(string assemblyName, string @namespace, string providerName)
         {
-            return ProviderUtility.LoadClass<IDaoProviderFactory>(
-                assemblyName ?? Settings.Default.DaoProviderAssemblyName,
-                nameSpace ?? Settings.Default.DaoProviderNameSpace,
-                providerName ?? Settings.Default.DaoProviderClassName);
+            return ProviderUtility.LoadClass<T>(assemblyName, @namespace, providerName);
         }
+
+        public static T GetFactory<T>(AProviderSettings providerSettings) 
+            => GetFactory<T>(providerSettings.ProviderAssemblyName, providerSettings.ProviderNamespace, providerSettings.ProviderClassName);
     }
 }

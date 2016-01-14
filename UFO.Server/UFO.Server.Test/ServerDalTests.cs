@@ -58,7 +58,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestDaoDefaultProvider()
         {
-            IDaoProviderFactory daoProviderFactory = DalProviderFactories.GetDaoFactory();
+            IDaoProviderFactory daoProviderFactory = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance);
             Assert.IsNotNull(daoProviderFactory);
         }
         
@@ -67,7 +67,7 @@ namespace UFO.Server.Test
         {
             try
             {
-                DalProviderFactories.GetDaoFactory("Some.Random.InvalidProvider");
+                FactoryProvider.GetFactory<IDaoProviderFactory>("Some.Random.InvalidProvider", "Fail", "Me");
                 Assert.Fail("Expected exceptions did not occur!");
             }
             catch (Exception exception)
@@ -79,7 +79,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestDummyUserDaoFilter()
         {
-            var daoProviderFactory = DalProviderFactories.GetDaoFactory(
+            var daoProviderFactory = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDummyDaoAssembly,
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName);
@@ -98,7 +98,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllGeneratedUsers()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDummyDaoAssembly,
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName).CreateUserDao();
@@ -113,7 +113,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestDaoExceptionHandler()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDummyDaoAssembly,
                 TestDummyDaoNameSpace,
                 TestDummyDaoClassName).CreateCountryDao();
@@ -130,7 +130,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllUserDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
@@ -141,7 +141,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestSelectByIdUserDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
@@ -155,7 +155,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestInsertUserDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
@@ -184,7 +184,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestUpdateUserDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
@@ -209,7 +209,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestDeleteUserDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
@@ -235,7 +235,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllCategoryDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory().CreateCategoryDao();
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateCategoryDao();
             var categories = dao.SelectAll().ResultObject;
             Assert.IsNotNull(categories);
             Assert.IsTrue(categories.Any());
@@ -244,7 +244,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestSelectByIdCategoryDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateCategoryDao();
@@ -255,7 +255,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestInsertCategoryDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateCategoryDao();
@@ -277,7 +277,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestDeleteCategoryDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateCategoryDao();
@@ -302,7 +302,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestUpdateCategoryDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateCategoryDao();
@@ -329,7 +329,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllCountryDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateCountryDao();
@@ -341,7 +341,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestSelectByIdCountryDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateCountryDao();
@@ -352,7 +352,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestInsertCountryDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateCountryDao();
@@ -374,7 +374,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestDeleteCountryDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateCountryDao();
@@ -406,7 +406,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestUpdateCountryDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateCountryDao();
@@ -434,7 +434,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllArtistDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateArtistDao();
@@ -446,7 +446,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestSelectByIdArtistDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateArtistDao();
@@ -457,7 +457,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestDeleteArtistDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateArtistDao();
@@ -482,7 +482,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestUpdateArtistDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateArtistDao();
@@ -507,7 +507,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestInsertArtistDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateArtistDao();
@@ -538,7 +538,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllVenueDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateVenueDao();
@@ -550,7 +550,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestSelectByIdVenueDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateVenueDao();
@@ -561,7 +561,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestInsertVenueDbAccess()
         {
-            var venueDao = DalProviderFactories.GetDaoFactory(
+            var venueDao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateVenueDao();
@@ -584,7 +584,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestDeleteVenueDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateVenueDao();
@@ -609,7 +609,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestUpdateVenueDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateVenueDao();
@@ -635,7 +635,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllPerformancesDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreatePerformanceDao();
@@ -647,7 +647,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestSelectByIdPerformanceDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreatePerformanceDao();
@@ -658,7 +658,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestInsertPerformanceDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreatePerformanceDao();
@@ -681,7 +681,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestInsertInvalidPerformanceDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreatePerformanceDao();
@@ -704,7 +704,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestDeletePerformanceDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreatePerformanceDao();
@@ -730,7 +730,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestUpdatePerformanceDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreatePerformanceDao();
@@ -758,7 +758,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestAllLocationDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateLocationDao();
@@ -770,7 +770,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestSelectByIdLocationDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateLocationDao();
@@ -781,7 +781,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestInsertLocationDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateLocationDao();
@@ -805,7 +805,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestDeleteLocationDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateLocationDao();
@@ -847,7 +847,7 @@ namespace UFO.Server.Test
             {
                 var password = "password";
                 var hash = Crypto.GetMd5Hash(md5, password);
-                var user = DalProviderFactories.GetDaoFactory(
+                var user = FactoryProvider.GetFactory<IDaoProviderFactory>(
                     TestDbDaoAssemblyName,
                     TestDbDaoNameSpace,
                     TestDbDaoClassName).CreateUserDao()
@@ -871,7 +871,7 @@ namespace UFO.Server.Test
                 UserId = 0,
                 Password = hash
             };
-            DalProviderFactories.GetDaoFactory(
+            FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao()
@@ -889,7 +889,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestLimitPerformanceDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreatePerformanceDao();
@@ -904,7 +904,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestLimitArtistDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateArtistDao();
@@ -919,7 +919,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestLimitUserDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateUserDao();
@@ -934,7 +934,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestLimitVenueDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateVenueDao();
@@ -949,7 +949,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestLimitLocationDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateLocationDao();
@@ -964,7 +964,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestLimitCountryDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateCountryDao();
@@ -979,7 +979,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestLimitCategoryDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateCategoryDao();
@@ -994,7 +994,7 @@ namespace UFO.Server.Test
         [TestMethod]
         public void TestCountDbAccess()
         {
-            var dao = DalProviderFactories.GetDaoFactory(
+            var dao = FactoryProvider.GetFactory<IDaoProviderFactory>(
                 TestDbDaoAssemblyName,
                 TestDbDaoNameSpace,
                 TestDbDaoClassName).CreateArtistDao();

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UFO.Server.Web.Properties {
+namespace UFO.Server.Bll.Common.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -20,43 +20,6 @@ namespace UFO.Server.Web.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:5002/WebAccessService.asmx")]
-        public string WebAccessService {
-            get {
-                return ((string)(this["WebAccessService"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DaoProviderFactory")]
-        public string DaoProviderClassName {
-            get {
-                return ((string)(this["DaoProviderClassName"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Dal.MySql")]
-        public string DaoProviderNameSpace {
-            get {
-                return ((string)(this["DaoProviderNameSpace"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Dal.MySql")]
-        public string DaoProviderAssemblyName {
-            get {
-                return ((string)(this["DaoProviderAssemblyName"]));
             }
         }
         

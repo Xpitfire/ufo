@@ -28,13 +28,13 @@ namespace UFO.Server.Bll.Common
 {
     public abstract class AAdminAccessBll : IAdminAccessBll
     {
-        protected IUserDao UserDao = DalProviderFactories.GetDaoFactory().CreateUserDao();
-        protected IPerformanceDao PerformanceDao = DalProviderFactories.GetDaoFactory().CreatePerformanceDao();
-        protected IArtistDao ArtistDao = DalProviderFactories.GetDaoFactory().CreateArtistDao();
-        protected ICategoryDao CategoryDao = DalProviderFactories.GetDaoFactory().CreateCategoryDao();
-        protected ICountryDao CountryDao = DalProviderFactories.GetDaoFactory().CreateCountryDao();
-        protected ILocationDao LocationDao = DalProviderFactories.GetDaoFactory().CreateLocationDao();
-        protected IVenueDao VenueDao = DalProviderFactories.GetDaoFactory().CreateVenueDao();
+        protected IUserDao UserDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateUserDao();
+        protected IPerformanceDao PerformanceDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreatePerformanceDao();
+        protected IArtistDao ArtistDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateArtistDao();
+        protected ICategoryDao CategoryDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateCategoryDao();
+        protected ICountryDao CountryDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateCountryDao();
+        protected ILocationDao LocationDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateLocationDao();
+        protected IVenueDao VenueDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateVenueDao();
 
         public abstract List<User> GetUser(SessionToken token, PagingData page);
         public abstract bool ModifyArtistRange(SessionToken token, List<Artist> artists);
