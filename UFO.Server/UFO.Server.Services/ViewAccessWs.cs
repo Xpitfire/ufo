@@ -20,90 +20,96 @@
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
+using UFO.Server.Bll.Common;
 using UFO.Server.Bll.Impl;
+using UFO.Server.Common;
 using UFO.Server.Domain;
 
 namespace UFO.Server.Services
 {
     [ServiceContract]
-    public class ViewAccessWs : ViewAccessBll
+    public class ViewAccessWs
     {
+        private static AViewAccessBll _viewAccessDelegate;
+        private static readonly AViewAccessBll ViewAccessDelegate =
+            _viewAccessDelegate ?? (_viewAccessDelegate = FactoryProvider.GetFactory<IBllProviderFactory>(BllProviderSettings.Instance).CreateAViewAccessBll());
+
         [OperationContract]
-        public override PagingData RequestArtistPagingData()
+        public PagingData RequestArtistPagingData()
         {
-            return base.RequestArtistPagingData();
+            return ViewAccessDelegate.RequestArtistPagingData();
         }
 
         [OperationContract]
-        public override PagingData RequestCategoryPagingData()
+        public PagingData RequestCategoryPagingData()
         {
-            return base.RequestCategoryPagingData();
+            return ViewAccessDelegate.RequestCategoryPagingData();
         }
 
         [OperationContract]
-        public override PagingData RequestCountryPagingData()
+        public PagingData RequestCountryPagingData()
         {
-            return base.RequestCountryPagingData();
+            return ViewAccessDelegate.RequestCountryPagingData();
         }
 
         [OperationContract]
-        public override PagingData RequestLocationPagingData()
+        public PagingData RequestLocationPagingData()
         {
-            return base.RequestLocationPagingData();
+            return ViewAccessDelegate.RequestLocationPagingData();
         }
 
         [OperationContract]
-        public override PagingData RequestPerformancePagingData()
+        public PagingData RequestPerformancePagingData()
         {
-            return base.RequestPerformancePagingData();
+            return ViewAccessDelegate.RequestPerformancePagingData();
         }
 
         [OperationContract]
-        public override PagingData RequestVenuePagingData()
+        public PagingData RequestVenuePagingData()
         {
-            return base.RequestVenuePagingData();
+            return ViewAccessDelegate.RequestVenuePagingData();
         }
 
         [OperationContract]
-        public override List<Artist> GetArtist(PagingData page)
+        public List<Artist> GetArtist(PagingData page)
         {
-            return base.GetArtist(page);
+            return ViewAccessDelegate.GetArtist(page);
         }
 
         [OperationContract]
-        public override List<Performance> GetPerformancesPerDate(DateTime date)
+        public List<Performance> GetPerformancesPerDate(DateTime date)
         {
-            return base.GetPerformancesPerDate(date);
+            return ViewAccessDelegate.GetPerformancesPerDate(date);
         }
 
         [OperationContract]
-        public override List<Category> GetCategories(PagingData page)
+        public List<Category> GetCategories(PagingData page)
         {
-            return base.GetCategories(page);
+            return ViewAccessDelegate.GetCategories(page);
         }
 
         [OperationContract]
-        public override List<Country> GetCountries(PagingData page)
+        public List<Country> GetCountries(PagingData page)
         {
-            return base.GetCountries(page);
+            return ViewAccessDelegate.GetCountries(page);
         }
 
         [OperationContract]
-        public override List<Location> GetLocations(PagingData page)
+        public List<Location> GetLocations(PagingData page)
         {
-            return base.GetLocations(page);
+            return ViewAccessDelegate.GetLocations(page);
         }
 
         [OperationContract]
-        public override List<Venue> GetVenues(PagingData page)
+        public List<Venue> GetVenues(PagingData page)
         {
-            return base.GetVenues(page);
+            return ViewAccessDelegate.GetVenues(page);
         }
 
         [OperationContract]
-        public override List<Performance> GetPerformances(PagingData page)
+        public List<Performance> GetPerformances(PagingData page)
         {
-            return base.GetPerformances(page);
+            return ViewAccessDelegate.GetPerformances(page);
         }
     }
 }

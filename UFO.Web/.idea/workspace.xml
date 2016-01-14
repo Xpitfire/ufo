@@ -2,161 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a556213-c57c-4804-bacd-f86ed9bdd6bf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/META-INF/MANIFEST.MF" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/WebAccessWs.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfArtist.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfArtist.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfCategory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfCategory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfCountry.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfCountry.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfLocation.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfLocation.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfPerformance.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfPerformance.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfVenue.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfVenue.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/Artist.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/Artist.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/BlobData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/BlobData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/Category.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/Category.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/Country.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/Country.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/DomainObject.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/DomainObject.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetArtist.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetArtist.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetArtistResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetArtistResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetCategories.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetCategories.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetCategoriesResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetCategoriesResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetCountries.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetCountries.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetCountriesResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetCountriesResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetLocations.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetLocations.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetLocationsResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetLocationsResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetPerformances.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetPerformances.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetPerformancesPerDate.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetPerformancesPerDate.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetPerformancesPerDateResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetPerformancesPerDateResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetPerformancesResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetPerformancesResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetVenues.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetVenues.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetVenuesResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/GetVenuesResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/Location.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/Location.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ObjectFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ObjectFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/PagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/PagingData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/Performance.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/Performance.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestArtistPagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestArtistPagingData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestArtistPagingDataResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestArtistPagingDataResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestCategoryPagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestCategoryPagingData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestCategoryPagingDataResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestCategoryPagingDataResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestCountryPagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestCountryPagingData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestCountryPagingDataResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestCountryPagingDataResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestLocationPagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestLocationPagingData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestLocationPagingDataResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestLocationPagingDataResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestPerformancePagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestPerformancePagingData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestPerformancePagingDataResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestPerformancePagingDataResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestVenuePagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestVenuePagingData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestVenuePagingDataResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/RequestVenuePagingDataResponse.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/Venue.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/Venue.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ViewAccess.wsdl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ViewAccessWs.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ViewAccessWs.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ViewAccessWs_Service.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/ViewAccessWs_Service.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/package-info.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/client/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfArtist.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfCategory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfCountry.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfLocation.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfPerformance.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/ArrayOfVenue.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/Artist.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/BlobData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/Category.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/Country.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/DomainObject.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetArtist.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetArtistResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetCategories.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetCategoriesResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetCountries.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetCountriesResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetLocations.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetLocationsResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetPerformances.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetPerformancesPerDate.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetPerformancesPerDateResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetPerformancesResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetVenues.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/GetVenuesResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/Location.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/ObjectFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/PagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/Performance.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/RequestArtistPagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/RequestArtistPagingDataResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/RequestCategoryPagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/RequestCategoryPagingDataResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/RequestCountryPagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/RequestCountryPagingDataResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/RequestLocationPagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/RequestLocationPagingDataResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/RequestPerformancePagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/RequestPerformancePagingDataResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/RequestVenuePagingData.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/RequestVenuePagingDataResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/Venue.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/ViewAccess.wsdl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/ViewAccessWs.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/ViewAccessWs_Service.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebServiceClient/at/fhooe/hgb/wea5/ufo/web/client/package-info.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/ServiceLocator.class" afterPath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/ServiceLocator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.class" afterPath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.class" afterPath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/beans/LoginBean.class" afterPath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/beans/LoginBean.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/util/FacesUtil.class" afterPath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/util/FacesUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/Program.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/Program.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/AAdminAccessBll.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/AAdminAccessBll.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/AViewAccessBll.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/AViewAccessBll.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/App.config" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/App.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/AdminAccessWs.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/AdminAccessWs.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/UFO.Server.Services.csproj" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/UFO.Server.Services.csproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Test/UFO.Server.Test.csproj" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Test/UFO.Server.Test.csproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.sln" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.sln" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/ServiceLocator.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/ServiceLocator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/LoginBean.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/LoginBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/FacesUtil.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/FacesUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/artist.xhtml" afterPath="$PROJECT_DIR$/web/artist.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/ViewAccessWs.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/ViewAccessWs.cs" />
     </list>
     <ignored path="UFO.Web.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1062,15 +913,15 @@
       <workItem from="1452700033704" duration="1434000" />
       <workItem from="1452712520615" duration="5895000" />
       <workItem from="1452718452741" duration="13220000" />
-      <workItem from="1452774687753" duration="8863000" />
+      <workItem from="1452774687753" duration="9462000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42328000" />
+    <option name="totallyTimeSpent" value="42927000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="32" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />

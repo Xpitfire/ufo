@@ -9,13 +9,19 @@ namespace UFO.Server.Bll.Common
 {
     public abstract class AViewAccessBll : IViewAccessBll
     {
-        protected IPerformanceDao PerformanceDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreatePerformanceDao();
-        protected IArtistDao ArtistDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateArtistDao();
-        protected ICategoryDao CategoryDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateCategoryDao();
-        protected ICountryDao CountryDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateCountryDao();
-        protected ILocationDao LocationDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateLocationDao();
-        protected IVenueDao VenueDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateVenueDao();
-
+        private static IPerformanceDao _performanceDao;
+        protected static IPerformanceDao PerformanceDao = _performanceDao ?? (_performanceDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreatePerformanceDao());
+        private static IArtistDao _artistDao;
+        protected static IArtistDao ArtistDao = _artistDao ?? (_artistDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateArtistDao());
+        private static ICategoryDao _categoryDao;
+        protected static ICategoryDao CategoryDao = _categoryDao ?? (_categoryDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateCategoryDao());
+        private static ICountryDao _countryDao;
+        protected static ICountryDao CountryDao = _countryDao ?? (_countryDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateCountryDao());
+        private static ILocationDao _locationDao;
+        protected static ILocationDao LocationDao = _locationDao ?? (_locationDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateLocationDao());
+        private static IVenueDao _venueDao;
+        protected static IVenueDao VenueDao = _venueDao ?? (_venueDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateVenueDao());
+        
         public abstract List<Artist> GetArtist(PagingData page);
         public abstract List<Category> GetCategories(PagingData page);
         public abstract List<Country> GetCountries(PagingData page);

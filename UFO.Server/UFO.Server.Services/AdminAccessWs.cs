@@ -18,126 +18,132 @@
 #endregion
 using System.Collections.Generic;
 using System.ServiceModel;
+using UFO.Server.Bll.Common;
 using UFO.Server.Bll.Impl;
+using UFO.Server.Common;
 using UFO.Server.Domain;
 
 namespace UFO.Server.Services
 {
     [ServiceContract]
-    public class AdminAccessWs : AdminAccessBll
+    public class AdminAccessWs
     {
+        private static AAdminAccessBll _adminAccessDelegate;
+        private static readonly AAdminAccessBll AdminAccessDelegate =
+            _adminAccessDelegate ?? (_adminAccessDelegate = FactoryProvider.GetFactory<IBllProviderFactory>(BllProviderSettings.Instance).CreateAAdminAccessBll());
+
         [OperationContract]
-        public override bool ModifyArtistRange(SessionToken token, List<Artist> artists)
+        public bool ModifyArtistRange(SessionToken token, List<Artist> artists)
         {
-            return base.ModifyArtistRange(token, artists);
+            return AdminAccessDelegate.ModifyArtistRange(token, artists);
         }
 
         [OperationContract]
-        public override bool RemovePerformance(SessionToken token, Performance performance)
+        public bool RemovePerformance(SessionToken token, Performance performance)
         {
-            return base.RemovePerformance(token, performance);
+            return AdminAccessDelegate.RemovePerformance(token, performance);
         }
 
         [OperationContract]
-        public override bool ModifyLocationRange(SessionToken token, List<Location> locations)
+        public bool ModifyLocationRange(SessionToken token, List<Location> locations)
         {
-            return base.ModifyLocationRange(token, locations);
+            return AdminAccessDelegate.ModifyLocationRange(token, locations);
         }
 
         [OperationContract]
-        public override bool ModifyLocation(SessionToken token, Location location)
+        public bool ModifyLocation(SessionToken token, Location location)
         {
-            return base.ModifyLocation(token, location);
+            return AdminAccessDelegate.ModifyLocation(token, location);
         }
 
         [OperationContract]
-        public override bool RemoveLocation(SessionToken token, Location location)
+        public bool RemoveLocation(SessionToken token, Location location)
         {
-            return base.RemoveLocation(token, location);
+            return AdminAccessDelegate.RemoveLocation(token, location);
         }
 
         [OperationContract]
-        public override bool ModifyVenueRange(SessionToken token, List<Venue> venues)
+        public bool ModifyVenueRange(SessionToken token, List<Venue> venues)
         {
-            return base.ModifyVenueRange(token, venues);
+            return AdminAccessDelegate.ModifyVenueRange(token, venues);
         }
 
         [OperationContract]
-        public override bool ModifyPerformanceRange(SessionToken token, List<Performance> performances)
+        public bool ModifyPerformanceRange(SessionToken token, List<Performance> performances)
         {
-            return base.ModifyPerformanceRange(token, performances);
+            return AdminAccessDelegate.ModifyPerformanceRange(token, performances);
         }
 
         [OperationContract]
-        public override List<User> GetUser(SessionToken token, PagingData page)
+        public List<User> GetUser(SessionToken token, PagingData page)
         {
-            return base.GetUser(token, page);
+            return AdminAccessDelegate.GetUser(token, page);
         }
 
         [OperationContract]
-        public override PagingData RequestUserPagingData(SessionToken token)
+        public PagingData RequestUserPagingData(SessionToken token)
         {
-            return base.RequestUserPagingData(token);
+            return AdminAccessDelegate.RequestUserPagingData(token);
         }
 
         [OperationContract]
-        public override bool IsUserAuthenticated(SessionToken token)
+        public bool IsUserAuthenticated(SessionToken token)
         {
-            return base.IsUserAuthenticated(token);
+            return AdminAccessDelegate.IsUserAuthenticated(token);
         }
 
         [OperationContract]
-        public override bool IsValidAdmin(SessionToken token)
+        public bool IsValidAdmin(SessionToken token)
         {
-            return base.IsValidAdmin(token);
+            return AdminAccessDelegate.IsValidAdmin(token);
         }
 
         [OperationContract]
-        public override bool LoginAdmin(SessionToken token)
+        public bool LoginAdmin(SessionToken token)
         {
-            return base.LoginAdmin(token);
+            return AdminAccessDelegate.LoginAdmin(token);
         }
 
         [OperationContract]
-        public override void LogoutAdmin(SessionToken token)
+        public void LogoutAdmin(SessionToken token)
         {
-            base.LogoutAdmin(token);
+            AdminAccessDelegate.LogoutAdmin(token);
         }
 
         [OperationContract]
-        public override SessionToken RequestSessionToken(User user)
+        public SessionToken RequestSessionToken(User user)
         {
-            return base.RequestSessionToken(user);
+            return AdminAccessDelegate.RequestSessionToken(user);
         }
 
         [OperationContract]
-        public override bool ModifyArtist(SessionToken token, Artist artist)
+        public bool ModifyArtist(SessionToken token, Artist artist)
         {
-            return base.ModifyArtist(token, artist);
+            return AdminAccessDelegate.ModifyArtist(token, artist);
         }
 
         [OperationContract]
-        public override bool RemoveArtist(SessionToken token, Artist artist)
+        public bool RemoveArtist(SessionToken token, Artist artist)
         {
-            return base.RemoveArtist(token, artist);
+            return AdminAccessDelegate.RemoveArtist(token, artist);
         }
 
         [OperationContract]
-        public override bool ModifyVenue(SessionToken token, Venue venue)
+        public bool ModifyVenue(SessionToken token, Venue venue)
         {
-            return base.ModifyVenue(token, venue);
+            return AdminAccessDelegate.ModifyVenue(token, venue);
         }
 
         [OperationContract]
-        public override bool RemoveVenue(SessionToken token, Venue venue)
+        public bool RemoveVenue(SessionToken token, Venue venue)
         {
-            return base.RemoveVenue(token, venue);
+            return AdminAccessDelegate.RemoveVenue(token, venue);
         }
 
         [OperationContract]
-        public override bool ModifyPerformance(SessionToken token, Performance performance)
+        public bool ModifyPerformance(SessionToken token, Performance performance)
         {
-            return base.ModifyPerformance(token, performance);
+            return AdminAccessDelegate.ModifyPerformance(token, performance);
         }
     }
 }

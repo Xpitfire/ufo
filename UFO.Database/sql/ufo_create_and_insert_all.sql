@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.11
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2015 at 11:53 AM
--- Server version: 5.6.24
--- PHP Version: 5.6.8
+-- Generation Time: Jan 14, 2016 at 07:55 PM
+-- Server version: 10.1.9-MariaDB
+-- PHP Version: 7.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -15,13 +15,12 @@ SET FOREIGN_KEY_CHECKS = 0;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `ufo`
 --
-CREATE DATABASE IF NOT EXISTS `ufo`;
-
+CREATE DATABASE IF NOT EXISTS `ufo` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `ufo`;
 
 -- --------------------------------------------------------
@@ -38,48 +37,48 @@ CREATE TABLE IF NOT EXISTS `artist` (
   `CountryCode` char(2) DEFAULT NULL,
   `Picture` mediumtext,
   `PromoVideo` mediumtext
-) ENGINE=InnoDB AUTO_INCREMENT=487 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `artist`
 --
 
 INSERT INTO `artist` (`ArtistId`, `Name`, `EMail`, `CategoryId`, `CountryCode`, `Picture`, `PromoVideo`) VALUES
-(1, 'Dead Island', 'untitled-no1@mail.com', 'M', 'AT', '51zRy4inZnL.jpg', 'https://www.youtube.com/watch?v=gETEAHwE2d4'),
-(2, '.38 Special', 'di@tasopjis.edu', NULL, 'AT', '415ZSS2GB8L.jpg', 'https://www.youtube.com/watch?v=av7IwBfF5m8'),
-(3, '10cc', 'mof@puvoziwo.net', 'A', 'DE', '3454ff43.jpg', 'https://www.youtube.com/watch?v=7InRmTGU0Hg'),
-(4, '3 Doors Down', 'ohucep@lugoj.org', 'A', 'US', '25873.jpg', 'https://www.youtube.com/watch?v=eoNAQAP4rZw'),
-(5, '4 Non Blondes', 'hucse@vagi.edu', 'A', 'HR', '34343tgr34.jpg', 'https://www.youtube.com/watch?v=E8QejA6xUzo'),
-(6, 'a-ha', 'je@ojaridag.org', 'A', 'RO', '141739-tap-106838.jpg', 'https://www.youtube.com/watch?v=t7tA3NNKF0Q'),
-(7, 'AC/DC', 'dakag@eje.com', 'M', 'AT', 'A-ha-tutupash.jpg', 'https://www.youtube.com/watch?v=9T7NOy8E9g8'),
-(8, 'Ace', 'coel@voti.org', 'T', 'AT', 'MI0000324965.jpg', 'https://www.youtube.com/watch?v=UE5IW1nDCWw'),
-(9, 'Adelitas Way', 'ed@fiifeisi.gov', 'T', 'AT', NULL, 'https://www.youtube.com/watch?v=TWKU2XhY8TA'),
+(1, 'Dead Island', 'untitled-no1@mail.com', 'M', 'AT', 'http://media.moddb.com/images/members/1/414/413573/profile/6786056-dead-island-wallpaper.jpg', 'https://www.youtube.com/watch?v=gETEAHwE2d4'),
+(2, '.38 Special', 'di@tasopjis.edu', NULL, 'AT', 'http://www.hayspost.com/wp-content/uploads/2014/10/38main.jpg', 'https://www.youtube.com/watch?v=av7IwBfF5m8'),
+(3, '10cc', 'mof@puvoziwo.net', 'A', 'DE', 'http://www.talkclassicrock.com/images/imported/2013/06/6.jpg', 'https://www.youtube.com/watch?v=7InRmTGU0Hg'),
+(4, '3 Doors Down', 'ohucep@lugoj.org', 'A', 'US', 'http://www.shopdowncity.com/news/wp-content/uploads/2011/09/Branding_ThreeDoors-01-e1316808491949.jpg', 'https://www.youtube.com/watch?v=eoNAQAP4rZw'),
+(5, '4 Non Blondes', 'hucse@vagi.edu', 'A', 'HR', 'https://i.ytimg.com/vi/lA10NknUlZ8/maxresdefault.jpg', 'https://www.youtube.com/watch?v=E8QejA6xUzo'),
+(6, 'a-ha', 'je@ojaridag.org', 'A', 'RO', 'https://www.acidmerch.com/mm5/graphics/00000007/ahat.gif', 'https://www.youtube.com/watch?v=t7tA3NNKF0Q'),
+(7, 'AC/DC', 'dakag@eje.com', 'M', 'AT', 'http://www.989thebear.com/Portals/0/AC%20DC%20image.jpg', 'https://www.youtube.com/watch?v=9T7NOy8E9g8'),
+(8, 'Ace', 'coel@voti.org', 'T', 'AT', 'http://chuckyg.com/loved/images/ace.jpg', 'https://www.youtube.com/watch?v=UE5IW1nDCWw'),
+(9, 'Adelitas Way', 'ed@fiifeisi.gov', 'T', 'AT', 'http://static.tumblr.com/44d46bdcac8d8979152dc4507847fcf1/4q9baa9/9nRmimpzo/tumblr_static_aw.jpg', 'https://www.youtube.com/watch?v=TWKU2XhY8TA'),
 (10, 'Aerosmith', 'felga@lomhagha.io', 'T', 'AT', NULL, 'https://www.youtube.com/watch?v=M9MpSxHxdYM'),
-(11, 'Alanis Morissette', 'opibu@kilfawu.gov', 'T', 'AT', NULL, 'https://www.youtube.com/watch?v=XYkhnegFAUc'),
-(12, 'Alannah Myles', 'ha@ivohiv.gov', 'T', 'AT', NULL, 'https://www.youtube.com/watch?v=PCeQrYvagGw'),
-(13, 'Aldo Nova', 'neroji@sad.org', 'T', 'AT', NULL, 'https://www.youtube.com/watch?v=N3JCjR5cpbA'),
+(11, 'Alanis Morissette', 'opibu@kilfawu.gov', 'T', 'AT', 'http://www.chicagomusicmagazine.com/wp-content/uploads/2012/10/alanis_feature_mayer1.jpg', 'https://www.youtube.com/watch?v=XYkhnegFAUc'),
+(12, 'Alannah Myles', 'ha@ivohiv.gov', 'T', 'AT', 'https://i.ytimg.com/vi/EamuDhJbc1c/maxresdefault.jpg', 'https://www.youtube.com/watch?v=PCeQrYvagGw'),
+(13, 'Aldo Nova', 'neroji@sad.org', 'T', 'AT', 'http://www.trooper.com/gogoreports/wp-content/uploads/2012/09/Nanacy-X-Wife-of-Aldo-Nova.jpg', 'https://www.youtube.com/watch?v=N3JCjR5cpbA'),
 (14, 'Alice Cooper', 'fekneve@sutis.edu', 'T', 'AT', NULL, 'https://www.youtube.com/watch?v=Wvrzyqs62qA'),
-(15, 'Alice In Chains', 'jeveslup@vopdiatu.co.uk', 'T', 'AT', NULL, 'https://www.youtube.com/watch?v=OZ50zBaFwlY'),
+(15, 'Alice In Chains', 'jeveslup@vopdiatu.co.uk', 'T', 'AT', 'http://assets.blabbermouth.net.s3.amazonaws.com/media/aliceinchainsuntold.jpg', 'https://www.youtube.com/watch?v=OZ50zBaFwlY'),
 (16, 'Allman Brothers Band', 'ra@wezagu.io', 'T', 'AT', NULL, 'https://www.youtube.com/watch?v=Ao2A15T8jKo'),
-(17, 'America', 'vahed@fitmodsu.co.uk', 'T', 'AT', NULL, NULL),
-(18, 'Animals II', 'nited@vavo.co.uk', 'T', 'AT', NULL, NULL),
-(19, 'Ann Wilson', 'zi@cozke.gov', 'T', 'UK', NULL, NULL),
+(17, 'America', 'vahed@fitmodsu.co.uk', 'T', 'AT', 'http://music4fan.altervista.org/wp-content/uploads/2014/06/Front-cover.jpeg', NULL),
+(18, 'Animals II', 'nited@vavo.co.uk', 'T', 'AT', 'https://s-media-cache-ak0.pinimg.com/236x/a4/58/74/a45874e11429be61030b0573281ae6b5.jpg', NULL),
+(19, 'Ann Wilson', 'zi@cozke.gov', 'T', 'UK', 'http://diffuser.fm/files/2014/11/agentorange-630x420.jpg', NULL),
 (20, 'April Wine', 'wasnuru@dafog.edu', 'A', 'UK', NULL, NULL),
 (21, 'Argent', 'wejdekda@juih.net', 'A', 'UK', NULL, NULL),
 (22, 'Arlo Guthrie', 'me@fe.com', 'A', 'UK', NULL, NULL),
 (23, 'Artful Dodger', 'durgev@le.edu', 'A', 'UK', NULL, NULL),
-(24, 'Asia', 'um@genaf.net', 'A', 'UK', NULL, NULL),
+(24, 'Asia', 'um@genaf.net', 'A', 'UK', 'https://upload.wikimedia.org/wikipedia/en/4/47/Asia_-_Asia_(1982)_front_cover.jpg', NULL),
 (25, 'Atlanta Rhythm Section', 'dufollus@kubnug.io', 'A', 'UK', NULL, NULL),
-(26, 'Audioslave', 'hot@atauc.co.uk', 'A', 'UK', NULL, NULL),
+(26, 'Audioslave', 'hot@atauc.co.uk', 'A', 'UK', 'https://s-media-cache-ak0.pinimg.com/originals/44/85/cf/4485cf35171cb3360cd26c4c49f138b1.jpg', 'https://www.youtube.com/watch?v=JpZlnEd1IEE'),
 (27, 'Autograph', 'todevcu@ceruf.com', 'A', 'UK', NULL, NULL),
 (28, 'Axe', 'ane@lod.gov', 'A', 'UK', NULL, NULL),
 (29, 'Bachman-Turner Overdrive', 'les@ekcon.net', 'A', 'UK', NULL, NULL),
 (30, 'Bad Company', 'uwu@lekbehca.gov', 'A', 'UK', NULL, NULL),
-(31, 'Bad English', 'tuijzi@ho.net', 'A', 'UK', NULL, NULL),
+(31, 'Bad English', 'tuijzi@ho.net', 'A', 'UK', 'https://i.ytimg.com/vi/cFveqEMb3i8/maxresdefault.jpg', NULL),
 (32, 'Badfinger', 'adotuku@gib.com', 'A', 'UK', NULL, NULL),
 (33, 'Baton Rouge', 'jusomfos@jimudwu.edu', 'A', 'UK', NULL, NULL),
 (34, 'Beastie Boys', 'nudmupam@kepojof.gov', 'A', 'UK', NULL, NULL),
-(35, 'Beck', 'lucfin@suapogem.edu', 'A', 'UK', NULL, NULL),
+(35, 'Beck', 'lucfin@suapogem.edu', 'A', 'UK', 'http://awmovies.us/wp-content/uploads/2015/05/Beck-bw.jpg', NULL),
 (36, 'Big Country', 'akoenusa@has.net', 'A', 'BR', NULL, NULL),
 (37, 'Bill Haley', 'zeuze@cu.io', 'A', 'BR', NULL, NULL),
 (38, 'Bill Withers', 'agiodolu@latzoha.net', 'A', 'BR', NULL, NULL),
@@ -88,16 +87,16 @@ INSERT INTO `artist` (`ArtistId`, `Name`, `EMail`, `CategoryId`, `CountryCode`, 
 (41, 'Billy Rankin', 'nuze@mawwup.com', 'A', 'BR', NULL, NULL),
 (42, 'Billy Squier', 'ruzoga@umeaha.io', 'A', 'BR', NULL, NULL),
 (43, 'Billy Thorpe', 'imihetpeg@boc.org', 'C', 'BR', NULL, NULL),
-(44, 'Black Sabbath', 'ela@lodu.io', 'C', 'BR', NULL, NULL),
+(44, 'Black Sabbath', 'ela@lodu.io', 'C', 'BR', NULL, 'https://www.youtube.com/watch?v=5s7_WbiR79E'),
 (45, 'Blackfoot', 'koemuifo@anakuhmes.org', 'C', 'BR', NULL, NULL),
 (46, 'Blind Faith', 'ro@jate.org', 'C', 'BR', NULL, NULL),
 (47, 'Blind Melon', 'kovepte@bidde.io', 'C', 'BR', NULL, NULL),
-(48, 'Blink-182', 'vilajed@sazgi.io', 'C', 'AR', NULL, NULL),
+(48, 'Blink-182', 'vilajed@sazgi.io', 'C', 'AR', 'https://elessar20.files.wordpress.com/2008/04/blink_182_004.jpg', 'https://www.youtube.com/watch?v=K7l5ZeVVoCA'),
 (49, 'Blondie', 'bu@ewdal.org', 'C', 'AR', NULL, NULL),
 (50, 'Blue Oyster Cult', 'ti@defce.org', 'C', 'AR', NULL, NULL),
 (51, 'Blur', 'habjiz@gasod.com', 'C', 'AR', NULL, NULL),
 (52, 'Bob Dylan', 'ba@ga.io', 'C', 'AR', NULL, NULL),
-(53, 'Bob Marley', 'wicowe@vi.edu', 'C', 'AR', NULL, NULL),
+(53, 'Bob Marley', 'wicowe@vi.edu', 'C', 'AR', 'https://i.ytimg.com/vi/-JhwxTen6yA/hqdefault.jpg', NULL),
 (54, 'Bob Seger', 'zeczug@pawek.net', 'C', 'AR', NULL, NULL),
 (55, 'Bob Welch', 'opzor@ginsaf.io', 'C', 'AR', NULL, NULL),
 (56, 'Bon Jovi', 'os@sulakut.co.uk', 'C', 'AR', NULL, NULL),
@@ -107,7 +106,7 @@ INSERT INTO `artist` (`ArtistId`, `Name`, `EMail`, `CategoryId`, `CountryCode`, 
 (60, 'Boz Scaggs', 'voz@haaf.com', 'C', 'AR', NULL, NULL),
 (61, 'Brewer & Shipley', 'futji@fuwfoiwe.gov', 'C', 'AR', NULL, NULL),
 (62, 'Bruce Hornsby & The Range', 'ze@zoblama.com', 'A', 'AR', NULL, NULL),
-(63, 'Bruce Springsteen', 'bu@wo.edu', 'A', 'AR', NULL, NULL),
+(63, 'Bruce Springsteen', 'bu@wo.edu', 'A', 'AR', NULL, 'https://www.youtube.com/watch?v=4z2DtNW79sQ'),
 (64, 'Bryan Adams', 'wowulipe@ervap.edu', 'A', 'AR', NULL, NULL),
 (65, 'Buckcherry', 'pajupgi@oti.net', 'A', 'AR', NULL, NULL),
 (66, 'Buffalo Springfield', 'jom@izawimam.co.uk', 'A', 'AR', NULL, NULL),
@@ -118,7 +117,7 @@ INSERT INTO `artist` (`ArtistId`, `Name`, `EMail`, `CategoryId`, `CountryCode`, 
 (71, 'Cat Stevens', 'umogawuf@fot.net', 'C', 'BO', NULL, NULL),
 (72, 'Charlie Daniels Band', 'fumcohbe@ja.org', 'C', 'BG', NULL, NULL),
 (73, 'Cheap Trick', 'didazato@camhi.gov', 'C', 'BO', NULL, NULL),
-(74, 'Chevelle', 'fen@humu.net', 'C', 'BG', NULL, NULL),
+(74, 'Chevelle', 'fen@humu.net', 'C', 'BG', 'https://upload.wikimedia.org/wikipedia/en/thumb/6/66/FacetotheFloor.jpg/220px-FacetotheFloor.jpg', 'https://www.youtube.com/watch?v=trinU3VD1Zo'),
 (75, 'Chicago', 'huw@vilansuh.co.uk', 'C', 'BO', NULL, NULL),
 (76, 'Chuck Berry', 'piccaj@uhi.co.uk', 'C', 'BG', NULL, NULL),
 (77, 'Cinderella', 'lofim@hiis.gov', 'C', 'BO', NULL, NULL),
@@ -547,24 +546,25 @@ CREATE TABLE IF NOT EXISTS `artistview` (
 
 CREATE TABLE IF NOT EXISTS `category` (
   `CategoryId` varchar(2) NOT NULL,
-  `Name` varchar(40) NOT NULL
+  `Name` varchar(40) NOT NULL,
+  `Color` char(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`CategoryId`, `Name`) VALUES
-('A', 'Akrobatik'),
-('C', 'Comedy & Clownerie'),
-('F', 'Feuershow'),
-('J', 'Jonglage'),
-('L', 'Luftakrobatik'),
-('M', 'Musik'),
-('OT', 'Figuren- und Objekttheater'),
-('S', 'Samba'),
-('St', 'Stehstill-Statue'),
-('T', 'Tanz');
+INSERT INTO `category` (`CategoryId`, `Name`, `Color`) VALUES
+('A', 'Akrobatik', '#1abc9c'),
+('C', 'Comedy & Clownerie', '#3498db'),
+('F', 'Feuershow', '#e67e22'),
+('J', 'Jonglage', '#9b59b6'),
+('L', 'Luftakrobatik', '#f39c12'),
+('M', 'Musik', '#bdc3c7'),
+('OT', 'Figuren- und Objekttheater', '#e74c3c'),
+('S', 'Samba', '#2abb9b'),
+('St', 'Stehstill-Statue', '#e08283'),
+('T', 'Tanz', '#f62459');
 
 -- --------------------------------------------------------
 
@@ -823,7 +823,7 @@ CREATE TABLE IF NOT EXISTS `location` (
   `Longitude` decimal(8,5) NOT NULL,
   `Latitude` decimal(8,5) NOT NULL,
   `Name` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `location`
@@ -1002,7 +1002,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `IsArtist` tinyint(1) NOT NULL,
   `ArtistId` int(11) DEFAULT NULL,
   `EMail` varchar(40) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10010 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -11128,7 +11128,7 @@ CREATE TABLE IF NOT EXISTS `venueview` (
 --
 DROP TABLE IF EXISTS `artistview`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `artistview` AS select `a`.`ArtistId` AS `ArtistId`,`a`.`Name` AS `ArtistName`,`a`.`EMail` AS `EMail`,`a`.`CategoryId` AS `CategoryId`,`ca`.`Name` AS `CategoryName`,`a`.`CountryCode` AS `CountryCode`,`co`.`Name` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo` from ((`artist` `a` left join `category` `ca` on((`a`.`CategoryId` = `ca`.`CategoryId`))) join `country` `co`) where (`a`.`CountryCode` = `co`.`Code`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `artistview`  AS  select `a`.`ArtistId` AS `ArtistId`,`a`.`Name` AS `ArtistName`,`a`.`EMail` AS `EMail`,`a`.`CategoryId` AS `CategoryId`,`ca`.`Name` AS `CategoryName`,`a`.`CountryCode` AS `CountryCode`,`co`.`Name` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo` from ((`artist` `a` left join `category` `ca` on((`a`.`CategoryId` = `ca`.`CategoryId`))) join `country` `co`) where (`a`.`CountryCode` = `co`.`Code`) ;
 
 -- --------------------------------------------------------
 
@@ -11137,7 +11137,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `performanceview`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `performanceview` AS select `a`.`ArtistId` AS `ArtistId`,`p`.`Date` AS `Date`,`v`.`VenueId` AS `VenueId`,`a`.`ArtistName` AS `ArtistName`,`a`.`EMail` AS `EMail`,`a`.`CategoryId` AS `CategoryId`,`a`.`CategoryName` AS `CategoryName`,`a`.`CountryCode` AS `CountryCode`,`a`.`CountryName` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo`,`v`.`VenueName` AS `VenueName`,`v`.`LocationId` AS `LocationId`,`v`.`Longitude` AS `Longitude`,`v`.`Latitude` AS `Latitude`,`v`.`LocationName` AS `LocationName` from (`artistview` `a` join (`performance` `p` left join `venueview` `v` on((`p`.`VenueId` = `v`.`VenueId`)))) where (`a`.`ArtistId` = `p`.`ArtistId`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `performanceview`  AS  select `a`.`ArtistId` AS `ArtistId`,`p`.`Date` AS `Date`,`v`.`VenueId` AS `VenueId`,`a`.`ArtistName` AS `ArtistName`,`a`.`EMail` AS `EMail`,`a`.`CategoryId` AS `CategoryId`,`a`.`CategoryName` AS `CategoryName`,`a`.`CountryCode` AS `CountryCode`,`a`.`CountryName` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo`,`v`.`VenueName` AS `VenueName`,`v`.`LocationId` AS `LocationId`,`v`.`Longitude` AS `Longitude`,`v`.`Latitude` AS `Latitude`,`v`.`LocationName` AS `LocationName` from (`artistview` `a` join (`performance` `p` left join `venueview` `v` on((`p`.`VenueId` = `v`.`VenueId`)))) where (`a`.`ArtistId` = `p`.`ArtistId`) ;
 
 -- --------------------------------------------------------
 
@@ -11146,7 +11146,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `userview`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `userview` AS select `u`.`UserId` AS `UserId`,`u`.`FirstName` AS `FirstName`,`u`.`LastName` AS `LastName`,`u`.`EMail` AS `UserMail`,`u`.`Password` AS `Password`,`u`.`IsAdmin` AS `IsAdmin`,`u`.`IsArtist` AS `IsArtist`,`a`.`ArtistId` AS `ArtistId`,`a`.`ArtistName` AS `ArtistName`,`a`.`EMail` AS `ArtistMail`,`a`.`CategoryId` AS `CategoryId`,`a`.`CategoryName` AS `CategoryName`,`a`.`CountryCode` AS `CountryCode`,`a`.`CountryName` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo` from (`user` `u` left join `artistview` `a` on((`a`.`ArtistId` = `u`.`ArtistId`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `userview`  AS  select `u`.`UserId` AS `UserId`,`u`.`FirstName` AS `FirstName`,`u`.`LastName` AS `LastName`,`u`.`EMail` AS `UserMail`,`u`.`Password` AS `Password`,`u`.`IsAdmin` AS `IsAdmin`,`u`.`IsArtist` AS `IsArtist`,`a`.`ArtistId` AS `ArtistId`,`a`.`ArtistName` AS `ArtistName`,`a`.`EMail` AS `ArtistMail`,`a`.`CategoryId` AS `CategoryId`,`a`.`CategoryName` AS `CategoryName`,`a`.`CountryCode` AS `CountryCode`,`a`.`CountryName` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo` from (`user` `u` left join `artistview` `a` on((`a`.`ArtistId` = `u`.`ArtistId`))) ;
 
 -- --------------------------------------------------------
 
@@ -11155,7 +11155,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `venueview`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `venueview` AS select `v`.`VenueId` AS `VenueId`,`v`.`Name` AS `VenueName`,`v`.`LocationId` AS `LocationId`,`l`.`Longitude` AS `Longitude`,`l`.`Latitude` AS `Latitude`,`l`.`Name` AS `LocationName` from (`venue` `v` join `location` `l`) where (`v`.`LocationId` = `l`.`LocationId`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `venueview`  AS  select `v`.`VenueId` AS `VenueId`,`v`.`Name` AS `VenueName`,`v`.`LocationId` AS `LocationId`,`l`.`Longitude` AS `Longitude`,`l`.`Latitude` AS `Latitude`,`l`.`Name` AS `LocationName` from (`venue` `v` join `location` `l`) where (`v`.`LocationId` = `l`.`LocationId`) ;
 
 --
 -- Indexes for dumped tables
@@ -11165,7 +11165,9 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- Indexes for table `artist`
 --
 ALTER TABLE `artist`
-  ADD PRIMARY KEY (`ArtistId`), ADD KEY `R_8` (`CategoryId`), ADD KEY `R_11` (`CountryCode`);
+  ADD PRIMARY KEY (`ArtistId`),
+  ADD KEY `R_8` (`CategoryId`),
+  ADD KEY `R_11` (`CountryCode`);
 
 --
 -- Indexes for table `category`
@@ -11189,39 +11191,42 @@ ALTER TABLE `location`
 -- Indexes for table `performance`
 --
 ALTER TABLE `performance`
-  ADD PRIMARY KEY (`ArtistId`,`Date`), ADD KEY `R_14` (`VenueId`);
+  ADD PRIMARY KEY (`ArtistId`,`Date`),
+  ADD KEY `R_14` (`VenueId`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`UserId`), ADD KEY `R_5` (`ArtistId`);
+  ADD PRIMARY KEY (`UserId`),
+  ADD KEY `R_5` (`ArtistId`);
 
 --
 -- Indexes for table `venue`
 --
 ALTER TABLE `venue`
-  ADD PRIMARY KEY (`VenueId`), ADD KEY `R_19` (`LocationId`);
+  ADD PRIMARY KEY (`VenueId`),
+  ADD KEY `R_19` (`LocationId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `location`
---
-ALTER TABLE `location`
-  MODIFY `LocationId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
 -- AUTO_INCREMENT for table `artist`
 --
 ALTER TABLE `artist`
-  MODIFY `ArtistId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=487;
+  MODIFY `ArtistId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=477;
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `LocationId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10010;
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
 --
 -- Constraints for dumped tables
 --
@@ -11230,28 +11235,28 @@ ALTER TABLE `user`
 -- Constraints for table `artist`
 --
 ALTER TABLE `artist`
-ADD CONSTRAINT `R_11` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`),
-ADD CONSTRAINT `R_8` FOREIGN KEY (`CategoryId`) REFERENCES `category` (`CategoryId`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `R_11` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`),
+  ADD CONSTRAINT `R_8` FOREIGN KEY (`CategoryId`) REFERENCES `category` (`CategoryId`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `performance`
 --
 ALTER TABLE `performance`
-ADD CONSTRAINT `R_12` FOREIGN KEY (`ArtistId`) REFERENCES `artist` (`ArtistId`) ON DELETE CASCADE ON UPDATE CASCADE,
-ADD CONSTRAINT `R_14` FOREIGN KEY (`VenueId`) REFERENCES `venue` (`VenueId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `R_12` FOREIGN KEY (`ArtistId`) REFERENCES `artist` (`ArtistId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `R_14` FOREIGN KEY (`VenueId`) REFERENCES `venue` (`VenueId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-ADD CONSTRAINT `R_5` FOREIGN KEY (`ArtistId`) REFERENCES `artist` (`ArtistId`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `R_5` FOREIGN KEY (`ArtistId`) REFERENCES `artist` (`ArtistId`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `venue`
 --
 ALTER TABLE `venue`
-ADD CONSTRAINT `R_19` FOREIGN KEY (`LocationId`) REFERENCES `location` (`LocationId`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+  ADD CONSTRAINT `R_19` FOREIGN KEY (`LocationId`) REFERENCES `location` (`LocationId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  
 SET FOREIGN_KEY_CHECKS = 1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
