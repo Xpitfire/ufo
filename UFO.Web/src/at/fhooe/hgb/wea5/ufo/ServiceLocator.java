@@ -1,6 +1,7 @@
 package at.fhooe.hgb.wea5.ufo;
 
 import at.fhooe.hgb.wea5.ufo.backend.UfoDelegate;
+import at.fhooe.hgb.wea5.ufo.util.FacesUtil;
 
 import javax.servlet.ServletException;
 import java.util.logging.Level;
@@ -11,8 +12,6 @@ import java.util.logging.Logger;
  * @date: 13.01.2016.
  */
 public class ServiceLocator {
-
-    private static Logger logger = Logger.getLogger("UFO Web");
 
     private static ServiceLocator instance;
     private boolean initialized;
@@ -60,7 +59,7 @@ public class ServiceLocator {
             UfoDelegate delegate = (UfoDelegate) cls.getConstructors()[0].newInstance(new Object[] {});
             return delegate;
         } catch (Exception e) {
-            logger.log(Level.SEVERE, "ServiceLocator: " + e);
+            FacesUtil.getLogger().log(Level.SEVERE, "ServiceLocator: " + e);
         }
         return null;
     }

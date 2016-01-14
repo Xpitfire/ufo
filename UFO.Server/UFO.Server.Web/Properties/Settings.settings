@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="UFO.Server.Web.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WebAccessService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:5002/WebAccessService.asmx</Value>
+    </Setting>
+    <Setting Name="DaoProviderClassName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DaoProviderFactory</Value>
+    </Setting>
+    <Setting Name="DaoProviderNameSpace" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UFO.Server.Dal.MySql</Value>
+    </Setting>
+    <Setting Name="DaoProviderAssemblyName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UFO.Server.Dal.MySql</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

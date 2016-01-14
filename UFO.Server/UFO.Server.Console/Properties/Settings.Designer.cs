@@ -22,5 +22,32 @@ namespace UFO.Server.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DaoProviderFactory")]
+        public string DaoProviderClassName {
+            get {
+                return ((string)(this["DaoProviderClassName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Dal.MySql")]
+        public string DaoProviderNameSpace {
+            get {
+                return ((string)(this["DaoProviderNameSpace"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("UFO.Server.Dal.MySql")]
+        public string DaoProviderAssemblyName {
+            get {
+                return ((string)(this["DaoProviderAssemblyName"]));
+            }
+        }
     }
 }

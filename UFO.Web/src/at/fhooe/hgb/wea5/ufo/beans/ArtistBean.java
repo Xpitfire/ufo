@@ -1,6 +1,6 @@
 package at.fhooe.hgb.wea5.ufo.beans;
 
-import at.fhooe.hgb.wea5.ufo.web.client.Artist;
+import at.fhooe.hgb.wea5.ufo.web.generated.Artist;
 
 import javax.annotation.ManagedBean;
 import javax.faces.bean.RequestScoped;

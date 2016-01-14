@@ -1,10 +1,16 @@
 package at.fhooe.hgb.wea5.ufo.beans;
 
-import at.fhooe.hgb.wea5.ufo.web.client.*;
+import at.fhooe.hgb.wea5.ufo.util.FacesUtil;
+import at.fhooe.hgb.wea5.ufo.web.generated.Artist;
+import at.fhooe.hgb.wea5.ufo.web.generated.PagingData;
+import at.fhooe.hgb.wea5.ufo.web.generated.WebAccessService;
+import at.fhooe.hgb.wea5.ufo.web.generated.WebAccessServiceSoap;
 
 import javax.annotation.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -22,9 +28,14 @@ public class LoginBean {
     public void login() {
         if(password != null && username != null) {
             //isAuthenticated = new UfoService().getUfoServiceSoap().authenticateUser(username, password);
-            ViewAccessWs_Service service = new ViewAccessWs_Service();
-            PagingData page =  service.getWSHttpBindingViewAccessWs().requestArtistPagingData();
-            List<Artist> artists = service.getWSHttpBindingViewAccessWs().getArtist(page).getArtist();
+            FacesUtil.getLogger().info("Perform login...");
+            WebAccessService service = null;
+            PagingData page = null;
+            service = new WebAccessService();
+            page = service.getWebAccessServiceSoap().requestArtistPagingData();
+            service.getWebAccessServiceSoap().getArtist(page);
+
+            List<Artist> artists = service.getWebAccessServiceSoap().getArtist(page).getArtist();
             artists.forEach(System.out::println);
 
             isAuthenticated = true;

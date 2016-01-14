@@ -60,7 +60,11 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -80,6 +84,12 @@
     <Compile Include="ServerBllTests.cs" />
     <Compile Include="ServerDalTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerWsTest.cs" />
+    <Compile Include="Service References\WebAccessService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UFO.Server.Bll.Common\UFO.Server.Bll.Common.csproj">
@@ -110,14 +120,101 @@
       <Project>{d1adb3d6-b6dc-42ca-9468-71dc9693f89c}</Project>
       <Name>UFO.Server.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UFO.Server.Web\UFO.Server.Web.csproj">
+      <Project>{17BE2643-A761-467D-86A4-A068189F6A87}</Project>
+      <Name>UFO.Server.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="NLog.Config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.Artist.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.Category.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.Country.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.GetArtistResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.GetCategoriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.GetCountriesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.GetLocationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.GetPerformancesPerDateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.GetPerformancesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.GetVenuesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.Location.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.PagingData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.Performance.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.RequestArtistPagingDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.RequestCategoryPagingDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.RequestCountryPagingDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.RequestLocationPagingDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.RequestPerformancePagingDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.RequestVenuePagingDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.Venue.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WebAccessService\WebAccessService.wsdl" />
     <None Include="UFO.Server.Test.licenseheader" />
     <None Include="UFO.Server.Test.psproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WebAccessService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebAccessService\WebAccessService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebAccessService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebAccessService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WebAccessService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

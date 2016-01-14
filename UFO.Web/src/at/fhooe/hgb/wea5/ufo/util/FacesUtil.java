@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class FacesUtil {
 
+	public static Logger getLogger() {
+		return Logger.getLogger("UFO Web");
+	}
+
 	/**
 	 * Creates a new {@link Failure} object.
 	 * 
