@@ -8,6 +8,7 @@ public class Artist {
     private int artistId;
     private String name;
     private String category;
+    private String categoryColor;
     private String country;
     private String picture;
     private String promoVideo;
@@ -58,5 +59,13 @@ public class Artist {
 
     public void setPromoVideo(String promoVideo) {
         this.promoVideo = promoVideo;
+    }
+
+    public String getCategoryColor() {
+        return categoryColor;
+    }
+
+    public void setCategoryColor(String categoryColor) {
+        this.categoryColor = categoryColor;
     }
 }
