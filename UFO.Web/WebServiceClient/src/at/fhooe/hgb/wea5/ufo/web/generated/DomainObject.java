@@ -27,12 +27,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "DomainObject")
 @XmlSeeAlso({
     PagingData.class,
+    User.class,
+    SessionToken.class,
+    Performance.class,
     Artist.class,
     Category.class,
     Venue.class,
     Country.class,
     BlobData.class,
-    Performance.class,
     Location.class
 })
 public class DomainObject {

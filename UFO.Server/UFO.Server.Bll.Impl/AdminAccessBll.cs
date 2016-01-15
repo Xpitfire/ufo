@@ -185,10 +185,20 @@ namespace UFO.Server.Bll.Impl
                 return false;
 
             var result = PerformanceDao.SelectById(performance.DateTime, performance.Artist.ArtistId);
-            result = result.ResponseStatus == DaoStatus.Successful
-                ? PerformanceDao.Update(performance)
-                : PerformanceDao.Insert(performance);
-
+            if (result.ResponseStatus == DaoStatus.Successful)
+            {
+                if (IsPerformanceDateTimeDelayValid(result.ResultObject, performance))
+                    result = PerformanceDao.Update(performance); 
+                else
+                    result.ResponseStatus = DaoStatus.Failed;
+            }
+            else
+            {
+                if (IsDateTimeFormatValid(performance.DateTime))
+                    result = PerformanceDao.Insert(performance);
+                else
+                    result.ResponseStatus = DaoStatus.Failed;
+            }
             return result.ResponseStatus == DaoStatus.Successful;
         }
         

@@ -94,5 +94,26 @@ namespace UFO.Server.Bll.Common
         {
             return IsUserAuthenticated(token) ? PagingHelper.RequestPagingData(UserDao) : null;
         }
+
+        public bool IsDateTimeFormatValid(DateTime dateTime)
+        {
+            var valid = dateTime.Minute == 0;
+            valid &= dateTime.Second == 0;
+            valid &= dateTime.Millisecond == 0;
+            return valid;
+        }
+
+        public bool IsPerformanceDateTimeDelayValid(Performance old, Performance @new)
+        {
+            var valid = false;
+            if (old != null && @new != null 
+                && old.Artist?.Equals(@new.Artist) != null)
+            {
+                valid = Math.Abs((old.DateTime.Hour - @new.DateTime.Hour)) >= 1;
+                valid &= IsDateTimeFormatValid(old.DateTime);
+                valid &= IsDateTimeFormatValid(@new.DateTime);
+            }
+            return valid;
+        }
     }
 }

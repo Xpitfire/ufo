@@ -20,16 +20,4 @@
         </navigation-case>
     </navigation-rule>
 
-
-    <managed-bean>
-        <managed-bean-name>loginBean</managed-bean-name>
-        <managed-bean-class>at.fhooe.hgb.wea5.ufo.beans.LoginBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>artistBean</managed-bean-name>
-        <managed-bean-class>at.fhooe.hgb.wea5.ufo.beans.ArtistBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-
 </faces-config>

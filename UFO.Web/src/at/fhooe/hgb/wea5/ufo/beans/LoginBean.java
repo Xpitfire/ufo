@@ -1,73 +1,48 @@
 package at.fhooe.hgb.wea5.ufo.beans;
 
-import at.fhooe.hgb.wea5.ufo.util.FacesUtil;
-import at.fhooe.hgb.wea5.ufo.web.generated.Artist;
-import at.fhooe.hgb.wea5.ufo.web.generated.PagingData;
-import at.fhooe.hgb.wea5.ufo.web.generated.WebAccessService;
-import at.fhooe.hgb.wea5.ufo.web.generated.WebAccessServiceSoap;
-
-import javax.annotation.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
+import java.io.Serializable;
 
 /**
  * @author: Dinu Marius-Constantin
  * @date: 14.01.2016
  */
-@ManagedBean
-@SessionScoped
-public class LoginBean {
-    private boolean isAuthenticated = false;
-    private String username;
+@ManagedBean(name = "loginBean")
+@RequestScoped
+public class LoginBean implements Serializable {
+
+    @ManagedProperty(value = "#{sessionBean}")
+    private SessionBean sessionBean;
+
+    public void setSessionBean(SessionBean sessionBean) {
+        this.sessionBean = sessionBean;
+    }
+
+    private String email;
     private String password;
     private String errorMessage;
 
     public void login() {
-        if(password != null && username != null) {
-            //isAuthenticated = new UfoService().getUfoServiceSoap().authenticateUser(username, password);
-            FacesUtil.getLogger().info("Perform login...");
-            WebAccessService service = null;
-            PagingData page = null;
-            service = new WebAccessService();
-            page = service.getWebAccessServiceSoap().requestArtistPagingData();
-            service.getWebAccessServiceSoap().getArtist(page);
-
-            List<Artist> artists = service.getWebAccessServiceSoap().getArtist(page).getArtist();
-            artists.forEach(System.out::println);
-
-            isAuthenticated = true;
-        }
-
-        if(isAuthenticated) {
-            FacesContext facesContext = FacesContext.getCurrentInstance();
-            String outcome = "index?faces-redirect=true";
-            facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, outcome);
-            errorMessage = "";
-        } else {
-            errorMessage = "Benutzername oder Passwort falsch.";
+        if(password != null && !password.isEmpty()
+                && email != null && !email.isEmpty()) {
+            if(sessionBean.authenticate(email, password)) {
+                FacesContext facesContext = FacesContext.getCurrentInstance();
+                facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, "index?faces-redirect=true");
+                errorMessage = "";
+            } else {
+                errorMessage = "Ungültige EMail Adresse oder falsches Passwort.";
+            }
         }
     }
 
-    public boolean isAuthenticated() {
-        return isAuthenticated;
+    public String getEmail() {
+        return email;
     }
-
-    public void setAuthenticated(boolean authenticated) {
-        this.isAuthenticated = authenticated;
-    }
-
-    public void logout() {
-        this.isAuthenticated = false;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword(){

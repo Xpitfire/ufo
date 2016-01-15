@@ -22,6 +22,10 @@ namespace UFO.Server.Web
         private static readonly AViewAccessBll ViewAccessDelegate = 
             _viewAccessDelegate ?? (_viewAccessDelegate = FactoryProvider.GetFactory<IBllProviderFactory>(BllProviderSettings.Instance).CreateAViewAccessBll());
 
+        private static AAdminAccessBll _adminAccessDelegate;
+        private static readonly AAdminAccessBll AdminAccessDelegate =
+            _adminAccessDelegate ?? (_adminAccessDelegate = FactoryProvider.GetFactory<IBllProviderFactory>(BllProviderSettings.Instance).CreateAAdminAccessBll());
+
         [WebMethod]
         public List<Artist> GetArtist(PagingData page)
         {
@@ -98,6 +102,36 @@ namespace UFO.Server.Web
         public PagingData RequestVenuePagingData()
         {
             return ViewAccessDelegate.RequestVenuePagingData();
+        }
+
+        [WebMethod]
+        public bool IsUserAuthenticated(SessionToken token)
+        {
+            return AdminAccessDelegate.IsUserAuthenticated(token);
+        }
+
+        [WebMethod]
+        public bool LoginAdmin(SessionToken token)
+        {
+            return AdminAccessDelegate.LoginAdmin(token);
+        }
+
+        [WebMethod]
+        public void LogoutAdmin(SessionToken token)
+        {
+            AdminAccessDelegate.LogoutAdmin(token);
+        }
+
+        [WebMethod]
+        public SessionToken RequestSessionToken(User user)
+        {
+            return AdminAccessDelegate.RequestSessionToken(user);
+        }
+
+        [WebMethod]
+        public bool ModifyPerformance(SessionToken token, Performance performance)
+        {
+            return AdminAccessDelegate.ModifyPerformance(token, performance);
         }
     }
 }

@@ -25,5 +25,7 @@ namespace UFO.Server.Bll.Common
 {
     public interface IValidationAccessBll
     {
+        bool IsDateTimeFormatValid(DateTime dateTime);
+        bool IsPerformanceDateTimeDelayValid(Performance old, Performance @new);
     }
 }

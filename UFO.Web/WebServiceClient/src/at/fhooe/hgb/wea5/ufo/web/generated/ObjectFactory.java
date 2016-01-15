@@ -62,11 +62,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link IsUserAuthenticatedResponse }
+     * 
+     */
+    public IsUserAuthenticatedResponse createIsUserAuthenticatedResponse() {
+        return new IsUserAuthenticatedResponse();
+    }
+
+    /**
      * Create an instance of {@link RequestPerformancePagingDataResponse }
      * 
      */
     public RequestPerformancePagingDataResponse createRequestPerformancePagingDataResponse() {
         return new RequestPerformancePagingDataResponse();
+    }
+
+    /**
+     * Create an instance of {@link RequestSessionToken }
+     * 
+     */
+    public RequestSessionToken createRequestSessionToken() {
+        return new RequestSessionToken();
+    }
+
+    /**
+     * Create an instance of {@link User }
+     * 
+     */
+    public User createUser() {
+        return new User();
     }
 
     /**
@@ -83,6 +107,30 @@ public class ObjectFactory {
      */
     public GetVenues createGetVenues() {
         return new GetVenues();
+    }
+
+    /**
+     * Create an instance of {@link LogoutAdmin }
+     * 
+     */
+    public LogoutAdmin createLogoutAdmin() {
+        return new LogoutAdmin();
+    }
+
+    /**
+     * Create an instance of {@link SessionToken }
+     * 
+     */
+    public SessionToken createSessionToken() {
+        return new SessionToken();
+    }
+
+    /**
+     * Create an instance of {@link IsUserAuthenticated }
+     * 
+     */
+    public IsUserAuthenticated createIsUserAuthenticated() {
+        return new IsUserAuthenticated();
     }
 
     /**
@@ -182,11 +230,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ModifyPerformance }
+     * 
+     */
+    public ModifyPerformance createModifyPerformance() {
+        return new ModifyPerformance();
+    }
+
+    /**
+     * Create an instance of {@link Performance }
+     * 
+     */
+    public Performance createPerformance() {
+        return new Performance();
+    }
+
+    /**
      * Create an instance of {@link GetPerformancesPerDateResponse }
      * 
      */
     public GetPerformancesPerDateResponse createGetPerformancesPerDateResponse() {
         return new GetPerformancesPerDateResponse();
+    }
+
+    /**
+     * Create an instance of {@link LogoutAdminResponse }
+     * 
+     */
+    public LogoutAdminResponse createLogoutAdminResponse() {
+        return new LogoutAdminResponse();
     }
 
     /**
@@ -230,6 +302,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link LoginAdminResponse }
+     * 
+     */
+    public LoginAdminResponse createLoginAdminResponse() {
+        return new LoginAdminResponse();
+    }
+
+    /**
      * Create an instance of {@link GetVenuesResponse }
      * 
      */
@@ -243,6 +323,14 @@ public class ObjectFactory {
      */
     public ArrayOfVenue createArrayOfVenue() {
         return new ArrayOfVenue();
+    }
+
+    /**
+     * Create an instance of {@link RequestSessionTokenResponse }
+     * 
+     */
+    public RequestSessionTokenResponse createRequestSessionTokenResponse() {
+        return new RequestSessionTokenResponse();
     }
 
     /**
@@ -278,6 +366,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ModifyPerformanceResponse }
+     * 
+     */
+    public ModifyPerformanceResponse createModifyPerformanceResponse() {
+        return new ModifyPerformanceResponse();
+    }
+
+    /**
      * Create an instance of {@link GetCategoriesResponse }
      * 
      */
@@ -291,6 +387,14 @@ public class ObjectFactory {
      */
     public ArrayOfCategory createArrayOfCategory() {
         return new ArrayOfCategory();
+    }
+
+    /**
+     * Create an instance of {@link LoginAdmin }
+     * 
+     */
+    public LoginAdmin createLoginAdmin() {
+        return new LoginAdmin();
     }
 
     /**
@@ -318,6 +422,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ArrayOfChar }
+     * 
+     */
+    public ArrayOfChar createArrayOfChar() {
+        return new ArrayOfChar();
+    }
+
+    /**
      * Create an instance of {@link DomainObject }
      * 
      */
@@ -339,14 +451,6 @@ public class ObjectFactory {
      */
     public BlobData createBlobData() {
         return new BlobData();
-    }
-
-    /**
-     * Create an instance of {@link Performance }
-     * 
-     */
-    public Performance createPerformance() {
-        return new Performance();
     }
 
     /**

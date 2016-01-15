@@ -188,4 +188,74 @@ public interface WebAccessServiceSoap {
     @ResponseWrapper(localName = "RequestVenuePagingDataResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.RequestVenuePagingDataResponse")
     public PagingData requestVenuePagingData();
 
+    /**
+     * 
+     * @param token
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "IsUserAuthenticated", action = "http://ufo.at/IsUserAuthenticated")
+    @WebResult(name = "IsUserAuthenticatedResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "IsUserAuthenticated", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.IsUserAuthenticated")
+    @ResponseWrapper(localName = "IsUserAuthenticatedResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.IsUserAuthenticatedResponse")
+    public boolean isUserAuthenticated(
+        @WebParam(name = "token", targetNamespace = "http://ufo.at/")
+        SessionToken token);
+
+    /**
+     * 
+     * @param token
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "LoginAdmin", action = "http://ufo.at/LoginAdmin")
+    @WebResult(name = "LoginAdminResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "LoginAdmin", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.LoginAdmin")
+    @ResponseWrapper(localName = "LoginAdminResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.LoginAdminResponse")
+    public boolean loginAdmin(
+        @WebParam(name = "token", targetNamespace = "http://ufo.at/")
+        SessionToken token);
+
+    /**
+     * 
+     * @param token
+     */
+    @WebMethod(operationName = "LogoutAdmin", action = "http://ufo.at/LogoutAdmin")
+    @RequestWrapper(localName = "LogoutAdmin", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.LogoutAdmin")
+    @ResponseWrapper(localName = "LogoutAdminResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.LogoutAdminResponse")
+    public void logoutAdmin(
+        @WebParam(name = "token", targetNamespace = "http://ufo.at/")
+        SessionToken token);
+
+    /**
+     * 
+     * @param user
+     * @return
+     *     returns at.fhooe.hgb.wea5.ufo.web.generated.SessionToken
+     */
+    @WebMethod(operationName = "RequestSessionToken", action = "http://ufo.at/RequestSessionToken")
+    @WebResult(name = "RequestSessionTokenResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "RequestSessionToken", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.RequestSessionToken")
+    @ResponseWrapper(localName = "RequestSessionTokenResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.RequestSessionTokenResponse")
+    public SessionToken requestSessionToken(
+        @WebParam(name = "user", targetNamespace = "http://ufo.at/")
+        User user);
+
+    /**
+     * 
+     * @param performance
+     * @param token
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "ModifyPerformance", action = "http://ufo.at/ModifyPerformance")
+    @WebResult(name = "ModifyPerformanceResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "ModifyPerformance", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.ModifyPerformance")
+    @ResponseWrapper(localName = "ModifyPerformanceResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.ModifyPerformanceResponse")
+    public boolean modifyPerformance(
+        @WebParam(name = "token", targetNamespace = "http://ufo.at/")
+        SessionToken token,
+        @WebParam(name = "performance", targetNamespace = "http://ufo.at/")
+        Performance performance);
+
 }

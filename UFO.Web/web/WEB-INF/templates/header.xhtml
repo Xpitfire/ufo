@@ -15,12 +15,12 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <h:panelGroup id="login" layout="block" rendered="#{!loginBean.authenticated}">
+                    <h:panelGroup id="login" layout="block" rendered="#{!sessionBean.authenticated}">
                         <a href="#{request.contextPath}/ufo/login.xhtml">Anmelden</a>
                     </h:panelGroup>
 
-                    <h:panelGroup id="logout" layout="block" rendered="#{loginBean.authenticated}">
-                        <p:commandButton value="Abmelden" actionListener="#{loginBean.logout}" update="page"/>
+                    <h:panelGroup id="logout" layout="block" rendered="#{sessionBean.authenticated}">
+                        <p:commandButton value="Abmelden" actionListener="#{sessionBean.logout}" update="page"/>
                     </h:panelGroup>
                 </li>
             </ul>

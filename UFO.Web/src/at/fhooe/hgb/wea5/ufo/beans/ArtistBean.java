@@ -2,7 +2,7 @@ package at.fhooe.hgb.wea5.ufo.beans;
 
 import at.fhooe.hgb.wea5.ufo.web.generated.Artist;
 
-import javax.annotation.ManagedBean;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * @author: Dinu Marius-Constantin
  * @date: 14.01.2016
  */
-@ManagedBean
+@ManagedBean(name = "artistBean")
 @RequestScoped
 public class ArtistBean {
 
