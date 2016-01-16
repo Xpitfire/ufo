@@ -16,10 +16,7 @@ public class LoginBean implements Serializable {
 
     @ManagedProperty(value = "#{sessionBean}")
     private SessionBean sessionBean;
-
-    public void setSessionBean(SessionBean sessionBean) {
-        this.sessionBean = sessionBean;
-    }
+    public void setSessionBean(SessionBean sessionBean) { this.sessionBean = sessionBean; }
 
     private String email;
     private String password;

@@ -58,7 +58,32 @@ namespace UFO.Server.Dal.Dummy
             throw new NotImplementedException();
         }
 
-        public DaoResponse<Performance> SelectById(DateTime dateTime, int artistId)
+        public DaoResponse<Performance> SelectById(DateTime date, int artistId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DaoResponse<List<Performance>> SelectByDate(DateTime date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DaoResponse<List<Performance>> SelectLastestPerformances()
+        {
+            throw new NotImplementedException();
+        }
+
+        public DaoResponse<List<Performance>> SelectByArtistId(int artistId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DaoResponse<List<Performance>> SelectByVenueId(string venueId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DaoResponse<List<Performance>> SelectByKeyword(string keyword)
         {
             throw new NotImplementedException();
         }

@@ -26,7 +26,8 @@ namespace UFO.Server.Bll.Common
     public interface IViewAccessBll
     {
         // Artist
-        List<Artist> GetArtist(PagingData page);
+        List<Artist> GetArtists(PagingData page);
+        Artist GetArtist(int id);
 
         // Category
         List<Category> GetCategories(PagingData page);
@@ -39,16 +40,26 @@ namespace UFO.Server.Bll.Common
 
         // Venue
         List<Venue> GetVenues(PagingData page);
+        Venue GetVenue(string id);
 
         // Performance
         List<Performance> GetPerformances(PagingData page);
         List<Performance> GetPerformancesPerDate(DateTime date);
-        
+        List<Performance> GetPerformancesPerArtist(Artist artist);
+        List<Performance> GetPerformancesPerVenue(Venue venue);
+        List<Performance> GetLatestPerformances();
+
+            // Paging Requests
         PagingData RequestArtistPagingData();
         PagingData RequestCategoryPagingData();
         PagingData RequestCountryPagingData();
         PagingData RequestLocationPagingData();
         PagingData RequestPerformancePagingData();
         PagingData RequestVenuePagingData();
+
+        // Search Requests
+        List<Performance> SearchPerformancesPerKeyword(string keyword);
+        List<Artist> SearchArtistsPerKeyword(string keyword);
+        List<Venue> SearchVenuesPerKeyword(string keyword);
     }
 }

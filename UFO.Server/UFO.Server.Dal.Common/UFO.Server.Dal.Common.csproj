@@ -64,7 +64,6 @@
     <Compile Include="IDaoProviderFactory.cs" />
     <Compile Include="ILocationDao.cs" />
     <Compile Include="IPerformanceDaoExtension.cs" />
-    <Compile Include="IVenueDaoExtension.cs" />
     <Compile Include="ICountryDaoExtension.cs" />
     <Compile Include="ICategoryDaoExtension.cs" />
     <Compile Include="IArtistDaoExtension.cs" />

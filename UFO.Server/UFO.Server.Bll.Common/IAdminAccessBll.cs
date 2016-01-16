@@ -22,11 +22,12 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Bll.Common
 {
-    public interface IAdminAccessBll : IAuthAccessBll, IValidationAccessBll
+    public interface IAdminAccessBll : IAuthAccessBll
     {
         // User
-        List<User> GetUser(SessionToken token, PagingData page);
+        List<User> GetUsers(SessionToken token, PagingData page);
         PagingData RequestUserPagingData(SessionToken token);
+        List<User> SearchUsersPerKeyword(SessionToken token, string keyword); 
 
         // Artist
         bool ModifyArtistRange(SessionToken token, List<Artist> artists);

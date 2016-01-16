@@ -43,12 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminAccessAsyncProxy.cs" />
+    <Compile Include="AdminAccessAsyncProxyExtensions.cs" />
     <Compile Include="AdminAccessProxy.cs" />
     <Compile Include="BllFactory.cs" />
     <Compile Include="ProxyExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewAccessAsyncProxy.cs" />
+    <Compile Include="ViewAccessAsyncProxyExtensions.cs" />
     <Compile Include="ViewAccessProxy.cs" />
   </ItemGroup>
   <ItemGroup>

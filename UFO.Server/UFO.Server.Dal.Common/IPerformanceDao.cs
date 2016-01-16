@@ -26,6 +26,11 @@ namespace UFO.Server.Dal.Common
 {
     public interface IPerformanceDao : ICommonDao<Performance>
     {
-        DaoResponse<Performance> SelectById(DateTime dateTime, int artistId);
+        DaoResponse<Performance> SelectById(DateTime date, int artistId);
+        DaoResponse<List<Performance>> SelectByDate(DateTime date);
+        DaoResponse<List<Performance>> SelectLastestPerformances();
+        DaoResponse<List<Performance>> SelectByArtistId(int artistId);
+        DaoResponse<List<Performance>> SelectByVenueId(string venueId);
+        DaoResponse<List<Performance>> SelectByKeyword(string keyword);
     }
 }

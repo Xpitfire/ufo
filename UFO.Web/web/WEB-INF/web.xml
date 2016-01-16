@@ -41,7 +41,7 @@
     </context-param>
     <context-param>
         <param-name>UFO_DELEGATE</param-name>
-        <param-value>at.fhooe.hgb.wea5.ufo.backend.DummyUfoDelegate</param-value>
+        <param-value>at.fhooe.hgb.wea5.ufo.backend.UfoWebService</param-value>
     </context-param>
     <context-param>
         <param-name>WS_HOST</param-name>

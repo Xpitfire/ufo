@@ -27,111 +27,81 @@ namespace UFO.Server.Web
             _adminAccessDelegate ?? (_adminAccessDelegate = FactoryProvider.GetFactory<IBllProviderFactory>(BllProviderSettings.Instance).CreateAAdminAccessBll());
 
         [WebMethod]
-        public List<Artist> GetArtist(PagingData page)
-        {
-            return ViewAccessDelegate.GetArtist(page);
-        }
+        public List<Artist> GetArtists(PagingData page) => ViewAccessDelegate.GetArtists(page);
 
         [WebMethod]
-        public List<Category> GetCategories(PagingData page)
-        {
-            return ViewAccessDelegate.GetCategories(page);
-        }
+        public Artist GetArtist(int id) => ViewAccessDelegate.GetArtist(id);
 
         [WebMethod]
-        public List<Country> GetCountries(PagingData page)
-        {
-            return ViewAccessDelegate.GetCountries(page);
-        }
+        public List<Category> GetCategories(PagingData page) => ViewAccessDelegate.GetCategories(page);
 
         [WebMethod]
-        public List<Location> GetLocations(PagingData page)
-        {
-            return ViewAccessDelegate.GetLocations(page);
-        }
+        public List<Country> GetCountries(PagingData page) => ViewAccessDelegate.GetCountries(page);
 
         [WebMethod]
-        public List<Venue> GetVenues(PagingData page)
-        {
-            return ViewAccessDelegate.GetVenues(page);
-        }
+        public List<Location> GetLocations(PagingData page) => ViewAccessDelegate.GetLocations(page);
 
         [WebMethod]
-        public List<Performance> GetPerformances(PagingData page)
-        {
-            return ViewAccessDelegate.GetPerformances(page);
-        }
+        public List<Venue> GetVenues(PagingData page) => ViewAccessDelegate.GetVenues(page);
 
         [WebMethod]
-        public List<Performance> GetPerformancesPerDate(DateTime date)
-        {
-            return ViewAccessDelegate.GetPerformancesPerDate(date);
-        }
+        public Venue GetVenue(string id) => ViewAccessDelegate.GetVenue(id);
 
         [WebMethod]
-        public PagingData RequestArtistPagingData()
-        {
-            return ViewAccessDelegate.RequestArtistPagingData();
-        }
+        public List<Performance> GetPerformances(PagingData page) => ViewAccessDelegate.GetPerformances(page);
 
         [WebMethod]
-        public PagingData RequestCategoryPagingData()
-        {
-            return ViewAccessDelegate.RequestCategoryPagingData();
-        }
+        public List<Performance> GetLatestPerformances() => ViewAccessDelegate.GetLatestPerformances();
 
         [WebMethod]
-        public PagingData RequestCountryPagingData()
-        {
-            return ViewAccessDelegate.RequestCountryPagingData();
-        }
+        public List<Performance> GetPerformancesPerDate(DateTime date) => ViewAccessDelegate.GetPerformancesPerDate(date);
 
         [WebMethod]
-        public PagingData RequestLocationPagingData()
-        {
-            return ViewAccessDelegate.RequestLocationPagingData();
-        }
+        public List<Performance> GetPerformancesPerArtist(Artist artist) => ViewAccessDelegate.GetPerformancesPerArtist(artist);
 
         [WebMethod]
-        public PagingData RequestPerformancePagingData()
-        {
-            return ViewAccessDelegate.RequestPerformancePagingData();
-        }
+        public List<Performance> GetPerformancesPerVenue(Venue venue) => ViewAccessDelegate.GetPerformancesPerVenue(venue);
 
         [WebMethod]
-        public PagingData RequestVenuePagingData()
-        {
-            return ViewAccessDelegate.RequestVenuePagingData();
-        }
+        public PagingData RequestArtistPagingData() => ViewAccessDelegate.RequestArtistPagingData();
 
         [WebMethod]
-        public bool IsUserAuthenticated(SessionToken token)
-        {
-            return AdminAccessDelegate.IsUserAuthenticated(token);
-        }
+        public PagingData RequestCategoryPagingData() => ViewAccessDelegate.RequestCategoryPagingData();
 
         [WebMethod]
-        public bool LoginAdmin(SessionToken token)
-        {
-            return AdminAccessDelegate.LoginAdmin(token);
-        }
+        public PagingData RequestCountryPagingData() => ViewAccessDelegate.RequestCountryPagingData();
 
         [WebMethod]
-        public void LogoutAdmin(SessionToken token)
-        {
-            AdminAccessDelegate.LogoutAdmin(token);
-        }
+        public PagingData RequestLocationPagingData() => ViewAccessDelegate.RequestLocationPagingData();
 
         [WebMethod]
-        public SessionToken RequestSessionToken(User user)
-        {
-            return AdminAccessDelegate.RequestSessionToken(user);
-        }
+        public PagingData RequestPerformancePagingData() => ViewAccessDelegate.RequestPerformancePagingData();
 
         [WebMethod]
-        public bool ModifyPerformance(SessionToken token, Performance performance)
-        {
-            return AdminAccessDelegate.ModifyPerformance(token, performance);
-        }
+        public PagingData RequestVenuePagingData() => ViewAccessDelegate.RequestVenuePagingData();
+
+        [WebMethod]
+        public bool IsUserAuthenticated(SessionToken token) => AdminAccessDelegate.IsUserAuthenticated(token);
+
+        [WebMethod]
+        public bool LoginAdmin(SessionToken token) => AdminAccessDelegate.LoginAdmin(token);
+
+        [WebMethod]
+        public void LogoutAdmin(SessionToken token) => AdminAccessDelegate.LogoutAdmin(token);
+
+        [WebMethod]
+        public SessionToken RequestSessionToken(User user) => AdminAccessDelegate.RequestSessionToken(user);
+
+        [WebMethod]
+        public bool ModifyPerformance(SessionToken token, Performance performance) => AdminAccessDelegate.ModifyPerformance(token, performance);
+
+        [WebMethod]
+        public List<Performance> SearchPerformancesPerKeyword(string keyword) => ViewAccessDelegate.SearchPerformancesPerKeyword(keyword);
+
+        [WebMethod]
+        public List<Venue> SearchVenuesPerKeyword(string keyword) => ViewAccessDelegate.SearchVenuesPerKeyword(keyword);
+
+        [WebMethod]
+        public List<Artist> SearchArtistsPerKeyword(string keyword) => ViewAccessDelegate.SearchArtistsPerKeyword(keyword);
     }
 }

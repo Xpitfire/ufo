@@ -52,6 +52,11 @@ namespace UFO.Server.Dal.MySql
                                                  FROM userview
                                                 WHERE UserId=?UserId";
 
+        public const string SelectUserByKeyword = @"SELECT * 
+                                                      FROM userview 
+                                                     WHERE LastName LIKE ?Keyword OR FirstName LIKE ?Keyword OR ArtistName LIKE ?Keyword
+                                                     LIMIT 50";
+
         public const string DeleteUser = @"DELETE FROM user
                                                  WHERE UserId=?UserId";
 
@@ -69,6 +74,35 @@ namespace UFO.Server.Dal.MySql
                                                         FROM performanceview
                                                        WHERE Date=?Date AND ArtistId=?ArtistId";
 
+        public const string SelectPerformanceByDate = @"SELECT * 
+                                                          FROM performanceview 
+                                                         WHERE Date LIKE ?Date";
+
+        public const string SelectPerformanceByArtist = @"SELECT *
+                                                            FROM performanceview
+                                                           WHERE ArtistId=?ArtistId";
+
+        public const string SelectPerformanceByVenue = @"SELECT *
+                                                           FROM performanceview
+                                                          WHERE VenueId=?VenueId";
+
+        public const string SelectLatestPerformances = @"SELECT *
+                                                           FROM performanceview
+                                                          WHERE DATE_ADD((SELECT Date 
+                                                                            FROM performanceview 
+                                                                        ORDER BY Date DESC LIMIT 1), 
+                                                                INTERVAL -1 MONTH)";
+
+        public const string SelectPerformanceBetweenHours = @"SELECT * 
+                                                                FROM performanceview
+                                                               WHERE Date BETWEEN CAST(?FromTime AS DATE) AND CAST(?ToTime AS DATE)
+                                                                 AND ArtistId=?ArtistId";
+
+        public const string SelectPerformanceByKeyword = @"SELECT * 
+                                                             FROM performanceview 
+                                                            WHERE ArtistName LIKE ?Keyword OR VenueName LIKE ?Keyword OR LocationName LIKE ?Keyword
+                                                            LIMIT 50";
+
         public const string DeletePerformance = @"DELETE FROM performance
                                                    WHERE Date=?Date AND ArtistId=?ArtistId";
 
@@ -79,16 +113,17 @@ namespace UFO.Server.Dal.MySql
         public const string InsertPerformance = @"INSERT INTO performance (Date, ArtistId, VenueId)
                                                        VALUES (?Date, ?ArtistId, ?VenueId)";
 
-        public const string SelectPerformanceBetweenHours = @"SELECT * 
-                                                                FROM performance
-                                                               WHERE Date BETWEEN CAST(?FromTime AS DATE) AND CAST(?ToTime AS DATE)
-                                                                 AND ArtistId=?ArtistId";
 
 
         // Venue
         public const string SelectVenueById = @"SELECT *
                                                   FROM venueview
                                                  WHERE VenueId=?VenueId";
+
+        public const string SelectVenueByKeyword = @"SELECT * 
+                                                       FROM venueview 
+                                                      WHERE VenueName LIKE ?Keyword OR LocationName LIKE ?Keyword
+                                                      LIMIT 50";
 
         public const string DeleteVenue = @"DELETE FROM venue
                                                   WHERE VenueId=?VenueId";
@@ -100,12 +135,16 @@ namespace UFO.Server.Dal.MySql
         public const string InsertVenue = @"INSERT INTO venue (Name, VenueId, LocationId)
                                                   VALUES (?Name, ?VenueId, ?LocationId)";
 
-
-
+        
         // Artist
         public const string SelectArtistById = @"SELECT * 
                                                    FROM artistview 
                                                   WHERE ArtistId=?ArtistId";
+
+        public const string SelectArtistByKeyword = @"SELECT * 
+                                                        FROM artistview 
+                                                       WHERE ArtistName LIKE ?Keyword
+                                                       LIMIT 50";
 
         public const string DeleteArtist = @"DELETE FROM artist
                                                    WHERE ArtistId=?ArtistId";

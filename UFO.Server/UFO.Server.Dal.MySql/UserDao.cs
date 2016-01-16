@@ -181,6 +181,26 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(List<User>))]
+        public DaoResponse<List<User>> SelectByKeyword(string keyword)
+        {
+            var users = new List<User>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?Keyword", new QueryParameter {ParameterValue = $"%{keyword}%"}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectUserByKeyword, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    users.Add(CreateUserObject(dataReader));
+                }
+            }
+            return users.Any() ? DaoResponse.QuerySuccessful(users) : DaoResponse.QueryEmptyResult<List<User>>();
+        }
+
+        [DaoExceptionHandler(typeof(List<User>))]
         public DaoResponse<List<User>> SelectAll()
         {
             var users = new List<User>();

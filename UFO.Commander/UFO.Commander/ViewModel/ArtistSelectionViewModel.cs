@@ -33,7 +33,7 @@ namespace UFO.Commander.ViewModel
 
         public async Task ToNextArtistPage()
         {
-            var parcialArtists = await _viewAccessBll.GetArtistAsync(ArtistPage);
+            var parcialArtists = await _viewAccessBll.GetArtistsAsync(ArtistPage);
             if (parcialArtists == null)
                 return;
             ArtistPage.ToNextPage();

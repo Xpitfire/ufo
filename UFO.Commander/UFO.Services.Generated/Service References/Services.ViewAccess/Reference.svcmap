@@ -22,12 +22,11 @@
     <MetadataSource Address="http://localhost:4321/ViewAccess" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ViewAccess.disco" MetadataType="Disco" ID="555b41f3-c327-4a20-9494-5fc5b696aa4f" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?disco" />
+    <MetadataFile FileName="ViewAccess3.xsd" MetadataType="Schema" ID="734007e3-580f-45fd-88db-9e425bed8406" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd2" />
+    <MetadataFile FileName="ViewAccess1.xsd" MetadataType="Schema" ID="d32f22fc-5b54-487a-bdcf-c5274f840cc0" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd0" />
     <MetadataFile FileName="AdminAccessWs.wsdl" MetadataType="Wsdl" ID="6e874276-2abe-4df0-be5a-6bb946abb27d" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?wsdl" />
     <MetadataFile FileName="ViewAccess.xsd" MetadataType="Schema" ID="ffca22f1-f677-46ae-9b4f-86d255ee3f15" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd1" />
-    <MetadataFile FileName="ViewAccess1.xsd" MetadataType="Schema" ID="d32f22fc-5b54-487a-bdcf-c5274f840cc0" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd0" />
-    <MetadataFile FileName="ViewAccess2.xsd" MetadataType="Schema" ID="f93d9ac6-4c84-4c8f-90d8-0351569475e4" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd3" />
-    <MetadataFile FileName="ViewAccess3.xsd" MetadataType="Schema" ID="734007e3-580f-45fd-88db-9e425bed8406" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?xsd=xsd2" />
+    <MetadataFile FileName="ViewAccess.disco" MetadataType="Disco" ID="555b41f3-c327-4a20-9494-5fc5b696aa4f" SourceId="1" SourceUrl="http://localhost:4321/ViewAccess?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

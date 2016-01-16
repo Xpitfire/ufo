@@ -28,11 +28,16 @@ namespace UFO.Server.Bll.Impl
 {
     public class ViewAccessBll : AViewAccessBll
     {
-        public override List<Artist> GetArtist(PagingData page)
+        public override List<Artist> GetArtists(PagingData page)
         {
             return PagingHelper.EvaluatePagingResult(page, () => ArtistDao.Select(page).ResultObject);
         }
-        
+
+        public override Artist GetArtist(int id)
+        {
+            return ArtistDao.SelectById(id).ResultObject;
+        }
+
         public override List<Category> GetCategories(PagingData page)
         {
             return PagingHelper.EvaluatePagingResult(page, () => CategoryDao.Select(page).ResultObject);
@@ -53,6 +58,11 @@ namespace UFO.Server.Bll.Impl
             return PagingHelper.EvaluatePagingResult(page, () => VenueDao.Select(page).ResultObject);
         }
 
+        public override Venue GetVenue(string id)
+        {
+            return VenueDao.SelectById(id).ResultObject;
+        }
+
         public override List<Performance> GetPerformances(PagingData page)
         {
             return PagingHelper.EvaluatePagingResult(page, () => PerformanceDao.Select(page).ResultObject);
@@ -61,6 +71,36 @@ namespace UFO.Server.Bll.Impl
         public override List<Performance> GetPerformancesPerDate(DateTime date)
         {
             return PerformanceDao.SelectByDateTime(date).ResultObject;
+        }
+
+        public override List<Performance> GetPerformancesPerArtist(Artist artist)
+        {
+            return PerformanceDao.SelectByArtist(artist).ResultObject;
+        }
+
+        public override List<Performance> GetPerformancesPerVenue(Venue venue)
+        {
+            return PerformanceDao.SelectByVenue(venue).ResultObject;
+        }
+
+        public override List<Performance> GetLatestPerformances()
+        {
+            return PerformanceDao.SelectLastestPerformances().ResultObject;
+        }
+
+        public override List<Performance> SearchPerformancesPerKeyword(string keyword)
+        {
+            return PerformanceDao.SelectByKeyword(keyword).ResultObject;
+        }
+
+        public override List<Artist> SearchArtistsPerKeyword(string keyword)
+        {
+            return ArtistDao.SelectByKeyword(keyword).ResultObject;
+        }
+
+        public override List<Venue> SearchVenuesPerKeyword(string keyword)
+        {
+            return VenueDao.SearchByKeyword(keyword).ResultObject;
         }
     }
 }

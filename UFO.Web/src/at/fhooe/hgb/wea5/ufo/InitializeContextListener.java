@@ -1,5 +1,7 @@
 package at.fhooe.hgb.wea5.ufo;
 
+import at.fhooe.hgb.wea5.ufo.backend.ServiceLocator;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net461": {
+      "wrappedProject": "../../UFO.Server.Dal.Common/UFO.Server.Dal.Common.csproj",
+      "bin": {
+        "assembly": "../../UFO.Server.Dal.Common/obj/{configuration}/UFO.Server.Dal.Common.dll",
+        "pdb": "../../UFO.Server.Dal.Common/obj/{configuration}/UFO.Server.Dal.Common.pdb"
+      },
+      "dependencies": {
+        "NLog": "2.0.0.2000",
+        "PostSharp": "4.1.30",
+        "PostSharp.Patterns.Diagnostics": "4.1.30",
+        "PostSharp.Patterns.Diagnostics.NLog": "4.1.30",
+        "UFO.Server": "1.0.0-*",
+        "UFO.Server.Domain": "1.0.0-*"
+      }
+    }
+  }
+}

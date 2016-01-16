@@ -35,81 +35,66 @@ namespace UFO.Server.Services
             _viewAccessDelegate ?? (_viewAccessDelegate = FactoryProvider.GetFactory<IBllProviderFactory>(BllProviderSettings.Instance).CreateAViewAccessBll());
 
         [OperationContract]
-        public PagingData RequestArtistPagingData()
-        {
-            return ViewAccessDelegate.RequestArtistPagingData();
-        }
+        public PagingData RequestArtistPagingData() => ViewAccessDelegate.RequestArtistPagingData();
 
         [OperationContract]
-        public PagingData RequestCategoryPagingData()
-        {
-            return ViewAccessDelegate.RequestCategoryPagingData();
-        }
+        public PagingData RequestCategoryPagingData() => ViewAccessDelegate.RequestCategoryPagingData();
 
         [OperationContract]
-        public PagingData RequestCountryPagingData()
-        {
-            return ViewAccessDelegate.RequestCountryPagingData();
-        }
+        public PagingData RequestCountryPagingData() => ViewAccessDelegate.RequestCountryPagingData();
 
         [OperationContract]
-        public PagingData RequestLocationPagingData()
-        {
-            return ViewAccessDelegate.RequestLocationPagingData();
-        }
+        public PagingData RequestLocationPagingData() => ViewAccessDelegate.RequestLocationPagingData();
 
         [OperationContract]
-        public PagingData RequestPerformancePagingData()
-        {
-            return ViewAccessDelegate.RequestPerformancePagingData();
-        }
+        public PagingData RequestPerformancePagingData() => ViewAccessDelegate.RequestPerformancePagingData();
 
         [OperationContract]
-        public PagingData RequestVenuePagingData()
-        {
-            return ViewAccessDelegate.RequestVenuePagingData();
-        }
+        public PagingData RequestVenuePagingData() => ViewAccessDelegate.RequestVenuePagingData();
 
         [OperationContract]
-        public List<Artist> GetArtist(PagingData page)
-        {
-            return ViewAccessDelegate.GetArtist(page);
-        }
+        public List<Artist> GetArtists(PagingData page) => ViewAccessDelegate.GetArtists(page);
 
         [OperationContract]
-        public List<Performance> GetPerformancesPerDate(DateTime date)
-        {
-            return ViewAccessDelegate.GetPerformancesPerDate(date);
-        }
+        public Artist GetArtist(int id) => ViewAccessDelegate.GetArtist(id);
 
         [OperationContract]
-        public List<Category> GetCategories(PagingData page)
-        {
-            return ViewAccessDelegate.GetCategories(page);
-        }
+        public List<Performance> GetPerformances(PagingData page) => ViewAccessDelegate.GetPerformances(page);
 
         [OperationContract]
-        public List<Country> GetCountries(PagingData page)
-        {
-            return ViewAccessDelegate.GetCountries(page);
-        }
+        public List<Performance> GetPerformancesPerDate(DateTime date) => ViewAccessDelegate.GetPerformancesPerDate(date);
 
         [OperationContract]
-        public List<Location> GetLocations(PagingData page)
-        {
-            return ViewAccessDelegate.GetLocations(page);
-        }
+        public List<Performance> GetPerformancesPerArtist(Artist artist) => ViewAccessDelegate.GetPerformancesPerArtist(artist);
 
         [OperationContract]
-        public List<Venue> GetVenues(PagingData page)
-        {
-            return ViewAccessDelegate.GetVenues(page);
-        }
+        public List<Performance> GetPerformancesPerVenue(Venue venue) => ViewAccessDelegate.GetPerformancesPerVenue(venue);
 
         [OperationContract]
-        public List<Performance> GetPerformances(PagingData page)
-        {
-            return ViewAccessDelegate.GetPerformances(page);
-        }
+        public List<Performance> GetLatestPerformances() => ViewAccessDelegate.GetLatestPerformances();
+
+        [OperationContract]
+        public List<Category> GetCategories(PagingData page) => ViewAccessDelegate.GetCategories(page);
+
+        [OperationContract]
+        public List<Country> GetCountries(PagingData page) => ViewAccessDelegate.GetCountries(page);
+
+        [OperationContract]
+        public List<Location> GetLocations(PagingData page) => ViewAccessDelegate.GetLocations(page);
+
+        [OperationContract]
+        public List<Venue> GetVenues(PagingData page) => ViewAccessDelegate.GetVenues(page);
+
+        [OperationContract]
+        public Venue GetVenue(string id) => ViewAccessDelegate.GetVenue(id);
+
+        [OperationContract]
+        public List<Performance> SearchPerformancesPerKeyword(string keyword) => ViewAccessDelegate.SearchPerformancesPerKeyword(keyword);
+
+        [OperationContract]
+        public List<Venue> SearchVenuesPerKeyword(string keyword) => ViewAccessDelegate.SearchVenuesPerKeyword(keyword);
+
+        [OperationContract]
+        public List<Artist> SearchArtistsPerKeyword(string keyword) => ViewAccessDelegate.SearchArtistsPerKeyword(keyword);
     }
 }

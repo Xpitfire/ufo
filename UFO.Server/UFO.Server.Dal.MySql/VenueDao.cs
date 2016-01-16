@@ -120,6 +120,26 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(List<Venue>))]
+        public DaoResponse<List<Venue>> SearchByKeyword(string keyword)
+        {
+            var result = new List<Venue>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?Keyword", new QueryParameter {ParameterValue = $"%{keyword}%"}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectVenueByKeyword, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    result.Add(CreateVenueObject(dataReader));
+                }
+            }
+            return result.Any() ? DaoResponse.QuerySuccessful(result) : DaoResponse.QueryEmptyResult<List<Venue>>();
+        }
+        
+        [DaoExceptionHandler(typeof(List<Venue>))]
         public DaoResponse<List<Venue>> SelectAll()
         {
             var venues = new List<Venue>();

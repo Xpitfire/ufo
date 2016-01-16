@@ -28,18 +28,26 @@ namespace UFO.Commander.Proxy
     {
         private static readonly WS.AdminAccessWs AdminAccessWs = new WS.AdminAccessWsClient();
         
-        public List<BLL.User> GetUser(BLL.SessionToken token, BLL.PagingData page)
+        public List<BLL.User> GetUsers(BLL.SessionToken token, BLL.PagingData page)
         {
-            var result = AdminAccessWs.GetUser(
+            var result = AdminAccessWs.GetUsers(
                 token.ToWebSeriveObject<WS.SessionToken>(), 
                 page.ToWebSeriveObject<WS.PagingData>());
             return ProxyHelper.ToListOf<WS.User, BLL.User>(result);
         }
-
+        
         public BLL.PagingData RequestUserPagingData(BLL.SessionToken token)
         {
             return AdminAccessWs.RequestUserPagingData(
                 token.ToWebSeriveObject<WS.SessionToken>()).ToDomainObject<BLL.PagingData>();
+        }
+
+        public List<BLL.User> SearchUsersPerKeyword(BLL.SessionToken token, string keyword)
+        {
+            var result = AdminAccessWs.SearchUsersPerKeyword(
+                token.ToWebSeriveObject<WS.SessionToken>(), 
+                keyword);
+            return ProxyHelper.ToListOf<WS.User, BLL.User>(result);
         }
 
         public bool ModifyArtistRange(BLL.SessionToken token, List<BLL.Artist> artists)
@@ -151,5 +159,6 @@ namespace UFO.Commander.Proxy
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
             return AdminAccessWs.RemoveLocation(tokenWs, locationWs);
         }
+        
     }
 }

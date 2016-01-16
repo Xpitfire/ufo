@@ -73,13 +73,31 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Services.AdminAccess\AdminAccessWs.wsdl" />
+    <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.Artist.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.Category.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.Country.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.Location.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.PagingData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.Performance.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.SessionToken.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.Venue.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Services.ViewAccess\AdminAccessWs.wsdl" />
@@ -101,12 +119,6 @@
     <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.Performance.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.SessionToken.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.Venue.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -114,9 +126,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Services.ViewAccess\ViewAccess1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Services.ViewAccess\ViewAccess2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Services.ViewAccess\ViewAccess3.xsd">

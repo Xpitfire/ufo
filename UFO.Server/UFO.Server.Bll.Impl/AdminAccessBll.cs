@@ -28,9 +28,14 @@ namespace UFO.Server.Bll.Impl
 {
     public class AdminAccessBll : AAdminAccessBll
     {
-        public override List<User> GetUser(SessionToken token, PagingData page)
+        public override List<User> GetUsers(SessionToken token, PagingData page)
         {
             return EvaluateSessionPagingResult(token, page, () => UserDao.Select(page).ResultObject);
+        }
+
+        public override List<User> SearchUsersPerKeyword(SessionToken token, string keyword)
+        {
+            return EvaluateSessionPagingResult(token, () => UserDao.SelectByKeyword(keyword)).ResultObject;
         }
 
         public override bool ModifyArtistRange(SessionToken token, List<Artist> artists)

@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="page" type="{http://ufo.at/}PagingData" minOccurs="0"/>
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,35 +28,27 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "page"
+    "id"
 })
 @XmlRootElement(name = "GetArtist")
 public class GetArtist {
 
-    protected PagingData page;
+    protected int id;
 
     /**
-     * Gets the value of the page property.
+     * Gets the value of the id property.
      * 
-     * @return
-     *     possible object is
-     *     {@link PagingData }
-     *     
      */
-    public PagingData getPage() {
-        return page;
+    public int getId() {
+        return id;
     }
 
     /**
-     * Sets the value of the page property.
+     * Sets the value of the id property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link PagingData }
-     *     
      */
-    public void setPage(PagingData value) {
-        this.page = value;
+    public void setId(int value) {
+        this.id = value;
     }
 
 }

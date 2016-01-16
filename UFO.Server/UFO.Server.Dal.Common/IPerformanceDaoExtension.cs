@@ -33,5 +33,19 @@ namespace UFO.Server.Dal.Common
             var values = dao.SelectWhere(filterExpression, datetime).ResultObject;
             return values.Any() ? DaoResponse.QuerySuccessful(values) : DaoResponse.QueryEmptyResult<List<Performance>>();
         }
+
+        public static DaoResponse<List<Performance>> SelectByArtist(this IPerformanceDao dao, Artist artist)
+        {
+            Expression<Filter<Performance, Artist>> filterExpression = (performances, value) => performances.Where(x => x.Artist.ArtistId == value.ArtistId);
+            var values = dao.SelectWhere(filterExpression, artist).ResultObject;
+            return values.Any() ? DaoResponse.QuerySuccessful(values) : DaoResponse.QueryEmptyResult<List<Performance>>();
+        }
+
+        public static DaoResponse<List<Performance>> SelectByVenue(this IPerformanceDao dao, Venue venue)
+        {
+            Expression<Filter<Performance, Venue>> filterExpression = (performances, value) => performances.Where(x => x.Venue.VenueId == value.VenueId);
+            var values = dao.SelectWhere(filterExpression, venue).ResultObject;
+            return values.Any() ? DaoResponse.QuerySuccessful(values) : DaoResponse.QueryEmptyResult<List<Performance>>();
+        }
     }
 }

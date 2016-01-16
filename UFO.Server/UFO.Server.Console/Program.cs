@@ -35,7 +35,6 @@ namespace UFO.Server
 
             ServiceHost adminAccessServiceHost = null;
             ServiceHost viewAccessServiceHost = null;
-            //ServiceHost webAccessServiceHost = null; // classic WebService, not WCF AddServiceEndpoint
             try
             {
                 // Base Address for StudentService

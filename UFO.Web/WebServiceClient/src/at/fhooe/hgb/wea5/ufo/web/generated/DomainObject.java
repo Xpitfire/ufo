@@ -26,13 +26,13 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "DomainObject")
 @XmlSeeAlso({
-    PagingData.class,
+    Artist.class,
     User.class,
+    PagingData.class,
     SessionToken.class,
     Performance.class,
-    Artist.class,
-    Category.class,
     Venue.class,
+    Category.class,
     Country.class,
     BlobData.class,
     Location.class

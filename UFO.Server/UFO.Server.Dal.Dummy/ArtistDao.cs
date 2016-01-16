@@ -60,5 +60,10 @@ namespace UFO.Server.Dal.Dummy
         {
             throw new System.NotImplementedException();
         }
+
+        public DaoResponse<List<Artist>> SelectByKeyword(string keyword)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

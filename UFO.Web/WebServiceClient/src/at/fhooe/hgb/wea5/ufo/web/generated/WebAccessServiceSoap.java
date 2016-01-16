@@ -30,13 +30,27 @@ public interface WebAccessServiceSoap {
      * @return
      *     returns at.fhooe.hgb.wea5.ufo.web.generated.ArrayOfArtist
      */
+    @WebMethod(operationName = "GetArtists", action = "http://ufo.at/GetArtists")
+    @WebResult(name = "GetArtistsResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "GetArtists", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetArtists")
+    @ResponseWrapper(localName = "GetArtistsResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetArtistsResponse")
+    public ArrayOfArtist getArtists(
+        @WebParam(name = "page", targetNamespace = "http://ufo.at/")
+        PagingData page);
+
+    /**
+     * 
+     * @param id
+     * @return
+     *     returns at.fhooe.hgb.wea5.ufo.web.generated.Artist
+     */
     @WebMethod(operationName = "GetArtist", action = "http://ufo.at/GetArtist")
     @WebResult(name = "GetArtistResult", targetNamespace = "http://ufo.at/")
     @RequestWrapper(localName = "GetArtist", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetArtist")
     @ResponseWrapper(localName = "GetArtistResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetArtistResponse")
-    public ArrayOfArtist getArtist(
-        @WebParam(name = "page", targetNamespace = "http://ufo.at/")
-        PagingData page);
+    public Artist getArtist(
+        @WebParam(name = "id", targetNamespace = "http://ufo.at/")
+        int id);
 
     /**
      * 
@@ -96,6 +110,20 @@ public interface WebAccessServiceSoap {
 
     /**
      * 
+     * @param id
+     * @return
+     *     returns at.fhooe.hgb.wea5.ufo.web.generated.Venue
+     */
+    @WebMethod(operationName = "GetVenue", action = "http://ufo.at/GetVenue")
+    @WebResult(name = "GetVenueResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "GetVenue", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetVenue")
+    @ResponseWrapper(localName = "GetVenueResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetVenueResponse")
+    public Venue getVenue(
+        @WebParam(name = "id", targetNamespace = "http://ufo.at/")
+        String id);
+
+    /**
+     * 
      * @param page
      * @return
      *     returns at.fhooe.hgb.wea5.ufo.web.generated.ArrayOfPerformance
@@ -110,6 +138,17 @@ public interface WebAccessServiceSoap {
 
     /**
      * 
+     * @return
+     *     returns at.fhooe.hgb.wea5.ufo.web.generated.ArrayOfPerformance
+     */
+    @WebMethod(operationName = "GetLatestPerformances", action = "http://ufo.at/GetLatestPerformances")
+    @WebResult(name = "GetLatestPerformancesResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "GetLatestPerformances", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetLatestPerformances")
+    @ResponseWrapper(localName = "GetLatestPerformancesResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetLatestPerformancesResponse")
+    public ArrayOfPerformance getLatestPerformances();
+
+    /**
+     * 
      * @param date
      * @return
      *     returns at.fhooe.hgb.wea5.ufo.web.generated.ArrayOfPerformance
@@ -121,6 +160,34 @@ public interface WebAccessServiceSoap {
     public ArrayOfPerformance getPerformancesPerDate(
         @WebParam(name = "date", targetNamespace = "http://ufo.at/")
         XMLGregorianCalendar date);
+
+    /**
+     * 
+     * @param artist
+     * @return
+     *     returns at.fhooe.hgb.wea5.ufo.web.generated.ArrayOfPerformance
+     */
+    @WebMethod(operationName = "GetPerformancesPerArtist", action = "http://ufo.at/GetPerformancesPerArtist")
+    @WebResult(name = "GetPerformancesPerArtistResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "GetPerformancesPerArtist", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetPerformancesPerArtist")
+    @ResponseWrapper(localName = "GetPerformancesPerArtistResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetPerformancesPerArtistResponse")
+    public ArrayOfPerformance getPerformancesPerArtist(
+        @WebParam(name = "artist", targetNamespace = "http://ufo.at/")
+        Artist artist);
+
+    /**
+     * 
+     * @param venue
+     * @return
+     *     returns at.fhooe.hgb.wea5.ufo.web.generated.ArrayOfPerformance
+     */
+    @WebMethod(operationName = "GetPerformancesPerVenue", action = "http://ufo.at/GetPerformancesPerVenue")
+    @WebResult(name = "GetPerformancesPerVenueResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "GetPerformancesPerVenue", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetPerformancesPerVenue")
+    @ResponseWrapper(localName = "GetPerformancesPerVenueResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetPerformancesPerVenueResponse")
+    public ArrayOfPerformance getPerformancesPerVenue(
+        @WebParam(name = "venue", targetNamespace = "http://ufo.at/")
+        Venue venue);
 
     /**
      * 
@@ -257,5 +324,47 @@ public interface WebAccessServiceSoap {
         SessionToken token,
         @WebParam(name = "performance", targetNamespace = "http://ufo.at/")
         Performance performance);
+
+    /**
+     * 
+     * @param keyword
+     * @return
+     *     returns at.fhooe.hgb.wea5.ufo.web.generated.ArrayOfPerformance
+     */
+    @WebMethod(operationName = "SearchPerformancesPerKeyword", action = "http://ufo.at/SearchPerformancesPerKeyword")
+    @WebResult(name = "SearchPerformancesPerKeywordResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "SearchPerformancesPerKeyword", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.SearchPerformancesPerKeyword")
+    @ResponseWrapper(localName = "SearchPerformancesPerKeywordResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.SearchPerformancesPerKeywordResponse")
+    public ArrayOfPerformance searchPerformancesPerKeyword(
+        @WebParam(name = "keyword", targetNamespace = "http://ufo.at/")
+        String keyword);
+
+    /**
+     * 
+     * @param keyword
+     * @return
+     *     returns at.fhooe.hgb.wea5.ufo.web.generated.ArrayOfVenue
+     */
+    @WebMethod(operationName = "SearchVenuesPerKeyword", action = "http://ufo.at/SearchVenuesPerKeyword")
+    @WebResult(name = "SearchVenuesPerKeywordResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "SearchVenuesPerKeyword", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.SearchVenuesPerKeyword")
+    @ResponseWrapper(localName = "SearchVenuesPerKeywordResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.SearchVenuesPerKeywordResponse")
+    public ArrayOfVenue searchVenuesPerKeyword(
+        @WebParam(name = "keyword", targetNamespace = "http://ufo.at/")
+        String keyword);
+
+    /**
+     * 
+     * @param keyword
+     * @return
+     *     returns at.fhooe.hgb.wea5.ufo.web.generated.ArrayOfArtist
+     */
+    @WebMethod(operationName = "SearchArtistsPerKeyword", action = "http://ufo.at/SearchArtistsPerKeyword")
+    @WebResult(name = "SearchArtistsPerKeywordResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "SearchArtistsPerKeyword", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.SearchArtistsPerKeyword")
+    @ResponseWrapper(localName = "SearchArtistsPerKeywordResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.SearchArtistsPerKeywordResponse")
+    public ArrayOfArtist searchArtistsPerKeyword(
+        @WebParam(name = "keyword", targetNamespace = "http://ufo.at/")
+        String keyword);
 
 }

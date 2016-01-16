@@ -141,6 +141,29 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(List<Artist>))]
+        public DaoResponse<List<Artist>> SelectByKeyword(string keyword)
+        {
+            var artists = new List<Artist>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?Keyword", new QueryParameter {ParameterValue = $"%{keyword}%"}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectArtistByKeyword, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    var artist = CreateArtistObject(dataReader);
+                    artists.Add(artist);
+                    //if (artist.Picture != null)
+                    //    artist.Picture.DataStream = LoadImagesSource(artist.Picture.Path);
+                }
+            }
+            return artists.Any() ? DaoResponse.QuerySuccessful(artists) : DaoResponse.QueryEmptyResult<List<Artist>>();
+        }
+
+        [DaoExceptionHandler(typeof(List<Artist>))]
         public DaoResponse<List<Artist>> SelectAll()
         {
             var artists = new List<Artist>();

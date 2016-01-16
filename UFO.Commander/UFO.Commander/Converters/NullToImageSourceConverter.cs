@@ -17,7 +17,10 @@ namespace UFO.Commander.Converters
     {
         private static readonly BitmapImage Placeholder = new BitmapImage(new Uri(Path.Combine(Environment.CurrentDirectory, Resources.Placeholder)));
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => value ?? Placeholder;
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value ?? Placeholder;
+        }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="GetArtistResult" type="{http://ufo.at/}ArrayOfArtist" minOccurs="0"/>
+ *         &lt;element name="GetArtistResult" type="{http://ufo.at/}Artist" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,17 +35,17 @@ import javax.xml.bind.annotation.XmlType;
 public class GetArtistResponse {
 
     @XmlElement(name = "GetArtistResult")
-    protected ArrayOfArtist getArtistResult;
+    protected Artist getArtistResult;
 
     /**
      * Gets the value of the getArtistResult property.
      * 
      * @return
      *     possible object is
-     *     {@link ArrayOfArtist }
+     *     {@link Artist }
      *     
      */
-    public ArrayOfArtist getGetArtistResult() {
+    public Artist getGetArtistResult() {
         return getArtistResult;
     }
 
@@ -54,10 +54,10 @@ public class GetArtistResponse {
      * 
      * @param value
      *     allowed object is
-     *     {@link ArrayOfArtist }
+     *     {@link Artist }
      *     
      */
-    public void setGetArtistResult(ArrayOfArtist value) {
+    public void setGetArtistResult(Artist value) {
         this.getArtistResult = value;
     }
 

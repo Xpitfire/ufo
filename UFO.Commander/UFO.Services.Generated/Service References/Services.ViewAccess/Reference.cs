@@ -17,7 +17,6 @@ namespace UFO.Services.ViewAccess {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DomainObject", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.User))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Artist))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Category))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Country))]
@@ -26,7 +25,6 @@ namespace UFO.Services.ViewAccess {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Venue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.Location))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.PagingData))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.ViewAccess.SessionToken))]
     public partial class DomainObject : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -48,141 +46,6 @@ namespace UFO.Services.ViewAccess {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
-    [System.SerializableAttribute()]
-    public partial class User : UFO.Services.ViewAccess.DomainObject {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UFO.Services.ViewAccess.Artist ArtistField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EMailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FirstNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsAdminField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsArtistField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LastNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int UserIdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UFO.Services.ViewAccess.Artist Artist {
-            get {
-                return this.ArtistField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ArtistField, value) != true)) {
-                    this.ArtistField = value;
-                    this.RaisePropertyChanged("Artist");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string EMail {
-            get {
-                return this.EMailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EMailField, value) != true)) {
-                    this.EMailField = value;
-                    this.RaisePropertyChanged("EMail");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName {
-            get {
-                return this.FirstNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FirstNameField, value) != true)) {
-                    this.FirstNameField = value;
-                    this.RaisePropertyChanged("FirstName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsAdmin {
-            get {
-                return this.IsAdminField;
-            }
-            set {
-                if ((this.IsAdminField.Equals(value) != true)) {
-                    this.IsAdminField = value;
-                    this.RaisePropertyChanged("IsAdmin");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsArtist {
-            get {
-                return this.IsArtistField;
-            }
-            set {
-                if ((this.IsArtistField.Equals(value) != true)) {
-                    this.IsArtistField = value;
-                    this.RaisePropertyChanged("IsArtist");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName {
-            get {
-                return this.LastNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LastNameField, value) != true)) {
-                    this.LastNameField = value;
-                    this.RaisePropertyChanged("LastName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UserId {
-            get {
-                return this.UserIdField;
-            }
-            set {
-                if ((this.UserIdField.Equals(value) != true)) {
-                    this.UserIdField = value;
-                    this.RaisePropertyChanged("UserId");
-                }
             }
         }
     }
@@ -707,344 +570,6 @@ namespace UFO.Services.ViewAccess {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SessionToken", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
-    [System.SerializableAttribute()]
-    public partial class SessionToken : UFO.Services.ViewAccess.DomainObject {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private char[] SessionIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private UFO.Services.ViewAccess.User UserField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public char[] SessionId {
-            get {
-                return this.SessionIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SessionIdField, value) != true)) {
-                    this.SessionIdField = value;
-                    this.RaisePropertyChanged("SessionId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public UFO.Services.ViewAccess.User User {
-            get {
-                return this.UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserField, value) != true)) {
-                    this.UserField = value;
-                    this.RaisePropertyChanged("User");
-                }
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Services.ViewAccess.AdminAccessWs")]
-    public interface AdminAccessWs {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyArtistRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyArtistRangeResponse")]
-        bool ModifyArtistRange(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist[] artists);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyArtistRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyArtistRangeResponse")]
-        System.Threading.Tasks.Task<bool> ModifyArtistRangeAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist[] artists);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemovePerformance", ReplyAction="http://tempuri.org/AdminAccessWs/RemovePerformanceResponse")]
-        bool RemovePerformance(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance performance);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemovePerformance", ReplyAction="http://tempuri.org/AdminAccessWs/RemovePerformanceResponse")]
-        System.Threading.Tasks.Task<bool> RemovePerformanceAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance performance);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyLocationRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyLocationRangeResponse")]
-        bool ModifyLocationRange(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location[] locations);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyLocationRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyLocationRangeResponse")]
-        System.Threading.Tasks.Task<bool> ModifyLocationRangeAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location[] locations);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyLocation", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyLocationResponse")]
-        bool ModifyLocation(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyLocation", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyLocationResponse")]
-        System.Threading.Tasks.Task<bool> ModifyLocationAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemoveLocation", ReplyAction="http://tempuri.org/AdminAccessWs/RemoveLocationResponse")]
-        bool RemoveLocation(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemoveLocation", ReplyAction="http://tempuri.org/AdminAccessWs/RemoveLocationResponse")]
-        System.Threading.Tasks.Task<bool> RemoveLocationAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyVenueRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyVenueRangeResponse")]
-        bool ModifyVenueRange(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue[] venues);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyVenueRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyVenueRangeResponse")]
-        System.Threading.Tasks.Task<bool> ModifyVenueRangeAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue[] venues);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyPerformanceRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyPerformanceRangeResponse")]
-        bool ModifyPerformanceRange(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance[] performances);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyPerformanceRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyPerformanceRangeResponse")]
-        System.Threading.Tasks.Task<bool> ModifyPerformanceRangeAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance[] performances);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/GetUser", ReplyAction="http://tempuri.org/AdminAccessWs/GetUserResponse")]
-        UFO.Services.ViewAccess.User[] GetUser(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.PagingData page);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/GetUser", ReplyAction="http://tempuri.org/AdminAccessWs/GetUserResponse")]
-        System.Threading.Tasks.Task<UFO.Services.ViewAccess.User[]> GetUserAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.PagingData page);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RequestUserPagingData", ReplyAction="http://tempuri.org/AdminAccessWs/RequestUserPagingDataResponse")]
-        UFO.Services.ViewAccess.PagingData RequestUserPagingData(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RequestUserPagingData", ReplyAction="http://tempuri.org/AdminAccessWs/RequestUserPagingDataResponse")]
-        System.Threading.Tasks.Task<UFO.Services.ViewAccess.PagingData> RequestUserPagingDataAsync(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/IsUserAuthenticated", ReplyAction="http://tempuri.org/AdminAccessWs/IsUserAuthenticatedResponse")]
-        bool IsUserAuthenticated(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/IsUserAuthenticated", ReplyAction="http://tempuri.org/AdminAccessWs/IsUserAuthenticatedResponse")]
-        System.Threading.Tasks.Task<bool> IsUserAuthenticatedAsync(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/IsValidAdmin", ReplyAction="http://tempuri.org/AdminAccessWs/IsValidAdminResponse")]
-        bool IsValidAdmin(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/IsValidAdmin", ReplyAction="http://tempuri.org/AdminAccessWs/IsValidAdminResponse")]
-        System.Threading.Tasks.Task<bool> IsValidAdminAsync(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/LoginAdmin", ReplyAction="http://tempuri.org/AdminAccessWs/LoginAdminResponse")]
-        bool LoginAdmin(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/LoginAdmin", ReplyAction="http://tempuri.org/AdminAccessWs/LoginAdminResponse")]
-        System.Threading.Tasks.Task<bool> LoginAdminAsync(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/LogoutAdmin", ReplyAction="http://tempuri.org/AdminAccessWs/LogoutAdminResponse")]
-        void LogoutAdmin(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/LogoutAdmin", ReplyAction="http://tempuri.org/AdminAccessWs/LogoutAdminResponse")]
-        System.Threading.Tasks.Task LogoutAdminAsync(UFO.Services.ViewAccess.SessionToken token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RequestSessionToken", ReplyAction="http://tempuri.org/AdminAccessWs/RequestSessionTokenResponse")]
-        UFO.Services.ViewAccess.SessionToken RequestSessionToken(UFO.Services.ViewAccess.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RequestSessionToken", ReplyAction="http://tempuri.org/AdminAccessWs/RequestSessionTokenResponse")]
-        System.Threading.Tasks.Task<UFO.Services.ViewAccess.SessionToken> RequestSessionTokenAsync(UFO.Services.ViewAccess.User user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyArtist", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyArtistResponse")]
-        bool ModifyArtist(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist artist);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyArtist", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyArtistResponse")]
-        System.Threading.Tasks.Task<bool> ModifyArtistAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist artist);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemoveArtist", ReplyAction="http://tempuri.org/AdminAccessWs/RemoveArtistResponse")]
-        bool RemoveArtist(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist artist);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemoveArtist", ReplyAction="http://tempuri.org/AdminAccessWs/RemoveArtistResponse")]
-        System.Threading.Tasks.Task<bool> RemoveArtistAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist artist);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyVenue", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyVenueResponse")]
-        bool ModifyVenue(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue venue);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyVenue", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyVenueResponse")]
-        System.Threading.Tasks.Task<bool> ModifyVenueAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue venue);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemoveVenue", ReplyAction="http://tempuri.org/AdminAccessWs/RemoveVenueResponse")]
-        bool RemoveVenue(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue venue);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RemoveVenue", ReplyAction="http://tempuri.org/AdminAccessWs/RemoveVenueResponse")]
-        System.Threading.Tasks.Task<bool> RemoveVenueAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue venue);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyPerformance", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyPerformanceResponse")]
-        bool ModifyPerformance(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance performance);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyPerformance", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyPerformanceResponse")]
-        System.Threading.Tasks.Task<bool> ModifyPerformanceAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance performance);
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface AdminAccessWsChannel : UFO.Services.ViewAccess.AdminAccessWs, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class AdminAccessWsClient : System.ServiceModel.ClientBase<UFO.Services.ViewAccess.AdminAccessWs>, UFO.Services.ViewAccess.AdminAccessWs {
-        
-        public AdminAccessWsClient() {
-        }
-        
-        public AdminAccessWsClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
-        }
-        
-        public AdminAccessWsClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public AdminAccessWsClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public AdminAccessWsClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
-        }
-        
-        public bool ModifyArtistRange(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist[] artists) {
-            return base.Channel.ModifyArtistRange(token, artists);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ModifyArtistRangeAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist[] artists) {
-            return base.Channel.ModifyArtistRangeAsync(token, artists);
-        }
-        
-        public bool RemovePerformance(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance performance) {
-            return base.Channel.RemovePerformance(token, performance);
-        }
-        
-        public System.Threading.Tasks.Task<bool> RemovePerformanceAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance performance) {
-            return base.Channel.RemovePerformanceAsync(token, performance);
-        }
-        
-        public bool ModifyLocationRange(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location[] locations) {
-            return base.Channel.ModifyLocationRange(token, locations);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ModifyLocationRangeAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location[] locations) {
-            return base.Channel.ModifyLocationRangeAsync(token, locations);
-        }
-        
-        public bool ModifyLocation(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location) {
-            return base.Channel.ModifyLocation(token, location);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ModifyLocationAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location) {
-            return base.Channel.ModifyLocationAsync(token, location);
-        }
-        
-        public bool RemoveLocation(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location) {
-            return base.Channel.RemoveLocation(token, location);
-        }
-        
-        public System.Threading.Tasks.Task<bool> RemoveLocationAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Location location) {
-            return base.Channel.RemoveLocationAsync(token, location);
-        }
-        
-        public bool ModifyVenueRange(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue[] venues) {
-            return base.Channel.ModifyVenueRange(token, venues);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ModifyVenueRangeAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue[] venues) {
-            return base.Channel.ModifyVenueRangeAsync(token, venues);
-        }
-        
-        public bool ModifyPerformanceRange(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance[] performances) {
-            return base.Channel.ModifyPerformanceRange(token, performances);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ModifyPerformanceRangeAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance[] performances) {
-            return base.Channel.ModifyPerformanceRangeAsync(token, performances);
-        }
-        
-        public UFO.Services.ViewAccess.User[] GetUser(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.PagingData page) {
-            return base.Channel.GetUser(token, page);
-        }
-        
-        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.User[]> GetUserAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.PagingData page) {
-            return base.Channel.GetUserAsync(token, page);
-        }
-        
-        public UFO.Services.ViewAccess.PagingData RequestUserPagingData(UFO.Services.ViewAccess.SessionToken token) {
-            return base.Channel.RequestUserPagingData(token);
-        }
-        
-        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.PagingData> RequestUserPagingDataAsync(UFO.Services.ViewAccess.SessionToken token) {
-            return base.Channel.RequestUserPagingDataAsync(token);
-        }
-        
-        public bool IsUserAuthenticated(UFO.Services.ViewAccess.SessionToken token) {
-            return base.Channel.IsUserAuthenticated(token);
-        }
-        
-        public System.Threading.Tasks.Task<bool> IsUserAuthenticatedAsync(UFO.Services.ViewAccess.SessionToken token) {
-            return base.Channel.IsUserAuthenticatedAsync(token);
-        }
-        
-        public bool IsValidAdmin(UFO.Services.ViewAccess.SessionToken token) {
-            return base.Channel.IsValidAdmin(token);
-        }
-        
-        public System.Threading.Tasks.Task<bool> IsValidAdminAsync(UFO.Services.ViewAccess.SessionToken token) {
-            return base.Channel.IsValidAdminAsync(token);
-        }
-        
-        public bool LoginAdmin(UFO.Services.ViewAccess.SessionToken token) {
-            return base.Channel.LoginAdmin(token);
-        }
-        
-        public System.Threading.Tasks.Task<bool> LoginAdminAsync(UFO.Services.ViewAccess.SessionToken token) {
-            return base.Channel.LoginAdminAsync(token);
-        }
-        
-        public void LogoutAdmin(UFO.Services.ViewAccess.SessionToken token) {
-            base.Channel.LogoutAdmin(token);
-        }
-        
-        public System.Threading.Tasks.Task LogoutAdminAsync(UFO.Services.ViewAccess.SessionToken token) {
-            return base.Channel.LogoutAdminAsync(token);
-        }
-        
-        public UFO.Services.ViewAccess.SessionToken RequestSessionToken(UFO.Services.ViewAccess.User user) {
-            return base.Channel.RequestSessionToken(user);
-        }
-        
-        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.SessionToken> RequestSessionTokenAsync(UFO.Services.ViewAccess.User user) {
-            return base.Channel.RequestSessionTokenAsync(user);
-        }
-        
-        public bool ModifyArtist(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist artist) {
-            return base.Channel.ModifyArtist(token, artist);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ModifyArtistAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist artist) {
-            return base.Channel.ModifyArtistAsync(token, artist);
-        }
-        
-        public bool RemoveArtist(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist artist) {
-            return base.Channel.RemoveArtist(token, artist);
-        }
-        
-        public System.Threading.Tasks.Task<bool> RemoveArtistAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Artist artist) {
-            return base.Channel.RemoveArtistAsync(token, artist);
-        }
-        
-        public bool ModifyVenue(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue venue) {
-            return base.Channel.ModifyVenue(token, venue);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ModifyVenueAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue venue) {
-            return base.Channel.ModifyVenueAsync(token, venue);
-        }
-        
-        public bool RemoveVenue(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue venue) {
-            return base.Channel.RemoveVenue(token, venue);
-        }
-        
-        public System.Threading.Tasks.Task<bool> RemoveVenueAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Venue venue) {
-            return base.Channel.RemoveVenueAsync(token, venue);
-        }
-        
-        public bool ModifyPerformance(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance performance) {
-            return base.Channel.ModifyPerformance(token, performance);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ModifyPerformanceAsync(UFO.Services.ViewAccess.SessionToken token, UFO.Services.ViewAccess.Performance performance) {
-            return base.Channel.ModifyPerformanceAsync(token, performance);
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Services.ViewAccess.ViewAccessWs")]
     public interface ViewAccessWs {
@@ -1085,17 +610,47 @@ namespace UFO.Services.ViewAccess {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/RequestVenuePagingData", ReplyAction="http://tempuri.org/ViewAccessWs/RequestVenuePagingDataResponse")]
         System.Threading.Tasks.Task<UFO.Services.ViewAccess.PagingData> RequestVenuePagingDataAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetArtist", ReplyAction="http://tempuri.org/ViewAccessWs/GetArtistResponse")]
-        UFO.Services.ViewAccess.Artist[] GetArtist(UFO.Services.ViewAccess.PagingData page);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetArtists", ReplyAction="http://tempuri.org/ViewAccessWs/GetArtistsResponse")]
+        UFO.Services.ViewAccess.Artist[] GetArtists(UFO.Services.ViewAccess.PagingData page);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetArtists", ReplyAction="http://tempuri.org/ViewAccessWs/GetArtistsResponse")]
+        System.Threading.Tasks.Task<UFO.Services.ViewAccess.Artist[]> GetArtistsAsync(UFO.Services.ViewAccess.PagingData page);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetArtist", ReplyAction="http://tempuri.org/ViewAccessWs/GetArtistResponse")]
-        System.Threading.Tasks.Task<UFO.Services.ViewAccess.Artist[]> GetArtistAsync(UFO.Services.ViewAccess.PagingData page);
+        UFO.Services.ViewAccess.Artist GetArtist(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetArtist", ReplyAction="http://tempuri.org/ViewAccessWs/GetArtistResponse")]
+        System.Threading.Tasks.Task<UFO.Services.ViewAccess.Artist> GetArtistAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetPerformances", ReplyAction="http://tempuri.org/ViewAccessWs/GetPerformancesResponse")]
+        UFO.Services.ViewAccess.Performance[] GetPerformances(UFO.Services.ViewAccess.PagingData page);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetPerformances", ReplyAction="http://tempuri.org/ViewAccessWs/GetPerformancesResponse")]
+        System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> GetPerformancesAsync(UFO.Services.ViewAccess.PagingData page);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetPerformancesPerDate", ReplyAction="http://tempuri.org/ViewAccessWs/GetPerformancesPerDateResponse")]
         UFO.Services.ViewAccess.Performance[] GetPerformancesPerDate(System.DateTime date);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetPerformancesPerDate", ReplyAction="http://tempuri.org/ViewAccessWs/GetPerformancesPerDateResponse")]
         System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> GetPerformancesPerDateAsync(System.DateTime date);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetPerformancesPerArtist", ReplyAction="http://tempuri.org/ViewAccessWs/GetPerformancesPerArtistResponse")]
+        UFO.Services.ViewAccess.Performance[] GetPerformancesPerArtist(UFO.Services.ViewAccess.Artist artist);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetPerformancesPerArtist", ReplyAction="http://tempuri.org/ViewAccessWs/GetPerformancesPerArtistResponse")]
+        System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> GetPerformancesPerArtistAsync(UFO.Services.ViewAccess.Artist artist);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetPerformancesPerVenue", ReplyAction="http://tempuri.org/ViewAccessWs/GetPerformancesPerVenueResponse")]
+        UFO.Services.ViewAccess.Performance[] GetPerformancesPerVenue(UFO.Services.ViewAccess.Venue venue);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetPerformancesPerVenue", ReplyAction="http://tempuri.org/ViewAccessWs/GetPerformancesPerVenueResponse")]
+        System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> GetPerformancesPerVenueAsync(UFO.Services.ViewAccess.Venue venue);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetLatestPerformances", ReplyAction="http://tempuri.org/ViewAccessWs/GetLatestPerformancesResponse")]
+        UFO.Services.ViewAccess.Performance[] GetLatestPerformances();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetLatestPerformances", ReplyAction="http://tempuri.org/ViewAccessWs/GetLatestPerformancesResponse")]
+        System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> GetLatestPerformancesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetCategories", ReplyAction="http://tempuri.org/ViewAccessWs/GetCategoriesResponse")]
         UFO.Services.ViewAccess.Category[] GetCategories(UFO.Services.ViewAccess.PagingData page);
@@ -1121,11 +676,29 @@ namespace UFO.Services.ViewAccess {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetVenues", ReplyAction="http://tempuri.org/ViewAccessWs/GetVenuesResponse")]
         System.Threading.Tasks.Task<UFO.Services.ViewAccess.Venue[]> GetVenuesAsync(UFO.Services.ViewAccess.PagingData page);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetPerformances", ReplyAction="http://tempuri.org/ViewAccessWs/GetPerformancesResponse")]
-        UFO.Services.ViewAccess.Performance[] GetPerformances(UFO.Services.ViewAccess.PagingData page);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetVenue", ReplyAction="http://tempuri.org/ViewAccessWs/GetVenueResponse")]
+        UFO.Services.ViewAccess.Venue GetVenue(string id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetPerformances", ReplyAction="http://tempuri.org/ViewAccessWs/GetPerformancesResponse")]
-        System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> GetPerformancesAsync(UFO.Services.ViewAccess.PagingData page);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetVenue", ReplyAction="http://tempuri.org/ViewAccessWs/GetVenueResponse")]
+        System.Threading.Tasks.Task<UFO.Services.ViewAccess.Venue> GetVenueAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/SearchPerformancesPerKeyword", ReplyAction="http://tempuri.org/ViewAccessWs/SearchPerformancesPerKeywordResponse")]
+        UFO.Services.ViewAccess.Performance[] SearchPerformancesPerKeyword(string keyword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/SearchPerformancesPerKeyword", ReplyAction="http://tempuri.org/ViewAccessWs/SearchPerformancesPerKeywordResponse")]
+        System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> SearchPerformancesPerKeywordAsync(string keyword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/SearchVenuesPerKeyword", ReplyAction="http://tempuri.org/ViewAccessWs/SearchVenuesPerKeywordResponse")]
+        UFO.Services.ViewAccess.Venue[] SearchVenuesPerKeyword(string keyword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/SearchVenuesPerKeyword", ReplyAction="http://tempuri.org/ViewAccessWs/SearchVenuesPerKeywordResponse")]
+        System.Threading.Tasks.Task<UFO.Services.ViewAccess.Venue[]> SearchVenuesPerKeywordAsync(string keyword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/SearchArtistsPerKeyword", ReplyAction="http://tempuri.org/ViewAccessWs/SearchArtistsPerKeywordResponse")]
+        UFO.Services.ViewAccess.Artist[] SearchArtistsPerKeyword(string keyword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/SearchArtistsPerKeyword", ReplyAction="http://tempuri.org/ViewAccessWs/SearchArtistsPerKeywordResponse")]
+        System.Threading.Tasks.Task<UFO.Services.ViewAccess.Artist[]> SearchArtistsPerKeywordAsync(string keyword);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1203,12 +776,28 @@ namespace UFO.Services.ViewAccess {
             return base.Channel.RequestVenuePagingDataAsync();
         }
         
-        public UFO.Services.ViewAccess.Artist[] GetArtist(UFO.Services.ViewAccess.PagingData page) {
-            return base.Channel.GetArtist(page);
+        public UFO.Services.ViewAccess.Artist[] GetArtists(UFO.Services.ViewAccess.PagingData page) {
+            return base.Channel.GetArtists(page);
         }
         
-        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Artist[]> GetArtistAsync(UFO.Services.ViewAccess.PagingData page) {
-            return base.Channel.GetArtistAsync(page);
+        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Artist[]> GetArtistsAsync(UFO.Services.ViewAccess.PagingData page) {
+            return base.Channel.GetArtistsAsync(page);
+        }
+        
+        public UFO.Services.ViewAccess.Artist GetArtist(int id) {
+            return base.Channel.GetArtist(id);
+        }
+        
+        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Artist> GetArtistAsync(int id) {
+            return base.Channel.GetArtistAsync(id);
+        }
+        
+        public UFO.Services.ViewAccess.Performance[] GetPerformances(UFO.Services.ViewAccess.PagingData page) {
+            return base.Channel.GetPerformances(page);
+        }
+        
+        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> GetPerformancesAsync(UFO.Services.ViewAccess.PagingData page) {
+            return base.Channel.GetPerformancesAsync(page);
         }
         
         public UFO.Services.ViewAccess.Performance[] GetPerformancesPerDate(System.DateTime date) {
@@ -1217,6 +806,30 @@ namespace UFO.Services.ViewAccess {
         
         public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> GetPerformancesPerDateAsync(System.DateTime date) {
             return base.Channel.GetPerformancesPerDateAsync(date);
+        }
+        
+        public UFO.Services.ViewAccess.Performance[] GetPerformancesPerArtist(UFO.Services.ViewAccess.Artist artist) {
+            return base.Channel.GetPerformancesPerArtist(artist);
+        }
+        
+        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> GetPerformancesPerArtistAsync(UFO.Services.ViewAccess.Artist artist) {
+            return base.Channel.GetPerformancesPerArtistAsync(artist);
+        }
+        
+        public UFO.Services.ViewAccess.Performance[] GetPerformancesPerVenue(UFO.Services.ViewAccess.Venue venue) {
+            return base.Channel.GetPerformancesPerVenue(venue);
+        }
+        
+        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> GetPerformancesPerVenueAsync(UFO.Services.ViewAccess.Venue venue) {
+            return base.Channel.GetPerformancesPerVenueAsync(venue);
+        }
+        
+        public UFO.Services.ViewAccess.Performance[] GetLatestPerformances() {
+            return base.Channel.GetLatestPerformances();
+        }
+        
+        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> GetLatestPerformancesAsync() {
+            return base.Channel.GetLatestPerformancesAsync();
         }
         
         public UFO.Services.ViewAccess.Category[] GetCategories(UFO.Services.ViewAccess.PagingData page) {
@@ -1251,12 +864,36 @@ namespace UFO.Services.ViewAccess {
             return base.Channel.GetVenuesAsync(page);
         }
         
-        public UFO.Services.ViewAccess.Performance[] GetPerformances(UFO.Services.ViewAccess.PagingData page) {
-            return base.Channel.GetPerformances(page);
+        public UFO.Services.ViewAccess.Venue GetVenue(string id) {
+            return base.Channel.GetVenue(id);
         }
         
-        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> GetPerformancesAsync(UFO.Services.ViewAccess.PagingData page) {
-            return base.Channel.GetPerformancesAsync(page);
+        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Venue> GetVenueAsync(string id) {
+            return base.Channel.GetVenueAsync(id);
+        }
+        
+        public UFO.Services.ViewAccess.Performance[] SearchPerformancesPerKeyword(string keyword) {
+            return base.Channel.SearchPerformancesPerKeyword(keyword);
+        }
+        
+        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Performance[]> SearchPerformancesPerKeywordAsync(string keyword) {
+            return base.Channel.SearchPerformancesPerKeywordAsync(keyword);
+        }
+        
+        public UFO.Services.ViewAccess.Venue[] SearchVenuesPerKeyword(string keyword) {
+            return base.Channel.SearchVenuesPerKeyword(keyword);
+        }
+        
+        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Venue[]> SearchVenuesPerKeywordAsync(string keyword) {
+            return base.Channel.SearchVenuesPerKeywordAsync(keyword);
+        }
+        
+        public UFO.Services.ViewAccess.Artist[] SearchArtistsPerKeyword(string keyword) {
+            return base.Channel.SearchArtistsPerKeyword(keyword);
+        }
+        
+        public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Artist[]> SearchArtistsPerKeywordAsync(string keyword) {
+            return base.Channel.SearchArtistsPerKeywordAsync(keyword);
         }
     }
 }

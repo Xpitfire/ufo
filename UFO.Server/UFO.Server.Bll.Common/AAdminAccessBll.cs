@@ -26,7 +26,7 @@ using UFO.Server.Domain;
 
 namespace UFO.Server.Bll.Common
 {
-    public abstract class AAdminAccessBll : IAdminAccessBll
+    public abstract class AAdminAccessBll : IAdminAccessBll, IValidationAccessBll
     {
         private static IUserDao _userDao;
         protected static IUserDao UserDao = _userDao ?? (_userDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateUserDao());
@@ -43,7 +43,8 @@ namespace UFO.Server.Bll.Common
         private static IVenueDao _venueDao;
         protected static IVenueDao VenueDao = _venueDao ?? (_venueDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateVenueDao());
 
-        public abstract List<User> GetUser(SessionToken token, PagingData page);
+        public abstract List<User> GetUsers(SessionToken token, PagingData page);
+        public abstract List<User> SearchUsersPerKeyword(SessionToken token, string keyword);
         public abstract bool ModifyArtistRange(SessionToken token, List<Artist> artists);
         public abstract bool ModifyArtist(SessionToken token, Artist artist);
         public abstract bool RemoveArtist(SessionToken token, Artist artist);
@@ -88,6 +89,14 @@ namespace UFO.Server.Bll.Common
                 return default(TResult);
 
             return PagingHelper.EvaluatePagingResult(page, function);
+        }
+
+        public virtual TResult EvaluateSessionPagingResult<TResult>(SessionToken token, Func<TResult> function)
+        {
+            if (!IsUserAuthenticated(token))
+                return default(TResult);
+
+            return function();
         }
 
         public virtual PagingData RequestUserPagingData(SessionToken token)

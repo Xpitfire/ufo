@@ -616,11 +616,12 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.SelectByName("Landhaus");
+                var getRsp = dao.SearchByKeyword("Landhaus");
                 getRsp
                     .OnEmptyResult(() => Assert.Fail("No data found"))
                     .OnFailure(response => Assert.Fail($"Unexpected exception occurred: {response.Exception}"));
-                var venue = getRsp.ResultObject;
+                var venue = getRsp.ResultObject.FirstOrDefault();
+                Assert.IsNotNull(venue);
                 venue.Name = "Test";
 
                 dao.Update(venue)

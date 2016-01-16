@@ -30,35 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetCountries }
+     * Create an instance of {@link GetPerformancesPerArtist }
      * 
      */
-    public GetCountries createGetCountries() {
-        return new GetCountries();
+    public GetPerformancesPerArtist createGetPerformancesPerArtist() {
+        return new GetPerformancesPerArtist();
     }
 
     /**
-     * Create an instance of {@link PagingData }
+     * Create an instance of {@link Artist }
      * 
      */
-    public PagingData createPagingData() {
-        return new PagingData();
-    }
-
-    /**
-     * Create an instance of {@link GetPerformancesPerDate }
-     * 
-     */
-    public GetPerformancesPerDate createGetPerformancesPerDate() {
-        return new GetPerformancesPerDate();
-    }
-
-    /**
-     * Create an instance of {@link RequestCategoryPagingDataResponse }
-     * 
-     */
-    public RequestCategoryPagingDataResponse createRequestCategoryPagingDataResponse() {
-        return new RequestCategoryPagingDataResponse();
+    public Artist createArtist() {
+        return new Artist();
     }
 
     /**
@@ -67,14 +51,6 @@ public class ObjectFactory {
      */
     public IsUserAuthenticatedResponse createIsUserAuthenticatedResponse() {
         return new IsUserAuthenticatedResponse();
-    }
-
-    /**
-     * Create an instance of {@link RequestPerformancePagingDataResponse }
-     * 
-     */
-    public RequestPerformancePagingDataResponse createRequestPerformancePagingDataResponse() {
-        return new RequestPerformancePagingDataResponse();
     }
 
     /**
@@ -91,6 +67,38 @@ public class ObjectFactory {
      */
     public User createUser() {
         return new User();
+    }
+
+    /**
+     * Create an instance of {@link GetArtists }
+     * 
+     */
+    public GetArtists createGetArtists() {
+        return new GetArtists();
+    }
+
+    /**
+     * Create an instance of {@link PagingData }
+     * 
+     */
+    public PagingData createPagingData() {
+        return new PagingData();
+    }
+
+    /**
+     * Create an instance of {@link SearchVenuesPerKeywordResponse }
+     * 
+     */
+    public SearchVenuesPerKeywordResponse createSearchVenuesPerKeywordResponse() {
+        return new SearchVenuesPerKeywordResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfVenue }
+     * 
+     */
+    public ArrayOfVenue createArrayOfVenue() {
+        return new ArrayOfVenue();
     }
 
     /**
@@ -126,19 +134,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link IsUserAuthenticated }
+     * Create an instance of {@link SearchPerformancesPerKeywordResponse }
      * 
      */
-    public IsUserAuthenticated createIsUserAuthenticated() {
-        return new IsUserAuthenticated();
+    public SearchPerformancesPerKeywordResponse createSearchPerformancesPerKeywordResponse() {
+        return new SearchPerformancesPerKeywordResponse();
     }
 
     /**
-     * Create an instance of {@link GetCategories }
+     * Create an instance of {@link ArrayOfPerformance }
      * 
      */
-    public GetCategories createGetCategories() {
-        return new GetCategories();
+    public ArrayOfPerformance createArrayOfPerformance() {
+        return new ArrayOfPerformance();
     }
 
     /**
@@ -155,14 +163,6 @@ public class ObjectFactory {
      */
     public RequestArtistPagingDataResponse createRequestArtistPagingDataResponse() {
         return new RequestArtistPagingDataResponse();
-    }
-
-    /**
-     * Create an instance of {@link RequestLocationPagingDataResponse }
-     * 
-     */
-    public RequestLocationPagingDataResponse createRequestLocationPagingDataResponse() {
-        return new RequestLocationPagingDataResponse();
     }
 
     /**
@@ -190,22 +190,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetArtistResponse }
-     * 
-     */
-    public GetArtistResponse createGetArtistResponse() {
-        return new GetArtistResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfArtist }
-     * 
-     */
-    public ArrayOfArtist createArrayOfArtist() {
-        return new ArrayOfArtist();
-    }
-
-    /**
      * Create an instance of {@link RequestArtistPagingData }
      * 
      */
@@ -222,14 +206,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfPerformance }
-     * 
-     */
-    public ArrayOfPerformance createArrayOfPerformance() {
-        return new ArrayOfPerformance();
-    }
-
-    /**
      * Create an instance of {@link ModifyPerformance }
      * 
      */
@@ -243,6 +219,174 @@ public class ObjectFactory {
      */
     public Performance createPerformance() {
         return new Performance();
+    }
+
+    /**
+     * Create an instance of {@link SearchArtistsPerKeyword }
+     * 
+     */
+    public SearchArtistsPerKeyword createSearchArtistsPerKeyword() {
+        return new SearchArtistsPerKeyword();
+    }
+
+    /**
+     * Create an instance of {@link SearchVenuesPerKeyword }
+     * 
+     */
+    public SearchVenuesPerKeyword createSearchVenuesPerKeyword() {
+        return new SearchVenuesPerKeyword();
+    }
+
+    /**
+     * Create an instance of {@link GetVenueResponse }
+     * 
+     */
+    public GetVenueResponse createGetVenueResponse() {
+        return new GetVenueResponse();
+    }
+
+    /**
+     * Create an instance of {@link Venue }
+     * 
+     */
+    public Venue createVenue() {
+        return new Venue();
+    }
+
+    /**
+     * Create an instance of {@link GetPerformances }
+     * 
+     */
+    public GetPerformances createGetPerformances() {
+        return new GetPerformances();
+    }
+
+    /**
+     * Create an instance of {@link RequestCountryPagingDataResponse }
+     * 
+     */
+    public RequestCountryPagingDataResponse createRequestCountryPagingDataResponse() {
+        return new RequestCountryPagingDataResponse();
+    }
+
+    /**
+     * Create an instance of {@link RequestPerformancePagingData }
+     * 
+     */
+    public RequestPerformancePagingData createRequestPerformancePagingData() {
+        return new RequestPerformancePagingData();
+    }
+
+    /**
+     * Create an instance of {@link GetCategoriesResponse }
+     * 
+     */
+    public GetCategoriesResponse createGetCategoriesResponse() {
+        return new GetCategoriesResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfCategory }
+     * 
+     */
+    public ArrayOfCategory createArrayOfCategory() {
+        return new ArrayOfCategory();
+    }
+
+    /**
+     * Create an instance of {@link GetCountries }
+     * 
+     */
+    public GetCountries createGetCountries() {
+        return new GetCountries();
+    }
+
+    /**
+     * Create an instance of {@link GetPerformancesPerDate }
+     * 
+     */
+    public GetPerformancesPerDate createGetPerformancesPerDate() {
+        return new GetPerformancesPerDate();
+    }
+
+    /**
+     * Create an instance of {@link SearchArtistsPerKeywordResponse }
+     * 
+     */
+    public SearchArtistsPerKeywordResponse createSearchArtistsPerKeywordResponse() {
+        return new SearchArtistsPerKeywordResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfArtist }
+     * 
+     */
+    public ArrayOfArtist createArrayOfArtist() {
+        return new ArrayOfArtist();
+    }
+
+    /**
+     * Create an instance of {@link GetArtistsResponse }
+     * 
+     */
+    public GetArtistsResponse createGetArtistsResponse() {
+        return new GetArtistsResponse();
+    }
+
+    /**
+     * Create an instance of {@link RequestCategoryPagingDataResponse }
+     * 
+     */
+    public RequestCategoryPagingDataResponse createRequestCategoryPagingDataResponse() {
+        return new RequestCategoryPagingDataResponse();
+    }
+
+    /**
+     * Create an instance of {@link RequestPerformancePagingDataResponse }
+     * 
+     */
+    public RequestPerformancePagingDataResponse createRequestPerformancePagingDataResponse() {
+        return new RequestPerformancePagingDataResponse();
+    }
+
+    /**
+     * Create an instance of {@link IsUserAuthenticated }
+     * 
+     */
+    public IsUserAuthenticated createIsUserAuthenticated() {
+        return new IsUserAuthenticated();
+    }
+
+    /**
+     * Create an instance of {@link GetCategories }
+     * 
+     */
+    public GetCategories createGetCategories() {
+        return new GetCategories();
+    }
+
+    /**
+     * Create an instance of {@link RequestLocationPagingDataResponse }
+     * 
+     */
+    public RequestLocationPagingDataResponse createRequestLocationPagingDataResponse() {
+        return new RequestLocationPagingDataResponse();
+    }
+
+    /**
+     * Create an instance of {@link SearchPerformancesPerKeyword }
+     * 
+     */
+    public SearchPerformancesPerKeyword createSearchPerformancesPerKeyword() {
+        return new SearchPerformancesPerKeyword();
+    }
+
+    /**
+     * Create an instance of {@link GetArtistResponse }
+     * 
+     */
+    public GetArtistResponse createGetArtistResponse() {
+        return new GetArtistResponse();
     }
 
     /**
@@ -318,19 +462,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ArrayOfVenue }
-     * 
-     */
-    public ArrayOfVenue createArrayOfVenue() {
-        return new ArrayOfVenue();
-    }
-
-    /**
      * Create an instance of {@link RequestSessionTokenResponse }
      * 
      */
     public RequestSessionTokenResponse createRequestSessionTokenResponse() {
         return new RequestSessionTokenResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetPerformancesPerVenueResponse }
+     * 
+     */
+    public GetPerformancesPerVenueResponse createGetPerformancesPerVenueResponse() {
+        return new GetPerformancesPerVenueResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetLatestPerformances }
+     * 
+     */
+    public GetLatestPerformances createGetLatestPerformances() {
+        return new GetLatestPerformances();
+    }
+
+    /**
+     * Create an instance of {@link GetPerformancesPerVenue }
+     * 
+     */
+    public GetPerformancesPerVenue createGetPerformancesPerVenue() {
+        return new GetPerformancesPerVenue();
     }
 
     /**
@@ -342,30 +502,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetPerformances }
-     * 
-     */
-    public GetPerformances createGetPerformances() {
-        return new GetPerformances();
-    }
-
-    /**
-     * Create an instance of {@link RequestCountryPagingDataResponse }
-     * 
-     */
-    public RequestCountryPagingDataResponse createRequestCountryPagingDataResponse() {
-        return new RequestCountryPagingDataResponse();
-    }
-
-    /**
-     * Create an instance of {@link RequestPerformancePagingData }
-     * 
-     */
-    public RequestPerformancePagingData createRequestPerformancePagingData() {
-        return new RequestPerformancePagingData();
-    }
-
-    /**
      * Create an instance of {@link ModifyPerformanceResponse }
      * 
      */
@@ -374,19 +510,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetCategoriesResponse }
+     * Create an instance of {@link GetPerformancesPerArtistResponse }
      * 
      */
-    public GetCategoriesResponse createGetCategoriesResponse() {
-        return new GetCategoriesResponse();
+    public GetPerformancesPerArtistResponse createGetPerformancesPerArtistResponse() {
+        return new GetPerformancesPerArtistResponse();
     }
 
     /**
-     * Create an instance of {@link ArrayOfCategory }
+     * Create an instance of {@link GetVenue }
      * 
      */
-    public ArrayOfCategory createArrayOfCategory() {
-        return new ArrayOfCategory();
+    public GetVenue createGetVenue() {
+        return new GetVenue();
+    }
+
+    /**
+     * Create an instance of {@link GetLatestPerformancesResponse }
+     * 
+     */
+    public GetLatestPerformancesResponse createGetLatestPerformancesResponse() {
+        return new GetLatestPerformancesResponse();
     }
 
     /**
@@ -398,27 +542,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Artist }
-     * 
-     */
-    public Artist createArtist() {
-        return new Artist();
-    }
-
-    /**
      * Create an instance of {@link Category }
      * 
      */
     public Category createCategory() {
         return new Category();
-    }
-
-    /**
-     * Create an instance of {@link Venue }
-     * 
-     */
-    public Venue createVenue() {
-        return new Venue();
     }
 
     /**

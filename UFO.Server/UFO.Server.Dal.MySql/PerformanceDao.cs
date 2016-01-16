@@ -105,8 +105,8 @@ namespace UFO.Server.Dal.MySql
 
             var parameter = new Dictionary<string, QueryParameter>
             {
-                {"?FromTime", new QueryParameter {ParameterValue = fromTime.ToString(Constants.CommonDateFormat)}},
-                {"?ToTime", new QueryParameter {ParameterValue = toTime.ToString(Constants.CommonDateFormat)}},
+                {"?FromTime", new QueryParameter {ParameterValue = fromTime.ToString(Constants.CommonDateFormatFull)}},
+                {"?ToTime", new QueryParameter {ParameterValue = toTime.ToString(Constants.CommonDateFormatFull)}},
                 {"?ArtistId", new QueryParameter {ParameterValue = entity.Artist?.ArtistId}}
             };
 
@@ -125,7 +125,7 @@ namespace UFO.Server.Dal.MySql
         {
             return new Dictionary<string, QueryParameter>
             {
-                {"?Date", new QueryParameter {ParameterValue = performance.DateTime.ToString(Constants.CommonDateFormat)}},
+                {"?Date", new QueryParameter {ParameterValue = performance.DateTime.ToString(Constants.CommonDateFormatFull)}},
                 {"?ArtistId", new QueryParameter {ParameterValue = performance.Artist.ArtistId}},
                 {"?VenueId", new QueryParameter {ParameterValue = performance.Venue.VenueId}}
             };
@@ -166,12 +166,12 @@ namespace UFO.Server.Dal.MySql
         }
 
         [DaoExceptionHandler(typeof(Performance))]
-        public DaoResponse<Performance> SelectById(DateTime dateTime, int artistId)
+        public DaoResponse<Performance> SelectById(DateTime date, int artistId)
         {
             Performance performance = null;
             var parameter = new Dictionary<string, QueryParameter>
             {
-                {"?Date", new QueryParameter {ParameterValue = dateTime.ToString(Constants.CommonDateFormat)}},
+                {"?Date", new QueryParameter {ParameterValue = date.ToString(Constants.CommonDateFormatFull)}},
                 {"?ArtistId", new QueryParameter {ParameterValue = artistId}}
             };
             using (var connection = _dbCommProvider.CreateDbConnection())
@@ -184,6 +184,102 @@ namespace UFO.Server.Dal.MySql
                 }
             }
             return performance != null ? DaoResponse.QuerySuccessful(performance) : DaoResponse.QueryEmptyResult<Performance>();
+        }
+
+        [DaoExceptionHandler(typeof(List<Performance>))]
+        public DaoResponse<List<Performance>> SelectByDate(DateTime date)
+        {
+            var performances = new List<Performance>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?Date", new QueryParameter {ParameterValue = date.ToString(Constants.CommonDateFormatDay)}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectPerformanceByDate, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    performances.Add(CreatePerformanceObject(dataReader));
+                }
+            }
+            return performances.Any() ? DaoResponse.QuerySuccessful(performances) : DaoResponse.QueryEmptyResult<List<Performance>>();
+        }
+
+        [DaoExceptionHandler(typeof(List<Performance>))]
+        public DaoResponse<List<Performance>> SelectLastestPerformances()
+        {
+            var performances = new List<Performance>();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectLatestPerformances))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    performances.Add(CreatePerformanceObject(dataReader));
+                }
+            }
+            return performances.Any() ? DaoResponse.QuerySuccessful(performances) : DaoResponse.QueryEmptyResult<List<Performance>>();
+        }
+
+        [DaoExceptionHandler(typeof(List<Performance>))]
+        public DaoResponse<List<Performance>> SelectByArtistId(int artistId)
+        {
+            var performances = new List<Performance>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?ArtistId", new QueryParameter {ParameterValue = artistId}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectPerformanceByArtist, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    performances.Add(CreatePerformanceObject(dataReader));
+                }
+            }
+            return performances.Any() ? DaoResponse.QuerySuccessful(performances) : DaoResponse.QueryEmptyResult<List<Performance>>();
+        }
+
+        [DaoExceptionHandler(typeof(List<Performance>))]
+        public DaoResponse<List<Performance>> SelectByVenueId(string venueId)
+        {
+            var performances = new List<Performance>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?VenueId", new QueryParameter {ParameterValue = venueId}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectPerformanceByVenue, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    performances.Add(CreatePerformanceObject(dataReader));
+                }
+            }
+            return performances.Any() ? DaoResponse.QuerySuccessful(performances) : DaoResponse.QueryEmptyResult<List<Performance>>();
+        }
+
+        [DaoExceptionHandler(typeof(List<Performance>))]
+        public DaoResponse<List<Performance>> SelectByKeyword(string keyword)
+        {
+            var performances = new List<Performance>();
+            var parameter = new Dictionary<string, QueryParameter>
+            {
+                {"?Keyword", new QueryParameter {ParameterValue = $"%{keyword}%"}}
+            };
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectPerformanceByKeyword, parameter))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    performances.Add(CreatePerformanceObject(dataReader));
+                }
+            }
+            return performances.Any() ? DaoResponse.QuerySuccessful(performances) : DaoResponse.QueryEmptyResult<List<Performance>>();
         }
 
         [DaoExceptionHandler(typeof(List<Performance>))]

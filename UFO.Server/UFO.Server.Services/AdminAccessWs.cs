@@ -33,117 +33,63 @@ namespace UFO.Server.Services
             _adminAccessDelegate ?? (_adminAccessDelegate = FactoryProvider.GetFactory<IBllProviderFactory>(BllProviderSettings.Instance).CreateAAdminAccessBll());
 
         [OperationContract]
-        public bool ModifyArtistRange(SessionToken token, List<Artist> artists)
-        {
-            return AdminAccessDelegate.ModifyArtistRange(token, artists);
-        }
+        public bool ModifyArtistRange(SessionToken token, List<Artist> artists) => AdminAccessDelegate.ModifyArtistRange(token, artists);
 
         [OperationContract]
-        public bool RemovePerformance(SessionToken token, Performance performance)
-        {
-            return AdminAccessDelegate.RemovePerformance(token, performance);
-        }
+        public bool RemovePerformance(SessionToken token, Performance performance) => AdminAccessDelegate.RemovePerformance(token, performance);
 
         [OperationContract]
-        public bool ModifyLocationRange(SessionToken token, List<Location> locations)
-        {
-            return AdminAccessDelegate.ModifyLocationRange(token, locations);
-        }
+        public bool ModifyLocationRange(SessionToken token, List<Location> locations) => AdminAccessDelegate.ModifyLocationRange(token, locations);
 
         [OperationContract]
-        public bool ModifyLocation(SessionToken token, Location location)
-        {
-            return AdminAccessDelegate.ModifyLocation(token, location);
-        }
+        public bool ModifyLocation(SessionToken token, Location location) => AdminAccessDelegate.ModifyLocation(token, location);
 
         [OperationContract]
-        public bool RemoveLocation(SessionToken token, Location location)
-        {
-            return AdminAccessDelegate.RemoveLocation(token, location);
-        }
+        public bool RemoveLocation(SessionToken token, Location location) => AdminAccessDelegate.RemoveLocation(token, location);
 
         [OperationContract]
-        public bool ModifyVenueRange(SessionToken token, List<Venue> venues)
-        {
-            return AdminAccessDelegate.ModifyVenueRange(token, venues);
-        }
+        public bool ModifyVenueRange(SessionToken token, List<Venue> venues) => AdminAccessDelegate.ModifyVenueRange(token, venues);
 
         [OperationContract]
-        public bool ModifyPerformanceRange(SessionToken token, List<Performance> performances)
-        {
-            return AdminAccessDelegate.ModifyPerformanceRange(token, performances);
-        }
+        public bool ModifyPerformanceRange(SessionToken token, List<Performance> performances) => AdminAccessDelegate.ModifyPerformanceRange(token, performances);
 
         [OperationContract]
-        public List<User> GetUser(SessionToken token, PagingData page)
-        {
-            return AdminAccessDelegate.GetUser(token, page);
-        }
+        public List<User> GetUsers(SessionToken token, PagingData page) => AdminAccessDelegate.GetUsers(token, page);
 
         [OperationContract]
-        public PagingData RequestUserPagingData(SessionToken token)
-        {
-            return AdminAccessDelegate.RequestUserPagingData(token);
-        }
+        public List<User> SearchUsersPerKeyword(SessionToken token, string keyword) => AdminAccessDelegate.SearchUsersPerKeyword(token, keyword);
 
         [OperationContract]
-        public bool IsUserAuthenticated(SessionToken token)
-        {
-            return AdminAccessDelegate.IsUserAuthenticated(token);
-        }
+        public PagingData RequestUserPagingData(SessionToken token) => AdminAccessDelegate.RequestUserPagingData(token);
 
         [OperationContract]
-        public bool IsValidAdmin(SessionToken token)
-        {
-            return AdminAccessDelegate.IsValidAdmin(token);
-        }
+        public bool IsUserAuthenticated(SessionToken token) => AdminAccessDelegate.IsUserAuthenticated(token);
 
         [OperationContract]
-        public bool LoginAdmin(SessionToken token)
-        {
-            return AdminAccessDelegate.LoginAdmin(token);
-        }
+        public bool IsValidAdmin(SessionToken token) => AdminAccessDelegate.IsValidAdmin(token);
 
         [OperationContract]
-        public void LogoutAdmin(SessionToken token)
-        {
-            AdminAccessDelegate.LogoutAdmin(token);
-        }
+        public bool LoginAdmin(SessionToken token) => AdminAccessDelegate.LoginAdmin(token);
 
         [OperationContract]
-        public SessionToken RequestSessionToken(User user)
-        {
-            return AdminAccessDelegate.RequestSessionToken(user);
-        }
+        public void LogoutAdmin(SessionToken token) => AdminAccessDelegate.LogoutAdmin(token);
 
         [OperationContract]
-        public bool ModifyArtist(SessionToken token, Artist artist)
-        {
-            return AdminAccessDelegate.ModifyArtist(token, artist);
-        }
+        public SessionToken RequestSessionToken(User user) => AdminAccessDelegate.RequestSessionToken(user);
 
         [OperationContract]
-        public bool RemoveArtist(SessionToken token, Artist artist)
-        {
-            return AdminAccessDelegate.RemoveArtist(token, artist);
-        }
+        public bool ModifyArtist(SessionToken token, Artist artist) => AdminAccessDelegate.ModifyArtist(token, artist);
 
         [OperationContract]
-        public bool ModifyVenue(SessionToken token, Venue venue)
-        {
-            return AdminAccessDelegate.ModifyVenue(token, venue);
-        }
+        public bool RemoveArtist(SessionToken token, Artist artist) => AdminAccessDelegate.RemoveArtist(token, artist);
 
         [OperationContract]
-        public bool RemoveVenue(SessionToken token, Venue venue)
-        {
-            return AdminAccessDelegate.RemoveVenue(token, venue);
-        }
+        public bool ModifyVenue(SessionToken token, Venue venue) => AdminAccessDelegate.ModifyVenue(token, venue);
 
         [OperationContract]
-        public bool ModifyPerformance(SessionToken token, Performance performance)
-        {
-            return AdminAccessDelegate.ModifyPerformance(token, performance);
-        }
+        public bool RemoveVenue(SessionToken token, Venue venue) => AdminAccessDelegate.RemoveVenue(token, venue);
+
+        [OperationContract]
+        public bool ModifyPerformance(SessionToken token, Performance performance) => AdminAccessDelegate.ModifyPerformance(token, performance);
     }
 }

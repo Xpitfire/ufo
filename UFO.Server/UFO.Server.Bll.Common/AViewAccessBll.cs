@@ -22,14 +22,22 @@ namespace UFO.Server.Bll.Common
         private static IVenueDao _venueDao;
         protected static IVenueDao VenueDao = _venueDao ?? (_venueDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateVenueDao());
         
-        public abstract List<Artist> GetArtist(PagingData page);
+        public abstract List<Artist> GetArtists(PagingData page);
+        public abstract Artist GetArtist(int id);
         public abstract List<Category> GetCategories(PagingData page);
         public abstract List<Country> GetCountries(PagingData page);
         public abstract List<Location> GetLocations(PagingData page);
         public abstract List<Venue> GetVenues(PagingData page);
+        public abstract Venue GetVenue(string id);
         public abstract List<Performance> GetPerformances(PagingData page);
         public abstract List<Performance> GetPerformancesPerDate(DateTime date);
-        
+        public abstract List<Performance> GetPerformancesPerArtist(Artist artist);
+        public abstract List<Performance> GetPerformancesPerVenue(Venue venue);
+        public abstract List<Performance> GetLatestPerformances();
+        public abstract List<Performance> SearchPerformancesPerKeyword(string keyword);
+        public abstract List<Artist> SearchArtistsPerKeyword(string keyword);
+        public abstract List<Venue> SearchVenuesPerKeyword(string keyword);
+
         public virtual PagingData RequestArtistPagingData()
         {
             return PagingHelper.RequestPagingData(ArtistDao);
@@ -59,5 +67,6 @@ namespace UFO.Server.Bll.Common
         {
             return PagingHelper.RequestPagingData(VenueDao);
         }
+
     }
 }
