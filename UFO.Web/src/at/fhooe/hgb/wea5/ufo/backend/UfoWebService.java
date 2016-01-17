@@ -3,6 +3,7 @@ package at.fhooe.hgb.wea5.ufo.backend;
 import at.fhooe.hgb.wea5.ufo.util.Constants;
 import at.fhooe.hgb.wea5.ufo.web.generated.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public class UfoWebService implements UfoDelegate {
 
     private PagingData prepareNextVenuesPage() {
         if (venuesPage == null) {
-            venuesPage = webAccessProxy.requestArtistPagingData();
+            venuesPage = webAccessProxy.requestVenuePagingData();
         } else {
             venuesPage.setOffset(venuesPage.getOffset() + venuesPage.getRequest());
         }
@@ -37,7 +38,7 @@ public class UfoWebService implements UfoDelegate {
 
     private PagingData prepareNextPerformancesPage() {
         if (performancesPage == null) {
-            performancesPage = webAccessProxy.requestArtistPagingData();
+            performancesPage = webAccessProxy.requestPerformancePagingData();
         } else {
             performancesPage.setOffset(performancesPage.getOffset() + performancesPage.getRequest());
         }
@@ -61,20 +62,19 @@ public class UfoWebService implements UfoDelegate {
         return performance;
     }
 
-    private List<Artist> createArtists(PagingData page) {
-        List<Artist> artists = webAccessProxy.getArtists(page).getArtist();
+    @Override
+    public List<Artist> getNextArtistsPage() {
+        ArrayOfArtist tmp = webAccessProxy.getArtists(prepareNextArtistsPage());
+        if (tmp == null)
+            return new ArrayList<>();
+        List<Artist> artists = tmp.getArtist();
         artists.forEach(artist -> prepareArtist(artist));
         return artists;
     }
 
     @Override
-    public List<Artist> getNextArtistsPage() {
-        return createArtists(prepareNextArtistsPage());
-    }
-
-    @Override
     public Artist getArtistById(int id) {
-        return webAccessProxy.getArtist(id);
+        return prepareArtist(webAccessProxy.getArtist(id));
     }
 
     @Override
@@ -84,28 +84,39 @@ public class UfoWebService implements UfoDelegate {
 
     @Override
     public List<Venue> getNextVenuesPage() {
-        return webAccessProxy.getVenues(prepareNextVenuesPage()).getVenue();
+        ArrayOfVenue tmp = webAccessProxy.getVenues(prepareNextVenuesPage());
+        if (tmp == null)
+            return new ArrayList<>();
+        return tmp.getVenue();
     }
 
     @Override
     public List<Performance> getPerformancesPerArtist(Artist artist) {
-        // TODO: find java.lang.NullPointerException
-        //
-        List<Performance> performances = webAccessProxy.getPerformancesPerArtist(artist).getPerformance();
+        ArrayOfPerformance tmp = webAccessProxy.getPerformancesPerArtist(artist);
+        if (tmp == null)
+            return new ArrayList<>();
+        List<Performance> performances = tmp.getPerformance();
+        System.out.println();
         performances.forEach(performance -> preparePerformance(performance));
         return performances;
     }
 
     @Override
     public List<Performance> getPerformancesPerVenue(Venue venue) {
-        List<Performance> performances = webAccessProxy.getPerformancesPerVenue(venue).getPerformance();
+        ArrayOfPerformance tmp = webAccessProxy.getPerformancesPerVenue(venue);
+        if (tmp == null)
+            return new ArrayList<>();
+        List<Performance> performances = tmp.getPerformance();
         performances.forEach(performance -> preparePerformance(performance));
         return performances;
     }
 
     @Override
     public List<Performance> getNextPerformancesPage() {
-        List<Performance> performances = webAccessProxy.getPerformances(prepareNextPerformancesPage()).getPerformance();
+        ArrayOfPerformance tmp = webAccessProxy.getPerformances(prepareNextPerformancesPage());
+        if (tmp == null)
+            return new ArrayList<>();
+        List<Performance> performances = tmp.getPerformance();
         performances.forEach(performance -> preparePerformance(performance));
         return performances;
     }

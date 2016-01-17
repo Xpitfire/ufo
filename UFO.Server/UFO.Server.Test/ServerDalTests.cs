@@ -712,7 +712,7 @@ namespace UFO.Server.Test
 
             using (var scope = new TransactionScope())
             {
-                var getRsp = dao.SelectByDateTime(new DateTime(2015, 11, 13, 20, 00, 00));
+                var getRsp = dao.SelectByDate(new DateTime(2015, 11, 13, 20, 00, 00));
                 getRsp
                     .OnEmptyResult(() => Assert.Fail("No data found"))
                     .OnFailure(response => Assert.Fail($"Unexpected exception occurred: {response.Exception}"));

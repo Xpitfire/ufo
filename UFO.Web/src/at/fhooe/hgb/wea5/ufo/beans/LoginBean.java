@@ -3,6 +3,7 @@ package at.fhooe.hgb.wea5.ufo.beans;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 
@@ -11,7 +12,7 @@ import java.io.Serializable;
  * @date: 14.01.2016
  */
 @ManagedBean(name = "loginBean")
-@RequestScoped
+@ViewScoped
 public class LoginBean implements Serializable {
 
     @ManagedProperty(value = "#{sessionBean}")

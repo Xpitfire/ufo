@@ -46,14 +46,12 @@
                         <p:outputPanel>
                             <h:panelGrid columns="1" bodyrows="2">
                                 <p:outputPanel>
-                                    <h:outputText value="#{performance.artist.name}" style="font-weight: bold" />
+                                    <h:outputText value="#{performance.artist.name} #{performance.artist.country.code}" style="font-weight: bold" />
                                 </p:outputPanel>
                                 <h:panelGrid columns="2" cellpadding="5">
+
                                     <h:outputText value=" Kategorie:" />
                                     <h:outputText value="#{performance.artist.category.name} (#{performance.artist.category.categoryId})"/>
-
-                                    <h:outputText value=" Spielstätte:" />
-                                    <h:outputText value="#{performance.venue.name}, #{performance.venue.location.name}"/>
 
                                     <h:outputText value=" Uhrzeit:" />
                                     <h:outputText value="#{performance.dateTime}"/>
