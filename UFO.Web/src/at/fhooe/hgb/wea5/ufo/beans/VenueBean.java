@@ -2,13 +2,11 @@ package at.fhooe.hgb.wea5.ufo.beans;
 
 import at.fhooe.hgb.wea5.ufo.backend.ServiceLocator;
 import at.fhooe.hgb.wea5.ufo.backend.UfoDelegate;
-import at.fhooe.hgb.wea5.ufo.web.generated.Artist;
+import at.fhooe.hgb.wea5.ufo.web.generated.Venue;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * @author: Dinu Marius-Constantin
@@ -16,18 +14,26 @@ import java.util.List;
  */
 @ManagedBean
 @ViewScoped
-public class ArtistScrollerViewBean implements Serializable {
+public class VenueBean implements Serializable {
 
     private UfoDelegate delegate = ServiceLocator.getInstance().getUfoDelegate();
-    private List<Artist> artists;
+    private String venueId;
+    private Venue venue;
 
-    @PostConstruct
     public void init() {
-        artists = delegate.getFirstArtistsPage();
+        venue = delegate.getVenueById(venueId);
     }
 
-    public List<Artist> getArtists() {
-        return artists;
+    public String getVenueId() {
+        return venueId;
+    }
+
+    public void setVenueId(String venueId) {
+        this.venueId = venueId;
+    }
+
+    public Venue getVenue() {
+        return venue;
     }
 
 }

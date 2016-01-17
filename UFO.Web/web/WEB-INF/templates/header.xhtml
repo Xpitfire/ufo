@@ -1,6 +1,6 @@
-<html xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:p="http://primefaces.org/ui">
     <div class="container-fluid">
 
         <div class="navbar-header">
@@ -11,7 +11,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="#{request.contextPath}/ufo/index.xhtml">Tagesprogramm</a></li>
-                <li><a href="#{request.contextPath}/ufo/artist-overview.xhtml?id=0">Künstler</a></li>
+                <li><a href="#{request.contextPath}/ufo/artistlist.xhtml?id=0">Künstler</a></li>
+                <li><a href="#{request.contextPath}/ufo/venuelist.xhtml?id=0">Spielstätten</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
@@ -27,4 +28,3 @@
         </div>
     </div>
 </nav>
-</html>

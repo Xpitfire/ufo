@@ -2,105 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a556213-c57c-4804-bacd-f86ed9bdd6bf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/images/placeholder.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistScrollerViewBean.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/artist-overview.xhtml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/css/ufo/ufo-base-style.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander.Proxy/AdminAccessAsyncProxy.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander.Proxy/ViewAccessAsyncProxy.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/UFO.Services.ViewAccess.SessionToken.datasource" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/UFO.Services.ViewAccess.User.datasource" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/ViewAccess2.xsd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Common/IVenueDaoExtension.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.REST/Controllers/ValuesController.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.REST/Project_Readme.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.REST/Properties/PublishProfiles/UFOServerRESTAPI.pubxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.REST/Properties/launchSettings.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.REST/Startup.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.REST/UFO.Server.REST.xproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.REST/appsettings.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.REST/project.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.REST/wwwroot/web.config" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/ServiceLocator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/DomainObject.class" afterPath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/DomainObject.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/GetArtist.class" afterPath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/GetArtist.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/GetArtistResponse.class" afterPath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/GetArtistResponse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/ObjectFactory.class" afterPath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/ObjectFactory.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/WebAccessServiceSoap.class" afterPath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/WebAccessServiceSoap.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/InitializeContextListener.class" afterPath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/InitializeContextListener.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/PerformanceCollectionBean.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/VenueBean.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/VenueCollectionBean.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/resources/js/ufo/gmaps-code.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/venue.xhtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/venuelist.xhtml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/beans/ArtistScrollerViewBean.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.class" afterPath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/beans/LoginBean.class" afterPath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/beans/LoginBean.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/util/Constants.class" afterPath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/util/Constants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander.Proxy/AdminAccessProxy.cs" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander.Proxy/AdminAccessProxy.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander.Proxy/UFO.Commander.Proxy.csproj" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander.Proxy/UFO.Commander.Proxy.csproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander.Proxy/ViewAccessProxy.cs" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander.Proxy/ViewAccessProxy.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander/Converters/NullToImageSourceConverter.cs" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander/Converters/NullToImageSourceConverter.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander/ViewModel/ArtistOverviewViewModel.cs" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander/ViewModel/ArtistOverviewViewModel.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander/ViewModel/ArtistSelectionViewModel.cs" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander/ViewModel/ArtistSelectionViewModel.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/AdminAccess1.xsd" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/AdminAccess1.xsd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/AdminAccess3.xsd" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/AdminAccess3.xsd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/AdminAccessWs.wsdl" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/AdminAccessWs.wsdl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/Reference.cs" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/Reference.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/configuration.svcinfo" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/configuration.svcinfo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/configuration91.svcinfo" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/configuration91.svcinfo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/AdminAccessWs.wsdl" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/AdminAccessWs.wsdl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/Reference.cs" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/Reference.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/Reference.svcmap" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/Reference.svcmap" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/ViewAccess1.xsd" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/ViewAccess1.xsd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/ViewAccess3.xsd" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/ViewAccess3.xsd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/configuration.svcinfo" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/configuration.svcinfo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/configuration91.svcinfo" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/configuration91.svcinfo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/UFO.Services.Generated.csproj" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/UFO.Services.Generated.csproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/app.config" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/app.config" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/AAdminAccessBll.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/AAdminAccessBll.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/AViewAccessBll.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/AViewAccessBll.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/IAdminAccessBll.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/IAdminAccessBll.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/IViewAccessBll.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Common/IViewAccessBll.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Impl/AdminAccessBll.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Impl/AdminAccessBll.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Impl/ViewAccessBll.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Bll.Impl/ViewAccessBll.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/Program.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/Program.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Common/IArtistDao.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Common/IArtistDao.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Common/IPerformanceDao.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Common/IPerformanceDao.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Common/IPerformanceDaoExtension.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Common/IPerformanceDaoExtension.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Common/IUserDAO.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Common/IUserDAO.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Common/IVenueDao.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Common/IVenueDao.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Common/UFO.Server.Dal.Common.csproj" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Common/UFO.Server.Dal.Common.csproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Dummy/ArtistDao.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Dummy/ArtistDao.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Dummy/PerformanceDao.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Dummy/PerformanceDao.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Dummy/UserDeo.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Dummy/UserDeo.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Dummy/VenueDao.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.Dummy/VenueDao.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.MySql/ArtistDao.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.MySql/ArtistDao.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.MySql/PerformanceDao.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.MySql/PerformanceDao.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.MySql/SqlQueries.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.MySql/SqlQueries.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.MySql/UserDao.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.MySql/UserDao.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.MySql/VenueDao.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Dal.MySql/VenueDao.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Domain/Constants.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Domain/Constants.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Domain/Performance.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Domain/Performance.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/AdminAccessWs.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/AdminAccessWs.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/ViewAccessWs.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/ViewAccessWs.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Test/ServerBllTests.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Test/ServerBllTests.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Test/ServerDalTests.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Test/ServerDalTests.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Test/Service References/WebAccessService/WebAccessService.wsdl" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Test/Service References/WebAccessService/WebAccessService.wsdl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Web/WebAccessService.asmx.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Web/WebAccessService.asmx.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.sln" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.sln" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.class" afterPath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.class" afterPath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/DomainObject.java" afterPath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/DomainObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/GetArtist.java" afterPath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/GetArtist.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/GetArtistResponse.java" afterPath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/GetArtistResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/ObjectFactory.java" afterPath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/ObjectFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/WebAccessServiceSoap.java" afterPath="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/WebAccessServiceSoap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/InitializeContextListener.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/InitializeContextListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/LoginBean.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/LoginBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/Constants.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/templates/basicTemplate.xhtml" afterPath="$PROJECT_DIR$/web/WEB-INF/templates/basicTemplate.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/templates/footer.xhtml" afterPath="$PROJECT_DIR$/web/WEB-INF/templates/footer.xhtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/templates/header.xhtml" afterPath="$PROJECT_DIR$/web/WEB-INF/templates/header.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/artist.xhtml" afterPath="$PROJECT_DIR$/web/artist.xhtml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/ServiceLocator.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/ServiceLocator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.html" afterPath="$PROJECT_DIR$/web/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistScrollerViewBean.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistCollectionBean.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/artist-overview.xhtml" afterPath="$PROJECT_DIR$/web/artistlist.xhtml" />
     </list>
     <ignored path="UFO.Web.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -123,105 +44,122 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="header.xhtml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/header.xhtml">
+      <file leaf-file-name="venuelist.xhtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/venuelist.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5">
-              <caret line="13" column="71" selection-start-line="13" selection-start-column="71" selection-end-line="13" selection-end-column="71" />
+            <state vertical-scroll-proportion="-4.576923">
+              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="artist.xhtml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="artist.xhtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/artist.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5953307">
-              <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+            <state vertical-scroll-proportion="-1.3076923">
+              <caret line="54" column="115" selection-start-line="54" selection-start-column="115" selection-end-line="54" selection-end-column="115" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArtistBean.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#574#575#0" expanded="true" />
-                <element signature="e#625#626#0" expanded="true" />
-                <element signature="e#658#659#0" expanded="true" />
-                <element signature="e#687#688#0" expanded="true" />
-                <element signature="e#720#721#0" expanded="true" />
-                <element signature="e#748#749#0" expanded="true" />
-                <element signature="e#774#775#0" expanded="true" />
-                <element signature="e#799#800#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UfoDelegate.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UfoWebService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1726#1727#0" expanded="true" />
-                <element signature="e#1777#1778#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArtistScrollerViewBean.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistScrollerViewBean.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="49" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#669#670#0" expanded="true" />
-                <element signature="e#725#726#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="artist-overview.xhtml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/artist-overview.xhtml">
+      <file leaf-file-name="venue.xhtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/venue.xhtml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-14.538462">
-              <caret line="37" column="17" selection-start-line="9" selection-start-column="0" selection-end-line="37" selection-end-column="17" />
+              <caret line="66" column="23" selection-start-line="38" selection-start-column="8" selection-end-line="66" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Performance.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/Performance.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="58" column="31" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="31" />
               <folding>
-                <marker date="1452958837296" expanded="true" signature="924:1236" placeholder="..." />
-                <marker date="1452958837296" expanded="true" signature="1036:1195" placeholder="..." />
+                <element signature="e#1664#1665#0" expanded="true" />
+                <element signature="e#1695#1696#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ufo-base-style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/resources/css/ufo/ufo-base-style.css">
+      <file leaf-file-name="PerformanceCollectionBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/PerformanceCollectionBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.230769">
-              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1647#1648#0" expanded="true" />
+                <element signature="e#1691#1692#0" expanded="true" />
+                <element signature="e#1897#1898#0" expanded="true" />
+                <element signature="e#1940#1941#0" expanded="true" />
+                <element signature="e#1974#1975#0" expanded="true" />
+                <element signature="e#2004#2005#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UfoWebService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4962963">
+              <caret line="90" column="42" selection-start-line="90" selection-start-column="42" selection-end-line="90" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetPerformancesPerArtist.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/GetPerformancesPerArtist.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+              <folding>
+                <element signature="e#1366#1367#0" expanded="true" />
+                <element signature="e#1401#1402#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseDistributedPropertySet.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/WebServiceClient/lib/jaxws-rt.jar!/org/jvnet/ws/message/BaseDistributedPropertySet.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.9259257">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasePropertySet.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/WebServiceClient/lib/jaxws-rt.jar!/org/jvnet/ws/message/BasePropertySet.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.296296">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VenueBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/VenueBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#593#594#0" expanded="true" />
+                <element signature="e#647#648#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -235,6 +173,7 @@
         <option value="Interface" />
         <option value="CSS File" />
         <option value="XHTML File" />
+        <option value="JavaScript File" />
         <option value="Class" />
       </list>
     </option>
@@ -251,7 +190,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/InitializeContextListener.java" />
-        <option value="$PROJECT_DIR$/web/index.html" />
         <option value="$PROJECT_DIR$/web/resources/css/primeui/primeui-3.0.0-min.css" />
         <option value="$PROJECT_DIR$/web/javax.faces.resource/css/default/bsf.css" />
         <option value="$PROJECT_DIR$/web/resources/javax.faces.resource/css/default/bsf.css" />
@@ -263,7 +201,6 @@
         <option value="$PROJECT_DIR$/web/errors/failure.xhtml" />
         <option value="$PROJECT_DIR$/web/failure.xhtml" />
         <option value="$PROJECT_DIR$/artist.xhtml" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/templates/footer.xhtml" />
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/FacesUtil.java" />
         <option value="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/WebAccessServiceSoap.java" />
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/Hash.java" />
@@ -271,7 +208,6 @@
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/ContextHelper.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/faces-config.xml" />
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/SessionBean.java" />
-        <option value="$PROJECT_DIR$/web/index.xhtml" />
         <option value="$PROJECT_DIR$/web/login.xhtml" />
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/ServiceLocator.java" />
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/UfoDelegateBean.java" />
@@ -285,13 +221,25 @@
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistScrollerViewBean.java" />
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/Constants.java" />
         <option value="$PROJECT_DIR$/web/resources/css/default/bsf.css" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/templates/basicTemplate.xhtml" />
         <option value="$PROJECT_DIR$/web/resources/css/ufo/ufo-base-style.css" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/templates/header.xhtml" />
-        <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.java" />
+        <option value="$PROJECT_DIR$/web/artist-overview.xhtml" />
+        <option value="$PROJECT_DIR$/web/index.html" />
+        <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/VenueCollectionPerArtistBean.java" />
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.java" />
-        <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java" />
+        <option value="$PROJECT_DIR$/web/index.xhtml" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/templates/footer.xhtml" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/templates/header.xhtml" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/templates/basicTemplate.xhtml" />
+        <option value="$PROJECT_DIR$/web/resources/js/ufo/gmaps-code.js" />
+        <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/VenueCollectionBean.java" />
+        <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/VenueBean.java" />
+        <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.java" />
+        <option value="$PROJECT_DIR$/web/artistlist.xhtml" />
+        <option value="$PROJECT_DIR$/web/venuelist.xhtml" />
+        <option value="$PROJECT_DIR$/web/venue.xhtml" />
+        <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/PerformanceCollectionBean.java" />
         <option value="$PROJECT_DIR$/web/artist.xhtml" />
+        <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java" />
       </list>
     </option>
   </component>
@@ -463,26 +411,8 @@
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="UFO.Web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UFO.Web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -508,7 +438,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UFO.Web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UFO.Web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1126,16 +1074,16 @@
       <workItem from="1452718452741" duration="13220000" />
       <workItem from="1452774687753" duration="20834000" />
       <workItem from="1452888253299" duration="1161000" />
-      <workItem from="1452943769954" duration="16526000" />
+      <workItem from="1452943769954" duration="35794000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71986000" />
+    <option name="totallyTimeSpent" value="91254000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1158,7 +1106,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39957717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1186,8 +1134,20 @@
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java</url>
+          <line>32</line>
+          <properties />
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java</url>
+          <line>93</line>
+          <properties />
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="30" />
+      <option name="time" value="42" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1196,117 +1156,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/ServiceLocator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="19" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/basicTemplate.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="76" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/faces-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="52" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="70" selection-start-line="15" selection-start-column="70" selection-end-line="15" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/footer.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/header.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/basicTemplate.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/faces-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_66/src.zip!/java/lang/ClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="1937" column="0" selection-start-line="1937" selection-start-column="0" selection-end-line="1937" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/UFO.Web.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javax.faces-2.2.1.jar!/com/sun/faces/context/ExternalContextImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.185185">
-          <caret line="580" column="0" selection-start-line="580" selection-start-column="0" selection-end-line="580" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ideaLibSources/javax.faces-2.2.1-sources.jar!/com/sun/faces/context/ExternalContextImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="940" column="16" selection-start-line="940" selection-start-column="16" selection-end-line="940" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/resources/css/ufo/normalize.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4527163">
@@ -1325,13 +1174,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.2692308">
           <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/failure.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769">
-          <caret line="6" column="44" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1415,67 +1257,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/footer.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/login.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7692308">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/InitializeContextListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4722222">
           <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/SessionBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/LoginBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1260#1261#0" expanded="true" />
-            <element signature="e#1288#1289#0" expanded="true" />
-            <element signature="e#1329#1330#0" expanded="true" />
-            <element signature="e#1363#1364#0" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#1428#1429#0" expanded="true" />
-            <element signature="e#1475#1476#0" expanded="true" />
-            <element signature="e#1515#1516#0" expanded="true" />
-            <element signature="e#1554#1555#0" expanded="true" />
-            <element signature="e#1589#1590#0" expanded="true" />
-            <element signature="e#1644#1645#0" expanded="true" />
-            <element signature="e#1692#1693#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1538,14 +1324,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/basicTemplate.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075">
-          <caret line="11" column="66" selection-start-line="11" selection-start-column="66" selection-end-line="11" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/resources/css/ufo/ufo-base-style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.230769">
@@ -1554,33 +1332,156 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/header.xhtml">
+    <entry file="file://$PROJECT_DIR$/web/failure.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5">
-          <caret line="13" column="71" selection-start-line="13" selection-start-column="71" selection-end-line="13" selection-end-column="71" />
+        <state vertical-scroll-proportion="-1.5769231">
+          <caret line="6" column="44" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/artist-overview.xhtml">
+    <entry file="file://$PROJECT_DIR$/web/login.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.538462">
-          <caret line="37" column="17" selection-start-line="9" selection-start-column="0" selection-end-line="37" selection-end-column="17" />
+        <state vertical-scroll-proportion="-10.307693">
+          <caret line="21" column="119" selection-start-line="21" selection-start-column="94" selection-end-line="21" selection-end-column="119" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_66/src.zip!/java/net/SocketInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="93" column="23" selection-start-line="93" selection-start-column="23" selection-end-line="93" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/resources/js/ufo/gmaps-code.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/header.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.961538">
+          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/footer.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/basicTemplate.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
           <folding>
-            <marker date="1452958837296" expanded="true" signature="924:1236" placeholder="..." />
-            <marker date="1452958837296" expanded="true" signature="1036:1195" placeholder="..." />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistScrollerViewBean.java">
+    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/LoginBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="49" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="49" />
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/SessionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#669#670#0" expanded="true" />
-            <element signature="e#725#726#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistCollectionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#667#668#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.153846">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.230769">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ideaLibSources/javax.faces-2.2.1-sources.jar!/com/sun/faces/lifecycle/RestoreViewPhase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58518517">
+          <caret line="209" column="0" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/artistlist.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.346153">
+          <caret line="37" column="23" selection-start-line="11" selection-start-column="8" selection-end-line="37" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/BlobData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="18" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
+          <folding>
+            <element signature="e#1943#1944#0" expanded="true" />
+            <element signature="e#1970#1971#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/VenueCollectionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#716#717#0" expanded="true" />
+            <element signature="e#754#755#0" expanded="true" />
+            <element signature="e#783#784#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1588,56 +1489,118 @@
     <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.xhtml">
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_66/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16536964">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="744" column="0" selection-start-line="744" selection-start-column="0" selection-end-line="744" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java">
+    <entry file="file://$PROJECT_DIR$/web/venuelist.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923">
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/Performance.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <caret line="58" column="31" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1726#1727#0" expanded="true" />
-            <element signature="e#1777#1778#0" expanded="true" />
+            <element signature="e#1664#1665#0" expanded="true" />
+            <element signature="e#1695#1696#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.java">
+    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/VenueBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#625#626#0" expanded="true" />
-            <element signature="e#658#659#0" expanded="true" />
-            <element signature="e#687#688#0" expanded="true" />
-            <element signature="e#720#721#0" expanded="true" />
-            <element signature="e#748#749#0" expanded="true" />
-            <element signature="e#774#775#0" expanded="true" />
-            <element signature="e#799#800#0" expanded="true" />
+            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#647#648#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/venue.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.538462">
+          <caret line="66" column="23" selection-start-line="38" selection-start-column="8" selection-end-line="66" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/PerformanceCollectionBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="26" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1647#1648#0" expanded="true" />
+            <element signature="e#1691#1692#0" expanded="true" />
+            <element signature="e#1897#1898#0" expanded="true" />
+            <element signature="e#1940#1941#0" expanded="true" />
+            <element signature="e#1974#1975#0" expanded="true" />
+            <element signature="e#2004#2005#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/artist.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5953307">
-          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        <state vertical-scroll-proportion="-1.3076923">
+          <caret line="54" column="115" selection-start-line="54" selection-start-column="115" selection-end-line="54" selection-end-column="115" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/GetPerformancesPerArtist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <element signature="e#1366#1367#0" expanded="true" />
+            <element signature="e#1401#1402#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/WebServiceClient/lib/jaxws-rt.jar!/org/jvnet/ws/message/BasePropertySet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.296296">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/WebServiceClient/lib/jaxws-rt.jar!/org/jvnet/ws/message/BaseDistributedPropertySet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.9259257">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4962963">
+          <caret line="90" column="42" selection-start-line="90" selection-start-column="42" selection-end-line="90" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

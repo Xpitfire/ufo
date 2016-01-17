@@ -4,9 +4,11 @@ import at.fhooe.hgb.wea5.ufo.backend.ServiceLocator;
 import at.fhooe.hgb.wea5.ufo.backend.UfoDelegate;
 import at.fhooe.hgb.wea5.ufo.web.generated.Artist;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author: Dinu Marius-Constantin
@@ -14,24 +16,18 @@ import java.io.Serializable;
  */
 @ManagedBean
 @ViewScoped
-public class ArtistBean implements Serializable {
+public class ArtistCollectionBean implements Serializable {
+
     private UfoDelegate delegate = ServiceLocator.getInstance().getUfoDelegate();
-    private Artist artist;
-    private int id;
+    private List<Artist> artists;
 
+    @PostConstruct
     public void init() {
-        artist = delegate.getArtistById(id);
+        artists = delegate.getNextArtistsPage();
     }
 
-    public Artist getArtist() {
-        return artist;
+    public List<Artist> getArtists() {
+        return artists;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
 }

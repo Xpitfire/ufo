@@ -70,17 +70,17 @@ namespace UFO.Server.Bll.Impl
 
         public override List<Performance> GetPerformancesPerDate(DateTime date)
         {
-            return PerformanceDao.SelectByDateTime(date).ResultObject;
+            return PerformanceDao.SelectByDate(date).ResultObject;
         }
 
         public override List<Performance> GetPerformancesPerArtist(Artist artist)
         {
-            return PerformanceDao.SelectByArtist(artist).ResultObject;
+            return artist != null ? PerformanceDao.SelectByArtistId(artist.ArtistId).ResultObject : null;
         }
 
         public override List<Performance> GetPerformancesPerVenue(Venue venue)
         {
-            return PerformanceDao.SelectByVenue(venue).ResultObject;
+            return venue != null ? PerformanceDao.SelectByVenueId(venue.VenueId).ResultObject : null;
         }
 
         public override List<Performance> GetLatestPerformances()

@@ -1,6 +1,8 @@
 package at.fhooe.hgb.wea5.ufo.backend;
 
 import at.fhooe.hgb.wea5.ufo.web.generated.Artist;
+import at.fhooe.hgb.wea5.ufo.web.generated.Performance;
+import at.fhooe.hgb.wea5.ufo.web.generated.Venue;
 
 import java.util.List;
 
@@ -10,8 +12,15 @@ import java.util.List;
  */
 public interface UfoDelegate {
 
-    List<Artist> getFirstArtistsPage();
     List<Artist> getNextArtistsPage();
 
     Artist getArtistById(int id);
+
+    Venue getVenueById(String venueId);
+    List<Venue> getNextVenuesPage();
+
+    List<Performance> getPerformancesPerArtist(Artist artist);
+    List<Performance> getPerformancesPerVenue(Venue venue);
+    List<Performance> getNextPerformancesPage();
+
 }
