@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="UFO.Server.Web.REST.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WebAccessService" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:5002/WebAccessService.asmx</Value>
+    </Setting>
+    <Setting Name="DaoProviderClassName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DaoProviderFactory</Value>
+    </Setting>
+    <Setting Name="DaoProviderNameSpace" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UFO.Server.Dal.MySql</Value>
+    </Setting>
+    <Setting Name="DaoProviderAssemblyName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UFO.Server.Dal.MySql</Value>
+    </Setting>
+    <Setting Name="BllProviderClassName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">BllProviderFactory</Value>
+    </Setting>
+    <Setting Name="BllProviderNameSpace" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UFO.Server.Bll.Impl</Value>
+    </Setting>
+    <Setting Name="BllProviderAssemblyName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UFO.Server.Bll.Impl</Value>
+    </Setting>
+    <Setting Name="DbConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Server=sql4.freemysqlhosting.net;Port=3306;Database=sql4103380;Uid=sql4103380;Pwd=YWuCAqEDQV;</Value>
+    </Setting>
+    <Setting Name="DbProviderName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">MySQL Data Provider</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -37,7 +37,9 @@ namespace UFO.Server.Dal.MySql
         public override DbConnection CreateDbConnection(string dbProviderName = null, string connectionString = null)
         {
             DbProviderName = dbProviderName ?? Settings.Default.DbProviderName;
-            ConnectionString = connectionString ?? Settings.Default.DbConnectionString;
+            //ConnectionString = connectionString ?? Settings.Default.DbConnectionString;
+            ConnectionString =
+                @"Server=sql4.freemysqlhosting.net;Port=3306;Database=sql4103380;Uid=sql4103380;Pwd=YWuCAqEDQV;";
             return GetOpenConnection();
         }
 
