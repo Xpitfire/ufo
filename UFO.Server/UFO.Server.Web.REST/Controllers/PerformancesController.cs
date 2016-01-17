@@ -4,15 +4,15 @@ using System.Linq;
 using System.Web.Http;
 using UFO.Server.Bll.Common;
 using UFO.Server.Common;
+using UFO.Server.Dal.Common;
+using UFO.Server.Dal.MySql;
 using UFO.Server.Domain;
 
 namespace UFO.Server.Web.REST.Controllers
 {
     public class PerformancesController : ApiController
     {
-        private static AViewAccessBll _viewAccessDelegate;
-        private static readonly AViewAccessBll ViewAccessDelegate =
-            _viewAccessDelegate ?? (_viewAccessDelegate = FactoryProvider.GetFactory<IBllProviderFactory>(BllProviderSettings.Instance).CreateAViewAccessBll());
+        
 
         //// GET api/values
         //public IEnumerable<string> Get()
@@ -43,7 +43,11 @@ namespace UFO.Server.Web.REST.Controllers
 
         public List<Performance> Get()
         {
-            return ViewAccessDelegate.GetLatestPerformances();
+            return
+                FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance)
+                    .CreatePerformanceDao()
+                    .SelectLastestPerformances()
+                    .ResultObject;
         }
     }
 }

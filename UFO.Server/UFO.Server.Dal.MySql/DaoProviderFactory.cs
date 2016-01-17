@@ -23,7 +23,7 @@ using PostSharp.Extensibility;
 
 namespace UFO.Server.Dal.MySql
 {
-    class DaoProviderFactory : IDaoProviderFactory
+    public class DaoProviderFactory : IDaoProviderFactory
     {
         private readonly ADbCommProvider _dbCommProvider;
 

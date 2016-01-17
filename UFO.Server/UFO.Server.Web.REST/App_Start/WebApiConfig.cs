@@ -14,7 +14,7 @@ namespace UFO.Server.Web.REST
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            //config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
             config.Routes.MapHttpRoute(
                 name: "UFO API",
