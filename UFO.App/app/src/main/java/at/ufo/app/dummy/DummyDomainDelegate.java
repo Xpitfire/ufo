@@ -9,6 +9,7 @@ import java.util.List;
 
 import at.ufo.app.domain.DomainDelegate;
 import at.ufo.app.domain.entities.Artist;
+import at.ufo.app.domain.entities.Page;
 import at.ufo.app.domain.entities.Performance;
 import at.ufo.app.domain.entities.Venue;
 
@@ -64,6 +65,46 @@ public class DummyDomainDelegate implements DomainDelegate {
 
     @Override
     public List<Performance> getPerformancesByKeyword(String keyword) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public List<Performance> getPerformancesByArtist(Artist artist) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public List<Performance> getPerformancesByVenue(Venue venue) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public List<Performance> getPerformancesByDate(Date date) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public List<Performance> getPerformances(Page page) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public List<Artist> getArtists(Page page) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public List<Artist> getArtistsByKeyword(String keyword) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public List<Venue> getVenues(Page page) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public List<Venue> getVenuesByKeyword(Page page) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }

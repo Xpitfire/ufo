@@ -7,6 +7,8 @@ import java.util.List;
 
 import at.ufo.app.db.DbAccess;
 import at.ufo.app.domain.DomainDelegate;
+import at.ufo.app.domain.DomainFactory;
+import at.ufo.app.domain.entities.Artist;
 import at.ufo.app.domain.entities.Performance;
 
 /**
@@ -23,7 +25,7 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        delegate = new DbAccess();
+        delegate = DomainFactory.getDefaultDelegate();
     }
 
     public void testUpcomingPerformancesAccess() {
@@ -31,8 +33,43 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
         assertTrue(!performances.isEmpty());
     }
 
-    public void testKeywordPerformancesAccess() {
+    public void testPerformancesKeywordAccess() {
         List<Performance> performances = delegate.getPerformancesByKeyword("Billy");
         assertTrue(!performances.isEmpty());
+    }
+
+    public void testPerformancesByArtistAccess() {
+        Artist a = new Artist();
+        a.setArtistId(1);
+        List<Performance> performances = delegate.getPerformancesByArtist(a);
+        assertTrue(!performances.isEmpty());
+    }
+
+    public void testPerformancesByVenueAccess() {
+
+    }
+
+    public void testPerformancesByDateAccess() {
+
+    }
+
+    public void testPerformancesLimitAccess() {
+
+    }
+
+    public void testVenuesLimitAccess() {
+
+    }
+
+    public void testVenuesByKeywordAccess() {
+
+    }
+
+    public void testArtistsLimitAccess() {
+
+    }
+
+    public void testArtistsByKeywordAccess() {
+
     }
 }

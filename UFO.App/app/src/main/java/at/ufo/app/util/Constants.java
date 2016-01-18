@@ -8,4 +8,5 @@ public class Constants {
     public static final String IMAGE_PLACEHOLDER = "placeholder.png";
 
     public static final String DATE_FORMAT = "yyyy-mm-dd HH:mm:ss";
+    public static final int REQUEST_SIZE = 50;
 }

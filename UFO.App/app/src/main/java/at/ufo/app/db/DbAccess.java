@@ -20,6 +20,7 @@ import java.util.concurrent.Future;
 
 import at.ufo.app.domain.DomainDelegate;
 import at.ufo.app.domain.entities.Artist;
+import at.ufo.app.domain.entities.Page;
 import at.ufo.app.domain.entities.Performance;
 import at.ufo.app.domain.entities.Venue;
 import at.ufo.app.util.Constants;
@@ -33,25 +34,21 @@ public class DbAccess implements DomainDelegate {
     private static final ExecutorService executor = Executors.newFixedThreadPool(2);
     private DateFormat df = new SimpleDateFormat(Constants.DATE_FORMAT);
 
+    // Administration web page: http://www.phpmyadmin.co/index.php
     private static final String url = "jdbc:mysql://sql4.freemysqlhosting.net:3306/sql4103380";
     private static final String user = "sql4103380";
     private static final String pass = "YWuCAqEDQV";
 
-    private Connection createConnection(boolean autoCommit) {
+    private Connection createConnection() {
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(url, user, pass);
-            con.setAutoCommit(autoCommit);
             Logger.LogInfo("Database connected to URL: " + url);
         } catch(Exception e) {
             Logger.LogSevere("Database connection failed due to a connection exception!", e);
         }
         return con;
-    }
-
-    private Connection createConnection() {
-        return createConnection(true);
     }
 
     private Venue createVenue(String venueId, String name, String locationId, String locationName, double longitude, double latitude) {
@@ -114,7 +111,7 @@ public class DbAccess implements DomainDelegate {
 
     @Override
     public List<Performance> getUpcomingPerformances() {
-        final List<Performance>  performances = new ArrayList<>();
+        final List<Performance>  list = new ArrayList<>();
         Callable<List<Performance>> task = new Callable<List<Performance>>() {
             @Override
             public List<Performance> call() throws Exception {
@@ -122,12 +119,12 @@ public class DbAccess implements DomainDelegate {
                      Statement st = con.createStatement();
                      ResultSet rs = st.executeQuery(SqlQueries.SELECT_LATEST_PERFORMANCES)) {
                     while (rs.next()) {
-                        performances.add(createPerformance(rs));
+                        list.add(createPerformance(rs));
                     }
                 } catch (Exception e) {
-                    Logger.LogSevere("Performance data request failed!", e);
+                    Logger.LogSevere("Query request failed!", e);
                 }
-                return performances;
+                return list;
             }
         };
         Future<List<Performance>> future = executor.submit(task);
@@ -136,30 +133,32 @@ public class DbAccess implements DomainDelegate {
         } catch (InterruptedException | ExecutionException e) {
             Logger.LogSevere("Failed to process concurrent Future call!", e);
         }
-        return performances;
+        return list;
     }
 
     @Override
     public List<Performance> getPerformancesByKeyword(final String keyword) {
-        final List<Performance>  performances = new ArrayList<>();
+        final List<Performance>  list = new ArrayList<>();
         Callable<List<Performance>> task = new Callable<List<Performance>>() {
             @Override
             public List<Performance> call() throws Exception {
+                String query = SqlQueries.SELECT_PERFORMANCES_BY_KEYWORD;
                 try (Connection con = createConnection();
-                     PreparedStatement pst = con.prepareStatement(SqlQueries.SELECT_PERFORMANCES_BY_KEYWORD)) {
-                    pst.setString(1, keyword);
-                    pst.setString(2, keyword);
-                    pst.setString(3, keyword);
-                    // TODO: Fistindex range parameter exception
+                     PreparedStatement pst = con.prepareStatement(query)) {
+                    String placeholder = "%" + keyword + "%";
+                    pst.setString(1, placeholder);
+                    pst.setString(2, placeholder);
+                    pst.setString(3, placeholder);
+
                     ResultSet rs = pst.executeQuery();
                     while (rs.next()) {
-                        performances.add(createPerformance(rs));
+                        list.add(createPerformance(rs));
                     }
                     rs.close();
                 } catch (Exception e) {
-                    Logger.LogSevere("Performance data request failed!", e);
+                    Logger.LogSevere("Query data request failed!", e);
                 }
-                return performances;
+                return list;
             }
         };
         Future<List<Performance>> future = executor.submit(task);
@@ -168,7 +167,73 @@ public class DbAccess implements DomainDelegate {
         } catch (InterruptedException | ExecutionException e) {
             Logger.LogSevere("Failed to process concurrent Future call!", e);
         }
-        return performances;
+        return list;
+    }
+
+    @Override
+    public List<Performance> getPerformancesByArtist(final Artist artist) {
+        final List<Performance>  list = new ArrayList<>();
+        Callable<List<Performance>> task = new Callable<List<Performance>>() {
+            @Override
+            public List<Performance> call() throws Exception {
+                String query = SqlQueries.SELECT_PERFORMANCES_BY_ARTIST;
+                try (Connection con = createConnection();
+                     PreparedStatement pst = con.prepareStatement(query)) {
+                    pst.setInt(1, artist.getArtistId());
+
+                    ResultSet rs = pst.executeQuery();
+                    while (rs.next()) {
+                        list.add(createPerformance(rs));
+                    }
+                    rs.close();
+                } catch (Exception e) {
+                    Logger.LogSevere("Query request failed!", e);
+                }
+                return list;
+            }
+        };
+        Future<List<Performance>> future = executor.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Logger.LogSevere("Failed to process concurrent Future call!", e);
+        }
+        return list;
+    }
+
+    @Override
+    public List<Performance> getPerformancesByVenue(Venue venue) {
+        return null;
+    }
+
+    @Override
+    public List<Performance> getPerformancesByDate(Date date) {
+        return null;
+    }
+
+    @Override
+    public List<Performance> getPerformances(Page page) {
+        return null;
+    }
+
+    @Override
+    public List<Artist> getArtists(Page page) {
+        return null;
+    }
+
+    @Override
+    public List<Artist> getArtistsByKeyword(String keyword) {
+        return null;
+    }
+
+    @Override
+    public List<Venue> getVenues(Page page) {
+        return null;
+    }
+
+    @Override
+    public List<Venue> getVenuesByKeyword(Page page) {
+        return null;
     }
 
 }
