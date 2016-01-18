@@ -4,21 +4,17 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import java.util.LinkedList;
 import java.util.List;
 
+import at.ufo.app.domain.DomainDelegate;
+import at.ufo.app.domain.DomainFactory;
 import at.ufo.app.domain.entities.Performance;
-import at.ufo.app.dummy.Performances;
+import at.ufo.app.dummy.DummyDomainDelegate;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,18 +35,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         PerformanceArrayAdapter paa = new PerformanceArrayAdapter(this);
-        List<Performance> pl = Performances.GetDummyPerformances();
+        List<Performance> pl = DomainFactory.getDefaultDelegate().getUpcomingPerformances();
 
         paa.addAll(pl);
         ListView lv = (ListView)findViewById(R.id.list_view_performance);
         lv.setAdapter(paa);
 
-
     }
-
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -66,6 +57,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 }

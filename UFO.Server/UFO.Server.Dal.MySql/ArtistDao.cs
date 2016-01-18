@@ -64,7 +64,8 @@ namespace UFO.Server.Dal.MySql
                 artist.Category = new Category
                 {
                     CategoryId = _dbCommProvider.CastDbObject<string>(dataReader, "CategoryId"),
-                    Name = _dbCommProvider.CastDbObject<string>(dataReader, "CategoryName")
+                    Name = _dbCommProvider.CastDbObject<string>(dataReader, "CategoryName"),
+					Color = _dbCommProvider.CastDbObject<string>(dataReader, "CategoryColor")
                 };
             }
             return artist;

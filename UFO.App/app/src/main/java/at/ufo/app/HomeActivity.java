@@ -10,7 +10,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import at.ufo.app.domain.entities.Performance;
-import at.ufo.app.dummy.Performances;
+import at.ufo.app.dummy.DummyDomainDelegate;
 
 /**
  * Created by Flow on 17.01.16.
@@ -19,15 +19,17 @@ public class HomeActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*
         setContentView(R.layout.content_main);
 
 
         PerformanceArrayAdapter paa = new PerformanceArrayAdapter(this);
-        List<Performance> pl = Performances.GetDummyPerformances();
+        List<Performance> pl = DummyDomainDelegate.GetDummyPerformances();
 
         paa.addAll(pl);
 
         setListAdapter(paa);
+        */
     }
 
     @Override

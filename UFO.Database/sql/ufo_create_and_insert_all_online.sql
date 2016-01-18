@@ -11122,7 +11122,7 @@ CREATE TABLE IF NOT EXISTS `venueview` (
 --
 DROP TABLE IF EXISTS `artistview`;
 
-CREATE VIEW `artistview`  AS  select `a`.`ArtistId` AS `ArtistId`,`a`.`Name` AS `ArtistName`,`a`.`EMail` AS `EMail`,`a`.`CategoryId` AS `CategoryId`,`ca`.`Name` AS `CategoryName`,`a`.`CountryCode` AS `CountryCode`,`co`.`Name` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo` from ((`artist` `a` left join `category` `ca` on((`a`.`CategoryId` = `ca`.`CategoryId`))) join `country` `co`) where (`a`.`CountryCode` = `co`.`Code`) ;
+CREATE VIEW `artistview`  AS  select `a`.`ArtistId` AS `ArtistId`,`a`.`Name` AS `ArtistName`,`a`.`EMail` AS `EMail`,`a`.`CategoryId` AS `CategoryId`,`ca`.`Name` AS `CategoryName`,`ca`.`Color` AS `CategoryColor`,`a`.`CountryCode` AS `CountryCode`,`co`.`Name` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo` from ((`artist` `a` left join `category` `ca` on((`a`.`CategoryId` = `ca`.`CategoryId`))) join `country` `co`) where (`a`.`CountryCode` = `co`.`Code`) ;
 
 -- --------------------------------------------------------
 
@@ -11131,7 +11131,7 @@ CREATE VIEW `artistview`  AS  select `a`.`ArtistId` AS `ArtistId`,`a`.`Name` AS 
 --
 DROP TABLE IF EXISTS `performanceview`;
 
-CREATE VIEW `performanceview`  AS  select `a`.`ArtistId` AS `ArtistId`,`p`.`Date` AS `Date`,`v`.`VenueId` AS `VenueId`,`a`.`ArtistName` AS `ArtistName`,`a`.`EMail` AS `EMail`,`a`.`CategoryId` AS `CategoryId`,`a`.`CategoryName` AS `CategoryName`,`a`.`CountryCode` AS `CountryCode`,`a`.`CountryName` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo`,`v`.`VenueName` AS `VenueName`,`v`.`LocationId` AS `LocationId`,`v`.`Longitude` AS `Longitude`,`v`.`Latitude` AS `Latitude`,`v`.`LocationName` AS `LocationName` from (`artistview` `a` join (`performance` `p` left join `venueview` `v` on((`p`.`VenueId` = `v`.`VenueId`)))) where (`a`.`ArtistId` = `p`.`ArtistId`) ;
+CREATE VIEW `performanceview`  AS  select `a`.`ArtistId` AS `ArtistId`,`p`.`Date` AS `Date`,`v`.`VenueId` AS `VenueId`,`a`.`ArtistName` AS `ArtistName`,`a`.`EMail` AS `EMail`,`a`.`CategoryId` AS `CategoryId`,`a`.`CategoryName` AS `CategoryName`,`a`.`CategoryColor` AS `CategoryColor`,`a`.`CountryCode` AS `CountryCode`,`a`.`CountryName` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo`,`v`.`VenueName` AS `VenueName`,`v`.`LocationId` AS `LocationId`,`v`.`Longitude` AS `Longitude`,`v`.`Latitude` AS `Latitude`,`v`.`LocationName` AS `LocationName` from (`artistview` `a` join (`performance` `p` left join `venueview` `v` on((`p`.`VenueId` = `v`.`VenueId`)))) where (`a`.`ArtistId` = `p`.`ArtistId`) ;
 
 -- --------------------------------------------------------
 

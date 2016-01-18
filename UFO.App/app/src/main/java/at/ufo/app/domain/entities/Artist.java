@@ -10,6 +10,7 @@ public class Artist {
     private String category;
     private String categoryColor;
     private String country;
+    private String countryCode;
     private String picture;
     private String promoVideo;
 
@@ -35,6 +36,14 @@ public class Artist {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
     public String getCountry() {

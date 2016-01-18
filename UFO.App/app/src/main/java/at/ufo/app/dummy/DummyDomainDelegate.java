@@ -1,9 +1,13 @@
 package at.ufo.app.dummy;
 
+import com.mysql.jdbc.NotImplemented;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import at.ufo.app.domain.DomainDelegate;
 import at.ufo.app.domain.entities.Artist;
 import at.ufo.app.domain.entities.Performance;
 import at.ufo.app.domain.entities.Venue;
@@ -11,7 +15,7 @@ import at.ufo.app.domain.entities.Venue;
 /**
  * Created by Flow on 17.01.16.
  */
-public class Performances {
+public class DummyDomainDelegate implements DomainDelegate {
 
     private static Artist NewArtist(int id, String n, String ca, String co, String cou) {
         Artist a = new Artist();
@@ -42,8 +46,9 @@ public class Performances {
         return p;
     }
 
-    public static List<Performance> GetDummyPerformances() {
-        LinkedList<Performance> l = new LinkedList<>();
+    @Override
+    public List<Performance> getUpcomingPerformances() {
+        List<Performance> l = new ArrayList<>();
         l.add(NewPerformance(NewVenue("R1","Altes Rathaus","HA","Hauptplatz",14.1,14.1), NewArtist(0,"Blink 182","MU","#ff0000","US"), new Date(2016,07,11,14,00)));
         l.add(NewPerformance(NewVenue("R1","Altes Rathaus","HA","Hauptplatz",14.1,14.1), NewArtist(1,"Sum 41","MU","#00ff00","US"), new Date(2016,07,11,15,00)));
         l.add(NewPerformance(NewVenue("P4","Platz","HA","Hauptplatz",14.1,14.1), NewArtist(2,"Jon Lajoie","MU","#0000ff","CA"), new Date(2016,07,11,16,00)));
@@ -55,5 +60,10 @@ public class Performances {
         l.add(NewPerformance(NewVenue("P4","Platz","HA","Hauptplatz",14.1,14.1), NewArtist(8,"Savlonic","MU","#432ff5","UK"), new Date(2016,07,11,22,00)));
         l.add(NewPerformance(NewVenue("R1","Altes Rathaus","HA","Hauptplatz",14.1,14.1), NewArtist(9,"Mr. Oizo","MU","#432ff5","FR"), new Date(2016,07,11,23,00)));
         return l;
+    }
+
+    @Override
+    public List<Performance> getPerformancesByKeyword(String keyword) {
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }
