@@ -227,6 +227,11 @@ public class DbAccess implements DomainDelegate {
     }
 
     @Override
+    public Artist getArtistById(int id) {
+        return null;
+    }
+
+    @Override
     public List<Venue> getVenues(Page page) {
         return null;
     }
@@ -234,6 +239,16 @@ public class DbAccess implements DomainDelegate {
     @Override
     public List<Venue> getVenuesByKeyword(Page page) {
         return null;
+    }
+
+    @Override
+    public Venue getVenueById(String id) {
+        return null;
+    }
+
+    @Override
+    public boolean isConnected() {
+        return false;
     }
 
 }

@@ -99,6 +99,11 @@ public class DummyDomainDelegate implements DomainDelegate {
     }
 
     @Override
+    public Artist getArtistById(int id) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
     public List<Venue> getVenues(Page page) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
@@ -106,5 +111,15 @@ public class DummyDomainDelegate implements DomainDelegate {
     @Override
     public List<Venue> getVenuesByKeyword(Page page) {
         throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public Venue getVenueById(String id) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
+    public boolean isConnected() {
+        return true;
     }
 }

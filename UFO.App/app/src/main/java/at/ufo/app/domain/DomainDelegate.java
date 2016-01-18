@@ -21,7 +21,10 @@ public interface DomainDelegate {
     List<Performance> getPerformances(Page page);
     List<Artist> getArtists(Page page);
     List<Artist> getArtistsByKeyword(String keyword);
+    Artist getArtistById(int id);
     List<Venue> getVenues(Page page);
     List<Venue> getVenuesByKeyword(Page page);
+    Venue getVenueById(String id);
+    boolean isConnected();
 
 }
