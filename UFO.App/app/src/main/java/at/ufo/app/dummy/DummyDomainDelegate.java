@@ -89,6 +89,11 @@ public class DummyDomainDelegate implements DomainDelegate {
     }
 
     @Override
+    public Performance getPerformanceById(int artistId, Date date) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    @Override
     public List<Artist> getArtists(Page page) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
@@ -109,7 +114,7 @@ public class DummyDomainDelegate implements DomainDelegate {
     }
 
     @Override
-    public List<Venue> getVenuesByKeyword(Page page) {
+    public List<Venue> getVenuesByKeyword(String keyword) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 

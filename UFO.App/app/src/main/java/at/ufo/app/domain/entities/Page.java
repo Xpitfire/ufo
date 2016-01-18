@@ -8,7 +8,18 @@ import at.ufo.app.util.Constants;
 public class Page {
 
     private int offset;
-    private int request = Constants.REQUEST_SIZE;
+    private int requestSize;
+
+    public Page() {
+        this(0);
+    }
+    public Page(int offset) {
+        this(offset, Constants.REQUEST_SIZE);
+    }
+    public Page(int offset, int requestSize) {
+        this.offset = offset;
+        this.requestSize = requestSize;
+    }
 
     public int getOffset() {
         return offset;
@@ -18,16 +29,16 @@ public class Page {
         this.offset = offset;
     }
 
-    public int getRequest() {
-        return request;
+    public int getRequestSize() {
+        return requestSize;
     }
 
-    public void setRequest(int request) {
-        this.request = request;
+    public void setRequestSize(int requestSize) {
+        this.requestSize = requestSize;
     }
 
     public void next() {
-        offset += request;
+        offset += requestSize;
     }
 
     public void reset() {

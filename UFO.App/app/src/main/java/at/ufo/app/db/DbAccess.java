@@ -6,9 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,7 +30,6 @@ import at.ufo.app.util.Logger;
 public class DbAccess implements DomainDelegate {
 
     private static final ExecutorService executor = Executors.newFixedThreadPool(2);
-    private DateFormat df = new SimpleDateFormat(Constants.DATE_FORMAT);
 
     // Administration web page: http://www.phpmyadmin.co/index.php
     private static final String url = "jdbc:mysql://sql4.freemysqlhosting.net:3306/sql4103380";
@@ -104,7 +101,7 @@ public class DbAccess implements DomainDelegate {
     }
 
     private Performance createPerformance(ResultSet rs) throws SQLException, ParseException {
-        return createPerformance(df.parse(rs.getString("Date")),
+        return createPerformance(Constants.DATE_FORMATTER_FULL.parse(rs.getString("Date")),
                 createArtist(rs),
                 createVenue(rs));
     }
@@ -202,52 +199,342 @@ public class DbAccess implements DomainDelegate {
     }
 
     @Override
-    public List<Performance> getPerformancesByVenue(Venue venue) {
+    public List<Performance> getPerformancesByVenue(final Venue venue) {
+        final List<Performance>  list = new ArrayList<>();
+        Callable<List<Performance>> task = new Callable<List<Performance>>() {
+            @Override
+            public List<Performance> call() throws Exception {
+                String query = SqlQueries.SELECT_PERFORMANCES_BY_VENUE;
+                try (Connection con = createConnection();
+                     PreparedStatement pst = con.prepareStatement(query)) {
+                    pst.setString(1, venue.getVenueId());
+
+                    ResultSet rs = pst.executeQuery();
+                    while (rs.next()) {
+                        list.add(createPerformance(rs));
+                    }
+                    rs.close();
+                } catch (Exception e) {
+                    Logger.LogSevere("Query request failed!", e);
+                }
+                return list;
+            }
+        };
+        Future<List<Performance>> future = executor.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Logger.LogSevere("Failed to process concurrent Future call!", e);
+        }
+        return list;
+    }
+
+    @Override
+    public List<Performance> getPerformancesByDate(final Date date) {
+        final List<Performance>  list = new ArrayList<>();
+        Callable<List<Performance>> task = new Callable<List<Performance>>() {
+            @Override
+            public List<Performance> call() throws Exception {
+                String query = SqlQueries.SELECT_PERFORMANCES_BY_DATE;
+                try (Connection con = createConnection();
+                     PreparedStatement pst = con.prepareStatement(query)) {
+                    pst.setString(1, "%" + Constants.DATE_FORMATTER_YYYY_MM_DD.format(date) + "%");
+
+                    ResultSet rs = pst.executeQuery();
+                    while (rs.next()) {
+                        list.add(createPerformance(rs));
+                    }
+                    rs.close();
+                } catch (Exception e) {
+                    Logger.LogSevere("Query request failed!", e);
+                }
+                return list;
+            }
+        };
+        Future<List<Performance>> future = executor.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Logger.LogSevere("Failed to process concurrent Future call!", e);
+        }
+        return list;
+    }
+
+    @Override
+    public List<Performance> getPerformances(final Page page) {
+        final List<Performance>  list = new ArrayList<>();
+        Callable<List<Performance>> task = new Callable<List<Performance>>() {
+            @Override
+            public List<Performance> call() throws Exception {
+                String query = SqlQueries.SELECT_PERFORMANCES_LIMIT;
+                try (Connection con = createConnection();
+                     PreparedStatement pst = con.prepareStatement(query)) {
+                    pst.setInt(1, page.getOffset());
+                    pst.setInt(2, page.getRequestSize());
+
+                    ResultSet rs = pst.executeQuery();
+                    while (rs.next()) {
+                        list.add(createPerformance(rs));
+                    }
+                    rs.close();
+                } catch (Exception e) {
+                    Logger.LogSevere("Query request failed!", e);
+                }
+                return list;
+            }
+        };
+        Future<List<Performance>> future = executor.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Logger.LogSevere("Failed to process concurrent Future call!", e);
+        }
+        return list;
+    }
+
+    @Override
+    public Performance getPerformanceById(final int artistId, final Date date) {
+        Callable<Performance> task = new Callable<Performance>() {
+            @Override
+            public Performance call() throws Exception {
+                String query = SqlQueries.SELECT_PERFORMANCE_BY_ID;
+                Performance p = null;
+                try (Connection con = createConnection();
+                     PreparedStatement pst = con.prepareStatement(query)) {
+                    pst.setInt(1, artistId);
+                    pst.setString(2, Constants.DATE_FORMATTER_FULL.format(date));
+
+                    ResultSet rs = pst.executeQuery();
+                    if (rs.next()) {
+                        p = createPerformance(rs);
+                    }
+                    rs.close();
+                } catch (Exception e) {
+                    Logger.LogSevere("Query request failed!", e);
+                }
+                return p;
+            }
+        };
+        Future<Performance> future = executor.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Logger.LogSevere("Failed to process concurrent Future call!", e);
+        }
         return null;
     }
 
     @Override
-    public List<Performance> getPerformancesByDate(Date date) {
+    public List<Artist> getArtists(final Page page) {
+        final List<Artist>  list = new ArrayList<>();
+        Callable<List<Artist>> task = new Callable<List<Artist>>() {
+            @Override
+            public List<Artist> call() throws Exception {
+                String query = SqlQueries.SELECT_ARTISTS_LIMIT;
+                try (Connection con = createConnection();
+                     PreparedStatement pst = con.prepareStatement(query)) {
+                    pst.setInt(1, page.getOffset());
+                    pst.setInt(2, page.getRequestSize());
+
+                    ResultSet rs = pst.executeQuery();
+                    while (rs.next()) {
+                        list.add(createArtist(rs));
+                    }
+                    rs.close();
+                } catch (Exception e) {
+                    Logger.LogSevere("Query request failed!", e);
+                }
+                return list;
+            }
+        };
+        Future<List<Artist>> future = executor.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Logger.LogSevere("Failed to process concurrent Future call!", e);
+        }
+        return list;
+    }
+
+    @Override
+    public List<Artist> getArtistsByKeyword(final String keyword) {
+        final List<Artist>  list = new ArrayList<>();
+        Callable<List<Artist>> task = new Callable<List<Artist>>() {
+            @Override
+            public List<Artist> call() throws Exception {
+                String query = SqlQueries.SELECT_ARTISTS_BY_KEYWORD;
+                try (Connection con = createConnection();
+                     PreparedStatement pst = con.prepareStatement(query)) {
+                    String placeholder = "%" + keyword + "%";
+                    pst.setString(1, placeholder);
+
+                    ResultSet rs = pst.executeQuery();
+                    while (rs.next()) {
+                        list.add(createArtist(rs));
+                    }
+                    rs.close();
+                } catch (Exception e) {
+                    Logger.LogSevere("Query data request failed!", e);
+                }
+                return list;
+            }
+        };
+        Future<List<Artist>> future = executor.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Logger.LogSevere("Failed to process concurrent Future call!", e);
+        }
+        return list;
+    }
+
+    @Override
+    public Artist getArtistById(final int id) {
+        Callable<Artist> task = new Callable<Artist>() {
+            @Override
+            public Artist call() throws Exception {
+                String query = SqlQueries.SELECT_ARTIST_BY_ID;
+                Artist a = null;
+                try (Connection con = createConnection();
+                     PreparedStatement pst = con.prepareStatement(query)) {
+                    pst.setInt(1, id);
+
+                    ResultSet rs = pst.executeQuery();
+                    if (rs.next()) {
+                        a = createArtist(rs);
+                    }
+                    rs.close();
+                } catch (Exception e) {
+                    Logger.LogSevere("Query request failed!", e);
+                }
+                return a;
+            }
+        };
+        Future<Artist> future = executor.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Logger.LogSevere("Failed to process concurrent Future call!", e);
+        }
         return null;
     }
 
     @Override
-    public List<Performance> getPerformances(Page page) {
-        return null;
+    public List<Venue> getVenues(final Page page) {
+        final List<Venue>  list = new ArrayList<>();
+        Callable<List<Venue>> task = new Callable<List<Venue>>() {
+            @Override
+            public List<Venue> call() throws Exception {
+                String query = SqlQueries.SELECT_VENUES_LIMIT;
+                try (Connection con = createConnection();
+                     PreparedStatement pst = con.prepareStatement(query)) {
+                    pst.setInt(1, page.getOffset());
+                    pst.setInt(2, page.getRequestSize());
+
+                    ResultSet rs = pst.executeQuery();
+                    while (rs.next()) {
+                        list.add(createVenue(rs));
+                    }
+                    rs.close();
+                } catch (Exception e) {
+                    Logger.LogSevere("Query request failed!", e);
+                }
+                return list;
+            }
+        };
+        Future<List<Venue>> future = executor.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Logger.LogSevere("Failed to process concurrent Future call!", e);
+        }
+        return list;
     }
 
     @Override
-    public List<Artist> getArtists(Page page) {
-        return null;
+    public List<Venue> getVenuesByKeyword(final String keyword) {
+        final List<Venue>  list = new ArrayList<>();
+        Callable<List<Venue>> task = new Callable<List<Venue>>() {
+            @Override
+            public List<Venue> call() throws Exception {
+                String query = SqlQueries.SELECT_VENUES_BY_KEYWORD;
+                try (Connection con = createConnection();
+                     PreparedStatement pst = con.prepareStatement(query)) {
+                    String placeholder = "%" + keyword + "%";
+                    pst.setString(1, placeholder);
+                    pst.setString(2, placeholder);
+
+                    ResultSet rs = pst.executeQuery();
+                    while (rs.next()) {
+                        list.add(createVenue(rs));
+                    }
+                    rs.close();
+                } catch (Exception e) {
+                    Logger.LogSevere("Query data request failed!", e);
+                }
+                return list;
+            }
+        };
+        Future<List<Venue>> future = executor.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Logger.LogSevere("Failed to process concurrent Future call!", e);
+        }
+        return list;
     }
 
     @Override
-    public List<Artist> getArtistsByKeyword(String keyword) {
-        return null;
-    }
+    public Venue getVenueById(final String id) {
+        Callable<Venue> task = new Callable<Venue>() {
+            @Override
+            public Venue call() throws Exception {
+                String query = SqlQueries.SELECT_VENUE_BY_ID;
+                Venue v = null;
+                try (Connection con = createConnection();
+                     PreparedStatement pst = con.prepareStatement(query)) {
+                    pst.setString(1, id);
 
-    @Override
-    public Artist getArtistById(int id) {
-        return null;
-    }
-
-    @Override
-    public List<Venue> getVenues(Page page) {
-        return null;
-    }
-
-    @Override
-    public List<Venue> getVenuesByKeyword(Page page) {
-        return null;
-    }
-
-    @Override
-    public Venue getVenueById(String id) {
+                    ResultSet rs = pst.executeQuery();
+                    if (rs.next()) {
+                        v = createVenue(rs);
+                    }
+                    rs.close();
+                } catch (Exception e) {
+                    Logger.LogSevere("Query request failed!", e);
+                }
+                return v;
+            }
+        };
+        Future<Venue> future = executor.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Logger.LogSevere("Failed to process concurrent Future call!", e);
+        }
         return null;
     }
 
     @Override
     public boolean isConnected() {
+        Callable<Boolean> task = new Callable<Boolean>() {
+            @Override
+            public Boolean call() throws Exception {
+                boolean online = false;
+                try (Connection con = createConnection()) {
+                    online = !con.isClosed();
+                } catch (Exception e) {
+                    Logger.LogSevere("Ping request failed!", e);
+                }
+                return online;
+            }
+        };
+        Future<Boolean> future = executor.submit(task);
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Logger.LogSevere("Failed to process concurrent Future call!", e);
+        }
         return false;
     }
 
