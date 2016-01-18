@@ -11,7 +11,7 @@ public final class SqlQueries {
     private SqlQueries() {}
 
     public static final String SELECT_LATEST_PERFORMANCES =
-            "SELECT * FROM performanceview WHERE DATE_ADD((SELECT Date FROM performanceview ORDER BY Date DESC LIMIT 1), INTERVAL -1 MONTH)";
+            "SELECT * FROM performanceview WHERE DATE_ADD((SELECT Date FROM performanceview ORDER BY Date DESC LIMIT 1), INTERVAL -1 MONTH) ORDER BY Date DESC";
 
     public static final String SELECT_PERFORMANCE_BY_ID =
             "SELECT * FROM performanceview WHERE ArtistId = ? AND Date = ?";
