@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">UFO App</string>
     <string name="action_settings">Settings</string>
-    <string name="upcoming_performances">Aufführungen</string>
+    <string name="upcoming_performances">Aktuelle Aufführungen</string>
 </resources>

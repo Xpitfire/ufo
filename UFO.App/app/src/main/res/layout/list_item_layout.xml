@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/textSeparator"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="0dp"
+        android:padding="15dp"
+        android:text=""
+        android:textAllCaps="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="66dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/layout_artist_box">
+
+        <TextView
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:id="@+id/layout_category_color"
+            android:background="@color/colorPrimary"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:id="@+id/text_view_artist"
@@ -15,34 +41,40 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:typeface="sans"
-            android:text="Artist" />
+            android:text="Artist"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp" />
 
         <TextView
             android:id="@+id/text_view_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:layout_below="@id/text_view_artist"
             android:textSize="12sp"
-            android:text="Category" />
+            android:text="Category"
+            android:layout_below="@+id/text_view_artist"
+            android:layout_alignStart="@+id/text_view_artist" />
 
         <TextView
             android:id="@+id/text_view_venue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_below="@id/text_view_category"
             android:textSize="12sp"
-            android:text="Venue" />
+            android:text="Venue"
+            android:layout_below="@+id/text_view_category"
+            android:layout_alignStart="@+id/text_view_category" />
 
         <TextView
             android:id="@+id/text_view_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_alignParentRight="true"
+            android:text="15:30"
             android:layout_alignBottom="@+id/text_view_category"
-            android:text="15:30" />
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
-</FrameLayout>
+
+</LinearLayout>

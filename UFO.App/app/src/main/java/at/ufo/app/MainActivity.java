@@ -10,12 +10,15 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.Date;
 import java.util.List;
 
 import at.ufo.app.domain.DomainDelegate;
 import at.ufo.app.domain.DomainFactory;
 import at.ufo.app.domain.entities.Performance;
 import at.ufo.app.dummy.DummyDomainDelegate;
+import at.ufo.app.util.Constants;
+import at.ufo.app.util.Logger;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,13 +39,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ListView lv = (ListView)findViewById(R.id.list_view_performance);
         PerformanceArrayAdapter paa = new PerformanceArrayAdapter(this);
         List<Performance> pl = DomainFactory.getDefaultDelegate().getUpcomingPerformances();
 
-        paa.addAll(pl);
-        ListView lv = (ListView)findViewById(R.id.list_view_performance);
+        Performance lastPerformance = null;
+        for (Performance p : pl) {
+            if (lastPerformance == null) {
+                paa.addSectionHeaderItem(p);
+            } else {
+                String curDate = Constants.DATE_FORMATTER_DD.format(p.getDate());
+                String oldDate = Constants.DATE_FORMATTER_DD.format(lastPerformance.getDate());
+                if (!curDate.equals(oldDate)) {
+                    paa.addSectionHeaderItem(p);
+                } else {
+                    paa.addItem(p);
+                }
+            }
+            lastPerformance = p;
+        }
         lv.setAdapter(paa);
-
     }
 
     @Override
