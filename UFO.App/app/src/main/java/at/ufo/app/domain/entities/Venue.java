@@ -1,9 +1,12 @@
 package at.ufo.app.domain.entities;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Marius-Constantin on 1/15/2016.
  */
-public class Venue {
+public class Venue implements Parcelable {
 
     private String venueId;
     private String name;
@@ -58,5 +61,44 @@ public class Venue {
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(venueId);
+        dest.writeString(name);
+        dest.writeString(locationId);
+        dest.writeString(locationName);
+        dest.writeDouble(longitude);
+        dest.writeDouble(latitude);
+    }
+
+    public static final Parcelable.Creator<Venue> CREATOR = new Parcelable.Creator<Venue>() {
+        @Override
+        public Venue createFromParcel(Parcel source) {
+            return new Venue(source);
+        }
+
+        @Override
+        public Venue[] newArray(int size) {
+            return new Venue[size];
+        }
+    };
+
+    private Venue(Parcel in) {
+        venueId = in.readString();
+        name = in.readString();
+        locationId = in.readString();
+        locationName = in.readString();
+        longitude = in.readDouble();
+        latitude = in.readDouble();
+    }
+
+    public Venue() {
     }
 }

@@ -1,5 +1,6 @@
 package at.ufo.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -7,11 +8,13 @@ import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import at.ufo.app.domain.DomainDelegate;
 import at.ufo.app.domain.DomainFactory;
@@ -30,16 +33,16 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        ListView lv = (ListView)findViewById(R.id.list_view_performance);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), PerformanceDetailsActivity.class);
+                Performance p = (Performance)parent.getItemAtPosition(position);
+                intent.putExtra("SelectedPerformance", p);
+                startActivity(intent);
             }
         });
-
-        ListView lv = (ListView)findViewById(R.id.list_view_performance);
         PerformanceArrayAdapter paa = new PerformanceArrayAdapter(this);
         List<Performance> pl = DomainFactory.getDefaultDelegate().getUpcomingPerformances();
 
