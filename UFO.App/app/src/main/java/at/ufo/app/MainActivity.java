@@ -46,20 +46,26 @@ public class MainActivity extends AppCompatActivity {
         PerformanceArrayAdapter paa = new PerformanceArrayAdapter(this);
         List<Performance> pl = DomainFactory.getDefaultDelegate().getUpcomingPerformances();
 
-        Performance lastPerformance = null;
+        Performance prevPerformance = null;
+        String year = null;
         for (Performance p : pl) {
-            if (lastPerformance == null) {
+            if (prevPerformance == null) {
                 paa.addSectionHeaderItem(p);
+                year = Constants.DATE_FORMATTER_YYYY.format(p.getDate());
             } else {
-                String curDate = Constants.DATE_FORMATTER_DD.format(p.getDate());
-                String oldDate = Constants.DATE_FORMATTER_DD.format(lastPerformance.getDate());
-                if (!curDate.equals(oldDate)) {
+                String curDay = Constants.DATE_FORMATTER_DD.format(p.getDate());
+                String curYear = Constants.DATE_FORMATTER_YYYY.format(p.getDate());
+                String prevDay = Constants.DATE_FORMATTER_DD.format(prevPerformance.getDate());
+
+                if (year != null && !year.equals(curYear)) {
+                    break;
+                }
+                if (!curDay.equals(prevDay)) {
                     paa.addSectionHeaderItem(p);
-                } else {
-                    paa.addItem(p);
                 }
             }
-            lastPerformance = p;
+            paa.addItem(p);
+            prevPerformance = p;
         }
         lv.setAdapter(paa);
     }

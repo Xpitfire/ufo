@@ -16,7 +16,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="182dp">
+            android:layout_height="220dp">
 
             <ImageView
                 android:layout_width="150dp"
@@ -25,7 +25,10 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="false"
                 android:layout_alignParentBottom="true"
-                android:layout_margin="20dp" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -61,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     class="com.google.android.gms.maps.MapFragment"
-                    android:layout_alignParentBottom="true" />
+                    android:layout_alignParentTop="true" />
 
             </RelativeLayout>
         </RelativeLayout>
