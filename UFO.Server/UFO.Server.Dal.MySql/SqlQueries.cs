@@ -86,13 +86,10 @@ namespace UFO.Server.Dal.MySql
                                                            FROM performanceview
                                                           WHERE VenueId=?VenueId";
 
-        public const string SelectLatestPerformances = @"SELECT *
+        public const string SelectLatestPerformances = @"SELECT *  
                                                            FROM performanceview
-                                                          WHERE DATE_ADD((SELECT Date 
-                                                                            FROM performanceview 
-                                                                        ORDER BY Date DESC LIMIT 1), 
-                                                                INTERVAL -1 MONTH)
-														  ORDER BY Date DESC";
+                                                          WHERE Date BETWEEN DATE_SUB((SELECT MAX(Date) FROM performanceview), INTERVAL 7 DAY) AND NOW()
+                                                          ORDER BY Date DESC";
 
         public const string SelectPerformanceBetweenHours = @"SELECT * 
                                                                 FROM performanceview

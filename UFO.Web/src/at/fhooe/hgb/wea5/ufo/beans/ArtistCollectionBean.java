@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,11 +20,15 @@ import java.util.List;
 public class ArtistCollectionBean implements Serializable {
 
     private UfoDelegate delegate = ServiceLocator.getInstance().getUfoDelegate();
-    private List<Artist> artists;
+    private List<Artist> artists = new ArrayList<>();
 
     @PostConstruct
     public void init() {
-        artists = delegate.getNextArtistsPage();
+        List<Artist> tmp = delegate.getNextArtistsPage();
+        while (tmp != null && tmp.size() > 0) {
+            artists.addAll(tmp);
+            tmp = delegate.getNextArtistsPage();
+        }
     }
 
     public List<Artist> getArtists() {

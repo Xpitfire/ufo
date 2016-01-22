@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,11 +20,15 @@ import java.util.List;
 public class VenueCollectionBean implements Serializable {
 
     private UfoDelegate delegate = ServiceLocator.getInstance().getUfoDelegate();
-    private List<Venue> venues;
+    private List<Venue> venues = new ArrayList<>();
 
     @PostConstruct
     public void init() {
-        venues = delegate.getNextVenuesPage();
+        List<Venue> tmp = delegate.getNextVenuesPage();
+        while (tmp != null && tmp.size() > 0) {
+            venues.addAll(tmp);
+            tmp = delegate.getNextVenuesPage();
+        }
     }
 
     public List<Venue> getVenues() {

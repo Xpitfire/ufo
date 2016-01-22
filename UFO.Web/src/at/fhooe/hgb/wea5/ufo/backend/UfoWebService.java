@@ -120,4 +120,14 @@ public class UfoWebService implements UfoDelegate {
         performances.forEach(performance -> preparePerformance(performance));
         return performances;
     }
+
+    @Override
+    public List<Performance> getLatestPerformances() {
+        ArrayOfPerformance tmp = webAccessProxy.getLatestPerformances();
+        if (tmp == null)
+            return new ArrayList<>();
+        List<Performance> performances = tmp.getPerformance();
+        performances.forEach(performance -> preparePerformance(performance));
+        return performances;
+    }
 }

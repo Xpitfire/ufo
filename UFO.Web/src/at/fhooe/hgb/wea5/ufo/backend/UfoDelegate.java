@@ -22,5 +22,6 @@ public interface UfoDelegate {
     List<Performance> getPerformancesPerArtist(Artist artist);
     List<Performance> getPerformancesPerVenue(Venue venue);
     List<Performance> getNextPerformancesPage();
+    List<Performance> getLatestPerformances();
 
 }
