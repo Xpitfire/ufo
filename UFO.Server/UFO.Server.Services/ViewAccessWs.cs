@@ -96,5 +96,8 @@ namespace UFO.Server.Services
 
         [OperationContract]
         public List<Artist> SearchArtistsPerKeyword(string keyword) => ViewAccessDelegate.SearchArtistsPerKeyword(keyword);
+
+        [OperationContract]
+        public List<string> GetAutoCompletion(string keyword) => ViewAccessDelegate.GetAutoCompletion(keyword);
     }
 }

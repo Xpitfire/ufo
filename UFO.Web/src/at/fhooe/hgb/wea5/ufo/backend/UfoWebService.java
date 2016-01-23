@@ -130,4 +130,12 @@ public class UfoWebService implements UfoDelegate {
         performances.forEach(performance -> preparePerformance(performance));
         return performances;
     }
+
+    @Override
+    public List<String> getAutoCompletion(String keyword) {
+        ArrayOfString tmp = webAccessProxy.getAutoCompletion(keyword);
+        if (tmp == null)
+            return new ArrayList<>();
+        return tmp.getString();
+    }
 }

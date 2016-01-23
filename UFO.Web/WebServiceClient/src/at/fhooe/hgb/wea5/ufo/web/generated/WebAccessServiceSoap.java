@@ -367,4 +367,18 @@ public interface WebAccessServiceSoap {
         @WebParam(name = "keyword", targetNamespace = "http://ufo.at/")
         String keyword);
 
+    /**
+     * 
+     * @param keyword
+     * @return
+     *     returns at.fhooe.hgb.wea5.ufo.web.generated.ArrayOfString
+     */
+    @WebMethod(operationName = "GetAutoCompletion", action = "http://ufo.at/GetAutoCompletion")
+    @WebResult(name = "GetAutoCompletionResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "GetAutoCompletion", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetAutoCompletion")
+    @ResponseWrapper(localName = "GetAutoCompletionResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetAutoCompletionResponse")
+    public ArrayOfString getAutoCompletion(
+        @WebParam(name = "keyword", targetNamespace = "http://ufo.at/")
+        String keyword);
+
 }

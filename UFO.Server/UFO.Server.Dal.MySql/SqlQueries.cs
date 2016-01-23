@@ -98,8 +98,8 @@ namespace UFO.Server.Dal.MySql
 
         public const string SelectPerformanceByKeyword = @"SELECT * 
                                                              FROM performanceview 
-                                                            WHERE ArtistName LIKE ?Keyword OR VenueName LIKE ?Keyword OR LocationName LIKE ?Keyword
-                                                            LIMIT 50";
+                                                            WHERE LOWER(ArtistName) LIKE LOWER(?Keyword) OR LOWER(VenueName) LIKE LOWER(?Keyword) OR LOWER(LocationName) LIKE LOWER(?Keyword)
+                                                            LIMIT 20";
 
         public const string DeletePerformance = @"DELETE FROM performance
                                                    WHERE Date=?Date AND ArtistId=?ArtistId";

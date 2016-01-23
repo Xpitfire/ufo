@@ -24,4 +24,6 @@ public interface UfoDelegate {
     List<Performance> getNextPerformancesPage();
     List<Performance> getLatestPerformances();
 
+    List<String> getAutoCompletion(String keyword);
+
 }

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default"
      xmlns:h="http://java.sun.com/jsf/html"
-     xmlns:p="http://primefaces.org/ui">
+     xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
     <div class="container-fluid">
 
         <div class="navbar-header">
@@ -13,6 +13,18 @@
                 <li><a href="#{request.contextPath}/ufo/index.xhtml">Tagesprogramm</a></li>
                 <li><a href="#{request.contextPath}/ufo/artistlist.xhtml">Künstler</a></li>
                 <li><a href="#{request.contextPath}/ufo/venuelist.xhtml">Spielstätten</a></li>
+                <li>
+                    <h:form prependId="false">
+                        <p:autoComplete value="#{searchBean.searchKeyword}"
+                                        completeMethod="#{searchBean.autocomplete}"
+                                        var="keyword"
+                                        itemValue="#{keyword}"
+                                        itemLabel="#{keyword}"
+                                        placeholder="Suche"
+                                        queryEvent="#{request.contextPath}/ufo/venuelist.xhtml">
+                        </p:autoComplete>
+                    </h:form>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>

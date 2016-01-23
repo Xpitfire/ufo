@@ -19,6 +19,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using UFO.Server.Bll.Common;
 using UFO.Server.Bll.Common.Helper;
 using UFO.Server.Domain;
@@ -101,6 +103,24 @@ namespace UFO.Server.Bll.Impl
         public override List<Venue> SearchVenuesPerKeyword(string keyword)
         {
             return VenueDao.SearchByKeyword(keyword).ResultObject;
+        }
+
+        public override List<string> GetAutoCompletion(string keyword)
+        {
+            var set = new HashSet<string>();
+            if (keyword != null && keyword.Length >= 3)
+            {
+                SearchPerformancesPerKeyword(keyword)?.ForEach(p =>
+                {
+                    if (Regex.IsMatch(p.Artist.Name, keyword, RegexOptions.IgnoreCase))
+                        set.Add(p.Artist.Name);
+                    if (Regex.IsMatch(p.Venue.Name, keyword, RegexOptions.IgnoreCase))
+                        set.Add(p.Venue.Name);
+                    if (Regex.IsMatch(p.Venue.Location.Name, keyword, RegexOptions.IgnoreCase))
+                        set.Add(p.Venue.Location.Name);
+                });
+            }
+            return set.ToList();
         }
     }
 }

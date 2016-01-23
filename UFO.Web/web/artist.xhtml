@@ -21,7 +21,7 @@
         <h:panelGroup id="artist-page" class="page" rendered="#{artistBean.artist != null}">
 
             <h:panelGrid columns="1" style="width:100%;" columnClasses="artist-detail-td">
-                <p:graphicImage value="#{artistBean.artist.picture.path}" styleClass="artist-img"></p:graphicImage>
+                <p:graphicImage value="#{artistBean.artist.picture.path}" styleClass="artist-img" />
                 <h:panelGrid columns="2">
                     <h:outputText value="Name:" />
                     <h:outputText value="#{artistBean.artist.name}" style="font-weight: bold"/>
