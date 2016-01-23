@@ -2,8 +2,14 @@ package at.fhooe.hgb.wea5.ufo.backend;
 
 import at.fhooe.hgb.wea5.ufo.util.Constants;
 import at.fhooe.hgb.wea5.ufo.web.generated.*;
+import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
 
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -121,6 +127,24 @@ public class UfoWebService implements UfoDelegate {
     @Override
     public List<Performance> getPerformancesPerVenue(Venue venue) {
         ArrayOfPerformance tmp = webAccessProxy.getPerformancesPerVenue(venue);
+        if (tmp == null)
+            return new ArrayList<>();
+        List<Performance> performances = tmp.getPerformance();
+        performances.forEach(performance -> preparePerformance(performance));
+        return performances;
+    }
+
+    @Override
+    public List<Performance> getPerformancesPerDate(Date date) {
+        GregorianCalendar gcal = new GregorianCalendar();
+        gcal.setTime(date);
+        XMLGregorianCalendar xgcal;
+        try {
+            xgcal = DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+        } catch (DatatypeConfigurationException e) {
+            return new ArrayList<>();
+        }
+        ArrayOfPerformance tmp = webAccessProxy.getPerformancesPerDate(xgcal);
         if (tmp == null)
             return new ArrayList<>();
         List<Performance> performances = tmp.getPerformance();

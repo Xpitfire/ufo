@@ -7,6 +7,7 @@ import at.fhooe.hgb.wea5.ufo.web.generated.Location;
 import at.fhooe.hgb.wea5.ufo.web.generated.Performance;
 import at.fhooe.hgb.wea5.ufo.web.generated.Venue;
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
+import org.primefaces.event.SelectEvent;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -36,6 +37,7 @@ public class PerformanceCollectionBean implements Serializable {
     private SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy");
 
     private List<String> hours = new ArrayList<>();
+    private Date date = Calendar.getInstance().getTime();
 
     public PerformanceCollectionBean() {
         for (int i = 14; i < 24; i++) {
@@ -101,4 +103,16 @@ public class PerformanceCollectionBean implements Serializable {
         return dateFormatter.format(calendar.toGregorianCalendar().getTime());
     }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void dateChange(SelectEvent event)  {
+        this.date = (Date)event.getObject();
+        performancesOverview = delegate.getPerformancesPerDate(date);
+    }
 }

@@ -4,6 +4,7 @@ import at.fhooe.hgb.wea5.ufo.web.generated.Artist;
 import at.fhooe.hgb.wea5.ufo.web.generated.Performance;
 import at.fhooe.hgb.wea5.ufo.web.generated.Venue;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public interface UfoDelegate {
 
     List<Performance> getPerformancesPerArtist(Artist artist);
     List<Performance> getPerformancesPerVenue(Venue venue);
+    List<Performance> getPerformancesPerDate(Date date);
     List<Performance> getNextPerformancesPage();
     List<Performance> getLatestPerformances();
     List<Performance> getPerformancesPerKeyword(String keyword);

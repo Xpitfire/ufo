@@ -193,7 +193,7 @@ namespace UFO.Server.Dal.MySql
             var performances = new List<Performance>();
             var parameter = new Dictionary<string, QueryParameter>
             {
-                {"?Date", new QueryParameter {ParameterValue = date.ToString(Constants.CommonDateFormatDay)}}
+                {"?Date", new QueryParameter {ParameterValue = $"%{date.ToString(Constants.CommonDateFormatDay)}%"}}
             };
             using (var connection = _dbCommProvider.CreateDbConnection())
             using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectPerformanceByDate, parameter))
