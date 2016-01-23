@@ -28,27 +28,30 @@
             </p:row>
         </f:facet>
 
-        <h:panelGroup>
-            <x:forEach items="#{performanceCollectionBean.performancesOverview}" var="p">
-                <p:row>
-                    <p:column>#{performanceCollectionBean.toDateString(p.dateTime)}</p:column>
-                    <p:column>
-                        <p:link href="#{request.contextPath}/ufo/venue.xhtml?id=#{p.venue.venueId}">
-                            #{p.venue.venueId}
-                        </p:link>
-                    </p:column>
-                    <x:forEach items="#{performanceCollectionBean.hours}" var="hour">
-                        <p:column>
-                            <x:if test="#{not empty performanceCollectionBean.checkPerformanceAvailable(p, hour)}">
-                                <p:link href="#{request.contextPath}/ufo/artist.xhtml?id=#{p.artist.artistId}">
+        <x:forEach items="#{performanceCollectionBean.performancesOverview}" var="p">
+            <p:row>
+                <p:column styleClass="artist-table">#{performanceCollectionBean.toDateString(p.dateTime)}</p:column>
+                <p:column styleClass="artist-table">
+                    <p:link href="#{request.contextPath}/ufo/venue.xhtml?id=#{p.venue.venueId}">
+                        #{p.venue.venueId}
+                    </p:link>
+                </p:column>
+                <x:forEach items="#{performanceCollectionBean.hours}" var="hour">
+                    <x:choose>
+                        <x:when test="#{not empty performanceCollectionBean.checkPerformanceAvailable(p, hour)}">
+                            <p:column styleClass="artist-table" style="background-color: #{p.artist.category.color}">
+                                <p:link styleClass="artist-link" href="#{request.contextPath}/ufo/artist.xhtml?id=#{p.artist.artistId}">
                                     #{p.artist.name}
                                 </p:link>
-                            </x:if>
-                        </p:column>
-                    </x:forEach>
-                </p:row>
-            </x:forEach>
-        </h:panelGroup>
+                            </p:column>
+                        </x:when>
+                        <x:otherwise>
+                            <p:column styleClass="artist-table" />
+                        </x:otherwise>
+                    </x:choose>
+                </x:forEach>
+            </p:row>
+        </x:forEach>
     </p:panelGrid>
 
 </div>
