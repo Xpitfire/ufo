@@ -52,10 +52,10 @@ namespace UFO.Server.Dal.MySql
                                                  FROM userview
                                                 WHERE UserId=?UserId";
 
-        public const string SelectUserByKeyword = @"SELECT * 
-                                                      FROM userview 
-                                                     WHERE LastName LIKE ?Keyword OR FirstName LIKE ?Keyword OR ArtistName LIKE ?Keyword
-                                                     LIMIT 50";
+        public static readonly string SelectUserByKeyword = $@"SELECT * 
+                                                                 FROM userview 
+                                                                WHERE LOWER(LastName) LIKE LOWER(?Keyword) OR LOWER(FirstName) LIKE LOWER(?Keyword) OR LOWER(ArtistName) LIKE LOWER(?Keyword)
+                                                                LIMIT {Constants.KeywordRequestSize}";
 
         public const string DeleteUser = @"DELETE FROM user
                                                  WHERE UserId=?UserId";
@@ -96,10 +96,10 @@ namespace UFO.Server.Dal.MySql
                                                                WHERE Date BETWEEN CAST(?FromTime AS DATE) AND CAST(?ToTime AS DATE)
                                                                  AND ArtistId=?ArtistId";
 
-        public const string SelectPerformanceByKeyword = @"SELECT * 
-                                                             FROM performanceview 
-                                                            WHERE LOWER(ArtistName) LIKE LOWER(?Keyword) OR LOWER(VenueName) LIKE LOWER(?Keyword) OR LOWER(LocationName) LIKE LOWER(?Keyword)
-                                                            LIMIT 20";
+        public static readonly string SelectPerformanceByKeyword = $@"SELECT * 
+                                                                        FROM performanceview 
+                                                                       WHERE LOWER(ArtistName) LIKE LOWER(?Keyword) OR LOWER(VenueName) LIKE LOWER(?Keyword) OR LOWER(LocationName) LIKE LOWER(?Keyword)
+                                                                       LIMIT {Constants.KeywordRequestSize}";
 
         public const string DeletePerformance = @"DELETE FROM performance
                                                    WHERE Date=?Date AND ArtistId=?ArtistId";
@@ -118,10 +118,10 @@ namespace UFO.Server.Dal.MySql
                                                   FROM venueview
                                                  WHERE VenueId=?VenueId";
 
-        public const string SelectVenueByKeyword = @"SELECT * 
-                                                       FROM venueview 
-                                                      WHERE VenueName LIKE ?Keyword OR LocationName LIKE ?Keyword
-                                                      LIMIT 50";
+        public static readonly string SelectVenueByKeyword = $@"SELECT * 
+                                                                  FROM venueview 
+                                                                 WHERE LOWER(VenueName) LIKE LOWER(?Keyword) OR LOWER(LocationName) LIKE LOWER(?Keyword)
+                                                                 LIMIT {Constants.KeywordRequestSize}";
 
         public const string DeleteVenue = @"DELETE FROM venue
                                                   WHERE VenueId=?VenueId";
@@ -139,10 +139,10 @@ namespace UFO.Server.Dal.MySql
                                                    FROM artistview 
                                                   WHERE ArtistId=?ArtistId";
 
-        public const string SelectArtistByKeyword = @"SELECT * 
-                                                        FROM artistview 
-                                                       WHERE ArtistName LIKE ?Keyword
-                                                       LIMIT 50";
+        public static readonly string SelectArtistByKeyword = $@"SELECT * 
+                                                                   FROM artistview 
+                                                                  WHERE LOWER(ArtistName) LIKE LOWER(?Keyword)
+                                                                  LIMIT {Constants.KeywordRequestSize}";
 
         public const string DeleteArtist = @"DELETE FROM artist
                                                    WHERE ArtistId=?ArtistId";

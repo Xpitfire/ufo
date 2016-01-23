@@ -373,11 +373,11 @@ public interface WebAccessServiceSoap {
      * @return
      *     returns at.fhooe.hgb.wea5.ufo.web.generated.ArrayOfString
      */
-    @WebMethod(operationName = "GetAutoCompletion", action = "http://ufo.at/GetAutoCompletion")
-    @WebResult(name = "GetAutoCompletionResult", targetNamespace = "http://ufo.at/")
-    @RequestWrapper(localName = "GetAutoCompletion", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetAutoCompletion")
-    @ResponseWrapper(localName = "GetAutoCompletionResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetAutoCompletionResponse")
-    public ArrayOfString getAutoCompletion(
+    @WebMethod(operationName = "GetPerformanceAutoCompletion", action = "http://ufo.at/GetPerformanceAutoCompletion")
+    @WebResult(name = "GetPerformanceAutoCompletionResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "GetPerformanceAutoCompletion", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetPerformanceAutoCompletion")
+    @ResponseWrapper(localName = "GetPerformanceAutoCompletionResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.GetPerformanceAutoCompletionResponse")
+    public ArrayOfString getPerformanceAutoCompletion(
         @WebParam(name = "keyword", targetNamespace = "http://ufo.at/")
         String keyword);
 

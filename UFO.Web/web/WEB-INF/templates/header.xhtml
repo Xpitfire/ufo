@@ -1,6 +1,7 @@
 <nav class="navbar navbar-default"
      xmlns:h="http://java.sun.com/jsf/html"
-     xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+     xmlns:p="http://primefaces.org/ui"
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
     <div class="container-fluid">
 
         <div class="navbar-header">
@@ -20,9 +21,9 @@
                                         var="keyword"
                                         itemValue="#{keyword}"
                                         itemLabel="#{keyword}"
-                                        placeholder="Suche"
-                                        queryEvent="#{request.contextPath}/ufo/venuelist.xhtml">
+                                        placeholder="Nach Künstler oder Spielstätte suche...">
                         </p:autoComplete>
+                        <h:commandButton action="#{searchBean.redirect}" value="Suchen" />
                     </h:form>
                 </li>
             </ul>

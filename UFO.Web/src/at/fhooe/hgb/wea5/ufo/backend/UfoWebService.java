@@ -73,6 +73,16 @@ public class UfoWebService implements UfoDelegate {
     }
 
     @Override
+    public List<Artist> getArtistPerKeyword(String keyword) {
+        ArrayOfArtist tmp = webAccessProxy.searchArtistsPerKeyword(keyword);
+        if (tmp == null)
+            return new ArrayList<>();
+        List<Artist> artists = tmp.getArtist();
+        artists.forEach(artist -> prepareArtist(artist));
+        return artists;
+    }
+
+    @Override
     public Artist getArtistById(int id) {
         return prepareArtist(webAccessProxy.getArtist(id));
     }
@@ -91,12 +101,19 @@ public class UfoWebService implements UfoDelegate {
     }
 
     @Override
+    public List<Venue> getVenuesPerKeyword(String keyword) {
+        ArrayOfVenue tmp = webAccessProxy.searchVenuesPerKeyword(keyword);
+        if (tmp == null)
+            return new ArrayList<>();
+        return tmp.getVenue();
+    }
+
+    @Override
     public List<Performance> getPerformancesPerArtist(Artist artist) {
         ArrayOfPerformance tmp = webAccessProxy.getPerformancesPerArtist(artist);
         if (tmp == null)
             return new ArrayList<>();
         List<Performance> performances = tmp.getPerformance();
-        System.out.println();
         performances.forEach(performance -> preparePerformance(performance));
         return performances;
     }
@@ -132,8 +149,18 @@ public class UfoWebService implements UfoDelegate {
     }
 
     @Override
+    public List<Performance> getPerformancesPerKeyword(String keyword) {
+        ArrayOfPerformance tmp = webAccessProxy.searchPerformancesPerKeyword(keyword);
+        if (tmp == null)
+            return new ArrayList<>();
+        List<Performance> performances = tmp.getPerformance();
+        performances.forEach(performance -> preparePerformance(performance));
+        return performances;
+    }
+
+    @Override
     public List<String> getAutoCompletion(String keyword) {
-        ArrayOfString tmp = webAccessProxy.getAutoCompletion(keyword);
+        ArrayOfString tmp = webAccessProxy.getPerformanceAutoCompletion(keyword);
         if (tmp == null)
             return new ArrayList<>();
         return tmp.getString();

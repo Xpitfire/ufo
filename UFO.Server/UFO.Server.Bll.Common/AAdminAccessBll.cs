@@ -45,6 +45,7 @@ namespace UFO.Server.Bll.Common
 
         public abstract List<User> GetUsers(SessionToken token, PagingData page);
         public abstract List<User> SearchUsersPerKeyword(SessionToken token, string keyword);
+        public abstract List<string> GetUserAutoCompletion(SessionToken token, string keyword);
         public abstract bool ModifyArtistRange(SessionToken token, List<Artist> artists);
         public abstract bool ModifyArtist(SessionToken token, Artist artist);
         public abstract bool RemoveArtist(SessionToken token, Artist artist);
@@ -124,6 +125,10 @@ namespace UFO.Server.Bll.Common
             }
             return valid;
         }
-        
+
+        public bool IsUserAutoCompletionValid(string keyword)
+        {
+            return keyword != null && keyword.Length > 2;
+        }
     }
 }

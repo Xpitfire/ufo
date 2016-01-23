@@ -27,7 +27,8 @@ namespace UFO.Server.Bll.Common
         // User
         List<User> GetUsers(SessionToken token, PagingData page);
         PagingData RequestUserPagingData(SessionToken token);
-        List<User> SearchUsersPerKeyword(SessionToken token, string keyword); 
+        List<User> SearchUsersPerKeyword(SessionToken token, string keyword);
+        List<string> GetUserAutoCompletion(SessionToken token, string keyword); 
 
         // Artist
         bool ModifyArtistRange(SessionToken token, List<Artist> artists);
@@ -48,6 +49,6 @@ namespace UFO.Server.Bll.Common
         bool ModifyLocationRange(SessionToken token, List<Location> locations);
         bool ModifyLocation(SessionToken token, Location location);
         bool RemoveLocation(SessionToken token, Location location);
-
+        
     }
 }

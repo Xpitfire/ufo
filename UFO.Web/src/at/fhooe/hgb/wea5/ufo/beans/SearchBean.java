@@ -4,6 +4,8 @@ import at.fhooe.hgb.wea5.ufo.backend.ServiceLocator;
 import at.fhooe.hgb.wea5.ufo.backend.UfoDelegate;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +13,8 @@ import java.util.List;
  * @date: 22.01.2016
  */
 @ManagedBean
-public class SearchBean {
+@RequestScoped
+public class SearchBean implements Serializable {
 
     private UfoDelegate delegate = ServiceLocator.getInstance().getUfoDelegate();
 
@@ -29,6 +32,8 @@ public class SearchBean {
         return delegate.getAutoCompletion(query);
     }
 
-
+    public String redirect() {
+        return "search.xhtml?query=" + searchKeyword + "&faces-redirect=true";
+    }
 
 }

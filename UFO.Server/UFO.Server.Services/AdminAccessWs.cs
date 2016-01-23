@@ -60,6 +60,9 @@ namespace UFO.Server.Services
         public List<User> SearchUsersPerKeyword(SessionToken token, string keyword) => AdminAccessDelegate.SearchUsersPerKeyword(token, keyword);
 
         [OperationContract]
+        public List<string> GetUserAutoCompletion(SessionToken token, string keyword) => AdminAccessDelegate.GetUserAutoCompletion(token, keyword);
+
+        [OperationContract]
         public PagingData RequestUserPagingData(SessionToken token) => AdminAccessDelegate.RequestUserPagingData(token);
 
         [OperationContract]

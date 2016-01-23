@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Transactions;
 using UFO.Server.Bll.Common;
 using UFO.Server.Dal.Common;
@@ -36,6 +37,30 @@ namespace UFO.Server.Bll.Impl
         public override List<User> SearchUsersPerKeyword(SessionToken token, string keyword)
         {
             return EvaluateSessionPagingResult(token, () => UserDao.SelectByKeyword(keyword)).ResultObject;
+        }
+
+        public override List<string> GetUserAutoCompletion(SessionToken token, string keyword)
+        {
+            if (!IsUserAuthenticated(token))
+                return new List<string>();
+            Func<List<string>> func = () =>
+            {
+                var set = new HashSet<string>();
+                if (keyword != null && keyword.Length >= 2)
+                {
+                    SearchUsersPerKeyword(token, keyword)?.ForEach(u =>
+                    {
+                        if (Regex.IsMatch(u.FirstName, keyword, RegexOptions.IgnoreCase))
+                            set.Add(u.FirstName);
+                        if (Regex.IsMatch(u.LastName, keyword, RegexOptions.IgnoreCase))
+                            set.Add(u.LastName);
+                        if (u.Artist != null && Regex.IsMatch(u.Artist.Name, keyword, RegexOptions.IgnoreCase))
+                            set.Add(u.Artist.Name);
+                    });
+                }
+                return set.ToList();
+            };
+            return EvaluateSessionPagingResult(token, func);
         }
 
         public override bool ModifyArtistRange(SessionToken token, List<Artist> artists)

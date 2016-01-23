@@ -37,7 +37,7 @@ namespace UFO.Server.Bll.Common
         public abstract List<Performance> SearchPerformancesPerKeyword(string keyword);
         public abstract List<Artist> SearchArtistsPerKeyword(string keyword);
         public abstract List<Venue> SearchVenuesPerKeyword(string keyword);
-        public abstract List<string> GetAutoCompletion(string keyword);
+        public abstract List<string> GetPerformanceAutoCompletion(string keyword);
 
         public virtual PagingData RequestArtistPagingData()
         {

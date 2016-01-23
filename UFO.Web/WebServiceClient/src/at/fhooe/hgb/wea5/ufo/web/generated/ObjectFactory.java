@@ -238,6 +238,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetPerformanceAutoCompletionResponse }
+     * 
+     */
+    public GetPerformanceAutoCompletionResponse createGetPerformanceAutoCompletionResponse() {
+        return new GetPerformanceAutoCompletionResponse();
+    }
+
+    /**
+     * Create an instance of {@link ArrayOfString }
+     * 
+     */
+    public ArrayOfString createArrayOfString() {
+        return new ArrayOfString();
+    }
+
+    /**
      * Create an instance of {@link GetVenueResponse }
      * 
      */
@@ -278,14 +294,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetAutoCompletion }
-     * 
-     */
-    public GetAutoCompletion createGetAutoCompletion() {
-        return new GetAutoCompletion();
-    }
-
-    /**
      * Create an instance of {@link GetCategoriesResponse }
      * 
      */
@@ -299,6 +307,14 @@ public class ObjectFactory {
      */
     public ArrayOfCategory createArrayOfCategory() {
         return new ArrayOfCategory();
+    }
+
+    /**
+     * Create an instance of {@link GetPerformanceAutoCompletion }
+     * 
+     */
+    public GetPerformanceAutoCompletion createGetPerformanceAutoCompletion() {
+        return new GetPerformanceAutoCompletion();
     }
 
     /**
@@ -547,22 +563,6 @@ public class ObjectFactory {
      */
     public LoginAdmin createLoginAdmin() {
         return new LoginAdmin();
-    }
-
-    /**
-     * Create an instance of {@link GetAutoCompletionResponse }
-     * 
-     */
-    public GetAutoCompletionResponse createGetAutoCompletionResponse() {
-        return new GetAutoCompletionResponse();
-    }
-
-    /**
-     * Create an instance of {@link ArrayOfString }
-     * 
-     */
-    public ArrayOfString createArrayOfString() {
-        return new ArrayOfString();
     }
 
     /**

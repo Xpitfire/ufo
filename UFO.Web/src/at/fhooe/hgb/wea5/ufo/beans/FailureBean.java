@@ -1,6 +1,7 @@
-package at.fhooe.hgb.wea5.ufo.util;
+package at.fhooe.hgb.wea5.ufo.beans;
 
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.io.StringWriter;
 import java.sql.SQLException;
 
@@ -15,7 +16,7 @@ import javax.servlet.ServletException;
  */
 @ManagedBean(name="failureModel")
 @RequestScoped
-public class Failure {
+public class FailureBean implements Serializable {
 
 	private Exception exception;
 	private String message;

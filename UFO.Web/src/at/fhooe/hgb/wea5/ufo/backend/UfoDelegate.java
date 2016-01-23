@@ -12,17 +12,19 @@ import java.util.List;
  */
 public interface UfoDelegate {
 
-    List<Artist> getNextArtistsPage();
-
     Artist getArtistById(int id);
+    List<Artist> getNextArtistsPage();
+    List<Artist> getArtistPerKeyword(String keyword);
 
     Venue getVenueById(String venueId);
     List<Venue> getNextVenuesPage();
+    List<Venue> getVenuesPerKeyword(String keyword);
 
     List<Performance> getPerformancesPerArtist(Artist artist);
     List<Performance> getPerformancesPerVenue(Venue venue);
     List<Performance> getNextPerformancesPage();
     List<Performance> getLatestPerformances();
+    List<Performance> getPerformancesPerKeyword(String keyword);
 
     List<String> getAutoCompletion(String keyword);
 

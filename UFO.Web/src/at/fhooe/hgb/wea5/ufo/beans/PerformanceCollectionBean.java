@@ -94,7 +94,7 @@ public class PerformanceCollectionBean implements Serializable {
     public String checkPerformanceAvailable(Performance p, String hour) {
         Calendar cal = p.getDateTime().toGregorianCalendar();
         String perfHour = timeFormatter.format(cal.getTime());
-        return perfHour.equals(hour) ? p.getArtist().getName() : "";
+        return perfHour.equals(hour) ? p.getArtist().getName() : null;
     }
 
     public String toDateString(XMLGregorianCalendarImpl calendar) {

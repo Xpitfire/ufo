@@ -27,5 +27,6 @@ namespace UFO.Server.Bll.Common
     {
         bool IsDateTimeFormatValid(DateTime dateTime);
         bool IsPerformanceDateTimeDelayValid(Performance old, Performance @new);
+        bool IsUserAutoCompletionValid(string keyword);
     }
 }

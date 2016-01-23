@@ -25,10 +25,19 @@
         <x:forEach items="#{performanceCollectionBean.performancesOverview}" var="p">
             <p:row>
                 <p:column>#{performanceCollectionBean.toDateString(p.dateTime)}</p:column>
-                <p:column>#{p.venue.venueId}</p:column>
-
+                <p:column>
+                    <p:link href="#{request.contextPath}/ufo/venue.xhtml?id=#{p.venue.venueId}">
+                        #{p.venue.venueId}
+                    </p:link>
+                </p:column>
                 <x:forEach items="#{performanceCollectionBean.hours}" var="hour">
-                    <p:column>#{performanceCollectionBean.checkPerformanceAvailable(p, hour)}</p:column>
+                    <p:column>
+                        <x:if test="#{not empty performanceCollectionBean.checkPerformanceAvailable(p, hour)}">
+                            <p:link href="#{request.contextPath}/ufo/artist.xhtml?id=#{p.artist.artistId}">
+                                #{p.artist.name}
+                            </p:link>
+                        </x:if>
+                    </p:column>
                 </x:forEach>
             </p:row>
         </x:forEach>

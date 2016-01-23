@@ -62,7 +62,7 @@ namespace UFO.Server.Bll.Common
         List<Artist> SearchArtistsPerKeyword(string keyword);
         List<Venue> SearchVenuesPerKeyword(string keyword);
 
-        List<string> GetAutoCompletion(string keyword);
+        List<string> GetPerformanceAutoCompletion(string keyword);
 
     }
 }

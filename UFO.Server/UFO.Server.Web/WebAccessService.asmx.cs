@@ -105,6 +105,6 @@ namespace UFO.Server.Web
         public List<Artist> SearchArtistsPerKeyword(string keyword) => ViewAccessDelegate.SearchArtistsPerKeyword(keyword);
 
         [WebMethod]
-        public List<string> GetAutoCompletion(string keyword) => ViewAccessDelegate.GetAutoCompletion(keyword);
+        public List<string> GetPerformanceAutoCompletion(string keyword) => ViewAccessDelegate.GetPerformanceAutoCompletion(keyword);
     }
 }

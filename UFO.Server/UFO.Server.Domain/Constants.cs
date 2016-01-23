@@ -37,5 +37,6 @@ namespace UFO.Server.Domain
         public const int InitPageOffset = 0;
         public const int DefaultPageResultCount = 50;
 
+        public const int KeywordRequestSize = 20;
     }
 }

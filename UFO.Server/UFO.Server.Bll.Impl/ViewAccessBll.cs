@@ -105,10 +105,10 @@ namespace UFO.Server.Bll.Impl
             return VenueDao.SearchByKeyword(keyword).ResultObject;
         }
 
-        public override List<string> GetAutoCompletion(string keyword)
+        public override List<string> GetPerformanceAutoCompletion(string keyword)
         {
             var set = new HashSet<string>();
-            if (keyword != null && keyword.Length >= 3)
+            if (keyword != null && keyword.Length >= 2)
             {
                 SearchPerformancesPerKeyword(keyword)?.ForEach(p =>
                 {
