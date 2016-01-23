@@ -166,6 +166,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RemovePerformanceResponse }
+     * 
+     */
+    public RemovePerformanceResponse createRemovePerformanceResponse() {
+        return new RemovePerformanceResponse();
+    }
+
+    /**
      * Create an instance of {@link RequestCountryPagingData }
      * 
      */
@@ -395,6 +403,14 @@ public class ObjectFactory {
      */
     public RequestLocationPagingDataResponse createRequestLocationPagingDataResponse() {
         return new RequestLocationPagingDataResponse();
+    }
+
+    /**
+     * Create an instance of {@link RemovePerformance }
+     * 
+     */
+    public RemovePerformance createRemovePerformance() {
+        return new RemovePerformance();
     }
 
     /**

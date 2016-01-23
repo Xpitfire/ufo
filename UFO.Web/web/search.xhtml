@@ -16,18 +16,37 @@
         <h1>Search Results</h1>
 
         <div>
-            <h3>Artists</h3>
-            <x:forEach items="#{searchResultBean.artists}" var="a">
+            <x:if test="#{searchResultBean.artists.size() > 0}">
+                <h3>Artists</h3>
+            </x:if>
+            <x:forEach items="#{searchResultBean.artists}" var="v">
                 <div>
-                    <h:panelGroup columns="2" cellpadding="5">
-                        <p:link href="#{request.contextPath}/ufo/artist.xhtml?id=#{a.artistId}">
-                            <h:outputText value="#{a.name}" />
+                    <h:panelGroup columns="1" cellpadding="5">
+                        <p:link href="#{request.contextPath}/ufo/artist.xhtml?id=#{v.artistId}">
+                            <h:outputText value="#{v.name}" />
 
                             <h:outputText value=" Kategorie:" />
-                            <h:outputText value="#{a.category.name} (#{a.category.categoryId})"/>
+                            <h:outputText value="#{v.category.name} (#{v.category.categoryId})"/>
 
                             <h:outputText value=" Land:" />
-                            <h:outputText value="#{a.country.name} (#{a.country.code})"/>
+                            <h:outputText value="#{v.country.name} (#{v.country.code})"/>
+                        </p:link>
+                    </h:panelGroup>
+                </div>
+            </x:forEach>
+
+            <x:if test="#{searchResultBean.venues.size() > 0}">
+                <h3>Venues</h3>
+            </x:if>
+            <x:forEach items="#{searchResultBean.venues}" var="v">
+                <div>
+                    <h:panelGroup columns="1" cellpadding="5">
+                        <p:link href="#{request.contextPath}/ufo/venue.xhtml?id=#{v.venueId}">
+                            <h:outputText value="#{v.name}" />
+
+                            <h:outputText value=" Ort:" />
+                            <h:outputText value="#{v.location.name}"/>
+
                         </p:link>
                     </h:panelGroup>
                 </div>

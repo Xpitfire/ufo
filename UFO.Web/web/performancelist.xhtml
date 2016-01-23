@@ -36,13 +36,27 @@
                         #{p.venue.venueId}
                     </p:link>
                 </p:column>
+
                 <x:forEach items="#{performanceCollectionBean.hours}" var="hour">
                     <x:choose>
                         <x:when test="#{not empty performanceCollectionBean.checkPerformanceAvailable(p, hour)}">
                             <p:column styleClass="artist-table" style="background-color: #{p.artist.category.color}">
-                                <p:link styleClass="artist-link" href="#{request.contextPath}/ufo/artist.xhtml?id=#{p.artist.artistId}">
-                                    #{p.artist.name}
-                                </p:link>
+                                <div>
+                                    <p:link styleClass="artist-link" href="#{request.contextPath}/ufo/artist.xhtml?id=#{p.artist.artistId}">
+                                        #{p.artist.name} (#{p.artist.category.categoryId})
+                                    </p:link>
+                                </div>
+                                <p:outputPanel rendered="#{sessionBean.authenticated}">
+                                    <p:commandLink styleClass="artist-link-cancel" action="#{performanceCollectionBean.cancelAction(p)}" update="performancesoverview">
+                                        [Stornieren]
+                                    </p:commandLink>
+                                </p:outputPanel>
+
+                                <p:outputPanel rendered="#{sessionBean.authenticated}">
+                                    <p:commandLink styleClass="artist-link-edit" onclick="PF('dlg2').show();">
+                                        [Verschieben]
+                                    </p:commandLink>
+                                </p:outputPanel>
                             </p:column>
                         </x:when>
                         <x:otherwise>
@@ -53,5 +67,9 @@
             </p:row>
         </x:forEach>
     </p:panelGrid>
+
+    <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+        <h:outputText value="This is a Modal Dialog." />
+    </p:dialog>
 
 </div>

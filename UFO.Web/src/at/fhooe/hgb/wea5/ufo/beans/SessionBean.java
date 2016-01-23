@@ -1,9 +1,9 @@
 package at.fhooe.hgb.wea5.ufo.beans;
 
+import at.fhooe.hgb.wea5.ufo.backend.ServiceLocator;
+import at.fhooe.hgb.wea5.ufo.backend.UfoDelegate;
 import at.fhooe.hgb.wea5.ufo.util.Crypto;
 import at.fhooe.hgb.wea5.ufo.web.generated.SessionToken;
-import at.fhooe.hgb.wea5.ufo.web.generated.User;
-import at.fhooe.hgb.wea5.ufo.web.generated.WebAccessService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -17,8 +17,9 @@ import java.io.Serializable;
 @SessionScoped
 public class SessionBean implements Serializable {
 
+    private UfoDelegate delegate = ServiceLocator.getInstance().getUfoDelegate();
+
     private boolean isAuthenticated;
-    private User user;
     private SessionToken token;
 
     public boolean isAuthenticated() {
@@ -26,18 +27,18 @@ public class SessionBean implements Serializable {
     }
 
     public boolean authenticate(String email, String password) {
-        user = new User();
-        user.setEMail(email);
-        user.setPassword(Crypto.md5(password));
-        WebAccessService service = new WebAccessService();
-        token = service.getWebAccessServiceSoap().requestSessionToken(user);
-        return isAuthenticated = (token != null);
+        token = delegate.requestSessionToken(email, Crypto.md5(password));
+        return isAuthenticated = delegate.login(token);
     }
 
     public void logout() {
+        delegate.logout(token);
         this.isAuthenticated = false;
-        user = null;
         token = null;
+    }
+
+    public SessionToken getSessionToken() {
+        return token;
     }
 
 }

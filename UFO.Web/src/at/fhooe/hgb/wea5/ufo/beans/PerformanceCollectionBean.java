@@ -7,11 +7,14 @@ import at.fhooe.hgb.wea5.ufo.web.generated.Location;
 import at.fhooe.hgb.wea5.ufo.web.generated.Performance;
 import at.fhooe.hgb.wea5.ufo.web.generated.Venue;
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.ActionEvent;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -26,6 +29,11 @@ import java.util.*;
 public class PerformanceCollectionBean implements Serializable {
 
     private UfoDelegate delegate = ServiceLocator.getInstance().getUfoDelegate();
+
+    @ManagedProperty(value = "#{sessionBean}")
+    private SessionBean sessionBean;
+    public void setSessionBean(SessionBean sessionBean) { this.sessionBean = sessionBean; }
+
     private List<Performance> performancesPerArtist;
     private int artistId;
     private Artist artist;
@@ -120,4 +128,12 @@ public class PerformanceCollectionBean implements Serializable {
         this.date = (Date)event.getObject();
         performancesOverview = delegate.getPerformancesPerDate(date);
     }
+
+    public void cancelAction(Performance p) {
+        if (!sessionBean.isAuthenticated())
+            return;
+        performancesOverview.remove(p);
+        delegate.cancelPerformance(sessionBean.getSessionToken(), p);
+    }
+
 }

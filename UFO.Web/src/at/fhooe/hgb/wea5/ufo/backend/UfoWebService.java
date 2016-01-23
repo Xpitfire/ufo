@@ -189,4 +189,27 @@ public class UfoWebService implements UfoDelegate {
             return new ArrayList<>();
         return tmp.getString();
     }
+
+    @Override
+    public void cancelPerformance(SessionToken token, Performance p) {
+        webAccessProxy.removePerformance(token, p);
+    }
+
+    @Override
+    public SessionToken requestSessionToken(String username, String passwordHash) {
+        User user = new User();
+        user.setEMail(username);
+        user.setPassword(passwordHash);
+        return webAccessProxy.requestSessionToken(user);
+    }
+
+    @Override
+    public boolean login(SessionToken token) {
+        return webAccessProxy.loginAdmin(token);
+    }
+
+    @Override
+    public void logout(SessionToken token) {
+        webAccessProxy.logoutAdmin(token);
+    }
 }

@@ -327,6 +327,23 @@ public interface WebAccessServiceSoap {
 
     /**
      * 
+     * @param performance
+     * @param token
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "RemovePerformance", action = "http://ufo.at/RemovePerformance")
+    @WebResult(name = "RemovePerformanceResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "RemovePerformance", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.RemovePerformance")
+    @ResponseWrapper(localName = "RemovePerformanceResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.RemovePerformanceResponse")
+    public boolean removePerformance(
+        @WebParam(name = "token", targetNamespace = "http://ufo.at/")
+        SessionToken token,
+        @WebParam(name = "performance", targetNamespace = "http://ufo.at/")
+        Performance performance);
+
+    /**
+     * 
      * @param keyword
      * @return
      *     returns at.fhooe.hgb.wea5.ufo.web.generated.ArrayOfPerformance

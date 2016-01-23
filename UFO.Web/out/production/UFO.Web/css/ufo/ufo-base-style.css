@@ -9,8 +9,16 @@
     margin: 2px !important;
 }
 
-.ui-widget-content a.ui-link.ui-widget.artist-link {
+.ui-widget-content div a.ui-link.ui-widget.artist-link {
     color: #fff;
+}
+
+.ui-widget-content div .ui-commandlink.ui-widget.artist-link-cancel {
+    color: indianred;
+}
+
+.ui-widget-content div .ui-commandlink.ui-widget.artist-link-edit {
+    color: #262626;
 }
 
 .artist-table {

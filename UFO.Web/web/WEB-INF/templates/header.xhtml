@@ -34,7 +34,7 @@
                     </h:panelGroup>
 
                     <h:panelGroup id="logout" layout="block" rendered="#{sessionBean.authenticated}">
-                        <p:commandButton value="Abmelden" actionListener="#{sessionBean.logout}" update="page"/>
+                        <p:commandLink value="Abmelden" action="#{sessionBean.logout()}" update="page"/>
                     </h:panelGroup>
                 </li>
             </ul>

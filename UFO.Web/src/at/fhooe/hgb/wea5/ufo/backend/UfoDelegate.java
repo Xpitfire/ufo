@@ -1,8 +1,6 @@
 package at.fhooe.hgb.wea5.ufo.backend;
 
-import at.fhooe.hgb.wea5.ufo.web.generated.Artist;
-import at.fhooe.hgb.wea5.ufo.web.generated.Performance;
-import at.fhooe.hgb.wea5.ufo.web.generated.Venue;
+import at.fhooe.hgb.wea5.ufo.web.generated.*;
 
 import java.util.Date;
 import java.util.List;
@@ -30,4 +28,9 @@ public interface UfoDelegate {
 
     List<String> getAutoCompletion(String keyword);
 
+    void cancelPerformance(SessionToken token, Performance p);
+
+    SessionToken requestSessionToken(String username, String passwordHash);
+    boolean login(SessionToken token);
+    void logout(SessionToken token);
 }
