@@ -11,7 +11,7 @@
     <ui:define name="content">
         <h:panelGroup id="artistlist-page" class="page" rendered="#{artistCollectionBean.artists != null}">
             <h:form style="width: 70%; align-content: center; margin: auto;">
-                <p:dataScroller value="#{artistCollectionBean.artists}" var="artist" chunkSize="20">
+                <p:dataScroller value="#{artistCollectionBean.artists}" var="artist" chunkSize="20" rendered="#{artistCollectionBean.artists.size() > 0}">
                     <p:link href="#{request.contextPath}/ufo/artist.xhtml?id=#{artist.artistId}">
                         <h:panelGrid columns="2" style="width:100%;" columnClasses="artist-img-td,detail">
                                 <p:outputPanel>

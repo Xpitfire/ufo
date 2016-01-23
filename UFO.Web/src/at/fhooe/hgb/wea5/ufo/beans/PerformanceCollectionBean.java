@@ -35,6 +35,7 @@ public class PerformanceCollectionBean implements Serializable {
     private List<Performance> performancesOverview;
     private SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm");
     private SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy");
+    private SimpleDateFormat fullDateFormatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 
     private List<String> hours = new ArrayList<>();
     private Date date = Calendar.getInstance().getTime();
@@ -101,6 +102,10 @@ public class PerformanceCollectionBean implements Serializable {
 
     public String toDateString(XMLGregorianCalendarImpl calendar) {
         return dateFormatter.format(calendar.toGregorianCalendar().getTime());
+    }
+
+    public String toFullDateString(XMLGregorianCalendarImpl calendar) {
+        return fullDateFormatter.format(calendar.toGregorianCalendar().getTime());
     }
 
     public void setDate(Date date) {

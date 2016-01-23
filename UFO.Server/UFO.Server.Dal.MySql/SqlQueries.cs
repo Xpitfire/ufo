@@ -76,15 +76,18 @@ namespace UFO.Server.Dal.MySql
 
         public const string SelectPerformanceByDate = @"SELECT * 
                                                           FROM performanceview 
-                                                         WHERE Date LIKE ?Date";
+                                                         WHERE Date LIKE ?Date
+                                                         ORDER BY Date DESC";
 
         public const string SelectPerformanceByArtist = @"SELECT *
                                                             FROM performanceview
-                                                           WHERE ArtistId=?ArtistId";
+                                                           WHERE ArtistId=?ArtistId
+                                                           ORDER BY Date DESC";
 
         public const string SelectPerformanceByVenue = @"SELECT *
                                                            FROM performanceview
-                                                          WHERE VenueId=?VenueId";
+                                                          WHERE VenueId=?VenueId
+                                                          ORDER BY Date DESC";
 
         public const string SelectLatestPerformances = @"SELECT *  
                                                            FROM performanceview

@@ -41,21 +41,20 @@
                 <p:dataScroller value="#{performanceCollectionBean.performancesPerVenue}" var="performance" chunkSize="20">
                     <h:panelGrid columns="2" style="width:100%;" columnClasses="artist-img-td,detail">
                         <p:outputPanel>
-                            <p:graphicImage value="#{performance.artist.picture.path}" styleClass="artist-img"/>
+                            <p:link href="#{request.contextPath}/ufo/artist.xhtml?id=#{performance.artist.artistId}">
+                                <p:graphicImage value="#{performance.artist.picture.path}" styleClass="artist-img"/>
+                            </p:link>
                         </p:outputPanel>
                         <p:outputPanel>
                             <h:panelGrid columns="1" bodyrows="2">
                                 <p:outputPanel>
-                                    <h:outputText value="#{performance.artist.name} #{performance.artist.country.code}" style="font-weight: bold" />
+                                    <p:link href="#{request.contextPath}/ufo/artist.xhtml?id=#{performance.artist.artistId}">
+                                        <h:outputText value="#{performance.artist.name} #{performance.artist.country.code}" style="font-weight: bold" />
+                                    </p:link>
                                 </p:outputPanel>
-                                <h:panelGrid columns="2" cellpadding="5">
-
-                                    <h:outputText value=" Kategorie:" />
-                                    <h:outputText value="#{performance.artist.category.name} (#{performance.artist.category.categoryId})"/>
-
-                                    <h:outputText value=" Uhrzeit:" />
-                                    <h:outputText value="#{performance.dateTime}"/>
-
+                                <h:panelGrid columns="1" cellpadding="5">
+                                    <h:outputText value=" Kategorie: #{performance.artist.category.name} (#{performance.artist.category.categoryId})" />
+                                    <h:outputText value="#{performanceCollectionBean.toFullDateString(performance.dateTime)}"/>
                                 </h:panelGrid>
                             </h:panelGrid>
                         </p:outputPanel>
