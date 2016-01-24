@@ -2,22 +2,19 @@ package at.fhooe.hgb.wea5.ufo.beans;
 
 import at.fhooe.hgb.wea5.ufo.backend.ServiceLocator;
 import at.fhooe.hgb.wea5.ufo.backend.UfoDelegate;
+import at.fhooe.hgb.wea5.ufo.helper.PerformanceGroup;
+import at.fhooe.hgb.wea5.ufo.util.Constants;
 import at.fhooe.hgb.wea5.ufo.web.generated.Artist;
-import at.fhooe.hgb.wea5.ufo.web.generated.Location;
 import at.fhooe.hgb.wea5.ufo.web.generated.Performance;
 import at.fhooe.hgb.wea5.ufo.web.generated.Venue;
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
-import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
-import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -41,19 +38,10 @@ public class PerformanceCollectionBean implements Serializable {
     private String venueId;
     private Venue venue = new Venue();
     private List<Performance> performancesOverview;
-    private SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm");
-    private SimpleDateFormat dateFormatter = new SimpleDateFormat("dd.MM.yyyy");
-    private SimpleDateFormat fullDateFormatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+    private Map<String, PerformanceGroup> groupMap;
 
-    private List<String> hours = new ArrayList<>();
+
     private Date date = Calendar.getInstance().getTime();
-
-    public PerformanceCollectionBean() {
-        for (int i = 14; i < 24; i++) {
-            hours.add(i + ":00");
-        }
-        hours.add("00:00");
-    }
 
     public void initPerformancesPerArtist() {
         artist = delegate.getArtistById(artistId);
@@ -68,6 +56,7 @@ public class PerformanceCollectionBean implements Serializable {
     @PostConstruct
     public void initPerformancesOverview() {
         performancesOverview = delegate.getLatestPerformances();
+        groupMap = PerformanceGroup.buildGrouping(performancesOverview);
     }
 
     public List<Performance> getPerformancesPerArtist() {
@@ -94,26 +83,26 @@ public class PerformanceCollectionBean implements Serializable {
         this.venueId = venueId;
     }
 
-    public List<Performance> getPerformancesOverview() {
-        return performancesOverview;
+    public List<String> getHours() {
+        return Constants.HOURS_LIST;
     }
 
-    public List<String> getHours() {
-        return hours;
+    public Set<String> getCurrentVenues() {
+        return PerformanceGroup.getVenues(performancesOverview);
     }
 
     public String checkPerformanceAvailable(Performance p, String hour) {
         Calendar cal = p.getDateTime().toGregorianCalendar();
-        String perfHour = timeFormatter.format(cal.getTime());
+        String perfHour = Constants.TIME_FORMATTER.format(cal.getTime());
         return perfHour.equals(hour) ? p.getArtist().getName() : null;
     }
 
     public String toDateString(XMLGregorianCalendarImpl calendar) {
-        return dateFormatter.format(calendar.toGregorianCalendar().getTime());
+        return Constants.DATE_FORMATTER.format(calendar.toGregorianCalendar().getTime());
     }
 
     public String toFullDateString(XMLGregorianCalendarImpl calendar) {
-        return fullDateFormatter.format(calendar.toGregorianCalendar().getTime());
+        return Constants.FULL_DATE_FORMATTER.format(calendar.toGregorianCalendar().getTime());
     }
 
     public void setDate(Date date) {
@@ -127,13 +116,22 @@ public class PerformanceCollectionBean implements Serializable {
     public void dateChange(SelectEvent event)  {
         this.date = (Date)event.getObject();
         performancesOverview = delegate.getPerformancesPerDate(date);
+        groupMap = PerformanceGroup.buildGrouping(performancesOverview);
     }
 
     public void cancelAction(Performance p) {
         if (!sessionBean.isAuthenticated())
             return;
         performancesOverview.remove(p);
+        groupMap = PerformanceGroup.buildGrouping(performancesOverview);
         delegate.cancelPerformance(sessionBean.getSessionToken(), p);
     }
 
+    public Map<String, PerformanceGroup> getGroupMap() {
+        return groupMap;
+    }
+
+    public List<Performance> getPerformancesOverview() {
+        return performancesOverview;
+    }
 }

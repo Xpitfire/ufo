@@ -73,7 +73,7 @@ namespace UFO.Server.Bll.Impl
             }
             return result;
         }
-
+        
         public override bool RemovePerformance(SessionToken token, Performance performance)
         {
             if (!IsUserAuthenticated(token) || performance == null)

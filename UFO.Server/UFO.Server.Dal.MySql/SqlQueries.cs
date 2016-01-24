@@ -91,7 +91,7 @@ namespace UFO.Server.Dal.MySql
 
         public const string SelectLatestPerformances = @"SELECT *  
                                                            FROM performanceview
-                                                          WHERE Date BETWEEN DATE_SUB((SELECT MAX(Date) FROM performanceview), INTERVAL 7 DAY) AND NOW()
+                                                          WHERE Date BETWEEN NOW() AND (SELECT MAX(Date) FROM performanceview)
                                                           ORDER BY Date DESC";
 
         public const string SelectPerformanceBetweenHours = @"SELECT * 

@@ -11,13 +11,13 @@
     <ui:define name="content">
         <h:panelGroup id="venuelist-page" class="page">
             <h:form style="width: 70%; align-content: center; margin: auto;">
-                <p:dataScroller value="#{venueCollectionBean.venues}" var="venue" chunkSize="20">
-                    <p:link href="#{request.contextPath}/ufo/venue.xhtml?id=#{venue.venueId}">
+                <p:dataScroller value="#{venueCollectionBean.venues}" var="venueGroup" chunkSize="20">
+                    <p:link href="#{request.contextPath}/ufo/venue.xhtml?id=#{venueGroup.venueId}">
                         <h:panelGrid columns="1" style="width:100%;" columnClasses="detail">
                                 <p:outputPanel>
                                     <h:panelGrid columns="1" cellpadding="5">
-                                        <h:outputText value="#{venue.name} (#{venue.venueId})" style="font-weight: bold"/>
-                                        <h:outputText value="#{venue.location.name}"/>
+                                        <h:outputText value="#{venueGroup.name} (#{venueGroup.venueId})" style="font-weight: bold"/>
+                                        <h:outputText value="#{venueGroup.location.name}"/>
                                     </h:panelGrid>
                                 </p:outputPanel>
                         </h:panelGrid>
