@@ -11,6 +11,7 @@
 
 .ui-widget-content div a.ui-link.ui-widget.artist-link {
     color: #fff;
+    margin: 5px;
 }
 
 .ui-widget-content div .ui-commandlink.ui-widget.artist-link-cancel {
@@ -25,4 +26,10 @@
     border-color: #EAEAEA !important;
     min-width: 120px !important;
     max-width: 120px !important;
+}
+
+.ui-panelgrid td.ui-panelgrid-cell {
+    padding: 0px;
+    height: 2em;
+    position: relative;
 }

@@ -87,18 +87,10 @@ public class PerformanceCollectionBean implements Serializable {
         return Constants.HOURS_LIST;
     }
 
-    public Set<String> getCurrentVenues() {
-        return PerformanceGroup.getVenues(performancesOverview);
-    }
-
     public String checkPerformanceAvailable(Performance p, String hour) {
         Calendar cal = p.getDateTime().toGregorianCalendar();
         String perfHour = Constants.TIME_FORMATTER.format(cal.getTime());
         return perfHour.equals(hour) ? p.getArtist().getName() : null;
-    }
-
-    public String toDateString(XMLGregorianCalendarImpl calendar) {
-        return Constants.DATE_FORMATTER.format(calendar.toGregorianCalendar().getTime());
     }
 
     public String toFullDateString(XMLGregorianCalendarImpl calendar) {
@@ -131,7 +123,4 @@ public class PerformanceCollectionBean implements Serializable {
         return groupMap;
     }
 
-    public List<Performance> getPerformancesOverview() {
-        return performancesOverview;
-    }
 }

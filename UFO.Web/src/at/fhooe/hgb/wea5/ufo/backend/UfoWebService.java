@@ -90,12 +90,18 @@ public class UfoWebService implements UfoDelegate {
 
     @Override
     public Artist getArtistById(int id) {
-        return prepareArtist(webAccessProxy.getArtist(id));
+        Artist a = webAccessProxy.getArtist(id);
+        if (a == null)
+            return prepareArtist(new Artist());
+        return prepareArtist(a);
     }
 
     @Override
     public Venue getVenueById(String venueId) {
-        return webAccessProxy.getVenue(venueId);
+        Venue v = webAccessProxy.getVenue(venueId);
+        if (v == null)
+            return new Venue();
+        return v;
     }
 
     @Override
