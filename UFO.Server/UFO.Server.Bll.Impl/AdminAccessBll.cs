@@ -88,7 +88,31 @@ namespace UFO.Server.Bll.Impl
 
         public override bool DelayPerformance(SessionToken token, Performance oldPerformance, Performance newPerformance)
         {
-            throw new NotImplementedException();
+            if (oldPerformance?.Artist == null || oldPerformance.Venue == null 
+                || newPerformance?.Artist == null || newPerformance.Venue == null 
+                || Equals(oldPerformance, newPerformance) || !IsUserAuthenticated(token))
+            {
+                return false;
+            }
+
+            Performance checkResult = null;
+            PerformanceDao.SelectById(oldPerformance.DateTime,
+                oldPerformance.Artist.ArtistId)
+                .OnSuccess(response => checkResult = response.ResultObject);
+
+            if (checkResult == null)
+                return false;
+
+            var insertStatus = DaoStatus.Failed;
+            using (var scope = new TransactionScope())
+            {
+                var deleteStatus = PerformanceDao.Delete(oldPerformance).ResponseStatus;
+                if (deleteStatus == DaoStatus.Successful)
+                    insertStatus = PerformanceDao.Insert(newPerformance).ResponseStatus;
+                if (insertStatus == DaoStatus.Successful)
+                    scope.Complete();
+            }
+            return insertStatus == DaoStatus.Successful;
         }
 
         public override bool ModifyLocationRange(SessionToken token, List<Location> locations)

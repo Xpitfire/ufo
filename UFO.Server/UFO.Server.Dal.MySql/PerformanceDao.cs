@@ -96,7 +96,7 @@ namespace UFO.Server.Dal.MySql
 
         private void VerifyPerformanceValue(Performance entity)
         {
-            if (entity.DateTime.Minute != 0 || entity.DateTime.Second != 0 || entity.DateTime.Millisecond != 0)
+            if (entity.DateTime.Minute != 0 || entity.DateTime.Second != 0)
             {
                 throw new InvalidOperationException("Invalid Date format: Only full hours allowed!");
             }

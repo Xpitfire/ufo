@@ -56,7 +56,7 @@
                                                     </p:outputPanel>
 
                                                     <p:outputPanel rendered="#{sessionBean.authenticated}">
-                                                        <p:commandLink styleClass="artist-link-edit" onclick="PF('dlg2').show();" action="#{changePerformanceView.InvokePerformance(p)}" update="changeDialog">
+                                                        <p:commandLink styleClass="artist-link-edit" onclick="PF('delayDialog').show();" action="#{changePerformanceView.InvokePerformance(p)}" update="changeDialog">
                                                             [Verschieben]
                                                         </p:commandLink>
                                                     </p:outputPanel>
@@ -74,35 +74,31 @@
         </x:forEach>
     </p:outputPanel>
 
-    <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+    <p:dialog header="Veranstaltung verschieben" widgetVar="delayDialog" modal="true" height="250" width="600">
         <h:form id="changeDialog">
-            <p:growl id="msgs" showDetail="true" />
+            <p:growl id="dialogMsg" showDetail="true" />
 
-            <p:panel header="Select a Location" style="margin-bottom:10px;">
+            <p:panel header="Bitte konfigurieren Sie die Veranstalltung neu:" style="margin-bottom:10px;">
                 <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel for="venue" value="Venue: " />
-                    <p:selectOneMenu id="venue" value="#{changePerformanceView.pickedVenue}" style="width:150px">
-                        <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
+                    <p:outputLabel for="venue" value="Spielstätte: " />
+                    <p:selectOneMenu id="venue" value="#{changePerformanceView.pickedVenue}" style="width:200px">
+                        <f:selectItem itemLabel="" itemValue="" noSelectionOption="true" />
                         <f:selectItems value="#{changePerformanceView.venues}" />
                     </p:selectOneMenu>
-
-
                 </h:panelGrid>
-
                 <br />
-
-                <h:outputText value="Date: " style="font-weight:bold"/>
+                <h:outputText value="Datum: " style="font-weight:bold"/>
                 <h:inputText id="day" value="#{changePerformanceView.day}" style="width: 40px"/>
                 <h:outputText value=" . " style="font-weight:bold"/>
                 <h:inputText id="month" value="#{changePerformanceView.month}" style="width: 40px" />
                 <h:outputText value=" . " style="font-weight:bold"/>
                 <h:inputText id="year" value="#{changePerformanceView.year}" style="width: 40px" />
                 <br />
-                <h:outputText value="Hour: " style="font-weight:bold"/>
-                <h:inputText id="hour" value="#{changePerformanceView.hour}" />
+                <h:outputText value="Stunde: " style="font-weight:bold"/>
+                <h:inputText id="hour" value="#{changePerformanceView.hour}" style="width: 30px" />
+                <h:outputText value=":00" style="width: 30px" />
                 <br />
-
-                <p:commandButton value="Submit" update="msgs" actionListener="#{changePerformanceView.saveChanges}" icon="ui-icon-check" />
+                <p:commandButton value="Ändern" update="dialogMsg" actionListener="#{changePerformanceView.saveChanges}" onclick="PF('delayDialog').hide();" icon="ui-icon-check" />
             </p:panel>
         </h:form>
 

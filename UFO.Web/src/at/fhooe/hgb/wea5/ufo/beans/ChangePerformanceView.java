@@ -9,6 +9,7 @@ package at.fhooe.hgb.wea5.ufo.beans;
         import javax.faces.bean.ManagedBean;
         import javax.faces.bean.ManagedProperty;
         import javax.faces.bean.ViewScoped;
+        import javax.faces.context.FacesContext;
         import javax.xml.datatype.DatatypeConfigurationException;
         import javax.xml.datatype.DatatypeFactory;
         import javax.xml.datatype.XMLGregorianCalendar;
@@ -46,12 +47,22 @@ public class ChangePerformanceView implements Serializable {
     @PostConstruct
     public void init() {
         venues = new ArrayList<>();
-        venues.addAll(venueListBean.getVenues().stream().map(Venue::getName).collect(Collectors.toList()));
+        venues.addAll(venueListBean.getVenues().stream().map(
+                v -> prepareVenueName(v)).collect(Collectors.toList()));
+    }
+
+    private String prepareVenueName(Venue venue) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(venue.getName())
+                .append(" (")
+                .append(venue.getVenueId())
+                .append(")");
+        return  sb.toString();
     }
 
     public void InvokePerformance(Performance p) {
         this.performance = p;
-        pickedVenue = p.getVenue().getName();
+        pickedVenue = prepareVenueName(p.getVenue());
 
         day = p.getDateTime().getDay();
         month = p.getDateTime().getMonth();
@@ -64,7 +75,7 @@ public class ChangePerformanceView implements Serializable {
         Performance newPerformance = new Performance();
         newPerformance.setArtist(performance.getArtist());
         for(Venue v : venueListBean.getVenues()) {
-            if(v.getName().equals(pickedVenue)) {
+            if(prepareVenueName(v).equals(pickedVenue)) {
                 newPerformance.setVenue(v);
                 break;
             }
@@ -81,6 +92,9 @@ public class ChangePerformanceView implements Serializable {
         } catch(DatatypeConfigurationException e){
             System.out.println("Date not valid");
         }
+
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, "index?faces-redirect=true");
     }
 
 

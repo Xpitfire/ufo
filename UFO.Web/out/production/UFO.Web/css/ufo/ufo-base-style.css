@@ -15,11 +15,11 @@
 }
 
 .ui-widget-content div .ui-commandlink.ui-widget.artist-link-cancel {
-    color: indianred;
+    color: #A92323;
 }
 
 .ui-widget-content div .ui-commandlink.ui-widget.artist-link-edit {
-    color: #262626;
+    color: #0C0569;
 }
 
 .artist-table {
