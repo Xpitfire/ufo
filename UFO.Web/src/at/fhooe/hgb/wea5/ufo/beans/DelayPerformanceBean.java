@@ -23,7 +23,7 @@ package at.fhooe.hgb.wea5.ufo.beans;
  */
 @ManagedBean
 @ViewScoped
-public class ChangePerformanceView implements Serializable {
+public class DelayPerformanceBean implements Serializable {
 
     private UfoDelegate delegate = ServiceLocator.getInstance().getUfoDelegate();
 
@@ -35,8 +35,8 @@ public class ChangePerformanceView implements Serializable {
     private VenueCollectionBean venueListBean;
     public void setVenueListBean(VenueCollectionBean venueListBean) { this.venueListBean = venueListBean; }
 
-    private List<String> venues;
-    private String pickedVenue;
+    private List<String> venueNames;
+    private String selectedVenue;
     private Performance performance;
     private int day;
     private int month;
@@ -46,8 +46,8 @@ public class ChangePerformanceView implements Serializable {
 
     @PostConstruct
     public void init() {
-        venues = new ArrayList<>();
-        venues.addAll(venueListBean.getVenues().stream().map(
+        venueNames = new ArrayList<>();
+        venueNames.addAll(venueListBean.getVenues().stream().map(
                 v -> prepareVenueName(v)).collect(Collectors.toList()));
     }
 
@@ -62,7 +62,7 @@ public class ChangePerformanceView implements Serializable {
 
     public void InvokePerformance(Performance p) {
         this.performance = p;
-        pickedVenue = prepareVenueName(p.getVenue());
+        selectedVenue = prepareVenueName(p.getVenue());
 
         day = p.getDateTime().getDay();
         month = p.getDateTime().getMonth();
@@ -71,11 +71,11 @@ public class ChangePerformanceView implements Serializable {
         isActive = true;
     }
 
-    public void saveChanges(){
+    public void save(){
         Performance newPerformance = new Performance();
         newPerformance.setArtist(performance.getArtist());
         for(Venue v : venueListBean.getVenues()) {
-            if(prepareVenueName(v).equals(pickedVenue)) {
+            if(prepareVenueName(v).equals(selectedVenue)) {
                 newPerformance.setVenue(v);
                 break;
             }
@@ -97,29 +97,20 @@ public class ChangePerformanceView implements Serializable {
         facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, "index?faces-redirect=true");
     }
 
-
-    public List<String> getVenues() {
-        return venues;
+    public List<String> getVenueNames() {
+        return venueNames;
     }
 
-    public void setVenues(List<String> venues) {
-        this.venues = venues;
+    public void setVenueNames(List<String> venueNames) {
+        this.venueNames = venueNames;
     }
 
-    public String getPickedVenue() {
-        return pickedVenue;
+    public String getSelectedVenue() {
+        return selectedVenue;
     }
 
-    public void setPickedVenue(String pickedVenue) {
-        this.pickedVenue = pickedVenue;
-    }
-
-    public Performance getPerformance() {
-        return performance;
-    }
-
-    public void setPerformance(Performance performance) {
-        this.performance = performance;
+    public void setSelectedVenue(String selectedVenue) {
+        this.selectedVenue = selectedVenue;
     }
 
     public int getDay() {

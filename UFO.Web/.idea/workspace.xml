@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ChangePerformanceView.java" description="&#10;/**&#10; * Created by Flow on 24.01.2016.&#10; */" line="19" />
+    <bookmark url="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/DelayPerformanceBean.java" description="&#10;/**&#10; * Created by Flow on 24.01.2016.&#10; */" line="19" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a556213-c57c-4804-bacd-f86ed9bdd6bf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ChangePerformanceView.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ChangePerformanceView.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/beans/ChangePerformanceView.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/helper/PerformanceGroup.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/beans/PerformanceCollectionBean.class" afterPath="$PROJECT_DIR$/out/production/UFO.Web/at/fhooe/hgb/wea5/ufo/beans/PerformanceCollectionBean.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/PerformanceCollectionBean.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/PerformanceCollectionBean.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/performancelist.xhtml" afterPath="$PROJECT_DIR$/web/performancelist.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/resources/css/ufo/ufo-base-style.css" afterPath="$PROJECT_DIR$/web/resources/css/ufo/ufo-base-style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/search.xhtml" afterPath="$PROJECT_DIR$/web/search.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/venuelist.xhtml" afterPath="$PROJECT_DIR$/web/venuelist.xhtml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ChangePerformanceView.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/DelayPerformanceBean.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/helper/PerformanceGroup.java" afterPath="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/PerformanceGroup.java" />
     </list>
     <ignored path="UFO.Web.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,11 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="performancelist.xhtml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="performancelist.xhtml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/performancelist.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.192307">
-              <caret line="100" column="112" selection-start-line="100" selection-start-column="112" selection-end-line="100" selection-end-column="112" />
+            <state vertical-scroll-proportion="0.3107861">
+              <caret line="22" column="117" selection-start-line="22" selection-start-column="117" selection-end-line="22" selection-end-column="117" />
               <folding />
             </state>
           </provider>
@@ -60,46 +67,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="artist.xhtml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/artist.xhtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-39.23077">
-              <caret line="60" column="117" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="117" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="artistlist.xhtml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/artistlist.xhtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.230769">
-              <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.xhtml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/templates/header.xhtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5">
-              <caret line="13" column="67" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChangePerformanceView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ChangePerformanceView.java">
+      <file leaf-file-name="DelayPerformanceBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/DelayPerformanceBean.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="96" column="8" selection-start-line="96" selection-start-column="8" selection-end-line="96" selection-end-column="8" />
+              <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
               <folding>
-                <element signature="e#3648#3649#0" expanded="true" />
-                <element signature="e#3677#3678#0" expanded="true" />
-                <element signature="e#3801#3802#0" expanded="true" />
-                <element signature="e#3835#3836#0" expanded="true" />
+                <element signature="e#3661#3662#0" expanded="true" />
+                <element signature="e#3694#3695#0" expanded="true" />
+                <element signature="e#3836#3837#0" expanded="true" />
+                <element signature="e#3872#3873#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UfoDelegate.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PerformanceGroup.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/PerformanceGroup.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,14 +114,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PerformanceCollectionBean.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PerformanceCollectionBean.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/PerformanceCollectionBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.94066316">
+            <state vertical-scroll-proportion="0.0">
               <caret line="117" column="44" selection-start-line="117" selection-start-column="44" selection-end-line="117" selection-end-column="44" />
               <folding>
-                <marker date="1453608589427" expanded="true" signature="3649:3800" placeholder="{...}" />
+                <marker date="1453647561629" expanded="true" signature="3647:3798" placeholder="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UfoWebService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="191" column="19" selection-start-line="191" selection-start-column="19" selection-end-line="191" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -164,8 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/WebServiceClient/src/at/fhooe/hgb/wea5/ufo/web/generated/WebAccessServiceSoap.java" />
-        <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/Hash.java" />
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/Session.java" />
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/ContextHelper.java" />
         <option value="$PROJECT_DIR$/web/login.xhtml" />
@@ -213,8 +220,10 @@
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.java" />
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java" />
         <option value="$PROJECT_DIR$/web/resources/css/ufo/ufo-base-style.css" />
-        <option value="$PROJECT_DIR$/web/performancelist.xhtml" />
         <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ChangePerformanceView.java" />
+        <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/DelayPerformanceBean.java" />
+        <option value="$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/PerformanceGroup.java" />
+        <option value="$PROJECT_DIR$/web/performancelist.xhtml" />
       </list>
     </option>
   </component>
@@ -1111,12 +1120,12 @@
       <workItem from="1453476014631" duration="23570000" />
       <workItem from="1453541364507" duration="42149000" />
       <workItem from="1453591455746" duration="18815000" />
-      <workItem from="1453632802572" duration="8360000" />
+      <workItem from="1453632802572" duration="9640000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="192603000" />
+    <option name="totallyTimeSpent" value="193883000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
@@ -1127,7 +1136,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41860464" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36469343" sideWeight="0.3203125" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36469343" sideWeight="0.32291666" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1137,13 +1146,13 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1890625" sideWeight="0.6603774" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16666667" sideWeight="0.33962265" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4281184" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4281184" sideWeight="0.49583334" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1203125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36469343" sideWeight="0.6796875" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36469343" sideWeight="0.6770833" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1443,14 +1452,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/helper/PerformanceGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="48" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ArtistBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32635254">
@@ -1463,16 +1464,6 @@
             <element signature="e#701#702#0" expanded="false" />
             <element signature="e#734#735#0" expanded="false" />
             <element signature="e#762#763#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7120419">
-          <caret line="27" column="103" selection-start-line="27" selection-start-column="103" selection-end-line="27" selection-end-column="103" />
-          <folding>
-            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1508,17 +1499,6 @@
         <state vertical-scroll-proportion="-7.8461537">
           <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="218" column="36" selection-start-line="218" selection-start-column="36" selection-end-line="218" selection-end-column="36" />
-          <folding>
-            <element signature="e#7549#7550#0" expanded="true" />
-            <element signature="e#7604#7605#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1562,14 +1542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/performancelist.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.192307">
-          <caret line="100" column="112" selection-start-line="100" selection-start-column="112" selection-end-line="100" selection-end-column="112" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/LoginBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1596,26 +1568,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/ChangePerformanceView.java">
+    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/PerformanceCollectionBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="96" column="8" selection-start-line="96" selection-start-column="8" selection-end-line="96" selection-end-column="8" />
+          <caret line="117" column="44" selection-start-line="117" selection-start-column="44" selection-end-line="117" selection-end-column="44" />
           <folding>
-            <element signature="e#3648#3649#0" expanded="true" />
-            <element signature="e#3677#3678#0" expanded="true" />
-            <element signature="e#3801#3802#0" expanded="true" />
-            <element signature="e#3835#3836#0" expanded="true" />
+            <marker date="1453647561629" expanded="true" signature="3647:3798" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/PerformanceCollectionBean.java">
+    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoDelegate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.94066316">
-          <caret line="117" column="44" selection-start-line="117" selection-start-column="44" selection-end-line="117" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/backend/UfoWebService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="191" column="19" selection-start-line="191" selection-start-column="19" selection-end-line="191" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/beans/DelayPerformanceBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
           <folding>
-            <marker date="1453608589427" expanded="true" signature="3649:3800" placeholder="{...}" />
+            <element signature="e#3661#3662#0" expanded="true" />
+            <element signature="e#3694#3695#0" expanded="true" />
+            <element signature="e#3836#3837#0" expanded="true" />
+            <element signature="e#3872#3873#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/at/fhooe/hgb/wea5/ufo/util/PerformanceGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/performancelist.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3107861">
+          <caret line="22" column="117" selection-start-line="22" selection-start-column="117" selection-end-line="22" selection-end-column="117" />
+          <folding />
         </state>
       </provider>
     </entry>

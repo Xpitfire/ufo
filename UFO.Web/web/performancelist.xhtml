@@ -20,7 +20,7 @@
 
                     <f:facet name="header">
                         <p:row>
-                            <p:column styleClass="artist-table">#{perfGroup.key}</p:column>
+                            <p:column styleClass="artist-table" colspan="#{performanceCollectionBean.hours.size() + 1}" >#{perfGroup.key}</p:column>
                         </p:row>
                         <p:row>
                             <p:column>Spielstätten</p:column>
@@ -56,7 +56,7 @@
                                                     </p:outputPanel>
 
                                                     <p:outputPanel rendered="#{sessionBean.authenticated}">
-                                                        <p:commandLink styleClass="artist-link-edit" onclick="PF('delayDialog').show();" action="#{changePerformanceView.InvokePerformance(p)}" update="changeDialog">
+                                                        <p:commandLink styleClass="artist-link-edit" onclick="PF('delayDialog').show();" action="#{delayPerformanceBean.InvokePerformance(p)}" update="changeDialog">
                                                             [Verschieben]
                                                         </p:commandLink>
                                                     </p:outputPanel>
@@ -81,24 +81,25 @@
             <p:panel header="Bitte konfigurieren Sie die Veranstalltung neu:" style="margin-bottom:10px;">
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel for="venue" value="Spielstätte: " />
-                    <p:selectOneMenu id="venue" value="#{changePerformanceView.pickedVenue}" style="width:200px">
+                    <p:selectOneMenu id="venue" value="#{delayPerformanceBean.selectedVenue}" style="width:200px">
                         <f:selectItem itemLabel="" itemValue="" noSelectionOption="true" />
-                        <f:selectItems value="#{changePerformanceView.venues}" />
+                        <f:selectItems value="#{delayPerformanceBean.venueNames}" />
                     </p:selectOneMenu>
                 </h:panelGrid>
-                <br />
-                <h:outputText value="Datum: " style="font-weight:bold"/>
-                <h:inputText id="day" value="#{changePerformanceView.day}" style="width: 40px"/>
-                <h:outputText value=" . " style="font-weight:bold"/>
-                <h:inputText id="month" value="#{changePerformanceView.month}" style="width: 40px" />
-                <h:outputText value=" . " style="font-weight:bold"/>
-                <h:inputText id="year" value="#{changePerformanceView.year}" style="width: 40px" />
-                <br />
-                <h:outputText value="Stunde: " style="font-weight:bold"/>
-                <h:inputText id="hour" value="#{changePerformanceView.hour}" style="width: 30px" />
-                <h:outputText value=":00" style="width: 30px" />
-                <br />
-                <p:commandButton value="Ändern" update="dialogMsg" actionListener="#{changePerformanceView.saveChanges}" onclick="PF('delayDialog').hide();" icon="ui-icon-check" />
+                <p:outputPanel>
+                    <h:outputText value="Datum: " style="font-weight:bold"/>
+                    <h:inputText id="day" value="#{delayPerformanceBean.day}" style="width: 40px"/>
+                    <h:outputText value=" . " style="font-weight:bold"/>
+                    <h:inputText id="month" value="#{delayPerformanceBean.month}" style="width: 40px" />
+                    <h:outputText value=" . " style="font-weight:bold"/>
+                    <h:inputText id="year" value="#{delayPerformanceBean.year}" style="width: 40px" />
+                </p:outputPanel>
+                <p:outputPanel>
+                    <h:outputText value="Stunde: " style="font-weight:bold"/>
+                    <h:inputText id="hour" value="#{delayPerformanceBean.hour}" style="width: 30px" />
+                    <h:outputText value=":00" style="width: 30px" />
+                </p:outputPanel>
+                <p:commandButton value="Ändern" update="dialogMsg" actionListener="#{delayPerformanceBean.save}" onclick="PF('delayDialog').hide();" icon="ui-icon-check" />
             </p:panel>
         </h:form>
 

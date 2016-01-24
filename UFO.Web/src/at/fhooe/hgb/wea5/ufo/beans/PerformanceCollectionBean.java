@@ -2,7 +2,7 @@ package at.fhooe.hgb.wea5.ufo.beans;
 
 import at.fhooe.hgb.wea5.ufo.backend.ServiceLocator;
 import at.fhooe.hgb.wea5.ufo.backend.UfoDelegate;
-import at.fhooe.hgb.wea5.ufo.helper.PerformanceGroup;
+import at.fhooe.hgb.wea5.ufo.util.PerformanceGroup;
 import at.fhooe.hgb.wea5.ufo.util.Constants;
 import at.fhooe.hgb.wea5.ufo.web.generated.Artist;
 import at.fhooe.hgb.wea5.ufo.web.generated.Performance;

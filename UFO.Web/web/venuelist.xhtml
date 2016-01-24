@@ -11,7 +11,7 @@
     <ui:define name="content">
         <h:panelGroup id="venuelist-page" class="page">
             <h:form style="width: 70%; align-content: center; margin: auto;">
-                <p:dataScroller value="#{venueCollectionBean.venues}" var="venueGroup" chunkSize="20">
+                <p:dataScroller value="#{venueCollectionBean.venueNames}" var="venueGroup" chunkSize="20">
                     <p:link href="#{request.contextPath}/ufo/venue.xhtml?id=#{venueGroup.venueId}">
                         <h:panelGrid columns="1" style="width:100%;" columnClasses="detail">
                                 <p:outputPanel>

@@ -1,6 +1,5 @@
-package at.fhooe.hgb.wea5.ufo.helper;
+package at.fhooe.hgb.wea5.ufo.util;
 
-import at.fhooe.hgb.wea5.ufo.util.Constants;
 import at.fhooe.hgb.wea5.ufo.web.generated.Performance;
 
 import java.util.*;
@@ -31,14 +30,14 @@ public class PerformanceGroup {
         if (rawPerformances == null || rawPerformances.size() <= 0)
             return null;
 
-        Map<String, PerformanceGroup> groupingMap = new HashMap<>();
+        Map<String, PerformanceGroup> groupingMap = new TreeMap<>();
 
         Set<String> dateSet = getDates(rawPerformances);
         Set<String> venueSet = getVenues(rawPerformances);
 
         for (String d : dateSet) {
             PerformanceGroup pG = new PerformanceGroup();
-            pG.venueMap = new HashMap<>();
+            pG.venueMap = new TreeMap<>();
             groupingMap.put(d, pG);
             for (String v : venueSet) {
                 List<Performance> pH = new ArrayList<>();
