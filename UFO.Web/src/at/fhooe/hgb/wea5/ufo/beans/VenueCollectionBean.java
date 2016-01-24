@@ -29,6 +29,7 @@ public class VenueCollectionBean implements Serializable {
             venues.addAll(tmp);
             tmp = delegate.getNextVenuesPage();
         }
+        venues.sort((o1, o2) -> o1.getVenueId().compareTo(o2.getVenueId()));
     }
 
     public List<Venue> getVenues() {

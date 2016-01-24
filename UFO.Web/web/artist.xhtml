@@ -18,61 +18,65 @@
 
 <ui:composition template="WEB-INF/templates/basicTemplate.xhtml">
     <ui:define name="content">
-        <h:panelGroup id="artist-page" class="page" rendered="#{artistBean.artist != null}">
+        <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+                <h:panelGroup id="artist-page" class="page" rendered="#{artistBean.artist != null}">
 
-            <h:panelGrid columns="1" style="width:100%;" columnClasses="artist-detail-td">
-                <p:graphicImage value="#{artistBean.artist.picture.path}" styleClass="artist-img-big" />
-                <h:panelGrid columns="2">
-                    <h:outputText value="Name:" />
-                    <h:outputText value="#{artistBean.artist.name}" style="font-weight: bold"/>
+                    <h:panelGrid columns="1" style="width:100%;" columnClasses="artist-detail-td">
+                        <p:graphicImage value="#{artistBean.artist.picture.path}" styleClass="artist-img-big" />
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Name:" />
+                            <h:outputText value="#{artistBean.artist.name}" style="font-weight: bold"/>
 
-                    <h:outputText value="Kategorie:" />
-                    <h:outputText value="#{artistBean.artist.category.name}"/>
+                            <h:outputText value="Kategorie:" />
+                            <h:outputText value="#{artistBean.artist.category.name}"/>
 
-                    <h:outputText value="Land:" />
-                    <h:outputText value="#{artistBean.artist.country.name} (#{artistBean.artist.country.code})"/>
+                            <h:outputText value="Land:" />
+                            <h:outputText value="#{artistBean.artist.country.name} (#{artistBean.artist.country.code})"/>
 
-                    <p:outputPanel>
-                        <h:panelGroup id="artist-video-tag" class="promo-video" rendered="#{artistBean.artist.promoVideo != null}">
-                            <p:link href="#{artistBean.artist.promoVideo}" target="_blank">
-                                Promo-Video
-                            </p:link>
-                            <!--<h:panelGrid columns="1" style="width:100%;" columnClasses="artist-promo-video">
+                            <p:outputPanel>
+                                <h:panelGroup id="artist-video-tag" class="promo-video" rendered="#{artistBean.artist.promoVideo != null}">
+                                    <p:link href="#{artistBean.artist.promoVideo}" target="_blank">
+                                        Promo-Video
+                                    </p:link>
+                                    <!--<h:panelGrid columns="1" style="width:100%;" columnClasses="artist-promo-video">
 
-                             <p:lightBox id="lighbox2">
-                                 <h:outputLink value="#">
-                                     <h:outputText value="Promo Video" />
-                                 </h:outputLink>
-                                 <f:facet name="inline">
-                                     <p:media value="#{artistBean.artist.promoVideo}"  width="960" height="480" player="flash" />
-                                 </f:facet>
-                             </p:lightBox>
-                                </h:panelGrid>-->
-                        </h:panelGroup>
-                    </p:outputPanel>
+                                     <p:lightBox id="lighbox2">
+                                         <h:outputLink value="#">
+                                             <h:outputText value="Promo Video" />
+                                         </h:outputLink>
+                                         <f:facet name="inline">
+                                             <p:media value="#{artistBean.artist.promoVideo}"  width="960" height="480" player="flash" />
+                                         </f:facet>
+                                     </p:lightBox>
+                                        </h:panelGrid>-->
+                                </h:panelGroup>
+                            </p:outputPanel>
 
-                </h:panelGrid>
-            </h:panelGrid>
-        </h:panelGroup>
-
-        <h:panelGroup id="artistlist-page" class="page" rendered="#{performanceCollectionBean.performancesPerArtist != null}">
-            <h:form style="width: 70%; align-content: center; margin: auto;">
-                <p:dataScroller value="#{performanceCollectionBean.performancesPerArtist}" var="performance" chunkSize="20" rendered="#{performanceCollectionBean.performancesPerArtist.size() > 0}">
-                    <h4>Aufführungen</h4>
-
-                    <h:panelGrid columns="1" style="width:100%;" columnClasses="artist-img-td,detail">
-                        <p:outputPanel>
-                            <h:panelGrid columns="1" bodyrows="2">
-                                <p:link href="#{request.contextPath}/ufo/venue.xhtml?id=#{performance.venue.venueId}">
-                                    <h:outputText value="#{performance.venue.name}, #{performance.venue.location.name}" style="font-weight: bold" />
-                                </p:link>
-                                <h:outputText value="#{performanceCollectionBean.toFullDateString(performance.dateTime)}"/>
-                            </h:panelGrid>
-                        </p:outputPanel>
+                        </h:panelGrid>
                     </h:panelGrid>
-                </p:dataScroller>
-            </h:form>
-        </h:panelGroup>
+                </h:panelGroup>
+
+                <h:panelGroup id="artistlist-page" class="page" rendered="#{performanceCollectionBean.performancesPerArtist != null}">
+                    <h:form style="width: 100%; align-content: center; margin: auto;">
+                        <p:dataScroller value="#{performanceCollectionBean.performancesPerArtist}" var="performance" chunkSize="20" rendered="#{performanceCollectionBean.performancesPerArtist.size() > 0}">
+                            <h4>Aufführungen</h4>
+
+                            <h:panelGrid columns="1" style="width:100%;" columnClasses="artist-img-td,detail">
+                                <p:outputPanel>
+                                    <h:panelGrid columns="1" bodyrows="2">
+                                        <p:link href="#{request.contextPath}/ufo/venue.xhtml?id=#{performance.venue.venueId}">
+                                            <h:outputText value="#{performance.venue.name}, #{performance.venue.location.name}" style="font-weight: bold" />
+                                        </p:link>
+                                        <h:outputText value="#{performanceCollectionBean.toFullDateString(performance.dateTime)}"/>
+                                    </h:panelGrid>
+                                </p:outputPanel>
+                            </h:panelGrid>
+                        </p:dataScroller>
+                    </h:form>
+                </h:panelGroup>
+            </div>
+        </div>
     </ui:define>
 </ui:composition>
 

@@ -11,23 +11,21 @@
     <ui:define name="content">
         <div id="login-page" class="page">
             <div class="row">
-
-                <div class="sidebar col-md-4"/>
                 <div class="mainbar col-md-8">
+                    <div class="col-sm-6 col-sm-offset-3 div-login-panel">
+                        <h1><span class="fa fa-sign-in"></span> Login</h1>
+                        <h:form>
+                            <p:outputPanel styleClass="form-group">
+                                <p:inputText styleClass="form-control" id="email" value="#{loginBean.email}" placeholder="E-Mail Addresse"/>
+                            </p:outputPanel>
+                            <p:outputPanel styleClass="form-group">
+                                <p:password styleClass="form-control" id="password" value="#{loginBean.password}" placeholder="Passwort"/>
+                            </p:outputPanel>
+                            <p:commandLink styleClass="btn btn-warning btn-lg" actionListener="#{loginBean.login}" value="Anmelden" update="showErrorMessage"/>
 
-                    <h:form>
-                        <p:outputPanel>
-                            <p:inputText id="email" value="#{loginBean.email}" placeholder="E-Mail Addresse"/>
-                        </p:outputPanel>
-                        <p:outputPanel>
-                            <p:password id="password" value="#{loginBean.password}" placeholder="Passwort"/>
-                        </p:outputPanel>
-                        <p:outputPanel>
-                            <p:commandLink actionListener="#{loginBean.login}" value="Anmelden" update="showErrorMessage"/>
-                        </p:outputPanel>
-
-                        <h:outputText id="showErrorMessage" value="#{loginBean.errorMessage}" />
-                    </h:form>
+                            <h:outputText id="showErrorMessage" value="#{loginBean.errorMessage}" />
+                        </h:form>
+                    </div>
 
                 </div>
             </div>
