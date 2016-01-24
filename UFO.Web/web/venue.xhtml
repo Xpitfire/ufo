@@ -17,6 +17,8 @@
 
 <ui:composition template="WEB-INF/templates/basicTemplate.xhtml">
     <ui:define name="content">
+        <h3>#{venueBean.venue.name} (#{venueBean.venue.venueId}), #{venueBean.venue.location.name}</h3>
+
         <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 
@@ -37,7 +39,9 @@
         <h:outputScript library="js" name="ufo/gmaps-code.js"/>
 
         <h:panelGroup id="artistlist-page" class="page" rendered="#{performanceCollectionBean.performancesPerVenue != null}">
-            <h:form style="width: 70%; align-content: center; margin: auto;">
+            <h:form style="width: 70%; align-content: center; margin: auto;" rendered="#{performanceCollectionBean.performancesPerVenue.size() > 0}">
+                <h4>Aufführungen</h4>
+
                 <p:dataScroller value="#{performanceCollectionBean.performancesPerVenue}" var="performance" chunkSize="20">
                     <h:panelGrid columns="2" style="width:100%;" columnClasses="artist-img-td,detail">
                         <p:outputPanel>

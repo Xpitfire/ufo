@@ -16,10 +16,15 @@
                 <div class="mainbar col-md-8">
 
                     <h:form>
-                        <p:inputText id="email" value="#{loginBean.email}"/>
-                        <p:password id="password" value="#{loginBean.password}" />
-
-                        <p:commandButton actionListener="#{loginBean.login}" value="Anmelden" update="showErrorMessage"/>
+                        <p:outputPanel>
+                            <p:inputText id="email" value="#{loginBean.email}" placeholder="E-Mail Addresse"/>
+                        </p:outputPanel>
+                        <p:outputPanel>
+                            <p:password id="password" value="#{loginBean.password}" placeholder="Passwort"/>
+                        </p:outputPanel>
+                        <p:outputPanel>
+                            <p:commandLink actionListener="#{loginBean.login}" value="Anmelden" update="showErrorMessage"/>
+                        </p:outputPanel>
 
                         <h:outputText id="showErrorMessage" value="#{loginBean.errorMessage}" />
                     </h:form>

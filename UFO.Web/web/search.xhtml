@@ -35,10 +35,10 @@
                 </div>
             </x:forEach>
 
-            <x:if test="#{searchResultBean.venueNames.size() > 0}">
+            <x:if test="#{searchResultBean.venues.size() > 0}">
                 <h3>Venues</h3>
             </x:if>
-            <x:forEach items="#{searchResultBean.venueNames}" var="v">
+            <x:forEach items="#{searchResultBean.venues}" var="v">
                 <div>
                     <h:panelGroup columns="1" cellpadding="5">
                         <p:link href="#{request.contextPath}/ufo/venue.xhtml?id=#{v.venueId}">

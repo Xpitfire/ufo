@@ -3,8 +3,13 @@
 }
 
 .artist-img {
-    max-height: 50vh !important;
-    width: 100px !important;
+    width: 120px !important;
+    display: block !important;
+    margin: 2px !important;
+}
+
+.artist-img-big {
+    width: 300px !important;
     display: block !important;
     margin: 2px !important;
 }
@@ -32,4 +37,8 @@
     padding: 0px;
     height: 2em;
     position: relative;
+}
+
+.ui-datascroller li.ui-datascroller-item:hover {
+    background-color: #d2ecff;
 }

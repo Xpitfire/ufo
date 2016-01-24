@@ -44,16 +44,8 @@
         <param-value>at.fhooe.hgb.wea5.ufo.backend.UfoWebService</param-value>
     </context-param>
     <context-param>
-        <param-name>WS_HOST</param-name>
-        <param-value>http://localhost</param-value>
-    </context-param>
-    <context-param>
-        <param-name>WS_PORT</param-name>
-        <param-value>4321</param-value>
-    </context-param>
-    <context-param>
-        <param-name>WS_URI</param-name>
-        <param-value>WebAccess</param-value>
+        <param-name>facelets.SKIP_COMMENTS</param-name>
+        <param-value>true</param-value>
     </context-param>
 
     <listener>

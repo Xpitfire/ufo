@@ -14,12 +14,9 @@ public class InitializeContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext sc = servletContextEvent.getServletContext();
-        String wsHost = sc.getInitParameter("WS_HOST");
-        String wsPort = sc.getInitParameter("WS_PORT");
-        String wsUri = sc.getInitParameter("WS_URI");
         String delegateClass = sc.getInitParameter("UFO_DELEGATE");
 
-        ServiceLocator.getInstance().init(wsHost, wsPort, wsUri, delegateClass);
+        ServiceLocator.getInstance().init(delegateClass);
     }
 
     @Override

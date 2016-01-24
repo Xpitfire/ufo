@@ -8,7 +8,11 @@
       xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="WEB-INF/templates/basicTemplate.xhtml">
+    <ui:define name="title">
+        UFO Künstler
+    </ui:define>
     <ui:define name="content">
+        <h3>Künstler Übersicht</h3>
         <h:panelGroup id="artistlist-page" class="page" rendered="#{artistCollectionBean.artists != null}">
             <h:form style="width: 70%; align-content: center; margin: auto;">
                 <p:dataScroller value="#{artistCollectionBean.artists}" var="artist" chunkSize="20" rendered="#{artistCollectionBean.artists.size() > 0}">

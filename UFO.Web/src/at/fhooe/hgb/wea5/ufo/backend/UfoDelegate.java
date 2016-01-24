@@ -22,10 +22,10 @@ public interface UfoDelegate {
     List<Performance> getPerformancesPerArtist(Artist artist);
     List<Performance> getPerformancesPerVenue(Venue venue);
     List<Performance> getPerformancesPerDate(Date date);
-    List<Performance> getNextPerformancesPage();
     List<Performance> getLatestPerformances();
     List<Performance> getPerformancesPerKeyword(String keyword);
     boolean delayPerformance(SessionToken token, Performance oldPerformance, Performance newPerformance);
+    List<Category> getCategories();
 
     List<String> getAutoCompletion(String keyword);
 

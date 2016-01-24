@@ -5,17 +5,23 @@ import at.fhooe.hgb.wea5.ufo.backend.UfoDelegate;
 import at.fhooe.hgb.wea5.ufo.util.PerformanceGroup;
 import at.fhooe.hgb.wea5.ufo.util.Constants;
 import at.fhooe.hgb.wea5.ufo.web.generated.Artist;
+import at.fhooe.hgb.wea5.ufo.web.generated.Category;
 import at.fhooe.hgb.wea5.ufo.web.generated.Performance;
 import at.fhooe.hgb.wea5.ufo.web.generated.Venue;
+import com.sun.faces.application.view.ViewScopeContext;
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 import java.io.Serializable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author: Dinu Marius-Constantin
@@ -31,6 +37,8 @@ public class PerformanceCollectionBean implements Serializable {
     private SessionBean sessionBean;
     public void setSessionBean(SessionBean sessionBean) { this.sessionBean = sessionBean; }
 
+    private List<Category> categories;
+    private List<Category> selectedCategories;
     private List<Performance> performancesPerArtist;
     private int artistId;
     private Artist artist;
@@ -56,7 +64,15 @@ public class PerformanceCollectionBean implements Serializable {
     @PostConstruct
     public void initPerformancesOverview() {
         performancesOverview = delegate.getLatestPerformances();
-        groupMap = PerformanceGroup.buildGrouping(performancesOverview);
+        categories = delegate.getCategories();
+        selectedCategories = new ArrayList<>();
+        selectedCategories.addAll(categories);
+        groupMap = PerformanceGroup.buildGrouping(performancesOverview, categories);
+    }
+
+    public void updateCategoryChanged(Object event) {
+        groupMap = PerformanceGroup.buildGrouping(performancesOverview, selectedCategories);
+        RequestContext.getCurrentInstance().update("performancesoverview");
     }
 
     public List<Performance> getPerformancesPerArtist() {
@@ -108,14 +124,14 @@ public class PerformanceCollectionBean implements Serializable {
     public void dateChange(SelectEvent event)  {
         this.date = (Date)event.getObject();
         performancesOverview = delegate.getPerformancesPerDate(date);
-        groupMap = PerformanceGroup.buildGrouping(performancesOverview);
+        groupMap = PerformanceGroup.buildGrouping(performancesOverview, categories);
     }
 
     public void cancelAction(Performance p) {
         if (!sessionBean.isAuthenticated())
             return;
         performancesOverview.remove(p);
-        groupMap = PerformanceGroup.buildGrouping(performancesOverview);
+        groupMap = PerformanceGroup.buildGrouping(performancesOverview, categories);
         delegate.cancelPerformance(sessionBean.getSessionToken(), p);
     }
 
@@ -123,4 +139,20 @@ public class PerformanceCollectionBean implements Serializable {
         return groupMap;
     }
 
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setSelectedCategories(List<Category> selectedCategories) {
+        this.selectedCategories = new ArrayList<>();
+        this.selectedCategories.addAll(selectedCategories.stream().collect(Collectors.toList()));
+    }
+
+    public List<Category> getSelectedCategories() {
+        return selectedCategories;
+    }
 }

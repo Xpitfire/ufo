@@ -12,9 +12,6 @@ public class ServiceLocator {
 
     private static ServiceLocator instance;
 
-    private String wsHost;
-    private String wsPort;
-    private String wsUri;
     private String delegateClass;
 
     private ServiceLocator() {
@@ -27,10 +24,7 @@ public class ServiceLocator {
         return instance;
     }
 
-    public void init(String wsHost, String wsPort, String wsUri, String delegateClass) {
-        this.wsHost = wsHost;
-        this.wsPort = wsPort;
-        this.wsUri = wsUri;
+    public void init(String delegateClass) {
         this.delegateClass = delegateClass;
     }
 

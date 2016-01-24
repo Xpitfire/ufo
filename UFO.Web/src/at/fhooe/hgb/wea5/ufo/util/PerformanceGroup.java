@@ -1,5 +1,6 @@
 package at.fhooe.hgb.wea5.ufo.util;
 
+import at.fhooe.hgb.wea5.ufo.web.generated.Category;
 import at.fhooe.hgb.wea5.ufo.web.generated.Performance;
 
 import java.util.*;
@@ -9,7 +10,7 @@ import java.util.stream.Collectors;
  * @author: Dinu Marius-Constantin
  * @date: 24.01.2016
  */
-public class PerformanceGroup {
+public final class PerformanceGroup {
 
     private Map<String, List<Performance>> venueMap;
 
@@ -26,8 +27,8 @@ public class PerformanceGroup {
         return dateSet;
     }
 
-    public static Map<String, PerformanceGroup> buildGrouping(List<Performance> rawPerformances) {
-        if (rawPerformances == null || rawPerformances.size() <= 0)
+    public static Map<String, PerformanceGroup> buildGrouping(List<Performance> rawPerformances, List<Category> categories) {
+        if (rawPerformances == null || rawPerformances.size() <= 0 || categories == null || categories.size() <= 0)
             return null;
 
         Map<String, PerformanceGroup> groupingMap = new TreeMap<>();
@@ -43,8 +44,15 @@ public class PerformanceGroup {
                 List<Performance> pH = new ArrayList<>();
                 pG.venueMap.put(v, pH);
                 rawPerformances.stream()
-                        .filter(p -> d.equals(Constants.DATE_FORMATTER.format(p.getDateTime().toGregorianCalendar().getTime()))
-                                && v.equals(p.getVenue().getVenueId()))
+                        .filter(p -> {
+                            boolean res = d.equals(Constants.DATE_FORMATTER.format(p.getDateTime().toGregorianCalendar().getTime()))
+                                    && v.equals(p.getVenue().getVenueId());
+                            for (Category c : categories) {
+                                if (c.getCategoryId().equals(p.getArtist().getCategory().getCategoryId()))
+                                    return res;
+                            }
+                            return false;
+                        })
                         .forEach(p -> pH.add(p));
             }
         }

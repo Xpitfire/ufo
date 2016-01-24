@@ -29,6 +29,7 @@ public class ArtistCollectionBean implements Serializable {
             artists.addAll(tmp);
             tmp = delegate.getNextArtistsPage();
         }
+        artists.sort((o1, o2) -> o1.getArtistId() - o2.getArtistId());
     }
 
     public List<Artist> getArtists() {

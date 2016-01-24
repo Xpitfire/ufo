@@ -22,7 +22,6 @@ public class UfoWebService implements UfoDelegate {
 
     private PagingData artistsPage;
     private PagingData venuesPage;
-    private PagingData performancesPage;
 
     private PagingData prepareNextArtistsPage() {
         if (artistsPage == null) {
@@ -40,15 +39,6 @@ public class UfoWebService implements UfoDelegate {
             venuesPage.setOffset(venuesPage.getOffset() + venuesPage.getRequest());
         }
         return venuesPage;
-    }
-
-    private PagingData prepareNextPerformancesPage() {
-        if (performancesPage == null) {
-            performancesPage = webAccessProxy.requestPerformancePagingData();
-        } else {
-            performancesPage.setOffset(performancesPage.getOffset() + performancesPage.getRequest());
-        }
-        return performancesPage;
     }
 
     private Artist prepareArtist(Artist artist) {
@@ -159,16 +149,6 @@ public class UfoWebService implements UfoDelegate {
     }
 
     @Override
-    public List<Performance> getNextPerformancesPage() {
-        ArrayOfPerformance tmp = webAccessProxy.getPerformances(prepareNextPerformancesPage());
-        if (tmp == null)
-            return new ArrayList<>();
-        List<Performance> performances = tmp.getPerformance();
-        performances.forEach(performance -> preparePerformance(performance));
-        return performances;
-    }
-
-    @Override
     public List<Performance> getLatestPerformances() {
         ArrayOfPerformance tmp = webAccessProxy.getLatestPerformances();
         if (tmp == null)
@@ -191,6 +171,22 @@ public class UfoWebService implements UfoDelegate {
     @Override
     public boolean delayPerformance(SessionToken token, Performance oldPerformance, Performance newPerformance) {
         return webAccessProxy.delayPerformance(token, oldPerformance, newPerformance);
+    }
+
+    @Override
+    public List<Category> getCategories() {
+        PagingData page = webAccessProxy.requestCategoryPagingData();
+        List<Category> categories = new ArrayList<>();
+        if (page == null)
+            return categories;
+
+        ArrayOfCategory tmp = webAccessProxy.getCategories(page);
+        while (tmp != null && tmp.getCategory() != null && tmp.getCategory().size() > 0) {
+            categories.addAll(tmp.getCategory());
+            page.setOffset(page.getOffset() + page.getRequest());
+            tmp = webAccessProxy.getCategories(page);
+        }
+        return categories;
     }
 
     @Override
