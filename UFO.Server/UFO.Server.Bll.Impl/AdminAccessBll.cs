@@ -86,6 +86,11 @@ namespace UFO.Server.Bll.Impl
             return result.ResponseStatus == DaoStatus.Successful;
         }
 
+        public override bool DelayPerformance(SessionToken token, Performance oldPerformance, Performance newPerformance)
+        {
+            throw new NotImplementedException();
+        }
+
         public override bool ModifyLocationRange(SessionToken token, List<Location> locations)
         {
             bool result;

@@ -46,6 +46,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DelayPerformanceResponse }
+     * 
+     */
+    public DelayPerformanceResponse createDelayPerformanceResponse() {
+        return new DelayPerformanceResponse();
+    }
+
+    /**
      * Create an instance of {@link IsUserAuthenticatedResponse }
      * 
      */
@@ -427,6 +435,14 @@ public class ObjectFactory {
      */
     public GetArtistResponse createGetArtistResponse() {
         return new GetArtistResponse();
+    }
+
+    /**
+     * Create an instance of {@link DelayPerformance }
+     * 
+     */
+    public DelayPerformance createDelayPerformance() {
+        return new DelayPerformance();
     }
 
     /**

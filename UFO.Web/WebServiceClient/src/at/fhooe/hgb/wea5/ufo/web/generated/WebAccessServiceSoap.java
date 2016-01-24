@@ -327,6 +327,26 @@ public interface WebAccessServiceSoap {
 
     /**
      * 
+     * @param oldPerformance
+     * @param newPerformance
+     * @param token
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "DelayPerformance", action = "http://ufo.at/DelayPerformance")
+    @WebResult(name = "DelayPerformanceResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "DelayPerformance", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.DelayPerformance")
+    @ResponseWrapper(localName = "DelayPerformanceResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.DelayPerformanceResponse")
+    public boolean delayPerformance(
+        @WebParam(name = "token", targetNamespace = "http://ufo.at/")
+        SessionToken token,
+        @WebParam(name = "oldPerformance", targetNamespace = "http://ufo.at/")
+        Performance oldPerformance,
+        @WebParam(name = "newPerformance", targetNamespace = "http://ufo.at/")
+        Performance newPerformance);
+
+    /**
+     * 
      * @param performance
      * @param token
      * @return

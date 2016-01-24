@@ -44,6 +44,7 @@ namespace UFO.Server.Bll.Common
         bool ModifyPerformanceRange(SessionToken token, List<Performance> performances);
         bool ModifyPerformance(SessionToken token, Performance performance);
         bool RemovePerformance(SessionToken token, Performance performance);
+        bool DelayPerformance(SessionToken token, Performance oldPerformance, Performance newPerformance);
 
         // Location
         bool ModifyLocationRange(SessionToken token, List<Location> locations);

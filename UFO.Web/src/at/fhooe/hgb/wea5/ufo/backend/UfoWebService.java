@@ -189,6 +189,11 @@ public class UfoWebService implements UfoDelegate {
     }
 
     @Override
+    public boolean delayPerformance(SessionToken token, Performance oldPerformance, Performance newPerformance) {
+        return webAccessProxy.delayPerformance(token, oldPerformance, newPerformance);
+    }
+
+    @Override
     public List<String> getAutoCompletion(String keyword) {
         ArrayOfString tmp = webAccessProxy.getPerformanceAutoCompletion(keyword);
         if (tmp == null)

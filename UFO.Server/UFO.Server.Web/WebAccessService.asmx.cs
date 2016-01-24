@@ -96,6 +96,9 @@ namespace UFO.Server.Web
         public bool ModifyPerformance(SessionToken token, Performance performance) => AdminAccessDelegate.ModifyPerformance(token, performance);
 
         [WebMethod]
+        public bool DelayPerformance(SessionToken token, Performance oldPerformance, Performance newPerformance) => AdminAccessDelegate.DelayPerformance(token, oldPerformance, newPerformance);
+
+        [WebMethod]
         public bool RemovePerformance(SessionToken token, Performance performance) => AdminAccessDelegate.RemovePerformance(token, performance);
 
         [WebMethod]

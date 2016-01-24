@@ -25,6 +25,7 @@ public interface UfoDelegate {
     List<Performance> getNextPerformancesPage();
     List<Performance> getLatestPerformances();
     List<Performance> getPerformancesPerKeyword(String keyword);
+    boolean delayPerformance(SessionToken token, Performance oldPerformance, Performance newPerformance);
 
     List<String> getAutoCompletion(String keyword);
 

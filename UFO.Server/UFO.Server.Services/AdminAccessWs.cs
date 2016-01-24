@@ -54,6 +54,9 @@ namespace UFO.Server.Services
         public bool ModifyPerformanceRange(SessionToken token, List<Performance> performances) => AdminAccessDelegate.ModifyPerformanceRange(token, performances);
 
         [OperationContract]
+        public bool DelayPerformance(SessionToken token, Performance oldPerformance, Performance newPerformance) => AdminAccessDelegate.DelayPerformance(token, oldPerformance, newPerformance);
+
+        [OperationContract]
         public List<User> GetUsers(SessionToken token, PagingData page) => AdminAccessDelegate.GetUsers(token, page);
 
         [OperationContract]
