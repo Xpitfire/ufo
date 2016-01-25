@@ -64,6 +64,7 @@
     <Compile Include="Country.cs" />
     <Compile Include="DomainObject.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="Notification.cs" />
     <Compile Include="PagingData.cs" />
     <Compile Include="Performance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -43,9 +43,15 @@ namespace UFO.Server.Bll.Common
         private static IVenueDao _venueDao;
         protected static IVenueDao VenueDao = _venueDao ?? (_venueDao = FactoryProvider.GetFactory<IDaoProviderFactory>(DaoProviderSettings.Instance).CreateVenueDao());
 
+        protected string EmailNotificationServer { get; } = Properties.Settings.Default.EmailNotificationServer;
+        protected int EmailNotificationPort { get; } = Properties.Settings.Default.EmailNotificationPort;
+        protected string EmailNotificationUsername { get; } = Properties.Settings.Default.EmailNotificationUsername;
+        protected string EmailNotificationPassword { get; } = Properties.Settings.Default.EmailNotificationPassword;
+
         public abstract List<User> GetUsers(SessionToken token, PagingData page);
         public abstract List<User> SearchUsersPerKeyword(SessionToken token, string keyword);
         public abstract List<string> GetUserAutoCompletion(SessionToken token, string keyword);
+        public abstract bool SendNotification(SessionToken token, Notification notification);
         public abstract bool ModifyArtistRange(SessionToken token, List<Artist> artists);
         public abstract bool ModifyArtist(SessionToken token, Artist artist);
         public abstract bool RemoveArtist(SessionToken token, Artist artist);

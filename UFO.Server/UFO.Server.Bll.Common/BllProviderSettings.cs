@@ -8,7 +8,7 @@ using UFO.Server.Common.Properties;
 
 namespace UFO.Server.Bll.Common
 {
-    public class BllProviderSettings : AProviderSettings
+    public sealed class BllProviderSettings : AProviderSettings
     {
         public override string ProviderAssemblyName { get; } = Settings.Default.BllProviderAssemblyName;
         public override string ProviderNamespace { get; } = Settings.Default.BllProviderNameSpace;

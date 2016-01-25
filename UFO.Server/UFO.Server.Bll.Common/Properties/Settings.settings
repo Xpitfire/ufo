@@ -11,5 +11,17 @@
     <Setting Name="BllProviderAssemblyName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">UFO.Server.Bll.Impl</Value>
     </Setting>
+    <Setting Name="EmailNotificationPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">465</Value>
+    </Setting>
+    <Setting Name="EmailNotificationServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">smtp.gmail.com</Value>
+    </Setting>
+    <Setting Name="EmailNotificationPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">dnemtest1234</Value>
+    </Setting>
+    <Setting Name="EmailNotificationUsername" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">notificationdummy@gmail.com</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

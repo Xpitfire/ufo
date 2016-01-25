@@ -49,5 +49,41 @@ namespace UFO.Server.Bll.Common.Properties {
                 return ((string)(this["BllProviderAssemblyName"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("465")]
+        public int EmailNotificationPort {
+            get {
+                return ((int)(this["EmailNotificationPort"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("smtp.gmail.com")]
+        public string EmailNotificationServer {
+            get {
+                return ((string)(this["EmailNotificationServer"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("dnemtest1234")]
+        public string EmailNotificationPassword {
+            get {
+                return ((string)(this["EmailNotificationPassword"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("notificationdummy@gmail.com")]
+        public string EmailNotificationUsername {
+            get {
+                return ((string)(this["EmailNotificationUsername"]));
+            }
+        }
     }
 }

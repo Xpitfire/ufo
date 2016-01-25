@@ -16,12 +16,16 @@
 // Contributors:
 //     Dinu Marius-Constantin
 #endregion
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Transactions;
 using UFO.Server.Bll.Common;
+using UFO.Server.Common.Properties;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
@@ -29,6 +33,7 @@ namespace UFO.Server.Bll.Impl
 {
     public class AdminAccessBll : AAdminAccessBll
     {
+
         public override List<User> GetUsers(SessionToken token, PagingData page)
         {
             return EvaluateSessionPagingResult(token, page, () => UserDao.Select(page).ResultObject);
@@ -61,6 +66,28 @@ namespace UFO.Server.Bll.Impl
                 return set.ToList();
             };
             return EvaluateSessionPagingResult(token, func);
+        }
+
+        public override bool SendNotification(SessionToken token, Notification notification)
+        {
+            if (!IsUserAuthenticated(token)) return false;
+
+            using (var mailMessage = new MailMessage(notification.Sender, notification.Recipient)
+            {
+                Subject = notification.Subject,
+                Body = notification.Body,
+                IsBodyHtml = true
+            })
+            using (var smtpClient = new SmtpClient(EmailNotificationServer, EmailNotificationPort)
+            {
+                Credentials = new NetworkCredential(EmailNotificationUsername, EmailNotificationPassword),
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                EnableSsl = true
+            })
+            {
+                smtpClient.Send(mailMessage);
+            }
+            return true;
         }
 
         public override bool ModifyArtistRange(SessionToken token, List<Artist> artists)

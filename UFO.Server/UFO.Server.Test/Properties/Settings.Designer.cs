@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UFO.Server.Web.REST.Properties {
+namespace UFO.Server.Test.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -107,9 +107,9 @@ namespace UFO.Server.Web.REST.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("465")]
-        public string EmailNotificationPort {
+        public int EmailNotificationPort {
             get {
-                return ((string)(this["EmailNotificationPort"]));
+                return ((int)(this["EmailNotificationPort"]));
             }
         }
         

@@ -81,6 +81,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="ServerBllTests.cs" />
     <Compile Include="ServerDalTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,6 +136,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Service References\WebAccessService\UFO.Server.Test.WebAccessService.Artist.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
