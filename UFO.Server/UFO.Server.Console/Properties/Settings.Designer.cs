@@ -97,7 +97,7 @@ namespace UFO.Server.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("465")]
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
         public int EmailNotificationPort {
             get {
                 return ((int)(this["EmailNotificationPort"]));
