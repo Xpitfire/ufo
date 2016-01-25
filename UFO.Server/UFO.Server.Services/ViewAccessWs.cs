@@ -98,6 +98,6 @@ namespace UFO.Server.Services
         public List<Artist> SearchArtistsPerKeyword(string keyword) => ViewAccessDelegate.SearchArtistsPerKeyword(keyword);
 
         [OperationContract]
-        public List<string> GetAutoCompletion(string keyword) => ViewAccessDelegate.GetPerformanceAutoCompletion(keyword);
+        public List<string> GetPerformanceAutoCompletion(string keyword) => ViewAccessDelegate.GetPerformanceAutoCompletion(keyword);
     }
 }

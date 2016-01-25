@@ -5,6 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a556213-c57c-4804-bacd-f86ed9bdd6bf" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/AdminAccess.disco" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/AdminAccess.xsd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/AdminAccess1.xsd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/AdminAccess2.xsd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/AdminAccess3.xsd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/AdminAccessWs.wsdl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/Reference.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/Reference.svcmap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/UFO.Services.AdminAccess.Artist.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/UFO.Services.AdminAccess.Category.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/UFO.Services.AdminAccess.Country.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/UFO.Services.AdminAccess.Location.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/UFO.Services.AdminAccess.PagingData.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/UFO.Services.AdminAccess.Performance.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/UFO.Services.AdminAccess.SessionToken.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/UFO.Services.AdminAccess.User.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/UFO.Services.AdminAccess.Venue.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/configuration.svcinfo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.AdminAccess/configuration91.svcinfo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/AdminAccessWs.wsdl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/Reference.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/Reference.svcmap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/UFO.Services.ViewAccess.Artist.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/UFO.Services.ViewAccess.Category.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/UFO.Services.ViewAccess.Country.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/UFO.Services.ViewAccess.Location.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/UFO.Services.ViewAccess.PagingData.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/UFO.Services.ViewAccess.Performance.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/UFO.Services.ViewAccess.Venue.datasource" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/ViewAccess.disco" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/ViewAccess.xsd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/ViewAccess1.xsd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/ViewAccess3.xsd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/configuration.svcinfo" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Services.Generated/Service References/Services.ViewAccess/configuration91.svcinfo" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander.Proxy/AdminAccessProxy.cs" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander.Proxy/AdminAccessProxy.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander.Proxy/ViewAccessProxy.cs" afterPath="$PROJECT_DIR$/../UFO.Commander/UFO.Commander.Proxy/ViewAccessProxy.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/App.config" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/App.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/Program.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/Program.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/Properties/Settings.Designer.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/Properties/Settings.Designer.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/Properties/Settings.settings" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Console/Properties/Settings.settings" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/AdminAccessWs.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Services/AdminAccessWs.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Web/WebAccessService.asmx.cs" afterPath="$PROJECT_DIR$/../UFO.Server/UFO.Server.Web/WebAccessService.asmx.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="UFO.Web.iws" />
@@ -1021,7 +1064,7 @@
     <option name="totallyTimeSpent" value="218093000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="32" width="1936" height="1056" extended-state="6" />
+    <frame x="-1928" y="32" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />

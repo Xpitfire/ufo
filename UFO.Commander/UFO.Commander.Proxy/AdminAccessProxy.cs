@@ -18,6 +18,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UFO.Server.Bll.Common;
 using BLL = UFO.Server.Domain;
 using WS = UFO.Services.AdminAccess;
@@ -48,6 +49,19 @@ namespace UFO.Commander.Proxy
                 token.ToWebSeriveObject<WS.SessionToken>(), 
                 keyword);
             return ProxyHelper.ToListOf<WS.User, BLL.User>(result);
+        }
+
+        public List<string> GetUserAutoCompletion(BLL.SessionToken token, string keyword)
+        {
+            return AdminAccessWs.GetUserAutoCompletion(
+                token.ToWebSeriveObject<WS.SessionToken>(),
+                keyword).ToList();
+        }
+
+        public bool SendNotification(BLL.SessionToken token, BLL.Notification notification)
+        {
+            return AdminAccessWs.SendNotification(token.ToWebSeriveObject<WS.SessionToken>(),
+                notification.ToWebSeriveObject<WS.Notification>());
         }
 
         public bool ModifyArtistRange(BLL.SessionToken token, List<BLL.Artist> artists)
@@ -137,6 +151,12 @@ namespace UFO.Commander.Proxy
             var performanceWs = performance.ToWebSeriveObject<WS.Performance>();
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
             return AdminAccessWs.RemovePerformance(tokenWs, performanceWs);
+        }
+
+        public bool DelayPerformance(BLL.SessionToken token, BLL.Performance oldPerformance, BLL.Performance newPerformance)
+        {
+            return AdminAccessWs.DelayPerformance(token.ToWebSeriveObject<WS.SessionToken>(),
+                oldPerformance.ToWebSeriveObject<WS.Performance>(), newPerformance.ToWebSeriveObject<WS.Performance>());
         }
 
         public bool ModifyLocationRange(BLL.SessionToken token, List<BLL.Location> locations)

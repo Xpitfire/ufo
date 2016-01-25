@@ -147,5 +147,24 @@ namespace UFO.Commander.Proxy
             var tokenWs = token.ToWebSeriveObject<WS.SessionToken>();
             return await AdminAccessWs.RemoveLocationAsync(tokenWs, locationWs);
         }
+        
+        public static async Task<List<string>> GetUserAutoCompletionAsync(this IAdminAccessBll accessBll, BLL.SessionToken token, string keyword)
+        {
+            return (await AdminAccessWs.GetUserAutoCompletionAsync(
+                token.ToWebSeriveObject<WS.SessionToken>(),
+                keyword))?.ToList();
+        }
+
+        public static async Task<bool> SendNotificationAsync(this IAdminAccessBll accessBll, BLL.SessionToken token, BLL.Notification notification)
+        {
+            return await AdminAccessWs.SendNotificationAsync(token.ToWebSeriveObject<WS.SessionToken>(),
+                notification.ToWebSeriveObject<WS.Notification>());
+        }
+
+        public static async Task<bool> DelayPerformanceAsync(this IAdminAccessBll accessBll, BLL.SessionToken token, BLL.Performance oldPerformance, BLL.Performance newPerformance)
+        {
+            return await AdminAccessWs.DelayPerformanceAsync(token.ToWebSeriveObject<WS.SessionToken>(),
+                oldPerformance.ToWebSeriveObject<WS.Performance>(), newPerformance.ToWebSeriveObject<WS.Performance>());
+        }
     }
 }

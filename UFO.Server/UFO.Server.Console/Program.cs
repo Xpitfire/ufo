@@ -19,6 +19,7 @@
 using System;
 using System.ServiceModel;
 using System.ServiceModel.Description;
+using UFO.Server.Properties;
 using UFO.Server.Services;
 
 namespace UFO.Server
@@ -27,8 +28,8 @@ namespace UFO.Server
     {
         static void Main()
         {
-            var host = "http://localhost";
-            var port = 4321;
+            var host = Settings.Default.WebAccessServiceAdress;
+            var port = Settings.Default.WebAccessServicePort;
 
             var adminAccessName = "AdminAccess";
             var viewAccessName = "ViewAccess";
@@ -50,7 +51,7 @@ namespace UFO.Server
                 viewAccessServiceHost.AddServiceEndpoint(typeof(ViewAccessWs), new WSHttpBinding(), "");
 
                 // Metadata Exchange
-                var serviceBehavior = new ServiceMetadataBehavior {HttpGetEnabled = true};
+                var serviceBehavior = new ServiceMetadataBehavior { HttpGetEnabled = true };
                 adminAccessServiceHost.Description.Behaviors.Add(serviceBehavior);
                 viewAccessServiceHost.Description.Behaviors.Add(serviceBehavior);
 
@@ -62,7 +63,6 @@ namespace UFO.Server
 
                 Console.WriteLine("Press any key to exit the application...");
             }
-
             catch (Exception ex)
             {
                 adminAccessServiceHost?.Abort();

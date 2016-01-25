@@ -130,5 +130,23 @@ namespace UFO.Server.Properties {
                 return ((string)(this["EmailNotificationUsername"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost")]
+        public string WebAccessServiceAdress {
+            get {
+                return ((string)(this["WebAccessServiceAdress"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4321")]
+        public int WebAccessServicePort {
+            get {
+                return ((int)(this["WebAccessServicePort"]));
+            }
+        }
     }
 }

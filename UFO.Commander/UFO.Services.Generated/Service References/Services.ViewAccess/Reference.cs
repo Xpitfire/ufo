@@ -699,6 +699,12 @@ namespace UFO.Services.ViewAccess {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/SearchArtistsPerKeyword", ReplyAction="http://tempuri.org/ViewAccessWs/SearchArtistsPerKeywordResponse")]
         System.Threading.Tasks.Task<UFO.Services.ViewAccess.Artist[]> SearchArtistsPerKeywordAsync(string keyword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetPerformanceAutoCompletion", ReplyAction="http://tempuri.org/ViewAccessWs/GetPerformanceAutoCompletionResponse")]
+        string[] GetPerformanceAutoCompletion(string keyword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetPerformanceAutoCompletion", ReplyAction="http://tempuri.org/ViewAccessWs/GetPerformanceAutoCompletionResponse")]
+        System.Threading.Tasks.Task<string[]> GetPerformanceAutoCompletionAsync(string keyword);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -894,6 +900,14 @@ namespace UFO.Services.ViewAccess {
         
         public System.Threading.Tasks.Task<UFO.Services.ViewAccess.Artist[]> SearchArtistsPerKeywordAsync(string keyword) {
             return base.Channel.SearchArtistsPerKeywordAsync(keyword);
+        }
+        
+        public string[] GetPerformanceAutoCompletion(string keyword) {
+            return base.Channel.GetPerformanceAutoCompletion(keyword);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetPerformanceAutoCompletionAsync(string keyword) {
+            return base.Channel.GetPerformanceAutoCompletionAsync(keyword);
         }
     }
 }

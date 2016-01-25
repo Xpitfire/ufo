@@ -59,7 +59,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Services.AdminAccess\AdminAccess.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -72,7 +74,6 @@
     <None Include="Service References\Services.AdminAccess\AdminAccess3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\Services.AdminAccess\AdminAccessWs.wsdl" />
     <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.Artist.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -100,7 +101,7 @@
     <None Include="Service References\Services.AdminAccess\UFO.Services.AdminAccess.Venue.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\Services.ViewAccess\AdminAccessWs.wsdl" />
+    <None Include="Service References\Services.AdminAccess\ViewAccessWs.wsdl" />
     <None Include="Service References\Services.ViewAccess\UFO.Services.ViewAccess.Artist.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -128,28 +129,17 @@
     <None Include="Service References\Services.ViewAccess\ViewAccess1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Services.ViewAccess\ViewAccess2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\Services.ViewAccess\ViewAccess3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\Services.ViewAccess\ViewAccessWs.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\Services.AdminAccess\" />
     <WCFMetadataStorage Include="Service References\Services.ViewAccess\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Services.AdminAccess\AdminAccess.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Services.AdminAccess\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Services.AdminAccess\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\Services.AdminAccess\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Services.ViewAccess\ViewAccess.disco" />
@@ -162,6 +152,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\Services.ViewAccess\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Services.AdminAccess\AdminAccess.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Services.AdminAccess\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Services.AdminAccess\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Services.AdminAccess\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

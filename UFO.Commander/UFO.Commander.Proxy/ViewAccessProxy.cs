@@ -18,6 +18,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UFO.Server.Bll.Common;
 using BLL = UFO.Server.Domain;
 using WS = UFO.Services.ViewAccess;
@@ -156,6 +157,11 @@ namespace UFO.Commander.Proxy
         {
             return ProxyHelper.ToListOf<WS.Venue, BLL.Venue>(
                 _viewAccessWs.SearchVenuesPerKeyword(keyword));
+        }
+
+        public List<string> GetPerformanceAutoCompletion(string keyword)
+        {
+            return _viewAccessWs.GetPerformanceAutoCompletion(keyword)?.ToList();
         }
     }
 }

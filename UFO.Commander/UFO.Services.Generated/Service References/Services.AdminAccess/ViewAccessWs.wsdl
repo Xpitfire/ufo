@@ -894,6 +894,44 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAutoPerformanceCompletion_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_ViewAccessWs_GetAutoPerformanceCompletion_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -1256,6 +1294,44 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_DelayPerformance_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_DelayPerformance_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_GetUsers_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -1314,6 +1390,44 @@
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_SearchUsersPerKeyword_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_GetUserAutoCompletion_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_GetUserAutoCompletion_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -1750,6 +1864,44 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_SendNotification_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_AdminAccessWs_SendNotification_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:4321/AdminAccess?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -1884,6 +2036,12 @@
   <wsdl:message name="ViewAccessWs_SearchArtistsPerKeyword_OutputMessage">
     <wsdl:part name="parameters" element="tns:SearchArtistsPerKeywordResponse" />
   </wsdl:message>
+  <wsdl:message name="ViewAccessWs_GetAutoPerformanceCompletion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAutoPerformanceCompletion" />
+  </wsdl:message>
+  <wsdl:message name="ViewAccessWs_GetAutoPerformanceCompletion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAutoPerformanceCompletionResponse" />
+  </wsdl:message>
   <wsdl:message name="AdminAccessWs_ModifyArtistRange_InputMessage">
     <wsdl:part name="parameters" element="tns:ModifyArtistRange" />
   </wsdl:message>
@@ -1926,6 +2084,12 @@
   <wsdl:message name="AdminAccessWs_ModifyPerformanceRange_OutputMessage">
     <wsdl:part name="parameters" element="tns:ModifyPerformanceRangeResponse" />
   </wsdl:message>
+  <wsdl:message name="AdminAccessWs_DelayPerformance_InputMessage">
+    <wsdl:part name="parameters" element="tns:DelayPerformance" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_DelayPerformance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DelayPerformanceResponse" />
+  </wsdl:message>
   <wsdl:message name="AdminAccessWs_GetUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUsers" />
   </wsdl:message>
@@ -1937,6 +2101,12 @@
   </wsdl:message>
   <wsdl:message name="AdminAccessWs_SearchUsersPerKeyword_OutputMessage">
     <wsdl:part name="parameters" element="tns:SearchUsersPerKeywordResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_GetUserAutoCompletion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAutoCompletion" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_GetUserAutoCompletion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserAutoCompletionResponse" />
   </wsdl:message>
   <wsdl:message name="AdminAccessWs_RequestUserPagingData_InputMessage">
     <wsdl:part name="parameters" element="tns:RequestUserPagingData" />
@@ -2003,6 +2173,12 @@
   </wsdl:message>
   <wsdl:message name="AdminAccessWs_ModifyPerformance_OutputMessage">
     <wsdl:part name="parameters" element="tns:ModifyPerformanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_SendNotification_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendNotification" />
+  </wsdl:message>
+  <wsdl:message name="AdminAccessWs_SendNotification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendNotificationResponse" />
   </wsdl:message>
   <wsdl:portType name="ViewAccessWs">
     <wsdl:operation name="RequestArtistPagingData">
@@ -2089,6 +2265,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/SearchArtistsPerKeyword" message="tns:ViewAccessWs_SearchArtistsPerKeyword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/SearchArtistsPerKeywordResponse" message="tns:ViewAccessWs_SearchArtistsPerKeyword_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAutoPerformanceCompletion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ViewAccessWs/GetAutoPerformanceCompletion" message="tns:ViewAccessWs_GetAutoPerformanceCompletion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ViewAccessWs/GetAutoPerformanceCompletionResponse" message="tns:ViewAccessWs_GetAutoPerformanceCompletion_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="AdminAccessWs">
     <wsdl:operation name="ModifyArtistRange">
@@ -2119,6 +2299,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/ModifyPerformanceRange" message="tns:AdminAccessWs_ModifyPerformanceRange_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/ModifyPerformanceRangeResponse" message="tns:AdminAccessWs_ModifyPerformanceRange_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="DelayPerformance">
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/DelayPerformance" message="tns:AdminAccessWs_DelayPerformance_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/DelayPerformanceResponse" message="tns:AdminAccessWs_DelayPerformance_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/GetUsers" message="tns:AdminAccessWs_GetUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/GetUsersResponse" message="tns:AdminAccessWs_GetUsers_OutputMessage" />
@@ -2126,6 +2310,10 @@
     <wsdl:operation name="SearchUsersPerKeyword">
       <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/SearchUsersPerKeyword" message="tns:AdminAccessWs_SearchUsersPerKeyword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/SearchUsersPerKeywordResponse" message="tns:AdminAccessWs_SearchUsersPerKeyword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAutoCompletion">
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/GetUserAutoCompletion" message="tns:AdminAccessWs_GetUserAutoCompletion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/GetUserAutoCompletionResponse" message="tns:AdminAccessWs_GetUserAutoCompletion_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RequestUserPagingData">
       <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/RequestUserPagingData" message="tns:AdminAccessWs_RequestUserPagingData_InputMessage" />
@@ -2170,6 +2358,10 @@
     <wsdl:operation name="ModifyPerformance">
       <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/ModifyPerformance" message="tns:AdminAccessWs_ModifyPerformance_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/ModifyPerformanceResponse" message="tns:AdminAccessWs_ModifyPerformance_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendNotification">
+      <wsdl:input wsaw:Action="http://tempuri.org/AdminAccessWs/SendNotification" message="tns:AdminAccessWs_SendNotification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/AdminAccessWs/SendNotificationResponse" message="tns:AdminAccessWs_SendNotification_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_ViewAccessWs" type="tns:ViewAccessWs">
@@ -2406,6 +2598,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetAutoPerformanceCompletion">
+      <soap12:operation soapAction="http://tempuri.org/ViewAccessWs/GetAutoPerformanceCompletion" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAutoPerformanceCompletion_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_ViewAccessWs_GetAutoPerformanceCompletion_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WSHttpBinding_AdminAccessWs" type="tns:AdminAccessWs">
     <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_policy" />
@@ -2487,6 +2690,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="DelayPerformance">
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/DelayPerformance" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_DelayPerformance_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_DelayPerformance_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetUsers">
       <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/GetUsers" style="document" />
       <wsdl:input>
@@ -2506,6 +2720,17 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_SearchUsersPerKeyword_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserAutoCompletion">
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/GetUserAutoCompletion" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_GetUserAutoCompletion_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_GetUserAutoCompletion_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
@@ -2627,6 +2852,17 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_ModifyPerformance_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendNotification">
+      <soap12:operation soapAction="http://tempuri.org/AdminAccessWs/SendNotification" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_SendNotification_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_AdminAccessWs_SendNotification_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

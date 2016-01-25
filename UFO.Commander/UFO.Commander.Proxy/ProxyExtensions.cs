@@ -24,6 +24,8 @@ using System.Reflection;
 using DomainObjectDomain = UFO.Server.Domain.DomainObject;
 using DomainObjectAdminWs = UFO.Services.AdminAccess.DomainObject;
 using DomainObjectViewWs = UFO.Services.ViewAccess.DomainObject;
+using PostSharp.Patterns.Diagnostics;
+using PostSharp.Extensibility;
 
 namespace UFO.Commander.Proxy
 {
@@ -50,6 +52,7 @@ namespace UFO.Commander.Proxy
         }
     }
 
+    [LogException]
     public static class ProxyHelper
     {
         public static TTarget ToObjectOf<TSource, TTarget>(TSource source)

@@ -38,5 +38,11 @@
     <Setting Name="EmailNotificationUsername" Type="System.String" Scope="Application">
       <Value Profile="(Default)">notificationdummy@gmail.com</Value>
     </Setting>
+    <Setting Name="WebAccessServiceAdress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost</Value>
+    </Setting>
+    <Setting Name="WebAccessServicePort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">4321</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

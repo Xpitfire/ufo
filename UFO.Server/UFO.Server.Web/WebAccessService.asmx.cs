@@ -112,5 +112,8 @@ namespace UFO.Server.Web
 
         [WebMethod]
         public List<string> GetPerformanceAutoCompletion(string keyword) => ViewAccessDelegate.GetPerformanceAutoCompletion(keyword);
+
+        [WebMethod]
+        public bool SendNotification(SessionToken token, Notification notification) => AdminAccessDelegate.SendNotification(token, notification);
     }
 }

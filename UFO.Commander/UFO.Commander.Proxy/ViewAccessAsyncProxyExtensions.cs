@@ -138,6 +138,11 @@ namespace UFO.Commander.Proxy
             var result = await ViewAccessWs.SearchArtistsPerKeywordAsync(keyword);
             return ProxyHelper.ToListOf<WS.Artist, BLL.Artist>(result);
         }
-        
+
+        public static async Task<List<string>> GetPerformanceAutoCompletionAsync(this IViewAccessBll accessBll, string keyword)
+        {
+            return (await ViewAccessWs.GetPerformanceAutoCompletionAsync(keyword))?.ToList();
+        }
+
     }
 }

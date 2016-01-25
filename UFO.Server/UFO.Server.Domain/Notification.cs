@@ -8,14 +8,6 @@ using System.Threading.Tasks;
 namespace UFO.Server.Domain
 {
     [Serializable]
-    [DataContract(Name = nameof(NotificationType))]
-    public enum NotificationType
-    {
-        [DataMember(Name = nameof(EMail))]
-        EMail
-    }
-
-    [Serializable]
     [DataContract(Name = nameof(Notification))]
     public class Notification : DomainObject
     {
@@ -24,10 +16,7 @@ namespace UFO.Server.Domain
 
         [DataMember(Name = nameof(Recipient))]
         public virtual string Recipient { get; set; }
-
-        [DataMember(Name = nameof(NotificationType))]
-        public virtual NotificationType Type { get; set; }
-
+        
         [DataMember(Name = nameof(Subject))]
         public virtual string Subject { get; set; }
 
@@ -36,7 +25,7 @@ namespace UFO.Server.Domain
         
         public override string ToString()
         {
-            return $"Subject: {Subject}, Message: {Body}, NotificationType: {Type}";
+            return $"Subject: {Subject}, Message: {Body}";
         }
 
         public override bool Equals(object obj)
@@ -46,7 +35,6 @@ namespace UFO.Server.Domain
 
             return other != null 
                 && Equals(Recipient, other.Recipient)
-                && Type == other.Type
                 && string.Equals(Subject, other.Subject)
                 && string.Equals(Body, other.Body);
         }
@@ -56,7 +44,6 @@ namespace UFO.Server.Domain
             unchecked
             {
                 var hashCode = Recipient?.GetHashCode() ?? 0;
-                hashCode = (hashCode*397) ^ (int) Type;
                 hashCode = (hashCode*397) ^ (Subject?.GetHashCode() ?? 0);
                 hashCode = (hashCode*397) ^ (Body?.GetHashCode() ?? 0);
                 return hashCode;

@@ -26,6 +26,7 @@ namespace UFO.Services.AdminAccess {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.Location))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.SessionToken))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.User))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.Notification))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(UFO.Services.AdminAccess.PagingData))]
     public partial class DomainObject : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -677,6 +678,77 @@ namespace UFO.Services.AdminAccess {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Notification", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
+    [System.SerializableAttribute()]
+    public partial class Notification : UFO.Services.AdminAccess.DomainObject {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BodyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RecipientField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SenderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SubjectField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Body {
+            get {
+                return this.BodyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BodyField, value) != true)) {
+                    this.BodyField = value;
+                    this.RaisePropertyChanged("Body");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Recipient {
+            get {
+                return this.RecipientField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RecipientField, value) != true)) {
+                    this.RecipientField = value;
+                    this.RaisePropertyChanged("Recipient");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Sender {
+            get {
+                return this.SenderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SenderField, value) != true)) {
+                    this.SenderField = value;
+                    this.RaisePropertyChanged("Sender");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Subject {
+            get {
+                return this.SubjectField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SubjectField, value) != true)) {
+                    this.SubjectField = value;
+                    this.RaisePropertyChanged("Subject");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PagingData", Namespace="http://schemas.datacontract.org/2004/07/UFO.Server.Domain")]
     [System.SerializableAttribute()]
     public partial class PagingData : UFO.Services.AdminAccess.DomainObject {
@@ -875,6 +947,12 @@ namespace UFO.Services.AdminAccess {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/SearchArtistsPerKeyword", ReplyAction="http://tempuri.org/ViewAccessWs/SearchArtistsPerKeywordResponse")]
         System.Threading.Tasks.Task<UFO.Services.AdminAccess.Artist[]> SearchArtistsPerKeywordAsync(string keyword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAutoPerformanceCompletion", ReplyAction="http://tempuri.org/ViewAccessWs/GetAutoPerformanceCompletionResponse")]
+        string[] GetAutoPerformanceCompletion(string keyword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAutoPerformanceCompletion", ReplyAction="http://tempuri.org/ViewAccessWs/GetAutoPerformanceCompletionResponse")]
+        System.Threading.Tasks.Task<string[]> GetAutoPerformanceCompletionAsync(string keyword);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1071,6 +1149,14 @@ namespace UFO.Services.AdminAccess {
         public System.Threading.Tasks.Task<UFO.Services.AdminAccess.Artist[]> SearchArtistsPerKeywordAsync(string keyword) {
             return base.Channel.SearchArtistsPerKeywordAsync(keyword);
         }
+        
+        public string[] GetAutoPerformanceCompletion(string keyword) {
+            return base.Channel.GetAutoPerformanceCompletion(keyword);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetAutoPerformanceCompletionAsync(string keyword) {
+            return base.Channel.GetAutoPerformanceCompletionAsync(keyword);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1119,6 +1205,12 @@ namespace UFO.Services.AdminAccess {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyPerformanceRange", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyPerformanceRangeResponse")]
         System.Threading.Tasks.Task<bool> ModifyPerformanceRangeAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance[] performances);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/DelayPerformance", ReplyAction="http://tempuri.org/AdminAccessWs/DelayPerformanceResponse")]
+        bool DelayPerformance(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance oldPerformance, UFO.Services.AdminAccess.Performance newPerformance);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/DelayPerformance", ReplyAction="http://tempuri.org/AdminAccessWs/DelayPerformanceResponse")]
+        System.Threading.Tasks.Task<bool> DelayPerformanceAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance oldPerformance, UFO.Services.AdminAccess.Performance newPerformance);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/GetUsers", ReplyAction="http://tempuri.org/AdminAccessWs/GetUsersResponse")]
         UFO.Services.AdminAccess.User[] GetUsers(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.PagingData page);
         
@@ -1130,6 +1222,12 @@ namespace UFO.Services.AdminAccess {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/SearchUsersPerKeyword", ReplyAction="http://tempuri.org/AdminAccessWs/SearchUsersPerKeywordResponse")]
         System.Threading.Tasks.Task<UFO.Services.AdminAccess.User[]> SearchUsersPerKeywordAsync(UFO.Services.AdminAccess.SessionToken token, string keyword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/GetUserAutoCompletion", ReplyAction="http://tempuri.org/AdminAccessWs/GetUserAutoCompletionResponse")]
+        string[] GetUserAutoCompletion(UFO.Services.AdminAccess.SessionToken token, string keyword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/GetUserAutoCompletion", ReplyAction="http://tempuri.org/AdminAccessWs/GetUserAutoCompletionResponse")]
+        System.Threading.Tasks.Task<string[]> GetUserAutoCompletionAsync(UFO.Services.AdminAccess.SessionToken token, string keyword);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/RequestUserPagingData", ReplyAction="http://tempuri.org/AdminAccessWs/RequestUserPagingDataResponse")]
         UFO.Services.AdminAccess.PagingData RequestUserPagingData(UFO.Services.AdminAccess.SessionToken token);
@@ -1196,6 +1294,12 @@ namespace UFO.Services.AdminAccess {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/ModifyPerformance", ReplyAction="http://tempuri.org/AdminAccessWs/ModifyPerformanceResponse")]
         System.Threading.Tasks.Task<bool> ModifyPerformanceAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance performance);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/SendNotification", ReplyAction="http://tempuri.org/AdminAccessWs/SendNotificationResponse")]
+        bool SendNotification(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Notification notification);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AdminAccessWs/SendNotification", ReplyAction="http://tempuri.org/AdminAccessWs/SendNotificationResponse")]
+        System.Threading.Tasks.Task<bool> SendNotificationAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Notification notification);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1281,6 +1385,14 @@ namespace UFO.Services.AdminAccess {
             return base.Channel.ModifyPerformanceRangeAsync(token, performances);
         }
         
+        public bool DelayPerformance(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance oldPerformance, UFO.Services.AdminAccess.Performance newPerformance) {
+            return base.Channel.DelayPerformance(token, oldPerformance, newPerformance);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DelayPerformanceAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance oldPerformance, UFO.Services.AdminAccess.Performance newPerformance) {
+            return base.Channel.DelayPerformanceAsync(token, oldPerformance, newPerformance);
+        }
+        
         public UFO.Services.AdminAccess.User[] GetUsers(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.PagingData page) {
             return base.Channel.GetUsers(token, page);
         }
@@ -1295,6 +1407,14 @@ namespace UFO.Services.AdminAccess {
         
         public System.Threading.Tasks.Task<UFO.Services.AdminAccess.User[]> SearchUsersPerKeywordAsync(UFO.Services.AdminAccess.SessionToken token, string keyword) {
             return base.Channel.SearchUsersPerKeywordAsync(token, keyword);
+        }
+        
+        public string[] GetUserAutoCompletion(UFO.Services.AdminAccess.SessionToken token, string keyword) {
+            return base.Channel.GetUserAutoCompletion(token, keyword);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetUserAutoCompletionAsync(UFO.Services.AdminAccess.SessionToken token, string keyword) {
+            return base.Channel.GetUserAutoCompletionAsync(token, keyword);
         }
         
         public UFO.Services.AdminAccess.PagingData RequestUserPagingData(UFO.Services.AdminAccess.SessionToken token) {
@@ -1383,6 +1503,14 @@ namespace UFO.Services.AdminAccess {
         
         public System.Threading.Tasks.Task<bool> ModifyPerformanceAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Performance performance) {
             return base.Channel.ModifyPerformanceAsync(token, performance);
+        }
+        
+        public bool SendNotification(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Notification notification) {
+            return base.Channel.SendNotification(token, notification);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SendNotificationAsync(UFO.Services.AdminAccess.SessionToken token, UFO.Services.AdminAccess.Notification notification) {
+            return base.Channel.SendNotificationAsync(token, notification);
         }
     }
 }

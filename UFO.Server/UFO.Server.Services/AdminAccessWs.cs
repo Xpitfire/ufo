@@ -97,5 +97,8 @@ namespace UFO.Server.Services
 
         [OperationContract]
         public bool ModifyPerformance(SessionToken token, Performance performance) => AdminAccessDelegate.ModifyPerformance(token, performance);
+        
+        [OperationContract]
+        public bool SendNotification(SessionToken token, Notification notification) => AdminAccessDelegate.SendNotification(token, notification);
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2b798572-fd37-41ea-b1e5-198f14f0bc30" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5bedbea5-c989-47f3-8091-0b62c0947018" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,12 +22,12 @@
     <MetadataSource Address="http://localhost:4321/AdminAccess" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AdminAccess.xsd" MetadataType="Schema" ID="21324395-3525-426c-8105-ff9e7c6917d3" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?xsd=xsd3" />
-    <MetadataFile FileName="AdminAccess1.xsd" MetadataType="Schema" ID="a805ce5e-aaaa-4f3f-bdcd-3f8b4276d940" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?xsd=xsd2" />
-    <MetadataFile FileName="AdminAccess2.xsd" MetadataType="Schema" ID="6ba53741-b6ac-4d03-874d-3234b519ea48" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?xsd=xsd1" />
-    <MetadataFile FileName="AdminAccess3.xsd" MetadataType="Schema" ID="aaeb0736-f5e7-404d-a2bb-988f3fe6b842" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?xsd=xsd0" />
-    <MetadataFile FileName="AdminAccessWs.wsdl" MetadataType="Wsdl" ID="74b94af3-834b-4a41-9d38-bb801fdafe32" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?wsdl" />
-    <MetadataFile FileName="AdminAccess.disco" MetadataType="Disco" ID="94680124-2317-4e86-bb94-e781db32220e" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?disco" />
+    <MetadataFile FileName="AdminAccess.xsd" MetadataType="Schema" ID="858a3334-c93c-448f-a96e-f7e62ae9f8fa" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?xsd=xsd3" />
+    <MetadataFile FileName="AdminAccess1.xsd" MetadataType="Schema" ID="46558d38-c77d-43c5-9308-1ce12bc79d0c" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?xsd=xsd2" />
+    <MetadataFile FileName="AdminAccess2.xsd" MetadataType="Schema" ID="c1de87b1-11a3-4b01-b257-c744b183036e" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?xsd=xsd1" />
+    <MetadataFile FileName="AdminAccess3.xsd" MetadataType="Schema" ID="f32ccb39-9191-4bde-b073-90a9ca46d7a6" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?xsd=xsd0" />
+    <MetadataFile FileName="ViewAccessWs.wsdl" MetadataType="Wsdl" ID="70688a91-b0e1-404b-b0bf-7d36f90ff8a4" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?wsdl" />
+    <MetadataFile FileName="AdminAccess.disco" MetadataType="Disco" ID="392be57d-6269-41c0-a638-32f22f9c854d" SourceId="1" SourceUrl="http://localhost:4321/AdminAccess?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
