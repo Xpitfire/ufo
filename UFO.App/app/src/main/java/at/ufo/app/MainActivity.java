@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         });
         PerformanceArrayAdapter paa = new PerformanceArrayAdapter(this);
         List<Performance> pl = DomainFactory.getDefaultDelegate().getUpcomingPerformances();
+
 
         Performance prevPerformance = null;
         String year = null;

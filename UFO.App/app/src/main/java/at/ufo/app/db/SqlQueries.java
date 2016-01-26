@@ -11,7 +11,7 @@ public final class SqlQueries {
     private SqlQueries() {}
 
     public static final String SELECT_LATEST_PERFORMANCES =
-            "SELECT * FROM performanceview WHERE Date BETWEEN NOW() AND (SELECT MAX(Date) FROM performanceview) ORDER BY Date DESC";
+            "SELECT * FROM performanceview WHERE Date BETWEEN NOW() AND (SELECT MAX(Date) FROM performanceview) ORDER BY Date";
 
     public static final String SELECT_PERFORMANCE_BY_ID =
             "SELECT * FROM performanceview WHERE ArtistId = ? AND Date = ?";
