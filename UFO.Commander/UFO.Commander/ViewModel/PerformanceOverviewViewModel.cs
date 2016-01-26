@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Windows.Threading;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight.CommandWpf;
 using UFO.Commander.Handler;
 using UFO.Commander.Helper;
-using UFO.Commander.Messages;
 using UFO.Commander.Proxy;
 using UFO.Commander.ViewModel.Entities;
 using UFO.Server.Bll.Common;
@@ -22,99 +18,86 @@ namespace UFO.Commander.ViewModel
     [ViewExceptionHandler("Performance Request Exception")]
     public class PerformanceOverviewViewModel : ViewModelBase
     {
-        public const int MaxPerformances = 24;
-
-        public event EventHandler<ObservableCollection<TimeSlotPerformanceViewModel>> DataAvailableEvent;
+        public event EventHandler<ObservableCollection<PerformanceViewModel>> DataAvailableEvent;
 
         private readonly IViewAccessBll _viewAccessBll = BllAccessHandler.ViewAccessBll;
         private readonly IAdminAccessBll _adminAccessBll = BllAccessHandler.AdminAccessBll;
+        
+        public ObservableCollection<DateTimeViewModel> PerformanceDates { get; } = new ObservableCollection<DateTimeViewModel>();
+        public ObservableCollection<PerformanceViewModel> Performances { get; } = new ObservableCollection<PerformanceViewModel>();
 
-        private DateTime _currentPerformanceDateTime = DateTime.Now;
+        private PerformanceViewModel _currentPerformanceViewModel;
+        public PerformanceViewModel CurrentPerformanceViewModel
+        {
+            get { return _currentPerformanceViewModel; }
+            set { Set(ref _currentPerformanceViewModel, value); }
+        }
+
+        private DateTime _currentPerformanceDateTime;
         public DateTime CurrentPerformanceDateTime
         {
             get { return _currentPerformanceDateTime; }
             set
             {
-                Set(ref _currentPerformanceDateTime, value);
-                LoadInitialData();
+                if (_currentPerformanceDateTime != value)
+                {
+                    Set(ref _currentPerformanceDateTime, value);
+                    Dispatcher.CurrentDispatcher.InvokeAsync(async () => await LoadData());
+                }
             }
         }
 
-        public event EventHandler<TimeSlotPerformanceViewModel> TimeSlotPerformanceChangedEvent; 
-        
-        private TimeSlotPerformanceViewModel _currentTimeSlotPerformance;
-        public TimeSlotPerformanceViewModel CurrentTimeSlotPerformance
-        {
-            get { return _currentTimeSlotPerformance; }
-            set { Set(ref _currentTimeSlotPerformance, value); }
-        }
-
-        public void SelectedTimeSlotPerformanceChanged(TimeSlotPerformanceViewModel timeSlotPerformance)
-        {
-            TimeSlotPerformanceChangedEvent?.Invoke(this, timeSlotPerformance);
-            Messenger.Default.Send(new ShowDialogMessage(Locator.ArtistSelectionViewModel));
-        }
-
-        public ObservableCollection<TimeSlotPerformanceViewModel> TimeSlotPerformanceViewModels { get; } = new ObservableCollection<TimeSlotPerformanceViewModel>();
-        
-        
-        public class TimeSlotPerformanceViewModel : ViewModelBase
-        {
-            private string _timeKey;
-            public string TimeKey
-            {
-                get { return _timeKey; }
-                set { Set(ref _timeKey, value); }
-            }
-            
-            private PerformanceViewModel _performanceViewModel;
-            public PerformanceViewModel PerformanceViewModel
-            {
-                get { return _performanceViewModel; }
-                set { Set(ref _performanceViewModel, value); }
-            }
-        }
-
-        private TimeSlotPerformanceViewModel _currentPerformanceViewModel;
-        public TimeSlotPerformanceViewModel CurrentPerformanceViewModel
-        {
-            get { return _currentPerformanceViewModel; }
-            set { Set(ref _currentPerformanceViewModel, value); }
-        }
-        
         public PerformanceOverviewViewModel()
         {
-            LoadInitialData();
+            InitializeData();
         }
 
-        public async void LoadInitialData()
+        public async void InitializeData()
         {
             await Dispatcher.CurrentDispatcher.InvokeAsync(async () =>
             {
-                TimeSlotPerformanceViewModels.Clear();
-                await InitializeData();
+                var dates = await _viewAccessBll.GetAllPerformanceDatesAsync();
+                CurrentPerformanceDateTime = dates.FirstOrDefault();
+                foreach (var dateTime in dates)
+                {
+                    PerformanceDates.Add(new DateTimeViewModel(dateTime));
+                }
+            });
+            AddNewPerformanceCommand = new RelayCommand(() =>
+            {
+                
+            });
+            DeletePerformanceCommand = new RelayCommand<PerformanceViewModel>(p =>
+            {
+                var result = _adminAccessBll.RemovePerformance(BllAccessHandler.SessionToken, p.ToDomainObject<Performance>());
+                if (result)
+                {
+                    Performances.Remove(p);
+                }
             });
         }
 
-        public async Task InitializeData()
+        public async Task LoadData()
         {
-
             var performances = await _viewAccessBll.GetPerformancesPerDateAsync(CurrentPerformanceDateTime);
             if (performances != null)
-            { 
-                foreach (var performance in performances)
+            {
+                performances.Sort((p1, p2) => 
+                p1.DateTime.CompareTo(p2.DateTime) + string.Compare(p1.Venue.VenueId, p2.Venue.VenueId, StringComparison.Ordinal));
+               Performances.Clear();
+                foreach (var p in performances)
                 {
-                    var time = performance.DateTime.ToString("HH:mm");
-                    var timeSlot = new TimeSlotPerformanceViewModel
-                    {
-                        TimeKey = time,
-                        PerformanceViewModel = performance.ToViewModelObject<PerformanceViewModel>()
-                    };
-                    TimeSlotPerformanceViewModels.Add(timeSlot);
+                    var pvm = p.ToViewModelObject<PerformanceViewModel>();
+                    pvm.DateTimeViewModel = new DateTimeViewModel(p.DateTime);
+                    Performances.Add(pvm);
                 }
-                DataAvailableEvent?.Invoke(this, TimeSlotPerformanceViewModels);
+                DataAvailableEvent?.Invoke(this, Performances);
             }
         }
+
+        public ICommand AddNewPerformanceCommand { get; set; }
+
+        public ICommand DeletePerformanceCommand { get; set; }
 
         public override string ToString()
         {

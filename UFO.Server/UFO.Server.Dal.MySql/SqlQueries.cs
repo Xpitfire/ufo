@@ -104,6 +104,10 @@ namespace UFO.Server.Dal.MySql
                                                                        WHERE LOWER(ArtistName) LIKE LOWER(?Keyword) OR LOWER(VenueName) LIKE LOWER(?Keyword) OR LOWER(LocationName) LIKE LOWER(?Keyword)
                                                                        LIMIT {Constants.KeywordRequestSize}";
 
+        public const string SelectAllPerfomanceDates = @"SELECT DISTINCT Date
+                                                           FROM performanceview
+                                                          ORDER BY Date DESC";
+
         public const string DeletePerformance = @"DELETE FROM performance
                                                    WHERE Date=?Date AND ArtistId=?ArtistId";
 
@@ -113,8 +117,7 @@ namespace UFO.Server.Dal.MySql
 
         public const string InsertPerformance = @"INSERT INTO performance (Date, ArtistId, VenueId)
                                                        VALUES (?Date, ?ArtistId, ?VenueId)";
-
-
+        
 
         // Venue
         public const string SelectVenueById = @"SELECT *

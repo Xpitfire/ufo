@@ -48,8 +48,9 @@ namespace UFO.Server.Bll.Common
         List<Performance> GetPerformancesPerArtist(Artist artist);
         List<Performance> GetPerformancesPerVenue(Venue venue);
         List<Performance> GetLatestPerformances();
+        List<DateTime> GetAllPerformanceDates();
 
-            // Paging Requests
+        // Paging Requests
         PagingData RequestArtistPagingData();
         PagingData RequestCategoryPagingData();
         PagingData RequestCountryPagingData();

@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UFO.Commander.Views"
-             xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel">
+             xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=viewModel:PerformanceOverviewViewModel, IsDesignTimeCreatable=True}">
     <UserControl.Resources>
         <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MetroDataGridColumnHeader}">
             <Setter Property="Width" Value="100" />
@@ -23,49 +25,51 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
 
-        <DatePicker Grid.Row="0"
+        <Button Grid.Row="0" 
+                    Content="New Performances" 
+                    Command="{Binding Path=PerformanceOverviewViewModel.AddNewPerformanceCommand, Source={StaticResource Locator}}"/>
+
+        <DatePicker Grid.Row="1"
                     SelectedDate="{Binding CurrentPerformanceDateTime}"
                     HorizontalAlignment="Right"
                     IsTodayHighlighted="True"
-                    Width="200"/>
-        
-        <ScrollViewer Grid.Row="1"
-                      VerticalScrollBarVisibility="Visible" 
-                      HorizontalScrollBarVisibility="Visible" 
+                    Width="250"/>
+
+        <ScrollViewer Grid.Row="2"
+                      VerticalScrollBarVisibility="Visible"
                       Focusable="False">
 
             <DataGrid Name="PerformancesDataGrid"
-                      ItemsSource="{Binding TimeSlotPerformanceViewModels}"
+                      ItemsSource="{Binding Performances}"
                       SelectedItem="{Binding CurrentPerformanceViewModel}"
                       SelectionMode="Single"
                       AutoGenerateColumns="False"
-                      Focusable="False"
-                      VerticalScrollBarVisibility="Disabled" 
+                      VerticalScrollBarVisibility="Auto" 
                       IsReadOnly="True"
                       CanUserAddRows="False"
-                      SelectionUnit="Cell"
+                      SelectionUnit="FullRow"
                       CanUserDeleteRows="False"
-                      CanUserResizeColumns="False"
                       CanUserResizeRows="False"
                       CanUserSortColumns="False"
                       VerticalAlignment="Stretch"
                       HorizontalAlignment="Stretch"
-                      CanUserReorderColumns="False">
+                      CanUserReorderColumns="False"
+                      ColumnWidth="250"
+                      MinColumnWidth="250">
+
                 <DataGrid.GroupStyle>
                     <GroupStyle>
                         <GroupStyle.HeaderTemplate>
                             <DataTemplate>
-                                <TextBlock Text="Location" FontWeight="Bold" Padding="3"/>
+                                <TextBlock Text="Venue Id" FontWeight="Bold" Padding="3"/>
                             </DataTemplate>
                         </GroupStyle.HeaderTemplate>
                         <GroupStyle.ContainerStyle>
@@ -88,34 +92,28 @@
                 </DataGrid.GroupStyle>
 
                 <DataGrid.Columns>
-
-                    <DataGridTextColumn Binding="{Binding PerformanceViewModel.VenueViewModel}" />
-
-                    <DataGridTextColumn Header="14:00"
-                                        Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=14:00}" />
-                    <DataGridTextColumn Header="15:00" 
-                                        Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=15:00}" />
-                    <DataGridTextColumn Header="16:00" 
-                                        Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=16:00}" />
-                    <DataGridTextColumn Header="17:00" 
-                                        Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=17:00}" />
-                    <DataGridTextColumn Header="18:00" 
-                                        Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=18:00}" />
-                    <DataGridTextColumn Header="19:00" 
-                                        Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=19:00}" />
-                    <DataGridTextColumn Header="20:00" 
-                                        Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=20:00}" />
-                    <DataGridTextColumn Header="21:00" 
-                                        Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=21:00}" />
-                    <DataGridTextColumn Header="22:00" 
-                                        Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=22:00}" />
-                    <DataGridTextColumn Header="23:00" 
-                                        Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=23:00}" />
-                    <DataGridTextColumn Header="00:00" 
-                                        Binding="{Binding Converter={StaticResource TimeSlotPerformanceViewModelToStringConverter}, ConverterParameter=00:00}" />
+                    
+                    <DataGridTextColumn Binding="{Binding Path=DateTimeViewModel.Hour}" Header="Hour" />
+                    <DataGridTextColumn Binding="{Binding Path=ArtistViewModel.Name}" Header="Artist" />
+                    <DataGridTextColumn Binding="{Binding Path=VenueViewModel}" Header="Venue" />
+                    <DataGridTemplateColumn Header="Options">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Width="60" Height="30" Margin="5" Background="Tomato" Foreground="Bisque"
+                                            Content="Delete" 
+                                            Command="{Binding Path=PerformanceOverviewViewModel.DeletePerformanceCommand, Source={StaticResource Locator}}" 
+                                            CommandParameter="{Binding}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
                 </DataGrid.Columns>
+
             </DataGrid>
+
         </ScrollViewer>
+
     </Grid>
 </UserControl>

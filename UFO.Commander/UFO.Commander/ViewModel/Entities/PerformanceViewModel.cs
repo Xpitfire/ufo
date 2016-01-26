@@ -15,12 +15,16 @@ namespace UFO.Commander.ViewModel.Entities
         public override DateTime DateTime { get; set; }
         public override Artist Artist { get; set; }
         public override Venue Venue { get; set; }
-
+        
         [SafeForDependencyAnalysis]
         public virtual DateTimeViewModel DateTimeViewModel
         {
             get { return new DateTimeViewModel(DateTime); }
-            set { DateTime = value.DateTime; }
+            set
+            {
+                DateTime = value.DateTime;
+                DateTimeViewModel.DateTime = value.DateTime;
+            }
         }
 
         [SafeForDependencyAnalysis]
@@ -50,5 +54,6 @@ namespace UFO.Commander.ViewModel.Entities
             return VenueViewModel.CompareTo(other.VenueViewModel) 
                 + ArtistViewModel.CompareTo(other.ArtistViewModel);
         }
+
     }
 }

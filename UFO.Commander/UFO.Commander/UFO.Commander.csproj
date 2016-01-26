@@ -155,6 +155,9 @@
     <Compile Include="Views\Dialogs\LocationDialog.xaml.cs">
       <DependentUpon>LocationDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\PerformanceDialog.xaml.cs">
+      <DependentUpon>PerformanceDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\VenueDialog.xaml.cs">
       <DependentUpon>VenueDialog.xaml</DependentUpon>
     </Compile>
@@ -237,6 +240,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\LocationDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\PerformanceDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

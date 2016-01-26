@@ -32,20 +32,12 @@ namespace UFO.Commander.Views
                 viewModel.DataAvailableEvent += (o, models) =>
                 {
                     var performancesView = CollectionViewSource.GetDefaultView(models);
-                    var grouping = new PropertyGroupDescription("PerformanceViewModel.VenueViewModel.LocationViewModel");
+                    var locationGrouping = new PropertyGroupDescription("VenueViewModel.Location.Name");
+                    var venueGrouping = new PropertyGroupDescription("VenueViewModel.VenueId");
+
                     performancesView.GroupDescriptions.Clear();
-                    performancesView.GroupDescriptions.Add(grouping);
-                };
-                PerformancesDataGrid.SelectedCellsChanged += (o, eventArgs) =>
-                {
-                    var item = PerformancesDataGrid.CurrentCell.Item as PerformanceOverviewViewModel.TimeSlotPerformanceViewModel;
-                    if (item != null)
-                    {
-                        //var columnValue = PerformancesDataGrid.CurrentColumn.Header.ToString();
-                        //item = item.TimeKey.Equals(columnValue) ? item : null;
-                        
-                    }
-                    Locator.PerformanceOverviewViewModel.SelectedTimeSlotPerformanceChanged(item);
+                    performancesView.GroupDescriptions.Add(locationGrouping);
+                    performancesView.GroupDescriptions.Add(venueGrouping);
                 };
             };
         }

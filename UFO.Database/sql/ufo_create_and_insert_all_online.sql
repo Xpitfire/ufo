@@ -1,12 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Jan 14, 2016 at 07:55 PM
--- Server version: 10.1.9-MariaDB
--- PHP Version: 7.0.1
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 SET FOREIGN_KEY_CHECKS = 0;
@@ -17,12 +8,6 @@ SET FOREIGN_KEY_CHECKS = 0;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `artist`
---
-
 CREATE TABLE IF NOT EXISTS `artist` (
   `ArtistId` int(11) NOT NULL,
   `Name` varchar(30) NOT NULL,
@@ -32,10 +17,6 @@ CREATE TABLE IF NOT EXISTS `artist` (
   `Picture` mediumtext,
   `PromoVideo` mediumtext
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `artist`
---
 
 INSERT INTO `artist` (`ArtistId`, `Name`, `EMail`, `CategoryId`, `CountryCode`, `Picture`, `PromoVideo`) VALUES
 (1, 'Dead Island', 'untitled-no1@mail.com', 'M', 'AT', 'http://media.moddb.com/images/members/1/414/413573/profile/6786056-dead-island-wallpaper.jpg', 'https://www.youtube.com/watch?v=gETEAHwE2d4'),
@@ -515,11 +496,6 @@ INSERT INTO `artist` (`ArtistId`, `Name`, `EMail`, `CategoryId`, `CountryCode`, 
 (475, 'Zombies', 'dusopcez@zac.io', 'T', 'CR', NULL, NULL),
 (476, 'ZZ Top', 'dohajso@gatez.com', 'T', 'CR', NULL, NULL);
 
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `artistview`
---
 CREATE TABLE IF NOT EXISTS `artistview` (
 `ArtistId` int(11)
 ,`ArtistName` varchar(30)
@@ -532,21 +508,12 @@ CREATE TABLE IF NOT EXISTS `artistview` (
 ,`PromoVideo` mediumtext
 );
 
--- --------------------------------------------------------
-
---
--- Table structure for table `category`
---
-
 CREATE TABLE IF NOT EXISTS `category` (
   `CategoryId` varchar(2) NOT NULL,
   `Name` varchar(40) NOT NULL,
   `Color` char(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `category`
---
 
 INSERT INTO `category` (`CategoryId`, `Name`, `Color`) VALUES
 ('A', 'Akrobatik', '#1abc9c'),
@@ -560,20 +527,12 @@ INSERT INTO `category` (`CategoryId`, `Name`, `Color`) VALUES
 ('St', 'Stehstill-Statue', '#e08283'),
 ('T', 'Tanz', '#f62459');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `country`
---
 
 CREATE TABLE IF NOT EXISTS `country` (
   `Code` char(2) NOT NULL,
   `Name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `country`
---
 
 INSERT INTO `country` (`Code`, `Name`) VALUES
 ('AD', 'Andorra'),
@@ -806,22 +765,12 @@ INSERT INTO `country` (`Code`, `Name`) VALUES
 ('ZM', 'Zambia'),
 ('ZW', 'Zimbabwe');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `location`
---
-
 CREATE TABLE IF NOT EXISTS `location` (
   `LocationId` int(11) NOT NULL,
   `Longitude` decimal(8,5) NOT NULL,
   `Latitude` decimal(8,5) NOT NULL,
   `Name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `location`
---
 
 INSERT INTO `location` (`LocationId`, `Longitude`, `Latitude`, `Name`) VALUES
 (1, '14.28673', '48.30576', 'Hauptplatz'),
@@ -831,21 +780,12 @@ INSERT INTO `location` (`LocationId`, `Longitude`, `Latitude`, `Name`) VALUES
 (5, '14.28576', '48.30360', 'Promenade'),
 (6, '14.28846', '48.30366', 'Straßentheater');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `performance`
---
 
 CREATE TABLE IF NOT EXISTS `performance` (
   `Date` datetime NOT NULL,
   `ArtistId` int(11) NOT NULL,
   `VenueId` char(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `performance`
---
 
 INSERT INTO `performance` (`Date`, `ArtistId`, `VenueId`) VALUES
 ('2014-11-07 19:00:00', 21, 'A1'),
@@ -957,11 +897,6 @@ INSERT INTO `performance` (`Date`, `ArtistId`, `VenueId`) VALUES
 ('2014-11-07 18:00:00', 401, 'P5'),
 ('2012-11-18 21:00:00', 407, 'P5');
 
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `performanceview`
---
 CREATE TABLE IF NOT EXISTS `performanceview` (
 `ArtistId` int(11)
 ,`Date` datetime
@@ -981,12 +916,6 @@ CREATE TABLE IF NOT EXISTS `performanceview` (
 ,`LocationName` varchar(30)
 );
 
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
 CREATE TABLE IF NOT EXISTS `user` (
   `UserId` int(11) NOT NULL,
   `FirstName` varchar(30) DEFAULT NULL,
@@ -997,10 +926,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `ArtistId` int(11) DEFAULT NULL,
   `EMail` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
 
 INSERT INTO `user` (`UserId`, `FirstName`, `LastName`, `Password`, `IsAdmin`, `IsArtist`, `ArtistId`, `EMail`) VALUES
 (0, 'Florian', 'Wurm', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 1, 1, 'untitled-no1@mail.com'),
@@ -11022,11 +10947,6 @@ INSERT INTO `user` (`UserId`, `FirstName`, `LastName`, `Password`, `IsAdmin`, `I
 (9999, 'Fred', 'Torres', 'aRpFgx1PrICye]NKt([02cIf@JOA%E', 0, 1, 315, 'gamiloz@bepabap.co.uk'),
 (10000, 'Beatrice', 'Walsh', 'kPuke68Q3GEd!)6UZCp2Az&$6tk9KA', 1, 0, NULL, 'dunjetdal@ardele.gov');
 
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `userview`
---
 CREATE TABLE IF NOT EXISTS `userview` (
 `UserId` int(11)
 ,`FirstName` varchar(30)
@@ -11046,21 +10966,11 @@ CREATE TABLE IF NOT EXISTS `userview` (
 ,`PromoVideo` mediumtext
 );
 
--- --------------------------------------------------------
-
---
--- Table structure for table `venue`
---
-
 CREATE TABLE IF NOT EXISTS `venue` (
   `Name` varchar(40) NOT NULL,
   `VenueId` char(2) NOT NULL,
   `LocationId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `venue`
---
 
 INSERT INTO `venue` (`Name`, `VenueId`, `LocationId`) VALUES
 ('Klosterstrasse 7', 'A1', 3),
@@ -11101,11 +11011,6 @@ INSERT INTO `venue` (`Name`, `VenueId`, `LocationId`) VALUES
 ('Medienhaus Wimmer', 'X4', 5),
 ('Spektakelzelt', 'Z	', 2);
 
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `venueview`
---
 CREATE TABLE IF NOT EXISTS `venueview` (
 `VenueId` char(2)
 ,`VenueName` varchar(40)
@@ -11115,139 +11020,68 @@ CREATE TABLE IF NOT EXISTS `venueview` (
 ,`LocationName` varchar(30)
 );
 
--- --------------------------------------------------------
-
---
--- Structure for view `artistview`
---
 DROP TABLE IF EXISTS `artistview`;
 
 CREATE VIEW `artistview`  AS  select `a`.`ArtistId` AS `ArtistId`,`a`.`Name` AS `ArtistName`,`a`.`EMail` AS `EMail`,`a`.`CategoryId` AS `CategoryId`,`ca`.`Name` AS `CategoryName`,`ca`.`Color` AS `CategoryColor`,`a`.`CountryCode` AS `CountryCode`,`co`.`Name` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo` from ((`artist` `a` left join `category` `ca` on((`a`.`CategoryId` = `ca`.`CategoryId`))) join `country` `co`) where (`a`.`CountryCode` = `co`.`Code`) ;
 
--- --------------------------------------------------------
-
---
--- Structure for view `performanceview`
---
 DROP TABLE IF EXISTS `performanceview`;
 
 CREATE VIEW `performanceview`  AS  select `a`.`ArtistId` AS `ArtistId`,`p`.`Date` AS `Date`,`v`.`VenueId` AS `VenueId`,`a`.`ArtistName` AS `ArtistName`,`a`.`EMail` AS `EMail`,`a`.`CategoryId` AS `CategoryId`,`a`.`CategoryName` AS `CategoryName`,`a`.`CategoryColor` AS `CategoryColor`,`a`.`CountryCode` AS `CountryCode`,`a`.`CountryName` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo`,`v`.`VenueName` AS `VenueName`,`v`.`LocationId` AS `LocationId`,`v`.`Longitude` AS `Longitude`,`v`.`Latitude` AS `Latitude`,`v`.`LocationName` AS `LocationName` from (`artistview` `a` join (`performance` `p` left join `venueview` `v` on((`p`.`VenueId` = `v`.`VenueId`)))) where (`a`.`ArtistId` = `p`.`ArtistId`) ;
 
--- --------------------------------------------------------
-
---
--- Structure for view `userview`
---
 DROP TABLE IF EXISTS `userview`;
 
 CREATE VIEW `userview`  AS  select `u`.`UserId` AS `UserId`,`u`.`FirstName` AS `FirstName`,`u`.`LastName` AS `LastName`,`u`.`EMail` AS `UserMail`,`u`.`Password` AS `Password`,`u`.`IsAdmin` AS `IsAdmin`,`u`.`IsArtist` AS `IsArtist`,`a`.`ArtistId` AS `ArtistId`,`a`.`ArtistName` AS `ArtistName`,`a`.`EMail` AS `ArtistMail`,`a`.`CategoryId` AS `CategoryId`,`a`.`CategoryName` AS `CategoryName`,`a`.`CountryCode` AS `CountryCode`,`a`.`CountryName` AS `CountryName`,`a`.`Picture` AS `Picture`,`a`.`PromoVideo` AS `PromoVideo` from (`user` `u` left join `artistview` `a` on((`a`.`ArtistId` = `u`.`ArtistId`))) ;
 
--- --------------------------------------------------------
-
---
--- Structure for view `venueview`
---
 DROP TABLE IF EXISTS `venueview`;
 
 CREATE VIEW `venueview`  AS  select `v`.`VenueId` AS `VenueId`,`v`.`Name` AS `VenueName`,`v`.`LocationId` AS `LocationId`,`l`.`Longitude` AS `Longitude`,`l`.`Latitude` AS `Latitude`,`l`.`Name` AS `LocationName` from (`venue` `v` join `location` `l`) where (`v`.`LocationId` = `l`.`LocationId`) ;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `artist`
---
 ALTER TABLE `artist`
   ADD PRIMARY KEY (`ArtistId`),
   ADD KEY `R_8` (`CategoryId`),
   ADD KEY `R_11` (`CountryCode`);
 
---
--- Indexes for table `category`
---
 ALTER TABLE `category`
   ADD PRIMARY KEY (`CategoryId`);
 
---
--- Indexes for table `country`
---
 ALTER TABLE `country`
   ADD PRIMARY KEY (`Code`);
 
---
--- Indexes for table `location`
---
 ALTER TABLE `location`
   ADD PRIMARY KEY (`LocationId`);
 
---
--- Indexes for table `performance`
---
 ALTER TABLE `performance`
   ADD PRIMARY KEY (`ArtistId`,`Date`),
   ADD KEY `R_14` (`VenueId`);
 
---
--- Indexes for table `user`
---
 ALTER TABLE `user`
   ADD PRIMARY KEY (`UserId`),
   ADD KEY `R_5` (`ArtistId`);
 
---
--- Indexes for table `venue`
---
 ALTER TABLE `venue`
   ADD PRIMARY KEY (`VenueId`),
   ADD KEY `R_19` (`LocationId`);
 
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `artist`
---
 ALTER TABLE `artist`
   MODIFY `ArtistId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=477;
---
--- AUTO_INCREMENT for table `location`
---
+
 ALTER TABLE `location`
   MODIFY `LocationId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `user`
---
+
 ALTER TABLE `user`
   MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
---
--- Constraints for dumped tables
---
 
---
--- Constraints for table `artist`
---
 ALTER TABLE `artist`
   ADD CONSTRAINT `R_11` FOREIGN KEY (`CountryCode`) REFERENCES `country` (`Code`),
   ADD CONSTRAINT `R_8` FOREIGN KEY (`CategoryId`) REFERENCES `category` (`CategoryId`) ON DELETE SET NULL ON UPDATE CASCADE;
 
---
--- Constraints for table `performance`
---
 ALTER TABLE `performance`
   ADD CONSTRAINT `R_12` FOREIGN KEY (`ArtistId`) REFERENCES `artist` (`ArtistId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `R_14` FOREIGN KEY (`VenueId`) REFERENCES `venue` (`VenueId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
--- Constraints for table `user`
---
 ALTER TABLE `user`
   ADD CONSTRAINT `R_5` FOREIGN KEY (`ArtistId`) REFERENCES `artist` (`ArtistId`) ON DELETE SET NULL ON UPDATE CASCADE;
 
---
--- Constraints for table `venue`
---
 ALTER TABLE `venue`
   ADD CONSTRAINT `R_19` FOREIGN KEY (`LocationId`) REFERENCES `location` (`LocationId`) ON DELETE CASCADE ON UPDATE CASCADE;
   

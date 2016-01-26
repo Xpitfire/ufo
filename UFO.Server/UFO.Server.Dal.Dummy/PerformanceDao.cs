@@ -87,5 +87,10 @@ namespace UFO.Server.Dal.Dummy
         {
             throw new NotImplementedException();
         }
+
+        public DaoResponse<List<DateTime>> SelectAllPerformanceDates()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

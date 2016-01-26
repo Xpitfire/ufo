@@ -90,6 +90,11 @@ namespace UFO.Server.Bll.Impl
             return PerformanceDao.SelectLastestPerformances().ResultObject;
         }
 
+        public override List<DateTime> GetAllPerformanceDates()
+        {
+            return PerformanceDao.SelectAllPerformanceDates().ResultObject;
+        }
+
         public override List<Performance> SearchPerformancesPerKeyword(string keyword)
         {
             return PerformanceDao.SelectByKeyword(keyword).ResultObject;

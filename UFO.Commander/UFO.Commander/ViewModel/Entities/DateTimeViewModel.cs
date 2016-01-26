@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -13,11 +14,38 @@ namespace UFO.Commander.ViewModel.Entities
     [NotifyPropertyChanged]
     public class DateTimeViewModel : INotifyPropertyChanged
     {
+        public const string Format = "dd-MM-yyyy HH:mm";
+
         public DateTime DateTime { get; set; }
 
+        private string _hour;
+        public string Hour
+        {
+            get { return _hour; }
+            set
+            {
+                _hour = value;
+                DateTime = DateTime.ParseExact($"{Date} {Hour}", Format, CultureInfo.InvariantCulture);
+            }
+        }
+
+        private string _date;
+
+        public string Date
+        {
+            get { return _date; }
+            set
+            {
+                _date = value;
+                DateTime = DateTime.ParseExact($"{Date} {Hour}", Format, CultureInfo.InvariantCulture);
+            }
+        }
+        
         public DateTimeViewModel(DateTime dateTime)
         {
             this.DateTime = dateTime;
+            _hour = dateTime.ToString("HH:mm");
+            _date = dateTime.ToString("dd-MM-yyyy");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -29,7 +57,7 @@ namespace UFO.Commander.ViewModel.Entities
 
         public override string ToString()
         {
-            return DateTime.ToString("HH:mm");
+            return Hour;
         }
     }
 }

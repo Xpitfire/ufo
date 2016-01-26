@@ -35,5 +35,11 @@ namespace UFO.Commander.ViewModel.Entities
         {
             return string.CompareOrdinal(Name, other?.Name);
         }
+
+
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
     }
 }

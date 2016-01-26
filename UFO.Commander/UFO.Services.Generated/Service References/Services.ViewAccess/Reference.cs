@@ -705,6 +705,12 @@ namespace UFO.Services.ViewAccess {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetPerformanceAutoCompletion", ReplyAction="http://tempuri.org/ViewAccessWs/GetPerformanceAutoCompletionResponse")]
         System.Threading.Tasks.Task<string[]> GetPerformanceAutoCompletionAsync(string keyword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAllPerformanceDates", ReplyAction="http://tempuri.org/ViewAccessWs/GetAllPerformanceDatesResponse")]
+        System.DateTime[] GetAllPerformanceDates();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ViewAccessWs/GetAllPerformanceDates", ReplyAction="http://tempuri.org/ViewAccessWs/GetAllPerformanceDatesResponse")]
+        System.Threading.Tasks.Task<System.DateTime[]> GetAllPerformanceDatesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -908,6 +914,14 @@ namespace UFO.Services.ViewAccess {
         
         public System.Threading.Tasks.Task<string[]> GetPerformanceAutoCompletionAsync(string keyword) {
             return base.Channel.GetPerformanceAutoCompletionAsync(keyword);
+        }
+        
+        public System.DateTime[] GetAllPerformanceDates() {
+            return base.Channel.GetAllPerformanceDates();
+        }
+        
+        public System.Threading.Tasks.Task<System.DateTime[]> GetAllPerformanceDatesAsync() {
+            return base.Channel.GetAllPerformanceDatesAsync();
         }
     }
 }

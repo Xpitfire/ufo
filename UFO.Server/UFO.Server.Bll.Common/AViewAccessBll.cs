@@ -34,6 +34,7 @@ namespace UFO.Server.Bll.Common
         public abstract List<Performance> GetPerformancesPerArtist(Artist artist);
         public abstract List<Performance> GetPerformancesPerVenue(Venue venue);
         public abstract List<Performance> GetLatestPerformances();
+        public abstract List<DateTime> GetAllPerformanceDates();
         public abstract List<Performance> SearchPerformancesPerKeyword(string keyword);
         public abstract List<Artist> SearchArtistsPerKeyword(string keyword);
         public abstract List<Venue> SearchVenuesPerKeyword(string keyword);

@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:converters="clr-namespace:UFO.Commander.Converters">
     <converters:NullToVisibilityConverter x:Key="NotNullToVisibilityConverter" />
-    <converters:TimeSlotPerformanceViewModelToStringConverter x:Key="TimeSlotPerformanceViewModelToStringConverter" />
     <converters:NullToStringConverter x:Key="NullToStringConverter" />
     <converters:NullToImageSourceConverter x:Key="NullToImageSourceConverter" />
 </ResourceDictionary>

@@ -99,6 +99,11 @@ namespace UFO.Commander.Proxy
                 _viewAccessWs.GetLatestPerformances());
         }
 
+        public List<DateTime> GetAllPerformanceDates()
+        {
+            return _viewAccessWs.GetAllPerformanceDates().ToList();
+        }
+
         public List<BLL.Performance> GetPerformancePerArtist(BLL.Artist artist)
         {
             return ProxyHelper.ToListOf<WS.Performance, BLL.Performance>(

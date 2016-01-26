@@ -144,5 +144,9 @@ namespace UFO.Commander.Proxy
             return (await ViewAccessWs.GetPerformanceAutoCompletionAsync(keyword))?.ToList();
         }
 
+        public static async Task<List<DateTime>> GetAllPerformanceDatesAsync(this IViewAccessBll accessBll)
+        {
+            return (await ViewAccessWs.GetAllPerformanceDatesAsync())?.ToList();
+        }
     }
 }

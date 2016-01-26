@@ -283,6 +283,22 @@ namespace UFO.Server.Dal.MySql
             return performances.Any() ? DaoResponse.QuerySuccessful(performances) : DaoResponse.QueryEmptyResult<List<Performance>>();
         }
 
+        [DaoExceptionHandler(typeof(List<DateTime>))]
+        public DaoResponse<List<DateTime>> SelectAllPerformanceDates()
+        {
+            var times = new List<DateTime>();
+            using (var connection = _dbCommProvider.CreateDbConnection())
+            using (var command = _dbCommProvider.CreateDbCommand(connection, SqlQueries.SelectAllPerfomanceDates))
+            using (var dataReader = _dbCommProvider.ExecuteReader(command))
+            {
+                while (dataReader.Read())
+                {
+                    times.Add(_dbCommProvider.CastDbObject<DateTime>(dataReader, "Date"));
+                }
+            }
+            return times.Any() ? DaoResponse.QuerySuccessful(times) : DaoResponse.QueryEmptyResult<List<DateTime>>();
+        }
+
         [DaoExceptionHandler(typeof(List<Performance>))]
         public DaoResponse<List<Performance>> SelectAll()
         {

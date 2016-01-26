@@ -32,5 +32,6 @@ namespace UFO.Server.Dal.Common
         DaoResponse<List<Performance>> SelectByArtistId(int artistId);
         DaoResponse<List<Performance>> SelectByVenueId(string venueId);
         DaoResponse<List<Performance>> SelectByKeyword(string keyword);
+        DaoResponse<List<DateTime>> SelectAllPerformanceDates();
     }
 }

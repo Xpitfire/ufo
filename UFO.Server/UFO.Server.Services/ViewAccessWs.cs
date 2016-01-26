@@ -99,5 +99,8 @@ namespace UFO.Server.Services
 
         [OperationContract]
         public List<string> GetPerformanceAutoCompletion(string keyword) => ViewAccessDelegate.GetPerformanceAutoCompletion(keyword);
+
+        [OperationContract]
+        public List<DateTime> GetAllPerformanceDates() => ViewAccessDelegate.GetAllPerformanceDates();
     }
 }

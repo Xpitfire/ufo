@@ -19,11 +19,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Transactions;
+using PostSharp.Patterns.Diagnostics;
 using UFO.Server.Bll.Common;
 using UFO.Server.Common.Properties;
 using UFO.Server.Dal.Common;
@@ -33,17 +35,19 @@ namespace UFO.Server.Bll.Impl
 {
     public class AdminAccessBll : AAdminAccessBll
     {
-
+        [LogException]
         public override List<User> GetUsers(SessionToken token, PagingData page)
         {
             return EvaluateSessionPagingResult(token, page, () => UserDao.Select(page).ResultObject);
         }
 
+        [LogException]
         public override List<User> SearchUsersPerKeyword(SessionToken token, string keyword)
         {
             return EvaluateSessionPagingResult(token, () => UserDao.SelectByKeyword(keyword)).ResultObject;
         }
 
+        [LogException]
         public override List<string> GetUserAutoCompletion(SessionToken token, string keyword)
         {
             if (!IsUserAuthenticated(token))
@@ -68,30 +72,43 @@ namespace UFO.Server.Bll.Impl
             return EvaluateSessionPagingResult(token, func);
         }
 
+        [LogException]
         public override bool SendNotification(SessionToken token, Notification notification)
         {
-            if (!IsUserAuthenticated(token)) return false;
+            if (!IsUserAuthenticated(token) || notification == null)
+                return false;
 
-            using (var mailMessage = new MailMessage(notification.Sender, notification.Recipient)
+            try
             {
-                Subject = notification.Subject,
-                Body = notification.Body,
-                IsBodyHtml = true
-            })
-            using (var smtpClient = new SmtpClient(EmailNotificationServer, EmailNotificationPort)
+                using (var mailMessage = new MailMessage(notification.Sender, notification.Recipient)
+                {
+                    Subject = notification.Subject,
+                    Body = notification.Body,
+                    IsBodyHtml = true
+                })
+                using (var smtpClient = new SmtpClient(EmailNotificationServer, EmailNotificationPort)
+                {
+                    Credentials = new NetworkCredential(EmailNotificationUsername, EmailNotificationPassword),
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    EnableSsl = true
+                })
+                {
+                    smtpClient.Send(mailMessage);
+                }
+            }
+            catch (Exception)
             {
-                Credentials = new NetworkCredential(EmailNotificationUsername, EmailNotificationPassword),
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                EnableSsl = true
-            })
-            {
-                smtpClient.Send(mailMessage);
+                return false;
             }
             return true;
         }
 
+        [LogException]
         public override bool ModifyArtistRange(SessionToken token, List<Artist> artists)
         {
+            if (artists == null || artists.Count <= 0)
+                return false;
+
             bool result;
             using (var scope = new TransactionScope())
             {
@@ -100,7 +117,8 @@ namespace UFO.Server.Bll.Impl
             }
             return result;
         }
-        
+
+        [LogException]
         public override bool RemovePerformance(SessionToken token, Performance performance)
         {
             if (!IsUserAuthenticated(token) || performance == null)
@@ -113,6 +131,7 @@ namespace UFO.Server.Bll.Impl
             return result.ResponseStatus == DaoStatus.Successful;
         }
 
+        [LogException]
         public override bool DelayPerformance(SessionToken token, Performance oldPerformance, Performance newPerformance)
         {
             if (oldPerformance?.Artist == null || oldPerformance.Venue == null 
@@ -142,8 +161,12 @@ namespace UFO.Server.Bll.Impl
             return insertStatus == DaoStatus.Successful;
         }
 
+        [LogException]
         public override bool ModifyLocationRange(SessionToken token, List<Location> locations)
         {
+            if (locations == null || locations.Count <= 0)
+                return false;
+
             bool result;
             using (var scope = new TransactionScope())
             {
@@ -153,6 +176,7 @@ namespace UFO.Server.Bll.Impl
             return result;
         }
 
+        [LogException]
         public override bool ModifyLocation(SessionToken token, Location location)
         {
             if (!IsUserAuthenticated(token) || location == null)
@@ -166,6 +190,7 @@ namespace UFO.Server.Bll.Impl
             return result.ResponseStatus == DaoStatus.Successful;
         }
 
+        [LogException]
         public override bool RemoveLocation(SessionToken token, Location location)
         {
             if (!IsUserAuthenticated(token) || location == null)
@@ -178,26 +203,30 @@ namespace UFO.Server.Bll.Impl
             return result.ResponseStatus == DaoStatus.Successful;
         }
 
+        [LogException]
         public override bool IsUserAuthenticated(SessionToken token)
         {
-            return GetSession().GetUserFromSession(token)?.IsAdmin ?? false;
+            return token != null && (GetSession().GetUserFromSession(token)?.IsAdmin ?? false);
         }
 
+        [LogException]
         public override bool IsValidAdmin(SessionToken token)
         {
-            return UserDao.VerifyAdminCredentials(token.User).ResultObject;
+            return token != null && UserDao.VerifyAdminCredentials(token.User).ResultObject;
         }
 
+        [LogException]
         public override ISessionBll GetSession()
         {
             return SessionHandler.Instance;
         }
-        
+
+        [LogException]
         public override bool ModifyArtist(SessionToken token, Artist artist)
         {
-            if (!IsUserAuthenticated(token) || artist == null)
+            if (!IsUserAuthenticated(token) || artist == null || !IsArtistValid(artist))
                 return false;
-
+            
             var result = ArtistDao.SelectById(artist.ArtistId);
             result = result.ResponseStatus == DaoStatus.Successful 
                 ? ArtistDao.Update(artist) 
@@ -206,6 +235,9 @@ namespace UFO.Server.Bll.Impl
             return result.ResponseStatus == DaoStatus.Successful;
         }
 
+        
+
+        [LogException]
         public override bool RemoveArtist(SessionToken token, Artist artist)
         {
             if (!IsUserAuthenticated(token) || artist == null)
@@ -218,6 +250,7 @@ namespace UFO.Server.Bll.Impl
             return result.ResponseStatus == DaoStatus.Successful;
         }
 
+        [LogException]
         public override bool ModifyVenueRange(SessionToken token, List<Venue> venues)
         {
             bool result;
@@ -229,6 +262,7 @@ namespace UFO.Server.Bll.Impl
             return result;
         }
 
+        [LogException]
         public override bool ModifyVenue(SessionToken token, Venue venue)
         {
             if (!IsUserAuthenticated(token) || venue == null)
@@ -242,6 +276,7 @@ namespace UFO.Server.Bll.Impl
             return result.ResponseStatus == DaoStatus.Successful;
         }
 
+        [LogException]
         public override bool RemoveVenue(SessionToken token, Venue venue)
         {
             if (!IsUserAuthenticated(token) || venue == null)
@@ -254,6 +289,7 @@ namespace UFO.Server.Bll.Impl
             return result.ResponseStatus == DaoStatus.Successful;
         }
 
+        [LogException]
         public override bool ModifyPerformanceRange(SessionToken token, List<Performance> performances)
         {
             bool result;
@@ -265,6 +301,7 @@ namespace UFO.Server.Bll.Impl
             return result;
         }
 
+        [LogException]
         public override bool ModifyPerformance(SessionToken token, Performance performance)
         {
             if (!IsUserAuthenticated(token) || performance?.Artist == null)

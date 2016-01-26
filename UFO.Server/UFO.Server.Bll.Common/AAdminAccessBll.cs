@@ -19,6 +19,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UFO.Server.Bll.Common.Helper;
 using UFO.Server.Common;
 using UFO.Server.Dal.Common;
@@ -136,6 +137,26 @@ namespace UFO.Server.Bll.Common
         public bool IsUserAutoCompletionValid(string keyword)
         {
             return keyword != null && keyword.Length > 2;
+        }
+
+        public bool IsArtistValid(Artist artist)
+        {
+            return artist != null
+                   && artist.ArtistId >= 0
+                   && artist.Category != null
+                   && artist.Name != null
+                   && artist.EMail != null
+                   && Regex.IsMatch(artist.EMail, Constants.EMailRegex);
+        }
+
+        public bool IsUserValid(User user)
+        {
+            return user != null
+                   && user.UserId >= 0
+                   && user.Password != null
+                   && user.Password.Length >= 20
+                   && user.EMail != null
+                   && Regex.IsMatch(user.EMail, Constants.EMailRegex);
         }
     }
 }
