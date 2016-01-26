@@ -30,5 +30,9 @@ namespace UFO.Server.Bll.Common
         bool IsUserAutoCompletionValid(string keyword);
         bool IsUserValid(User user);
         bool IsArtistValid(Artist artist);
+        bool IsVenueValid(Venue venue);
+        bool IsLocationValid(Location location);
+        bool IsPerformanceValid(Performance performance);
+        bool IsNotificationValid(Notification notification);
     }
 }

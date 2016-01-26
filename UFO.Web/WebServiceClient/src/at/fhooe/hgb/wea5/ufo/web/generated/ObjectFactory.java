@@ -246,6 +246,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SendNotification }
+     * 
+     */
+    public SendNotification createSendNotification() {
+        return new SendNotification();
+    }
+
+    /**
+     * Create an instance of {@link Notification }
+     * 
+     */
+    public Notification createNotification() {
+        return new Notification();
+    }
+
+    /**
      * Create an instance of {@link SearchVenuesPerKeyword }
      * 
      */
@@ -515,6 +531,14 @@ public class ObjectFactory {
      */
     public GetVenuesResponse createGetVenuesResponse() {
         return new GetVenuesResponse();
+    }
+
+    /**
+     * Create an instance of {@link SendNotificationResponse }
+     * 
+     */
+    public SendNotificationResponse createSendNotificationResponse() {
+        return new SendNotificationResponse();
     }
 
     /**

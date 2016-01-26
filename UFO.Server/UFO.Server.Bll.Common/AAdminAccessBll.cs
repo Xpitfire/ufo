@@ -117,7 +117,6 @@ namespace UFO.Server.Bll.Common
         {
             var valid = dateTime.Minute == 0;
             valid &= dateTime.Second == 0;
-            valid &= dateTime.Millisecond == 0;
             return valid;
         }
 
@@ -142,7 +141,7 @@ namespace UFO.Server.Bll.Common
         public bool IsArtistValid(Artist artist)
         {
             return artist != null
-                   && artist.ArtistId >= 0
+                   && artist.ArtistId > 0
                    && artist.Category != null
                    && artist.Name != null
                    && artist.EMail != null
@@ -152,11 +151,40 @@ namespace UFO.Server.Bll.Common
         public bool IsUserValid(User user)
         {
             return user != null
-                   && user.UserId >= 0
+                   && user.UserId > 0
                    && user.Password != null
                    && user.Password.Length >= 20
                    && user.EMail != null
                    && Regex.IsMatch(user.EMail, Constants.EMailRegex);
+        }
+
+        public bool IsVenueValid(Venue venue)
+        {
+            return !string.IsNullOrEmpty(venue?.VenueId)
+                   && venue.Location != null;
+        }
+
+        public bool IsLocationValid(Location location)
+        {
+            return location != null
+                   && location.LocationId > 0
+                   && location.Name != null;
+        }
+
+        public bool IsPerformanceValid(Performance performance)
+        {
+            return performance != null
+                   && IsDateTimeFormatValid(performance.DateTime)
+                   && IsArtistValid(performance.Artist)
+                   && IsVenueValid(performance.Venue);
+        }
+
+        public bool IsNotificationValid(Notification notification)
+        {
+            return !string.IsNullOrEmpty(notification?.Sender)
+                   && !string.IsNullOrEmpty(notification.Recipient)
+                   && !string.IsNullOrEmpty(notification.Subject)
+                   && !string.IsNullOrEmpty(notification.Body);
         }
     }
 }

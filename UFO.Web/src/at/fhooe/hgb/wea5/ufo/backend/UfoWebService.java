@@ -170,7 +170,26 @@ public class UfoWebService implements UfoDelegate {
 
     @Override
     public boolean delayPerformance(SessionToken token, Performance oldPerformance, Performance newPerformance) {
-        return webAccessProxy.delayPerformance(token, oldPerformance, newPerformance);
+        if (!webAccessProxy.delayPerformance(token, oldPerformance, newPerformance))
+            return false;
+        Notification notification = new Notification();
+        notification.setSender("noreply@ufo.at");
+        notification.setRecipient(oldPerformance.getArtist().getEMail());
+        notification.setSubject("Aufführung wurde verschoben!");
+        StringBuilder sb = new StringBuilder();
+        sb.append("Neuer Aufführungsort: ")
+                .append(newPerformance.getVenue().getName())
+                .append(" (")
+                .append(newPerformance.getVenue().getLocation().getName())
+                .append(")")
+                .append("\n")
+                .append("Neue Auführungszeit: ")
+                .append(Constants.FULL_DATE_FORMATTER.format(newPerformance.getDateTime().toGregorianCalendar().getTime()))
+                .append("\n")
+                .append("Betroffene Künstler: ")
+                .append(newPerformance.getArtist().getName());
+        notification.setBody(sb.toString());
+        return webAccessProxy.sendNotification(token, notification);
     }
 
     @Override

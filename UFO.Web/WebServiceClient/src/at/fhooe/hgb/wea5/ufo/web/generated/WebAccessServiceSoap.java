@@ -418,4 +418,21 @@ public interface WebAccessServiceSoap {
         @WebParam(name = "keyword", targetNamespace = "http://ufo.at/")
         String keyword);
 
+    /**
+     * 
+     * @param notification
+     * @param token
+     * @return
+     *     returns boolean
+     */
+    @WebMethod(operationName = "SendNotification", action = "http://ufo.at/SendNotification")
+    @WebResult(name = "SendNotificationResult", targetNamespace = "http://ufo.at/")
+    @RequestWrapper(localName = "SendNotification", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.SendNotification")
+    @ResponseWrapper(localName = "SendNotificationResponse", targetNamespace = "http://ufo.at/", className = "at.fhooe.hgb.wea5.ufo.web.generated.SendNotificationResponse")
+    public boolean sendNotification(
+        @WebParam(name = "token", targetNamespace = "http://ufo.at/")
+        SessionToken token,
+        @WebParam(name = "notification", targetNamespace = "http://ufo.at/")
+        Notification notification);
+
 }

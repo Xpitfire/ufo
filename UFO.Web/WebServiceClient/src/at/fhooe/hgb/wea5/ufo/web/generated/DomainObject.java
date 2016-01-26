@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlType;
     PagingData.class,
     SessionToken.class,
     Performance.class,
+    Notification.class,
     Venue.class,
     Category.class,
     Country.class,

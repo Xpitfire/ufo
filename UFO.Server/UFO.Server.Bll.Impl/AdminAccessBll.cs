@@ -19,7 +19,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -27,7 +26,6 @@ using System.Text.RegularExpressions;
 using System.Transactions;
 using PostSharp.Patterns.Diagnostics;
 using UFO.Server.Bll.Common;
-using UFO.Server.Common.Properties;
 using UFO.Server.Dal.Common;
 using UFO.Server.Domain;
 
@@ -75,7 +73,7 @@ namespace UFO.Server.Bll.Impl
         [LogException]
         public override bool SendNotification(SessionToken token, Notification notification)
         {
-            if (!IsUserAuthenticated(token) || notification == null)
+            if (!IsUserAuthenticated(token) || !IsNotificationValid(notification))
                 return false;
 
             try
@@ -106,7 +104,7 @@ namespace UFO.Server.Bll.Impl
         [LogException]
         public override bool ModifyArtistRange(SessionToken token, List<Artist> artists)
         {
-            if (artists == null || artists.Count <= 0)
+            if (!IsUserAuthenticated(token) || artists == null || artists.Count <= 0)
                 return false;
 
             bool result;
@@ -121,7 +119,7 @@ namespace UFO.Server.Bll.Impl
         [LogException]
         public override bool RemovePerformance(SessionToken token, Performance performance)
         {
-            if (!IsUserAuthenticated(token) || performance == null)
+            if (!IsUserAuthenticated(token) || !IsPerformanceValid(performance))
                 return false;
 
             var result = PerformanceDao.SelectById(performance.DateTime, performance.Artist.ArtistId);
@@ -134,9 +132,10 @@ namespace UFO.Server.Bll.Impl
         [LogException]
         public override bool DelayPerformance(SessionToken token, Performance oldPerformance, Performance newPerformance)
         {
-            if (oldPerformance?.Artist == null || oldPerformance.Venue == null 
-                || newPerformance?.Artist == null || newPerformance.Venue == null 
-                || Equals(oldPerformance, newPerformance) || !IsUserAuthenticated(token))
+            if (!IsUserAuthenticated(token) 
+                || !IsPerformanceValid(oldPerformance) 
+                || !IsPerformanceValid(newPerformance) 
+                || Equals(oldPerformance, newPerformance))
             {
                 return false;
             }
@@ -164,7 +163,7 @@ namespace UFO.Server.Bll.Impl
         [LogException]
         public override bool ModifyLocationRange(SessionToken token, List<Location> locations)
         {
-            if (locations == null || locations.Count <= 0)
+            if (!IsUserAuthenticated(token) || locations == null || locations.Count <= 0)
                 return false;
 
             bool result;
@@ -179,7 +178,7 @@ namespace UFO.Server.Bll.Impl
         [LogException]
         public override bool ModifyLocation(SessionToken token, Location location)
         {
-            if (!IsUserAuthenticated(token) || location == null)
+            if (!IsUserAuthenticated(token) || !IsLocationValid(location))
                 return false;
 
             var result = LocationDao.SelectById(location.LocationId);
@@ -193,7 +192,7 @@ namespace UFO.Server.Bll.Impl
         [LogException]
         public override bool RemoveLocation(SessionToken token, Location location)
         {
-            if (!IsUserAuthenticated(token) || location == null)
+            if (!IsUserAuthenticated(token) || !IsLocationValid(location))
                 return false;
 
             var result = LocationDao.SelectById(location.LocationId);
@@ -224,7 +223,7 @@ namespace UFO.Server.Bll.Impl
         [LogException]
         public override bool ModifyArtist(SessionToken token, Artist artist)
         {
-            if (!IsUserAuthenticated(token) || artist == null || !IsArtistValid(artist))
+            if (!IsUserAuthenticated(token) || !IsArtistValid(artist))
                 return false;
             
             var result = ArtistDao.SelectById(artist.ArtistId);
@@ -235,12 +234,10 @@ namespace UFO.Server.Bll.Impl
             return result.ResponseStatus == DaoStatus.Successful;
         }
 
-        
-
         [LogException]
         public override bool RemoveArtist(SessionToken token, Artist artist)
         {
-            if (!IsUserAuthenticated(token) || artist == null)
+            if (!IsUserAuthenticated(token) || !IsArtistValid(artist))
                 return false;
 
             var result = ArtistDao.SelectById(artist.ArtistId);
@@ -253,6 +250,9 @@ namespace UFO.Server.Bll.Impl
         [LogException]
         public override bool ModifyVenueRange(SessionToken token, List<Venue> venues)
         {
+            if (!IsUserAuthenticated(token) || venues == null || venues.Count <= 0)
+                return false;
+
             bool result;
             using (var scope = new TransactionScope())
             {
@@ -265,7 +265,7 @@ namespace UFO.Server.Bll.Impl
         [LogException]
         public override bool ModifyVenue(SessionToken token, Venue venue)
         {
-            if (!IsUserAuthenticated(token) || venue == null)
+            if (!IsUserAuthenticated(token) || !IsVenueValid(venue))
                 return false;
 
             var result = VenueDao.SelectById(venue.VenueId);
@@ -279,7 +279,7 @@ namespace UFO.Server.Bll.Impl
         [LogException]
         public override bool RemoveVenue(SessionToken token, Venue venue)
         {
-            if (!IsUserAuthenticated(token) || venue == null)
+            if (!IsUserAuthenticated(token) || !IsVenueValid(venue))
                 return false;
 
             var result = VenueDao.SelectById(venue.VenueId);
@@ -292,6 +292,8 @@ namespace UFO.Server.Bll.Impl
         [LogException]
         public override bool ModifyPerformanceRange(SessionToken token, List<Performance> performances)
         {
+            if (!IsUserAuthenticated(token) || performances == null || performances.Count <= 0)
+                return false;
             bool result;
             using (var scope = new TransactionScope())
             {
@@ -304,7 +306,7 @@ namespace UFO.Server.Bll.Impl
         [LogException]
         public override bool ModifyPerformance(SessionToken token, Performance performance)
         {
-            if (!IsUserAuthenticated(token) || performance?.Artist == null)
+            if (!IsUserAuthenticated(token) || !IsPerformanceValid(performance))
                 return false;
 
             var result = PerformanceDao.SelectById(performance.DateTime, performance.Artist.ArtistId);
