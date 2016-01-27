@@ -54,77 +54,73 @@
                     IsTodayHighlighted="True"
                     Width="250"/>
 
-        <ScrollViewer Grid.Row="4"
-                      VerticalScrollBarVisibility="Visible"
-                      Focusable="False">
+        <DataGrid   Grid.Row="4" Name="PerformancesDataGrid"
+                    ItemsSource="{Binding Performances}"
+                    SelectedItem="{Binding CurrentPerformanceViewModel}"
+                    SelectionMode="Single"
+                    AutoGenerateColumns="False"
+                    VerticalScrollBarVisibility="Auto" 
+                    IsReadOnly="True"
+                    CanUserAddRows="False"
+                    SelectionUnit="FullRow"
+                    CanUserDeleteRows="False"
+                    CanUserResizeRows="False"
+                    CanUserSortColumns="False"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"
+                    CanUserReorderColumns="False"
+                    MinColumnWidth="230">
 
-            <DataGrid Name="PerformancesDataGrid"
-                      ItemsSource="{Binding Performances}"
-                      SelectedItem="{Binding CurrentPerformanceViewModel}"
-                      SelectionMode="Single"
-                      AutoGenerateColumns="False"
-                      VerticalScrollBarVisibility="Auto" 
-                      IsReadOnly="True"
-                      CanUserAddRows="False"
-                      SelectionUnit="FullRow"
-                      CanUserDeleteRows="False"
-                      CanUserResizeRows="False"
-                      CanUserSortColumns="False"
-                      VerticalAlignment="Stretch"
-                      HorizontalAlignment="Stretch"
-                      CanUserReorderColumns="False"
-                      ColumnWidth="250"
-                      MinColumnWidth="250">
+            <DataGrid.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type GroupItem}">
+                                        <Expander IsExpanded="True">
+                                            <Expander.Header>
+                                                <TextBlock Text="{Binding Name}" />
+                                            </Expander.Header>
+                                            <ItemsPresenter />
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
 
-                <DataGrid.GroupStyle>
-                    <GroupStyle>
-                        <GroupStyle.HeaderTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="Venue Id" FontWeight="Bold" Padding="3"/>
-                            </DataTemplate>
-                        </GroupStyle.HeaderTemplate>
-                        <GroupStyle.ContainerStyle>
-                            <Style TargetType="{x:Type GroupItem}">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type GroupItem}">
-                                            <Expander IsExpanded="True">
-                                                <Expander.Header>
-                                                    <TextBlock Text="{Binding Name}" />
-                                                </Expander.Header>
-                                                <ItemsPresenter />
-                                            </Expander>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </GroupStyle.ContainerStyle>
-                    </GroupStyle>
-                </DataGrid.GroupStyle>
+            <DataGrid.Columns>
 
-                <DataGrid.Columns>
-                    
-                    <DataGridTextColumn Binding="{Binding Path=DateTimeViewModel.Hour}" Header="Hour" />
-                    <DataGridTextColumn Binding="{Binding Path=ArtistViewModel.Name}" Header="Artist" />
-                    <DataGridTextColumn Binding="{Binding Path=VenueViewModel}" Header="Venue" />
-                    <DataGridTemplateColumn Header="Options">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Width="60" Height="30" Margin="5" Background="Tomato" Foreground="Bisque"
-                                            Content="Delete" 
-                                            Command="{Binding Path=PerformanceOverviewViewModel.DeletePerformanceCommand, Source={StaticResource Locator}}" 
-                                            CommandParameter="{Binding}" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Path=DateTimeViewModel.Hour}" Header="Hour" />
+                <DataGridTextColumn Binding="{Binding Path=ArtistViewModel.Name}" Header="Artist" />
+                <DataGridTextColumn Binding="{Binding Path=VenueViewModel}" Header="Venue" />
+                <DataGridTemplateColumn Header="Options">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Width="60" Height="30" Margin="5" Background="Tomato" Foreground="Bisque"
+                                        Content="Delete" 
+                                        Command="{Binding Path=PerformanceOverviewViewModel.DeletePerformanceCommand, Source={StaticResource Locator}}" 
+                                        CommandParameter="{Binding}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Width="60" Height="30" Margin="5" Background="CornflowerBlue" Foreground="Bisque"
+                                        Content="Edit" 
+                                        Command="{Binding Path=PerformanceOverviewViewModel.EditPerformanceCommand, Source={StaticResource Locator}}" 
+                                        CommandParameter="{Binding}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-                </DataGrid.Columns>
+            </DataGrid.Columns>
 
-            </DataGrid>
-
-        </ScrollViewer>
+        </DataGrid>
 
     </Grid>
 </UserControl>
