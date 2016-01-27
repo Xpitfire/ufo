@@ -13,12 +13,15 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 import at.ufo.app.R;
 import at.ufo.app.domain.DomainFactory;
 import at.ufo.app.domain.entities.Artist;
 import at.ufo.app.domain.entities.Page;
 import at.ufo.app.domain.entities.Performance;
+import at.ufo.app.util.Async;
 import at.ufo.app.util.Constants;
 import at.ufo.app.util.EndlessScrollListener;
 
@@ -27,23 +30,32 @@ import at.ufo.app.util.EndlessScrollListener;
  */
 public class ArtistListFragment extends Fragment {
 
+    private static ArtistListFragment instance;
+
     public static ArtistListFragment newInstance() {
-
-        ArtistListFragment f = new ArtistListFragment();
-        Bundle b = new Bundle();
-
-        return f;
+        if (instance == null) {
+            instance = new ArtistListFragment();
+            Bundle b = new Bundle();
+        }
+        return instance;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View  v = inflater.inflate(R.layout.artist_list_layout, container, false);
+        final View  v = inflater.inflate(R.layout.artist_list_layout, container, false);
 
-        InitArtistTable(v);
-
+        Future future = Async.getThreadPool().submit(new Runnable() {
+            @Override
+            public void run() {
+                InitArtistTable(v);
+            }
+        });
+        try {
+            future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
         return v;
-
     }
 
 
@@ -59,15 +71,9 @@ public class ArtistListFragment extends Fragment {
             }
         });
         ArtistArrayAdapter aaa = new ArtistArrayAdapter(getActivity().getApplicationContext());
-        Page p = new Page(0, 50);
+        Page p = new Page(0, 500);
         List<Artist> al;
         al = DomainFactory.getDefaultDelegate().getArtists(p);
-        Collections.sort(al, new Comparator<Artist>() {
-            @Override
-            public int compare(Artist lhs, Artist rhs) {
-                return lhs.getName().compareTo(rhs.getName());
-            }
-        });
 
         for(Artist a : al)
             aaa.addItem(a);

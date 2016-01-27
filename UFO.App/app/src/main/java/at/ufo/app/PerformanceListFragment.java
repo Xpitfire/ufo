@@ -13,9 +13,15 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import at.ufo.app.domain.DomainFactory;
 import at.ufo.app.domain.entities.Performance;
+import at.ufo.app.util.Async;
 import at.ufo.app.util.Constants;
 
 /**
@@ -23,25 +29,32 @@ import at.ufo.app.util.Constants;
  */
 public class PerformanceListFragment extends Fragment {
 
+    private static PerformanceListFragment instance;
+
     public static PerformanceListFragment newInstance() {
-
-        PerformanceListFragment f = new PerformanceListFragment();
-        Bundle b = new Bundle();
-
-        f.setArguments(b);
-
-        return f;
+        if (instance == null) {
+            instance = new PerformanceListFragment();
+            Bundle b = new Bundle();
+            instance.setArguments(b);
+        }
+        return instance;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View  v = inflater.inflate(R.layout.performance_list_layout, container, false);
-
-
-        InitPerformanceTable(v);
-
+        final View  v = inflater.inflate(R.layout.performance_list_layout, container, false);
+        Future future =  Async.getThreadPool().submit(new Runnable() {
+            @Override
+            public void run() {
+                InitPerformanceTable(v);
+            }
+        });
+        try {
+            future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
         return v;
-
     }
 
 

@@ -15,6 +15,5 @@ public class Async {
             executorService = Executors.newFixedThreadPool(cores);
         }
         return executorService;
-
     }
 }

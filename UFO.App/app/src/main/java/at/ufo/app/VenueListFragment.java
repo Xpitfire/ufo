@@ -12,12 +12,14 @@ import android.widget.TextView;
  */
 public class VenueListFragment extends Fragment {
 
+    private static VenueListFragment instance;
+
     public static VenueListFragment newInstance() {
-
-        VenueListFragment f = new VenueListFragment();
-        Bundle b = new Bundle();
-
-        return f;
+        if (instance == null) {
+            instance = new VenueListFragment();
+            Bundle b = new Bundle();
+        }
+        return instance;
     }
 
 

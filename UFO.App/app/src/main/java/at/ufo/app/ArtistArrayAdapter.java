@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -21,6 +22,7 @@ import java.util.concurrent.Future;
 import at.ufo.app.domain.entities.Artist;
 import at.ufo.app.domain.entities.Performance;
 import at.ufo.app.domain.entities.Venue;
+import at.ufo.app.util.Async;
 import at.ufo.app.util.Constants;
 import at.ufo.app.util.Helper;
 import at.ufo.app.util.Logger;
@@ -71,7 +73,6 @@ public class ArtistArrayAdapter extends BaseAdapter {
         if(artist != null) {
             TextView tv;
 
-
             tv = (TextView) convertView.findViewById(R.id.a_text_view_artist);
             String name = artist.getName();
             if (name.length() > 18) {
@@ -86,20 +87,22 @@ public class ArtistArrayAdapter extends BaseAdapter {
             tv.setText(c);
             tv = (TextView) convertView.findViewById(R.id.a_layout_category_color);
             tv.setBackgroundColor(Color.parseColor(artist.getCategoryColor()));
-            ImageView iv;
-            iv = (ImageView) convertView.findViewById(R.id.a_image_view);
+            final ImageView iv = (ImageView) convertView.findViewById(R.id.a_image_view);
 
-
-            String url = artist.getPicture();
+            final String url = artist.getPicture();
             if (url != null && !url.isEmpty()) {
-                Future<Bitmap> f = executorService.submit(Helper.getBitmapFromURL(url));
-                try {
-                    iv.setImageBitmap(f.get());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (Exception e) {
-                    Logger.LogSevere("Could not set artist image", e);
-                }
+                Async.getThreadPool().submit(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            iv.setImageBitmap(Helper.getBitmapFromURL(url).call());
+                            iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                        } catch (Exception e) {
+                            //Logger.LogSevere("Could not set artist image", e);
+                            // i can live with flying exceptions :D
+                        }
+                    }
+                });
             } else {
                 iv.setImageResource(R.mipmap.placeholder);
             }
