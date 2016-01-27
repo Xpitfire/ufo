@@ -16,7 +16,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="220dp">
+            android:layout_height="220dp"
+            android:background="@color/background_material_dark">
 
             <ImageView
                 android:layout_width="150dp"
@@ -37,7 +38,8 @@
                 android:text="Artist"
                 android:id="@+id/artist_details_name"
                 android:layout_alignTop="@+id/artist_image_view"
-                android:layout_toEndOf="@+id/artist_image_view" />
+                android:layout_toEndOf="@+id/artist_image_view"
+                android:textColor="@android:color/white" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -46,7 +48,8 @@
                 android:text="Category"
                 android:id="@+id/artist_details_category"
                 android:layout_below="@+id/artist_details_name"
-                android:layout_alignStart="@+id/artist_details_name" />
+                android:layout_alignStart="@+id/artist_details_name"
+                android:textColor="@android:color/white" />
         </RelativeLayout>
 
         <RelativeLayout
