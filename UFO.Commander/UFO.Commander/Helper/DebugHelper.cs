@@ -18,6 +18,6 @@ namespace UFO.Commander.Helper
                 return false;
             }
         }
-        public static bool IsReleaseMode { get; } = !IsDebugMode;
+        public static bool IsReleaseMode { get; } = IsDebugMode;
     }
 }

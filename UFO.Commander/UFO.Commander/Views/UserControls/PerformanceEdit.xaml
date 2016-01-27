@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="UFO.Commander.Views.UserControls.PerformanceEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UFO.Commander.Views.UserControls"
+             xmlns:viewModel="clr-namespace:UFO.Commander.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance Type=viewModel:PerformanceEditViewModel, IsDesignTimeCreatable=True}">
+    <StackPanel>
+        <DatePicker SelectedDate="{Binding DateTimeViewModel.Date}"
+                    HorizontalAlignment="Right"
+                    IsTodayHighlighted="True"
+                    Width="250"/>
+        <Label Content="Hour" />
+        <ComboBox ItemsSource="{Binding Hours}" SelectedItem="{Binding DateTimeViewModel.Hour}" />
+        <Label Content="Artist" />
+        <ComboBox ItemsSource="{Binding Artists}" SelectedItem="{Binding CurrentArtistViewModel}"/>
+        <Label Content="Venue" />
+        <ComboBox ItemsSource="{Binding Venues}" SelectedItem="{Binding CurrentVenueViewModel}"/>
+        <Button Content="Save"
+                Command="{Binding PerformanceEditViewModel.SaveCommand, Source={StaticResource Locator}}"/>
+        <Button Content="Cancel"
+                Command="{Binding PerformanceEditViewModel.CancelCommand, Source={StaticResource Locator}}"/>
+        
+        
+    </StackPanel>
+</UserControl>

@@ -102,6 +102,7 @@ namespace UFO.Commander.ViewModel
                 if (DebugHelper.IsReleaseMode)
                     await _adminAccessBll.ModifyVenueAsync(BllAccessHandler.SessionToken,
                         CurrentVenueViewModel.ToDomainObject<Venue>());
+                Locator.LocationEditViewModel.IsNew = new object();
             });
 
             DeleteVenueCommand = new RelayCommand(async () =>
@@ -117,6 +118,7 @@ namespace UFO.Commander.ViewModel
                 if (DebugHelper.IsReleaseMode)
                     await _adminAccessBll.RemoveVenueAsync(BllAccessHandler.SessionToken,
                         CurrentVenueViewModel.ToDomainObject<Venue>());
+                Locator.LocationEditViewModel.IsNew = new object();
             });
 
             SaveLocationCommand = new RelayCommand(async () =>
@@ -133,6 +135,7 @@ namespace UFO.Commander.ViewModel
                 if (DebugHelper.IsReleaseMode)
                     await _adminAccessBll.ModifyLocationAsync(BllAccessHandler.SessionToken,
                         CurrentLocationTreeItem.LocationViewModel.ToDomainObject<Location>());
+                Locator.LocationEditViewModel.IsNew = new object();
             });
 
             DeleteLocationCommand = new RelayCommand(async () =>
@@ -151,6 +154,7 @@ namespace UFO.Commander.ViewModel
                     if (DebugHelper.IsReleaseMode)
                         await _adminAccessBll.RemoveLocationAsync(BllAccessHandler.SessionToken,
                             curLocationItem.LocationViewModel.ToDomainObject<Location>());
+                    Locator.LocationEditViewModel.IsNew = new object();
                 });
             });
 
@@ -160,11 +164,13 @@ namespace UFO.Commander.ViewModel
                 {
                     LocationViewModel = new LocationViewModel()
                 };
+                Locator.LocationEditViewModel.IsNew = null;
                 Messenger.Default.Send(new ShowDialogMessage(Locator.LocationDialogViewModel));
             });
             NewVenueCommand = new RelayCommand(() =>
             {
                 CurrentVenueViewModel = new VenueViewModel();
+                Locator.LocationEditViewModel.IsNew = null;
                 Messenger.Default.Send(new ShowDialogMessage(Locator.VenueDialogViewModel));
             });
         }

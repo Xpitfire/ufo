@@ -112,7 +112,6 @@
     <Compile Include="Converters\NullToImageSourceConverter.cs" />
     <Compile Include="Converters\NullToStringConverter.cs" />
     <Compile Include="Converters\NullToVisibilityConverter.cs" />
-    <Compile Include="Converters\TimeSlotPerformanceViewModelToStringConverter.cs" />
     <Compile Include="Handler\ViewExceptionHandlerAttribute.cs" />
     <Compile Include="Helper\BllAccessHandler.cs" />
     <Compile Include="Helper\DebugHelper.cs" />
@@ -129,6 +128,7 @@
     <Compile Include="ViewModel\ArtistOverviewViewModel.cs" />
     <Compile Include="ViewModel\ArtistSelectionViewModel.cs" />
     <Compile Include="ViewModel\Entities\DateTimeViewModel.cs" />
+    <Compile Include="ViewModel\Entities\NotificationViewModel.cs" />
     <Compile Include="ViewModel\ExceptionDialogViewModel.cs" />
     <Compile Include="ViewModel\LocationDialogViewModel.cs" />
     <Compile Include="ViewModel\LocationEditViewModel.cs" />
@@ -142,6 +142,7 @@
     <Compile Include="ViewModel\Entities\UserViewModel.cs" />
     <Compile Include="ViewModel\Entities\VenueViewModel.cs" />
     <Compile Include="Helper\ViewModelExtensions.cs" />
+    <Compile Include="ViewModel\PerformanceEditViewModel.cs" />
     <Compile Include="ViewModel\PerformanceOverviewViewModel.cs" />
     <Compile Include="ViewModel\TabControlViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -169,6 +170,9 @@
     </Compile>
     <Compile Include="Views\UserControls\LocationEdit.xaml.cs">
       <DependentUpon>LocationEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\PerformanceEdit.xaml.cs">
+      <DependentUpon>PerformanceEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\VenueEdit.xaml.cs">
       <DependentUpon>VenueEdit.xaml</DependentUpon>
@@ -272,6 +276,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserControls\LocationEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\PerformanceEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

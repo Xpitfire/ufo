@@ -44,4 +44,7 @@
     <DataTemplate DataType="{x:Type vm:ArtistEditViewModel}">
         <uc:ArtistEdit />
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:PerformanceEditViewModel}">
+        <uc:PerformanceEdit />
+    </DataTemplate>
 </ResourceDictionary>

@@ -18,7 +18,11 @@ namespace UFO.Commander.ViewModel
 
         public VenueDialogViewModel()
         {
-            CancelCommand = new RelayCommand(() => Messenger.Default.Send(new HideDialogMessage(this)));
+            CancelCommand = new RelayCommand(() =>
+            {
+                Locator.LocationEditViewModel.IsNew = new object();
+                Messenger.Default.Send(new HideDialogMessage(this));
+            });
         }
 
         public override string ToString()

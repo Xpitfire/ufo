@@ -18,7 +18,8 @@
             <Button Content="Save" 
                     Command="{Binding SaveVenueCommand}"/>
             <Button Content="Delete" 
-                    Command="{Binding DeleteVenueCommand}"/>
+                    Command="{Binding DeleteVenueCommand}"
+                    Visibility="{Binding LocationEditViewModel.IsNew, Source={StaticResource Locator}, Converter={StaticResource NotNullToVisibilityConverter}}"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -19,10 +19,6 @@
                     Content="New User" 
                     Command="{Binding Path=ArtistOverviewViewModel.NewArtistCommand, Source={StaticResource Locator}}"/>
 
-        <TextBlock Grid.Row="1" HorizontalAlignment="Stretch" Background="MistyRose" Foreground="Brown" TextAlignment="Center"
-                       Visibility="{Binding CurrentArtist, Converter={StaticResource NotNullToVisibilityConverter}}" 
-                       Text="Please select a artist" />
-
         <userControls:ArtistList Grid.Row="2" />
     </Grid>
 </UserControl>

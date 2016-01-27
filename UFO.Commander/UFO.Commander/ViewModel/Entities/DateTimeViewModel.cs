@@ -18,26 +18,27 @@ namespace UFO.Commander.ViewModel.Entities
 
         public DateTime DateTime { get; set; }
 
-        private string _hour;
+        private string _hour = "14:00";
         public string Hour
         {
             get { return _hour; }
             set
             {
                 _hour = value;
-                DateTime = DateTime.ParseExact($"{Date} {Hour}", Format, CultureInfo.InvariantCulture);
+                var dateStr = $"{Date.ToString("dd-MM-yyyy")} {_hour}";
+                DateTime = DateTime.ParseExact(dateStr, Format, CultureInfo.InvariantCulture);
             }
         }
 
-        private string _date;
-
-        public string Date
+        private DateTime _date = System.DateTime.Now;
+        public DateTime Date
         {
             get { return _date; }
             set
             {
                 _date = value;
-                DateTime = DateTime.ParseExact($"{Date} {Hour}", Format, CultureInfo.InvariantCulture);
+                var dateStr = $"{_date.ToString("dd-MM-yyyy")} {Hour}";
+                DateTime = DateTime.ParseExact(dateStr, Format, CultureInfo.InvariantCulture);
             }
         }
         
@@ -45,7 +46,7 @@ namespace UFO.Commander.ViewModel.Entities
         {
             this.DateTime = dateTime;
             _hour = dateTime.ToString("HH:mm");
-            _date = dateTime.ToString("dd-MM-yyyy");
+            _date = dateTime;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -201,7 +201,7 @@ namespace UFO.Server.Dal.MySql
 
         public const string UpdateLocation = @"UPDATE location 
                                                   SET Name=?Name, Longitude=?Longitude, Latitude=?Latitude
-                                                WHERE Location=?LocationId";
+                                                WHERE LocationId=?LocationId";
 
         public const string DeleteLocation = @"DELETE FROM location
                                                      WHERE LocationId=?LocationId";

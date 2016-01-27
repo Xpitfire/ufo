@@ -39,7 +39,7 @@ namespace UFO.Commander.ViewModel.Entities
 
         public override string ToString()
         {
-            return $"{Name}";
+            return $"{VenueId} {Name}, {Location.Name}";
         }
     }
 }
