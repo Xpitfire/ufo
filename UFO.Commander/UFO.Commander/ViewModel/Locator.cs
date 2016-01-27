@@ -47,6 +47,7 @@ namespace UFO.Commander.ViewModel
             SimpleIoc.Default.Register<LocationDialogViewModel>();
             SimpleIoc.Default.Register<PerformanceOverviewViewModel>();
             SimpleIoc.Default.Register<ArtistSelectionViewModel>();
+            SimpleIoc.Default.Register<PerformanceEditViewModel>();
         }
 
         public static MainViewModel MainViewModel 
@@ -97,5 +98,7 @@ namespace UFO.Commander.ViewModel
         public static ArtistSelectionViewModel ArtistSelectionViewModel
             => ServiceLocator.Current.GetInstance<ArtistSelectionViewModel>();
 
+        public static PerformanceEditViewModel PerformanceEditViewModel
+            => ServiceLocator.Current.GetInstance<PerformanceEditViewModel>();
     }
 }

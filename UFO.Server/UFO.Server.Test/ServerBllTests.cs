@@ -42,11 +42,7 @@ namespace UFO.Server.Test
         public void TestArtistBllGetAll()
         {
             var viewAccessBll = new ViewAccessBll();
-            var list = viewAccessBll.GetArtists(new PagingData
-            {
-                Offset = 0, 
-                Request = Constants.LastPage
-            });
+            var list = viewAccessBll.GetArtists(viewAccessBll.RequestArtistPagingData());
             Assert.IsNotNull(list);
             Assert.IsTrue(list.Count > 0);
         }
