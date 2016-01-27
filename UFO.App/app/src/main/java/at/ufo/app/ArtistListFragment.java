@@ -59,7 +59,7 @@ public class ArtistListFragment extends Fragment {
             }
         });
         ArtistArrayAdapter aaa = new ArtistArrayAdapter(getActivity().getApplicationContext());
-        Page p = new Page(0, 500);
+        Page p = new Page(0, 50);
         List<Artist> al;
         al = DomainFactory.getDefaultDelegate().getArtists(p);
         Collections.sort(al, new Comparator<Artist>() {
@@ -72,6 +72,6 @@ public class ArtistListFragment extends Fragment {
         for(Artist a : al)
             aaa.addItem(a);
         lv.setAdapter(aaa);
-        // lv.setOnScrollListener(new EndlessScrollListener(p, al));
+        lv.setOnScrollListener(new EndlessScrollListener(p, al));
     }
 }

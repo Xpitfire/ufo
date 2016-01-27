@@ -17,4 +17,6 @@
 
     <include layout="@layout/content_artist_details" />
 
+
+
 </android.support.design.widget.CoordinatorLayout>
