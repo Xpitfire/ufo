@@ -37,6 +37,7 @@ public class PerformanceListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View  v = inflater.inflate(R.layout.performance_list_layout, container, false);
 
+
         InitPerformanceTable(v);
 
         return v;

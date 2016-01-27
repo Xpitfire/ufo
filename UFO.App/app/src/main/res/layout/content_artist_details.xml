@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_performance_details"
-    tools:context="at.ufo.app.PerformanceDetailsActivity">
+    tools:context="at.ufo.app.ArtistDetailsActivity">
 
 
     <LinearLayout
@@ -20,9 +20,9 @@
             android:background="@color/background_material_dark">
 
             <ImageView
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/artist_image_view"
+                android:id="@+id/a_artist_image_view"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="false"
                 android:layout_alignParentBottom="true"
@@ -36,9 +36,9 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Artist"
-                android:id="@+id/artist_details_name"
-                android:layout_alignTop="@+id/artist_image_view"
-                android:layout_toEndOf="@+id/artist_image_view"
+                android:id="@+id/a_artist_details_name"
+                android:layout_alignTop="@+id/a_artist_image_view"
+                android:layout_toEndOf="@+id/a_artist_image_view"
                 android:textColor="@android:color/white" />
 
             <TextView
@@ -47,30 +47,12 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Category"
                 android:id="@+id/artist_details_category"
-                android:layout_below="@+id/artist_details_name"
-                android:layout_alignStart="@+id/artist_details_name"
+                android:layout_below="@+id/a_artist_details_name"
+                android:layout_alignStart="@+id/a_artist_details_name"
                 android:textColor="@android:color/white" />
         </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/maps_fragment">
-
-                <fragment
-                    android:id="@+id/map"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    class="com.google.android.gms.maps.MapFragment"
-                    android:layout_alignParentTop="true" />
-
-            </RelativeLayout>
-        </RelativeLayout>
 
     </LinearLayout>
 
