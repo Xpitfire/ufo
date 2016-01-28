@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using UFO.Commander.Helper;
@@ -85,7 +86,7 @@ namespace UFO.Commander.ViewModel
 
         private async void LoadData()
         {
-            await Task.Run((() =>
+            await Dispatcher.CurrentDispatcher.InvokeAsync((() =>
             {
                 Artists.Clear();
                 var page = _viewAccessBll.RequestArtistPagingData();

@@ -58,6 +58,8 @@ namespace UFO.Commander.ViewModel
 
         public string Username { get; set; }
         public string Password { get; set; }
+
+        public object IsPasswordWrong { get; set; }
         
         public async Task<bool> RequestSessionToken(string textBoxUserName, string password)
         {
@@ -107,10 +109,18 @@ namespace UFO.Commander.ViewModel
             if (validSession)
             {
                 validSession = await Login();
-                if (!validSession) return;
+                if (!validSession)
+                {
+                    IsPasswordWrong = new object();
+                    return;
+                }
                 
                 Messenger.Default.Send(new ShowContentMessage(Locator.TabControlViewModel));
                 Messenger.Default.Send(new HideDialogMessage(this));
+            }
+            else
+            {
+                IsPasswordWrong = new object();
             }
         }
 

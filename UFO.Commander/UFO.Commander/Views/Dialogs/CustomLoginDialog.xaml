@@ -19,6 +19,7 @@
             <RowDefinition Height="15*" />
             <RowDefinition Height="15*"/>
             <RowDefinition Height="20*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50*" />
@@ -36,12 +37,6 @@
              controls:TextBoxHelper.Watermark="e-mail"
              Text="{Binding Username}" />
 
-        <!--<PasswordBox Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
-                 Name="PasswordBox"
-                 VerticalAlignment="Center"
-                 controls:TextBoxHelper.Watermark="password" 
-                 controls:PasswordHelp/>-->
-
         <PasswordBox Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
                      x:Name="PasswordBox"
                      VerticalAlignment="Center"
@@ -52,5 +47,10 @@
 
         <Button Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Name="ButtonLogin" IsDefault="True" Content="Login" Command="{Binding LoginCommand}" />
         <Button Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Name="ButtonCancel" Content="Cancel" Command="{Binding CancelCommand}" />
+
+
+        <TextBlock Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Background="MistyRose" Foreground="Brown" TextAlignment="Center"
+                       Visibility="{Binding IsPasswordWrong, Converter={StaticResource NotNullToVisibilityConverter}}" 
+                       Text="Invalid email/username or passeord!" />
     </Grid>
 </UserControl>
