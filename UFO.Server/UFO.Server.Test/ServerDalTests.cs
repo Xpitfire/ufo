@@ -264,7 +264,8 @@ namespace UFO.Server.Test
                 var category = new Category
                 {
                     CategoryId = "KT",
-                    Name = "Klassik Tanz"
+                    Name = "Klassik Tanz",
+                    Color = "#4533b4"
                 };
                 dao.Insert(category)
                     .OnFailure(response => Assert.Fail($"Insert does not work! {response.Exception}"));

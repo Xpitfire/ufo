@@ -27,13 +27,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import at.ufo.app.domain.entities.Performance;
+import at.ufo.app.util.Async;
 import at.ufo.app.util.Constants;
 import at.ufo.app.util.Helper;
 import at.ufo.app.util.Logger;
 
 public class PerformanceDetailsActivity extends AppCompatActivity {
-
-    private ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +51,7 @@ public class PerformanceDetailsActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                     sharingIntent.setType("text/plain");
-                    String shareBody = "Termin am " + Constants.DATE_FORMATTER_FULL.format(performance.getDate()) +  " in "
+                    String shareBody = "Termin am " + Constants.DATE_FORMATTER_FULL.format(performance.getDate()) + " in "
                             + performance.getVenue().getName() + ", "
                             + performance.getVenue().getLocationName() + ".";
                     sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Aufführung: " + performance.getArtist().getName());
@@ -82,7 +81,7 @@ public class PerformanceDetailsActivity extends AppCompatActivity {
             String url = performance.getArtist().getPicture();
             if (url != null && !url.isEmpty()) {
                 ImageView img = (ImageView) findViewById(R.id.artist_image_view);
-                Future<Bitmap> f = executorService.submit(Helper.getBitmapFromURL(url));
+                Future<Bitmap> f = Async.getThreadPool().submit(Helper.getBitmapFromURL(url));
                 try {
                     img.setImageBitmap(f.get());
                 } catch (InterruptedException e) {

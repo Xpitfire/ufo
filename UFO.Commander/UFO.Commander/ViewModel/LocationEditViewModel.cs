@@ -15,5 +15,7 @@ namespace UFO.Commander.ViewModel
         {
             return "UFO Location Edit";
         }
+
+        public object IsNew { get; set; } = new object();
     }
 }
