@@ -58,7 +58,6 @@ public class ArtistListFragment extends Fragment {
         return v;
     }
 
-
     private void InitArtistTable(View view) {
         ListView lv = (ListView) view.findViewById(R.id.list_view_artist);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

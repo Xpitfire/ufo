@@ -51,10 +51,12 @@ public class PerformanceDetailsActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                     sharingIntent.setType("text/plain");
-                    String shareBody = "Termin am " + Constants.DATE_FORMATTER_FULL.format(performance.getDate()) + " in "
-                            + performance.getVenue().getName() + ", "
-                            + performance.getVenue().getLocationName() + ".";
-                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Aufführung: " + performance.getArtist().getName());
+                    String shareBody = new StringBuilder()
+                            .append("Appointment on ")
+                            .append(Constants.DATE_FORMATTER_FULL.format(performance.getDate()))
+                            .append(" in ").append(performance.getVenue().getName()).append(", ")
+                            .append(performance.getVenue().getLocationName()).append(". Artist playing: ").append(performance.getArtist().getName()).toString();
+                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Performance: " + performance.getArtist().getName());
                     sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                     startActivity(Intent.createChooser(sharingIntent, "Share via"));
                 }

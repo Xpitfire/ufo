@@ -57,24 +57,6 @@ public class ArtistDetailsActivity extends AppCompatActivity {
             }
             final ImageView img = (ImageView) findViewById(R.id.a_detail_image_view);
 
-            /*
-            final String url = artist.getPicture();
-            if (url != null && !url.isEmpty()) {
-                Async.getThreadPool().submit(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            img.setImageBitmap(Helper.getBitmapFromURL(url).call());
-                            img.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        } catch (Exception e) {
-                            Logger.LogSevere("Could not set artist image", e);
-                        }
-                    }
-                });
-            }
-            */
             String url = artist.getPicture();
             if (url != null && !url.isEmpty()) {
                 Future<Bitmap> f = Async.getThreadPool().submit(Helper.getBitmapFromURL(url));
