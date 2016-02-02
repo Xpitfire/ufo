@@ -22,8 +22,8 @@ namespace UFO.Commander.ViewModel.Entities
             get { return new DateTimeViewModel(DateTime); }
             set
             {
-                DateTime = value.DateTime;
-                DateTimeViewModel.DateTime = value.DateTime;
+                DateTime = value;
+                DateTimeViewModel.DateTime = value;
             }
         }
 

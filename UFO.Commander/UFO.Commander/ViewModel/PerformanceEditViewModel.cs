@@ -54,7 +54,7 @@ namespace UFO.Commander.ViewModel
                 Messenger.Default.Send(new HideDialogMessage(Locator.PerformanceEditViewModel));
             }));
 
-            DateTimeViewModel = new DateTimeViewModel(DateTime.Now);
+            DateTimeViewModel = DateTime.Now;
             for (var i = 14; i < 25; i++)
             {
                 var hour = $"{i%24}:00";
@@ -72,7 +72,7 @@ namespace UFO.Commander.ViewModel
         {
             CurrentVenueViewModel = new VenueViewModel();
             CurrentArtistViewModel = new ArtistViewModel();
-            DateTimeViewModel = new DateTimeViewModel(DateTime.Now);
+            DateTimeViewModel = DateTime.Now;
             IsNew = true;
         }
 

@@ -18,7 +18,7 @@ namespace UFO.Commander.ViewModel.Entities
 
         public DateTime DateTime { get; set; }
 
-        private string _hour = "14:00";
+        private string _hour;
         public string Hour
         {
             get { return _hour; }
@@ -30,7 +30,7 @@ namespace UFO.Commander.ViewModel.Entities
             }
         }
 
-        private DateTime _date = System.DateTime.Now;
+        private DateTime _date;
         public DateTime Date
         {
             get { return _date; }
@@ -59,6 +59,16 @@ namespace UFO.Commander.ViewModel.Entities
         public override string ToString()
         {
             return Hour;
+        }
+
+        public static implicit operator DateTime(DateTimeViewModel dateTimeViewModel)
+        {
+            return dateTimeViewModel.DateTime;
+        }
+
+        public static implicit operator DateTimeViewModel(DateTime dateTime)
+        {
+            return new DateTimeViewModel(dateTime);
         }
     }
 }

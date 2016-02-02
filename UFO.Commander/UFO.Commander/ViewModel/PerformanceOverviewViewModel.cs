@@ -80,7 +80,7 @@ namespace UFO.Commander.ViewModel
                 Locator.PerformanceEditViewModel.InitializePreset(
                     p.VenueViewModel, 
                     p.ArtistViewModel, 
-                    new DateTimeViewModel(p.DateTime));
+                    p.DateTime);
                 Messenger.Default.Send(new ShowDialogMessage(Locator.PerformanceEditViewModel));
             });
             SendNotificationsCommand = new RelayCommand(async () =>
@@ -131,7 +131,7 @@ namespace UFO.Commander.ViewModel
                 CurrentPerformanceDateTime = dates.FirstOrDefault();
                 foreach (var dateTime in dates)
                 {
-                    PerformanceDates.Add(new DateTimeViewModel(dateTime));
+                    PerformanceDates.Add(dateTime);
                 }
             });
         }
@@ -147,7 +147,7 @@ namespace UFO.Commander.ViewModel
                 foreach (var p in performances)
                 {
                     var pvm = p.ToViewModelObject<PerformanceViewModel>();
-                    pvm.DateTimeViewModel = new DateTimeViewModel(p.DateTime);
+                    pvm.DateTimeViewModel = p.DateTime;
                     Performances.Add(pvm);
                 }
             }
