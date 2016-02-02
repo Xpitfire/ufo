@@ -18,9 +18,10 @@ public class MainActivity extends FragmentActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("UFO Mobile");
+
         ViewPager pager = (ViewPager) findViewById(R.id.viewPager);
         pager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-        pager.setCurrentItem(1);
+        pager.setCurrentItem(0);
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
@@ -33,16 +34,15 @@ public class MainActivity extends FragmentActivity {
         public Fragment getItem(int pos) {
             switch(pos) {
 
-                case 0: return ArtistListFragment.newInstance();
-                case 1: return PerformanceListFragment.newInstance();
-                case 2: return VenueListFragment.newInstance();
+                case 0: return PerformanceListFragment.newInstance();
+                case 1: return ArtistListFragment.newInstance();
                 default: return PerformanceListFragment.newInstance();
             }
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
     }
 }
