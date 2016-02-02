@@ -72,11 +72,8 @@ public class PerformanceDetailsActivity extends AppCompatActivity {
                 @Override
                 public void onMapReady(GoogleMap googleMap) {
                     googleMap.addMarker(new MarkerOptions().position(ll).title(performance.getVenue().getName()));
-
                     // Move the camera instantly to the selected location with a zoom of 15.
                     googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ll, 17));
-                    // Zoom in, animating the camera.
-                    //googleMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
                 }
             });
 

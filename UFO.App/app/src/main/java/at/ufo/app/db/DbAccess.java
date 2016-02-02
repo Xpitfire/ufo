@@ -32,12 +32,12 @@ public class DbAccess implements DomainDelegate {
     private static final ExecutorService executor = Executors.newFixedThreadPool(2);
 
     // Administration web page: http://www.phpmyadmin.co/index.php
-    //private static final String url = "jdbc:mysql://sql4.freemysqlhosting.net:3306/sql4104460";
-    //private static final String user = "sql4104460";
-    //private static final String pass = "6fMmkYtu3k";
-    private static final String url = "jdbc:mysql://192.168.0.110:3306/ufo";
-    private static final String user = "xpitfire";
-    private static final String pass = "matrix3788";
+    private static final String url = "jdbc:mysql://sql4.freemysqlhosting.net:3306/sql4104460";
+    private static final String user = "sql4104460";
+    private static final String pass = "6fMmkYtu3k";
+    //private static final String url = "jdbc:mysql://192.168.0.110:3306/ufo";
+    //private static final String user = "xpitfire";
+    //private static final String pass = "matrix3788";
 
     private Connection createConnection() {
         Connection con = null;
