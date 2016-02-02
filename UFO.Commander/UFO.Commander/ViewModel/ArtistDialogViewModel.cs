@@ -8,8 +8,12 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using UFO.Commander.Handler;
+using UFO.Commander.Helper;
 using UFO.Commander.Messages;
+using UFO.Commander.Proxy;
 using UFO.Commander.ViewModel.Entities;
+using UFO.Server.Bll.Common;
+using UFO.Server.Domain;
 
 namespace UFO.Commander.ViewModel
 {
@@ -17,6 +21,8 @@ namespace UFO.Commander.ViewModel
     public class ArtistDialogViewModel : ViewModelBase
     {
         private ArtistViewModel _currentArtist;
+        private readonly IAdminAccessBll _adminAccessBll = BllAccessHandler.AdminAccessBll;
+
         public ArtistViewModel CurrentArtist
         {
             get { return _currentArtist; }
@@ -26,27 +32,17 @@ namespace UFO.Commander.ViewModel
         public ArtistDialogViewModel()
         {
             CurrentArtist = new ArtistViewModel();
-            CurrentArtist.PropertyChanged += NewUserPropertyChangedEvent;
             SaveCommand = new RelayCommand(() =>
             {
-                Locator.ArtistOverviewViewModel.SaveCommand.Execute(null);
                 Messenger.Default.Send(new HideDialogMessage(Locator.ArtistDialogViewModel));
-                CurrentArtist = new ArtistViewModel();
-                CurrentArtist.PropertyChanged += NewUserPropertyChangedEvent;
+                Locator.ArtistOverviewViewModel.SaveCommand.Execute(null);
             });
             CancelCommand = new RelayCommand(() =>
             {
                 Messenger.Default.Send(new HideDialogMessage(Locator.ArtistDialogViewModel));
             });
         }
-
-        private void NewUserPropertyChangedEvent(object sender, PropertyChangedEventArgs e)
-        {
-            var value = (ArtistViewModel)sender;
-            if (!Locator.ArtistOverviewViewModel.ModifiedArtists.Contains(value))
-                Locator.ArtistOverviewViewModel.ModifiedArtists.Add(value);
-        }
-
+        
         private ArtistViewModel _artist;
 
         public ArtistViewModel Artist

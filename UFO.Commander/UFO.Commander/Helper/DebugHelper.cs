@@ -8,16 +8,6 @@ namespace UFO.Commander.Helper
 {
     public static class DebugHelper
     {
-        private static bool IsDebugMode
-        {
-            get
-            {
-#if DEBUG
-                return true;
-#endif
-                return false;
-            }
-        }
-        public static bool IsReleaseMode { get; } = !IsDebugMode;
+        public static bool IsReleaseMode { get; } = true;
     }
 }

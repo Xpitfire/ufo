@@ -12,6 +12,8 @@
         <StackPanel>
             <Label Content="Name" />
             <TextBox Text="{Binding CurrentVenueViewModel.Name}" />
+            <Label Content="ID" />
+            <TextBox Text="{Binding CurrentVenueViewModel.VenueId}" />
             <Label Content="Location" />
             <ComboBox ItemsSource="{Binding Locations}" 
                       SelectedItem="{Binding CurrentVenueViewModel.LocationViewModel}" />

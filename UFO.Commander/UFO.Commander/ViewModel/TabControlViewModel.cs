@@ -18,9 +18,17 @@ namespace UFO.Commander.ViewModel
         {
             ReconnectCommand = new RelayCommand((() =>
             {
-                BllAccessHandler.Reconnect();
-                BllAccessHandler.SessionToken =
-                    BllAccessHandler.AdminAccessBll.RequestSessionToken(BllAccessHandler.SessionToken.User);
+                try
+                {
+                    BllAccessHandler.Reconnect();
+                    BllAccessHandler.SessionToken =
+                        BllAccessHandler.AdminAccessBll.RequestSessionToken(BllAccessHandler.SessionToken.User);
+
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Exception");
+                }
             }));
         }
 

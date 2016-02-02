@@ -44,6 +44,7 @@ namespace UFO.Commander.ViewModel
                     Venue = CurrentVenueViewModel.ToDomainObject<Venue>()
                 };
                 _adminAccessBll.ModifyPerformance(BllAccessHandler.SessionToken, performance);
+                Locator.PerformanceOverviewViewModel.Performances.Add(performance.ToViewModelObject<PerformanceViewModel>());
                 ResetData();
                 Locator.PerformanceOverviewViewModel.AddNotification(
                     performance.ToViewModelObject<PerformanceViewModel>(), (IsNew) ? NotificationType.Add : NotificationType.Modified);

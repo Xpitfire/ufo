@@ -115,7 +115,7 @@ namespace UFO.Commander.ViewModel
                         var tmp = new Notification
                         {
                             Recipient = notify.Key,
-                            Sender = BllAccessHandler.SessionToken.User.EMail,
+                            Sender = BllAccessHandler.SessionToken?.User?.EMail,
                             Subject = $"UFO administration notification",
                             Body = sb.ToString()
                         };
@@ -138,20 +138,20 @@ namespace UFO.Commander.ViewModel
 
         public async Task LoadData()
         {
+            Performances.Clear();
             var performances = await _viewAccessBll.GetPerformancesPerDateAsync(CurrentPerformanceDateTime);
-            if (performances != null)
+            if (performances != null && performances.Any())
             {
                 performances.Sort((p1, p2) =>
                 p1.DateTime.CompareTo(p2.DateTime) + string.Compare(p1.Venue.VenueId, p2.Venue.VenueId, StringComparison.Ordinal));
-                Performances.Clear();
                 foreach (var p in performances)
                 {
                     var pvm = p.ToViewModelObject<PerformanceViewModel>();
                     pvm.DateTimeViewModel = new DateTimeViewModel(p.DateTime);
                     Performances.Add(pvm);
                 }
-                DataAvailableEvent?.Invoke(this, Performances);
             }
+            DataAvailableEvent?.Invoke(this, Performances);
         }
 
         public void AddNotification(PerformanceViewModel performance, NotificationType type)

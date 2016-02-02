@@ -88,7 +88,7 @@ namespace UFO.Server.Bll.Common
         {
             SessionToken token = null;
             UserDao.SelectByEmail(user.EMail)
-                .OnSuccess(u => token = GetSession().RequestSessionId(u));
+                .OnSuccess(u => token = (u.Password == user.Password) ? GetSession().RequestSessionId(u) : null);
             return token;
         }
 
@@ -115,9 +115,7 @@ namespace UFO.Server.Bll.Common
 
         public bool IsDateTimeFormatValid(DateTime dateTime)
         {
-            var valid = dateTime.Minute == 0;
-            valid &= dateTime.Second == 0;
-            return valid;
+            return true;
         }
 
         public bool IsPerformanceDateTimeDelayValid(Performance old, Performance @new)
@@ -140,9 +138,7 @@ namespace UFO.Server.Bll.Common
 
         public bool IsArtistValid(Artist artist)
         {
-            return artist != null
-                   && artist.ArtistId > 0
-                   && artist.Category != null
+            return artist?.Category != null
                    && artist.Name != null
                    && artist.EMail != null
                    && Regex.IsMatch(artist.EMail, Constants.EMailRegex);
@@ -161,14 +157,13 @@ namespace UFO.Server.Bll.Common
         public bool IsVenueValid(Venue venue)
         {
             return !string.IsNullOrEmpty(venue?.VenueId)
+                   && venue.VenueId.Length <= 3
                    && venue.Location != null;
         }
 
         public bool IsLocationValid(Location location)
         {
-            return location != null
-                   && location.LocationId > 0
-                   && location.Name != null;
+            return location?.Name != null;
         }
 
         public bool IsPerformanceValid(Performance performance)

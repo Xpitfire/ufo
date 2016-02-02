@@ -83,6 +83,8 @@ namespace UFO.Commander.ViewModel
             {
                 await Dispatcher.CurrentDispatcher.InvokeAsync(async () =>
                 {
+                    if (!ModifiedArtists.Contains(CurrentArtist))
+                        ModifiedArtists.Add(CurrentArtist);
                     foreach (var modifiedArtist in ModifiedArtists)
                     {
                         CheckedAdd(Artists, modifiedArtist, model => model.ArtistId == modifiedArtist.ArtistId);

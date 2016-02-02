@@ -38,7 +38,6 @@ namespace UFO.Server.Domain
 
         public override string ToString()
         {
-            Color c = ColorTranslator.FromHtml("#FFCC66");
             return $"CategoryId: {CategoryId}, CategoryName: {Name}";
         }
 
